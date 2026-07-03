@@ -1,0 +1,30 @@
+{
+    "components": [
+        {
+            "cachedName": "LWJGL 2",
+            "cachedVersion": "2.9.4-nightly-20150209",
+            "cachedVolatile": true,
+            "dependencyOnly": true,
+            "uid": "org.lwjgl",
+            "version": "2.9.4-nightly-20150209"
+        },
+        {
+            "cachedName": "Minecraft",
+            "cachedRequires": [
+                {
+                    "suggests": "2.9.4-nightly-20150209",
+                    "uid": "org.lwjgl"
+                }
+            ],
+            "cachedVersion": "inf-20100618",
+            "important": true,
+            "uid": "net.minecraft",
+            "version": "inf-20100618"
+        },
+        {
+            "cachedName": "Indev Plus (custom jar)",
+            "uid": "customjar"
+        }
+    ],
+    "formatVersion": 1
+}
