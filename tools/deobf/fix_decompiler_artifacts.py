@@ -23,3 +23,27 @@ n = s.count('this.a(null);')
 s = s.replace('this.a(null);', 'this.a((GuiScreen)null);')
 open(p, 'w', encoding='utf-8').write(s)
 print(f'd.java: disambiguated {n} displayGuiScreen(null) call(s)')
+
+p = 'net/minecraft/client/c/C_l.java'
+s = open(p, encoding='utf-8').read()
+if 'float f4 = (float)itemStack.b - f;' in s:
+    s = s.replace("""                float f3;
+                n10 = n2 / 2 - 90 + n11 * 20 + 2;
+                n8 = n3 - 16 - 5;
+                ItemStack itemStack = this.d.f.b.a[n11];
+                if (itemStack == null) continue;
+                float f4 = (float)itemStack.b - f;
+                if (f3 > 0.0f) {""", """                n10 = n2 / 2 - 90 + n11 * 20 + 2;
+                n8 = n3 - 16 - 5;
+                ItemStack itemStack = this.d.f.b.a[n11];
+                if (itemStack == null) continue;
+                float f3 = (float)itemStack.b - f;
+                if (f3 > 0.0f) {""")
+    s = s.replace('float f5 = 1.0f + f4 / 5.0f;', 'float f5 = 1.0f + f3 / 5.0f;')
+    s = s.replace("""                if (f4 > 0.0f) {
+                    GL11.glPopMatrix();
+                }""", """                if (f3 > 0.0f) {
+                    GL11.glPopMatrix();
+                }""")
+    open(p, 'w', encoding='utf-8').write(s)
+    print('C_l.java: hotbar animation variable reunified')

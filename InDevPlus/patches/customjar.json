@@ -1,10 +1,10 @@
 {
     "formatVersion": 1,
     "mainJar": {
-        "MMC-displayname": "Indev Plus",
+        "MMC-displayname": "Indev++",
         "MMC-hint": "local",
         "name": "custom:customjar:1"
     },
-    "name": "Indev Plus (custom jar)",
+    "name": "Indev++ (custom jar)",
     "uid": "customjar"
 }

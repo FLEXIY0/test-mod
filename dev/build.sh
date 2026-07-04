@@ -4,7 +4,7 @@
 #   1. скопируйте нужный файл из dev/reference-src/ в dev/src/ (с путём пакета)
 #   2. отредактируйте его
 #   3. ./build.sh  — скомпилирует dev/src и вживит классы в jar инстанса,
-#                    затем пересоберёт InDev+.zip
+#                    затем пересоберёт InDev++.zip
 #
 set -e
 cd "$(dirname "$0")"
@@ -28,5 +28,5 @@ else
     echo "dev/src пуст — только пересборка zip"
 fi
 
-( cd ../InDevPlus && rm -f ../InDev+.zip && zip -r -q -X ../InDev+.zip . && zip -q ../InDev+.zip .packignore )
-echo "Готово: InDev+.zip пересобран"
+( cd ../InDevPlus && rm -f ../InDev++.zip && zip -r -q -X ../InDev++.zip . && zip -q ../InDev++.zip .packignore )
+echo "Готово: InDev++.zip пересобран"

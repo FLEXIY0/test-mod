@@ -271,7 +271,7 @@ extends Gui {
                 }
             }
             if (this.d.w.d) {
-                fontRenderer.drawStringWithBackground("Minecraft Indev+ Sunset Edition", 2, 2, 0xFFFF55);
+                fontRenderer.drawStringWithBackground("Minecraft Indev++", 2, 2, 0xFFFF55);
                 fontRenderer.drawStringWithBackground("" + this.d.B, 2, 12, 0xFFFFFF);
                 d d3 = this.d;
                 String string = "empty";

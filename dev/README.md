@@ -19,7 +19,7 @@ cp dev/reference-src/net/minecraft/client/c/GuiScreenBook.java dev/src/net/minec
 # 3. редактируйте dev/src/... в любом редакторе/IDE
 #    (в IDE добавьте в classpath: InDevPlus/libraries/customjar-1.jar + LWJGL 2 из dev/libs)
 
-# 4. соберите — классы вживляются в jar инстанса, InDev+.zip пересобирается
+# 4. соберите — классы вживляются в jar инстанса, InDev++.zip пересобирается
 ./dev/build.sh
 ```
 
