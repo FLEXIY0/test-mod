@@ -34,6 +34,8 @@ extends GuiScreen {
     private boolean reading;
     private String status = "";
     private int statusTimer;
+    private BookIO.Result saveTask;
+    private BookIO.Result loadTask;
     private GuiButtonNextPage buttonNextPage;
     private GuiButtonNextPage buttonPreviousPage;
 
@@ -64,8 +66,34 @@ extends GuiScreen {
     public void f_() {
         super.f_();
         ++this.updateCount;
+        this.pollTasks();
         if (this.statusTimer > 0 && --this.statusTimer == 0) {
             this.status = "";
+        }
+    }
+
+    /** Apply results of the async Save/Load dialogs on the game thread. */
+    private void pollTasks() {
+        if (this.saveTask != null && this.saveTask.done) {
+            if (this.saveTask.file != null) {
+                this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Saved") + ": " + this.saveTask.file.getName());
+            } else if (this.saveTask.error != null) {
+                this.setStatus("\u00a7c" + net.minecraft.client.Lang.tr("Save cancelled"));
+            } else {
+                this.setStatus("\u00a7e" + net.minecraft.client.Lang.tr("Save cancelled"));
+            }
+            this.saveTask = null;
+        }
+        if (this.loadTask != null && this.loadTask.done) {
+            if (this.loadTask.content != null) {
+                this.loadFromMarkdown(this.loadTask.content);
+                this.savePages();
+                this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Loaded") + " (" + this.bookTotalPages + ")");
+                this.b();
+            } else {
+                this.setStatus("\u00a7e" + net.minecraft.client.Lang.tr("Load cancelled"));
+            }
+            this.loadTask = null;
         }
     }
 
@@ -166,26 +194,21 @@ extends GuiScreen {
     }
 
     private void doExport() {
+        if (this.saveTask != null || this.loadTask != null) {
+            return; // a dialog is already open
+        }
         String md = this.buildMarkdown();
         String suggested = "book_" + System.currentTimeMillis() + ".md";
-        java.io.File saved = BookIO.saveAs(md, suggested);
-        if (saved != null) {
-            this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Saved") + ": " + saved.getName());
-        } else {
-            this.setStatus("\u00a7e" + net.minecraft.client.Lang.tr("Save cancelled"));
-        }
+        this.setStatus("\u00a77" + net.minecraft.client.Lang.tr("Choose a file..."));
+        this.saveTask = BookIO.saveAsAsync(md, suggested);
     }
 
     private void doImport() {
-        String content = BookIO.load();
-        if (content == null) {
-            this.setStatus("\u00a7e" + net.minecraft.client.Lang.tr("Load cancelled"));
+        if (this.saveTask != null || this.loadTask != null) {
             return;
         }
-        this.loadFromMarkdown(content);
-        this.savePages();
-        this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Loaded") + " (" + this.bookTotalPages + ")");
-        this.b();
+        this.setStatus("\u00a77" + net.minecraft.client.Lang.tr("Choose a file..."));
+        this.loadTask = BookIO.loadAsync();
     }
 
     @Override
@@ -317,15 +340,17 @@ extends GuiScreen {
             NBTTagString page = (NBTTagString)this.bookPages.a(this.currPage);
             raw = page.a == null ? "" : page.a;
         }
-        String body;
-        if (this.reading) {
-            body = MarkdownReader.render(raw);
-        } else {
-            body = this.updateCount / 6 % 2 == 0 ? raw + '\u00a7' + "0_" : raw + '\u00a7' + "7_";
-        }
         int n9 = this.g.a(pageLabel);
         this.g.b(pageLabel, n4 - n9 + this.bookImageWidth - 44, n5 + 16, 0);
-        this.g.drawSplitString(body, n4 + 36, n5 + 16 + 16, 116, 0);
+        int textX = n4 + 36;
+        int textY = n5 + 16 + 16;
+        if (this.reading) {
+            // Full Markdown rendering (bold, italic, headings, lists, code, ...)
+            MarkdownRenderer.render(this.g, raw, textX, textY, 116, this.bookImageHeight - 40);
+        } else {
+            String body = this.updateCount / 6 % 2 == 0 ? raw + '\u00a7' + "0_" : raw + '\u00a7' + "7_";
+            this.g.drawSplitString(body, textX, textY, 116, 0);
+        }
         if (this.status.length() > 0) {
             int sw = this.g.a(this.status);
             this.g.b(this.status, this.c / 2 - sw / 2, 4 + this.bookImageHeight - 12, 0xFFFFFF);

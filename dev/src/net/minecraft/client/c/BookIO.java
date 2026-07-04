@@ -1,8 +1,8 @@
 /*
- * File I/O for the Obsidian Book: "Save as" (export Markdown) and "Load"
- * (import Markdown) using a native AWT file dialog. Works in windowed mode;
- * if the dialog is unavailable (e.g. fullscreen) it falls back to the game's
- * exports/ folder.
+ * File I/O for the Obsidian Book: "Save as" / "Load" via a native AWT file
+ * dialog. The dialog runs on its own daemon thread so the game keeps rendering
+ * and never shows "not responding"; the GUI polls the returned Result each
+ * tick and applies it on the game thread.
  */
 package net.minecraft.client.c;
 
@@ -18,6 +18,15 @@ import java.io.Writer;
 
 public final class BookIO {
 
+    /** Async result, polled by the GUI each tick. */
+    public static final class Result {
+        public volatile boolean done;
+        public volatile boolean cancelled;
+        public volatile File file;      // save: written file; load: chosen file
+        public volatile String content; // load: file text
+        public volatile String error;
+    }
+
     public static File exportsDir() {
         File dir;
         try {
@@ -31,42 +40,65 @@ public final class BookIO {
         return dir;
     }
 
-    /** Ask for a location and write the markdown. Returns the saved file, or null. */
-    public static File saveAs(String markdown, String suggestedName) {
-        File target = chooseSave(suggestedName);
-        if (target == null) {
-            return null;
-        }
-        try {
-            Writer w = new OutputStreamWriter(new FileOutputStream(target), "UTF-8");
-            w.write(markdown);
-            w.close();
-            return target;
-        } catch (Throwable t) {
-            t.printStackTrace();
-            return null;
-        }
+    /** Open a Save-As dialog and write the markdown, off the game thread. */
+    public static Result saveAsAsync(final String markdown, final String suggestedName) {
+        final Result r = new Result();
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    File target = chooseSave(suggestedName);
+                    if (target == null) {
+                        r.cancelled = true;
+                    } else {
+                        Writer w = new OutputStreamWriter(new FileOutputStream(target), "UTF-8");
+                        w.write(markdown);
+                        w.close();
+                        r.file = target;
+                    }
+                } catch (Throwable e) {
+                    r.error = String.valueOf(e);
+                } finally {
+                    r.done = true;
+                }
+            }
+        }, "obsidianbook-save");
+        t.setDaemon(true);
+        t.start();
+        return r;
     }
 
-    /** Ask for a .md file and read it. Returns its text, or null if cancelled. */
-    public static String load() {
-        File src = chooseOpen();
-        if (src == null) {
-            return null;
-        }
-        try {
-            BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(src), "UTF-8"));
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = r.readLine()) != null) {
-                sb.append(line).append('\n');
+    /** Open a Load dialog and read the chosen .md, off the game thread. */
+    public static Result loadAsync() {
+        final Result r = new Result();
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    File src = chooseOpen();
+                    if (src == null) {
+                        r.cancelled = true;
+                    } else {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(src), "UTF-8"));
+                        StringBuilder sb = new StringBuilder();
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            sb.append(line).append('\n');
+                        }
+                        br.close();
+                        r.file = src;
+                        r.content = sb.toString();
+                    }
+                } catch (Throwable e) {
+                    r.error = String.valueOf(e);
+                } finally {
+                    r.done = true;
+                }
             }
-            r.close();
-            return sb.toString();
-        } catch (Throwable t) {
-            t.printStackTrace();
-            return null;
-        }
+        }, "obsidianbook-load");
+        t.setDaemon(true);
+        t.start();
+        return r;
     }
 
     private static File chooseSave(String suggestedName) {
@@ -84,12 +116,11 @@ public final class BookIO {
             }
             return new File(dir, name);
         } catch (Throwable t) {
-            // Fallback: exports/<suggested>
             String name = suggestedName == null ? "book.md" : suggestedName;
             if (!name.toLowerCase().endsWith(".md")) {
                 name = name + ".md";
             }
-            return new File(exportsDir(), name);
+            return new File(exportsDir(), name); // fallback: fixed folder
         }
     }
 
