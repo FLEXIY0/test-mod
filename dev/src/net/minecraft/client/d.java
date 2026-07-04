@@ -358,8 +358,8 @@ public final class d implements Runnable {
                }
 
                // Sleep 3x: while the player is lying down, run the whole world
-               // tick 3x (day/night, furnaces, mobs, physics all accelerate).
-               int lieMult = this.f != null && this.f.isLaying ? 3 : 1;
+               // tick 7x (day/night, furnaces, mobs, physics all accelerate).
+               int lieMult = this.f != null && this.f.isLaying ? 7 : 1;
                for (int var30 = 0; var30 < this.G.b * lieMult; var30++) {
                   this.I++;
                   this.f();
