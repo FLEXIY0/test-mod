@@ -30,3 +30,16 @@ Controls=Управление
 # --- Динамические строки книги ---
 Page %1 of %2=Страница %1 из %2
 by %1=Автор: %1
+
+# --- Обсидиановая книга ---
+Upgrade=Улучшить
+Back=Назад
+Save as=Сохранить как
+Load=Загрузить
+Hide syntax (reading)=Скрыть синтаксис
+Show syntax=Показать синтаксис
+Saved=Сохранено
+Save cancelled=Отмена сохранения
+Loaded=Загружено
+Load cancelled=Отмена загрузки
+Obsidian Book and Quill=Обсидиановая книга с пером

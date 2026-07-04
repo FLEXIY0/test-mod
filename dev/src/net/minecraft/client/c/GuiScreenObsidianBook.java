@@ -1,51 +1,41 @@
 /*
- * Decompiled with CFR 0.152.
- * 
- * Could not load the following classes:
- *  org.lwjgl.input.Keyboard
- *  org.lwjgl.opengl.GL11
+ * Obsidian Book editor. Like the normal book editor, but the "Sign" button is
+ * replaced with "Улучшить" (Upgrade), which opens three tools:
+ *   - "Сохранить как"  : export the whole book as one Markdown file (pages
+ *                        separated by "---"), via a native Save-As dialog.
+ *   - "Загрузить"      : import a Markdown file back into the book.
+ *   - "Скрыть синтаксис": reading view that hides Markdown syntax (commonmark).
  */
 package net.minecraft.client.c;
 
 import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import com.a.a.NBTTagString;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.a.RenderEngine;
-import net.minecraft.client.c.ChatAllowedCharacters;
-import net.minecraft.client.c.GuiButton;
-import net.minecraft.client.c.GuiButtonNextPage;
-import net.minecraft.client.c.GuiScreen;
-import net.minecraft.client.statistics.StatList;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 public class GuiScreenObsidianBook
 extends GuiScreen {
+    private static final String SEPARATOR = "\n\n---\n\n";
     private final EntityPlayer editingPlayer;
     private final ItemStack itemstackBook;
     private final boolean bookIsUnsigned;
     private boolean bookModified;
-    private boolean editingTitle;
     private int updateCount;
     private int bookImageWidth = 192;
     private int bookImageHeight = 192;
     private int bookTotalPages = 1;
     private int currPage;
     private NBTTagList bookPages;
-    private String bookTitle = "";
+    private boolean showTools;
+    private boolean reading;
+    private String status = "";
+    private int statusTimer;
     private GuiButtonNextPage buttonNextPage;
     private GuiButtonNextPage buttonPreviousPage;
-    private GuiButton buttonDone;
-    private GuiButton buttonSign;
-    private GuiButton buttonFinalize;
-    private GuiButton buttonCancel;
 
     public GuiScreenObsidianBook(EntityPlayer entityPlayer, ItemStack itemStack, boolean bl) {
         this.editingPlayer = entityPlayer;
@@ -62,38 +52,38 @@ extends GuiScreen {
                 }
             }
         }
-        if (this.bookPages == null && bl) {
+        if (this.bookPages == null) {
             this.bookPages = new NBTTagList();
             this.bookPages.appendTag(new NBTTagString(""));
             this.bookTotalPages = 1;
         }
-        if (bl) {
-            this.currPage = this.bookTotalPages - 1;
-        }
+        this.currPage = this.bookTotalPages - 1;
     }
 
     @Override
     public void f_() {
         super.f_();
         ++this.updateCount;
+        if (this.statusTimer > 0 && --this.statusTimer == 0) {
+            this.status = "";
+        }
     }
 
     @Override
     public void b() {
         this.e.clear();
         Keyboard.enableRepeatEvents((boolean)true);
-        if (this.bookIsUnsigned) {
-            this.buttonFinalize = new GuiButton(5, this.c / 2 - 100, 4 + this.bookImageHeight, 98, 20, "Sign and Close");
-            this.e.add(this.buttonFinalize);
-            this.buttonSign = new GuiButton(3, this.c / 2 - 100, 4 + this.bookImageHeight, 98, 20, "Sign");
-            this.e.add(this.buttonSign);
-            this.buttonDone = new GuiButton(0, this.c / 2 + 2, 4 + this.bookImageHeight, 98, 20, "Done");
-            this.e.add(this.buttonDone);
-            this.buttonCancel = new GuiButton(4, this.c / 2 + 2, 4 + this.bookImageHeight, 98, 20, "Cancel");
-            this.e.add(this.buttonCancel);
-        } else {
-            this.buttonDone = new GuiButton(0, this.c / 2 - 100, 4 + this.bookImageHeight, 200, 20, "Done");
-            this.e.add(this.buttonDone);
+        int bottom = 4 + this.bookImageHeight;
+        // Row 1: Улучшить / Назад  +  Done
+        this.e.add(new GuiButton(10, this.c / 2 - 100, bottom, 98, 20,
+                this.showTools ? net.minecraft.client.Lang.tr("Back") : "\u00a7d" + net.minecraft.client.Lang.tr("Upgrade")));
+        this.e.add(new GuiButton(0, this.c / 2 + 2, bottom, 98, 20, net.minecraft.client.Lang.tr("Done")));
+        // Row 2 (tools submenu)
+        if (this.showTools) {
+            this.e.add(new GuiButton(11, this.c / 2 - 100, bottom + 24, 98, 20, net.minecraft.client.Lang.tr("Save as")));
+            this.e.add(new GuiButton(12, this.c / 2 + 2, bottom + 24, 98, 20, net.minecraft.client.Lang.tr("Load")));
+            this.e.add(new GuiButton(13, this.c / 2 - 100, bottom + 48, 200, 20,
+                    this.reading ? net.minecraft.client.Lang.tr("Show syntax") : net.minecraft.client.Lang.tr("Hide syntax (reading)")));
         }
         int n = (this.c - this.bookImageWidth) / 2;
         int n2 = 2;
@@ -111,82 +101,141 @@ extends GuiScreen {
     }
 
     private void updateButtons() {
-        this.buttonNextPage.d = !this.editingTitle && (this.currPage < this.bookTotalPages - 1 || this.bookIsUnsigned);
-        this.buttonPreviousPage.d = !this.editingTitle && this.currPage > 0;
-        boolean bl = this.buttonDone.d = !this.bookIsUnsigned || !this.editingTitle;
-        if (this.bookIsUnsigned) {
-            this.buttonSign.d = !this.editingTitle;
-            this.buttonCancel.d = this.editingTitle;
-            this.buttonFinalize.d = this.editingTitle;
-            this.buttonFinalize.c = this.bookTitle.trim().length() > 0;
+        this.buttonNextPage.d = this.currPage < this.bookTotalPages - 1 || !this.reading;
+        this.buttonPreviousPage.d = this.currPage > 0;
+    }
+
+    private void setStatus(String s) {
+        this.status = s;
+        this.statusTimer = 80;
+    }
+
+    /** Persist the (possibly edited) pages back into the held item stack. */
+    private void savePages() {
+        if (this.bookPages == null) {
+            return;
+        }
+        while (this.bookPages.b() > 1) {
+            NBTTagString last = (NBTTagString)this.bookPages.a(this.bookPages.b() - 1);
+            if (last.a != null && last.a.length() != 0) break;
+            this.bookPages.removeTag(this.bookPages.b() - 1);
+        }
+        if (this.itemstackBook.hasTagCompound()) {
+            this.itemstackBook.getTagCompound().a("pages", this.bookPages);
+        } else {
+            this.itemstackBook.setTagInfo("pages", this.bookPages);
         }
     }
 
-    private void sendBookToServer(boolean bl) {
-        if (this.bookIsUnsigned && this.bookModified && this.bookPages != null) {
-            Object object;
-            while (this.bookPages.b() > 1) {
-                object = (NBTTagString)this.bookPages.a(this.bookPages.b() - 1);
-                if (((NBTTagString)object).a != null && ((NBTTagString)object).a.length() != 0) break;
-                this.bookPages.removeTag(this.bookPages.b() - 1);
+    private String buildMarkdown() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.bookPages.b(); ++i) {
+            NBTTagString page = (NBTTagString)this.bookPages.a(i);
+            String text = page.a == null ? "" : page.a;
+            if (i > 0) {
+                sb.append(SEPARATOR);
             }
-            if (this.itemstackBook.hasTagCompound()) {
-                object = this.itemstackBook.getTagCompound();
-                ((NBTTagCompound)object).a("pages", this.bookPages);
-            } else {
-                this.itemstackBook.setTagInfo("pages", this.bookPages);
-            }
-            object = "MC|BEdit";
-            if (bl) {
-                object = "MC|BSign";
-                this.itemstackBook.setTagInfo("author", new NBTTagString(this.editingPlayer.name));
-                this.itemstackBook.setTagInfo("title", new NBTTagString(this.bookTitle.trim()));
-                this.itemstackBook.c = Item.writtenBook.ap;
-            }
-            if (this.b.isMultiplayerWorld()) {
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
-                try {
-                    Packet.writeItemStack(this.itemstackBook, dataOutputStream);
-                    this.b.getSendQueue().addToSendQueue(new Packet250CustomPayload((String)object, byteArrayOutputStream.toByteArray()));
-                }
-                catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-            }
+            sb.append(text);
         }
+        return sb.toString();
+    }
+
+    private void loadFromMarkdown(String markdown) {
+        String normalized = markdown.replace("\r\n", "\n").replace("\r", "\n");
+        String[] rawPages = normalized.split("\n[ \t]*---[ \t]*\n");
+        NBTTagList list = new NBTTagList();
+        int count = 0;
+        for (String raw : rawPages) {
+            if (count >= 250) break;
+            String page = raw;
+            while (page.startsWith("\n")) page = page.substring(1);
+            while (page.endsWith("\n")) page = page.substring(0, page.length() - 1);
+            if (page.length() > 1024) {
+                page = page.substring(0, 1024);
+            }
+            list.appendTag(new NBTTagString(page));
+            ++count;
+        }
+        if (list.b() == 0) {
+            list.appendTag(new NBTTagString(""));
+        }
+        this.bookPages = list;
+        this.bookTotalPages = list.b();
+        this.currPage = 0;
+        this.bookModified = true;
+    }
+
+    private void doExport() {
+        String md = this.buildMarkdown();
+        String suggested = "book_" + System.currentTimeMillis() + ".md";
+        java.io.File saved = BookIO.saveAs(md, suggested);
+        if (saved != null) {
+            this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Saved") + ": " + saved.getName());
+        } else {
+            this.setStatus("\u00a7e" + net.minecraft.client.Lang.tr("Save cancelled"));
+        }
+    }
+
+    private void doImport() {
+        String content = BookIO.load();
+        if (content == null) {
+            this.setStatus("\u00a7e" + net.minecraft.client.Lang.tr("Load cancelled"));
+            return;
+        }
+        this.loadFromMarkdown(content);
+        this.savePages();
+        this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Loaded") + " (" + this.bookTotalPages + ")");
+        this.b();
     }
 
     @Override
     protected void a(GuiButton guiButton) {
-        if (guiButton.c) {
-            if (guiButton.b == 0) {
+        if (!guiButton.c) {
+            return;
+        }
+        switch (guiButton.b) {
+            case 0: { // Done
+                this.savePages();
                 this.b.a((GuiScreen)null);
-                this.sendBookToServer(false);
-            } else if (guiButton.b == 3 && this.bookIsUnsigned) {
-                this.editingTitle = true;
-            } else if (guiButton.b == 1) {
+                break;
+            }
+            case 1: { // next page
                 if (this.currPage < this.bookTotalPages - 1) {
                     ++this.currPage;
-                } else if (this.bookIsUnsigned) {
+                } else if (!this.reading) {
                     this.addNewPage();
                     if (this.currPage < this.bookTotalPages - 1) {
                         ++this.currPage;
                     }
                 }
-            } else if (guiButton.b == 2) {
+                break;
+            }
+            case 2: { // previous page
                 if (this.currPage > 0) {
                     --this.currPage;
                 }
-            } else if (guiButton.b == 5 && this.editingTitle) {
-                this.sendBookToServer(true);
-                this.b.a((GuiScreen)null);
-                this.b.f.addStat(StatList.objectUseStats[Item.bookAndQuill.ap], 1);
-            } else if (guiButton.b == 4 && this.editingTitle) {
-                this.editingTitle = false;
+                break;
             }
-            this.updateButtons();
+            case 10: { // Улучшить / Назад
+                this.showTools = !this.showTools;
+                this.b();
+                break;
+            }
+            case 11: { // Сохранить как
+                this.doExport();
+                break;
+            }
+            case 12: { // Загрузить
+                this.doImport();
+                break;
+            }
+            case 13: { // Скрыть синтаксис (чтение)
+                this.reading = !this.reading;
+                this.b();
+                break;
+            }
         }
+        this.updateButtons();
     }
 
     private void addNewPage() {
@@ -200,68 +249,37 @@ extends GuiScreen {
     @Override
     protected void a(char c, int n) {
         super.a(c, n);
-        if (this.bookIsUnsigned) {
-            if (this.editingTitle) {
-                this.editTitle(c, n);
-            } else {
-                this.keyTypedInBook(c, n);
-            }
+        if (this.reading) {
+            return; // reading view is read-only
         }
+        this.keyTypedInBook(c, n);
     }
 
     private void keyTypedInBook(char c, int n) {
-        switch (c) {
-            case '\u0016': {
-                this.typeCharacter(GuiScreen.getClipboardString());
-                return;
-            }
+        if (c == '\u0016') { // Ctrl+V
+            this.typeCharacter(GuiScreen.getClipboardString());
+            return;
         }
-        switch (n) {
-            case 14: {
-                String string = this.writePages();
-                if (string.length() > 0) {
-                    this.signBook(string.substring(0, string.length() - 1));
-                }
-                return;
+        if (n == 14) { // backspace
+            String string = this.writePages();
+            if (string.length() > 0) {
+                this.signBook(string.substring(0, string.length() - 1));
             }
-            case 28: {
-                this.typeCharacter("\n");
-                return;
-            }
+            return;
+        }
+        if (n == 28) { // enter
+            this.typeCharacter("\n");
+            return;
         }
         if (ChatAllowedCharacters.ALLOWED_CHARACTERS.indexOf(c) >= 0) {
             this.typeCharacter(Character.toString(c));
         }
     }
 
-    private void editTitle(char c, int n) {
-        switch (n) {
-            case 14: {
-                if (this.bookTitle.length() > 0) {
-                    this.bookTitle = this.bookTitle.substring(0, this.bookTitle.length() - 1);
-                    this.updateButtons();
-                }
-                return;
-            }
-            case 28: {
-                if (this.bookTitle.length() > 0) {
-                    this.sendBookToServer(true);
-                    this.b.a((GuiScreen)null);
-                }
-                return;
-            }
-        }
-        if (this.bookTitle.length() < 16 && ChatAllowedCharacters.ALLOWED_CHARACTERS.indexOf(c) >= 0) {
-            this.bookTitle = this.bookTitle + Character.toString(c);
-            this.updateButtons();
-            this.bookModified = true;
-        }
-    }
-
     private String writePages() {
         if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.b()) {
             NBTTagString nBTTagString = (NBTTagString)this.bookPages.a(this.currPage);
-            return nBTTagString.toString();
+            return nBTTagString.a == null ? "" : nBTTagString.a;
         }
         return "";
     }
@@ -275,8 +293,7 @@ extends GuiScreen {
     }
 
     private void typeCharacter(String string) {
-        String string2 = this.writePages();
-        String string3 = string2 + string;
+        String string3 = this.writePages() + string;
         int n = this.g.splitStringWidth(string3 + '\u00a7' + "0_", 118);
         if (n <= 118 && string3.length() < 1024) {
             this.signBook(string3);
@@ -292,36 +309,27 @@ extends GuiScreen {
         int n4 = (this.c - this.bookImageWidth) / 2;
         int n5 = 2;
         this.b(n4, n5, 0, 0, this.bookImageWidth, this.bookImageHeight);
-        if (this.editingTitle) {
-            String string = this.bookTitle;
-            if (this.bookIsUnsigned) {
-                string = this.updateCount / 6 % 2 == 0 ? string + '\u00a7' + "0_" : string + '\u00a7' + "7_";
-            }
-            String string2 = "Enter Book Title:";
-            int n6 = this.g.a(string2);
-            this.g.b(string2, n4 + 36 + (116 - n6) / 2, n5 + 16 + 16, 0);
-            int n7 = this.g.a(string);
-            this.g.b(string, n4 + 36 + (116 - n7) / 2, n5 + 48, 0);
-            String string3 = net.minecraft.client.Lang.tr("by %1").replace("%1", this.editingPlayer.name);
-            int n8 = this.g.a(string3);
-            this.g.b("\u00a78" + string3, n4 + 36 + (116 - n8) / 2, n5 + 48 + 10, 0);
-            String string4 = "Note! When you sign the book, it will no longer be editable.";
-            this.g.drawSplitString(string4, n4 + 36, n5 + 80, 116, 0);
+        String pageLabel = net.minecraft.client.Lang.tr("Page %1 of %2")
+                .replace("%1", Integer.toString(this.currPage + 1))
+                .replace("%2", Integer.toString(this.bookTotalPages));
+        String raw = "";
+        if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.b()) {
+            NBTTagString page = (NBTTagString)this.bookPages.a(this.currPage);
+            raw = page.a == null ? "" : page.a;
+        }
+        String body;
+        if (this.reading) {
+            body = MarkdownReader.render(raw);
         } else {
-            String string = net.minecraft.client.Lang.tr("Page %1 of %2").replace("%1", Integer.toString(this.currPage + 1)).replace("%2", Integer.toString(this.bookTotalPages));
-            String string5 = "";
-            if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.b()) {
-                NBTTagString nBTTagString = (NBTTagString)this.bookPages.a(this.currPage);
-                string5 = nBTTagString.toString();
-            }
-            if (this.bookIsUnsigned) {
-                string5 = this.updateCount / 6 % 2 == 0 ? string5 + '\u00a7' + "0_" : string5 + '\u00a7' + "7_";
-            }
-            int n9 = this.g.a(string);
-            this.g.b(string, n4 - n9 + this.bookImageWidth - 44, n5 + 16, 0);
-            this.g.drawSplitString(string5, n4 + 36, n5 + 16 + 16, 116, 0);
+            body = this.updateCount / 6 % 2 == 0 ? raw + '\u00a7' + "0_" : raw + '\u00a7' + "7_";
+        }
+        int n9 = this.g.a(pageLabel);
+        this.g.b(pageLabel, n4 - n9 + this.bookImageWidth - 44, n5 + 16, 0);
+        this.g.drawSplitString(body, n4 + 36, n5 + 16 + 16, 116, 0);
+        if (this.status.length() > 0) {
+            int sw = this.g.a(this.status);
+            this.g.b(this.status, this.c / 2 - sw / 2, 4 + this.bookImageHeight - 12, 0xFFFFFF);
         }
         super.a(n, n2, f);
     }
 }
-

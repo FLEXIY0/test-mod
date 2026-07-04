@@ -18,8 +18,9 @@ fetch lwjgl_util-2.9.3.jar https://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl_
 if find src -name '*.java' 2>/dev/null | grep -q .; then
     rm -rf out && mkdir out
     find src -name '*.java' > .build-sources
+    VENDOR_CP="$(ls vendor/*.jar 2>/dev/null | tr '\n' ':')"
     javac --release 8 -encoding UTF-8 \
-          -cp "$JAR:libs/lwjgl-2.9.3.jar:libs/lwjgl_util-2.9.3.jar" \
+          -cp "$JAR:${VENDOR_CP}libs/lwjgl-2.9.3.jar:libs/lwjgl_util-2.9.3.jar" \
           -d out @.build-sources
     rm .build-sources
     jar uf "$JAR" -C out .
@@ -27,6 +28,18 @@ if find src -name '*.java' 2>/dev/null | grep -q .; then
     NEEDNORM=1
 else
     echo "dev/src пуст"
+fi
+
+# Third-party libraries (dev/vendor/*.jar) merged into the game jar so the
+# mod's classes can call them at runtime (e.g. commonmark for markdown).
+if ls vendor/*.jar >/dev/null 2>&1; then
+    rm -rf vendor-classes && mkdir vendor-classes
+    for vj in vendor/*.jar; do ( cd vendor-classes && jar xf "../$vj" ); done
+    rm -rf vendor-classes/META-INF
+    jar uf "$JAR" -C vendor-classes .
+    echo "Вживлены библиотеки: $(ls vendor/*.jar | wc -l) jar"
+    rm -rf vendor-classes
+    NEEDNORM=1
 fi
 
 # Resource overrides (textures, font.txt, etc.) spliced into the jar.
