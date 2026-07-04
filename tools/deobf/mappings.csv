@@ -1,0 +1,30 @@
+# Curated readable names for Indev+ obfuscated classes (internal-name format).
+# Everything else that looks obfuscated (1-3 lowercase letters) is renamed
+# mechanically to C_<name>. net/minecraft/client/d is NOT renamed: the
+# PrismLauncher meta for inf-20100618 uses it as mainClass.
+net/minecraft/client/c/j,net/minecraft/client/c/FontRenderer
+net/minecraft/client/c/s,net/minecraft/client/c/ChatAllowedCharacters
+net/minecraft/client/c/i,net/minecraft/client/c/GuiScreen
+net/minecraft/client/c/k,net/minecraft/client/c/Gui
+net/minecraft/client/c/r,net/minecraft/client/c/GuiButton
+net/minecraft/client/c/at,net/minecraft/client/c/GuiMainMenu
+net/minecraft/client/c/ae,net/minecraft/client/c/GuiScreenBook
+net/minecraft/client/c/af,net/minecraft/client/c/GuiButtonNextPage
+net/minecraft/client/c/g,net/minecraft/client/c/GuiOptions
+net/minecraft/client/c/al,net/minecraft/client/c/GuiCredits
+net/minecraft/client/c/aa,net/minecraft/client/c/GuiAchievement
+net/minecraft/client/c/h,net/minecraft/client/c/ScaledResolution
+net/minecraft/client/q,net/minecraft/client/GameSettings
+net/minecraft/client/h,net/minecraft/client/KeyBinding
+net/minecraft/client/f,net/minecraft/client/LevelIO
+net/minecraft/client/a/k,net/minecraft/client/a/RenderEngine
+net/minecraft/a/b/k,net/minecraft/a/b/ItemStack
+net/minecraft/a/b/i,net/minecraft/a/b/Item
+net/minecraft/a/c/e/a,net/minecraft/a/c/e/EntityPlayer
+net/minecraft/a/a/r,net/minecraft/a/a/LevelOptions
+com/a/a/j,com/a/a/NBTBase
+com/a/a/c,com/a/a/NBTTagCompound
+com/a/a/f,com/a/a/NBTTagList
+com/a/a/k,com/a/a/NBTTagString
+com/a/a/a,com/a/a/NBTTagLong
+a/a,util/MathHelper
