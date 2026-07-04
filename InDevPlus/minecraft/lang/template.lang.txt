@@ -1,0 +1,20 @@
+# Шаблон языкового файла Indev+ (UTF-8).
+# Скопируйте этот файл как <код>.lang (например fr_FR.lang) и переведите значения.
+# Формат:  Английский текст=Перевод
+language.name=My Language
+
+# Главное меню
+Singleplayer=
+Multiplayer=
+I'm feeling lucky=
+Options...=
+Quit Game=
+Switch...=
+
+# Книга с пером
+Done=
+Sign=
+Sign and Close=
+Cancel=
+Enter Book Title:=
+Note! When you sign the book, it will no longer be editable.=
