@@ -29,6 +29,7 @@ extends GuiScreen {
     private int bookImageHeight = 192;
     private int bookTotalPages = 1;
     private int currPage;
+    private int cursorPos;
     private NBTTagList bookPages;
     private boolean showTools;
     private boolean reading;
@@ -60,6 +61,7 @@ extends GuiScreen {
             this.bookTotalPages = 1;
         }
         this.currPage = this.bookTotalPages - 1;
+        this.cursorPos = this.writePages().length();
     }
 
     @Override
@@ -190,6 +192,7 @@ extends GuiScreen {
         this.bookPages = list;
         this.bookTotalPages = list.b();
         this.currPage = 0;
+        this.cursorPos = 0;
         this.bookModified = true;
     }
 
@@ -231,12 +234,14 @@ extends GuiScreen {
                         ++this.currPage;
                     }
                 }
+                this.cursorPos = this.writePages().length();
                 break;
             }
             case 2: { // previous page
                 if (this.currPage > 0) {
                     --this.currPage;
                 }
+                this.cursorPos = this.writePages().length();
                 break;
             }
             case 10: { // Улучшить / Назад
@@ -278,25 +283,81 @@ extends GuiScreen {
         this.keyTypedInBook(c, n);
     }
 
-    private void keyTypedInBook(char c, int n) {
+    private void keyTypedInBook(char c, int keyCode) {
+        String text = this.writePages();
+        int len = text.length();
+        if (this.cursorPos > len) {
+            this.cursorPos = len;
+        }
+        switch (keyCode) {
+            case 203: // Left
+                if (this.cursorPos > 0) --this.cursorPos;
+                return;
+            case 205: // Right
+                if (this.cursorPos < len) ++this.cursorPos;
+                return;
+            case 199: // Home
+                this.cursorPos = lineStart(text, this.cursorPos);
+                return;
+            case 207: // End
+                this.cursorPos = lineEnd(text, this.cursorPos);
+                return;
+            case 200: // Up
+                this.cursorPos = moveVertical(text, this.cursorPos, -1);
+                return;
+            case 208: // Down
+                this.cursorPos = moveVertical(text, this.cursorPos, 1);
+                return;
+            case 14: // Backspace
+                if (this.cursorPos > 0) {
+                    this.signBook(text.substring(0, this.cursorPos - 1) + text.substring(this.cursorPos));
+                    --this.cursorPos;
+                }
+                return;
+            case 211: // Delete
+                if (this.cursorPos < len) {
+                    this.signBook(text.substring(0, this.cursorPos) + text.substring(this.cursorPos + 1));
+                }
+                return;
+        }
         if (c == '\u0016') { // Ctrl+V
-            this.typeCharacter(GuiScreen.getClipboardString());
+            this.insert(GuiScreen.getClipboardString());
             return;
         }
-        if (n == 14) { // backspace
-            String string = this.writePages();
-            if (string.length() > 0) {
-                this.signBook(string.substring(0, string.length() - 1));
-            }
-            return;
-        }
-        if (n == 28) { // enter
-            this.typeCharacter("\n");
+        if (keyCode == 28) { // Enter
+            this.insert("\n");
             return;
         }
         if (ChatAllowedCharacters.ALLOWED_CHARACTERS.indexOf(c) >= 0) {
-            this.typeCharacter(Character.toString(c));
+            this.insert(Character.toString(c));
         }
+    }
+
+    // Cursor line navigation on the raw text (hard newlines).
+    private static int lineStart(String t, int pos) {
+        int i = t.lastIndexOf('\n', pos - 1);
+        return i < 0 ? 0 : i + 1;
+    }
+
+    private static int lineEnd(String t, int pos) {
+        int i = t.indexOf('\n', pos);
+        return i < 0 ? t.length() : i;
+    }
+
+    private static int moveVertical(String t, int pos, int dir) {
+        int ls = lineStart(t, pos);
+        int col = pos - ls;
+        if (dir < 0) {
+            if (ls == 0) return pos;
+            int prevEnd = ls - 1;
+            int prevStart = lineStart(t, prevEnd);
+            return Math.min(prevStart + col, prevEnd);
+        }
+        int le = lineEnd(t, pos);
+        if (le >= t.length()) return pos;
+        int nextStart = le + 1;
+        int nextEnd = lineEnd(t, nextStart);
+        return Math.min(nextStart + col, nextEnd);
     }
 
     private String writePages() {
@@ -315,11 +376,20 @@ extends GuiScreen {
         }
     }
 
-    private void typeCharacter(String string) {
-        String string3 = this.writePages() + string;
-        int n = this.g.splitStringWidth(string3 + '\u00a7' + "0_", 118);
-        if (n <= 118 && string3.length() < 1024) {
-            this.signBook(string3);
+    /** Insert text at the caret if the page still fits. */
+    private void insert(String string) {
+        if (string == null || string.length() == 0) {
+            return;
+        }
+        String text = this.writePages();
+        if (this.cursorPos > text.length()) {
+            this.cursorPos = text.length();
+        }
+        String candidate = text.substring(0, this.cursorPos) + string + text.substring(this.cursorPos);
+        int h = this.g.splitStringWidth(candidate + '\u00a7' + "0_", 118);
+        if (h <= 118 && candidate.length() < 1024) {
+            this.signBook(candidate);
+            this.cursorPos += string.length();
         }
     }
 
@@ -348,7 +418,12 @@ extends GuiScreen {
             // Full Markdown rendering (bold, italic, headings, lists, code, ...)
             MarkdownRenderer.render(this.g, raw, textX, textY, 116, this.bookImageHeight - 40);
         } else {
-            String body = this.updateCount / 6 % 2 == 0 ? raw + '\u00a7' + "0_" : raw + '\u00a7' + "7_";
+            // draw the page with a blinking caret at the cursor position
+            int cp = this.cursorPos;
+            if (cp < 0) cp = 0;
+            if (cp > raw.length()) cp = raw.length();
+            String caret = this.updateCount / 6 % 2 == 0 ? "\u00a70_\u00a70" : "\u00a77_\u00a70";
+            String body = raw.substring(0, cp) + caret + raw.substring(cp);
             this.g.drawSplitString(body, textX, textY, 116, 0);
         }
         if (this.status.length() > 0) {
