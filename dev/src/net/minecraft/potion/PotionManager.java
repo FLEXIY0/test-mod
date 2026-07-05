@@ -51,6 +51,14 @@ public final class PotionManager {
         return false;
     }
 
+    /** Bonus melee damage from an active Strength effect (0 if none). Queried by
+     *  the inventory's getDamageVsEntity — the only reachable point in the melee
+     *  path, since EntityPlayer itself doesn't recompile. */
+    public static int strengthBonus() {
+        for (PotionEffect e : active) if (e.id == STRENGTH && e.duration > 0) return 3 * e.level;
+        return 0;
+    }
+
     public static void clear() { active.clear(); }
 
     /** Drink a potion of the given effect id: applies it with a sensible duration. */
@@ -62,6 +70,7 @@ public final class PotionManager {
             case JUMP:         apply(player, JUMP, 600, 1);         break; // 30s
             case FIRE_RESIST:  apply(player, FIRE_RESIST, 900, 1);  break; // 45s
             case NIGHT_VISION: apply(player, NIGHT_VISION, 1200, 1); break; // 60s
+            case STRENGTH:     apply(player, STRENGTH, 900, 1);      break; // 45s, +3 melee
             default: break;
         }
     }

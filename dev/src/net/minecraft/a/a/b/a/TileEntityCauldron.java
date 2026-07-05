@@ -105,6 +105,7 @@ public class TileEntityCauldron extends TileEntity {
         if (itemId == Item.H.ap) return PotionManager.SPEED;            // feather
         if (itemId == Item.slimeBall.ap) return PotionManager.JUMP;     // slimeball
         if (itemId == Item.i.ap) return PotionManager.FIRE_RESIST;      // coal
+        if (itemId == Item.bone.ap) return PotionManager.STRENGTH;      // bone
         if (itemId == Block.glowStone.at) return PotionManager.NIGHT_VISION; // glowstone block
         return -1;
     }

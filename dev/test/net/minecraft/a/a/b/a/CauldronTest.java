@@ -46,8 +46,17 @@ public class CauldronTest {
         ok(TileEntityCauldron.ingredientToEffect(Item.H.ap) == PotionManager.SPEED, "feather -> speed");
         ok(TileEntityCauldron.ingredientToEffect(Item.slimeBall.ap) == PotionManager.JUMP, "slimeball -> jump");
         ok(TileEntityCauldron.ingredientToEffect(Item.i.ap) == PotionManager.FIRE_RESIST, "coal -> fire resist");
+        ok(TileEntityCauldron.ingredientToEffect(Item.bone.ap) == PotionManager.STRENGTH, "bone -> strength");
         ok(TileEntityCauldron.ingredientToEffect(Block.glowStone.at) == PotionManager.NIGHT_VISION, "glowstone -> night vision");
         ok(TileEntityCauldron.ingredientToEffect(Item.k.ap) == -1, "iron ingot brews nothing");
+
+        // 3b. Strength melee bonus (reached via the compilable inventory, not the
+        //     locked EntityPlayer): queried by inventory.getDamageVsEntity.
+        ok(PotionManager.strengthBonus() == 0, "no strength bonus when inactive");
+        PotionManager.getActive().add(new net.minecraft.potion.PotionEffect(PotionManager.STRENGTH, 100, 2));
+        ok(PotionManager.strengthBonus() == 6, "strength level 2 -> +6 melee (got " + PotionManager.strengthBonus() + ")");
+        PotionManager.clear();
+        ok(PotionManager.strengthBonus() == 0, "bonus gone after clear");
 
         // 4. tile entity registered for save/load
         Field nm = Class.forName("net.minecraft.a.a.TileEntityRegistry").getDeclaredField("nameToClassMap");
