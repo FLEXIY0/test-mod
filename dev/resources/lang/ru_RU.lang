@@ -1,0 +1,47 @@
+# Indev+ русский язык (UTF-8). Формат: английский текст=перевод
+# Свой язык: скопируйте этот файл как <код>.lang в папку lang рядом с игрой.
+language.name=Русский
+
+# --- Главное меню ---
+Singleplayer=Одиночная игра
+Multiplayer=Сетевая игра
+I'm feeling lucky=Мне повезёт
+Options...=Настройки...
+Quit Game=Выйти из игры
+Switch...=Сменить...
+
+# --- Книга с пером ---
+Done=Готово
+Sign=Подписать
+Sign and Close=Подписать и закрыть
+Cancel=Отмена
+Enter Book Title:=Введите название книги:
+Note! When you sign the book, it will no longer be editable.=Внимание! После подписи книгу нельзя будет редактировать.
+
+# --- Меню паузы / общие ---
+Back to game=Вернуться в игру
+Save and quit to title=Сохранить и выйти в меню
+Generate new level...=Создать новый мир...
+Load level...=Загрузить мир...
+Save level...=Сохранить мир...
+Options=Настройки
+Controls=Управление
+
+# --- Динамические строки книги ---
+Page %1 of %2=Страница %1 из %2
+by %1=Автор: %1
+
+# --- Обсидиановая книга ---
+Upgrade=Улучшить
+Back=Назад
+Save as=Сохранить как
+Load=Загрузить
+Hide syntax (reading)=Скрыть синтаксис
+Show syntax=Показать синтаксис
+Saved=Сохранено
+Save cancelled=Отмена сохранения
+Loaded=Загружено
+Load cancelled=Отмена загрузки
+Obsidian Book and Quill=Обсидиановая книга с пером
+Choose a file...=Выберите файл...
+Opening link...=Открываю ссылку...

@@ -1,0 +1,53 @@
+armAnim:true
+showArm:true
+invertYMouse:false
+scrollInvert:false
+sneakMode:true
+stars:true
+fancyParticles:true
+fancyItems:true
+fancyTextures:true
+showFrameRate:false
+viewDistance:2
+cloudStyle:0
+bobView:true
+limitFramerate:true
+graphics:true
+musicVol:0.0
+soundVol:1.0
+masterVol:1.0
+ambienceVol:1.0
+mobVol:1.0
+streamingVol:1.0
+blocksVol:1.0
+sensitivity:1.0
+FOV:70.0
+blur:1.0
+guiScale:0
+particles:0
+titleStyle:0
+skin:Default
+char:3
+lastServer:
+key_Forward:17
+key_Left:30
+key_Back:31
+key_Right:32
+key_Jump:57
+key_Sneak:42
+key_Crawl:29
+key_Flight:46
+key_Inventory:18
+key_Drop:16
+key_Save location:28
+key_Load location:19
+key_Zoom:44
+key_Chat:20
+key_Show Players:15
+key_Pause:1
+key_Toggle HUD:59
+key_Screenshot:60
+key_Debug Mode:61
+key_Third Person:63
+key_Isometric Screenshot:65
+key_Toggle Fullscreen:87
