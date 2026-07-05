@@ -1,7 +1,12 @@
 /*
- * Obsidian Book editor with an Obsidian-style "Live Preview": every line is
- * rendered formatted (BookLayout + MarkdownRenderer) except the line the caret
- * is on, which is shown raw for editing. The "Sign" button is replaced with
+ * Obsidian Book editor with an Obsidian-style "Live Preview".
+ *
+ * The book is one continuous document (field `content`); pages are purely a
+ * display pagination computed from the rendered height, so text that doesn't
+ * fit flows onto the next page automatically and the caret (a single index into
+ * `content`) crosses pages seamlessly with the arrow keys. Every line renders
+ * formatted except the caret's line, which reveals its raw markdown for editing.
+ *
  * "Улучшить" (Upgrade) → Save as / Load / Reading (full preview). Mouse: click
  * places the caret, clicks links (opens the browser) and toggles checkboxes.
  */
@@ -10,6 +15,8 @@ package net.minecraft.client.c;
 import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import com.a.a.NBTTagString;
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.a.RenderEngine;
@@ -18,18 +25,15 @@ import org.lwjgl.opengl.GL11;
 
 public class GuiScreenObsidianBook
 extends GuiScreen {
-    private static final String SEPARATOR = "\n\n---\n\n";
+    private static final int PAGE_WIDTH = 116;
     private final EntityPlayer editingPlayer;
     private final ItemStack itemstackBook;
-    private final boolean bookIsUnsigned;
     private boolean bookModified;
     private int updateCount;
     private int bookImageWidth = 192;
     private int bookImageHeight = 192;
-    private int bookTotalPages = 1;
-    private int currPage;
+    private String content = "";
     private int cursorPos;
-    private NBTTagList bookPages;
     private boolean showTools;
     private boolean reading;
     private String status = "";
@@ -37,32 +41,80 @@ extends GuiScreen {
     private BookIO.Result saveTask;
     private BookIO.Result loadTask;
     private BookLayout layout;
-    private int layoutX, layoutY;
+    private int layoutX, layoutY, pageStart;
     private GuiButtonNextPage buttonNextPage;
     private GuiButtonNextPage buttonPreviousPage;
 
     public GuiScreenObsidianBook(EntityPlayer entityPlayer, ItemStack itemStack, boolean bl) {
         this.editingPlayer = entityPlayer;
         this.itemstackBook = itemStack;
-        this.bookIsUnsigned = bl;
-        if (itemStack.hasTagCompound()) {
-            NBTTagCompound nBTTagCompound = itemStack.getTagCompound();
-            this.bookPages = nBTTagCompound.j("pages");
-            if (this.bookPages != null) {
-                this.bookPages = (NBTTagList)this.bookPages.copy();
-                this.bookTotalPages = this.bookPages.b();
-                if (this.bookTotalPages < 1) {
-                    this.bookTotalPages = 1;
-                }
+        this.content = readContent(itemStack);
+        this.cursorPos = this.content.length();
+    }
+
+    /** Join the stored pages into one continuous document. */
+    private static String readContent(ItemStack itemStack) {
+        if (!itemStack.hasTagCompound()) {
+            return "";
+        }
+        NBTTagList pages = itemStack.getTagCompound().j("pages");
+        if (pages == null || pages.b() == 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < pages.b(); ++i) {
+            NBTTagString p = (NBTTagString) pages.a(i);
+            if (i > 0) sb.append("\n\n");
+            sb.append(p.a == null ? "" : p.a);
+        }
+        return sb.toString();
+    }
+
+    private BookLayout.Metrics metrics() {
+        final FontRenderer fr = this.g;
+        return new BookLayout.Metrics() {
+            @Override
+            public int width(String s) { return fr.a(s); }
+        };
+    }
+
+    private int pageAreaHeight() {
+        return this.bookImageHeight - 40;
+    }
+
+    /** Split the document into display pages by rendered height. Returns page
+     *  start indices with a trailing sentinel = content length (pages = n-1). */
+    private int[] paginate() {
+        BookLayout full = BookLayout.build(this.content, -1, PAGE_WIDTH, this.metrics(), true);
+        return computePageStarts(full.lines, this.content.length(), this.pageAreaHeight());
+    }
+
+    /** Group laid-out lines into display pages by cumulative height. Pure/testable. */
+    static int[] computePageStarts(List<BookLayout.LineBox> lines, int contentLen, int pageH) {
+        List<Integer> starts = new ArrayList<Integer>();
+        starts.add(0);
+        int pageTop = 0;
+        for (BookLayout.LineBox lb : lines) {
+            if (lb.start == starts.get(starts.size() - 1)) {
+                pageTop = lb.top; // first line of the current page
+                continue;
+            }
+            if (lb.bottom - pageTop > pageH) {
+                starts.add(lb.start);
+                pageTop = lb.top;
             }
         }
-        if (this.bookPages == null) {
-            this.bookPages = new NBTTagList();
-            this.bookPages.appendTag(new NBTTagString(""));
-            this.bookTotalPages = 1;
+        starts.add(contentLen);
+        int[] out = new int[starts.size()];
+        for (int i = 0; i < out.length; i++) out[i] = starts.get(i);
+        return out;
+    }
+
+    static int pageIndexOf(int[] starts, int pos) {
+        for (int k = 0; k < starts.length - 1; k++) {
+            if (pos >= starts[k] && pos < starts[k + 1]) return k;
         }
-        this.currPage = this.bookTotalPages - 1;
-        this.cursorPos = this.writePages().length();
+        return Math.max(0, starts.length - 2);
     }
 
     @Override
@@ -75,13 +127,10 @@ extends GuiScreen {
         }
     }
 
-    /** Apply results of the async Save/Load dialogs on the game thread. */
     private void pollTasks() {
         if (this.saveTask != null && this.saveTask.done) {
             if (this.saveTask.file != null) {
                 this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Saved") + ": " + this.saveTask.file.getName());
-            } else if (this.saveTask.error != null) {
-                this.setStatus("\u00a7c" + net.minecraft.client.Lang.tr("Save cancelled"));
             } else {
                 this.setStatus("\u00a7e" + net.minecraft.client.Lang.tr("Save cancelled"));
             }
@@ -91,7 +140,7 @@ extends GuiScreen {
             if (this.loadTask.content != null) {
                 this.loadFromMarkdown(this.loadTask.content);
                 this.savePages();
-                this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Loaded") + " (" + this.bookTotalPages + ")");
+                this.setStatus("\u00a7a" + net.minecraft.client.Lang.tr("Loaded"));
                 this.b();
             } else {
                 this.setStatus("\u00a7e" + net.minecraft.client.Lang.tr("Load cancelled"));
@@ -105,11 +154,9 @@ extends GuiScreen {
         this.e.clear();
         Keyboard.enableRepeatEvents((boolean)true);
         int bottom = 4 + this.bookImageHeight;
-        // Row 1: Улучшить / Назад  +  Done
         this.e.add(new GuiButton(10, this.c / 2 - 100, bottom, 98, 20,
                 this.showTools ? net.minecraft.client.Lang.tr("Back") : "\u00a7d" + net.minecraft.client.Lang.tr("Upgrade")));
         this.e.add(new GuiButton(0, this.c / 2 + 2, bottom, 98, 20, net.minecraft.client.Lang.tr("Done")));
-        // Row 2 (tools submenu)
         if (this.showTools) {
             this.e.add(new GuiButton(11, this.c / 2 - 100, bottom + 24, 98, 20, net.minecraft.client.Lang.tr("Save as")));
             this.e.add(new GuiButton(12, this.c / 2 + 2, bottom + 24, 98, 20, net.minecraft.client.Lang.tr("Load")));
@@ -117,12 +164,10 @@ extends GuiScreen {
                     this.reading ? net.minecraft.client.Lang.tr("Show syntax") : net.minecraft.client.Lang.tr("Hide syntax (reading)")));
         }
         int n = (this.c - this.bookImageWidth) / 2;
-        int n2 = 2;
-        this.buttonNextPage = new GuiButtonNextPage(1, n + 120, n2 + 154, true);
+        this.buttonNextPage = new GuiButtonNextPage(1, n + 120, 156, true);
         this.e.add(this.buttonNextPage);
-        this.buttonPreviousPage = new GuiButtonNextPage(2, n + 38, n2 + 154, false);
+        this.buttonPreviousPage = new GuiButtonNextPage(2, n + 38, 156, false);
         this.e.add(this.buttonPreviousPage);
-        this.updateButtons();
     }
 
     @Override
@@ -131,247 +176,159 @@ extends GuiScreen {
         Keyboard.enableRepeatEvents((boolean)false);
     }
 
-    private void updateButtons() {
-        this.buttonNextPage.d = this.currPage < this.bookTotalPages - 1 || !this.reading;
-        this.buttonPreviousPage.d = this.currPage > 0;
-    }
-
     private void setStatus(String s) {
         this.status = s;
         this.statusTimer = 80;
     }
 
-    /** Persist the (possibly edited) pages back into the held item stack. */
+    /** Store the whole document as a single page (display pagination is runtime). */
     private void savePages() {
-        if (this.bookPages == null) {
-            return;
-        }
-        while (this.bookPages.b() > 1) {
-            NBTTagString last = (NBTTagString)this.bookPages.a(this.bookPages.b() - 1);
-            if (last.a != null && last.a.length() != 0) break;
-            this.bookPages.removeTag(this.bookPages.b() - 1);
-        }
+        NBTTagList list = new NBTTagList();
+        list.appendTag(new NBTTagString(this.content));
         if (this.itemstackBook.hasTagCompound()) {
-            this.itemstackBook.getTagCompound().a("pages", this.bookPages);
+            this.itemstackBook.getTagCompound().a("pages", list);
         } else {
-            this.itemstackBook.setTagInfo("pages", this.bookPages);
+            this.itemstackBook.setTagInfo("pages", list);
         }
-    }
-
-    private String buildMarkdown() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < this.bookPages.b(); ++i) {
-            NBTTagString page = (NBTTagString)this.bookPages.a(i);
-            String text = page.a == null ? "" : page.a;
-            if (i > 0) {
-                sb.append(SEPARATOR);
-            }
-            sb.append(text);
-        }
-        return sb.toString();
     }
 
     private void loadFromMarkdown(String markdown) {
-        String normalized = markdown.replace("\r\n", "\n").replace("\r", "\n");
-        String[] rawPages = normalized.split("\n[ \t]*---[ \t]*\n");
-        NBTTagList list = new NBTTagList();
-        int count = 0;
-        for (String raw : rawPages) {
-            if (count >= 250) break;
-            String page = raw;
-            while (page.startsWith("\n")) page = page.substring(1);
-            while (page.endsWith("\n")) page = page.substring(0, page.length() - 1);
-            if (page.length() > 1024) {
-                page = page.substring(0, 1024);
-            }
-            list.appendTag(new NBTTagString(page));
-            ++count;
-        }
-        if (list.b() == 0) {
-            list.appendTag(new NBTTagString(""));
-        }
-        this.bookPages = list;
-        this.bookTotalPages = list.b();
-        this.currPage = 0;
+        this.content = markdown.replace("\r\n", "\n").replace("\r", "\n");
         this.cursorPos = 0;
         this.bookModified = true;
     }
 
     private void doExport() {
-        if (this.saveTask != null || this.loadTask != null) {
-            return; // a dialog is already open
-        }
-        String md = this.buildMarkdown();
-        String suggested = "book_" + System.currentTimeMillis() + ".md";
+        if (this.saveTask != null || this.loadTask != null) return;
         this.setStatus("\u00a77" + net.minecraft.client.Lang.tr("Choose a file..."));
-        this.saveTask = BookIO.saveAsAsync(md, suggested);
+        this.saveTask = BookIO.saveAsAsync(this.content, "book_" + System.currentTimeMillis() + ".md");
     }
 
     private void doImport() {
-        if (this.saveTask != null || this.loadTask != null) {
-            return;
-        }
+        if (this.saveTask != null || this.loadTask != null) return;
         this.setStatus("\u00a77" + net.minecraft.client.Lang.tr("Choose a file..."));
         this.loadTask = BookIO.loadAsync();
     }
 
     @Override
     protected void a(GuiButton guiButton) {
-        if (!guiButton.c) {
-            return;
-        }
+        if (!guiButton.c) return;
         switch (guiButton.b) {
-            case 0: { // Done
+            case 0: // Done
                 this.savePages();
                 this.b.a((GuiScreen)null);
                 break;
-            }
-            case 1: { // next page
-                if (this.currPage < this.bookTotalPages - 1) {
-                    ++this.currPage;
-                } else if (!this.reading) {
-                    this.addNewPage();
-                    if (this.currPage < this.bookTotalPages - 1) {
-                        ++this.currPage;
-                    }
-                }
-                this.cursorPos = this.writePages().length();
+            case 1: { // next page: move caret to the next page (or the end)
+                int[] s = this.paginate();
+                int p = this.pageIndexOf(s, this.cursorPos);
+                if (p < s.length - 2) this.cursorPos = s[p + 1];
+                else this.cursorPos = this.content.length();
                 break;
             }
             case 2: { // previous page
-                if (this.currPage > 0) {
-                    --this.currPage;
-                }
-                this.cursorPos = this.writePages().length();
+                int[] s = this.paginate();
+                int p = this.pageIndexOf(s, this.cursorPos);
+                if (p > 0) this.cursorPos = s[p - 1];
                 break;
             }
-            case 10: { // Улучшить / Назад
+            case 10:
                 this.showTools = !this.showTools;
                 this.b();
                 break;
-            }
-            case 11: { // Сохранить как
+            case 11:
                 this.doExport();
                 break;
-            }
-            case 12: { // Загрузить
+            case 12:
                 this.doImport();
                 break;
-            }
-            case 13: { // Скрыть синтаксис (чтение)
+            case 13:
                 this.reading = !this.reading;
                 this.b();
                 break;
-            }
-        }
-        this.updateButtons();
-    }
-
-    private void addNewPage() {
-        if (this.bookPages != null && this.bookPages.b() < 250) {
-            this.bookPages.appendTag(new NBTTagString(""));
-            ++this.bookTotalPages;
-            this.bookModified = true;
         }
     }
 
     @Override
     protected void a(char c, int n) {
         super.a(c, n);
-        if (this.reading) {
-            return; // reading view is read-only
-        }
+        if (this.reading) return;
         this.keyTypedInBook(c, n);
     }
 
     private void keyTypedInBook(char c, int keyCode) {
-        String text = this.writePages();
+        String text = this.content;
         int len = text.length();
-        if (this.cursorPos > len) {
-            this.cursorPos = len;
-        }
+        if (this.cursorPos > len) this.cursorPos = len;
         switch (keyCode) {
-            case 203: // Left
-                if (this.cursorPos > 0) --this.cursorPos;
-                return;
-            case 205: // Right
-                if (this.cursorPos < len) ++this.cursorPos;
-                return;
-            case 199: // Home
-                this.cursorPos = lineStart(text, this.cursorPos);
-                return;
-            case 207: // End
-                this.cursorPos = lineEnd(text, this.cursorPos);
-                return;
-            case 200: // Up
-                this.cursorPos = moveVertical(text, this.cursorPos, -1);
-                return;
-            case 208: // Down
-                this.cursorPos = moveVertical(text, this.cursorPos, 1);
-                return;
+            case 203: if (this.cursorPos > 0) --this.cursorPos; return;                  // Left
+            case 205: if (this.cursorPos < len) ++this.cursorPos; return;                // Right
+            case 199: this.cursorPos = lineStart(text, this.cursorPos); return;          // Home
+            case 207: this.cursorPos = lineEnd(text, this.cursorPos); return;            // End
+            case 200: this.cursorPos = moveVertical(text, this.cursorPos, -1); return;   // Up
+            case 208: this.cursorPos = moveVertical(text, this.cursorPos, 1); return;    // Down
             case 14: // Backspace
                 if (this.cursorPos > 0) {
-                    this.signBook(text.substring(0, this.cursorPos - 1) + text.substring(this.cursorPos));
+                    this.content = text.substring(0, this.cursorPos - 1) + text.substring(this.cursorPos);
                     --this.cursorPos;
+                    this.bookModified = true;
                 }
                 return;
             case 211: // Delete
                 if (this.cursorPos < len) {
-                    this.signBook(text.substring(0, this.cursorPos) + text.substring(this.cursorPos + 1));
+                    this.content = text.substring(0, this.cursorPos) + text.substring(this.cursorPos + 1);
+                    this.bookModified = true;
                 }
                 return;
         }
-        if (c == '\u0016') { // Ctrl+V
-            this.insert(GuiScreen.getClipboardString());
-            return;
-        }
-        if (keyCode == 28) { // Enter
-            this.insert("\n");
-            return;
-        }
+        if (c == '\u0016') { this.insert(GuiScreen.getClipboardString()); return; } // Ctrl+V
+        if (keyCode == 28) { this.insert("\n"); return; }                            // Enter
         if (ChatAllowedCharacters.ALLOWED_CHARACTERS.indexOf(c) >= 0) {
             this.insert(Character.toString(c));
         }
     }
 
-    // Cursor line navigation on the raw text (hard newlines).
+    /** Insert at the caret. No page-capacity check — overflow flows to a new page. */
+    private void insert(String string) {
+        if (string == null || string.length() == 0) return;
+        if (this.cursorPos > this.content.length()) this.cursorPos = this.content.length();
+        if (this.content.length() + string.length() > 100000) return; // sanity cap
+        this.content = this.content.substring(0, this.cursorPos) + string + this.content.substring(this.cursorPos);
+        this.cursorPos += string.length();
+        this.bookModified = true;
+    }
+
+    // ---- line navigation over the whole document (crosses pages) ----
+
     private static int lineStart(String t, int pos) {
         int i = t.lastIndexOf('\n', pos - 1);
         return i < 0 ? 0 : i + 1;
     }
-
     private static int lineEnd(String t, int pos) {
         int i = t.indexOf('\n', pos);
         return i < 0 ? t.length() : i;
     }
-
     private static int moveVertical(String t, int pos, int dir) {
         int ls = lineStart(t, pos);
         int col = pos - ls;
         if (dir < 0) {
             if (ls == 0) return pos;
-            int prevEnd = ls - 1;
-            int prevStart = lineStart(t, prevEnd);
-            return Math.min(prevStart + col, prevEnd);
+            int prevStart = lineStart(t, ls - 1);
+            return Math.min(prevStart + col, ls - 1);
         }
         int le = lineEnd(t, pos);
         if (le >= t.length()) return pos;
         int nextStart = le + 1;
-        int nextEnd = lineEnd(t, nextStart);
-        return Math.min(nextStart + col, nextEnd);
+        return Math.min(nextStart + col, lineEnd(t, nextStart));
     }
 
-    // ---- mouse: click links / checkboxes / place cursor ----
+    // ---- mouse ----
 
     @Override
     protected void mouseClick(int mx, int my, int button) {
-        super.mouseClick(mx, my, button); // let GUI buttons handle it first
-        if (button != 0 || this.layout == null) {
-            return;
-        }
+        super.mouseClick(mx, my, button);
+        if (button != 0 || this.layout == null) return;
         int lx = mx - this.layoutX;
         int ly = my - this.layoutY;
-        // 1. links (clickable in both preview and edit)
         for (BookLayout.Link l : this.layout.links) {
             if (lx >= l.x && lx <= l.x + l.w && ly >= l.y - 1 && ly <= l.y + l.h) {
                 BookIO.openUrlAsync(l.url);
@@ -379,96 +336,44 @@ extends GuiScreen {
                 return;
             }
         }
-        if (this.reading) {
-            return; // pure preview: only links are interactive
-        }
-        // 2. checkboxes: toggle
-        for (BookLayout.Check c : this.layout.checks) {
-            if (lx >= c.x - 1 && lx <= c.x + c.size + 1 && ly >= c.y - 1 && ly <= c.y + c.size + 1) {
-                this.signBook(toggleState(this.writePages(), c.markIndex));
-                this.clampCursor();
+        if (this.reading) return;
+        for (BookLayout.Check ch : this.layout.checks) {
+            if (lx >= ch.x - 1 && lx <= ch.x + ch.size + 1 && ly >= ch.y - 1 && ly <= ch.y + ch.size + 1) {
+                this.content = toggleState(this.content, this.pageStart + ch.markIndex);
+                this.bookModified = true;
                 return;
             }
         }
-        // 3. place the caret on the clicked line
         for (BookLayout.LineBox lb : this.layout.lines) {
             if (ly >= lb.top && ly < lb.bottom) {
-                String line = this.writePages();
-                String lineText = line.substring(Math.min(lb.start, line.length()), Math.min(lb.end, line.length()));
-                final FontRenderer fr = this.g;
-                this.cursorPos = lb.start + columnFromX(lineText, lx, new BookLayout.Metrics() {
-                    @Override
-                    public int width(String s) { return fr.a(s); }
-                });
-                this.clampCursor();
+                String pageText = this.content.substring(
+                        Math.min(this.pageStart + lb.start, this.content.length()),
+                        Math.min(this.pageStart + lb.end, this.content.length()));
+                this.cursorPos = this.pageStart + lb.start + columnFromX(pageText, lx, this.metrics());
+                if (this.cursorPos > this.content.length()) this.cursorPos = this.content.length();
                 return;
             }
         }
-    }
-
-    private void clampCursor() {
-        int len = this.writePages().length();
-        if (this.cursorPos < 0) this.cursorPos = 0;
-        if (this.cursorPos > len) this.cursorPos = len;
     }
 
     /** Flip the checkbox state char (after '[') between ' ' and 'x'. Pure. */
     static String toggleState(String text, int bracketIdx) {
         int s = bracketIdx + 1;
-        if (s < 0 || s >= text.length()) {
-            return text;
-        }
+        if (s < 0 || s >= text.length()) return text;
         char nw = Character.toLowerCase(text.charAt(s)) == 'x' ? ' ' : 'x';
         return text.substring(0, s) + nw + text.substring(s + 1);
     }
 
     /** Approximate character column for a click x within a single line's text. */
     static int columnFromX(String line, int lx, BookLayout.Metrics m) {
-        if (lx <= 0) {
-            return 0;
-        }
+        if (lx <= 0) return 0;
         int acc = 0;
         for (int i = 0; i < line.length(); i++) {
             int w = m.width(line.substring(i, i + 1));
-            if (acc + w / 2 >= lx) {
-                return i;
-            }
+            if (acc + w / 2 >= lx) return i;
             acc += w;
         }
         return line.length();
-    }
-
-    private String writePages() {
-        if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.b()) {
-            NBTTagString nBTTagString = (NBTTagString)this.bookPages.a(this.currPage);
-            return nBTTagString.a == null ? "" : nBTTagString.a;
-        }
-        return "";
-    }
-
-    private void signBook(String string) {
-        if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.b()) {
-            NBTTagString nBTTagString = (NBTTagString)this.bookPages.a(this.currPage);
-            nBTTagString.a = string;
-            this.bookModified = true;
-        }
-    }
-
-    /** Insert text at the caret if the page still fits. */
-    private void insert(String string) {
-        if (string == null || string.length() == 0) {
-            return;
-        }
-        String text = this.writePages();
-        if (this.cursorPos > text.length()) {
-            this.cursorPos = text.length();
-        }
-        String candidate = text.substring(0, this.cursorPos) + string + text.substring(this.cursorPos);
-        int h = this.g.splitStringWidth(candidate + '\u00a7' + "0_", 118);
-        if (h <= 118 && candidate.length() < 1024) {
-            this.signBook(candidate);
-            this.cursorPos += string.length();
-        }
     }
 
     @Override
@@ -480,26 +385,29 @@ extends GuiScreen {
         int n4 = (this.c - this.bookImageWidth) / 2;
         int n5 = 2;
         this.b(n4, n5, 0, 0, this.bookImageWidth, this.bookImageHeight);
+
+        int[] starts = this.paginate();
+        int pageCount = starts.length - 1;
+        int page = this.pageIndexOf(starts, this.cursorPos);
+        this.pageStart = starts[page];
+        int pageEnd = starts[page + 1];
+        String pageText = this.content.substring(this.pageStart, pageEnd);
+        int pageCursor = this.reading ? -1 : (this.cursorPos - this.pageStart);
+
         String pageLabel = net.minecraft.client.Lang.tr("Page %1 of %2")
-                .replace("%1", Integer.toString(this.currPage + 1))
-                .replace("%2", Integer.toString(this.bookTotalPages));
-        String raw = "";
-        if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.b()) {
-            NBTTagString page = (NBTTagString)this.bookPages.a(this.currPage);
-            raw = page.a == null ? "" : page.a;
-        }
-        int n9 = this.g.a(pageLabel);
-        this.g.b(pageLabel, n4 - n9 + this.bookImageWidth - 44, n5 + 16, 0);
+                .replace("%1", Integer.toString(page + 1)).replace("%2", Integer.toString(pageCount));
+        int lw = this.g.a(pageLabel);
+        this.g.b(pageLabel, n4 - lw + this.bookImageWidth - 44, n5 + 16, 0);
+
         int textX = n4 + 36;
         int textY = n5 + 16 + 16;
-        // Live-preview hybrid: every line is rendered formatted except the caret's
-        // line (shown raw for editing). In reading mode the whole page is formatted.
-        int cp = this.cursorPos;
-        if (cp < 0) cp = 0;
-        if (cp > raw.length()) cp = raw.length();
-        this.layout = MarkdownRenderer.render(this.g, raw, cp, textX, textY, 116, this.bookImageHeight - 40, this.reading);
+        this.layout = MarkdownRenderer.render(this.g, pageText, pageCursor, textX, textY, PAGE_WIDTH, this.pageAreaHeight(), this.reading);
         this.layoutX = textX;
         this.layoutY = textY;
+
+        if (this.buttonNextPage != null) this.buttonNextPage.d = true;
+        if (this.buttonPreviousPage != null) this.buttonPreviousPage.d = page > 0;
+
         if (this.status.length() > 0) {
             int sw = this.g.a(this.status);
             this.g.b(this.status, this.c / 2 - sw / 2, 4 + this.bookImageHeight - 12, 0xFFFFFF);
