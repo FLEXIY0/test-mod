@@ -35,5 +35,6 @@ run net.minecraft.client.c.RevealTest "$SRC/net/minecraft/client/c/RevealTest.ja
 run net.minecraft.client.c.SelTest    "$SRC/net/minecraft/client/c/SelTest.java"
 run net.minecraft.a.a.b.ReactorTest   "$SRC/net/minecraft/a/a/b/ReactorTest.java"
 run net.minecraft.a.a.b.a.CauldronTest "$SRC/net/minecraft/a/a/b/a/CauldronTest.java"
+run net.minecraft.platform.PlatformTest "$SRC/net/minecraft/platform/PlatformTest.java"
 
 rm -rf "$OUT"

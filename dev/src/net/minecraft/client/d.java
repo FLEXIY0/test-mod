@@ -365,9 +365,10 @@ public final class d implements Runnable {
                   this.f();
                }
 
-               // Potion effects tick once per game tick (heal/regen, speed, jump,
-               // fire resistance, night vision) — see net.minecraft.potion.
-               net.minecraft.potion.PotionManager.tick(this.f);
+               // Platform tick event — features (potion effects, ...) register
+               // listeners in net.minecraft.platform.Platform instead of editing
+               // this loop. See net.minecraft.platform.Hooks.
+               net.minecraft.platform.Hooks.fireTick(this.f);
 
                this.x.a(this.f, this.G.c);
                GL11.glEnable(3553);
