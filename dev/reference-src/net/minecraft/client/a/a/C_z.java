@@ -7,8 +7,8 @@
 package net.minecraft.client.a.a;
 
 import java.io.IOException;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.a.a.C_f;
 import net.minecraft.client.md3.MD3Loader;
@@ -33,8 +33,8 @@ extends C_f {
     }
 
     @Override
-    public void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
-        C_e c_e = (C_e)c_b;
+    public void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
+        EntityLiving c_e = (EntityLiving)c_b;
         GL11.glPushMatrix();
         try {
             GL11.glTranslatef((float)f, (float)f2, (float)f3);

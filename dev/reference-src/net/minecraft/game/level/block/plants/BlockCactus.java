@@ -6,12 +6,12 @@ package net.minecraft.game.level.block.plants;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class BlockCactus
 extends Block {
     public BlockCactus(int n, int n2) {
-        super(n, n2, C_c.cactus);
+        super(n, n2, Material.cactus);
         this.a(true);
     }
 
@@ -33,7 +33,7 @@ extends Block {
 
     @Override
     public void a(World c_g, int n, int n2, int n3, Random random) {
-        if (c_g.f(n, n2 + 1, n3) == C_c.a) {
+        if (c_g.f(n, n2 + 1, n3) == Material.a) {
             int n4 = 1;
             while (c_g.a(n, n2 - n4, n3) == this.at) {
                 ++n4;

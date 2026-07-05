@@ -6,16 +6,16 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 
 public class C_bf
 extends Block {
     private static String[] NAME_LIST = new String[]{"Brown", "Red", "Gloshroom"};
 
     protected C_bf(int n) {
-        super(n, 458, C_c.c);
+        super(n, 458, Material.c);
         this.hasStates = true;
     }
 
@@ -62,8 +62,8 @@ extends Block {
                 float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                C_b c_b = new C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, 0));
-                new C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, 0)).O = 10;
+                EntityItem c_b = new EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, 0));
+                new EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, 0)).O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }
         }

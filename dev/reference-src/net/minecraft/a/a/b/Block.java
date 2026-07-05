@@ -151,14 +151,14 @@ public class Block {
     public static final C_af j = (C_af)new C_af(2).b(0.6f).setName("Grass").setStepSound(aE);
     public static final Block k = new C_l(3, 2).b(0.5f).setName("Dirt").setStepSound(aD);
     public static final Block l = new C_aq(4, 32).b(2.0f).a(10.0f).setName("Cobblestone").setStepSound(aF);
-    public static final Block m = new C_bj(5, 4, net.minecraft.a.a.d.C_c.c).b(2.0f).a(5.0f).setName("Planks").setStepSound(b);
+    public static final Block m = new C_bj(5, 4, net.minecraft.a.a.d.Material.c).b(2.0f).a(5.0f).setName("Planks").setStepSound(b);
     public static final Block n = new BlockSapling(6, 15).b(0.0f).setName("Sapling").setStepSound(aE);
-    public static final Block o = new Block(7, 33, net.minecraft.a.a.d.C_c.d).b(-1.0f).a(6000000.0f).setName("Bedrock").setStepSound(aF);
-    public static final Block p = new C_m(8, net.minecraft.a.a.d.C_c.f).b(100.0f).c(3).setName("Water");
-    public static final Block q = new C_b(9, net.minecraft.a.a.d.C_c.f).b(100.0f).c(3).setName("Still Water");
-    public static final Block r = new C_m(10, net.minecraft.a.a.d.C_c.g).b(0.0f).c(1.0f).c(255).setName("Lava");
-    public static final Block s = new C_b(11, net.minecraft.a.a.d.C_c.g).b(100.0f).c(1.0f).c(255).setName("Still Lava");
-    public static final Block t = new C_w(12, 34, net.minecraft.a.a.d.C_c.m).b(0.5f).setName("Sand").setStepSound(aJ);
+    public static final Block o = new Block(7, 33, net.minecraft.a.a.d.Material.d).b(-1.0f).a(6000000.0f).setName("Bedrock").setStepSound(aF);
+    public static final Block p = new C_m(8, net.minecraft.a.a.d.Material.f).b(100.0f).c(3).setName("Water");
+    public static final Block q = new C_b(9, net.minecraft.a.a.d.Material.f).b(100.0f).c(3).setName("Still Water");
+    public static final Block r = new C_m(10, net.minecraft.a.a.d.Material.g).b(0.0f).c(1.0f).c(255).setName("Lava");
+    public static final Block s = new C_b(11, net.minecraft.a.a.d.Material.g).b(100.0f).c(1.0f).c(255).setName("Still Lava");
+    public static final Block t = new C_w(12, 34, net.minecraft.a.a.d.Material.m).b(0.5f).setName("Sand").setStepSound(aJ);
     public static final Block u = new C_e(13, 35).b(0.6f).setName("Gravel").setStepSound(aD);
     public static final Block v = new C_c(14, 64).b(3.0f).a(5.0f).setName("Gold Ore").setStepSound(aF);
     public static final Block w = new C_c(15, 65).b(3.0f).a(5.0f).setName("Iron Ore").setStepSound(aF);
@@ -166,7 +166,7 @@ public class Block {
     public static final Block y = new C_aa(17).b(2.0f).setName("Log").setStepSound(b);
     public static final Block z = new C_o(18, 352).b(0.2f).setGravity(0.3f).c(1).setName("Leaves").setStepSound(aE).setParticleType(true);
     public static final Block A = new C_ag(19).b(0.6f).setName("Sponge").setStepSound(aE);
-    public static final Block B = new C_u(20, 97, net.minecraft.a.a.d.C_c.o, false).b(0.3f).setName("Glass").setStepSound(aH).setParticleType(true);
+    public static final Block B = new C_u(20, 97, net.minecraft.a.a.d.Material.o, false).b(0.3f).setName("Glass").setStepSound(aH).setParticleType(true);
     public static final Block cloth = new C_ao().b(0.8f).setName("Cloth").setStepSound(aI);
     public static final BlockFlower plantYellow = (BlockFlower)new BlockFlower(37, 13).b(0.0f).setName("Dandelion").setStepSound(aE);
     public static final BlockFlower plantRed = (BlockFlower)new BlockFlower(38, 12).b(0.0f).setName("Rose").setStepSound(aE);
@@ -174,14 +174,14 @@ public class Block {
     public static final BlockFlower mushroomRed = (BlockFlower)new BlockMushroom(40, 44).b(0.0f).setName("Red Mushroom").setStepSound(aE);
     public static final Block W = new C_bb(41, 71).b(3.0f).a(10.0f).setName("Gold Block").setStepSound(aG);
     public static final Block X = new C_bb(42, 70).b(5.0f).a(10.0f).setName("Iron Block").setStepSound(aG);
-    public static final Block Y = new C_aj(43, true, false, net.minecraft.a.a.d.C_c.d).b(2.0f).a(10.0f).setName("Double Slab").setStepSound(aF);
-    public static final Block Z = new C_aj(44, false, false, net.minecraft.a.a.d.C_c.d).b(2.0f).a(10.0f).setName("Slab").setStepSound(aF);
-    public static final Block stairUpsideDown = new C_aj(147, false, true, net.minecraft.a.a.d.C_c.d).b(2.0f).a(10.0f).setName("Double Slab").setStepSound(aF);
-    public static final Block aa = new Block(45, 7, net.minecraft.a.a.d.C_c.d).b(2.0f).a(10.0f).setName("Bricks").setStepSound(aF);
+    public static final Block Y = new C_aj(43, true, false, net.minecraft.a.a.d.Material.d).b(2.0f).a(10.0f).setName("Double Slab").setStepSound(aF);
+    public static final Block Z = new C_aj(44, false, false, net.minecraft.a.a.d.Material.d).b(2.0f).a(10.0f).setName("Slab").setStepSound(aF);
+    public static final Block stairUpsideDown = new C_aj(147, false, true, net.minecraft.a.a.d.Material.d).b(2.0f).a(10.0f).setName("Double Slab").setStepSound(aF);
+    public static final Block aa = new Block(45, 7, net.minecraft.a.a.d.Material.d).b(2.0f).a(10.0f).setName("Bricks").setStepSound(aF);
     public static final Block ab = new C_h(46, 8).b(0.0f).setName("TNT").setStepSound(aE);
     public static final Block ac = new BlockBookshelf(47, 160).b(1.5f).setName("Empty Bookshelf").setStepSound(b);
-    public static final Block ad = new Block(48, 68, net.minecraft.a.a.d.C_c.d).b(2.0f).a(10.0f).setName("Mossy Cobblestone").setStepSound(aF);
-    public static final Block ae = new Block(49, 69, net.minecraft.a.a.d.C_c.d).b(10.0f).a(2000.0f).setName("\u00a7dObsidian").setStepSound(aF);
+    public static final Block ad = new Block(48, 68, net.minecraft.a.a.d.Material.d).b(2.0f).a(10.0f).setName("Mossy Cobblestone").setStepSound(aF);
+    public static final Block ae = new Block(49, 69, net.minecraft.a.a.d.Material.d).b(10.0f).a(2000.0f).setName("\u00a7dObsidian").setStepSound(aF);
     public static final Block af = new BlockTorch(50, 79).b(0.0f).c(0.875f).setName("Torch").setStepSound(b).disableNeighborNotifyOnMetadataChange().setDecorationStatus(true);
     public static final Block ah = new C_ai(52, Block.p.at).b(0.0f).setName("Water Source").setStepSound(b);
     public static final Block ai = new C_ai(53, Block.r.at).b(0.0f).setName("Lava Source").setStepSound(b);
@@ -197,7 +197,7 @@ public class Block {
     public static final Block blockCoal = new C_bb(21, 3).b(3.0f).a(10.0f).setName("Coal Block").setStepSound(aF);
     public static final Block oreEmerald = new C_c(22, 99).b(3.0f).a(5.0f).setName("\u00a7aEmerald Ore").setStepSound(aF);
     public static final Block blockEmerald = new C_bb(23, 224).b(5.0f).a(10.0f).setName("\u00a7aEmerald Block").setStepSound(aG);
-    public static final Block doorOak = new BlockDoor(24, 257, 322, net.minecraft.a.a.d.C_c.c).b(3.0f).setStepSound(b).setName("Oak Door").disableNeighborNotifyOnMetadataChange();
+    public static final Block doorOak = new BlockDoor(24, 257, 322, net.minecraft.a.a.d.Material.c).b(3.0f).setStepSound(b).setName("Oak Door").disableNeighborNotifyOnMetadataChange();
     public static final Block ladder = new BlockLadder(25, 227).b(0.5f).setStepSound(b).setName("Ladder").setDecorationStatus(true);
     public static final BlockFlower plantPurple = (BlockFlower)new BlockFlower(26, 265).b(0.0f).setName("Petunia").setStepSound(aE);
     public static final BlockFlower plantBlue = (BlockFlower)new BlockFlower(27, 495).b(0.0f).setName("Lilac").setStepSound(aE);
@@ -205,8 +205,8 @@ public class Block {
     public static final Block reeds = new BlockReeds(29, 552).b(0.0f).setName("Reeds").setStepSound(aE);
     public static final Block clay = new C_an(30, 197).b(0.5f).setName("Clay").setStepSound(aD);
     public static final Block cake = new BlockCake(31, 204).b(0.5f).setStepSound(aI).setName("Apple Pie").setParticleType(true).disableNeighborNotifyOnMetadataChange();
-    public static final Block chair = new BlockChair(32, 4, net.minecraft.a.a.d.C_c.c).b(1.5f).a(3.0f).setStepSound(b).setName("Oak Chair").setDecorationStatus(true);
-    public static final Block table = new BlockTable(33, 4, net.minecraft.a.a.d.C_c.c).b(1.5f).a(3.0f).setStepSound(b).setName("Table").setDecorationStatus(true);
+    public static final Block chair = new BlockChair(32, 4, net.minecraft.a.a.d.Material.c).b(1.5f).a(3.0f).setStepSound(b).setName("Oak Chair").setDecorationStatus(true);
+    public static final Block table = new BlockTable(33, 4, net.minecraft.a.a.d.Material.c).b(1.5f).a(3.0f).setStepSound(b).setName("Table").setDecorationStatus(true);
     public static final Block bed = new BlockBed(63).b(0.5f).setStepSound(b).setName("Bed").setParticleType(true);
     public static final Block fence = new BlockFence(64, 4).b(2.0f).a(5.0f).setStepSound(b).setName("Fence").setDecorationStatus(true);
     public static final Block stairWood = new C_bq(67, m, 4).setName("Oak Stairs").disableNeighborNotifyOnMetadataChange();
@@ -214,13 +214,13 @@ public class Block {
     public static final Block stairBrick = new C_bq(69, aa, 7).setName("Brick Stairs").disableNeighborNotifyOnMetadataChange();
     public static final Block stairMoss = new C_bq(70, ad, 68).setName("Moss Stairs").disableNeighborNotifyOnMetadataChange();
     public static final Block fenceGateOak = new BlockFenceGate(71, 4).b(2.0f).a(5.0f).setName("Oak Fence Gate").setStepSound(b).setDecorationStatus(true).disableNeighborNotifyOnMetadataChange();
-    public static final Block glassPane = new BlockPane(72, 230, 4, net.minecraft.a.a.d.C_c.o).b(0.3f).setStepSound(aH).setName("Window").setDecorationStatus(true);
-    public static final Block trapdoorWood = new BlockTrapdoor(73, 231, net.minecraft.a.a.d.C_c.c).b(2.0f).setStepSound(b).setName("Oak Trapdoor").setDecorationStatus(true);
+    public static final Block glassPane = new BlockPane(72, 230, 4, net.minecraft.a.a.d.Material.o).b(0.3f).setStepSound(aH).setName("Window").setDecorationStatus(true);
+    public static final Block trapdoorWood = new BlockTrapdoor(73, 231, net.minecraft.a.a.d.Material.c).b(2.0f).setStepSound(b).setName("Oak Trapdoor").setDecorationStatus(true);
     public static final Block carpet = new C_am().b(0.5f).setStepSound(aI).setName("Carpet").setDecorationStatus(true);
-    public static final Block ash = new C_bs(75, 232, net.minecraft.a.a.d.C_c.ash).b(0.1f).setStepSound(aI).setName("Ash").setDecorationStatus(true);
-    public static final Block rope = new BlockRope(77, 233, net.minecraft.a.a.d.C_c.rope).setStepSound(aI).setName("Rope").setDecorationStatus(true);
+    public static final Block ash = new C_bs(75, 232, net.minecraft.a.a.d.Material.ash).b(0.1f).setStepSound(aI).setName("Ash").setDecorationStatus(true);
+    public static final Block rope = new BlockRope(77, 233, net.minecraft.a.a.d.Material.rope).setStepSound(aI).setName("Rope").setDecorationStatus(true);
     public static final Block unlitTorch = new BlockTorch(79, 229).b(0.0f).setName("Unlit Torch").setStepSound(b).disableNeighborNotifyOnMetadataChange().setDecorationStatus(true);
-    public static final Block cobweb = new C_ar(80, 11, net.minecraft.a.a.d.C_c.web).b(1.5f).setStepSound(aI).setName("Cobweb").setDecorationStatus(true);
+    public static final Block cobweb = new C_ar(80, 11, net.minecraft.a.a.d.Material.web).b(1.5f).setStepSound(aI).setName("Cobweb").setDecorationStatus(true);
     public static final Block lantern = new BlockLantern(81, 234).b(1.0f).c(1.0f).setStepSound(aG).setName("\u00a7dLantern").setDecorationStatus(true);
     public static final Block flowerPot = new BlockFlowerPot(82, 235).b(0.5f).setStepSound(a).setName("Flower Pot").setDecorationStatus(true);
     public static final Block jukeBox = new BlockJukeBox(83, 262).b(2.0f).a(10.0f).setStepSound(b).setName("\u00a7bJukebox");
@@ -229,59 +229,59 @@ public class Block {
     public static final Block pumpkinStem = new BlockStem(86, 270, pumpkin).b(0.0f).setName("Pumpkin Stem").setStepSound(aE);
     public static final Block melonStem = new BlockStem(87, 268, melon).b(0.0f).setName("Melon Stem").setStepSound(aE);
     public static final BlockFlower berryBush = (BlockFlower)new BlockBush(88, 267).b(0.0f).setName("Berry Bush").setStepSound(aE);
-    public static final Block snowLayer = new C_bs(89, 292, net.minecraft.a.a.d.C_c.snow).b(0.1f).setStepSound(soundSnowFootstep).setName("Snow").setDecorationStatus(true);
-    public static final Block snowBlock = new C_bm(90, 292, net.minecraft.a.a.d.C_c.snow).b(0.5f).setStepSound(soundSnowFootstep).setName("Snow Block");
-    public static final Block ice = new C_az(91, 293, net.minecraft.a.a.d.C_c.ice).b(0.3f).c(1).setStepSound(aH).setName("Ice");
+    public static final Block snowLayer = new C_bs(89, 292, net.minecraft.a.a.d.Material.snow).b(0.1f).setStepSound(soundSnowFootstep).setName("Snow").setDecorationStatus(true);
+    public static final Block snowBlock = new C_bm(90, 292, net.minecraft.a.a.d.Material.snow).b(0.5f).setStepSound(soundSnowFootstep).setName("Snow Block");
+    public static final Block ice = new C_az(91, 293, net.minecraft.a.a.d.Material.ice).b(0.3f).c(1).setStepSound(aH).setName("Ice");
     public static final Block sandStone = new C_bl(92, 300).b(1.0f).setStepSound(aF).setName("Sandstone");
-    public static final Block quickSand = new C_w(93, 303, net.minecraft.a.a.d.C_c.quicksand).b(0.7f).setStepSound(aJ).setName("Quick Sand");
+    public static final Block quickSand = new C_w(93, 303, net.minecraft.a.a.d.Material.quicksand).b(0.7f).setStepSound(aJ).setName("Quick Sand");
     public static final Block cactus = new BlockCactus(94, 295).b(0.4f).setStepSound(aI).setName("Cactus");
     public static final Block stairSandstone = new C_bq(95, sandStone, 300).setName("Sandstone Stairs").disableNeighborNotifyOnMetadataChange();
     public static final Block deadBush = new BlockShrub(96, 298).b(0.0f).setName("Dead Bush").setStepSound(aE);
-    public static final Block sandLayer = new C_bs(97, 34, net.minecraft.a.a.d.C_c.m).b(0.1f).setStepSound(aJ).setName("Sand Layer").setDecorationStatus(true);
+    public static final Block sandLayer = new C_bs(97, 34, net.minecraft.a.a.d.Material.m).b(0.1f).setStepSound(aJ).setName("Sand Layer").setDecorationStatus(true);
     public static final Block stairWoodWhite = new C_bq(98, m, 328).setName("Birch Stairs").disableNeighborNotifyOnMetadataChange();
     public static final Block stairWoodCherry = new C_bq(99, m, 360).setName("Palm Stairs").disableNeighborNotifyOnMetadataChange();
     public static final Block stairWoodBlack = new C_bq(100, m, 392).setName("Pine Stairs").disableNeighborNotifyOnMetadataChange();
-    public static final Block moss = new C_be(101, 330, net.minecraft.a.a.d.C_c.b).b(0.3f).setName("Moss").setStepSound(aE);
+    public static final Block moss = new C_be(101, 330, net.minecraft.a.a.d.Material.b).b(0.3f).setName("Moss").setStepSound(aE);
     public static final Block vine = new BlockVine(102, 685).b(0.3f).setStepSound(aE).setName("Vine").setDecorationStatus(true);
     public static final BlockFlower mushroomGlowing = (BlockFlower)new BlockMushroom(103, 332).b(0.0f).c(0.7f).setName("\u00a7bGloshroom").setStepSound(aE);
     public static final Block blockAdminium = new C_bb(104, 398).b(3.0f).a(10.0f).setName("\u00a7dAdminium Block").setStepSound(aG);
     public static final Block oreAdminium = new C_c(105, 334).b(3.0f).a(5.0f).setName("\u00a7dAdminium Ore").setStepSound(aF);
-    public static final Block stalactite = new C_bn(106, 399, net.minecraft.a.a.d.C_c.d).b(1.5f).setName("Stalactite").setStepSound(aF).setDecorationStatus(true);
-    public static final Block slimeBlock = new C_bt(107, 333, net.minecraft.a.a.d.C_c.slime).b(0.5f).setName("\u00a7aSlime Block").setStepSound(soundSlimeFootstep);
-    public static final Block coral = new C_at(108, 362, net.minecraft.a.a.d.C_c.c).b(0.5f).setName("Coral").setStepSound(aE);
-    public static final Block magma = new C_ba(109, 226, net.minecraft.a.a.d.C_c.magma).b(2.0f).setName("Magma").c(0.5f).setStepSound(aF);
+    public static final Block stalactite = new C_bn(106, 399, net.minecraft.a.a.d.Material.d).b(1.5f).setName("Stalactite").setStepSound(aF).setDecorationStatus(true);
+    public static final Block slimeBlock = new C_bt(107, 333, net.minecraft.a.a.d.Material.slime).b(0.5f).setName("\u00a7aSlime Block").setStepSound(soundSlimeFootstep);
+    public static final Block coral = new C_at(108, 362, net.minecraft.a.a.d.Material.c).b(0.5f).setName("Coral").setStepSound(aE);
+    public static final Block magma = new C_ba(109, 226, net.minecraft.a.a.d.Material.magma).b(2.0f).setName("Magma").c(0.5f).setStepSound(aF);
     public static final Block seaweed = new BlockSeaweed(110, 462).c(3).setName("Seaweed").setStepSound(aE).setDecorationStatus(true);
     public static final Block wall = new BlockWall(111, l).setName("Wall").setDecorationStatus(true);
     public static final Block fenceGateBirch = new BlockFenceGate(112, 328).b(2.0f).a(5.0f).setName("Birch Fence Gate").setStepSound(b).setDecorationStatus(true).disableNeighborNotifyOnMetadataChange();
     public static final Block fenceGatePalm = new BlockFenceGate(113, 360).b(2.0f).a(5.0f).setName("Palm Fence Gate").setStepSound(b).setDecorationStatus(true).disableNeighborNotifyOnMetadataChange();
     public static final Block fenceGateSpruce = new BlockFenceGate(114, 392).b(2.0f).a(5.0f).setName("Pine Fence Gate").setStepSound(b).setDecorationStatus(true).disableNeighborNotifyOnMetadataChange();
-    public static final Block doorBirch = new BlockDoor(115, 448, 395, net.minecraft.a.a.d.C_c.c).b(3.0f).setStepSound(b).setName("Birch Door").disableNeighborNotifyOnMetadataChange();
-    public static final Block doorPalm = new BlockDoor(116, 449, 396, net.minecraft.a.a.d.C_c.c).b(3.0f).setStepSound(b).setName("Palm Door").disableNeighborNotifyOnMetadataChange();
-    public static final Block doorSpruce = new BlockDoor(117, 450, 397, net.minecraft.a.a.d.C_c.c).b(3.0f).setStepSound(b).setName("Pine Door").disableNeighborNotifyOnMetadataChange();
-    public static final Block stoneBricks = new C_al(118, 394, net.minecraft.a.a.d.C_c.d).b(2.5f).a(10.0f).setName("Stone Bricks").setStepSound(aF);
+    public static final Block doorBirch = new BlockDoor(115, 448, 395, net.minecraft.a.a.d.Material.c).b(3.0f).setStepSound(b).setName("Birch Door").disableNeighborNotifyOnMetadataChange();
+    public static final Block doorPalm = new BlockDoor(116, 449, 396, net.minecraft.a.a.d.Material.c).b(3.0f).setStepSound(b).setName("Palm Door").disableNeighborNotifyOnMetadataChange();
+    public static final Block doorSpruce = new BlockDoor(117, 450, 397, net.minecraft.a.a.d.Material.c).b(3.0f).setStepSound(b).setName("Pine Door").disableNeighborNotifyOnMetadataChange();
+    public static final Block stoneBricks = new C_al(118, 394, net.minecraft.a.a.d.Material.d).b(2.5f).a(10.0f).setName("Stone Bricks").setStepSound(aF);
     public static final Block stairStoneBricks = new C_bq(119, stoneBricks, 394).setName("Stone Brick Stairs").disableNeighborNotifyOnMetadataChange();
     public static final Block stairStoneBricksMossy = new C_bq(120, stoneBricks, 395).setName("Mossy Brick Stairs").disableNeighborNotifyOnMetadataChange();
-    public static final Block moonRock = new Block(121, 258, net.minecraft.a.a.d.C_c.d).b(1.5f).a(10.0f).setName("Moon Rock").setStepSound(aF);
+    public static final Block moonRock = new Block(121, 258, net.minecraft.a.a.d.Material.d).b(1.5f).a(10.0f).setName("Moon Rock").setStepSound(aF);
     public static final C_bh mycelium = (C_bh)new C_bh(122).b(0.6f).setName("Mycelium").setStepSound(aE);
     public static final Block mushroomStem = new C_bg(123).b(1.0f).setName("Mushroom Stem").setStepSound(b);
     public static final Block mushroomCap = new C_bf(124).b(1.0f).setName("Mushroom Cap").setStepSound(b);
     public static final Block log = new C_br(125).b(2.0f).setName("Oak Log").setStepSound(b);
-    public static final Block cloudBlock = new C_ap(126, 431, net.minecraft.a.a.d.C_c.cloud).b(0.5f).setName("Cloud Block").setStepSound(aI);
-    public static final Block redSand = new C_w(127, 423, net.minecraft.a.a.d.C_c.m).b(0.5f).setName("Red Sand").setStepSound(aJ);
-    public static final Block brimStone = new Block(128, 424, net.minecraft.a.a.d.C_c.d).b(1.5f).setName("Basalt").setStepSound(aF);
-    public static final Block brimStoneBrick = new Block(129, 454, net.minecraft.a.a.d.C_c.d).b(3.0f).a(10.0f).setName("Basalt Bricks").setStepSound(aF);
+    public static final Block cloudBlock = new C_ap(126, 431, net.minecraft.a.a.d.Material.cloud).b(0.5f).setName("Cloud Block").setStepSound(aI);
+    public static final Block redSand = new C_w(127, 423, net.minecraft.a.a.d.Material.m).b(0.5f).setName("Red Sand").setStepSound(aJ);
+    public static final Block brimStone = new Block(128, 424, net.minecraft.a.a.d.Material.d).b(1.5f).setName("Basalt").setStepSound(aF);
+    public static final Block brimStoneBrick = new Block(129, 454, net.minecraft.a.a.d.Material.d).b(3.0f).a(10.0f).setName("Basalt Bricks").setStepSound(aF);
     public static final Block stairBlackBricks = new C_bq(130, brimStoneBrick, 454).setName("Basalt Brick Stairs").disableNeighborNotifyOnMetadataChange();
     public static final Block stairRedSandstone = new C_bq(131, sandStone, 451).setName("Red Sandstone Stairs").disableNeighborNotifyOnMetadataChange();
-    public static final Block chairWhite = new BlockChair(132, 328, net.minecraft.a.a.d.C_c.c).b(1.5f).a(3.0f).setStepSound(b).setName("Birch Chair").setDecorationStatus(true);
-    public static final Block chairRed = new BlockChair(133, 360, net.minecraft.a.a.d.C_c.c).b(1.5f).a(3.0f).setStepSound(b).setName("Palm Chair").setDecorationStatus(true);
-    public static final Block chairBlack = new BlockChair(134, 392, net.minecraft.a.a.d.C_c.c).b(1.5f).a(3.0f).setStepSound(b).setName("Pine Chair").setDecorationStatus(true);
+    public static final Block chairWhite = new BlockChair(132, 328, net.minecraft.a.a.d.Material.c).b(1.5f).a(3.0f).setStepSound(b).setName("Birch Chair").setDecorationStatus(true);
+    public static final Block chairRed = new BlockChair(133, 360, net.minecraft.a.a.d.Material.c).b(1.5f).a(3.0f).setStepSound(b).setName("Palm Chair").setDecorationStatus(true);
+    public static final Block chairBlack = new BlockChair(134, 392, net.minecraft.a.a.d.Material.c).b(1.5f).a(3.0f).setStepSound(b).setName("Pine Chair").setDecorationStatus(true);
     public static final Block rail = new C_bc(144, 461).setName("Rails").b(0.7f).setStepSound(aG).setDecorationStatus(true);
     public static final Block railBooster = new C_bc(145, 493).setName("Booster Track").b(0.7f).setStepSound(aG).setDecorationStatus(true);
-    public static final Block glassStained = new C_bo(146, 527, net.minecraft.a.a.d.C_c.o, false).b(0.3f).setName("Glass").setStepSound(aH);
+    public static final Block glassStained = new C_bo(146, 527, net.minecraft.a.a.d.Material.o, false).b(0.3f).setName("Glass").setStepSound(aH);
     public static final Block chest = new BlockEndChest(148).b(2.5f).a(5.0f).setName("\u00a7dAdminium Chest").setStepSound(aF);
-    public static final Block moonRockBrick = new C_bd(149, 545, net.minecraft.a.a.d.C_c.d).b(3.0f).a(10.0f).setName("Moon Bricks").setStepSound(aF);
+    public static final Block moonRockBrick = new C_bd(149, 545, net.minecraft.a.a.d.Material.d).b(3.0f).a(10.0f).setName("Moon Bricks").setStepSound(aF);
     public static final Block stairMoonBricks = new C_bq(150, moonRockBrick, 545).setName("Moon Brick Stairs").disableNeighborNotifyOnMetadataChange();
-    public static final Block hayBlock = new C_ax(151, 546, net.minecraft.a.a.d.C_c.b).b(0.5f).setName("Hay Bale").setStepSound(aE);
+    public static final Block hayBlock = new C_ax(151, 546, net.minecraft.a.a.d.Material.b).b(0.5f).setName("Hay Bale").setStepSound(aE);
     public static final Block lilyPad = new BlockLilyPad(152, 548).b(0.0f).setName("Lily Pad").setStepSound(aE).setDecorationStatus(true);
     public static final Block generator = new BlockGenerator(153, false).b(4.0f).a(10.0f).setName("Generator").setStepSound(aG);
     public static final Block generatorActive = new BlockGenerator(154, true).b(4.0f).a(10.0f).c(0.875f).setName("Active Generator").setStepSound(aG);
@@ -291,41 +291,41 @@ public class Block {
     public static final BlockPistonMoving pulleyMoving = new BlockPistonMoving(158);
     public static final Block fan = new BlockFan(159, 581).setName("Fan").b(2.0f).a(4.0f).setStepSound(aG);
     public static final Block vacuum = new BlockVacuum(160, 585).setName("Collector").b(2.0f).a(4.0f).setStepSound(aG);
-    public static final Block pump = new BlockPump(161, 590, net.minecraft.a.a.d.C_c.e).setName("Pump").b(2.0f).a(4.0f).setStepSound(aG);
+    public static final Block pump = new BlockPump(161, 590, net.minecraft.a.a.d.Material.e).setName("Pump").b(2.0f).a(4.0f).setStepSound(aG);
     public static final Block pillar = new C_bi(162).b(1.5f).setName("Moon Pillar").setStepSound(aF);
-    public static final Block concrete = new Block(163, 6, net.minecraft.a.a.d.C_c.d).b(2.0f).a(10.0f).setName("Concrete").setStepSound(aF);
+    public static final Block concrete = new Block(163, 6, net.minecraft.a.a.d.Material.d).b(2.0f).a(10.0f).setName("Concrete").setStepSound(aF);
     public static final Block pulleyBaseActive = new BlockPistonBase(164, 38, false, true).setName("Reversed Piston");
     public static final Block pulleyStickyBaseActive = new BlockPistonBase(165, 576, true, true).setName("Reversed Golden Piston");
-    public static final Block transformer = new BlockTransformer(166, 615, net.minecraft.a.a.d.C_c.e).setName("Transformer").b(2.0f).a(4.0f).setStepSound(aG);
-    public static final Block doorSteel = new BlockDoor(167, 672, 430, net.minecraft.a.a.d.C_c.e).b(5.0f).setStepSound(aG).setName("Iron Door").disableNeighborNotifyOnMetadataChange();
-    public static final Block rod = new BlockRod(168, 71, net.minecraft.a.a.d.C_c.e).setName("Lightning Rod").b(1.5f).a(2.0f).setStepSound(aG).setDecorationStatus(true);
-    public static final Block trapdoorSteel = new BlockTrapdoor(169, 621, net.minecraft.a.a.d.C_c.e).b(5.0f).setStepSound(aG).setName("Iron Trapdoor").setDecorationStatus(true);
-    public static final Block regulator = new BlockTransformer(170, 647, net.minecraft.a.a.d.C_c.e).setName("Regulator").b(2.0f).a(4.0f).setStepSound(aG);
-    public static final Block adminiumLamp = new BlockLamp(171, 622, net.minecraft.a.a.d.C_c.o).setName("Lamp").b(0.5f).setStepSound(aH);
-    public static final Block adminiumLampLit = new BlockLamp(172, 623, net.minecraft.a.a.d.C_c.o).setName("Lit Lamp").b(0.5f).c(1.0f).setStepSound(aH);
+    public static final Block transformer = new BlockTransformer(166, 615, net.minecraft.a.a.d.Material.e).setName("Transformer").b(2.0f).a(4.0f).setStepSound(aG);
+    public static final Block doorSteel = new BlockDoor(167, 672, 430, net.minecraft.a.a.d.Material.e).b(5.0f).setStepSound(aG).setName("Iron Door").disableNeighborNotifyOnMetadataChange();
+    public static final Block rod = new BlockRod(168, 71, net.minecraft.a.a.d.Material.e).setName("Lightning Rod").b(1.5f).a(2.0f).setStepSound(aG).setDecorationStatus(true);
+    public static final Block trapdoorSteel = new BlockTrapdoor(169, 621, net.minecraft.a.a.d.Material.e).b(5.0f).setStepSound(aG).setName("Iron Trapdoor").setDecorationStatus(true);
+    public static final Block regulator = new BlockTransformer(170, 647, net.minecraft.a.a.d.Material.e).setName("Regulator").b(2.0f).a(4.0f).setStepSound(aG);
+    public static final Block adminiumLamp = new BlockLamp(171, 622, net.minecraft.a.a.d.Material.o).setName("Lamp").b(0.5f).setStepSound(aH);
+    public static final Block adminiumLampLit = new BlockLamp(172, 623, net.minecraft.a.a.d.Material.o).setName("Lit Lamp").b(0.5f).c(1.0f).setStepSound(aH);
     public static final Block noteBlock = new BlockNote(173).setName("Note Block").b(0.8f).setStepSound(b).disableNeighborNotifyOnMetadataChange();
-    public static final Block ironBars = new BlockPane(174, 641, 581, net.minecraft.a.a.d.C_c.e).b(1.5f).setStepSound(aG).setName("Iron Bars").setDecorationStatus(true);
-    public static final Block detector = new BlockDetector(175, 642, net.minecraft.a.a.d.C_c.e).b(2.0f).setStepSound(aG).setName("Detector");
-    public static final Block leafPile = new C_bs(176, 352, net.minecraft.a.a.d.C_c.h).b(0.1f).setGravity(0.3f).setStepSound(aE).setName("Leaf Pile").setDecorationStatus(true).setParticleType(true);
+    public static final Block ironBars = new BlockPane(174, 641, 581, net.minecraft.a.a.d.Material.e).b(1.5f).setStepSound(aG).setName("Iron Bars").setDecorationStatus(true);
+    public static final Block detector = new BlockDetector(175, 642, net.minecraft.a.a.d.Material.e).b(2.0f).setStepSound(aG).setName("Detector");
+    public static final Block leafPile = new C_bs(176, 352, net.minecraft.a.a.d.Material.h).b(0.1f).setGravity(0.3f).setStepSound(aE).setName("Leaf Pile").setDecorationStatus(true).setParticleType(true);
     public static final Block bone = new C_ak(177).b(0.8f).setName("Bone Block").setStepSound(soundBoneFootstep);
     public static final Block flowerStem = new C_av(178).b(1.0f).setName("Flower Stem").setStepSound(b);
     public static final Block flowerPetal = new C_au(179).b(1.0f).setName("Flower Petal").setStepSound(b);
     public static final Block tallGrass = new BlockTallGrass(180, 681).b(0.0f).setName("Tall Grass").setStepSound(aE);
-    public static final Block stairDoubleWood = new C_aj(181, true, false, net.minecraft.a.a.d.C_c.c).b(1.0f).a(5.0f).setName("Double Slab").setStepSound(b);
-    public static final Block stairSingleWood = new C_aj(182, false, false, net.minecraft.a.a.d.C_c.c).b(1.0f).a(5.0f).setName("Slab").setStepSound(b);
-    public static final Block stairUpsideDownWood = new C_aj(183, false, true, net.minecraft.a.a.d.C_c.c).b(1.0f).a(5.0f).setName("Double Slab").setStepSound(b);
-    public static final Block coralFan = new BlockCoralFan(184, 653, net.minecraft.a.a.d.C_c.f).b(0.0f).setName("Coral Fan").setStepSound(aE).c(0.75f).setDecorationStatus(true);
-    public static final Block coloredPane = new C_bp(185, 527, net.minecraft.a.a.d.C_c.o, false).b(0.3f).setName("Glass").setStepSound(aH).setDecorationStatus(true);
+    public static final Block stairDoubleWood = new C_aj(181, true, false, net.minecraft.a.a.d.Material.c).b(1.0f).a(5.0f).setName("Double Slab").setStepSound(b);
+    public static final Block stairSingleWood = new C_aj(182, false, false, net.minecraft.a.a.d.Material.c).b(1.0f).a(5.0f).setName("Slab").setStepSound(b);
+    public static final Block stairUpsideDownWood = new C_aj(183, false, true, net.minecraft.a.a.d.Material.c).b(1.0f).a(5.0f).setName("Double Slab").setStepSound(b);
+    public static final Block coralFan = new BlockCoralFan(184, 653, net.minecraft.a.a.d.Material.f).b(0.0f).setName("Coral Fan").setStepSound(aE).c(0.75f).setDecorationStatus(true);
+    public static final Block coloredPane = new C_bp(185, 527, net.minecraft.a.a.d.Material.o, false).b(0.3f).setName("Glass").setStepSound(aH).setDecorationStatus(true);
     public static final Block portal = new C_bk(186, 528).b(-1.0f).a(6000000.0f).setName("Portal").setStepSound(aH).c(0.75f);
-    public static final Block packedIce = new Block(187, 704, net.minecraft.a.a.d.C_c.ice).b(0.3f).setStepSound(aH).setName("Packed Ice");
-    public static final Block composter = new C_as(188, 705, net.minecraft.a.a.d.C_c.c).b(1.0f).setStepSound(b).setName("Composter");
+    public static final Block packedIce = new Block(187, 704, net.minecraft.a.a.d.Material.ice).b(0.3f).setStepSound(aH).setName("Packed Ice");
+    public static final Block composter = new C_as(188, 705, net.minecraft.a.a.d.Material.c).b(1.0f).setStepSound(b).setName("Composter");
     public static final Block dispenser = new BlockDispenser(189).b(3.5f).setStepSound(aG).setName("Dispenser");
-    public static final Block trapdoorBirch = new BlockTrapdoor(190, 709, net.minecraft.a.a.d.C_c.c).b(2.0f).setStepSound(b).setName("Birch Trapdoor").setDecorationStatus(true);
-    public static final Block trapdoorJungle = new BlockTrapdoor(191, 710, net.minecraft.a.a.d.C_c.c).b(2.0f).setStepSound(b).setName("Palm Trapdoor").setDecorationStatus(true);
-    public static final Block trapdoorSpruce = new BlockTrapdoor(192, 711, net.minecraft.a.a.d.C_c.c).b(2.0f).setStepSound(b).setName("Pine Trapdoor").setDecorationStatus(true);
+    public static final Block trapdoorBirch = new BlockTrapdoor(190, 709, net.minecraft.a.a.d.Material.c).b(2.0f).setStepSound(b).setName("Birch Trapdoor").setDecorationStatus(true);
+    public static final Block trapdoorJungle = new BlockTrapdoor(191, 710, net.minecraft.a.a.d.Material.c).b(2.0f).setStepSound(b).setName("Palm Trapdoor").setDecorationStatus(true);
+    public static final Block trapdoorSpruce = new BlockTrapdoor(192, 711, net.minecraft.a.a.d.Material.c).b(2.0f).setStepSound(b).setName("Pine Trapdoor").setDecorationStatus(true);
     public static final Block torchHell = new BlockTorch(193, 624).b(0.0f).c(0.675f).setName("\u00a7bHellfire Torch").setStepSound(b).disableNeighborNotifyOnMetadataChange().setDecorationStatus(true);
-    public static final Block observer = new BlockObserver(194, net.minecraft.a.a.d.C_c.e).b(3.0f).setName("Observer").setStepSound(aG);
-    public static final Block plantern = new BlockPlantern(195, 238, net.minecraft.a.a.d.C_c.pumpkin).b(1.0f).setStepSound(b).c(1.0f).setName("\u00a7bJack O' Lantern");
+    public static final Block observer = new BlockObserver(194, net.minecraft.a.a.d.Material.e).b(3.0f).setName("Observer").setStepSound(aG);
+    public static final Block plantern = new BlockPlantern(195, 238, net.minecraft.a.a.d.Material.pumpkin).b(1.0f).setStepSound(b).c(1.0f).setName("\u00a7bJack O' Lantern");
     public static final C_ah ag = (C_ah)new C_ah(51, 47).b(0.0f).c(1.0f).setName("Fire").setStepSound(b).setDecorationStatus(true);
     public static final C_ay hellfire = (C_ay)new C_ay(78, 463).b(0.0f).c(1.0f).setName("Hellfire").setStepSound(b).setDecorationStatus(true);
     public static final Block signStanding = new BlockSign(34, net.minecraft.a.a.b.a.C_l.class, Item.sign.ap, 0, 4).b(1.0f).setStepSound(b).setName("Oak Sign");
@@ -352,7 +352,7 @@ public class Block {
     public float az;
     public C_n aA = a;
     public float aB = 1.0f;
-    public net.minecraft.a.a.d.C_c aC;
+    public net.minecraft.a.a.d.Material aC;
     protected String name = "";
     public boolean isDecoration = false;
     public boolean simpleParticles = false;
@@ -360,7 +360,7 @@ public class Block {
     protected boolean isBlockContainer;
     private boolean enableStats = true;
 
-    protected Block(int n, net.minecraft.a.a.d.C_c c_c) {
+    protected Block(int n, net.minecraft.a.a.d.Material c_c) {
         if (c[n] != null) {
             throw new IllegalArgumentException("Slot " + n + " is already occupied by " + c[n] + " when adding " + this);
         }
@@ -373,7 +373,7 @@ public class Block {
         Block.g[n] = false;
     }
 
-    protected Block(int n, int n2, net.minecraft.a.a.d.C_c c_c) {
+    protected Block(int n, int n2, net.minecraft.a.a.d.Material c_c) {
         this(n, c_c);
         this.as = n2;
     }
@@ -573,7 +573,7 @@ public class Block {
         return this.at;
     }
 
-    public net.minecraft.a.a.d.C_c getMaterial(int n) {
+    public net.minecraft.a.a.d.Material getMaterial(int n) {
         return this.aC;
     }
 
@@ -625,8 +625,8 @@ public class Block {
                 float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4)));
-                new net.minecraft.a.c.c.C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
+                net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4)));
+                new net.minecraft.a.c.c.EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }
         }
@@ -641,8 +641,8 @@ public class Block {
                 float f = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4)));
-                new net.minecraft.a.c.c.C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
+                net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4)));
+                new net.minecraft.a.c.c.EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }
         }

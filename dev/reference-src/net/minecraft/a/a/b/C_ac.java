@@ -6,14 +6,14 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_a;
 import net.minecraft.a.d.C_b;
 
 public final class C_ac
 extends Block {
     protected C_ac(int n, int n2) {
-        super(50, 80, C_c.n);
+        super(50, 80, Material.n);
         this.a(true);
     }
 

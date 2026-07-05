@@ -6,11 +6,11 @@ package net.minecraft.game.level.block.machines;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class BlockObserver
 extends Block {
-    public BlockObserver(int n, C_c c_c) {
+    public BlockObserver(int n, Material c_c) {
         super(n, c_c);
         this.as = 716;
         this.a(true);

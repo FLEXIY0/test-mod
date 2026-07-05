@@ -4,7 +4,7 @@
 package net.minecraft.client.f;
 
 import net.minecraft.a.a.World;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.client.f.C_k;
 import util.MathHelper;
 
@@ -30,7 +30,7 @@ extends C_k {
         this.f = this.i;
         this.g = this.j;
         this.d(this.k, this.l, this.m);
-        if (this.d.f(MathHelper.a((double)this.h), MathHelper.a((double)this.i), MathHelper.a((double)this.j)) != C_c.f) {
+        if (this.d.f(MathHelper.a((double)this.h), MathHelper.a((double)this.i), MathHelper.a((double)this.j)) != Material.f) {
             this.k();
         }
         if (this.T-- <= 0) {

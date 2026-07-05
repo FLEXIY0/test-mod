@@ -10,9 +10,9 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_n;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.c.C_f;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
@@ -20,11 +20,11 @@ import net.minecraft.client.d;
 import net.minecraft.network.DataWatcher;
 import util.MathHelper;
 
-public abstract class C_b {
+public abstract class Entity {
     private static int nextEntityID = 0;
     public int entityId = nextEntityID++;
-    public C_b riddenByEntity;
-    public C_b ridingEntity;
+    public Entity riddenByEntity;
+    public Entity ridingEntity;
     public boolean c = false;
     public World d;
     public float e;
@@ -92,7 +92,7 @@ public abstract class C_b {
     public boolean isVisible;
     protected boolean isJumping;
 
-    public C_b(World c_g) {
+    public Entity(World c_g) {
         this.d = c_g;
         this.b(0.0f, 0.0f, 0.0f);
         this.dataWatcher.addObject(0, (byte)0);
@@ -356,7 +356,7 @@ public abstract class C_b {
                     this.P = (float)((double)this.P + 0.5);
                 }
             }
-            if (!this.d.multiplayerWorld || this instanceof EntityPlayer || !(this instanceof C_e)) {
+            if (!this.d.multiplayerWorld || this instanceof EntityPlayer || !(this instanceof EntityLiving)) {
                 this.h = (this.r.a + this.r.d) / 2.0f;
                 this.i = this.r.b + this.v - this.P;
                 this.j = (this.r.c + this.r.f) / 2.0f;
@@ -461,51 +461,51 @@ public abstract class C_b {
     }
 
     public boolean l() {
-        return this.d.a(this.r.b(0.0f, -0.4f, 0.0f), C_c.f);
+        return this.d.a(this.r.b(0.0f, -0.4f, 0.0f), Material.f);
     }
 
     public boolean isInWater() {
-        return this.d.a(this.r.b(0.0f, 0.0f, 0.0f), C_c.f);
+        return this.d.a(this.r.b(0.0f, 0.0f, 0.0f), Material.f);
     }
 
     public final boolean isInRope() {
-        return this.d.a(this.r.b(0.0f, -0.6f, 0.0f), C_c.rope);
+        return this.d.a(this.r.b(0.0f, -0.6f, 0.0f), Material.rope);
     }
 
     public boolean isInCobweb() {
-        return this.d.a(this.r.b(0.0f, -0.6f, 0.0f), C_c.web);
+        return this.d.a(this.r.b(0.0f, -0.6f, 0.0f), Material.web);
     }
 
     public boolean isInCactus() {
-        return this.d.a(this.r.b(0.1f, 0.1f, 0.1f), C_c.cactus);
+        return this.d.a(this.r.b(0.1f, 0.1f, 0.1f), Material.cactus);
     }
 
     public boolean isInMagma() {
-        return this.d.a(this.r.b(0.0f, 0.1f, 0.0f), C_c.magma);
+        return this.d.a(this.r.b(0.0f, 0.1f, 0.0f), Material.magma);
     }
 
     public boolean isInSlime() {
-        return this.d.a(this.r.b(-0.1f, 0.1f, -0.1f), C_c.slime);
+        return this.d.a(this.r.b(-0.1f, 0.1f, -0.1f), Material.slime);
     }
 
     public boolean isInCloud() {
-        return this.d.a(this.r.b(-0.1f, 0.3f, -0.1f), C_c.cloud);
+        return this.d.a(this.r.b(-0.1f, 0.3f, -0.1f), Material.cloud);
     }
 
     public boolean isInIce() {
-        return this.d.a(this.r.b(-0.1f, 0.1f, -0.1f), C_c.ice);
+        return this.d.a(this.r.b(-0.1f, 0.1f, -0.1f), Material.ice);
     }
 
     public boolean isInQuicksand() {
-        return this.d.a(this.r.b(-0.1f, 0.1f, -0.1f), C_c.quicksand);
+        return this.d.a(this.r.b(-0.1f, 0.1f, -0.1f), Material.quicksand);
     }
 
     public boolean isInMagmaAirPocket() {
-        return this.d.a(this.r.b(0.0f, 2.0f, 0.0f), C_c.magma);
+        return this.d.a(this.r.b(0.0f, 2.0f, 0.0f), Material.magma);
     }
 
     public boolean isInVacuum() {
-        return this.d.a(this.r.b(0.1f, 0.1f, 0.1f), C_c.vacuum);
+        return this.d.a(this.r.b(0.1f, 0.1f, 0.1f), Material.vacuum);
     }
 
     public final boolean canSneakHere() {
@@ -572,7 +572,7 @@ public abstract class C_b {
             return false;
         }
         int n = this.d.a((int)this.h, (int)(this.i + this.n()), (int)this.j);
-        return n != 0 ? Block.c[n].getMaterial(this.d.e((int)this.h, (int)(this.i + this.n()), (int)this.j)) == C_c.f : false;
+        return n != 0 ? Block.c[n].getMaterial(this.d.e((int)this.h, (int)(this.i + this.n()), (int)this.j)) == Material.f : false;
     }
 
     public boolean isOnLadder() {
@@ -589,7 +589,7 @@ public abstract class C_b {
         return this.d.a(n3, n2 = MathHelper.a((double)this.r.b), n = MathHelper.a((double)this.j)) == Block.vine.at;
     }
 
-    public void mountEntity(C_b c_b) {
+    public void mountEntity(Entity c_b) {
         this.entityRiderPitchDelta = 0.0f;
         this.entityRiderYawDelta = 0.0f;
         if (c_b == null) {
@@ -683,7 +683,7 @@ public abstract class C_b {
     }
 
     public final boolean o() {
-        return this.d.a(this.r.b(0.0f, -0.4f, 0.0f), C_c.g);
+        return this.d.a(this.r.b(0.0f, -0.4f, 0.0f), Material.g);
     }
 
     public final void moveRelative(float f, float f2, float f3) {
@@ -743,7 +743,7 @@ public abstract class C_b {
         return f4 * f4 + f5 * f5 + f6 * f6;
     }
 
-    public final float b(C_b c_b) {
+    public final float b(Entity c_b) {
         float f = this.h - c_b.h;
         float f2 = this.i - c_b.i;
         float f3 = this.j - c_b.j;
@@ -753,7 +753,7 @@ public abstract class C_b {
     public void a(EntityPlayer entityPlayer) {
     }
 
-    public void c(C_b c_b) {
+    public void c(Entity c_b) {
         float f;
         float f2 = c_b.h - this.h;
         float f3 = c_b.j - this.j;
@@ -775,11 +775,11 @@ public abstract class C_b {
         this.m += f3;
     }
 
-    public boolean attackEntityFrom(C_b c_b, int n, float f) {
+    public boolean attackEntityFrom(Entity c_b, int n, float f) {
         return false;
     }
 
-    public void awardKillScore(C_b c_b, int n) {
+    public void awardKillScore(Entity c_b, int n) {
     }
 
     public boolean d() {
@@ -798,9 +798,9 @@ public abstract class C_b {
         String string = this.a();
         if (string != null) {
             nBTTagCompound.a("id", string);
-            nBTTagCompound.a("Pos", C_b.a(this.h, this.i, this.j));
-            nBTTagCompound.a("Motion", C_b.a(this.k, this.l, this.m));
-            nBTTagCompound.a("Rotation", C_b.a(this.n, this.o));
+            nBTTagCompound.a("Pos", Entity.a(this.h, this.i, this.j));
+            nBTTagCompound.a("Motion", Entity.a(this.k, this.l, this.m));
+            nBTTagCompound.a("Rotation", Entity.a(this.n, this.o));
             nBTTagCompound.a("FallDistance", this.b);
             nBTTagCompound.a("Fire", (short)this.J);
             nBTTagCompound.a("Poison", (short)this.poison);
@@ -862,20 +862,20 @@ public abstract class C_b {
         return this.x / 2.0f;
     }
 
-    public final net.minecraft.a.c.c.C_b a(int n, int n2) {
+    public final net.minecraft.a.c.c.EntityItem a(int n, int n2) {
         return this.a(n, 1, 0.0f);
     }
 
-    public final net.minecraft.a.c.c.C_b a(int n, int n2, float f) {
-        net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(this.d, this.h, this.i + f, this.j, new ItemStack(n, n2));
-        new net.minecraft.a.c.c.C_b(this.d, this.h, this.i + f, this.j, new ItemStack(n, n2)).O = 10;
+    public final net.minecraft.a.c.c.EntityItem a(int n, int n2, float f) {
+        net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(this.d, this.h, this.i + f, this.j, new ItemStack(n, n2));
+        new net.minecraft.a.c.c.EntityItem(this.d, this.h, this.i + f, this.j, new ItemStack(n, n2)).O = 10;
         this.d.spawnEntityInWorld(c_b);
         return c_b;
     }
 
-    public final net.minecraft.a.c.c.C_b entityDropItemAndMetadata(int n, int n2, int n3, float f) {
-        net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(this.d, this.h, this.i + f, this.j, new ItemStack(n, n2, n3));
-        new net.minecraft.a.c.c.C_b(this.d, this.h, this.i + f, this.j, new ItemStack(n, n2, n3)).O = 10;
+    public final net.minecraft.a.c.c.EntityItem entityDropItemAndMetadata(int n, int n2, int n3, float f) {
+        net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(this.d, this.h, this.i + f, this.j, new ItemStack(n, n2, n3));
+        new net.minecraft.a.c.c.EntityItem(this.d, this.h, this.i + f, this.j, new ItemStack(n, n2, n3)).O = 10;
         this.d.spawnEntityInWorld(c_b);
         return c_b;
     }
@@ -888,7 +888,7 @@ public abstract class C_b {
         return !this.u;
     }
 
-    public net.minecraft.a.d.C_b getCollisionBox(C_b c_b) {
+    public net.minecraft.a.d.C_b getCollisionBox(Entity c_b) {
         return null;
     }
 
@@ -958,7 +958,7 @@ public abstract class C_b {
         this.b(this.h, this.i, this.j);
     }
 
-    public boolean isInsideOfMaterial(C_c c_c) {
+    public boolean isInsideOfMaterial(Material c_c) {
         int n;
         int n2;
         double d2 = this.i + this.n();

@@ -59,7 +59,7 @@ public final class C_i {
     public RenderEngine b;
     public net.minecraft.client.a.C_g itemRenderer;
     public net.minecraft.a.a.World c;
-    public net.minecraft.a.c.C_e livingPlayer;
+    public net.minecraft.a.c.EntityLiving livingPlayer;
     public float d;
     public float playerViewX;
     private float f;
@@ -93,20 +93,20 @@ public final class C_i {
         this.e.put(net.minecraft.a.c.a.C_j.class, new C_j(new net.minecraft.client.b.C_w(), 0.5f));
         this.e.put(EntityPlayer.class, new C_g());
         this.e.put(net.minecraft.a.c.a.C_a.class, new C_l(new net.minecraft.client.b.C_g(), 0.5f, 6.0f));
-        this.e.put(net.minecraft.a.c.C_e.class, new C_j(new net.minecraft.client.b.C_h(), 0.5f));
+        this.e.put(net.minecraft.a.c.EntityLiving.class, new C_j(new net.minecraft.client.b.C_h(), 0.5f));
         this.e.put(net.minecraft.a.c.a.C_e.class, new C_j(new net.minecraft.client.b.C_h(), 0.5f));
         this.e.put(net.minecraft.a.c.a.C_n.class, new C_j(new net.minecraft.client.b.C_ad(), 0.5f));
         this.e.put(EntitySteve.class, new C_z(0));
         this.e.put(EntityBlackSteve.class, new C_z(1));
         this.e.put(EntityBeastBoy.class, new C_z(2));
         this.e.put(EntityRana.class, new C_z(3));
-        this.e.put(net.minecraft.a.c.C_b.class, new C_a());
+        this.e.put(net.minecraft.a.c.Entity.class, new C_a());
         this.e.put(net.minecraft.a.c.C_a.class, new C_h());
         this.e.put(net.minecraft.a.c.c.C_e.class, new C_w());
         this.e.put(net.minecraft.a.c.d.C_a.class, new C_b());
         this.e.put(net.minecraft.a.c.d.C_b.class, new C_p());
         this.e.put(net.minecraft.a.c.d.C_g.class, new C_ag());
-        this.e.put(net.minecraft.a.c.c.C_b.class, new C_e());
+        this.e.put(net.minecraft.a.c.c.EntityItem.class, new C_e());
         this.e.put(net.minecraft.a.c.c.C_a.class, new C_d());
         this.e.put(net.minecraft.a.c.c.C_c.class, new C_r());
         this.e.put(net.minecraft.a.c.c.C_g.class, new C_aa());
@@ -122,10 +122,10 @@ public final class C_i {
         }
     }
 
-    public final C_f a(net.minecraft.a.c.C_b c_b) {
+    public final C_f a(net.minecraft.a.c.Entity c_b) {
         Class<?> clazz = c_b.getClass();
         C_f c_f = this.e.get(clazz);
-        if (c_f == null && clazz != net.minecraft.a.c.C_b.class) {
+        if (c_f == null && clazz != net.minecraft.a.c.Entity.class) {
             c_f = this.e.get(clazz.getSuperclass());
             this.e.put(clazz, c_f);
         }
@@ -144,7 +144,7 @@ public final class C_i {
         this.h = entityPlayer.D + (entityPlayer.j - entityPlayer.D) * f;
     }
 
-    public final void a(net.minecraft.a.c.C_b c_b, float f) {
+    public final void a(net.minecraft.a.c.Entity c_b, float f) {
         float f2 = c_b.B + (c_b.h - c_b.B) * f;
         float f3 = c_b.C + (c_b.i - c_b.C) * f;
         float f4 = c_b.D + (c_b.j - c_b.D) * f;
@@ -162,7 +162,7 @@ public final class C_i {
         }
     }
 
-    public final void a(net.minecraft.a.c.C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public final void a(net.minecraft.a.c.Entity c_b, float f, float f2, float f3, float f4, float f5) {
         C_f c_f = this.a(c_b);
         if (c_f != null) {
             c_f.a(c_b, f, f2, f3, f4, f5);

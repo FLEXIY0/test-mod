@@ -8,7 +8,7 @@ import java.util.List;
 import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_c;
 import net.minecraft.client.g.C_a;
@@ -17,7 +17,7 @@ import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
 
 public class C_d
-extends net.minecraft.a.c.C_b {
+extends net.minecraft.a.c.Entity {
     private int xTile = -1;
     private int yTile = -1;
     private int zTile = -1;
@@ -28,7 +28,7 @@ extends net.minecraft.a.c.C_b {
     private int ticksInGround;
     private int ticksInAir = 0;
     private int ticksCatchable = 0;
-    public net.minecraft.a.c.C_b bobber = null;
+    public net.minecraft.a.c.Entity bobber = null;
     private int airTime;
     private float netPosX;
     private float altPosY;
@@ -179,14 +179,14 @@ extends net.minecraft.a.c.C_b {
             if (c_c != null) {
                 c_a2 = new net.minecraft.a.d.C_a(c_c.f.a, c_c.f.b, c_c.f.c);
             }
-            net.minecraft.a.c.C_b c_b = null;
-            List<net.minecraft.a.c.C_b> list = this.d.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
+            net.minecraft.a.c.Entity c_b = null;
+            List<net.minecraft.a.c.Entity> list = this.d.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
             float f5 = 0.0f;
             for (int i = 0; i < list.size(); ++i) {
                 float f6;
                 net.minecraft.a.d.C_b c_b2;
                 C_c c_c2;
-                net.minecraft.a.c.C_b c_b3 = list.get(i);
+                net.minecraft.a.c.Entity c_b3 = list.get(i);
                 if (!c_b3.d() || c_b3 == this.angler && this.ticksInAir < 5 || (c_c2 = (c_b2 = c_b3.r.b(f6 = 0.3f, f6, f6)).a(c_a, c_a2)) == null || !((f = c_a.b(c_c2.f)) < f5) && f5 != 0.0f) continue;
                 c_b = c_b3;
                 f5 = f;
@@ -331,7 +331,7 @@ extends net.minecraft.a.c.C_b {
             if (n3 == Item.fishFin.ap) {
                 this.angler.triggerAchievement(AchievementList.killFish);
             }
-            C_b c_b = new C_b(this.d, this.h, this.i, this.j, new ItemStack(n3));
+            EntityItem c_b = new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(n3));
             float f = this.angler.h - this.h;
             float f6 = this.angler.i - this.i - this.angler.v;
             float f7 = this.angler.j - this.j;

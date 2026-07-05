@@ -6,7 +6,7 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.a.C_n;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -14,7 +14,7 @@ import net.minecraft.a.c.e.EntityPlayer;
 public class C_aw
 extends Block {
     protected C_aw(int n, int n2) {
-        super(n, C_c.pumpkin);
+        super(n, Material.pumpkin);
         this.as = n2;
         this.a(true);
     }

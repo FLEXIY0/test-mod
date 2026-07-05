@@ -63,7 +63,7 @@ public final class d implements Runnable {
    public net.minecraft.client.a.C_b e;
    public CharacterLoader characters;
    public net.minecraft.client.g.C_a f;
-   public net.minecraft.a.c.C_e cameraMob;
+   public net.minecraft.a.c.EntityLiving cameraMob;
    public C_d g;
    public C_l h = null;
    public String i;
@@ -319,7 +319,7 @@ public final class d implements Runnable {
 
          this.t = new net.minecraft.client.c.C_l(this);
          this.statFileWriter.writeStat(StatList.startGameStat, 1);
-         net.minecraft.a.b.a.C_f.addUnlockedRecipes();
+         net.minecraft.a.b.a.CraftingManager.addUnlockedRecipes();
          if (this.N != null) {
             this.a(new C_ak(this, this.N, this.port));
          } else if (this.d == null) {
@@ -1120,7 +1120,7 @@ public final class d implements Runnable {
                      }
 
                      if (this.v.a == 1) {
-                        if (this.v.g instanceof net.minecraft.a.c.C_e) {
+                        if (this.v.g instanceof net.minecraft.a.c.EntityLiving) {
                            byte var22 = 8;
                            if (this.v.g instanceof net.minecraft.a.c.b.C_c) {
                               var22 = 0;
@@ -1274,8 +1274,8 @@ public final class d implements Runnable {
                   this.b();
                } else {
                   if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() && this.v != null && this.v.a == 1) {
-                     net.minecraft.a.c.C_b var20 = this.v.g;
-                     this.cameraMob = (net.minecraft.a.c.C_e)var20;
+                     net.minecraft.a.c.Entity var20 = this.v.g;
+                     this.cameraMob = (net.minecraft.a.c.EntityLiving)var20;
                   }
 
                   if (Mouse.getEventButton() == 1 && Mouse.getEventButtonState()) {

@@ -157,7 +157,7 @@ public class TileEntityNetherReactor extends TileEntity {
         float x = (float) (Math.sin(ang) * dist) + this.b;
         float y = this.c - 1f;
         float z = (float) (Math.cos(ang) * dist) + this.d;
-        net.minecraft.a.c.c.C_b item = new net.minecraft.a.c.c.C_b(this.a, x, y, z, this.getSpawnItem());
+        net.minecraft.a.c.c.EntityItem item = new net.minecraft.a.c.c.EntityItem(this.a, x, y, z, this.getSpawnItem());
         item.O = 10;
         this.a.spawnEntityInWorld(item);
     }

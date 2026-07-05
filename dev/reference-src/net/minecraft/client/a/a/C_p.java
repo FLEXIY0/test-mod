@@ -15,7 +15,7 @@ import util.MathHelper;
 public final class C_p
 extends C_f {
     @Override
-    public final void a(net.minecraft.a.c.C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public final void a(net.minecraft.a.c.Entity c_b, float f, float f2, float f3, float f4, float f5) {
         float f6;
         C_b c_b2 = (C_b)c_b;
         this.a("/item/darts.png");

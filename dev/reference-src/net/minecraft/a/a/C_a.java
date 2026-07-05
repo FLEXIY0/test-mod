@@ -14,9 +14,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
 import net.minecraft.a.a.World;
-import net.minecraft.a.a.C_o;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_f;
+import net.minecraft.a.a.TileEntityRegistry;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityList;
 
 public abstract class C_a {
     private util.C_b a;
@@ -112,7 +112,7 @@ public abstract class C_a {
             try {
                 nBTTagCompound3 = (NBTTagCompound)nBTTagList.a(i);
                 String string = nBTTagCompound3.g("id");
-                C_b c_b = this.a(c_g, string);
+                Entity c_b = this.a(c_g, string);
                 if (c_b != null) {
                     c_b.d(nBTTagCompound3);
                     c_g.spawnEntityInWorld(c_b);
@@ -134,7 +134,7 @@ public abstract class C_a {
                 int n2 = n % 1024;
                 int n3 = (n >> 10) % 1024;
                 n = (n >> 20) % 1024;
-                net.minecraft.a.a.b.a.TileEntity c_a = C_o.loadFromCompound(nBTTagCompound4);
+                net.minecraft.a.a.b.a.TileEntity c_a = TileEntityRegistry.loadFromCompound(nBTTagCompound4);
                 if (c_a == null) continue;
                 c_g.a(n2, n3, n, c_a);
                 continue;
@@ -147,8 +147,8 @@ public abstract class C_a {
         return c_g;
     }
 
-    protected C_b a(World c_g, String string) {
-        return C_f.createEntityInWorld(string, c_g);
+    protected Entity a(World c_g, String string) {
+        return EntityList.createEntityInWorld(string, c_g);
     }
 
     public final void a(World c_g, OutputStream outputStream) throws IOException {
@@ -228,7 +228,7 @@ public abstract class C_a {
             this.a.b("Preparing entities..");
         }
         NBTTagList nBTTagList2 = new NBTTagList();
-        for (C_b object22 : c_g.r.e) {
+        for (Entity object22 : c_g.r.e) {
             object = new NBTTagCompound();
             object22.c((NBTTagCompound)object);
             if (((NBTTagCompound)object).b()) continue;

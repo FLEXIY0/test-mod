@@ -5,12 +5,12 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_ae;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public class C_ap
 extends C_ae {
-    protected C_ap(int n, int n2, C_c c_c) {
+    protected C_ap(int n, int n2, Material c_c) {
         super(n, n2, c_c, false);
     }
 

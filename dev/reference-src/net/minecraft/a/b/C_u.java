@@ -5,7 +5,7 @@ package net.minecraft.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -40,7 +40,7 @@ extends Item {
         if (n5 == 3) {
             n6 = 1;
         }
-        if (c_g.f(n, n2, n3) == C_c.a && c_g.f(n + n6, n2, n3 + n7) == C_c.a && c_g.b(n, n2 - 1, n3) && c_g.b(n + n6, n2 - 1, n3 + n7) && c_g.a(n, n2 - 1, n3) != Block.quickSand.at && n + n6 > 0 && n3 + n7 > 0 && n + n6 <= c_g.a - 2 && n3 + n7 <= c_g.b - 2 && n > 0 && n3 > 0 && n <= c_g.a - 2 && n3 <= c_g.b - 2) {
+        if (c_g.f(n, n2, n3) == Material.a && c_g.f(n + n6, n2, n3 + n7) == Material.a && c_g.b(n, n2 - 1, n3) && c_g.b(n + n6, n2 - 1, n3 + n7) && c_g.a(n, n2 - 1, n3) != Block.quickSand.at && n + n6 > 0 && n3 + n7 > 0 && n + n6 <= c_g.a - 2 && n3 + n7 <= c_g.b - 2 && n > 0 && n3 > 0 && n <= c_g.a - 2 && n3 <= c_g.b - 2) {
             c_g.setBlockAndMetadataWithNotify(n, n2, n3, blockBed.at, n5);
             c_g.setBlockAndMetadataWithNotify(n + n6, n2, n3 + n7, blockBed.at, n5 + 8);
             float f = (float)n + 0.5f;

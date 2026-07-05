@@ -8,7 +8,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_j;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 
@@ -47,12 +47,12 @@ extends C_c {
     }
 
     @Override
-    protected C_b b() {
+    protected Entity b() {
         return this.d.y.b(this) < 256.0f && ((EntityPlayer)this.d.y).gamemode == 0 && this.canEntityBeSeen(this.d.y) ? this.d.y : null;
     }
 
     @Override
-    public boolean attackEntityFrom(C_b c_b, int n, float f) {
+    public boolean attackEntityFrom(Entity c_b, int n, float f) {
         if (c_b != null) {
             n -= this.getArmorValue() / 4;
         }
@@ -66,7 +66,7 @@ extends C_c {
     }
 
     @Override
-    protected void a(C_b c_b, float f) {
+    protected void a(Entity c_b, float f) {
         if (this.ac <= 0 && (double)f < 2.0 && c_b.r.e > this.r.b && c_b.r.b < this.r.e) {
             this.ac = 20;
             c_b.attackEntityFrom(this, this.a, 0.4f);

@@ -6,7 +6,7 @@ package net.minecraft.network.packet;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.network.NetHandler;
 import net.minecraft.network.packet.Packet;
 
@@ -18,7 +18,7 @@ extends Packet {
     public Packet39AttachEntity() {
     }
 
-    public Packet39AttachEntity(C_b c_b, C_b c_b2) {
+    public Packet39AttachEntity(Entity c_b, Entity c_b2) {
         this.entityId = c_b.entityId;
         this.vehicleEntityId = c_b2 != null ? c_b2.entityId : -1;
     }

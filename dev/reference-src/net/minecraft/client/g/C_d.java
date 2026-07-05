@@ -8,7 +8,7 @@ package net.minecraft.client.g;
 
 import com.a.a.NBTTagCompound;
 import net.minecraft.a.a.World;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.C_l;
 import net.minecraft.client.d;
 import net.minecraft.client.g.C_a;
@@ -48,7 +48,7 @@ extends C_a {
     }
 
     @Override
-    public boolean attackEntityFrom(C_b c_b, int n, float f) {
+    public boolean attackEntityFrom(Entity c_b, int n, float f) {
         return false;
     }
 
@@ -122,7 +122,7 @@ extends C_a {
     private void sendInventoryChanged() {
     }
 
-    protected void joinEntityItemWithWorld(net.minecraft.a.c.c.C_b c_b) {
+    protected void joinEntityItemWithWorld(net.minecraft.a.c.c.EntityItem c_b) {
     }
 
     public void sendChatMessage(String string) {

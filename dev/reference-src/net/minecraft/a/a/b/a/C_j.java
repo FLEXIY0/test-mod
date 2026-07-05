@@ -20,7 +20,7 @@ extends TileEntity {
     private boolean shouldHeadBeRendered;
     private float progress;
     private float lastProgress;
-    private static List<net.minecraft.a.c.C_b> pushedObjects = new ArrayList<net.minecraft.a.c.C_b>();
+    private static List<net.minecraft.a.c.Entity> pushedObjects = new ArrayList<net.minecraft.a.c.Entity>();
 
     public C_j() {
     }
@@ -74,12 +74,12 @@ extends TileEntity {
     }
 
     private void updatePushedObjects(float f, float f2) {
-        List<net.minecraft.a.c.C_b> list;
+        List<net.minecraft.a.c.Entity> list;
         f = !this.extending ? (f -= 1.0f) : 1.0f - f;
         C_b c_b = Block.pulleyMoving.getAxisAlignedBB(this.a, this.b, this.c, this.d, this.storedBlockID, f, this.storedOrientation);
-        if (c_b != null && !(list = this.a.a((net.minecraft.a.c.C_b)null, c_b)).isEmpty()) {
+        if (c_b != null && !(list = this.a.a((net.minecraft.a.c.Entity)null, c_b)).isEmpty()) {
             pushedObjects.addAll(list);
-            for (net.minecraft.a.c.C_b c_b2 : pushedObjects) {
+            for (net.minecraft.a.c.Entity c_b2 : pushedObjects) {
                 c_b2.d(f2 * (float)C_d.offsetsXForSide[this.storedOrientation], f2 * (float)C_d.offsetsYForSide[this.storedOrientation], f2 * (float)C_d.offsetsZForSide[this.storedOrientation]);
             }
             pushedObjects.clear();

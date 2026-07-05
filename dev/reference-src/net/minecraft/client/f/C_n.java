@@ -4,17 +4,17 @@
 package net.minecraft.client.f;
 
 import net.minecraft.a.a.World;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.f.C_k;
 
 public class C_n
 extends C_k {
-    private C_b parent;
+    private Entity parent;
     private int isAliveTime = 0;
     private int maxAliveTime = 0;
 
-    public C_n(World c_g, C_b c_b) {
+    public C_n(World c_g, Entity c_b) {
         super(c_g, c_b.h, c_b.r.b + c_b.x / 2.0f, c_b.j, c_b.k, c_b.l, c_b.m);
         this.parent = c_b;
         this.maxAliveTime = 3;

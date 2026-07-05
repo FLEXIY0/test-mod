@@ -6,8 +6,8 @@ package net.minecraft.a.a;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_bs;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.a.d.Material;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_a;
 import net.minecraft.a.c.a.C_d;
 import net.minecraft.a.c.a.C_f;
@@ -76,7 +76,7 @@ public class C_b {
             if (n8 == 0 && !this.a.b(n11, n10, n9) && this.a.b(n11, n10 - 1, n9) && this.a.d(n11, n10, n9) <= this.a.q.nextInt(8)) {
                 f7 = this.a.q.nextFloat() * 360.0f;
                 c_c2 = new C_a(this.a);
-                ((C_e)c_c2).b(n11, n10, n9, f7, 0.0f);
+                ((EntityLiving)c_c2).b(n11, n10, n9, f7, 0.0f);
                 this.a.spawnEntityInWorld(c_c2);
             }
         }
@@ -87,7 +87,7 @@ public class C_b {
             net.minecraft.a.c.a.C_g c_g = new net.minecraft.a.c.a.C_g(this.a);
             if (!(this.a.b(n11, n10, n9) || this.a.a(n11, n10 - 1, n9) != Block.t.at && this.a.a(n11, n10 - 1, n9) != Block.redSand.at)) {
                 f7 = this.a.q.nextFloat() * 360.0f;
-                ((C_e)c_g).b(n11, n10 + 1, n9, f7, 0.0f);
+                ((EntityLiving)c_g).b(n11, n10 + 1, n9, f7, 0.0f);
                 this.a.spawnEntityInWorld(c_g);
             }
         }
@@ -99,7 +99,7 @@ public class C_b {
             net.minecraft.a.c.b.C_d c_d = new net.minecraft.a.c.b.C_d(this.a);
             if (n8 == 0 && !this.a.b(n11, n10, n9) && this.a.b(n11, n10 + 1, n9) && this.a.a((float)n11, (float)(n10 + 1), (float)n9)) {
                 float f8 = this.a.q.nextFloat() * 360.0f;
-                ((C_e)c_d).b((float)n11 + 0.5f, (float)n10 + 0.65f, (float)n9 + 0.5f, f8, 0.0f);
+                ((EntityLiving)c_d).b((float)n11 + 0.5f, (float)n10 + 0.65f, (float)n9 + 0.5f, f8, 0.0f);
                 this.a.spawnEntityInWorld(c_d);
             }
         }
@@ -119,9 +119,9 @@ public class C_b {
                     c_c2 = new net.minecraft.a.c.b.C_i(this.a);
                 }
             }
-            if (n8 == 0 && this.a.f(n11, n10, n9) == C_c.f) {
+            if (n8 == 0 && this.a.f(n11, n10, n9) == Material.f) {
                 float f9 = this.a.q.nextFloat() * 360.0f;
-                ((C_e)c_c2).b((float)n11 + 0.5f, (float)n10 + 0.65f, (float)n9 + 0.5f, f9, 0.0f);
+                ((EntityLiving)c_c2).b((float)n11 + 0.5f, (float)n10 + 0.65f, (float)n9 + 0.5f, f9, 0.0f);
                 this.a.spawnEntityInWorld(c_c2);
             }
         }
@@ -131,9 +131,9 @@ public class C_b {
             n9 = this.a.q.nextInt(this.a.b);
             n8 = this.a.q.nextInt(5);
             net.minecraft.a.c.b.C_g c_g = new net.minecraft.a.c.b.C_g(this.a, this.a.q.nextInt(2));
-            if (n8 == 0 && this.a.f(n11, n10, n9) == C_c.f) {
+            if (n8 == 0 && this.a.f(n11, n10, n9) == Material.f) {
                 float f10 = this.a.q.nextFloat() * 360.0f;
-                ((C_e)c_g).b((float)n11 + 0.5f, (float)n10 + 0.65f, (float)n9 + 0.5f, f10, 0.0f);
+                ((EntityLiving)c_g).b((float)n11 + 0.5f, (float)n10 + 0.65f, (float)n9 + 0.5f, f10, 0.0f);
                 this.a.spawnEntityInWorld(c_g);
             }
         }
@@ -145,7 +145,7 @@ public class C_b {
             C_j c_j = new C_j(this.a);
             if (n8 == 0 && !this.a.b(n11, n10, n9) && this.a.a((float)n11, (float)(n10 - 1), (float)n9)) {
                 float f11 = this.a.q.nextFloat() * 360.0f;
-                ((C_e)c_j).b(n11, n10 + 1, n9, f11, 0.0f);
+                ((EntityLiving)c_j).b(n11, n10 + 1, n9, f11, 0.0f);
                 this.a.spawnEntityInWorld(c_j);
             }
         }
@@ -157,7 +157,7 @@ public class C_b {
             C_h c_h = new C_h(this.a);
             if (n8 == 0 && !this.a.b(n11, n10, n9)) {
                 float f12 = this.a.q.nextFloat() * 360.0f;
-                ((C_e)c_h).b(n11, n10 + 1, n9, f12, 0.0f);
+                ((EntityLiving)c_h).b(n11, n10 + 1, n9, f12, 0.0f);
                 this.a.spawnEntityInWorld(c_h);
             }
         }
@@ -165,7 +165,7 @@ public class C_b {
         n10 = this.a.a(net.minecraft.a.c.a.C_e.class);
         for (n9 = 0; n9 < 4; ++n9) {
             if (n10 >= n12) continue;
-            C_e c_e = this.a.y;
+            EntityLiving c_e = this.a.y;
             c_b = this;
             int n14 = 0;
             int n15 = this.a.q.nextInt(4);
@@ -204,9 +204,9 @@ public class C_b {
                     if (c_c instanceof net.minecraft.a.c.a.C_e && c_b.a.E == 0) {
                         c_c = null;
                     }
-                    if (c_c == null || c_b.a.b(n4, n3, n2) || !c_b.a.b(n4, n3 - 1, n2) && !(Block.c[c_b.a.a(n4, n3 - 1, n2)] instanceof C_bs) || !((C_e)c_c).a(f6, f5, f4)) continue;
+                    if (c_c == null || c_b.a.b(n4, n3, n2) || !c_b.a.b(n4, n3 - 1, n2) && !(Block.c[c_b.a.a(n4, n3 - 1, n2)] instanceof C_bs) || !((EntityLiving)c_c).a(f6, f5, f4)) continue;
                     f = c_b.a.q.nextFloat() * 360.0f;
-                    ((C_e)c_c).b(f6, f5, f4, f, 0.0f);
+                    ((EntityLiving)c_c).b(f6, f5, f4, f, 0.0f);
                     ++n14;
                     c_b.a.spawnEntityInWorld(c_c);
                 }
@@ -225,7 +225,7 @@ public class C_b {
         }
         for (n12 = 0; n12 < 4; ++n12) {
             if (n9 >= n11) continue;
-            C_e c_e = this.a.y;
+            EntityLiving c_e = this.a.y;
             c_b = this;
             int n17 = 0;
             int n18 = this.a.q.nextInt(4);
@@ -265,9 +265,9 @@ public class C_b {
                             c_c = new net.minecraft.a.c.b.C_h(c_b.a);
                         }
                     }
-                    if (c_c == null || c_b.a.b(n4, n3, n2) || !c_b.a.b(n4, n3 - 1, n2) && !(Block.c[c_b.a.a(n4, n3 - 1, n2)] instanceof C_bs) || !((C_e)c_c).a(f6, f5, f4)) continue;
+                    if (c_c == null || c_b.a.b(n4, n3, n2) || !c_b.a.b(n4, n3 - 1, n2) && !(Block.c[c_b.a.a(n4, n3 - 1, n2)] instanceof C_bs) || !((EntityLiving)c_c).a(f6, f5, f4)) continue;
                     f = c_b.a.q.nextFloat() * 360.0f;
-                    ((C_e)c_c).b(f6, f5, f4, f, 0.0f);
+                    ((EntityLiving)c_c).b(f6, f5, f4, f, 0.0f);
                     ++n17;
                     c_b.a.spawnEntityInWorld(c_c);
                 }

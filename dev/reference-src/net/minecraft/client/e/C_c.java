@@ -5,7 +5,7 @@ package net.minecraft.client.e;
 
 import java.io.File;
 import java.util.Random;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.e.C_a;
 import net.minecraft.client.e.C_b;
@@ -149,7 +149,7 @@ public final class C_c {
         }
     }
 
-    public final void a(C_e c_e, float f) {
+    public final void a(EntityLiving c_e, float f) {
         if (this.f && this.e.soundVol > 0.0f && this.e.masterVol > 0.0f && c_e != null) {
             float f2 = c_e.q + (c_e.o - c_e.q) * f;
             float f3 = c_e.p + (c_e.n - c_e.p) * f;

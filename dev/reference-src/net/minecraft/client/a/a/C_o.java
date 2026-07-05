@@ -6,8 +6,8 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.b.C_d;
 import net.minecraft.client.a.a.C_j;
 import org.lwjgl.opengl.GL11;
@@ -46,17 +46,17 @@ extends C_j {
     }
 
     @Override
-    protected void a(C_e c_e, float f) {
+    protected void a(EntityLiving c_e, float f) {
         this.setBatSize((C_d)c_e, f);
     }
 
     @Override
-    protected void rotateCorpse(C_e c_e, float f, float f2, float f3) {
+    protected void rotateCorpse(EntityLiving c_e, float f, float f2, float f3) {
         this.rotateCorpse((C_d)c_e, f, f2, f3);
     }
 
     @Override
-    public void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
         this.renderBat((C_d)c_b, f, f2, f3, f4, f5);
     }
 }

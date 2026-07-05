@@ -5,7 +5,7 @@ package net.minecraft.a.c.e;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.game.level.block.furniture.BlockBed;
 import util.MathHelper;
@@ -35,7 +35,7 @@ extends EntityPlayer {
         this.v = 0.0f;
     }
 
-    public boolean attackEntityFrom(C_b c_b, int n) {
+    public boolean attackEntityFrom(Entity c_b, int n) {
         return true;
     }
 

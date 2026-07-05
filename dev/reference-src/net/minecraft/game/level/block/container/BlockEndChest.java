@@ -5,14 +5,14 @@ package net.minecraft.game.level.block.container;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import util.MathHelper;
 
 public final class BlockEndChest
 extends Block {
     public BlockEndChest(int n) {
-        super(n, C_c.d);
+        super(n, Material.d);
         this.as = 456;
     }
 

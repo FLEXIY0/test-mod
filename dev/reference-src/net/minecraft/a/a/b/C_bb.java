@@ -4,14 +4,14 @@
 package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_bb
 extends Block {
     public C_bb(int n, int n2) {
-        super(n, C_c.e);
+        super(n, Material.e);
         if (n == 21) {
-            this.aC = C_c.d;
+            this.aC = Material.d;
         }
         this.as = n2;
     }

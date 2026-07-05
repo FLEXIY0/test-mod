@@ -5,7 +5,7 @@ package net.minecraft.game.entity.md3;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.a.C_e;
 
 public class EntityBlackSteve
@@ -21,7 +21,7 @@ extends C_e {
     }
 
     @Override
-    protected C_b b() {
+    protected Entity b() {
         return null;
     }
 

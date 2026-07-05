@@ -7,9 +7,9 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_m;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 import net.minecraft.game.level.block.container.BlockContainer;
@@ -19,7 +19,7 @@ extends BlockContainer {
     private Random random = new Random();
 
     public BlockVacuum(int n, int n2) {
-        super(n, C_c.vacuum);
+        super(n, Material.vacuum);
         this.as = n2;
         this.isBlockContainer = true;
     }
@@ -77,8 +77,8 @@ extends BlockContainer {
                     n4 = itemStack.a;
                 }
                 itemStack.a -= n4;
-                C_b c_b = new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.d));
-                new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.d)).k = (float)this.random.nextGaussian() * 0.05f;
+                EntityItem c_b = new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.d));
+                new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.d)).k = (float)this.random.nextGaussian() * 0.05f;
                 c_b.l = (float)this.random.nextGaussian() * 0.05f + 0.2f;
                 c_b.m = (float)this.random.nextGaussian() * 0.05f;
                 c_g.spawnEntityInWorld(c_b);

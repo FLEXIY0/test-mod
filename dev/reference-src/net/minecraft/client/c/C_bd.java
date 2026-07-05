@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.SwingUtilities;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 import net.minecraft.client.C_c;
 import net.minecraft.client.CharacterLoader;
 import net.minecraft.client.a.RenderEngine;
@@ -120,8 +120,8 @@ extends GuiScreen {
                 this.b.w.a();
                 this.b.statFileWriter = new StatFileWriter(this.b.characters, this.b.z, this.b.h);
                 this.b.a(new GuiMainMenu());
-                C_f.clearRecipes();
-                C_f.addUnlockedRecipes();
+                CraftingManager.clearRecipes();
+                CraftingManager.addUnlockedRecipes();
             }
             if (guiButton.b == 1) {
                 this.keepInventory = !this.keepInventory;

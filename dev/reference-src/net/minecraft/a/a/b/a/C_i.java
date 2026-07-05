@@ -6,7 +6,7 @@ package net.minecraft.a.a.b.a;
 import com.a.a.NBTTagCompound;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.a.TileEntity;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class C_i
 extends TileEntity {
@@ -38,31 +38,31 @@ extends TileEntity {
     }
 
     public void triggerNote(World c_g, int n, int n2, int n3) {
-        if (c_g.f(n, n2 + 1, n3) == C_c.a) {
-            C_c c_c = c_g.f(n, n2 - 1, n3);
+        if (c_g.f(n, n2 + 1, n3) == Material.a) {
+            Material c_c = c_g.f(n, n2 - 1, n3);
             int n4 = 0;
-            if (c_c == C_c.d) {
+            if (c_c == Material.d) {
                 n4 = 1;
             }
-            if (c_c == C_c.m) {
+            if (c_c == Material.m) {
                 n4 = 2;
             }
-            if (c_c == C_c.o) {
+            if (c_c == Material.o) {
                 n4 = 3;
             }
-            if (c_c == C_c.c) {
+            if (c_c == Material.c) {
                 n4 = 4;
             }
-            if (c_c == C_c.e) {
+            if (c_c == Material.e) {
                 n4 = 5;
             }
-            if (c_c == C_c.k) {
+            if (c_c == Material.k) {
                 n4 = 6;
             }
-            if (c_c == C_c.ice) {
+            if (c_c == Material.ice) {
                 n4 = 7;
             }
-            if (c_c == C_c.pumpkin) {
+            if (c_c == Material.pumpkin) {
                 n4 = 8;
             }
             c_g.playNoteAt(n, n2, n3, n4, this.note);

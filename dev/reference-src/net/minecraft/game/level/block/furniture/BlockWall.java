@@ -5,7 +5,7 @@ package net.minecraft.game.level.block.furniture;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public class BlockWall
@@ -82,7 +82,7 @@ extends Block {
         int n4 = c_g.a(n, n2, n3);
         if (n4 != this.at && n4 != Block.fenceGateOak.at && n4 != Block.fenceGateBirch.at && n4 != Block.fenceGatePalm.at && n4 != Block.fenceGateSpruce.at && n4 != Block.glassPane.at && n4 != Block.ironBars.at && n4 != Block.coloredPane.at && !c_g.a((float)n, (float)n2, (float)n3)) {
             Block c_x = Block.c[n4];
-            return c_x != null && c_x.isOpaqueCube(c_g.e(n, n2, n3)) && c_x.c() ? c_x.aC != C_c.pumpkin : false;
+            return c_x != null && c_x.isOpaqueCube(c_g.e(n, n2, n3)) && c_x.c() ? c_x.aC != Material.pumpkin : false;
         }
         return true;
     }

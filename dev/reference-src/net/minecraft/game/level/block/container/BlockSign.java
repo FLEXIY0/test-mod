@@ -8,7 +8,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_l;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -23,7 +23,7 @@ extends BlockContainer {
     private int[] colorTable = new int[]{0xAA0000, 0xFFAA00, 0xFFFF55, 0x55FF55, 2752298, 4063131, 0x55FFFF, 5615103, 0x5555FF, 0x88008B, 0xAA00AA, 0xFF55FF, 15940202, 4209214, 9342610, 0xFFFFFF};
 
     public BlockSign(int n, Class<? extends TileEntity> clazz, int n2, int n3, int n4) {
-        super(n, C_c.c);
+        super(n, Material.c);
         this.type = n3;
         this.as = n4;
         this.signEntityClass = clazz;

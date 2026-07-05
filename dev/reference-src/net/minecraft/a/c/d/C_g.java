@@ -8,8 +8,8 @@ import java.util.List;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
 import net.minecraft.a.d.C_c;
@@ -17,14 +17,14 @@ import net.minecraft.client.statistics.AchievementList;
 import util.MathHelper;
 
 public class C_g
-extends C_b {
+extends Entity {
     private int xTile = -1;
     private int yTile = -1;
     private int zTile = -1;
     private int inTile = 0;
     private boolean inGround = false;
     public int arrowShake = 0;
-    public C_e owner;
+    public EntityLiving owner;
     private int ticksInGround;
     private int ticksInAir = 0;
     private int dmg = 0;
@@ -32,7 +32,7 @@ extends C_b {
     public int id = 0;
     private int maxDMG;
 
-    public C_g(net.minecraft.a.a.World c_g, C_e c_e, int n, int n2, int n3, int n4, float f) {
+    public C_g(net.minecraft.a.a.World c_g, EntityLiving c_e, int n, int n2, int n3, int n4, float f) {
         super(c_g);
         this.owner = c_e;
         this.a(0.5f, 0.5f);
@@ -88,7 +88,7 @@ extends C_b {
     @Override
     public final void b_() {
         float f;
-        C_b c_b;
+        Entity c_b;
         Object object;
         super.b_();
         int n = this.d.a(this.xTile, this.yTile, this.zTile);
@@ -127,8 +127,8 @@ extends C_b {
         if (c_c != null) {
             c_a = new C_a(c_c.f.a, c_c.f.b, c_c.f.c);
         }
-        C_b c_b2 = null;
-        List<C_b> list = this.d.r.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
+        Entity c_b2 = null;
+        List<Entity> list = this.d.r.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
         float f2 = 0.0f;
         for (int i = 0; i < list.size(); ++i) {
             C_c c_c2;
@@ -151,14 +151,14 @@ extends C_b {
                             float f3 = this.d.q.nextFloat() * 0.7f + 0.15f;
                             float f4 = this.d.q.nextFloat() * 0.7f + 0.15f;
                             f = this.d.q.nextFloat() * 0.7f + 0.15f;
-                            net.minecraft.a.c.c.C_b c_b3 = new net.minecraft.a.c.c.C_b(this.d, this.h + f3, this.i + f4, this.j + f, new ItemStack(this.id, 1, this.dmg));
-                            new net.minecraft.a.c.c.C_b(this.d, this.h + f3, this.i + f4, this.j + f, new ItemStack(this.id, 1, this.dmg)).O = 10;
+                            net.minecraft.a.c.c.EntityItem c_b3 = new net.minecraft.a.c.c.EntityItem(this.d, this.h + f3, this.i + f4, this.j + f, new ItemStack(this.id, 1, this.dmg));
+                            new net.minecraft.a.c.c.EntityItem(this.d, this.h + f3, this.i + f4, this.j + f, new ItemStack(this.id, 1, this.dmg)).O = 10;
                             this.d.spawnEntityInWorld(c_b3);
                         }
                         this.k();
-                        if (this.owner instanceof EntityPlayer && c_c.g instanceof C_e) {
-                            if (((C_e)c_c.g).W <= 0) {
-                                this.owner.awardKillScore(c_c.g, ((C_e)c_c.g).c());
+                        if (this.owner instanceof EntityPlayer && c_c.g instanceof EntityLiving) {
+                            if (((EntityLiving)c_c.g).W <= 0) {
+                                this.owner.awardKillScore(c_c.g, ((EntityLiving)c_c.g).c());
                             }
                             ((EntityPlayer)this.owner).triggerAchievement(AchievementList.buildSpear);
                         }

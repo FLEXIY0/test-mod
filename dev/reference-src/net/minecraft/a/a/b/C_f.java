@@ -9,7 +9,7 @@ import net.minecraft.a.a.b.C_ad;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 
 public final class C_f
 extends C_ad {
@@ -89,8 +89,8 @@ extends C_ad {
             float f = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
-            C_b c_b = new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(Item.O));
-            new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(Item.O)).O = 10;
+            EntityItem c_b = new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(Item.O));
+            new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(Item.O)).O = 10;
             c_g.a(c_b);
         }
     }

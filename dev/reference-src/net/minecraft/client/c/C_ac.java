@@ -9,7 +9,7 @@ package net.minecraft.client.c;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 import net.minecraft.a.b.a.C_l;
 import net.minecraft.client.a.a.C_e;
 import net.minecraft.client.c.C_ab;
@@ -34,7 +34,7 @@ extends GuiScreen {
     private int counter;
     private int filter;
     private String[] recipes = new String[]{"All", "Locked", "Unlocked"};
-    private List<C_l> finalList = C_f.a().getRecipeList();
+    private List<C_l> finalList = CraftingManager.a().getRecipeList();
 
     public C_ac(StatFileWriter statFileWriter) {
         this.statFileWriter = statFileWriter;
@@ -139,18 +139,18 @@ extends GuiScreen {
         switch (this.filter) {
             case 1: {
                 this.finalList = new ArrayList<C_l>();
-                for (C_l c_l : C_f.a().getRecipeList()) {
-                    if (C_f.a().getUnlockedRecipeList().contains(c_l)) continue;
+                for (C_l c_l : CraftingManager.a().getRecipeList()) {
+                    if (CraftingManager.a().getUnlockedRecipeList().contains(c_l)) continue;
                     this.finalList.add(c_l);
                 }
                 break;
             }
             case 2: {
-                this.finalList = C_f.a().getUnlockedRecipeList();
+                this.finalList = CraftingManager.a().getUnlockedRecipeList();
                 break;
             }
             default: {
-                this.finalList = C_f.a().getRecipeList();
+                this.finalList = CraftingManager.a().getRecipeList();
             }
         }
         return this.finalList;
@@ -193,7 +193,7 @@ extends GuiScreen {
     public void a(int n, int n2, float f) {
         this.achievementSlotContainer.drawScreen(n, n2, f);
         if (this.sortMode == 2) {
-            Gui.a(this.g, C_f.a().getUnlockedRecipeList().size() + "/" + C_f.a().getRecipeList().size(), this.c / 2, 18, 0xFFFFFF);
+            Gui.a(this.g, CraftingManager.a().getUnlockedRecipeList().size() + "/" + CraftingManager.a().getRecipeList().size(), this.c / 2, 18, 0xFFFFFF);
             int n3 = this.c / 2 - 240;
             int n4 = 35;
             C_ac.a(n3 - 1, n4 + 15 - 1, n3 + 116 + 1, n4 + 35 + 1, -6250336);

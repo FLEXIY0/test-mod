@@ -7,7 +7,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_i;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 import net.minecraft.game.level.block.container.BlockContainer;
@@ -15,7 +15,7 @@ import net.minecraft.game.level.block.container.BlockContainer;
 public class BlockNote
 extends BlockContainer {
     public BlockNote(int n) {
-        super(n, C_c.c);
+        super(n, Material.c);
         this.as = 196;
     }
 

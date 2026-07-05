@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_m;
 import net.minecraft.client.a.a.C_j;
 import net.minecraft.client.b.C_l;
@@ -46,12 +46,12 @@ extends C_j {
     }
 
     @Override
-    protected void a(C_e c_e, float f) {
+    protected void a(EntityLiving c_e, float f) {
         this.scaleSlime((C_m)c_e, f);
     }
 
     @Override
-    protected boolean a(C_e c_e, int n) {
+    protected boolean a(EntityLiving c_e, int n) {
         return this.renderSlimePassModel((C_m)c_e, n);
     }
 }

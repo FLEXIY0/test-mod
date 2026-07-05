@@ -5,12 +5,12 @@ package net.minecraft.client.f;
 
 import com.a.a.NBTTagCompound;
 import net.minecraft.a.a.World;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.a.C_d;
 import util.MathHelper;
 
 public class C_k
-extends C_b {
+extends Entity {
     protected float a;
     protected float b;
     protected float O;

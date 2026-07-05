@@ -6,14 +6,14 @@ package net.minecraft.game.level.block.plants;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.d.C_b;
 
 public class BlockReeds
 extends Block {
     public BlockReeds(int n, int n2) {
-        super(n, C_c.i);
+        super(n, Material.i);
         this.as = n2;
         float f = 0.375f;
         this.a(0.5f - f, 0.0f, 0.5f - f, 0.5f + f, 1.0f, 0.5f + f);
@@ -22,7 +22,7 @@ extends Block {
 
     @Override
     public void a(World c_g, int n, int n2, int n3, Random random) {
-        if (c_g.f(n, n2 + 1, n3) == C_c.a) {
+        if (c_g.f(n, n2 + 1, n3) == Material.a) {
             int n4 = 1;
             while (c_g.a(n, n2 - n4, n3) == this.at) {
                 ++n4;
@@ -42,7 +42,7 @@ extends Block {
     @Override
     public boolean a(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2 - 1, n3);
-        return n4 == this.at ? true : (n4 != Block.j.at && n4 != Block.k.at ? false : (c_g.f(n - 1, n2 - 1, n3) == C_c.f ? true : (c_g.f(n + 1, n2 - 1, n3) == C_c.f ? true : (c_g.f(n, n2 - 1, n3 - 1) == C_c.f ? true : c_g.f(n, n2 - 1, n3 + 1) == C_c.f))));
+        return n4 == this.at ? true : (n4 != Block.j.at && n4 != Block.k.at ? false : (c_g.f(n - 1, n2 - 1, n3) == Material.f ? true : (c_g.f(n + 1, n2 - 1, n3) == Material.f ? true : (c_g.f(n, n2 - 1, n3 - 1) == Material.f ? true : c_g.f(n, n2 - 1, n3 + 1) == Material.f))));
     }
 
     @Override

@@ -38,7 +38,7 @@ public final class WorldApi {
         return w.j(x, y, z);
     }
 
-    public static void spawnEntity(World w, net.minecraft.a.c.C_b entity) {
+    public static void spawnEntity(World w, net.minecraft.a.c.Entity entity) {
         w.spawnEntityInWorld(entity);
     }
 

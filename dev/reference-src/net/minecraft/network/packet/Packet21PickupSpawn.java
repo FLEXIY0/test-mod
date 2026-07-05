@@ -7,7 +7,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.network.NetHandler;
 import net.minecraft.network.packet.Packet;
 import util.MathHelper;
@@ -26,7 +26,7 @@ extends Packet {
     public Packet21PickupSpawn() {
     }
 
-    public Packet21PickupSpawn(C_b c_b) {
+    public Packet21PickupSpawn(EntityItem c_b) {
         this.entityId = c_b.entityId;
         this.itemStack = c_b.a;
         this.xPosition = MathHelper.a((double)c_b.h * 32.0);

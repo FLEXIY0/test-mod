@@ -4,14 +4,14 @@
 package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class C_ao
 extends Block {
     private static String[] NAME_LIST = new String[]{"Red", "Orange", "Yellow", "Chartreuse", "Green", "Spring Green", "Cyan", "Capri", "Ultramarine", "Violet", "Purple", "Magenta", "Rose", "Dark Gray", "Light Gray", "White"};
 
     public C_ao() {
-        super(36, 143, C_c.k);
+        super(36, 143, Material.k);
         this.hasStates = true;
     }
 

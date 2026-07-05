@@ -11,7 +11,7 @@ import java.util.Map;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 import net.minecraft.a.b.a.C_j;
 import net.minecraft.a.b.a.C_l;
 import net.minecraft.client.statistics.AchievementList;
@@ -117,7 +117,7 @@ public class StatList {
     public static void initCraftableStats() {
         if (blockStatsInitialized && itemStatsInitialized) {
             HashSet<Integer> hashSet = new HashSet<Integer>();
-            for (C_l object : C_f.a().getRecipeList()) {
+            for (C_l object : CraftingManager.a().getRecipeList()) {
                 if (object.getRecipeOutput() == null) continue;
                 hashSet.add(object.getRecipeOutput().c);
             }

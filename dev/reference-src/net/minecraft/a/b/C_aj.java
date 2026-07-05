@@ -6,7 +6,7 @@ package net.minecraft.a.b;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_b;
 import net.minecraft.a.c.a.C_c;
 import net.minecraft.a.c.a.C_d;
@@ -77,8 +77,8 @@ extends Item {
             ++n;
         }
         if (n > 0 && n2 > 0 && n3 > 0 && n < c_g.a - 1 && n2 < c_g.c - 1 && n3 < c_g.b - 1) {
-            if (c_g.a(n, n2, n3) == 0 || c_g.f(n, n2, n3) == net.minecraft.a.a.d.C_c.f) {
-                C_e c_e = null;
+            if (c_g.a(n, n2, n3) == 0 || c_g.f(n, n2, n3) == net.minecraft.a.a.d.Material.f) {
+                EntityLiving c_e = null;
                 float f = 1.0f;
                 switch (itemStack.d) {
                     case 0: {
@@ -114,7 +114,7 @@ extends Item {
                         break;
                     }
                     case 8: {
-                        c_e = new C_e(c_g, (float)n + 0.5f, (float)n2 + f, (float)n3 + 0.5f);
+                        c_e = new EntityLiving(c_g, (float)n + 0.5f, (float)n2 + f, (float)n3 + 0.5f);
                         break;
                     }
                     case 9: {

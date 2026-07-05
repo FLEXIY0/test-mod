@@ -5,7 +5,7 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public class C_am
@@ -13,14 +13,14 @@ extends Block {
     private static String[] NAME_LIST = new String[]{"Red", "Orange", "Yellow", "Chartreuse", "Green", "Spring Green", "Cyan", "Capri", "Ultramarine", "Violet", "Purple", "Magenta", "Rose", "Dark Gray", "Light Gray", "White"};
 
     public C_am() {
-        super(74, 143, C_c.k);
+        super(74, 143, Material.k);
         this.a(0.0f, 0.0f, 0.0f, 1.0f, 0.06f, 1.0f);
         this.hasStates = true;
     }
 
     @Override
     public boolean a(World c_g, int n, int n2, int n3) {
-        return c_g.a(n, n2 - 1, n3) == Block.B.at ? true : (c_g.a(n, n2 - 1, n3) == Block.detector.at ? true : (c_g.a(n, n2 - 1, n3) == Block.stairUpsideDown.at ? true : (c_g.f(n, n2, n3) == C_c.f ? false : (!c_g.b(n, n2 - 1, n3) ? false : (c_g.a(n, n2 - 1, n3) == this.at ? false : super.a(c_g, n, n2, n3))))));
+        return c_g.a(n, n2 - 1, n3) == Block.B.at ? true : (c_g.a(n, n2 - 1, n3) == Block.detector.at ? true : (c_g.a(n, n2 - 1, n3) == Block.stairUpsideDown.at ? true : (c_g.f(n, n2, n3) == Material.f ? false : (!c_g.b(n, n2 - 1, n3) ? false : (c_g.a(n, n2 - 1, n3) == this.at ? false : super.a(c_g, n, n2, n3))))));
     }
 
     @Override

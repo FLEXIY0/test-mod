@@ -6,7 +6,7 @@ package net.minecraft.network.packet;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.network.NetHandler;
 import net.minecraft.network.packet.Packet;
 
@@ -18,7 +18,7 @@ extends Packet {
     public Packet19Animation() {
     }
 
-    public Packet19Animation(C_b c_b, int n) {
+    public Packet19Animation(Entity c_b, int n) {
         this.entityId = c_b.entityId;
         this.animate = n;
     }

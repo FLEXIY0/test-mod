@@ -6,8 +6,8 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.client.a.a.C_f;
 import net.minecraft.client.b.C_l;
 import net.minecraft.client.g.C_a;
@@ -33,7 +33,7 @@ extends C_f {
         this.secondaryModel = c_l;
     }
 
-    public void renderEntity(C_e c_e, float f, float f2, float f3, float f4, float f5) {
+    public void renderEntity(EntityLiving c_e, float f, float f2, float f3, float f4, float f5) {
         GL11.glPushMatrix();
         GL11.glDisable((int)2884);
         this.d.swingProgress = this.getSwingProgess(c_e, f5);
@@ -156,33 +156,33 @@ extends C_f {
         this.passSpecialRender(c_e, f, f2, f3);
     }
 
-    protected void passSpecialRender(C_e c_e, float f, float f2, float f3) {
+    protected void passSpecialRender(EntityLiving c_e, float f, float f2, float f3) {
     }
 
-    protected float getSwingProgess(C_e c_e, float f) {
+    protected float getSwingProgess(EntityLiving c_e, float f) {
         return c_e.getSwingProgress(f);
     }
 
-    protected void renderEquippedItems(C_e c_e, float f) {
+    protected void renderEquippedItems(EntityLiving c_e, float f) {
     }
 
-    protected boolean a(C_e c_e, int n) {
+    protected boolean a(EntityLiving c_e, int n) {
         return false;
     }
 
-    protected boolean renderAccessories(C_e c_e, int n) {
+    protected boolean renderAccessories(EntityLiving c_e, int n) {
         return false;
     }
 
-    protected float a(C_e c_e) {
+    protected float a(EntityLiving c_e) {
         return 90.0f;
     }
 
-    protected float getDefaultAngle(C_e c_e, float f) {
+    protected float getDefaultAngle(EntityLiving c_e, float f) {
         return (float)c_e.H + f;
     }
 
-    protected void rotateCorpse(C_e c_e, float f, float f2, float f3) {
+    protected void rotateCorpse(EntityLiving c_e, float f, float f2, float f3) {
         GL11.glRotatef((float)(180.0f - f2), (float)0.0f, (float)1.0f, (float)0.0f);
         if (c_e.ab > 0) {
             float f4 = ((float)c_e.ab + f3 - 1.0f) / 20.0f * 1.6f;
@@ -193,16 +193,16 @@ extends C_f {
         }
     }
 
-    protected int a(C_e c_e, float f, float f2) {
+    protected int a(EntityLiving c_e, float f, float f2) {
         return 0;
     }
 
-    protected void a(C_e c_e, float f) {
+    protected void a(EntityLiving c_e, float f) {
     }
 
     @Override
-    public void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
-        this.renderEntity((C_e)c_b, f, f2, f3, f4, f5);
+    public void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
+        this.renderEntity((EntityLiving)c_b, f, f2, f3, f4, f5);
     }
 }
 

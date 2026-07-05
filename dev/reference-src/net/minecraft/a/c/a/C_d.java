@@ -6,7 +6,7 @@ package net.minecraft.a.c.a;
 import com.a.a.NBTTagCompound;
 import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.a.C_e;
 
 public class C_d
@@ -89,7 +89,7 @@ extends C_e {
     }
 
     @Override
-    protected final void a(C_b c_b, float f) {
+    protected final void a(Entity c_b, float f) {
         if (!this.d.multiplayerWorld) {
             int n = this.getCreeperState();
             if (n <= 0 && f < 3.0f || n > 0 && f < 7.0f) {

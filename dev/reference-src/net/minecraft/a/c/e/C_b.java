@@ -533,12 +533,12 @@ public final class C_b implements net.minecraft.a.C_b {
       return this.d.u ? false : (double)var1.b(this.d) <= 64.0;
    }
 
-   public int getDamageVsEntity(net.minecraft.a.c.C_b var1) {
+   public int getDamageVsEntity(net.minecraft.a.c.Entity var1) {
       ItemStack var2 = this.a(this.c);
       return var2 != null ? var2.getDamageVsEntity(var1) : 1;
    }
 
-   public int getCharmDamageVsEntity(net.minecraft.a.c.C_b var1) {
+   public int getCharmDamageVsEntity(net.minecraft.a.c.Entity var1) {
       ItemStack var2 = this.a(43);
       return var2 != null ? var2.getDamageVsEntity(var1) : 1;
    }

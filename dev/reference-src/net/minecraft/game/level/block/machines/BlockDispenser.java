@@ -7,10 +7,10 @@ import com.a.a.NBTTagCompound;
 import java.util.Random;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_g;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.d.C_a;
 import net.minecraft.a.c.d.C_d;
 import net.minecraft.a.c.d.C_e;
@@ -24,7 +24,7 @@ extends BlockContainer {
     private Random random = new Random();
 
     public BlockDispenser(int n) {
-        super(n, C_c.d);
+        super(n, Material.d);
         this.as = 331;
     }
 
@@ -142,7 +142,7 @@ extends BlockContainer {
                     c_g.spawnEntityInWorld(c_d);
                     c_g.playSoundAtBlock(f, f2 - 0.3f, f3, "random.bow", 1.0f, 1.0f / (c_g.I.nextFloat() * 0.4f + 0.8f));
                 } else {
-                    C_b c_b = new C_b(c_g, f, f2 - 0.3f, f3, itemStack);
+                    EntityItem c_b = new EntityItem(c_g, f, f2 - 0.3f, f3, itemStack);
                     float f4 = random.nextFloat() * 0.1f + 0.2f;
                     c_b.k = (float)n4 * f4;
                     c_b.l = 0.2f;
@@ -204,7 +204,7 @@ extends BlockContainer {
                         n4 = itemStack.a;
                     }
                     itemStack.a -= n4;
-                    C_b c_b = new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.getItemDamage()));
+                    EntityItem c_b = new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.getItemDamage()));
                     if (itemStack.hasTagCompound()) {
                         c_b.a.setTagCompound((NBTTagCompound)itemStack.getTagCompound().copy());
                     }

@@ -34,7 +34,7 @@ public final class C_e {
    private float d = 0.0F;
    private int e;
    public C_g a;
-   private net.minecraft.a.c.C_b f = null;
+   private net.minecraft.a.c.Entity f = null;
    private DecimalFormat i = new DecimalFormat("0000");
    private ByteBuffer j;
    private FloatBuffer k = BufferUtils.createFloatBuffer(16);
@@ -178,7 +178,7 @@ public final class C_e {
 
       if (var1 != 0.0F) {
          this.l.setSeed((long)this.e * 312987231L);
-         net.minecraft.a.c.C_e var2 = this.b.cameraMob;
+         net.minecraft.a.c.EntityLiving var2 = this.b.cameraMob;
          net.minecraft.a.a.World var3 = this.b.d;
          int var4 = MathHelper.a((double)var2.h);
          int var5 = MathHelper.a((double)var2.i);
@@ -198,7 +198,7 @@ public final class C_e {
                float var20 = this.l.nextFloat();
                float var21 = this.l.nextFloat();
                if (var19 > 0) {
-                  if (Block.c[var19].getMaterial(0) == net.minecraft.a.a.d.C_c.g) {
+                  if (Block.c[var19].getMaterial(0) == net.minecraft.a.a.d.Material.g) {
                      this.b.g.a(new net.minecraft.client.f.C_j(var3, (float)var16 + var20, (float)var18 + 0.1F - Block.c[var19].av, (float)var17 + var21));
                   } else {
                      if (this.l.nextInt(++var14) == 0) {
@@ -226,7 +226,7 @@ public final class C_e {
 
    private void playWindSound() {
       this.l.setSeed((long)this.e * 312987231L);
-      net.minecraft.a.c.C_e var1 = this.b.cameraMob;
+      net.minecraft.a.c.EntityLiving var1 = this.b.cameraMob;
       net.minecraft.a.a.World var2 = this.b.d;
       if (this.l.nextInt(250) < this.windSoundCounter++ && var2.season.currentSeason == 2 && var2.getWindForce() >= 0.2F && var2.type != 5 && var2.type != 8) {
          this.windSoundCounter = 0;
@@ -311,7 +311,7 @@ public final class C_e {
    protected void renderRainSnow(float var1) {
       float var2 = this.b.d.getRainStatus(var1);
       if (var2 > 0.0F) {
-         net.minecraft.a.c.C_e var3 = this.b.cameraMob;
+         net.minecraft.a.c.EntityLiving var3 = this.b.cameraMob;
          net.minecraft.a.a.World var4 = this.b.d;
          int var5 = MathHelper.a((double)var3.h);
          int var6 = MathHelper.a((double)var3.i);
@@ -584,7 +584,7 @@ public final class C_e {
 
    private void e(float var1) {
       C_e var2 = this;
-      net.minecraft.a.c.C_e var3 = this.b.cameraMob;
+      net.minecraft.a.c.EntityLiving var3 = this.b.cameraMob;
       float var4 = this.b.cameraMob.q + (var3.o - var3.q) * var1;
       float var5 = var3.p + (var3.n - var3.p) * var1;
       net.minecraft.a.d.C_a var6 = this.b(var1);
@@ -625,7 +625,7 @@ public final class C_e {
       float var18 = 0.0F;
 
       for (int var19 = 0; var19 < var17.size(); var19++) {
-         net.minecraft.a.c.C_b var20 = (net.minecraft.a.c.C_b)var17.get(var19);
+         net.minecraft.a.c.Entity var20 = (net.minecraft.a.c.Entity)var17.get(var19);
          net.minecraft.a.d.C_c var21;
          if ((var20.d() || var20 instanceof net.minecraft.a.c.C_a)
             && (var21 = var20.r.b(0.1F, 0.1F, 0.1F).a(var6, var15)) != null
@@ -652,7 +652,7 @@ public final class C_e {
       this.d = this.b.d.getFogDistance();
       GL11.glMatrixMode(5889);
       GL11.glLoadIdentity();
-      net.minecraft.a.c.C_e var24 = this.b.cameraMob;
+      net.minecraft.a.c.EntityLiving var24 = this.b.cameraMob;
       var8 = this.getFOV(var1, true);
       GLU.gluPerspective(var8, (float)this.b.b / (float)this.b.c, 0.05F, this.d);
       GL11.glMatrixMode(5888);
@@ -968,9 +968,9 @@ public final class C_e {
 
       Block var20;
       if ((var20 = Block.c[var2.a((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j)]) != null
-         && var20.getMaterial(var2.e((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j)) != net.minecraft.a.a.d.C_c.a) {
-         net.minecraft.a.a.d.C_c var22;
-         if ((var22 = var20.getMaterial(var2.e((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j))) == net.minecraft.a.a.d.C_c.f) {
+         && var20.getMaterial(var2.e((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j)) != net.minecraft.a.a.d.Material.a) {
+         net.minecraft.a.a.d.Material var22;
+         if ((var22 = var20.getMaterial(var2.e((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j))) == net.minecraft.a.a.d.Material.f) {
             if (var2.theme == 4) {
                this.p = 0.02F;
                this.q = 0.2F;
@@ -980,7 +980,7 @@ public final class C_e {
                this.q = 0.02F;
                this.r = 0.2F;
             }
-         } else if (var22 == net.minecraft.a.a.d.C_c.g) {
+         } else if (var22 == net.minecraft.a.a.d.Material.g) {
             this.p = 0.6F;
             this.q = 0.1F;
             this.r = 0.0F;
@@ -1010,11 +1010,11 @@ public final class C_e {
       if ((var6 = Block.c[var1.a((int)var2.h, (int)(var2.i + 0.12F), (int)var2.j)]) != null
          && var6.getMaterial(var1.e((int)var2.h, (int)(var2.i + 0.12F), (int)var2.j)).d()
          && !var2.canBreatheUnderwater()) {
-         net.minecraft.a.a.d.C_c var7 = var6.getMaterial(var1.e((int)var2.h, (int)(var2.i + 0.12F), (int)var2.j));
+         net.minecraft.a.a.d.Material var7 = var6.getMaterial(var1.e((int)var2.h, (int)(var2.i + 0.12F), (int)var2.j));
          GL11.glFogi(2917, 2048);
-         if (var7 == net.minecraft.a.a.d.C_c.f) {
+         if (var7 == net.minecraft.a.a.d.Material.f) {
             GL11.glFogf(2914, 0.1F);
-         } else if (var7 == net.minecraft.a.a.d.C_c.g) {
+         } else if (var7 == net.minecraft.a.a.d.Material.g) {
             GL11.glFogf(2914, 2.0F);
          }
       } else {

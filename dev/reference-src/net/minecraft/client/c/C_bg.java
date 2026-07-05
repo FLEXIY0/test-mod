@@ -6,7 +6,7 @@ package net.minecraft.client.c;
 import com.a.a.NBTTagCompound;
 import java.io.File;
 import java.io.IOException;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 import net.minecraft.client.c.C_ah;
 import net.minecraft.client.c.C_ap;
 import net.minecraft.client.c.C_bd;
@@ -94,8 +94,8 @@ extends GuiScreen {
                         this.b.w.a();
                         this.b.statFileWriter = new StatFileWriter(this.b.characters, this.b.z, this.b.h);
                         this.b.a(this.parent);
-                        C_f.clearRecipes();
-                        C_f.addUnlockedRecipes();
+                        CraftingManager.clearRecipes();
+                        CraftingManager.addUnlockedRecipes();
                     }
                     catch (IOException iOException) {
                         this.newCharacter(guiButton.b);
@@ -148,7 +148,7 @@ extends GuiScreen {
             if (file4.exists()) {
                 file4.delete();
             }
-            C_f.clearRecipes();
+            CraftingManager.clearRecipes();
             this.newCharacter(n);
         }
         this.b.a(this);

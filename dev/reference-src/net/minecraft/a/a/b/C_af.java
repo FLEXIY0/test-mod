@@ -6,13 +6,13 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public final class C_af
 extends Block {
     protected C_af(int n) {
-        super(n, C_c.b);
+        super(n, Material.b);
         this.as = 320;
         this.a(true);
         this.hasStates = true;
@@ -71,9 +71,9 @@ extends Block {
         if (n4 == 0) {
             return 2;
         }
-        C_c c_c = c_g.f(n, n2 + 1, n3);
+        Material c_c = c_g.f(n, n2 + 1, n3);
         int n5 = c_g.a(n, n2 + 1, n3);
-        return c_c == C_c.snow ? 294 : (c_c == C_c.ash ? 491 : (n5 == Block.t.at || n5 == Block.sandLayer.at || c_c == C_c.quicksand ? 645 : (by == 1 ? 397 : 320)));
+        return c_c == Material.snow ? 294 : (c_c == Material.ash ? 491 : (n5 == Block.t.at || n5 == Block.sandLayer.at || c_c == Material.quicksand ? 645 : (by == 1 ? 397 : 320)));
     }
 
     @Override

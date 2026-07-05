@@ -7,14 +7,14 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_bu;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_a;
 import net.minecraft.a.d.C_b;
 
 public class C_bc
 extends Block {
     protected C_bc(int n, int n2) {
-        super(n, n2, C_c.n);
+        super(n, n2, Material.n);
         this.a(0.0f, 0.0f, 0.0f, 1.0f, 0.125f, 1.0f);
     }
 

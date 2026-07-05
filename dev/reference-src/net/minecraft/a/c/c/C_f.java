@@ -7,11 +7,11 @@ import com.a.a.NBTTagCompound;
 import java.util.List;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import util.MathHelper;
 
 public class C_f
-extends C_b {
+extends Entity {
     private int thunderAge;
     public long thunderStrength = 0L;
     private int thunderFlash;
@@ -64,9 +64,9 @@ extends C_b {
             }
         }
         if (this.thunderAge >= 0) {
-            List<C_b> list = this.d.a(this, this.r.a(this.h, this.i, this.j));
+            List<Entity> list = this.d.a(this, this.r.a(this.h, this.i, this.j));
             for (n = 0; n < list.size(); ++n) {
-                C_b c_b = list.get(n);
+                Entity c_b = list.get(n);
                 c_b.onStruckByLightning(this);
             }
             this.d.lightStrike = 2;

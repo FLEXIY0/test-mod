@@ -6,7 +6,7 @@ package net.minecraft.a.b;
 import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.d.C_d;
 import net.minecraft.a.c.d.C_e;
 import net.minecraft.a.c.d.C_f;
@@ -25,7 +25,7 @@ extends Item {
 
     @Override
     public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
-        C_b c_b;
+        Entity c_b;
         if (entityPlayer.gamemode != 1) {
             --itemStack.a;
         } else {

@@ -6,7 +6,7 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_aj
 extends Block {
@@ -14,7 +14,7 @@ extends Block {
     public static final String[] NAME_LIST = new String[]{"Stone", "Brick", "Cobblestone", "Mossy Cobble", "Sandstone", "Stone Brick", "Mossy Brick", "Smooth Sandstone", "Basalt Brick", "Red Sandstone", "Smooth Red Sandstone", "Moon Brick"};
     public static final String[] NAME_LIST2 = new String[]{"Oak", "Birch", "Palm", "Pine"};
 
-    public C_aj(int n, boolean bl, boolean bl2, C_c c_c) {
+    public C_aj(int n, boolean bl, boolean bl2, Material c_c) {
         super(n, 6, c_c);
         this.a = bl;
         if (!bl && !bl2) {
@@ -27,7 +27,7 @@ extends Block {
 
     @Override
     public int a(int n, int n2) {
-        if (this.aC == C_c.c) {
+        if (this.aC == Material.c) {
             switch (n2) {
                 default: {
                     return 4;
@@ -92,13 +92,13 @@ extends Block {
     }
 
     @Override
-    public final C_c getMaterial(int n) {
+    public final Material getMaterial(int n) {
         return this.aC;
     }
 
     @Override
     public int getMaxDamage() {
-        if (this.aC == C_c.c) {
+        if (this.aC == Material.c) {
             return 3;
         }
         return 11;
@@ -120,7 +120,7 @@ extends Block {
 
     @Override
     public String getBlockName(int n) {
-        if (this.aC == C_c.c) {
+        if (this.aC == Material.c) {
             if (n > this.getMaxDamage()) {
                 return NAME_LIST2[C_aj.getSlabType(0)] + " Slab";
             }
@@ -137,7 +137,7 @@ extends Block {
         byte by = c_g.e(n, n2, n3);
         byte by2 = c_g.e(n, n2 - 1, n3);
         byte by3 = c_g.e(n, n2 + 1, n3);
-        if (this.aC == C_c.c) {
+        if (this.aC == Material.c) {
             if (n4 == 0) {
                 if (c_g.a(n, n2 + 1, n3) != Block.stairUpsideDownWood.at) {
                     c_g.setBlockAndMetadataWithNotify(n, n2, n3, C_aj.stairUpsideDownWood.at, by);
@@ -168,7 +168,7 @@ extends Block {
 
     @Override
     public final int a(int n, Random random) {
-        if (this.aC == C_c.c) {
+        if (this.aC == Material.c) {
             return Block.stairSingleWood.at;
         }
         return Block.Z.at;

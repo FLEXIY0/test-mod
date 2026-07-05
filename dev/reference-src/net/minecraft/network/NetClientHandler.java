@@ -25,9 +25,9 @@ import net.minecraft.a.a.b.a.C_h;
 import net.minecraft.a.a.b.a.C_i;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_a;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
-import net.minecraft.a.c.C_f;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
+import net.minecraft.a.c.EntityList;
 import net.minecraft.a.c.e.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.C_ai;
@@ -143,7 +143,7 @@ extends NetHandler {
         float f = (float)packet21PickupSpawn.xPosition / 32.0f;
         float f2 = (float)packet21PickupSpawn.yPosition / 32.0f;
         float f3 = (float)packet21PickupSpawn.zPosition / 32.0f;
-        net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(this.level, f, f2, f3, packet21PickupSpawn.itemStack);
+        net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(this.level, f, f2, f3, packet21PickupSpawn.itemStack);
         c_b.k = (float)packet21PickupSpawn.rotation / 128.0f;
         c_b.l = (float)packet21PickupSpawn.pitch / 128.0f;
         c_b.m = (float)packet21PickupSpawn.roll / 128.0f;
@@ -158,7 +158,7 @@ extends NetHandler {
         float f = (float)packet23VehicleSpawn.xPosition / 32.0f;
         float f2 = (float)packet23VehicleSpawn.yPosition / 32.0f;
         float f3 = (float)packet23VehicleSpawn.zPosition / 32.0f;
-        C_b c_b = null;
+        Entity c_b = null;
         switch (packet23VehicleSpawn.type) {
             case DART: {
                 c_b = new net.minecraft.a.c.d.C_b(this.level, f, f2, f3);
@@ -216,44 +216,44 @@ extends NetHandler {
             if (packet23VehicleSpawn.updateCounter > 0) {
                 switch (packet23VehicleSpawn.type) {
                     case ARROW: {
-                        C_b c_b2 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
-                        if (!(c_b2 instanceof C_e)) break;
-                        ((net.minecraft.a.c.d.C_a)c_b).S = (C_e)c_b2;
+                        Entity c_b2 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
+                        if (!(c_b2 instanceof EntityLiving)) break;
+                        ((net.minecraft.a.c.d.C_a)c_b).S = (EntityLiving)c_b2;
                         break;
                     }
                     case SPEAR: {
-                        C_b c_b3 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
-                        if (!(c_b3 instanceof C_e)) break;
-                        ((net.minecraft.a.c.d.C_g)c_b).owner = (C_e)c_b3;
+                        Entity c_b3 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
+                        if (!(c_b3 instanceof EntityLiving)) break;
+                        ((net.minecraft.a.c.d.C_g)c_b).owner = (EntityLiving)c_b3;
                         break;
                     }
                     case SNOWBALL: {
-                        C_b c_b4 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
-                        if (!(c_b4 instanceof C_e)) break;
-                        ((net.minecraft.a.c.d.C_f)c_b).thrower = (C_e)c_b4;
+                        Entity c_b4 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
+                        if (!(c_b4 instanceof EntityLiving)) break;
+                        ((net.minecraft.a.c.d.C_f)c_b).thrower = (EntityLiving)c_b4;
                         break;
                     }
                     case SANDBALL: {
-                        C_b c_b5 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
-                        if (!(c_b5 instanceof C_e)) break;
-                        ((net.minecraft.a.c.d.C_e)c_b).thrower = (C_e)c_b5;
+                        Entity c_b5 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
+                        if (!(c_b5 instanceof EntityLiving)) break;
+                        ((net.minecraft.a.c.d.C_e)c_b).thrower = (EntityLiving)c_b5;
                         break;
                     }
                     case FIREBALL: {
-                        C_b c_b6 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
-                        if (!(c_b6 instanceof C_e)) break;
-                        ((net.minecraft.a.c.d.C_d)c_b).thrower = (C_e)c_b6;
+                        Entity c_b6 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
+                        if (!(c_b6 instanceof EntityLiving)) break;
+                        ((net.minecraft.a.c.d.C_d)c_b).thrower = (EntityLiving)c_b6;
                         break;
                     }
                     case FEATHER: {
-                        C_b c_b7 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
-                        if (!(c_b7 instanceof C_e)) break;
-                        ((net.minecraft.a.c.d.C_c)c_b).thrower = (C_e)c_b7;
+                        Entity c_b7 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
+                        if (!(c_b7 instanceof EntityLiving)) break;
+                        ((net.minecraft.a.c.d.C_c)c_b).thrower = (EntityLiving)c_b7;
                         break;
                     }
                     case BOBBER: {
-                        C_b c_b8 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
-                        if (!(c_b8 instanceof C_e)) break;
+                        Entity c_b8 = this.getEntityByID(packet23VehicleSpawn.updateCounter);
+                        if (!(c_b8 instanceof EntityLiving)) break;
                         ((net.minecraft.a.c.c.C_d)c_b).angler = (EntityPlayer)c_b8;
                         break;
                     }
@@ -303,7 +303,7 @@ extends NetHandler {
 
     @Override
     public void handleVelocity(Packet28EntityVelocity packet28EntityVelocity) {
-        C_b c_b = this.getEntityByID(packet28EntityVelocity.entityId);
+        Entity c_b = this.getEntityByID(packet28EntityVelocity.entityId);
         if (c_b != null) {
             c_b.setVelocity((float)packet28EntityVelocity.motionX / 8000.0f, (float)packet28EntityVelocity.motionY / 8000.0f, (float)packet28EntityVelocity.motionZ / 8000.0f);
         }
@@ -311,7 +311,7 @@ extends NetHandler {
 
     @Override
     public void handleMetadata(Packet40EntityMetadata packet40EntityMetadata) {
-        C_b c_b = this.getEntityByID(packet40EntityMetadata.entityId);
+        Entity c_b = this.getEntityByID(packet40EntityMetadata.entityId);
         if (c_b != null && packet40EntityMetadata.getData() != null) {
             c_b.getDataWatcher().updateWatchedObjectsFromList(packet40EntityMetadata.getData());
         }
@@ -339,7 +339,7 @@ extends NetHandler {
 
     @Override
     public void handleEntityTeleport(Packet34EntityTeleport packet34EntityTeleport) {
-        C_b c_b = this.getEntityByID(packet34EntityTeleport.entityId);
+        Entity c_b = this.getEntityByID(packet34EntityTeleport.entityId);
         if (c_b != null) {
             c_b.serverPosX = packet34EntityTeleport.xPosition;
             c_b.serverPosY = packet34EntityTeleport.yPosition;
@@ -355,7 +355,7 @@ extends NetHandler {
 
     @Override
     public void handleEntity(Packet30Entity packet30Entity) {
-        C_b c_b = this.getEntityByID(packet30Entity.entityId);
+        Entity c_b = this.getEntityByID(packet30Entity.entityId);
         if (c_b != null) {
             c_b.serverPosX += packet30Entity.xPosition;
             c_b.serverPosY += packet30Entity.yPosition;
@@ -371,8 +371,8 @@ extends NetHandler {
 
     @Override
     public void handleRide(Packet39AttachEntity packet39AttachEntity) {
-        C_b c_b = this.getEntityByID(packet39AttachEntity.entityId);
-        C_b c_b2 = this.getEntityByID(packet39AttachEntity.vehicleEntityId);
+        Entity c_b = this.getEntityByID(packet39AttachEntity.entityId);
+        Entity c_b2 = this.getEntityByID(packet39AttachEntity.vehicleEntityId);
         if (packet39AttachEntity.entityId == this.mc.f.entityId) {
             c_b = this.mc.f;
         }
@@ -490,8 +490,8 @@ extends NetHandler {
 
     @Override
     public void handleCollect(Packet22Collect packet22Collect) {
-        C_b c_b = this.getEntityByID(packet22Collect.collectedEntityId);
-        C_e c_e = (C_e)this.getEntityByID(packet22Collect.collectorEntityId);
+        Entity c_b = this.getEntityByID(packet22Collect.collectedEntityId);
+        EntityLiving c_e = (EntityLiving)this.getEntityByID(packet22Collect.collectorEntityId);
         if (c_e == null) {
             c_e = this.mc.f;
         }
@@ -545,7 +545,7 @@ extends NetHandler {
         float f3 = (float)packet24MobSpawn.zPosition / 32.0f;
         float f4 = (float)(packet24MobSpawn.yaw * 360) / 256.0f;
         float f5 = (float)(packet24MobSpawn.pitch * 360) / 256.0f;
-        C_e c_e = (C_e)C_f.createEntity(packet24MobSpawn.type, this.mc.d);
+        EntityLiving c_e = (EntityLiving)EntityList.createEntity(packet24MobSpawn.type, this.mc.d);
         c_e.serverPosX = packet24MobSpawn.xPosition;
         c_e.serverPosY = packet24MobSpawn.yPosition;
         c_e.serverPosZ = packet24MobSpawn.zPosition;
@@ -632,7 +632,7 @@ extends NetHandler {
 
     @Override
     public void handleStatus(Packet38EntityStatus packet38EntityStatus) {
-        C_b c_b = this.getEntityByID(packet38EntityStatus.entityId);
+        Entity c_b = this.getEntityByID(packet38EntityStatus.entityId);
         if (c_b != null) {
             c_b.handleHealthUpdate(packet38EntityStatus.entityStatus);
         }
@@ -640,7 +640,7 @@ extends NetHandler {
 
     @Override
     public void handlePlayerState(Packet26PlayerState packet26PlayerState) {
-        C_b c_b = this.getEntityByID(packet26PlayerState.entityId);
+        Entity c_b = this.getEntityByID(packet26PlayerState.entityId);
         if (c_b != null) {
             if (packet26PlayerState.type <= 2) {
                 c_b.isSneaking = packet26PlayerState.type;
@@ -652,7 +652,7 @@ extends NetHandler {
         }
     }
 
-    private C_b getEntityByID(int n) {
+    private Entity getEntityByID(int n) {
         return n == this.mc.f.entityId ? this.mc.f : this.level.getEntityByID(n);
     }
 
@@ -768,7 +768,7 @@ extends NetHandler {
 
     @Override
     public void handlePlayerInventory(Packet5PlayerInventory packet5PlayerInventory) {
-        C_b c_b = this.getEntityByID(packet5PlayerInventory.entityID);
+        Entity c_b = this.getEntityByID(packet5PlayerInventory.entityID);
         if (c_b != null) {
             c_b.outfitWithItem(packet5PlayerInventory.slot, packet5PlayerInventory.getItemSlot());
         }
@@ -938,7 +938,7 @@ extends NetHandler {
 
     @Override
     public void handleArmAnimation(Packet19Animation packet19Animation) {
-        C_b c_b = this.getEntityByID(packet19Animation.entityId);
+        Entity c_b = this.getEntityByID(packet19Animation.entityId);
         if (c_b != null && packet19Animation.animate == 1) {
             EntityPlayer entityPlayer = (EntityPlayer)c_b;
             entityPlayer.swingItem();

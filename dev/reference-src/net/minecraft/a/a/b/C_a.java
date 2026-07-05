@@ -17,7 +17,7 @@ extends C_q {
     private Random a = new Random();
 
     protected C_a(int n) {
-        super(54, net.minecraft.a.a.d.C_c.c);
+        super(54, net.minecraft.a.a.d.Material.c);
         this.as = 26;
     }
 
@@ -167,8 +167,8 @@ extends C_q {
                     n4 = itemStack.a;
                 }
                 itemStack.a -= n4;
-                net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.d));
-                new net.minecraft.a.c.c.C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.d)).k = (float)this.a.nextGaussian() * 0.05f;
+                net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.d));
+                new net.minecraft.a.c.c.EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.d)).k = (float)this.a.nextGaussian() * 0.05f;
                 c_b.l = (float)this.a.nextGaussian() * 0.05f + 0.2f;
                 c_b.m = (float)this.a.nextGaussian() * 0.05f;
                 c_g.a(c_b);

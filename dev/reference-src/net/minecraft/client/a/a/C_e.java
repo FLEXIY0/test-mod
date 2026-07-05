@@ -9,7 +9,7 @@ package net.minecraft.client.a.a;
 import java.util.Random;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.a.RenderEngine;
@@ -130,8 +130,8 @@ extends C_f {
     }
 
     @Override
-    public final void a(net.minecraft.a.c.C_b c_b, float f, float f2, float f3, float f4, float f5) {
-        C_b c_b2 = (C_b)c_b;
+    public final void a(net.minecraft.a.c.Entity c_b, float f, float f2, float f3, float f4, float f5) {
+        EntityItem c_b2 = (EntityItem)c_b;
         C_e c_e = this;
         this.e.setSeed(187L);
         ItemStack itemStack = c_b2.a;

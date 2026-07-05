@@ -9,7 +9,7 @@ import net.minecraft.a.a.b.C_q;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_b;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public final class C_s
@@ -17,7 +17,7 @@ extends C_q {
     private final boolean a;
 
     protected C_s(int n, boolean bl) {
-        super(n, C_c.d);
+        super(n, Material.d);
         this.a = bl;
         this.as = 45;
     }

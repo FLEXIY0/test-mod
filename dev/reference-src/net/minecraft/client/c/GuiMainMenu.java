@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Random;
 import net.minecraft.a.a.LevelOptions;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.C_c;
 import net.minecraft.client.Lang;
 import net.minecraft.client.a.C_d;
@@ -86,7 +86,7 @@ extends GuiScreen {
             exception.printStackTrace();
             this.player.name = "ERROR!";
         }
-        this.b.e.a((C_b)this.player);
+        this.b.e.a((Entity)this.player);
         C_i.a.cacheActiveRenderInfo(null, this.b.m, this.b.n, this.player, 0.0f);
         File file = new File(this.b.z, this.player.skinId);
         if (!file.exists()) {

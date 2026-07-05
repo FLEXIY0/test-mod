@@ -7,10 +7,10 @@ import com.a.a.NBTTagCompound;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 
 public class C_c
-extends C_b {
+extends Entity {
     public static final long serialVersionUID = 0L;
     public int id;
     private Random random = new Random();
@@ -84,10 +84,10 @@ extends C_b {
         f = this.random.nextFloat() * f + (1.0f - f) * 0.5f;
         int n = this.d.a((int)this.h, (int)this.i, (int)this.j);
         int n2 = this.d.a((int)this.h, (int)this.i - 1, (int)this.j);
-        net.minecraft.a.a.d.C_c c_c = this.d.f((int)this.h, (int)this.i, (int)this.j);
+        net.minecraft.a.a.d.Material c_c = this.d.f((int)this.h, (int)this.i, (int)this.j);
         if (this.s || n2 == Block.quickSand.at) {
             if (!this.d.multiplayerWorld) {
-                if (!this.d.a(this.h, this.i, this.j) && n != 0 && c_c != net.minecraft.a.a.d.C_c.f && c_c != net.minecraft.a.a.d.C_c.g && c_c != net.minecraft.a.a.d.C_c.pulley || n2 == Block.stalactite.at) {
+                if (!this.d.a(this.h, this.i, this.j) && n != 0 && c_c != net.minecraft.a.a.d.Material.f && c_c != net.minecraft.a.a.d.Material.g && c_c != net.minecraft.a.a.d.Material.pulley || n2 == Block.stalactite.at) {
                     this.a(this.id, 1);
                 } else {
                     this.d.b((int)this.h, (int)this.i, (int)this.j, this.id);

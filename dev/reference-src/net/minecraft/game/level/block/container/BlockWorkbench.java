@@ -5,13 +5,13 @@ package net.minecraft.game.level.block.container;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public final class BlockWorkbench
 extends Block {
     public BlockWorkbench(int n) {
-        super(58, C_c.c);
+        super(58, Material.c);
         this.as = 107;
     }
 

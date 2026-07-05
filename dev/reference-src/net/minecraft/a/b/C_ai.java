@@ -8,7 +8,7 @@ import net.minecraft.a.a.b.C_ao;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.b.C_b;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
@@ -97,7 +97,7 @@ extends Item {
     }
 
     @Override
-    public void saddleEntity(ItemStack itemStack, C_e c_e, EntityPlayer entityPlayer) {
+    public void saddleEntity(ItemStack itemStack, EntityLiving c_e, EntityPlayer entityPlayer) {
         if (c_e instanceof C_b) {
             C_b c_b = (C_b)c_e;
             int n = C_ao.getClothColor(itemStack.getItemDamage());

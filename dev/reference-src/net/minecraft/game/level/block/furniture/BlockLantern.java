@@ -7,12 +7,12 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class BlockLantern
 extends Block {
     public BlockLantern(int n, int n2) {
-        super(n, n2, C_c.solid);
+        super(n, n2, Material.solid);
         this.a(true);
     }
 

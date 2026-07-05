@@ -50,7 +50,7 @@ public class CauldronTest {
         ok(TileEntityCauldron.ingredientToEffect(Item.k.ap) == -1, "iron ingot brews nothing");
 
         // 4. tile entity registered for save/load
-        Field nm = Class.forName("net.minecraft.a.a.C_o").getDeclaredField("nameToClassMap");
+        Field nm = Class.forName("net.minecraft.a.a.TileEntityRegistry").getDeclaredField("nameToClassMap");
         nm.setAccessible(true);
         Map<?, ?> map = (Map<?, ?>) nm.get(null);
         ok(map.get("Cauldron") == TileEntityCauldron.class, "tile entity 'Cauldron' mapped");

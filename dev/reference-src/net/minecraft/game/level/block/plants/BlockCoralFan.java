@@ -6,14 +6,14 @@ package net.minecraft.game.level.block.plants;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public class BlockCoralFan
 extends Block {
     private static String[] NAME_LIST = new String[]{"Tube", "Fire", "Bubble", "Brain"};
 
-    public BlockCoralFan(int n, int n2, C_c c_c) {
+    public BlockCoralFan(int n, int n2, Material c_c) {
         super(n, n2, c_c);
         this.hasStates = true;
     }
@@ -40,7 +40,7 @@ extends Block {
 
     @Override
     public boolean a(World c_g, int n, int n2, int n3) {
-        return this.canThisPlantGrowOnThisBlockID(c_g.a(n, n2 - 1, n3)) && c_g.f(n, n2, n3) == C_c.f;
+        return this.canThisPlantGrowOnThisBlockID(c_g.a(n, n2 - 1, n3)) && c_g.f(n, n2, n3) == Material.f;
     }
 
     protected boolean canThisPlantGrowOnThisBlockID(int n) {
@@ -67,7 +67,7 @@ extends Block {
 
     @Override
     public boolean canBlockStay(World c_g, int n, int n2, int n3) {
-        return this.canThisPlantGrowOnThisBlockID(c_g.a(n, n2 - 1, n3)) && c_g.f(n, n2, n3) == C_c.f;
+        return this.canThisPlantGrowOnThisBlockID(c_g.a(n, n2 - 1, n3)) && c_g.f(n, n2, n3) == Material.f;
     }
 
     @Override

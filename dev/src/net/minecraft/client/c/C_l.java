@@ -87,7 +87,7 @@ extends Gui {
                 this.renderVignette(this.d.f.a(f), n2, n3);
             }
             if ((f2 = this.d.f.prevTimeInPortal + (this.d.f.timeInPortal - this.d.f.prevTimeInPortal) * f) > 0.0f) {
-                if (this.d.f.isInsideOfMaterial(net.minecraft.a.a.d.C_c.portal)) {
+                if (this.d.f.isInsideOfMaterial(net.minecraft.a.a.d.Material.portal)) {
                     this.meta = this.d.d.e(MathHelper.d(this.d.f.h), MathHelper.d(this.d.f.i), MathHelper.d(this.d.f.j));
                 }
                 this.renderPortalOverlay(f2, n2, n3);

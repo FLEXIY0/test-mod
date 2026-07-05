@@ -5,18 +5,18 @@ package net.minecraft.game.level.block.furniture;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class BlockRod
 extends Block {
-    public BlockRod(int n, int n2, C_c c_c) {
+    public BlockRod(int n, int n2, Material c_c) {
         super(n, n2, c_c);
         this.a(0.41666666f, 0.0f, 0.41666666f, 0.5833333f, 1.0f, 0.5833333f);
     }
 
     @Override
     public boolean a(World c_g, int n, int n2, int n3) {
-        return c_g.a(n, n2 - 1, n3) == Block.B.at ? true : (c_g.a(n, n2 - 1, n3) == Block.table.at ? true : (c_g.a(n, n2 - 1, n3) == Block.wall.at ? true : (c_g.a(n, n2 - 1, n3) == Block.fence.at ? true : (c_g.f(n, n2, n3) == C_c.f ? false : (!c_g.b(n, n2 - 1, n3) ? false : (c_g.a(n, n2 - 1, n3) == this.at ? false : super.a(c_g, n, n2, n3)))))));
+        return c_g.a(n, n2 - 1, n3) == Block.B.at ? true : (c_g.a(n, n2 - 1, n3) == Block.table.at ? true : (c_g.a(n, n2 - 1, n3) == Block.wall.at ? true : (c_g.a(n, n2 - 1, n3) == Block.fence.at ? true : (c_g.f(n, n2, n3) == Material.f ? false : (!c_g.b(n, n2 - 1, n3) ? false : (c_g.a(n, n2 - 1, n3) == this.at ? false : super.a(c_g, n, n2, n3)))))));
     }
 
     @Override

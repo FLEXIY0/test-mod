@@ -5,11 +5,11 @@ package net.minecraft.a.a.b;
 
 import java.util.Random;
 import net.minecraft.a.a.b.C_ae;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_u
 extends C_ae {
-    public C_u(int n, int n2, C_c c_c, boolean bl) {
+    public C_u(int n, int n2, Material c_c, boolean bl) {
         super(n, n2, c_c, false);
     }
 

@@ -6,12 +6,12 @@ package net.minecraft.a.b.a;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 
 public final class C_q {
     private Object[][] recipeItems = new Object[][]{{Block.i, new ItemStack(Block.Z, 6, 0)}, {Block.aa, new ItemStack(Block.Z, 6, 1)}, {Block.l, new ItemStack(Block.Z, 6, 2)}, {Block.ad, new ItemStack(Block.Z, 6, 3)}, {Block.brimStoneBrick, new ItemStack(Block.Z, 6, 8)}, {Block.moonRockBrick, new ItemStack(Block.Z, 6, 11)}};
 
-    public final void addRecipes(C_f c_f) {
+    public final void addRecipes(CraftingManager c_f) {
         ItemStack itemStack;
         Object object;
         int n;

@@ -7,7 +7,7 @@ import net.minecraft.a.C_c;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 import net.minecraft.a.c.e.C_b;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.a.C_a;
@@ -49,7 +49,7 @@ extends C_c {
 
     @Override
     public void onCraftMatrixChanged(net.minecraft.a.C_b c_b) {
-        this.craftResult.a(0, C_f.a().findMatchingRecipe(this.craftMatrix));
+        this.craftResult.a(0, CraftingManager.a().findMatchingRecipe(this.craftMatrix));
     }
 
     @Override

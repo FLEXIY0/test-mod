@@ -5,14 +5,14 @@ package net.minecraft.game.level.block.machines;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import util.MathHelper;
 
 public class BlockFan
 extends Block {
     public BlockFan(int n, int n2) {
-        super(n, n2, C_c.e);
+        super(n, n2, Material.e);
     }
 
     @Override

@@ -11,7 +11,7 @@ import net.minecraft.a.a.b.C_n;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
 import net.minecraft.client.d;
@@ -19,8 +19,8 @@ import net.minecraft.client.statistics.AchievementList;
 import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
 
-public class C_e
-extends C_b {
+public class EntityLiving
+extends Entity {
     public int S = 20;
     public float T = 0.0f;
     public float U = 0.0f;
@@ -56,7 +56,7 @@ extends C_b {
     protected float newRotationYaw;
     protected float newRotationPitch;
 
-    public C_e(World c_g) {
+    public EntityLiving(World c_g) {
         super(c_g);
         this.isJumping = false;
         this.am = 0.7f;
@@ -67,7 +67,7 @@ extends C_b {
         this.E = 0.5f;
     }
 
-    public C_e(World c_g, float f, float f2, float f3) {
+    public EntityLiving(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.isJumping = false;
         this.am = 0.7f;
@@ -299,7 +299,7 @@ extends C_b {
         }
     }
 
-    public boolean canEntityBeSeen(C_b c_b) {
+    public boolean canEntityBeSeen(Entity c_b) {
         return this.d.a(new C_a(this.h, this.i + this.n(), this.j), new C_a(c_b.h, c_b.i + c_b.n(), c_b.j)) == null;
     }
 
@@ -353,7 +353,7 @@ extends C_b {
     }
 
     @Override
-    public boolean attackEntityFrom(C_b c_b, int n, float f) {
+    public boolean attackEntityFrom(Entity c_b, int n, float f) {
         if (this.d.multiplayerWorld) {
             return false;
         }
@@ -423,7 +423,7 @@ extends C_b {
         return "random.hurt";
     }
 
-    public void d(C_b c_b) {
+    public void d(Entity c_b) {
         if (!this.d.multiplayerWorld) {
             this.dropFewItems(c_b);
         }
@@ -443,7 +443,7 @@ extends C_b {
         }
     }
 
-    protected void dropFewItems(C_b c_b) {
+    protected void dropFewItems(Entity c_b) {
         int n = this.itemDropped();
         if (n > 0) {
             ItemStack itemStack;
@@ -533,7 +533,7 @@ extends C_b {
 
     public void f() {
         float f;
-        C_b c_b;
+        Entity c_b;
         int n;
         float f2;
         if (this.newPosRotationIncrements > 0) {
@@ -610,10 +610,10 @@ extends C_b {
         }
         this.ag += (f2 - this.ag) * 0.4f;
         this.ah += this.ag;
-        List<C_b> list = this.d.a(this, this.r.b(0.2f, 0.0f, 0.2f));
+        List<Entity> list = this.d.a(this, this.r.b(0.2f, 0.0f, 0.2f));
         if (list != null && list.size() > 0) {
             for (int i = 0; i < list.size(); ++i) {
-                C_b c_b3 = list.get(i);
+                Entity c_b3 = list.get(i);
                 if (!c_b3.p()) continue;
                 c_b3.c(this);
             }
@@ -790,7 +790,7 @@ extends C_b {
         } else if (by == 3) {
             this.d.a(this, this.i(), 1.0f, (this.G.nextFloat() - this.G.nextFloat()) * 0.2f + 1.0f);
             this.W = 0;
-            this.d((C_b)null);
+            this.d((Entity)null);
         } else {
             super.handleHealthUpdate(by);
         }

@@ -63,8 +63,8 @@ extends Item {
                 float f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f5 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f6 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(c_g, f + f4, f2 + f5, f3 + f6, new ItemStack(n));
-                new net.minecraft.a.c.c.C_b(c_g, f + f4, f2 + f5, f3 + f6, new ItemStack(n)).O = 10;
+                net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(c_g, f + f4, f2 + f5, f3 + f6, new ItemStack(n));
+                new net.minecraft.a.c.c.EntityItem(c_g, f + f4, f2 + f5, f3 + f6, new ItemStack(n)).O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }
             return true;

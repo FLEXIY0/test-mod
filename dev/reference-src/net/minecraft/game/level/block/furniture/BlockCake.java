@@ -6,7 +6,7 @@ package net.minecraft.game.level.block.furniture;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_b;
 import net.minecraft.client.statistics.AchievementList;
@@ -15,7 +15,7 @@ import net.minecraft.client.statistics.StatList;
 public class BlockCake
 extends Block {
     public BlockCake(int n, int n2) {
-        super(n, n2, C_c.cake);
+        super(n, n2, Material.cake);
         this.a(true);
         this.hasStates = true;
     }

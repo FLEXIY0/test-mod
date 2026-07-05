@@ -4,7 +4,7 @@
 package net.minecraft.a.b;
 
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.C_g;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -18,7 +18,7 @@ extends C_g {
     public C_a(int n, int n2) {
         super(n, 2, n2, as);
         this.at = n2;
-        this.materialEffectiveAgainst = C_c.d;
+        this.materialEffectiveAgainst = Material.d;
     }
 
     @Override
@@ -26,7 +26,7 @@ extends C_g {
         if (this.ap == 285) {
             return c_x == Block.ae && c_x == Block.blockAdminium && c_x == Block.oreAdminium ? this.at > 3 : true;
         }
-        return c_x == Block.ae ? this.at > 3 : (c_x != Block.blockAdminium && c_x != Block.oreAdminium ? (c_x != Block.am && c_x != Block.al ? (c_x != Block.W && c_x != Block.v && c_x != Block.blockEmerald && c_x != Block.oreEmerald ? (c_x != Block.X && c_x != Block.w ? (c_x.getMaterial(n) == C_c.d || c_x.getMaterial(n) == C_c.magma || c_x.getMaterial(n) == C_c.pulley || c_x.getMaterial(n) == C_c.vacuum ? true : c_x.getMaterial(n) == C_c.e) : this.at > 0) : this.at >= 2) : this.at >= 3) : this.at > 3);
+        return c_x == Block.ae ? this.at > 3 : (c_x != Block.blockAdminium && c_x != Block.oreAdminium ? (c_x != Block.am && c_x != Block.al ? (c_x != Block.W && c_x != Block.v && c_x != Block.blockEmerald && c_x != Block.oreEmerald ? (c_x != Block.X && c_x != Block.w ? (c_x.getMaterial(n) == Material.d || c_x.getMaterial(n) == Material.magma || c_x.getMaterial(n) == Material.pulley || c_x.getMaterial(n) == Material.vacuum ? true : c_x.getMaterial(n) == Material.e) : this.at > 0) : this.at >= 2) : this.at >= 3) : this.at > 3);
     }
 
     @Override

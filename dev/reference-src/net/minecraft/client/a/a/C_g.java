@@ -18,8 +18,8 @@ import net.minecraft.a.b.C_n;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.a.C_f;
 import net.minecraft.client.a.a.C_j;
@@ -95,7 +95,7 @@ extends C_j {
     }
 
     @Override
-    protected void passSpecialRender(C_e c_e, float f, float f2, float f3) {
+    protected void passSpecialRender(EntityLiving c_e, float f, float f2, float f3) {
         EntityPlayer entityPlayer = (EntityPlayer)c_e;
         if (net.minecraft.client.d.isGuiEnabled() && this.a.livingPlayer != null && c_e != this.a.livingPlayer) {
             FontRenderer fontRenderer = this.getFontRendererFromRenderManager();
@@ -134,7 +134,7 @@ extends C_j {
     }
 
     @Override
-    protected final boolean a(C_e c_e, int n) {
+    protected final boolean a(EntityLiving c_e, int n) {
         Item item;
         EntityPlayer entityPlayer = (EntityPlayer)c_e;
         int n2 = n;
@@ -159,7 +159,7 @@ extends C_j {
     }
 
     @Override
-    protected final boolean renderAccessories(C_e c_e, int n) {
+    protected final boolean renderAccessories(EntityLiving c_e, int n) {
         EntityPlayer entityPlayer;
         EntityPlayer entityPlayer2 = entityPlayer = (EntityPlayer)c_e;
         C_aa c_aa = this.modelAccessories;
@@ -338,22 +338,22 @@ extends C_j {
     }
 
     @Override
-    protected void rotateCorpse(C_e c_e, float f, float f2, float f3) {
+    protected void rotateCorpse(EntityLiving c_e, float f, float f2, float f3) {
         this.rotatePlayer((EntityPlayer)c_e, f, f2, f3);
     }
 
     @Override
-    protected final void renderEquippedItems(C_e c_e, float f) {
+    protected final void renderEquippedItems(EntityLiving c_e, float f) {
         this.renderSpecials((EntityPlayer)c_e, f);
     }
 
     @Override
-    public final void renderEntity(C_e c_e, float f, float f2, float f3, float f4, float f5) {
+    public final void renderEntity(EntityLiving c_e, float f, float f2, float f3, float f4, float f5) {
         this.a((EntityPlayer)c_e, f, f2, f3, f4, f5);
     }
 
     @Override
-    public final void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public final void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
         this.a((EntityPlayer)c_b, f, f2, f3, f4, f5);
     }
 }

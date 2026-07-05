@@ -14,7 +14,7 @@ import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.C_bt;
 import net.minecraft.a.a.b.C_p;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.client.a.C_d;
 import net.minecraft.game.level.block.container.BlockChest;
 import net.minecraft.game.level.block.furniture.BlockBed;
@@ -1002,7 +1002,7 @@ public final class C_f {
         Block c_x2 = c_x;
         C_d c_d = C_d.a;
         boolean bl = false;
-        C_c c_c = c_x2.getMaterial(0);
+        Material c_c = c_x2.getMaterial(0);
         c_x2.av = 0.0f;
         c_x2.ay = 1.0f - this.getFluidHeight(n6, n5, n4, c_c);
         if (this.flipTexture || this.c || c_x.d(this.a, n6, n5 - 1, n4, 0)) {
@@ -1050,7 +1050,7 @@ public final class C_f {
         return bl;
     }
 
-    private float getFluidHeight(int n, int n2, int n3, C_c c_c) {
+    private float getFluidHeight(int n, int n2, int n3, Material c_c) {
         if (this.a.b(n, n2, n3)) {
             return 0.0f;
         }
@@ -2983,7 +2983,7 @@ public final class C_f {
     }
 
     private float a(int n, int n2, int n3) {
-        if (this.a.f(n, n2, n3) != C_c.f) {
+        if (this.a.f(n, n2, n3) != Material.f) {
             return 1.0f;
         }
         return (float)this.a.e(n, n2, n3) / 9.0f;

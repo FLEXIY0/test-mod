@@ -8,9 +8,9 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_f;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.game.level.block.container.BlockContainer;
 
@@ -19,7 +19,7 @@ extends BlockContainer {
     private Random random = new Random();
 
     public BlockBookshelf(int n, int n2) {
-        super(n, C_c.c);
+        super(n, Material.c);
         this.as = n2;
         this.hasStates = true;
     }
@@ -79,8 +79,8 @@ extends BlockContainer {
                 if (nBTTagCompound != null) {
                     itemStack2 = new ItemStack(itemStack.c, n4, itemStack.d, nBTTagCompound);
                 }
-                C_b c_b = new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, itemStack2);
-                new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, itemStack2).k = (float)this.random.nextGaussian() * 0.05f;
+                EntityItem c_b = new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, itemStack2);
+                new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, itemStack2).k = (float)this.random.nextGaussian() * 0.05f;
                 c_b.l = (float)this.random.nextGaussian() * 0.05f + 0.2f;
                 c_b.m = (float)this.random.nextGaussian() * 0.05f;
                 c_g.spawnEntityInWorld(c_b);

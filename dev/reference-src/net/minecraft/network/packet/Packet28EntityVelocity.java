@@ -6,7 +6,7 @@ package net.minecraft.network.packet;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.network.NetHandler;
 import net.minecraft.network.packet.Packet;
 
@@ -20,7 +20,7 @@ extends Packet {
     public Packet28EntityVelocity() {
     }
 
-    public Packet28EntityVelocity(C_b c_b) {
+    public Packet28EntityVelocity(Entity c_b) {
         this(c_b.entityId, c_b.k, c_b.l, c_b.m);
     }
 

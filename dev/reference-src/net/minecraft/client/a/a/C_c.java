@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_d;
 import net.minecraft.client.a.a.C_j;
 import net.minecraft.client.b.C_k;
@@ -20,7 +20,7 @@ extends C_j {
     }
 
     @Override
-    protected final void a(C_e c_e, float f) {
+    protected final void a(EntityLiving c_e, float f) {
         float f2 = ((C_d)c_e).getFlashTime(f);
         f = 1.0f + MathHelper.a(f2 * 100.0f) * f2 * 0.01f;
         if (f2 < 0.0f) {
@@ -37,7 +37,7 @@ extends C_j {
     }
 
     @Override
-    protected final int a(C_e c_e, float f, float f2) {
+    protected final int a(EntityLiving c_e, float f, float f2) {
         float f3 = ((C_d)c_e).getFlashTime(f2);
         if ((int)(f3 * 10.0f) % 2 == 0) {
             return 0;

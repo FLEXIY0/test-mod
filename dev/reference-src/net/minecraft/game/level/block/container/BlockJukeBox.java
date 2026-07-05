@@ -6,16 +6,16 @@ package net.minecraft.game.level.block.container;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_k;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.game.level.block.container.BlockContainer;
 
 public class BlockJukeBox
 extends BlockContainer {
     public BlockJukeBox(int n, int n2) {
-        super(n, C_c.c);
+        super(n, Material.c);
         this.as = n2;
     }
 
@@ -66,7 +66,7 @@ extends BlockContainer {
                 float f2 = c_g.q.nextFloat() * f + (1.0f - f) * 0.5f;
                 float f3 = c_g.q.nextFloat() * f + (1.0f - f) * 0.2f + 0.6f;
                 float f4 = c_g.q.nextFloat() * f + (1.0f - f) * 0.5f;
-                C_b c_b = new C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n4, 1, 0));
+                EntityItem c_b = new EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n4, 1, 0));
                 c_b.O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }

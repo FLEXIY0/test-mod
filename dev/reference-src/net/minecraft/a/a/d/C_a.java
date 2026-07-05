@@ -3,10 +3,10 @@
  */
 package net.minecraft.a.a.d;
 
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_a
-extends C_c {
+extends Material {
     @Override
     public final boolean a() {
         return false;

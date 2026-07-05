@@ -957,7 +957,7 @@ public final class C_a {
             int var153 = this.i.nextInt(this.f - 2 * var141) + var141;
             int var165 = this.i.nextInt(this.h - 2 * var141) + var141;
             int var170 = this.i.nextInt(this.g - 2 * var141) + var141;
-            if (var6.f(var153, var165, var170) == net.minecraft.a.a.d.C_c.f) {
+            if (var6.f(var153, var165, var170) == net.minecraft.a.a.d.Material.f) {
                this.generateSpheres(var153, var165, var170, var141, Block.B.at, var6);
             }
 
@@ -1683,12 +1683,12 @@ public final class C_a {
          int var7 = var3 + var2.nextInt(4) - var2.nextInt(4);
          int var8 = var4;
          int var9 = var5 + var2.nextInt(4) - var2.nextInt(4);
-         if (var1.f(var7, var4, var9) == net.minecraft.a.a.d.C_c.a
+         if (var1.f(var7, var4, var9) == net.minecraft.a.a.d.Material.a
             && (
-               var1.f(var7 - 1, var4 - 1, var9) == net.minecraft.a.a.d.C_c.f
-                  || var1.f(var7 + 1, var4 - 1, var9) == net.minecraft.a.a.d.C_c.f
-                  || var1.f(var7, var4 - 1, var9 - 1) == net.minecraft.a.a.d.C_c.f
-                  || var1.f(var7, var4 - 1, var9 + 1) == net.minecraft.a.a.d.C_c.f
+               var1.f(var7 - 1, var4 - 1, var9) == net.minecraft.a.a.d.Material.f
+                  || var1.f(var7 + 1, var4 - 1, var9) == net.minecraft.a.a.d.Material.f
+                  || var1.f(var7, var4 - 1, var9 - 1) == net.minecraft.a.a.d.Material.f
+                  || var1.f(var7, var4 - 1, var9 + 1) == net.minecraft.a.a.d.Material.f
             )) {
             int var10 = 2 + var2.nextInt(var2.nextInt(3) + 1);
 
@@ -1708,7 +1708,7 @@ public final class C_a {
          int var7 = var3 + var2.nextInt(4) - var2.nextInt(4);
          int var8 = var4;
          int var9 = var5 + var2.nextInt(4) - var2.nextInt(4);
-         if (var1.f(var7, var4, var9) == net.minecraft.a.a.d.C_c.a
+         if (var1.f(var7, var4, var9) == net.minecraft.a.a.d.Material.a
             && (
                var1.a(var7 + 1, var4, var9) == Block.moss.at
                   || var1.a(var7 - 1, var4, var9) == Block.moss.at
@@ -1744,7 +1744,7 @@ public final class C_a {
          int var8 = var3 + var2.nextInt(8) - var2.nextInt(8);
          int var9 = var4 + var2.nextInt(4) - var2.nextInt(4);
          int var10 = var5 + var2.nextInt(8) - var2.nextInt(8);
-         if (var1.f(var8, var9, var10) == net.minecraft.a.a.d.C_c.a
+         if (var1.f(var8, var9, var10) == net.minecraft.a.a.d.Material.a
             && var1.a(var8, var9 - 1, var10) == Block.j.at
             && Block.pumpkin.canExist(var1, var8, var9, var10)) {
             var1.a(var8, var9, var10, var6);

@@ -7,7 +7,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.GuiScreen;
 import net.minecraft.client.c.a.C_m;
@@ -244,20 +244,20 @@ extends C_a {
     }
 
     @Override
-    public void attackEntity(EntityPlayer entityPlayer, C_b c_b, float f) {
+    public void attackEntity(EntityPlayer entityPlayer, Entity c_b, float f) {
         this.syncCurrentPlayItem();
         this.netClientHandler.addToSendQueue(new Packet7UseEntity(entityPlayer.entityId, c_b.entityId, 1));
         entityPlayer.attackTargetEntityWithCurrentItem(c_b, f);
     }
 
-    public void attackEntityWithCharm(EntityPlayer entityPlayer, C_b c_b, float f) {
+    public void attackEntityWithCharm(EntityPlayer entityPlayer, Entity c_b, float f) {
         this.syncCurrentPlayItem();
         this.netClientHandler.addToSendQueue(new Packet7UseEntity(entityPlayer.entityId, c_b.entityId, 2));
         entityPlayer.attackTargetEntityWithCharm(c_b, f);
     }
 
     @Override
-    public void interactWithEntity(EntityPlayer entityPlayer, C_b c_b) {
+    public void interactWithEntity(EntityPlayer entityPlayer, Entity c_b) {
         this.syncCurrentPlayItem();
         this.netClientHandler.addToSendQueue(new Packet7UseEntity(entityPlayer.entityId, c_b.entityId, 0));
         entityPlayer.useCurrentItemOnEntity(c_b);

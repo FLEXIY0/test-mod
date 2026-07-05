@@ -10,7 +10,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_m;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -18,15 +18,15 @@ import net.minecraft.client.statistics.AchievementList;
 import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
 
-public class C_b
-extends net.minecraft.a.c.C_b {
+public class EntityItem
+extends net.minecraft.a.c.Entity {
     public ItemStack a;
     public int b = 0;
     public int O;
     private int R = 5;
     public float P = (float)(Math.random() * Math.PI * 2.0);
 
-    public C_b(World c_g, float f, float f2, float f3, ItemStack itemStack) {
+    public EntityItem(World c_g, float f, float f2, float f3, ItemStack itemStack) {
         super(c_g);
         this.a(0.25f, 0.25f);
         this.v = this.x / 2.0f;
@@ -39,7 +39,7 @@ extends net.minecraft.a.c.C_b {
         this.A = false;
     }
 
-    public C_b(World c_g) {
+    public EntityItem(World c_g) {
         super(c_g);
         this.a(0.25f, 0.25f);
         this.v = this.x / 2.0f;
@@ -108,7 +108,7 @@ extends net.minecraft.a.c.C_b {
                 }
             }
         }
-        if (this.d.f((int)this.h, (int)this.i, (int)this.j) == C_c.g) {
+        if (this.d.f((int)this.h, (int)this.i, (int)this.j) == Material.g) {
             this.l = 0.2f;
             this.k = (this.G.nextFloat() - this.G.nextFloat()) * 0.2f;
             this.m = (this.G.nextFloat() - this.G.nextFloat()) * 0.2f;
@@ -230,7 +230,7 @@ extends net.minecraft.a.c.C_b {
                 this.k();
             }
         }
-        if (this.isInsideOfMaterial(C_c.portal) && !this.d.multiplayerWorld && this.a.c == Item.dyePowder.ap) {
+        if (this.isInsideOfMaterial(Material.portal) && !this.d.multiplayerWorld && this.a.c == Item.dyePowder.ap) {
             n4 = (int)this.h;
             n3 = (int)this.i;
             n2 = (int)this.j;
@@ -293,7 +293,7 @@ extends net.minecraft.a.c.C_b {
         return this.d.isBoundingBoxLava(this.r);
     }
 
-    public final boolean attackEntityFrom(net.minecraft.a.c.C_b c_b, int n) {
+    public final boolean attackEntityFrom(net.minecraft.a.c.Entity c_b, int n) {
         this.R -= n;
         if (this.R <= 0) {
             this.k();

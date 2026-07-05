@@ -7,13 +7,13 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_ae;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.client.statistics.AchievementList;
 
 public class C_az
 extends C_ae {
-    protected C_az(int n, int n2, C_c c_c) {
+    protected C_az(int n, int n2, Material c_c) {
         super(n, n2, c_c, false);
         this.a(true);
     }
@@ -41,8 +41,8 @@ extends C_ae {
         for (int i = -2; i < 3; ++i) {
             for (int j = -2; j < 3; ++j) {
                 for (int k = -2; k < 3; ++k) {
-                    C_c c_c = c_g.f(n + i, n2 + k, n3 + j);
-                    if (c_g.a(n + i, n2 + k, n3 + j) != Block.af.at && c_c != C_c.g && c_c != C_c.l) continue;
+                    Material c_c = c_g.f(n + i, n2 + k, n3 + j);
+                    if (c_g.a(n + i, n2 + k, n3 + j) != Block.af.at && c_c != Material.g && c_c != Material.l) continue;
                     c_g.b(n, n2, n3, Block.p.at);
                 }
             }

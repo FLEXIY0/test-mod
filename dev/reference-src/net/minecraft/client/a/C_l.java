@@ -4,7 +4,7 @@
 package net.minecraft.client.a;
 
 import java.util.Comparator;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.a.C_h;
 
 public final class C_l
@@ -13,7 +13,7 @@ implements Comparator<C_h> {
     private double entityPosY;
     private double entityPosZ;
 
-    public C_l(C_b c_b) {
+    public C_l(Entity c_b) {
         this.entityPosX = -c_b.h;
         this.entityPosY = -c_b.i;
         this.entityPosZ = -c_b.j;

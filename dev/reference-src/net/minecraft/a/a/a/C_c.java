@@ -24,15 +24,15 @@ public final class C_c {
         this.a = c_g;
     }
 
-    public final C_b a(net.minecraft.a.c.C_b c_b, net.minecraft.a.c.C_b c_b2, float f) {
+    public final C_b a(net.minecraft.a.c.Entity c_b, net.minecraft.a.c.Entity c_b2, float f) {
         return this.a(c_b, c_b2.h, c_b2.r.b, c_b2.j, f);
     }
 
-    public final C_b a(net.minecraft.a.c.C_b c_b, int n, int n2, int n3, float f) {
+    public final C_b a(net.minecraft.a.c.Entity c_b, int n, int n2, int n3, float f) {
         return this.a(c_b, (float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, f);
     }
 
-    private C_b a(net.minecraft.a.c.C_b c_b, float f, float f2, float f3, float f4) {
+    private C_b a(net.minecraft.a.c.Entity c_b, float f, float f2, float f3, float f4) {
         C_b c_b2;
         this.b.a();
         this.c.clear();
@@ -42,7 +42,7 @@ public final class C_c {
         float f5 = f4;
         C_a c_a4 = c_a3;
         C_a c_a5 = c_a2;
-        net.minecraft.a.c.C_b c_b3 = c_b;
+        net.minecraft.a.c.Entity c_b3 = c_b;
         C_c c_c = this;
         c_a.f = 0.0f;
         c_a.h = c_a.g = c_a.a(c_a2);
@@ -109,7 +109,7 @@ public final class C_c {
         return c_b2;
     }
 
-    private C_a a(net.minecraft.a.c.C_b c_b, int n, int n2, int n3, C_a c_a, int n4) {
+    private C_a a(net.minecraft.a.c.Entity c_b, int n, int n2, int n3, C_a c_a, int n4) {
         C_a c_a2 = null;
         if (this.a(n, n2, n3, c_a) > 0) {
             c_a2 = this.a(n, n2, n3);
@@ -122,8 +122,8 @@ public final class C_c {
             while (true) {
                 int n5;
                 if (n2 <= 0 || (n5 = this.a(n, n2 - 1, n3, c_a)) <= 0) {
-                    net.minecraft.a.a.d.C_c c_c = this.a.f(n, n2 - 1, n3);
-                    if (c_c != net.minecraft.a.a.d.C_c.f && c_c != net.minecraft.a.a.d.C_c.g && c_c != net.minecraft.a.a.d.C_c.magma && c_c != net.minecraft.a.a.d.C_c.cactus && c_c != net.minecraft.a.a.d.C_c.quicksand) break;
+                    net.minecraft.a.a.d.Material c_c = this.a.f(n, n2 - 1, n3);
+                    if (c_c != net.minecraft.a.a.d.Material.f && c_c != net.minecraft.a.a.d.Material.g && c_c != net.minecraft.a.a.d.Material.magma && c_c != net.minecraft.a.a.d.Material.cactus && c_c != net.minecraft.a.a.d.Material.quicksand) break;
                     return null;
                 }
                 if (n5 < 0) {
@@ -159,12 +159,12 @@ public final class C_c {
                 }
                 for (int k = n3; k < n3 + c_a.c; ++k) {
                     if (k >= 0 && k < this.a.b) {
-                        net.minecraft.a.a.d.C_c c_c = this.a.f(n, n2, n3);
+                        net.minecraft.a.a.d.Material c_c = this.a.f(n, n2, n3);
                         Block c_x = Block.c[this.a.a(n, n2, n3)];
                         if (c_c.c() && !(c_x instanceof C_bs) && !(c_x instanceof C_am) && !(c_x instanceof C_bq)) {
                             return 0;
                         }
-                        if (c_c != net.minecraft.a.a.d.C_c.f && c_c != net.minecraft.a.a.d.C_c.g) {
+                        if (c_c != net.minecraft.a.a.d.Material.f && c_c != net.minecraft.a.a.d.Material.g) {
                             continue;
                         }
                         return -1;

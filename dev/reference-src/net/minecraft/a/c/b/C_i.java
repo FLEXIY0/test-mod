@@ -7,7 +7,7 @@ import com.a.a.NBTTagCompound;
 import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
@@ -87,7 +87,7 @@ extends C_c {
     }
 
     @Override
-    protected void dropFewItems(C_b c_b) {
+    protected void dropFewItems(Entity c_b) {
         int n = this.itemDropped();
         if (n > 0) {
             ItemStack itemStack;
@@ -122,7 +122,7 @@ extends C_c {
 
     @Override
     public boolean isInWater() {
-        return this.d.a(this.r.b(0.0f, -0.6f, 0.0f), net.minecraft.a.a.d.C_c.f);
+        return this.d.a(this.r.b(0.0f, -0.6f, 0.0f), net.minecraft.a.a.d.Material.f);
     }
 
     @Override
@@ -195,7 +195,7 @@ extends C_c {
         } else if (!this.b.r()) {
             this.b = null;
         } else {
-            C_b c_b = this.b;
+            Entity c_b = this.b;
             float f2 = this.b.h - this.h;
             float f3 = c_b.i - this.i;
             f = c_b.j - this.j;
@@ -207,12 +207,12 @@ extends C_c {
     }
 
     @Override
-    protected C_b b() {
+    protected Entity b() {
         return this.d.y.b(this) < 256.0f ? this.d.y : null;
     }
 
     @Override
-    protected void a(C_b c_b, float f) {
+    protected void a(Entity c_b, float f) {
         if ((double)f < 1.5 && c_b.r.e > this.r.b && c_b.r.b < this.r.e) {
             this.ac = 20;
             c_b.attackEntityFrom(this, 2, 0.4f);

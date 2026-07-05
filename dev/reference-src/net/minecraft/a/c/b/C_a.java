@@ -6,7 +6,7 @@ package net.minecraft.a.c.b;
 import com.a.a.NBTTagCompound;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.C_c;
 
 public abstract class C_a
@@ -41,7 +41,7 @@ extends C_c {
     }
 
     @Override
-    public boolean attackEntityFrom(C_b c_b, int n, float f) {
+    public boolean attackEntityFrom(Entity c_b, int n, float f) {
         this.panic = 100;
         return super.attackEntityFrom(c_b, n, f);
     }

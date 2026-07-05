@@ -5,12 +5,12 @@ package net.minecraft.a.a.b;
 
 import java.util.Random;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_r
 extends Block {
     public C_r(int n, int n2) {
-        super(n, n2, C_c.d);
+        super(n, n2, Material.d);
     }
 
     @Override

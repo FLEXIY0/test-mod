@@ -6,13 +6,13 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_ae;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class C_bo
 extends C_ae {
     private static String[] NAME_LIST = new String[]{"Red", "Orange", "Yellow", "Chartreuse", "Green", "Spring Green", "Cyan", "Capri", "Ultramarine", "Violet", "Purple", "Magenta", "Rose", "Dark Gray", "Light Gray", "White"};
 
-    protected C_bo(int n, int n2, C_c c_c, boolean bl) {
+    protected C_bo(int n, int n2, Material c_c, boolean bl) {
         super(n, n2, c_c, bl);
         this.hasStates = true;
     }

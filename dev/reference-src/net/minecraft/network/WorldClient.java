@@ -6,7 +6,7 @@ package net.minecraft.network;
 import java.util.HashSet;
 import java.util.Set;
 import net.minecraft.a.a.World;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.d;
 import net.minecraft.network.NetClientHandler;
 import net.minecraft.network.packet.Packet0KeepAlive;
@@ -17,8 +17,8 @@ public class WorldClient
 extends World {
     private NetClientHandler sendQueue;
     private C_d entityHashSet = new C_d();
-    private Set<C_b> entityList = new HashSet<C_b>();
-    private Set<C_b> entitySpawnQueue = new HashSet<C_b>();
+    private Set<Entity> entityList = new HashSet<Entity>();
+    private Set<Entity> entitySpawnQueue = new HashSet<Entity>();
     private d mc;
 
     public WorldClient(d d2, NetClientHandler netClientHandler) {
@@ -64,7 +64,7 @@ extends World {
 
     public void reloadNearEntities() {
         for (int i = 0; i < 10 && !this.entitySpawnQueue.isEmpty(); ++i) {
-            C_b c_b = this.entitySpawnQueue.iterator().next();
+            Entity c_b = this.entitySpawnQueue.iterator().next();
             if (this.loadedEntityList.contains(c_b)) continue;
             this.spawnEntityInWorld(c_b);
             this.entitySpawnQueue.remove(c_b);
@@ -72,7 +72,7 @@ extends World {
     }
 
     @Override
-    public boolean spawnEntityInWorld(C_b c_b) {
+    public boolean spawnEntityInWorld(Entity c_b) {
         boolean bl = super.spawnEntityInWorld(c_b);
         this.entityList.add(c_b);
         if (!bl) {
@@ -82,13 +82,13 @@ extends World {
     }
 
     @Override
-    public void setEntityDead(C_b c_b) {
+    public void setEntityDead(Entity c_b) {
         super.setEntityDead(c_b);
         this.entityList.remove(c_b);
     }
 
     @Override
-    public void obtainEntitySkin(C_b c_b) {
+    public void obtainEntitySkin(Entity c_b) {
         super.obtainEntitySkin(c_b);
         if (this.entitySpawnQueue.contains(c_b)) {
             this.entitySpawnQueue.remove(c_b);
@@ -96,7 +96,7 @@ extends World {
     }
 
     @Override
-    public void b(C_b c_b) {
+    public void b(Entity c_b) {
         super.b(c_b);
         if (this.entityList.contains(c_b)) {
             if (c_b.r()) {
@@ -107,8 +107,8 @@ extends World {
         }
     }
 
-    public void addEntityToWorld(int n, C_b c_b) {
-        C_b c_b2 = this.getEntityByID(n);
+    public void addEntityToWorld(int n, Entity c_b) {
+        Entity c_b2 = this.getEntityByID(n);
         if (c_b2 != null) {
             this.setEntityDead(c_b2);
             this.removeEntityFromWorld(n);
@@ -121,12 +121,12 @@ extends World {
         this.entityHashSet.addKey(n, c_b);
     }
 
-    public C_b getEntityByID(int n) {
-        return n == this.mc.f.entityId ? this.mc.f : (C_b)this.entityHashSet.lookup(n);
+    public Entity getEntityByID(int n) {
+        return n == this.mc.f.entityId ? this.mc.f : (Entity)this.entityHashSet.lookup(n);
     }
 
-    public C_b removeEntityFromWorld(int n) {
-        C_b c_b = (C_b)this.entityHashSet.removeObject(n);
+    public Entity removeEntityFromWorld(int n) {
+        Entity c_b = (Entity)this.entityHashSet.removeObject(n);
         if (c_b != null) {
             this.entityList.remove(c_b);
             this.setEntityDead(c_b);

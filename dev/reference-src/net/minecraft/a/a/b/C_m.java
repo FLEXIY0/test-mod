@@ -7,7 +7,7 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_p;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public final class C_m
@@ -20,10 +20,10 @@ extends C_p {
     private boolean[] isOptimalFlowDirection = new boolean[4];
     private int[] flowCost = new int[4];
 
-    protected C_m(int n, C_c c_c) {
+    protected C_m(int n, Material c_c) {
         super(n, c_c);
         this.as = 14;
-        if (c_c == C_c.g) {
+        if (c_c == Material.g) {
             this.as = 46;
         }
         Block.g[n] = true;
@@ -107,10 +107,10 @@ extends C_p {
             }
             return false;
         }
-        if (this.aC == C_c.f) {
+        if (this.aC == Material.f) {
             bl = bl | C_m.h(c_g, n - 1, n2, n3) | C_m.h(c_g, n + 1, n2, n3) | C_m.h(c_g, n, n2, n3 - 1) | C_m.h(c_g, n, n2, n3 + 1);
         }
-        if (this.aC == C_c.g) {
+        if (this.aC == Material.g) {
             bl = bl | C_m.i(c_g, n - 1, n2, n3) | C_m.i(c_g, n + 1, n2, n3) | C_m.i(c_g, n, n2, n3 - 1) | C_m.i(c_g, n, n2, n3 + 1);
         }
         if (!bl) {
@@ -145,10 +145,10 @@ extends C_p {
                 n5 = this.getFlowDecay(c_g, n, n2 + 1, n3);
                 n4 = n5 >= 8 ? n5 : n5 + 8;
             }
-            if (this.numAdjacentSources >= 2 && this.aC == C_c.f) {
+            if (this.numAdjacentSources >= 2 && this.aC == Material.f) {
                 n4 = 0;
             }
-            if (this.aC == C_c.g && n6 < 8 && n4 < 8 && n4 > n6 && random.nextInt(4) != 0) {
+            if (this.aC == Material.g && n6 < 8 && n4 < 8 && n4 > n6 && random.nextInt(4) != 0) {
                 n4 = n6;
                 bl = false;
             }
@@ -270,8 +270,8 @@ extends C_p {
     }
 
     private boolean liquidCanDisplaceBlock(World c_g, int n, int n2, int n3) {
-        C_c c_c = c_g.f(n, n2, n3);
-        return c_c == this.aC ? false : (c_c == C_c.g ? false : !C_m.blockBlocksFlow(c_g, n, n2, n3));
+        Material c_c = c_g.f(n, n2, n3);
+        return c_c == this.aC ? false : (c_c == Material.g ? false : !C_m.blockBlocksFlow(c_g, n, n2, n3));
     }
 
     private static boolean blockBlocksFlow(World c_g, int n, int n2, int n3) {
@@ -340,7 +340,7 @@ extends C_p {
 
     @Override
     public final int e() {
-        return this.aC == C_c.g ? 25 : 5;
+        return this.aC == Material.g ? 25 : 5;
     }
 
     @Override
@@ -350,7 +350,7 @@ extends C_p {
 
     @Override
     public final int f() {
-        return this.aC == C_c.f ? 1 : 0;
+        return this.aC == Material.f ? 1 : 0;
     }
 
     private static boolean h(World c_g, int n, int n2, int n3) {

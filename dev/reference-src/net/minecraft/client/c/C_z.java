@@ -6,7 +6,7 @@ package net.minecraft.client.c;
 import java.util.HashMap;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_a;
 import net.minecraft.a.c.a.C_b;
 import net.minecraft.a.c.a.C_c;
@@ -199,7 +199,7 @@ public class C_z {
                         break;
                     }
                     case "human": {
-                        d2.d.spawnEntityInWorld(new C_e(d2.d, f, f2, f3));
+                        d2.d.spawnEntityInWorld(new EntityLiving(d2.d, f, f2, f3));
                         d2.t.addChatMessage("Often mistaken for Herobrine. Spawned a \u00a7e" + stringArray[1]);
                         break;
                     }

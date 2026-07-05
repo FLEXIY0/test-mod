@@ -3,8 +3,8 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.client.a.a.C_j;
 import net.minecraft.client.b.C_ab;
 
@@ -17,17 +17,17 @@ extends C_j {
     }
 
     @Override
-    protected float a(C_e c_e) {
+    protected float a(EntityLiving c_e) {
         return 180.0f;
     }
 
     @Override
-    protected boolean a(C_e c_e, int n) {
+    protected boolean a(EntityLiving c_e, int n) {
         return false;
     }
 
     @Override
-    public void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
         int n = ((C_ab)this.d).cunkf();
         if (n != this.tint) {
             this.tint = n;

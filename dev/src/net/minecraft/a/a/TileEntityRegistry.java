@@ -18,7 +18,7 @@ import net.minecraft.a.a.b.a.C_k;
 import net.minecraft.a.a.b.a.C_l;
 import net.minecraft.a.a.b.a.C_m;
 
-public class C_o {
+public class TileEntityRegistry {
     private static Map<String, Class<? extends TileEntity>> nameToClassMap = new HashMap<String, Class<? extends TileEntity>>();
     private static Map<Class<? extends TileEntity>, String> classToNameMap = new HashMap<Class<? extends TileEntity>, String>();
 
@@ -50,18 +50,18 @@ public class C_o {
     }
 
     static {
-        C_o.addMapping(C_c.class, "Chest");
-        C_o.addMapping(C_b.class, "Furnace");
-        C_o.addMapping(C_h.class, "Generator");
-        C_o.addMapping(C_f.class, "Bookshelf");
-        C_o.addMapping(C_e.class, "Barrel");
-        C_o.addMapping(C_m.class, "Vacuum");
-        C_o.addMapping(C_l.class, "Sign");
-        C_o.addMapping(C_k.class, "Jukebox");
-        C_o.addMapping(C_i.class, "Noteblock");
-        C_o.addMapping(C_g.class, "Dispenser");
-        C_o.addMapping(net.minecraft.a.a.b.a.TileEntityNetherReactor.class, "NetherReactor");
-        C_o.addMapping(net.minecraft.a.a.b.a.TileEntityCauldron.class, "Cauldron");
+        TileEntityRegistry.addMapping(C_c.class, "Chest");
+        TileEntityRegistry.addMapping(C_b.class, "Furnace");
+        TileEntityRegistry.addMapping(C_h.class, "Generator");
+        TileEntityRegistry.addMapping(C_f.class, "Bookshelf");
+        TileEntityRegistry.addMapping(C_e.class, "Barrel");
+        TileEntityRegistry.addMapping(C_m.class, "Vacuum");
+        TileEntityRegistry.addMapping(C_l.class, "Sign");
+        TileEntityRegistry.addMapping(C_k.class, "Jukebox");
+        TileEntityRegistry.addMapping(C_i.class, "Noteblock");
+        TileEntityRegistry.addMapping(C_g.class, "Dispenser");
+        TileEntityRegistry.addMapping(net.minecraft.a.a.b.a.TileEntityNetherReactor.class, "NetherReactor");
+        TileEntityRegistry.addMapping(net.minecraft.a.a.b.a.TileEntityCauldron.class, "Cauldron");
     }
 }
 

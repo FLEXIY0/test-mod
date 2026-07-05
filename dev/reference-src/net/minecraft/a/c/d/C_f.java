@@ -7,8 +7,8 @@ import com.a.a.NBTTagCompound;
 import java.util.List;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_j;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
@@ -17,12 +17,12 @@ import net.minecraft.client.statistics.AchievementList;
 import util.MathHelper;
 
 public class C_f
-extends C_b {
+extends Entity {
     private int xTileSnowball = -1;
     private int yTileSnowball = -1;
     private int zTileSnowball = -1;
     private int inTileSnowball = 0;
-    public C_e thrower;
+    public EntityLiving thrower;
     private int ticksInAirSnowball = 0;
 
     public C_f(World c_g) {
@@ -34,7 +34,7 @@ extends C_b {
     protected void entityInit() {
     }
 
-    public C_f(World c_g, C_e c_e) {
+    public C_f(World c_g, EntityLiving c_e) {
         super(c_g);
         this.thrower = c_e;
         this.a(0.25f, 0.25f);
@@ -90,15 +90,15 @@ extends C_b {
             c_a2 = c_a.a(c_c.f.a, c_c.f.b, c_c.f.c);
         }
         if (!this.d.multiplayerWorld) {
-            C_b c_b = null;
-            List<C_b> list = this.d.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
+            Entity c_b = null;
+            List<Entity> list = this.d.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
             double d2 = 0.0;
             for (int i = 0; i < list.size(); ++i) {
                 float f;
                 float f2;
                 net.minecraft.a.d.C_b c_b2;
                 C_c c_c2;
-                C_b c_b3 = list.get(i);
+                Entity c_b3 = list.get(i);
                 if (!c_b3.d() || c_b3 == this.thrower && this.ticksInAirSnowball < 5 || (c_c2 = (c_b2 = c_b3.r.b(f2 = 0.3f, f2, f2)).a(c_a, c_a2)) == null || !((double)(f = c_a.b(c_c2.f)) < d2) && d2 != 0.0) continue;
                 c_b = c_b3;
                 d2 = f;

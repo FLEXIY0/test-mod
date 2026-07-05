@@ -9,27 +9,27 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_c;
 import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
 
 public class C_a
-extends C_b {
+extends Entity {
     private int b = -1;
     private int O = -1;
     private int P = -1;
     private int Q = 0;
     private boolean R = false;
     public int a = 0;
-    public C_e S;
+    public EntityLiving S;
     private int T;
     private int U = 0;
     public int arrowType = 0;
 
-    public C_a(World c_g, C_e c_e, int n, float f) {
+    public C_a(World c_g, EntityLiving c_e, int n, float f) {
         super(c_g);
         this.S = c_e;
         this.a(0.5f, 0.5f);
@@ -120,12 +120,12 @@ extends C_b {
         if (c_c != null) {
             c_a = new net.minecraft.a.d.C_a(c_c.f.a, c_c.f.b, c_c.f.c);
         }
-        C_b c_b = null;
-        List<C_b> list = this.d.r.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
+        Entity c_b = null;
+        List<Entity> list = this.d.r.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
         float f2 = 0.0f;
         for (int i = 0; i < list.size(); ++i) {
             C_c c_c2;
-            C_b c_b2 = list.get(i);
+            Entity c_b2 = list.get(i);
             if (!c_b2.d() || c_b2 == this.S && this.U < 5 || (c_c2 = c_b2.r.b(0.3f, 0.3f, 0.3f).a((net.minecraft.a.d.C_a)object, c_a)) == null || !((f = ((net.minecraft.a.d.C_a)object).b(c_c2.f)) < f2) && f2 != 0.0f) continue;
             c_b = c_b2;
             f2 = f;
@@ -147,8 +147,8 @@ extends C_b {
                     if (c_c.g.attackEntityFrom(this, n, f3)) {
                         this.d.a(this, "random.drr", 1.0f, 1.2f / (this.G.nextFloat() * 0.2f + 0.9f));
                         this.k();
-                        if (this.S instanceof EntityPlayer && c_c.g instanceof C_e && ((C_e)c_c.g).W <= 0) {
-                            this.S.awardKillScore(c_c.g, ((C_e)c_c.g).c());
+                        if (this.S instanceof EntityPlayer && c_c.g instanceof EntityLiving && ((EntityLiving)c_c.g).W <= 0) {
+                            this.S.awardKillScore(c_c.g, ((EntityLiving)c_c.g).c());
                         }
                     }
                 } else {

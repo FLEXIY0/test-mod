@@ -64,7 +64,7 @@ public class ReactorTest {
         ok((Integer) pat.invoke(null, 2, 0, 1) == cobble, "L2 edge = cobble");
 
         // 4. tile entity is registered for save/load
-        Class<?> reg = Class.forName("net.minecraft.a.a.C_o");
+        Class<?> reg = Class.forName("net.minecraft.a.a.TileEntityRegistry");
         Field nm = reg.getDeclaredField("nameToClassMap"); nm.setAccessible(true);
         Map<?, ?> map = (Map<?, ?>) nm.get(null);
         ok(map.get("NetherReactor") == Class.forName("net.minecraft.a.a.b.a.TileEntityNetherReactor"),
@@ -75,7 +75,7 @@ public class ReactorTest {
         Class<?> pig = Class.forName("net.minecraft.a.c.a.EntityPigZombie");
         ok(pig.getSuperclass() == Class.forName("net.minecraft.a.c.a.C_f"),
                 "EntityPigZombie extends zombie (render fallback)");
-        Class<?> elist = Class.forName("net.minecraft.a.c.C_f");
+        Class<?> elist = Class.forName("net.minecraft.a.c.EntityList");
         Field s2c = elist.getDeclaredField("stringToClassMapping"); s2c.setAccessible(true);
         Map<?, ?> emap = (Map<?, ?>) s2c.get(null);
         ok(emap.get("PigZombie") == pig, "EntityPigZombie registered in EntityList as 'PigZombie'");

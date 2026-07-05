@@ -5,13 +5,13 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class C_ae
 extends Block {
     private boolean a;
 
-    protected C_ae(int n, int n2, C_c c_c, boolean bl) {
+    protected C_ae(int n, int n2, Material c_c, boolean bl) {
         super(n, n2, c_c);
         this.a = bl;
     }

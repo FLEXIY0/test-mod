@@ -5,13 +5,13 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public class C_bi
 extends Block {
     protected C_bi(int n) {
-        super(n, C_c.d);
+        super(n, Material.d);
         this.as = 613;
         this.hasStates = true;
     }

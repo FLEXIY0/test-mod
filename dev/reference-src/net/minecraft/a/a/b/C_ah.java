@@ -6,7 +6,7 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public final class C_ah
@@ -15,7 +15,7 @@ extends Block {
     private int[] b = new int[256];
 
     protected C_ah(int n, int n2) {
-        super(n, n2, C_c.l);
+        super(n, n2, Material.l);
         this.c(Block.m.at, 5, 20);
         this.c(Block.y.at, 5, 5);
         this.c(Block.log.at, 5, 5);

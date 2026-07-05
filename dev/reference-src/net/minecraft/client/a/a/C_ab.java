@@ -7,8 +7,8 @@
 package net.minecraft.client.a.a;
 
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.client.a.C_f;
 import net.minecraft.client.a.a.C_j;
 import net.minecraft.client.b.C_l;
@@ -51,16 +51,16 @@ extends C_j {
     }
 
     @Override
-    protected void renderEquippedItems(C_e c_e, float f) {
+    protected void renderEquippedItems(EntityLiving c_e, float f) {
         this.renderMooshroomEquippedItems((net.minecraft.a.c.b.C_j)c_e, f);
     }
 
-    public void doRenderLiving(C_e c_e, float f, float f2, float f3, float f4, float f5) {
+    public void doRenderLiving(EntityLiving c_e, float f, float f2, float f3, float f4, float f5) {
         this.renderLivingMooshroom((net.minecraft.a.c.b.C_j)c_e, f, f2, f3, f4, f5);
     }
 
     @Override
-    public void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
         this.renderLivingMooshroom((net.minecraft.a.c.b.C_j)c_b, f, f2, f3, f4, f5);
     }
 }

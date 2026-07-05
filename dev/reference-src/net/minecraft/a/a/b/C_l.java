@@ -4,12 +4,12 @@
 package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_l
 extends Block {
     protected C_l(int n, int n2) {
-        super(3, 2, C_c.b);
+        super(3, 2, Material.b);
     }
 
     @Override

@@ -6,7 +6,7 @@ package net.minecraft.a.c.b;
 import com.a.a.NBTTagCompound;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 import util.MathHelper;
@@ -98,7 +98,7 @@ extends C_c {
     }
 
     @Override
-    protected void dropFewItems(C_b c_b) {
+    protected void dropFewItems(Entity c_b) {
         int n = this.itemDropped();
         if (n > 0) {
             int n2 = this.G.nextInt(2);
@@ -154,7 +154,7 @@ extends C_c {
                 this.waypointZ = this.j;
             }
         }
-        if (!this.m() && this.d.f((int)this.h, (int)this.i - 1, (int)this.j) != net.minecraft.a.a.d.C_c.f) {
+        if (!this.m() && this.d.f((int)this.h, (int)this.i - 1, (int)this.j) != net.minecraft.a.a.d.Material.f) {
             this.attackEntityFrom(null, 2, 0.0f);
         }
     }
@@ -177,7 +177,7 @@ extends C_c {
 
     @Override
     public boolean l() {
-        return this.d.a(this.r.b(0.0f, 0.0f, 0.0f), net.minecraft.a.a.d.C_c.f);
+        return this.d.a(this.r.b(0.0f, 0.0f, 0.0f), net.minecraft.a.a.d.Material.f);
     }
 
     private void moveSwimming(float f, float f2) {

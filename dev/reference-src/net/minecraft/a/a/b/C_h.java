@@ -5,13 +5,13 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.c.C_a;
 
 public final class C_h
 extends Block {
     public C_h(int n, int n2) {
-        super(46, 8, C_c.p);
+        super(46, 8, Material.p);
     }
 
     @Override

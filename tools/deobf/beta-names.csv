@@ -3,7 +3,19 @@
 # methods/fields keep their obfuscated names (add readable aliases via a facade).
 # Re-runnable: add lines and re-run the pipeline (see tools/deobf/README.md).
 #
+# NOTE: renames are applied cumulatively to the current jar. Re-running RemapBeta
+# with an already-applied line errors (the old name is gone) — run each new batch
+# against the current jar via a delta CSV; this file is the full record.
+#
 # Batch 1 — core trinity (the three most-referenced engine classes):
 net/minecraft/a/a/b/C_x,net/minecraft/a/a/b/Block
 net/minecraft/a/a/C_g,net/minecraft/a/a/World
 net/minecraft/a/a/b/a/C_a,net/minecraft/a/a/b/a/TileEntity
+# Batch 2 — entities, registries, materials:
+net/minecraft/a/c/c/C_b,net/minecraft/a/c/c/EntityItem
+net/minecraft/a/c/C_b,net/minecraft/a/c/Entity
+net/minecraft/a/c/C_e,net/minecraft/a/c/EntityLiving
+net/minecraft/a/a/C_o,net/minecraft/a/a/TileEntityRegistry
+net/minecraft/a/b/a/C_f,net/minecraft/a/b/a/CraftingManager
+net/minecraft/a/c/C_f,net/minecraft/a/c/EntityList
+net/minecraft/a/a/d/C_c,net/minecraft/a/a/d/Material

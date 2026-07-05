@@ -5,7 +5,7 @@ package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
 import net.minecraft.a.a.World;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.b.C_a;
 
@@ -61,7 +61,7 @@ extends C_a {
 
     @Override
     public final boolean l() {
-        return this.d.a(this.r.b(0.0f, 0.0f, 0.0f), C_c.f);
+        return this.d.a(this.r.b(0.0f, 0.0f, 0.0f), Material.f);
     }
 
     @Override

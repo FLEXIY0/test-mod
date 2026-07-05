@@ -7,7 +7,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 
@@ -65,8 +65,8 @@ extends Item {
                             }
                         }
                     }
-                    C_b c_b = new C_b(c_g, (float)n + f5, (float)n2 + 1.2f, (float)n3 + f6, itemStack2);
-                    new C_b(c_g, (float)n + f5, (float)n2 + 1.2f, (float)n3 + f6, itemStack2).O = 10;
+                    EntityItem c_b = new EntityItem(c_g, (float)n + f5, (float)n2 + 1.2f, (float)n3 + f6, itemStack2);
+                    new EntityItem(c_g, (float)n + f5, (float)n2 + 1.2f, (float)n3 + f6, itemStack2).O = 10;
                     c_g.spawnEntityInWorld(c_b);
                 }
             }

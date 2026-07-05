@@ -9,7 +9,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
 import net.minecraft.a.d.C_c;
@@ -18,19 +18,19 @@ import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
 
 public class C_b
-extends net.minecraft.a.c.C_b {
+extends net.minecraft.a.c.Entity {
     private int xTile = -1;
     private int yTile = -1;
     private int zTile = -1;
     private int inTile = 0;
     private boolean inGround = false;
     public int arrowShake = 0;
-    public C_e owner;
+    public EntityLiving owner;
     private int ticksInGround;
     private int ticksInAir = 0;
     public int arrowType = 0;
 
-    public C_b(World c_g, C_e c_e, int n) {
+    public C_b(World c_g, EntityLiving c_e, int n) {
         super(c_g);
         this.owner = c_e;
         this.a(0.5f, 0.5f);
@@ -134,12 +134,12 @@ extends net.minecraft.a.c.C_b {
         if (c_c != null) {
             c_a = new C_a(c_c.f.a, c_c.f.b, c_c.f.c);
         }
-        net.minecraft.a.c.C_b c_b = null;
-        List<net.minecraft.a.c.C_b> list = this.d.r.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
+        net.minecraft.a.c.Entity c_b = null;
+        List<net.minecraft.a.c.Entity> list = this.d.r.a(this, this.r.a(this.k, this.l, this.m).b(1.0f, 1.0f, 1.0f));
         float f = 0.0f;
         for (int i = 0; i < list.size(); ++i) {
             float f2;
-            net.minecraft.a.c.C_b c_b2 = list.get(i);
+            net.minecraft.a.c.Entity c_b2 = list.get(i);
             if (!c_b2.d() || c_b2 == this.owner && this.ticksInAir < 5 || (object = c_b2.r.b(0.3f, 0.3f, 0.3f).a((C_a)object2, c_a)) == null || !((f2 = ((C_a)object2).b(((C_c)object).f)) < f) && f != 0.0f) continue;
             c_b = c_b2;
             f = f2;
@@ -160,9 +160,9 @@ extends net.minecraft.a.c.C_b {
                         if (this.arrowType == 1 || this.arrowType == 2) {
                             c_c.g.poison = 100;
                         }
-                        if (this.owner instanceof EntityPlayer && c_c.g instanceof C_e) {
-                            if (((C_e)c_c.g).W <= 0) {
-                                this.owner.awardKillScore(c_c.g, ((C_e)c_c.g).c());
+                        if (this.owner instanceof EntityPlayer && c_c.g instanceof EntityLiving) {
+                            if (((EntityLiving)c_c.g).W <= 0) {
+                                this.owner.awardKillScore(c_c.g, ((EntityLiving)c_c.g).c());
                             }
                             ((EntityPlayer)this.owner).triggerAchievement(AchievementList.fireArrow);
                         }

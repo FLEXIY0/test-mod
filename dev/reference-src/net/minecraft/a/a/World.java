@@ -24,7 +24,7 @@ import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.c.C_f;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.d;
@@ -66,7 +66,7 @@ public class World {
     public int w;
     public int x;
     private int K;
-    public net.minecraft.a.c.C_e y;
+    public net.minecraft.a.c.EntityLiving y;
     public boolean z;
     public int A;
     public int B;
@@ -115,9 +115,9 @@ public class World {
     protected int soundCounter;
     public boolean freezeWeatherUpdates;
     public List<EntityPlayer> playerEntities;
-    public List<C_b> loadedEntityList;
+    public List<Entity> loadedEntityList;
     public C_j chunkMap;
-    private List<C_b> unloadedEntityList;
+    private List<Entity> unloadedEntityList;
     public boolean revival;
     private static int lightingUpdatesScheduled;
     private List<net.minecraft.a.a.C_c> lightingToUpdate;
@@ -167,9 +167,9 @@ public class World {
         this.fogDistance = 512.0f;
         this.freezeWeatherUpdates = false;
         this.playerEntities = new ArrayList<EntityPlayer>();
-        this.loadedEntityList = new ArrayList<C_b>();
+        this.loadedEntityList = new ArrayList<Entity>();
         this.chunkMap = new C_j();
-        this.unloadedEntityList = new ArrayList<C_b>();
+        this.unloadedEntityList = new ArrayList<Entity>();
         this.revival = true;
         this.lightingToUpdate = new ArrayList<net.minecraft.a.a.C_c>();
         this.child = false;
@@ -384,7 +384,7 @@ public class World {
         this.n.remove(c_d);
     }
 
-    public List<net.minecraft.a.d.C_b> getCollidingBoundingBoxes(C_b c_b, net.minecraft.a.d.C_b c_b2) {
+    public List<net.minecraft.a.d.C_b> getCollidingBoundingBoxes(Entity c_b, net.minecraft.a.d.C_b c_b2) {
         this.collidingBoxes.clear();
         int n = MathHelper.a((double)c_b2.a);
         int n2 = MathHelper.a((double)c_b2.d + 1.0);
@@ -1297,7 +1297,7 @@ public class World {
     public int a(Class<?> clazz) {
         int n = 0;
         for (int i = 0; i < this.r.e.size(); ++i) {
-            C_b c_b = this.r.e.get(i);
+            Entity c_b = this.r.e.get(i);
             if (!clazz.isAssignableFrom(c_b.getClass())) continue;
             ++n;
         }
@@ -1411,7 +1411,7 @@ public class World {
         return false;
     }
 
-    public boolean a(net.minecraft.a.d.C_b c_b, net.minecraft.a.a.d.C_c c_c) {
+    public boolean a(net.minecraft.a.d.C_b c_b, net.minecraft.a.a.d.Material c_c) {
         int n = (int)c_b.d + 1;
         int n2 = (int)c_b.b;
         int n3 = (int)c_b.e + 1;
@@ -1450,7 +1450,7 @@ public class World {
     }
 
     public boolean e(net.minecraft.a.d.C_b c_b) {
-        List<C_b> list = this.r.a(null, c_b);
+        List<Entity> list = this.r.a(null, c_b);
         for (int i = 0; i < list.size(); ++i) {
             if (!list.get((int)i).c) continue;
             return false;
@@ -1458,7 +1458,7 @@ public class World {
         return true;
     }
 
-    public List<C_b> a(C_b c_b, net.minecraft.a.d.C_b c_b2) {
+    public List<Entity> a(Entity c_b, net.minecraft.a.d.C_b c_b2) {
         return this.r.a(c_b, c_b2);
     }
 
@@ -1483,14 +1483,14 @@ public class World {
 
     public int a(int n, int n2) {
         int n3;
-        for (n3 = this.c; (this.a(n, n3 - 1, n2) == 0 || Block.c[this.a(n, n3 - 1, n2)].getMaterial(this.a(n, n3 - 1, n2)) == net.minecraft.a.a.d.C_c.a) && n3 > 0; --n3) {
+        for (n3 = this.c; (this.a(n, n3 - 1, n2) == 0 || Block.c[this.a(n, n3 - 1, n2)].getMaterial(this.a(n, n3 - 1, n2)) == net.minecraft.a.a.d.Material.a) && n3 > 0; --n3) {
         }
         return n3;
     }
 
     public int getLastUncoveredBlock(int n, int n2) {
         int n3;
-        for (n3 = this.c / 4; (this.a(n, n3 + 1, n2) == 0 || Block.c[this.a(n, n3 + 1, n2)].getMaterial(this.a(n, n3 + 1, n2)) == net.minecraft.a.a.d.C_c.a) && n3 < this.c; ++n3) {
+        for (n3 = this.c / 4; (this.a(n, n3 + 1, n2) == 0 || Block.c[this.a(n, n3 + 1, n2)].getMaterial(this.a(n, n3 + 1, n2)) == net.minecraft.a.a.d.Material.a) && n3 < this.c; ++n3) {
         }
         return n3;
     }
@@ -1558,19 +1558,19 @@ public class World {
         return false;
     }
 
-    public net.minecraft.a.a.d.C_c f(int n, int n2, int n3) {
+    public net.minecraft.a.a.d.Material f(int n, int n2, int n3) {
         int n4 = this.a(n, n2, n3);
-        return n4 == 0 ? net.minecraft.a.a.d.C_c.a : Block.c[n4].getMaterial(this.e(n, n2, n3));
+        return n4 == 0 ? net.minecraft.a.a.d.Material.a : Block.c[n4].getMaterial(this.e(n, n2, n3));
     }
 
     public boolean g(int n, int n2, int n3) {
         int n4 = this.a(n, n2, n3);
-        return n4 > 0 && Block.c[n4].getMaterial(this.e(n, n2, n3)) == net.minecraft.a.a.d.C_c.f;
+        return n4 > 0 && Block.c[n4].getMaterial(this.e(n, n2, n3)) == net.minecraft.a.a.d.Material.f;
     }
 
     public boolean isLava(int n, int n2, int n3) {
         int n4 = this.a(n, n2, n3);
-        return n4 > 0 && Block.c[n4].getMaterial(this.e(n, n2, n3)) == net.minecraft.a.a.d.C_c.g;
+        return n4 > 0 && Block.c[n4].getMaterial(this.e(n, n2, n3)) == net.minecraft.a.a.d.Material.g;
     }
 
     public net.minecraft.a.d.C_c a(net.minecraft.a.d.C_a c_a, net.minecraft.a.d.C_a c_a2) {
@@ -2143,7 +2143,7 @@ public class World {
 
     public boolean growSwampTrees(World c_g, Random random, int n, int n2, int n3) {
         int n4 = random.nextInt(4) + 5;
-        while (c_g.f(n, n2 - 1, n3) == net.minecraft.a.a.d.C_c.f) {
+        while (c_g.f(n, n2 - 1, n3) == net.minecraft.a.a.d.Material.f) {
             --n2;
         }
         boolean bl = true;
@@ -3083,7 +3083,7 @@ public class World {
         if (n2 < n4) {
             return false;
         }
-        if (this.a(n, n2, n3) == Block.k.at && this.f(n, n2 + 1, n3) == net.minecraft.a.a.d.C_c.f && n2 < this.c - n4 - 1) {
+        if (this.a(n, n2, n3) == Block.k.at && this.f(n, n2 + 1, n3) == net.minecraft.a.a.d.Material.f && n2 < this.c - n4 - 1) {
             for (int i = 0; i < n4; ++i) {
                 if (!Block.seaweed.canBlockStay(this, n, n2 + i + 1, n3)) continue;
                 this.a(n, n2 + i + 1, n3, Block.seaweed.at);
@@ -3098,7 +3098,7 @@ public class World {
         if (n2 < n4) {
             return false;
         }
-        if (this.a(n, n2, n3) == Block.coral.at && this.f(n, n2 + 1, n3) == net.minecraft.a.a.d.C_c.f && n2 < this.c - n4 - 1) {
+        if (this.a(n, n2, n3) == Block.coral.at && this.f(n, n2 + 1, n3) == net.minecraft.a.a.d.Material.f && n2 < this.c - n4 - 1) {
             for (int i = 0; i < n4; ++i) {
                 if (!Block.coralFan.canBlockStay(this, n, n2 + i + 1, n3)) continue;
                 this.setBlockAndMetadata(n, n2 + i + 1, n3, Block.coralFan.at, this.e(n, n2, n3));
@@ -3199,11 +3199,11 @@ public class World {
         return false;
     }
 
-    public C_b i() {
+    public Entity i() {
         return this.y;
     }
 
-    public boolean spawnEntityInWorld(C_b c_b) {
+    public boolean spawnEntityInWorld(Entity c_b) {
         this.chunkMap.addEntity(c_b);
         this.r.a(c_b);
         c_b.a(this);
@@ -3215,20 +3215,20 @@ public class World {
         return true;
     }
 
-    public void obtainEntitySkin(C_b c_b) {
+    public void obtainEntitySkin(Entity c_b) {
         for (int i = 0; i < this.n.size(); ++i) {
             this.n.get(i).a(c_b);
         }
     }
 
-    public void b(C_b c_b) {
+    public void b(Entity c_b) {
         this.r.b(c_b);
         for (int i = 0; i < this.n.size(); ++i) {
             this.n.get(i).b(c_b);
         }
     }
 
-    public void a(C_b c_b, float f, float f2, float f3, float f4) {
+    public void a(Entity c_b, float f, float f2, float f3, float f4) {
         float f5;
         float f6;
         float f7;
@@ -3284,12 +3284,12 @@ public class World {
         int n9 = (int)(f2 + f4 + 1.0f);
         int n10 = (int)(f3 - f4 - 1.0f);
         int n11 = (int)(f3 + f4 + 1.0f);
-        List<C_b> list = this.r.a(c_b, n7, n5, n10, n6, n9, n11);
+        List<Entity> list = this.r.a(c_b, n7, n5, n10, n6, n9, n11);
         net.minecraft.a.d.C_a c_a = new net.minecraft.a.d.C_a(f, f2, f3);
         for (int i = 0; i < list.size(); ++i) {
             float f17;
-            C_b c_b2;
-            C_b c_b3 = c_b2 = list.get(i);
+            Entity c_b2;
+            Entity c_b3 = c_b2 = list.get(i);
             f9 = c_b2.h - f;
             float f18 = c_b3.i - f2;
             f7 = c_b3.j - f3;
@@ -3379,9 +3379,9 @@ public class World {
         return (float)n / (float)n2;
     }
 
-    public C_b b(Class<?> clazz) {
+    public Entity b(Class<?> clazz) {
         for (int i = 0; i < this.r.e.size(); ++i) {
-            C_b c_b = this.r.e.get(i);
+            Entity c_b = this.r.e.get(i);
             if (!clazz.isAssignableFrom(c_b.getClass())) continue;
             return c_b;
         }
@@ -3802,7 +3802,7 @@ public class World {
         return this.isBlockIndirectlyProvidingPowerTo(n, n2 - 1, n3, 0) ? true : (this.isBlockIndirectlyProvidingPowerTo(n, n2 + 1, n3, 1) ? true : (this.isBlockIndirectlyProvidingPowerTo(n, n2, n3 - 1, 2) ? true : (this.isBlockIndirectlyProvidingPowerTo(n, n2, n3 + 1, 3) ? true : (this.isBlockIndirectlyProvidingPowerTo(n - 1, n2, n3, 4) ? true : this.isBlockIndirectlyProvidingPowerTo(n + 1, n2, n3, 5)))));
     }
 
-    public void a(C_b c_b, String string, float f, float f2) {
+    public void a(Entity c_b, String string, float f, float f2) {
         for (int i = 0; i < this.n.size(); ++i) {
             float f3;
             float f4;
@@ -3997,11 +3997,11 @@ public class World {
         }
     }
 
-    public void setEntityDead(C_b c_b) {
+    public void setEntityDead(Entity c_b) {
         c_b.k();
     }
 
-    public void joinEntityInSurroundings(C_b c_b) {
+    public void joinEntityInSurroundings(Entity c_b) {
     }
 
     public void powerBlock(int n, int n2, int n3, int n4, int n5) {
@@ -4019,7 +4019,7 @@ public class World {
     }
 
     public void clearAllEntities() {
-        C_b c_b;
+        Entity c_b;
         int n;
         for (n = 0; n < this.unloadedEntityList.size(); ++n) {
             c_b = this.unloadedEntityList.get(n);
@@ -4038,7 +4038,7 @@ public class World {
     }
 
     public void updateEntityList() {
-        C_b c_b;
+        Entity c_b;
         int n;
         this.loadedEntityList.removeAll(this.unloadedEntityList);
         for (n = 0; n < this.unloadedEntityList.size(); ++n) {

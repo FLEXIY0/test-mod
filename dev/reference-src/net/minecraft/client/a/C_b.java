@@ -202,7 +202,7 @@ implements net.minecraft.a.a.C_d {
             for (int i = 0; i < c_i.b; ++i) {
                 for (int j = 0; j < c_i.c; ++j) {
                     boolean bl;
-                    List<net.minecraft.a.c.C_b> list = c_i.d[(j * c_i.b + i) * c_i.a + n];
+                    List<net.minecraft.a.c.Entity> list = c_i.d[(j * c_i.b + i) * c_i.a + n];
                     if (list.size() == 0) continue;
                     int n2 = (n << 3) + 4;
                     int n3 = (i << 3) + 4;
@@ -226,8 +226,8 @@ implements net.minecraft.a.a.C_d {
                         continue;
                     }
                     for (n2 = 0; n2 < list.size(); ++n2) {
-                        net.minecraft.a.c.C_b c_b;
-                        net.minecraft.a.c.C_b c_b2 = c_b = list.get(n2);
+                        net.minecraft.a.c.Entity c_b;
+                        net.minecraft.a.c.Entity c_b2 = c_b = list.get(n2);
                         f5 = c_b.h - c_a.a;
                         f4 = c_b2.i - c_a.b;
                         f6 = c_b2.j - c_a.c;
@@ -1006,9 +1006,9 @@ implements net.minecraft.a.a.C_d {
             } else if (string == "townaura") {
                 this.m.g.a(new net.minecraft.client.f.C_l(this.b, f, f2, f3, f4, f5, f6));
             } else if (string == "dripWater") {
-                this.m.g.a(new C_p(this.b, f, f2, f3, net.minecraft.a.a.d.C_c.f));
+                this.m.g.a(new C_p(this.b, f, f2, f3, net.minecraft.a.a.d.Material.f));
             } else if (string == "dripLava") {
-                this.m.g.a(new C_p(this.b, f, f2, f3, net.minecraft.a.a.d.C_c.g));
+                this.m.g.a(new C_p(this.b, f, f2, f3, net.minecraft.a.a.d.Material.g));
             } else if (string == "suspended") {
                 this.m.g.a(new C_aa(this.b, f, f2, f3, f4, f5, f6));
             } else if (string == "note") {
@@ -1038,14 +1038,14 @@ implements net.minecraft.a.a.C_d {
     }
 
     @Override
-    public final void a(net.minecraft.a.c.C_b c_b) {
+    public final void a(net.minecraft.a.c.Entity c_b) {
         if (c_b.N != null) {
             this.c.a(c_b.N, new net.minecraft.client.a.C_c());
         }
     }
 
     @Override
-    public final void b(net.minecraft.a.c.C_b c_b) {
+    public final void b(net.minecraft.a.c.Entity c_b) {
         if (c_b.N != null) {
             this.c.b(c_b.N);
         }

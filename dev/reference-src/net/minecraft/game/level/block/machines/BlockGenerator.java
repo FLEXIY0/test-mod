@@ -8,9 +8,9 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_h;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.d;
 import net.minecraft.client.statistics.AchievementList;
@@ -24,7 +24,7 @@ extends BlockContainer {
     private static boolean keepFurnaceInventory = false;
 
     public BlockGenerator(int n, boolean bl) {
-        super(n, C_c.e);
+        super(n, Material.e);
         this.isActive = bl;
         this.as = 556;
     }
@@ -185,7 +185,7 @@ extends BlockContainer {
                         n4 = itemStack.a;
                     }
                     itemStack.a -= n4;
-                    C_b c_b = new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.getItemDamage()));
+                    EntityItem c_b = new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(itemStack.c, n4, itemStack.getItemDamage()));
                     float f4 = 0.05f;
                     c_b.k = (float)this.furnaceRand.nextGaussian() * f4;
                     c_b.l = (float)this.furnaceRand.nextGaussian() * f4 + 0.2f;

@@ -15,12 +15,16 @@
 | `net.minecraft.a.a.b.Block` (`C_x`) | Block + реестр блоков (`Block.c[256]`) | статики-блоки, авто-ItemBlock |
 | `net.minecraft.a.a.World` (`C_g`) | World | `a(x,y,z)`=getBlockId, `a(x,y,z,id)`=setBlock, `e`=getMeta, `d`=setMeta, `j`=getTileEntity, `spawnEntityInWorld`, `markBlockNeedsUpdate` |
 | `net.minecraft.a.a.b.a.TileEntity` (`C_a`) | TileEntity база | `a`=world, `b/c/d`=x/y/z, `d()`=тик, `a(nbt)`/`b(nbt)`=read/write |
-| `net.minecraft.a.a.C_o` | реестр тайл-энтити | `addMapping(class,"Name")` |
+| `net.minecraft.a.a.TileEntityRegistry` (`C_o`) | реестр тайл-энтити | `addMapping(class,"Name")` |
+| `net.minecraft.a.a.d.Material` (`C_c`) | материал блока | `Material.d`=камень и т.п. |
 | `net.minecraft.a.b.Item` | Item + реестр (`Item.b[1024]`) | `ap`=id, `as`=иконка |
 | `net.minecraft.a.b.ItemStack` | ItemStack | `a`=count, `c`=itemID, `d`=meta |
-| `net.minecraft.a.b.a.C_f` | CraftingManager | `a(result, "###", ..., '#', ingr)`=shaped |
+| `net.minecraft.a.b.a.CraftingManager` (`C_f`) | крафт | `a(result, "###", ..., '#', ingr)`=shaped |
 | `net.minecraft.a.c.e.EntityPlayer` | игрок (не компилируется — 43 файла) | `S`=hp, `addHealth`, `J`=огонь, `k/l/m`=motion, `nightVision`, `b`=инвентарь |
-| `net.minecraft.a.c.c.C_b` | EntityItem | `new C_b(world,x,y,z,stack)`, `.O`=задержка |
+| `net.minecraft.a.c.Entity` (`C_b`) | базовая сущность | `spawnEntityInWorld` принимает её |
+| `net.minecraft.a.c.EntityLiving` (`C_e`) | живая сущность | `addHealth`, `S`=hp |
+| `net.minecraft.a.c.EntityList` (`C_f`) | реестр сущностей | `addMapping(class,"Name",id)` |
+| `net.minecraft.a.c.c.EntityItem` (`C_b`) | брошенный предмет | `new EntityItem(world,x,y,z,stack)`, `.O`=задержка |
 | `net.minecraft.client.d` | Minecraft (главный, **не переименовывать**) | `f`=игрок |
 
 ## Как добавить…

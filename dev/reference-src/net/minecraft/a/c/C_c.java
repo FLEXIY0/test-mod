@@ -4,15 +4,15 @@
 package net.minecraft.a.c;
 
 import net.minecraft.a.a.World;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.b.C_a;
 import util.MathHelper;
 
 public class C_c
-extends C_e {
+extends EntityLiving {
     protected net.minecraft.a.a.a.C_b a;
-    protected C_b b;
+    protected Entity b;
     protected boolean O = false;
     protected int panic;
 
@@ -45,7 +45,7 @@ extends C_e {
         } else if (!this.b.r()) {
             this.b = null;
         } else {
-            C_b c_b = this.b;
+            Entity c_b = this.b;
             f3 = this.b.h - this.h;
             f2 = c_b.i - this.i;
             f = c_b.j - this.j;
@@ -80,7 +80,7 @@ extends C_e {
                     n3 = n6;
                 }
                 if (n2 > 0) {
-                    this.a = this.d.C.a((C_b)this, n2, n, n3, 16.0f);
+                    this.a = this.d.C.a((Entity)this, n2, n, n3, 16.0f);
                 }
             }
             boolean bl = this.l();
@@ -123,14 +123,14 @@ extends C_e {
         }
     }
 
-    protected void a(C_b c_b, float f) {
+    protected void a(Entity c_b, float f) {
     }
 
     protected float a(int n, int n2, int n3) {
         return 0.0f;
     }
 
-    protected C_b b() {
+    protected Entity b() {
         return null;
     }
 

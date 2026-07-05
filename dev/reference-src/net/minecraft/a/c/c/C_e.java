@@ -5,12 +5,12 @@ package net.minecraft.a.c.c;
 
 import com.a.a.NBTTagCompound;
 import java.util.List;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_a;
 import net.minecraft.a.c.C_d;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.d.C_g;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
@@ -133,12 +133,12 @@ extends C_a {
         int n6 = (int)(this.i - (float)this.b.d / 32.0f);
         for (int i = 0; i < n2; ++i) {
             for (n = 0; n < n3; ++n) {
-                C_c c_c = this.a != 0 && this.a != 2 ? this.d.f(this.P, n6 + n, n5 + i) : this.d.f(n4 + i, n6 + n, this.R);
+                Material c_c = this.a != 0 && this.a != 2 ? this.d.f(this.P, n6 + n, n5 + i) : this.d.f(n4 + i, n6 + n, this.R);
                 if (c_c.a()) continue;
                 return false;
             }
         }
-        List<net.minecraft.a.c.C_b> list = this.d.r.a(this, this.r);
+        List<net.minecraft.a.c.Entity> list = this.d.r.a(this, this.r);
         for (n = 0; n < list.size(); ++n) {
             if (!(list.get(n) instanceof C_a)) continue;
             return false;
@@ -147,7 +147,7 @@ extends C_a {
     }
 
     @Override
-    public final boolean attackEntityFrom(net.minecraft.a.c.C_b c_b, int n, float f) {
+    public final boolean attackEntityFrom(net.minecraft.a.c.Entity c_b, int n, float f) {
         boolean bl;
         if (this.d.multiplayerWorld) {
             return true;
@@ -162,11 +162,11 @@ extends C_a {
         if (this.getDisplayedItem() == null) {
             this.k();
             if (bl) {
-                this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, new ItemStack(Item.itemFrame)));
+                this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(Item.itemFrame)));
             }
         } else {
             if (bl) {
-                this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, this.getDisplayedItem()));
+                this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, this.getDisplayedItem()));
             }
             this.setDisplayedItem(null);
         }
@@ -178,7 +178,7 @@ extends C_a {
         if (!this.c()) {
             if (this.O++ >= 1) {
                 this.k();
-                this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, new ItemStack(Item.itemFrame)));
+                this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(Item.itemFrame)));
             }
         } else {
             this.O = 0;
@@ -189,9 +189,9 @@ extends C_a {
     public void d(float f, float f2, float f3) {
         if (!this.d.multiplayerWorld && (double)(f * f + f2 * f2 + f3 * f3) > 0.0) {
             this.k();
-            this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, new ItemStack(Item.itemFrame)));
+            this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(Item.itemFrame)));
             if (this.getDisplayedItem() != null) {
-                this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, this.getDisplayedItem()));
+                this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, this.getDisplayedItem()));
             }
         }
     }
@@ -200,9 +200,9 @@ extends C_a {
     public void a(float f, float f2, float f3) {
         if (!this.d.multiplayerWorld && (double)(f * f + f2 * f2 + f3 * f3) > 0.0) {
             this.k();
-            this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, new ItemStack(Item.itemFrame)));
+            this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(Item.itemFrame)));
             if (this.getDisplayedItem() != null) {
-                this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, this.getDisplayedItem()));
+                this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, this.getDisplayedItem()));
             }
         }
     }

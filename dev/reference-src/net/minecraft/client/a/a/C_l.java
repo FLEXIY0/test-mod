@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.client.a.a.C_j;
 import org.lwjgl.opengl.GL11;
 
@@ -19,7 +19,7 @@ extends C_j {
     }
 
     @Override
-    protected final void a(C_e c_e, float f) {
+    protected final void a(EntityLiving c_e, float f) {
         GL11.glScalef((float)this.e, (float)this.e, (float)this.e);
     }
 }

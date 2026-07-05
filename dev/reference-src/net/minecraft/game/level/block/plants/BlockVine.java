@@ -6,13 +6,13 @@ package net.minecraft.game.level.block.plants;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public class BlockVine
 extends Block {
     public BlockVine(int n, int n2) {
-        super(n, n2, C_c.i);
+        super(n, n2, Material.i);
         this.a(true);
     }
 

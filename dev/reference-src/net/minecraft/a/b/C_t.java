@@ -8,8 +8,8 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_h;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.AchievementList;
 import net.minecraft.client.statistics.StatList;
@@ -55,10 +55,10 @@ extends C_h {
             c_g.a("swipe", entityPlayer.h + f5, entityPlayer.i - 0.3f, entityPlayer.j + f6, f2, f3, f4);
             c_g.a(entityPlayer, "random.throw", 1.0f, 0.0f);
             float f7 = 3.0f;
-            List<C_b> list = c_g.a(entityPlayer, net.minecraft.a.d.C_b.getBoundingBoxFromPool(entityPlayer.h - f7, entityPlayer.i - f7, entityPlayer.j - f7, entityPlayer.h + f7, entityPlayer.i + f7, entityPlayer.j + f7));
+            List<Entity> list = c_g.a(entityPlayer, net.minecraft.a.d.C_b.getBoundingBoxFromPool(entityPlayer.h - f7, entityPlayer.i - f7, entityPlayer.j - f7, entityPlayer.h + f7, entityPlayer.i + f7, entityPlayer.j + f7));
             for (int i = 0; i < list.size(); ++i) {
-                C_b c_b = list.get(i);
-                if (!(c_b instanceof C_e) || !c_b.isVisible) continue;
+                Entity c_b = list.get(i);
+                if (!(c_b instanceof EntityLiving) || !c_b.isVisible) continue;
                 c_b.attackEntityFrom(entityPlayer, this.au, 0.4f);
                 itemStack.damageItem(2, c_g);
                 if (list.size() < 3) continue;

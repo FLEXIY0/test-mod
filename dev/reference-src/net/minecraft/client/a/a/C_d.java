@@ -7,7 +7,7 @@
 package net.minecraft.client.a.a;
 
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.c.C_a;
 import net.minecraft.client.a.a.C_f;
 import org.lwjgl.opengl.GL11;
@@ -21,7 +21,7 @@ extends C_f {
     }
 
     @Override
-    public final void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public final void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
         C_a c_a = (C_a)c_b;
         f4 = f3;
         f3 = f2;

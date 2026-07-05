@@ -6,10 +6,10 @@ package net.minecraft.game.level.block.plants;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.game.level.block.plants.BlockFlower;
 
 public class BlockStem
@@ -71,7 +71,7 @@ extends BlockFlower {
                 if (n5 == 3) {
                     ++n7;
                 }
-                if (c_g.a(n6, n2, n7) == 0 && c_g.f(n6, n2 - 1, n7) == C_c.b) {
+                if (c_g.a(n6, n2, n7) == 0 && c_g.f(n6, n2 - 1, n7) == Material.b) {
                     c_g.b(n6, n2, n7, this.fruitType.at);
                 }
             }
@@ -172,7 +172,7 @@ extends BlockFlower {
                 float f3 = c_g.q.nextFloat() * f2 + (1.0f - f2) * 0.5f;
                 float f4 = c_g.q.nextFloat() * f2 + (1.0f - f2) * 0.5f;
                 float f5 = c_g.q.nextFloat() * f2 + (1.0f - f2) * 0.5f;
-                C_b c_b = new C_b(c_g, (float)n + f3, (float)n2 + f4, (float)n3 + f5, new ItemStack(item));
+                EntityItem c_b = new EntityItem(c_g, (float)n + f3, (float)n2 + f4, (float)n3 + f5, new ItemStack(item));
                 c_b.O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }

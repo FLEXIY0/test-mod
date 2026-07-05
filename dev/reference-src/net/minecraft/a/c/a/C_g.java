@@ -84,7 +84,7 @@ public class C_g extends C_e {
    }
 
    @Override
-   protected final void a(net.minecraft.a.c.C_b var1, float var2) {
+   protected final void a(net.minecraft.a.c.Entity var1, float var2) {
       if (!this.d.multiplayerWorld) {
          if (var2 > 2.0F && var2 < 6.0F && this.G.nextInt(10) == 0) {
             if (this.s && !this.isLaying) {
@@ -129,17 +129,17 @@ public class C_g extends C_e {
    }
 
    @Override
-   protected net.minecraft.a.c.C_b b() {
+   protected net.minecraft.a.c.Entity b() {
       return this.d.y.b(this) < 100.0F && ((EntityPlayer)this.d.y).gamemode == 0 && this.canEntityBeSeen(this.d.y) ? this.d.y : null;
    }
 
    @Override
    public final boolean l() {
-      return this.d.a(this.r.b(0.0F, 0.0F, 0.0F), net.minecraft.a.a.d.C_c.f);
+      return this.d.a(this.r.b(0.0F, 0.0F, 0.0F), net.minecraft.a.a.d.Material.f);
    }
 
    @Override
-   public final boolean attackEntityFrom(net.minecraft.a.c.C_b var1, int var2, float var3) {
+   public final boolean attackEntityFrom(net.minecraft.a.c.Entity var1, int var2, float var3) {
       this.ai = 0;
       if (this.W <= 0) {
          return false;
@@ -269,7 +269,7 @@ public class C_g extends C_e {
    }
 
    @Override
-   protected void dropFewItems(net.minecraft.a.c.C_b var1) {
+   protected void dropFewItems(net.minecraft.a.c.Entity var1) {
       int var2;
       if ((var2 = this.itemDropped()) > 0) {
          int var3 = this.G.nextInt(3);

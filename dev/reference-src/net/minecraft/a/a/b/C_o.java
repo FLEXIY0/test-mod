@@ -6,10 +6,10 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.b.C_g;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.client.GameSettings;
 
 public final class C_o
@@ -17,7 +17,7 @@ extends C_g {
     private static String[] NAME_LIST = new String[]{"Oak", "Apple Tree", "Oak", "Birch", "Palm", "Pine"};
 
     protected C_o(int n, int n2) {
-        super(n, n2, C_c.h, true);
+        super(n, n2, Material.h, true);
         this.a(true);
         this.hasStates = true;
     }
@@ -65,7 +65,7 @@ extends C_g {
             int n5 = this.a(c_g.q);
             for (int i = 0; i < n5; ++i) {
                 int n6;
-                C_b c_b;
+                EntityItem c_b;
                 float f2;
                 float f3;
                 float f4;
@@ -74,16 +74,16 @@ extends C_g {
                     f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
                     f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
                     f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                    c_b = new C_b(c_g, (float)n + f4, (float)n2 + f3, (float)n3 + f2, new ItemStack(n7, 1, this.damageDropped(n4)));
-                    new C_b(c_g, (float)n + f4, (float)n2 + f3, (float)n3 + f2, new ItemStack(n7, 1, this.damageDropped(n4))).O = 10;
+                    c_b = new EntityItem(c_g, (float)n + f4, (float)n2 + f3, (float)n3 + f2, new ItemStack(n7, 1, this.damageDropped(n4)));
+                    new EntityItem(c_g, (float)n + f4, (float)n2 + f3, (float)n3 + f2, new ItemStack(n7, 1, this.damageDropped(n4))).O = 10;
                     c_g.spawnEntityInWorld(c_b);
                 }
                 if (!(c_g.q.nextFloat() <= 0.5f) || (n6 = this.altDrop(n4, c_g.q)) <= 0 || c_g.e(n, n2, n3) != 1) continue;
                 f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                c_b = new C_b(c_g, (float)n + f4, (float)n2 + f3, (float)n3 + f2, new ItemStack(n6, 1, 0));
-                new C_b(c_g, (float)n + f4, (float)n2 + f3, (float)n3 + f2, new ItemStack(n6, 1, 0)).O = 10;
+                c_b = new EntityItem(c_g, (float)n + f4, (float)n2 + f3, (float)n3 + f2, new ItemStack(n6, 1, 0));
+                new EntityItem(c_g, (float)n + f4, (float)n2 + f3, (float)n3 + f2, new ItemStack(n6, 1, 0)).O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }
         }
@@ -102,8 +102,8 @@ extends C_g {
             float f = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
-            C_b c_b = new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, n7));
-            new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, n7)).O = 10;
+            EntityItem c_b = new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, n7));
+            new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, n7)).O = 10;
             c_g.spawnEntityInWorld(c_b);
         }
     }

@@ -5,7 +5,7 @@ package net.minecraft.game.level.block.furniture;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
 import net.minecraft.a.d.C_b;
@@ -14,7 +14,7 @@ import util.MathHelper;
 
 public class BlockTrapdoor
 extends Block {
-    public BlockTrapdoor(int n, int n2, C_c c_c) {
+    public BlockTrapdoor(int n, int n2, Material c_c) {
         super(n, c_c);
         this.as = n2;
         float f = 0.5f;
@@ -81,7 +81,7 @@ extends Block {
 
     @Override
     public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
-        if (this.aC == C_c.c) {
+        if (this.aC == Material.c) {
             byte by = c_g.e(n, n2, n3);
             c_g.setBlockMetadataWithNotify(n, n2, n3, by ^ 4);
             if (by < 4) {

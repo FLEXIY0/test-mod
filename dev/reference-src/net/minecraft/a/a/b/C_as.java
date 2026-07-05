@@ -5,16 +5,16 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.AchievementList;
 
 public class C_as
 extends Block {
-    protected C_as(int n, int n2, C_c c_c) {
+    protected C_as(int n, int n2, Material c_c) {
         super(n, n2, c_c);
     }
 
@@ -59,7 +59,7 @@ extends Block {
             float f4 = c_g.I.nextFloat() * 0.7f + 0.15f;
             float f5 = c_g.I.nextFloat() * 0.7f + 0.15f;
             f = c_g.I.nextFloat() * 0.7f + 0.15f;
-            C_b c_b = new C_b(c_g, (float)n + f4, (float)n2 + f5, (float)n3 + f, new ItemStack(Item.fertilizer.ap, 1));
+            EntityItem c_b = new EntityItem(c_g, (float)n + f4, (float)n2 + f5, (float)n3 + f, new ItemStack(Item.fertilizer.ap, 1));
             c_g.spawnEntityInWorld(c_b);
             c_g.setBlockMetadataWithNotify(n, n2, n3, 0);
             entityPlayer.triggerAchievement(AchievementList.compost);

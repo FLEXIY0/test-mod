@@ -61,8 +61,8 @@ extends C_g {
     protected void onCrafting(ItemStack itemStack) {
         this.thePlayer.addStat(StatList.objectCraftStats[itemStack.c], 1);
         this.thePlayer.addStat(StatList.itemsCraftedStat, 1);
-        for (int i = 0; i < net.minecraft.a.b.a.C_f.a().getRecipeList().size(); ++i) {
-            C_l c_l = net.minecraft.a.b.a.C_f.a().getRecipeList().get(i);
+        for (int i = 0; i < net.minecraft.a.b.a.CraftingManager.a().getRecipeList().size(); ++i) {
+            C_l c_l = net.minecraft.a.b.a.CraftingManager.a().getRecipeList().get(i);
             Item item = c_l.getCraftingResult((C_a)this.e).a();
             boolean bl = (item instanceof net.minecraft.a.b.C_g || item instanceof C_n || item instanceof C_c || item instanceof C_j || item instanceof C_bm || item instanceof C_ba || item instanceof C_m || item instanceof C_bh || item instanceof C_ah || item instanceof C_av || item instanceof C_b || item instanceof C_bb || item instanceof C_bd || item instanceof C_r || item instanceof C_f) && item.getClass().equals(itemStack.a().getClass());
             boolean bl2 = false;
@@ -74,11 +74,11 @@ extends C_g {
                 bl2 = c_x != null && c_x2 != null && (c_x instanceof C_bq || c_x instanceof BlockFenceGate || c_x instanceof BlockChair || c_x instanceof net.minecraft.a.a.b.C_bb || c_x instanceof C_bs || c_x instanceof BlockTrapdoor) && c_x2.getClass().equals(c_x.getClass());
                 boolean bl5 = bl4 = c_x != null && c_x2 != null && (c_x2 == Block.hayBlock || c_x2 == Block.slimeBlock || c_x2 == Block.bone) && c_x instanceof net.minecraft.a.a.b.C_bb;
             }
-            if (item != itemStack.a() && !bl && !bl2 && !bl3 && !bl4 || net.minecraft.a.b.a.C_f.a().getUnlockedRecipeList().contains(c_l) || this.thePlayer.d.multiplayerWorld) continue;
-            net.minecraft.a.b.a.C_f.a().getUnlockedRecipeList().add(c_l);
+            if (item != itemStack.a() && !bl && !bl2 && !bl3 && !bl4 || net.minecraft.a.b.a.CraftingManager.a().getUnlockedRecipeList().contains(c_l) || this.thePlayer.d.multiplayerWorld) continue;
+            net.minecraft.a.b.a.CraftingManager.a().getUnlockedRecipeList().add(c_l);
             net.minecraft.client.d.getMinecraft().guiAchievement.queueRecipeInformation(itemStack);
         }
-        if (net.minecraft.a.b.a.C_f.a().getUnlockedRecipeList().size() == net.minecraft.a.b.a.C_f.a().getRecipeList().size()) {
+        if (net.minecraft.a.b.a.CraftingManager.a().getUnlockedRecipeList().size() == net.minecraft.a.b.a.CraftingManager.a().getRecipeList().size()) {
             this.thePlayer.triggerAchievement(AchievementList.recipes);
         }
         if (itemStack.c == Block.an.at) {

@@ -5,12 +5,12 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_ag
 extends Block {
     protected C_ag(int n) {
-        super(19, C_c.j);
+        super(19, Material.j);
         this.as = 96;
     }
 

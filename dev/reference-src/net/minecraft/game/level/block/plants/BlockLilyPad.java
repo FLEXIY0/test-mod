@@ -5,7 +5,7 @@ package net.minecraft.game.level.block.plants;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 import net.minecraft.game.level.block.plants.BlockFlower;
 
@@ -30,7 +30,7 @@ extends BlockFlower {
 
     @Override
     public boolean canBlockStay(World c_g, int n, int n2, int n3) {
-        return n2 >= 0 && n2 < 256 ? c_g.f(n, n2 - 1, n3) == C_c.f && c_g.e(n, n2 - 1, n3) == 0 : false;
+        return n2 >= 0 && n2 < 256 ? c_g.f(n, n2 - 1, n3) == Material.f && c_g.e(n, n2 - 1, n3) == 0 : false;
     }
 
     @Override

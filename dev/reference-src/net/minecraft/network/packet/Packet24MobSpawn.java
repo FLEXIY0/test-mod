@@ -7,8 +7,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.List;
-import net.minecraft.a.c.C_e;
-import net.minecraft.a.c.C_f;
+import net.minecraft.a.c.EntityLiving;
+import net.minecraft.a.c.EntityList;
 import net.minecraft.network.DataWatcher;
 import net.minecraft.network.NetHandler;
 import net.minecraft.network.WatchableObject;
@@ -30,9 +30,9 @@ extends Packet {
     public Packet24MobSpawn() {
     }
 
-    public Packet24MobSpawn(C_e c_e) {
+    public Packet24MobSpawn(EntityLiving c_e) {
         this.entityId = c_e.entityId;
-        this.type = (byte)C_f.getEntityID(c_e);
+        this.type = (byte)EntityList.getEntityID(c_e);
         this.xPosition = MathHelper.a((double)c_e.h * 32.0);
         this.yPosition = MathHelper.a((double)c_e.i * 32.0);
         this.zPosition = MathHelper.a((double)c_e.j * 32.0);

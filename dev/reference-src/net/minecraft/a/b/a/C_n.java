@@ -9,10 +9,10 @@ import net.minecraft.a.a.b.C_bo;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 
 public class C_n {
-    public void addRecipes(C_f c_f) {
+    public void addRecipes(CraftingManager c_f) {
         for (int i = 0; i < 16; ++i) {
             c_f.addShapelessRecipe(new ItemStack(Block.cloth, 1, C_ao.getClothColor(i)), new ItemStack(Item.dyePowder, 1, i), new ItemStack(Item.b[Block.cloth.at], 1, 0));
             c_f.addShapelessRecipe(new ItemStack(Block.carpet, 1, C_am.getClothColor(i)), new ItemStack(Item.dyePowder, 1, i), new ItemStack(Item.b[Block.carpet.at], 1, 0));

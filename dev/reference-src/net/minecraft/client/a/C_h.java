@@ -127,7 +127,7 @@ public final class C_h {
         }
     }
 
-    public final float a(net.minecraft.a.c.C_e c_e) {
+    public final float a(net.minecraft.a.c.EntityLiving c_e) {
         float f = c_e.h - (float)this.q;
         float f2 = c_e.i - (float)this.r;
         float f3 = c_e.j - (float)this.s;

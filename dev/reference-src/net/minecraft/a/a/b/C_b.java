@@ -7,11 +7,11 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_p;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_b
 extends C_p {
-    protected C_b(int n, C_c c_c) {
+    protected C_b(int n, Material c_c) {
         super(n, c_c);
         this.b = n - 1;
         this.a = n;
@@ -20,7 +20,7 @@ extends C_p {
 
     @Override
     public final void a(World c_g, int n, int n2, int n3, Random random) {
-        if (this.aC == C_c.f && c_g.getRaining() && c_g.season.currentSeason != 3 && c_g.theme != 1 && c_g.e(n, n2, n3) > 0 && c_g.l(n, n2 + 1, n3)) {
+        if (this.aC == Material.f && c_g.getRaining() && c_g.season.currentSeason != 3 && c_g.theme != 1 && c_g.e(n, n2, n3) > 0 && c_g.l(n, n2 + 1, n3)) {
             c_g.setBlockMetadata(n, n2, n3, c_g.e(n, n2, n3) - 1);
         }
     }
@@ -44,8 +44,8 @@ extends C_p {
             bl = true;
         }
         if (n4 != 0) {
-            C_c c_c = Block.c[n4].aC;
-            if (this.aC == C_c.f && c_c == C_c.g || c_c == C_c.f && this.aC == C_c.g) {
+            Material c_c = Block.c[n4].aC;
+            if (this.aC == Material.f && c_c == Material.g || c_c == Material.f && this.aC == Material.g) {
                 c_g.b(n, n2, n3, Block.ae.at);
                 return;
             }

@@ -17,7 +17,7 @@ import net.minecraft.a.b.C_aa;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_g;
 import net.minecraft.a.c.a.C_h;
 import net.minecraft.a.c.c.C_f;
@@ -34,7 +34,7 @@ import org.lwjgl.input.Keyboard;
 import util.MathHelper;
 
 public class EntityPlayer
-extends C_e {
+extends EntityLiving {
     public C_b b = new C_b(this);
     public C_m inventoryChest = new C_m(this);
     public C_c inventorySlots;
@@ -263,10 +263,10 @@ extends C_e {
         }
         this.R += (f2 - this.R) * 0.4f;
         this.ae += (f - this.ae) * 0.8f;
-        List<net.minecraft.a.c.C_b> list = this.d.a(this, this.r.b(1.0f, 0.0f, 1.0f));
+        List<net.minecraft.a.c.Entity> list = this.d.a(this, this.r.b(1.0f, 0.0f, 1.0f));
         if (this.W > 0 && list != null) {
             for (int i = 0; i < list.size(); ++i) {
-                net.minecraft.a.c.C_b c_b2 = list.get(i);
+                net.minecraft.a.c.Entity c_b2 = list.get(i);
                 c_b2.a(this);
             }
         }
@@ -316,7 +316,7 @@ extends C_e {
     }
 
     @Override
-    public final void d(net.minecraft.a.c.C_b c_b) {
+    public final void d(net.minecraft.a.c.Entity c_b) {
         this.a(0.2f, 0.2f);
         this.b(this.h, this.i, this.j);
         this.l = 0.1f;
@@ -340,13 +340,13 @@ extends C_e {
             this.d.mc.a(new C_d());
         }
         this.addStat(StatList.deathsStat, 1);
-        if (c_b != null && c_b instanceof C_e && ((C_e)c_b).statId() >= 0) {
-            this.addStat(StatList.objectDeathStats[((C_e)c_b).statId()], 1);
+        if (c_b != null && c_b instanceof EntityLiving && ((EntityLiving)c_b).statId() >= 0) {
+            this.addStat(StatList.objectDeathStats[((EntityLiving)c_b).statId()], 1);
         }
     }
 
     @Override
-    public void awardKillScore(net.minecraft.a.c.C_b c_b, int n) {
+    public void awardKillScore(net.minecraft.a.c.Entity c_b, int n) {
         Item item = null;
         boolean bl = false;
         if (this.b.a[this.b.c] != null) {
@@ -423,7 +423,7 @@ extends C_e {
 
     public void a(ItemStack itemStack, boolean bl) {
         if (itemStack != null && !this.d.multiplayerWorld) {
-            net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(this.d, this.h, this.i - 0.3f, this.j, itemStack);
+            net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(this.d, this.h, this.i - 0.3f, this.j, itemStack);
             c_b.O = 40;
             if (bl) {
                 float f = this.G.nextFloat() * 0.5f;
@@ -451,7 +451,7 @@ extends C_e {
         ItemStack itemStack;
         Block c_x2 = c_x;
         C_b c_b = this.b;
-        return c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.d && c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.magma && c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.e && c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.vacuum && c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.pulley ? true : ((itemStack = c_b.a(c_b.c)) != null ? Item.b[itemStack.c].canHarvestBlock(c_x2, by) : false);
+        return c_x2.getMaterial(by) != net.minecraft.a.a.d.Material.d && c_x2.getMaterial(by) != net.minecraft.a.a.d.Material.magma && c_x2.getMaterial(by) != net.minecraft.a.a.d.Material.e && c_x2.getMaterial(by) != net.minecraft.a.a.d.Material.vacuum && c_x2.getMaterial(by) != net.minecraft.a.a.d.Material.pulley ? true : ((itemStack = c_b.a(c_b.c)) != null ? Item.b[itemStack.c].canHarvestBlock(c_x2, by) : false);
     }
 
     @Override
@@ -501,7 +501,7 @@ extends C_e {
     public void displayWorkbenchGUI(int n, int n2, int n3) {
     }
 
-    public void a(net.minecraft.a.c.C_b c_b) {
+    public void a(net.minecraft.a.c.Entity c_b) {
     }
 
     public void a(net.minecraft.a.a.b.a.C_b c_b) {
@@ -525,7 +525,7 @@ extends C_e {
     }
 
     @Override
-    public boolean attackEntityFrom(net.minecraft.a.c.C_b c_b, int n, float f) {
+    public boolean attackEntityFrom(net.minecraft.a.c.Entity c_b, int n, float f) {
         if (!this.d.z || this.d.multiplayerWorld) {
             return false;
         }
@@ -604,7 +604,7 @@ extends C_e {
 
     @Override
     public boolean isInSlime() {
-        boolean bl = this.d.a(this.r.b(-0.1f, 0.1f, -0.1f), net.minecraft.a.a.d.C_c.slime);
+        boolean bl = this.d.a(this.r.b(-0.1f, 0.1f, -0.1f), net.minecraft.a.a.d.Material.slime);
         if (bl) {
             this.triggerAchievement(AchievementList.bounce);
         }
@@ -756,7 +756,7 @@ extends C_e {
         itemStack.damageItem(n, c_g);
     }
 
-    public void attackTargetEntityWithCurrentItem(net.minecraft.a.c.C_b c_b, float f) {
+    public void attackTargetEntityWithCurrentItem(net.minecraft.a.c.Entity c_b, float f) {
         int n = this.b.getDamageVsEntity(c_b);
         if (n > 0) {
             if (this.getCurrentEquippedItem() != null && (this.getCurrentEquippedItem().a() == Item.n || this.getCurrentEquippedItem().a() == Item.spearWood || this.getCurrentEquippedItem().a() == Item.battleAxeWood) && this.G.nextInt(3) == 0) {
@@ -765,8 +765,8 @@ extends C_e {
             }
             c_b.attackEntityFrom(this, n, f);
             ItemStack itemStack = this.getCurrentEquippedItem();
-            if (itemStack != null && c_b instanceof C_e) {
-                itemStack.hitEntity((C_e)c_b, this);
+            if (itemStack != null && c_b instanceof EntityLiving) {
+                itemStack.hitEntity((EntityLiving)c_b, this);
                 if (itemStack.a <= 0) {
                     this.h_();
                 }
@@ -785,26 +785,26 @@ extends C_e {
         }
     }
 
-    public void spawnCritParticles(net.minecraft.a.c.C_b c_b) {
+    public void spawnCritParticles(net.minecraft.a.c.Entity c_b) {
     }
 
-    public void attackTargetEntityWithCharm(net.minecraft.a.c.C_b c_b, float f) {
+    public void attackTargetEntityWithCharm(net.minecraft.a.c.Entity c_b, float f) {
         int n = this.b.getCharmDamageVsEntity(c_b);
         if (n > 0) {
             c_b.attackEntityFrom(this, n, f);
             ItemStack itemStack = this.b.charmSlot[0];
-            if (itemStack != null && c_b instanceof C_e) {
+            if (itemStack != null && c_b instanceof EntityLiving) {
                 itemStack.damageItem2(1, this.d);
-                itemStack.hitEntity((C_e)c_b, this);
+                itemStack.hitEntity((EntityLiving)c_b, this);
                 this.addStat(StatList.objectUseStats[itemStack.c], 1);
             }
         }
     }
 
-    public void useCurrentItemOnEntity(net.minecraft.a.c.C_b c_b) {
+    public void useCurrentItemOnEntity(net.minecraft.a.c.Entity c_b) {
         ItemStack itemStack;
-        if (!c_b.interact(this) && (itemStack = this.getCurrentEquippedItem()) != null && c_b instanceof C_e) {
-            itemStack.useItemOnEntity((C_e)c_b, this);
+        if (!c_b.interact(this) && (itemStack = this.getCurrentEquippedItem()) != null && c_b instanceof EntityLiving) {
+            itemStack.useItemOnEntity((EntityLiving)c_b, this);
             if (itemStack.a <= 0) {
                 this.h_();
             }

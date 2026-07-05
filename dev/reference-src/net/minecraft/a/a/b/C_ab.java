@@ -6,13 +6,13 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public final class C_ab
 extends Block {
     protected C_ab(int n) {
-        super(n, C_c.b);
+        super(n, Material.b);
         this.as = 101;
         this.a(true);
         this.a(0.0f, 0.0f, 0.0f, 1.0f, 0.9375f, 1.0f);
@@ -67,7 +67,7 @@ extends Block {
                 }
                 for (n5 = n7; n5 <= n7 + 1; ++n5) {
                     for (n4 = n6 - 4; n4 <= n6 + 4; ++n4) {
-                        if (c_g2.f(n9, n5, n4) != C_c.f) continue;
+                        if (c_g2.f(n9, n5, n4) != Material.f) continue;
                         bl = true;
                         break block0;
                     }

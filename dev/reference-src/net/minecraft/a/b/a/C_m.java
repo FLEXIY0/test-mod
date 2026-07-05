@@ -6,7 +6,7 @@ package net.minecraft.a.b.a;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 
 public class C_m {
     private Object[][] recipeWalls = new Object[][]{{Block.l, new ItemStack(Block.wall, 6, 0)}, {Block.ad, new ItemStack(Block.wall, 6, 1)}, {Block.aa, new ItemStack(Block.wall, 6, 2)}, {Block.brimStoneBrick, new ItemStack(Block.wall, 6, 6)}, {Block.moonRock, new ItemStack(Block.wall, 6, 8)}, {Block.brimStone, new ItemStack(Block.wall, 6, 9)}};
@@ -14,7 +14,7 @@ public class C_m {
     private Object[][] recipeFences = new Object[][]{{new ItemStack(Block.m, 1, 0), new ItemStack(Block.fence, 4, 0)}, {new ItemStack(Block.m, 1, 1), new ItemStack(Block.fence, 4, 1)}, {new ItemStack(Block.m, 1, 2), new ItemStack(Block.fence, 4, 2)}, {new ItemStack(Block.m, 1, 3), new ItemStack(Block.fence, 4, 3)}};
     private Object[][] recipeFenceGates = new Object[][]{{new ItemStack(Block.m, 1, 0), new ItemStack(Block.fenceGateOak)}, {new ItemStack(Block.m, 1, 1), new ItemStack(Block.fenceGateBirch)}, {new ItemStack(Block.m, 1, 2), new ItemStack(Block.fenceGatePalm)}, {new ItemStack(Block.m, 1, 3), new ItemStack(Block.fenceGateSpruce)}};
 
-    public final void addRecipes(C_f c_f) {
+    public final void addRecipes(CraftingManager c_f) {
         ItemStack itemStack;
         Object object;
         int n;

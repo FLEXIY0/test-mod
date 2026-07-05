@@ -4,7 +4,7 @@
 package net.minecraft.client.f;
 
 import net.minecraft.a.a.World;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.f.C_k;
 
@@ -31,7 +31,7 @@ extends C_k {
 
     @Override
     public final void b_() {
-        C_c c_c;
+        Material c_c;
         this.e = this.h;
         this.f = this.i;
         this.g = this.j;

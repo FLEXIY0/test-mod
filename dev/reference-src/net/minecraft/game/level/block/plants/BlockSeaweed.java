@@ -6,7 +6,7 @@ package net.minecraft.game.level.block.plants;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 import net.minecraft.game.level.block.plants.BlockFlower;
 
@@ -15,7 +15,7 @@ extends BlockFlower {
     public BlockSeaweed(int n, int n2) {
         super(n, n2);
         this.as = 462;
-        this.aC = C_c.f;
+        this.aC = Material.f;
         this.a(true);
         this.a(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
     }
@@ -35,7 +35,7 @@ extends BlockFlower {
 
     @Override
     public void a(World c_g, int n, int n2, int n3, Random random) {
-        if (c_g.f(n, n2 + 1, n3) == C_c.f && c_g.f(n, n2 + 2, n3) == C_c.f) {
+        if (c_g.f(n, n2 + 1, n3) == Material.f && c_g.f(n, n2 + 2, n3) == Material.f) {
             int n4 = 1;
             while (c_g.a(n, n2 - n4, n3) == this.at) {
                 ++n4;

@@ -3,12 +3,12 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.b.C_g;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
 import net.minecraft.client.statistics.AchievementList;
@@ -48,7 +48,7 @@ extends Item {
             int n2 = c_c.c;
             int n3 = c_c.d;
             if (this.isFull == 0) {
-                if (c_g.f(n, n2, n3) == C_c.f && c_g.e(n, n2, n3) == 0) {
+                if (c_g.f(n, n2, n3) == Material.f && c_g.e(n, n2, n3) == 0) {
                     c_g.b(n, n2, n3, 0);
                     c_g.playSoundAtBlock(n, n2, n3, "random.waterBucket", 1.0f, 1.0f / (a.nextFloat() * 0.4f + 1.2f));
                     entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
@@ -59,12 +59,12 @@ extends Item {
                         return new ItemStack(Item.bucketWater);
                     }
                     if (!entityPlayer.b.a(new ItemStack(Item.bucketWater, 1))) {
-                        C_b c_b = new C_b(c_g, n, n2, n3, new ItemStack(Item.bucketWater, 1));
+                        EntityItem c_b = new EntityItem(c_g, n, n2, n3, new ItemStack(Item.bucketWater, 1));
                         c_g.spawnEntityInWorld(c_b);
                     }
                     return new ItemStack(itemStack.a(), itemStack.a - 1);
                 }
-                if (c_g.f(n, n2, n3) == C_c.g && c_g.e(n, n2, n3) == 0) {
+                if (c_g.f(n, n2, n3) == Material.g && c_g.e(n, n2, n3) == 0) {
                     c_g.b(n, n2, n3, 0);
                     c_g.playSoundAtBlock(n, n2, n3, "random.lavaBucket", 1.0f, 1.0f / (a.nextFloat() * 0.4f + 1.2f));
                     entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
@@ -75,7 +75,7 @@ extends Item {
                         return new ItemStack(Item.bucketLava);
                     }
                     if (!entityPlayer.b.a(new ItemStack(Item.bucketLava, 1))) {
-                        C_b c_b = new C_b(c_g, n, n2, n3, new ItemStack(Item.bucketLava, 1));
+                        EntityItem c_b = new EntityItem(c_g, n, n2, n3, new ItemStack(Item.bucketLava, 1));
                         c_g.spawnEntityInWorld(c_b);
                     }
                     return new ItemStack(itemStack.a(), itemStack.a - 1);
@@ -132,13 +132,13 @@ extends Item {
     }
 
     @Override
-    public void saddleEntity(ItemStack itemStack, C_e c_e, EntityPlayer entityPlayer) {
+    public void saddleEntity(ItemStack itemStack, EntityLiving c_e, EntityPlayer entityPlayer) {
         if (c_e instanceof C_g && !c_e.d.multiplayerWorld) {
             Item item = Item.bucketFish;
             if (itemStack != null) {
                 if (itemStack.a > 1) {
                     if (!entityPlayer.b.a(new ItemStack(item, 1))) {
-                        C_b c_b = new C_b(c_e.d, c_e.h, c_e.i, c_e.j, new ItemStack(Item.bucketFish, 1));
+                        EntityItem c_b = new EntityItem(c_e.d, c_e.h, c_e.i, c_e.j, new ItemStack(Item.bucketFish, 1));
                         entityPlayer.d.spawnEntityInWorld(c_b);
                     }
                     --itemStack.a;

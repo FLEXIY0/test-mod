@@ -4,16 +4,16 @@
 package net.minecraft.a.b.a;
 
 import java.util.Comparator;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 import net.minecraft.a.b.a.C_l;
 import net.minecraft.a.b.a.C_r;
 import net.minecraft.a.b.a.C_s;
 
 class C_i
 implements Comparator<Object> {
-    final C_f craftingManager;
+    final CraftingManager craftingManager;
 
-    C_i(C_f c_f) {
+    C_i(CraftingManager c_f) {
         this.craftingManager = c_f;
     }
 

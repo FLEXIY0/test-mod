@@ -8,7 +8,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_am;
 import net.minecraft.a.a.b.C_bs;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 import net.minecraft.game.level.block.furniture.BlockTorch;
 import net.minecraft.game.level.block.plants.BlockFlower;
@@ -20,10 +20,10 @@ extends Block {
     protected int b;
     protected int liquidType = 1;
 
-    protected C_p(int n, C_c c_c) {
+    protected C_p(int n, Material c_c) {
         super(n, c_c);
         this.as = 14;
-        if (c_c == C_c.g) {
+        if (c_c == Material.g) {
             this.as = 46;
             this.liquidType = 2;
         }
@@ -47,7 +47,7 @@ extends Block {
 
     @Override
     public final int a(int n) {
-        return this.aC == C_c.g ? this.as : (n == 1 ? this.as : (n == 0 ? this.as : this.as + 64));
+        return this.aC == Material.g ? this.as : (n == 1 ? this.as : (n == 0 ? this.as : this.as + 64));
     }
 
     protected final int getFlowDecay(World c_g, int n, int n2, int n3) {
@@ -78,13 +78,13 @@ extends Block {
             if (bl2) {
                 bl = true;
             }
-            if (bl2 && this.aC != C_c.g) continue;
+            if (bl2 && this.aC != Material.g) continue;
         }
         ++n2;
-        if (this.aC == C_c.f || !bl) {
+        if (this.aC == Material.f || !bl) {
             bl = bl | this.i(c_g, n - 1, n2, n3) | this.i(c_g, n + 1, n2, n3) | this.i(c_g, n, n2, n3 - 1) | this.i(c_g, n, n2, n3 + 1);
         }
-        if (this.aC == C_c.g) {
+        if (this.aC == Material.g) {
             bl = bl | C_p.h(c_g, n - 1, n2, n3) | C_p.h(c_g, n + 1, n2, n3) | C_p.h(c_g, n, n2, n3 - 1) | C_p.h(c_g, n, n2, n3 + 1);
         }
         if (!bl) {
@@ -101,7 +101,7 @@ extends Block {
         if (n4 != 0 && n4 != Block.ag.at) {
             return c_x instanceof BlockFlower && !(c_x instanceof BlockSeaweed) || c_x instanceof BlockTorch || c_x instanceof C_am || c_x instanceof C_bs;
         }
-        if (this.aC == C_c.f) {
+        if (this.aC == Material.f) {
             for (n4 = n - 2; n4 <= n + 2; ++n4) {
                 for (int i = n2 - 2; i <= n2 + 2; ++i) {
                     for (int j = n3 - 2; j <= n3 + 2; ++j) {
@@ -134,7 +134,7 @@ extends Block {
 
     @Override
     public final float f(World c_g, int n, int n2, int n3) {
-        return this.aC == C_c.g ? 100.0f : super.f(c_g, n, n2, n3);
+        return this.aC == Material.g ? 100.0f : super.f(c_g, n, n2, n3);
     }
 
     @Override
@@ -167,8 +167,8 @@ extends Block {
     @Override
     public void b(World c_g, int n, int n2, int n3, int n4) {
         if (n4 != 0) {
-            C_c c_c = Block.c[n4].aC;
-            if (this.aC == C_c.f && c_c == C_c.g || c_c == C_c.f && this.aC == C_c.g) {
+            Material c_c = Block.c[n4].aC;
+            if (this.aC == Material.f && c_c == Material.g || c_c == Material.f && this.aC == Material.g) {
                 c_g.b(n, n2, n3, Block.i.at);
             }
         }
@@ -177,7 +177,7 @@ extends Block {
 
     @Override
     public int e() {
-        return this.aC == C_c.g ? 25 : 5;
+        return this.aC == Material.g ? 25 : 5;
     }
 
     @Override
@@ -187,7 +187,7 @@ extends Block {
 
     @Override
     public int f() {
-        return this.aC == C_c.f ? 1 : 0;
+        return this.aC == Material.f ? 1 : 0;
     }
 
     @Override
@@ -196,21 +196,21 @@ extends Block {
         float f2;
         float f3;
         if (C_p.j(c_g, n + 1, n2, n3) || C_p.j(c_g, n - 1, n2, n3) || C_p.j(c_g, n, n2, n3 - 1) || C_p.j(c_g, n, n2, n3 + 1)) {
-            if (this.aC == C_c.g && random.nextInt(100) == 0) {
+            if (this.aC == Material.g && random.nextInt(100) == 0) {
                 c_g.a((float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, "liquid.lava", random.nextFloat() * 0.55f + 0.75f, random.nextFloat() * 0.5f + 0.3f);
             }
-            if (this.aC == C_c.f && random.nextInt(100) == 0) {
+            if (this.aC == Material.f && random.nextInt(100) == 0) {
                 c_g.a((float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, "liquid.water", random.nextFloat() * 0.25f + 0.75f, random.nextFloat() * 0.5f + 0.3f);
             }
         }
-        if (this.aC == C_c.g && c_g.f(n, n2 + 1, n3) == C_c.a && !c_g.b(n, n2 + 1, n3) && random.nextInt(100) == 0) {
+        if (this.aC == Material.g && c_g.f(n, n2 + 1, n3) == Material.a && !c_g.b(n, n2 + 1, n3) && random.nextInt(100) == 0) {
             f3 = (float)n + random.nextFloat();
             f2 = (float)n2 + this.ay;
             f = (float)n3 + random.nextFloat();
             c_g.a("lava", f3, f2, f, 0.0f, 0.0f, 0.0f);
             c_g.a((float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, "liquid.lavapop", random.nextFloat() * 0.25f + 0.75f, random.nextFloat() * 0.75f + 0.75f);
         }
-        if (this.aC == C_c.f) {
+        if (this.aC == Material.f) {
             byte by;
             if (C_p.j(c_g, n + 1, n2, n3)) {
                 for (int i = 0; i < 4; ++i) {
@@ -240,7 +240,7 @@ extends Block {
             f3 = (float)n + random.nextFloat();
             f2 = (float)n2 - 1.05f;
             f = (float)n3 + random.nextFloat();
-            if (this.getMaterial(0) == C_c.f) {
+            if (this.getMaterial(0) == Material.f) {
                 c_g.a("dripWater", f3, f2, f, 0.0f, 0.0f, 0.0f);
             } else {
                 c_g.a("dripLava", f3, f2, f, 0.0f, 0.0f, 0.0f);
@@ -249,8 +249,8 @@ extends Block {
     }
 
     private static boolean j(World c_g, int n, int n2, int n3) {
-        C_c c_c = c_g.f(n, n2, n3);
-        C_c c_c2 = c_g.f(n, n2 - 1, n3);
+        Material c_c = c_g.f(n, n2, n3);
+        Material c_c2 = c_g.f(n, n2 - 1, n3);
         return !c_c.c() && !c_c.d() ? c_c2.c() || c_c2.d() : false;
     }
 }

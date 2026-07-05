@@ -51,7 +51,7 @@ public final class C_d {
         }
     }
 
-    public final void a(net.minecraft.a.c.C_b c_b, float f) {
+    public final void a(net.minecraft.a.c.Entity c_b, float f) {
         float f2 = MathHelper.b(c_b.n * (float)Math.PI / 180.0f);
         float f3 = MathHelper.a(c_b.n * (float)Math.PI / 180.0f);
         float f4 = -f3 * MathHelper.a(c_b.o * (float)Math.PI / 180.0f);
@@ -85,7 +85,7 @@ public final class C_d {
         }
     }
 
-    public void renderLitParticles(net.minecraft.a.c.C_b c_b, float f) {
+    public void renderLitParticles(net.minecraft.a.c.Entity c_b, float f) {
         float f2 = MathHelper.b(c_b.n * (float)Math.PI / 180.0f);
         float f3 = MathHelper.a(c_b.n * (float)Math.PI / 180.0f);
         float f4 = -f3 * MathHelper.a(c_b.o * (float)Math.PI / 180.0f);

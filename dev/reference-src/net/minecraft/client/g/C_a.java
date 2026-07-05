@@ -104,7 +104,7 @@ extends EntityPlayer {
             this.v = 1.0f;
         }
         this.prevTimeInPortal = this.timeInPortal;
-        if (this.isInsideOfMaterial(net.minecraft.a.a.d.C_c.portal)) {
+        if (this.isInsideOfMaterial(net.minecraft.a.a.d.Material.portal)) {
             if (!this.d.multiplayerWorld && this.ridingEntity != null) {
                 this.mountEntity(null);
             }
@@ -270,7 +270,7 @@ extends EntityPlayer {
     }
 
     @Override
-    public void spawnCritParticles(net.minecraft.a.c.C_b c_b) {
+    public void spawnCritParticles(net.minecraft.a.c.Entity c_b) {
         this.an.g.a(new C_n(this.an.d, c_b));
     }
 
@@ -504,7 +504,7 @@ extends EntityPlayer {
     }
 
     @Override
-    public void a(net.minecraft.a.c.C_b c_b) {
+    public void a(net.minecraft.a.c.Entity c_b) {
         this.an.g.a(new net.minecraft.client.f.C_e(this.an.d, c_b, this, -0.5f));
     }
 

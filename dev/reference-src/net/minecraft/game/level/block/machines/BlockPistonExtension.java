@@ -8,7 +8,7 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_d;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 import net.minecraft.game.level.block.machines.BlockPistonBase;
 
@@ -17,7 +17,7 @@ extends Block {
     private int headTexture = -1;
 
     public BlockPistonExtension(int n, int n2) {
-        super(n, n2, C_c.pulley);
+        super(n, n2, Material.pulley);
         this.setStepSound(aG);
         this.b(2.0f);
     }

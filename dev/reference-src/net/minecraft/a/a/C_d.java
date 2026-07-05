@@ -4,7 +4,7 @@
 package net.minecraft.a.a;
 
 import net.minecraft.a.a.b.a.TileEntity;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 
 public interface C_d {
     public void a(int var1, int var2, int var3);
@@ -21,9 +21,9 @@ public interface C_d {
 
     public void a(String var1, float var2, float var3, float var4, float var5);
 
-    public void a(C_b var1);
+    public void a(Entity var1);
 
-    public void b(C_b var1);
+    public void b(Entity var1);
 
     public void h();
 

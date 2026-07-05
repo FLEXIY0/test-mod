@@ -40,12 +40,12 @@ extends C_e {
     }
 
     @Override
-    protected final net.minecraft.a.c.C_b b() {
+    protected final net.minecraft.a.c.Entity b() {
         return this.a(1.0f) < 0.5f && this.d.y.b(this) < 256.0f && ((EntityPlayer)this.d.y).gamemode == 0 ? this.d.y : null;
     }
 
     @Override
-    protected final void a(net.minecraft.a.c.C_b c_b, float f) {
+    protected final void a(net.minecraft.a.c.Entity c_b, float f) {
         if (this.a(1.0f) > 0.5f && this.G.nextInt(100) == 0) {
             this.b = null;
         } else if (f > 2.0f && f < 6.0f && this.G.nextInt(10) == 0) {

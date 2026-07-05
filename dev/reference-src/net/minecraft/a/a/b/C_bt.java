@@ -5,11 +5,11 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class C_bt
 extends Block {
-    protected C_bt(int n, int n2, C_c c_c) {
+    protected C_bt(int n, int n2, Material c_c) {
         super(n, n2, c_c);
     }
 

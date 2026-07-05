@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_b;
 import net.minecraft.client.a.a.C_j;
 import org.lwjgl.opengl.GL11;
@@ -19,12 +19,12 @@ extends C_j {
     }
 
     @Override
-    protected final float a(C_e c_e) {
+    protected final float a(EntityLiving c_e) {
         return 180.0f;
     }
 
     @Override
-    protected final boolean a(C_e c_e, int n) {
+    protected final boolean a(EntityLiving c_e, int n) {
         C_b c_b = (C_b)c_e;
         if (c_b.type == 0) {
             int n2 = n;

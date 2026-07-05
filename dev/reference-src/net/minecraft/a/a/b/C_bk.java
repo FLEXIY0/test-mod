@@ -7,7 +7,7 @@ import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_ae;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 import net.minecraft.client.statistics.AchievementList;
 
@@ -16,7 +16,7 @@ extends C_ae {
     public static final float[][] colorTable = new float[][]{{1.0f, 0.25f, 0.25f}, {1.0f, 0.625f, 0.25f}, {1.0f, 1.0f, 0.25f}, {0.625f, 1.0f, 0.25f}, {0.25f, 1.0f, 0.25f}, {0.25f, 1.0f, 0.625f}, {0.25f, 1.0f, 1.0f}, {0.4f, 0.7f, 1.0f}, {0.5f, 0.5f, 1.0f}, {0.625f, 0.25f, 1.0f}, {0.75f, 0.375f, 1.0f}, {1.0f, 0.25f, 1.0f}, {1.0f, 0.25f, 0.625f}, {0.3f, 0.3f, 0.3f}, {0.6f, 0.6f, 0.6f}, {1.0f, 1.0f, 1.0f}};
 
     public C_bk(int n, int n2) {
-        super(n, n2, C_c.portal, false);
+        super(n, n2, Material.portal, false);
     }
 
     @Override

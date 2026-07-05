@@ -9,7 +9,7 @@ package net.minecraft.client.a.a;
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.c.C_e;
 import net.minecraft.client.a.a.C_f;
 import net.minecraft.game.level.block.furniture.BlockChair;
@@ -83,7 +83,7 @@ extends C_f {
     private void renderFrameItem(C_e c_e) {
         ItemStack itemStack = c_e.getDisplayedItem();
         if (itemStack != null && itemStack.a() != null) {
-            C_b c_b = new C_b(c_e.d, 0.0f, 0.0f, 0.0f, itemStack);
+            EntityItem c_b = new EntityItem(c_e.d, 0.0f, 0.0f, 0.0f, itemStack);
             c_b.a.a = 1;
             c_b.P = 0.0f;
             GL11.glPushMatrix();
@@ -154,7 +154,7 @@ extends C_f {
     }
 
     @Override
-    public void a(net.minecraft.a.c.C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public void a(net.minecraft.a.c.Entity c_b, float f, float f2, float f3, float f4, float f5) {
         this.mainRender((C_e)c_b, f, f2, f3, f4, f5);
     }
 }

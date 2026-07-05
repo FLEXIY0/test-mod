@@ -9,7 +9,7 @@ import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_d;
 import net.minecraft.a.a.b.a.C_j;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_b;
 import net.minecraft.game.level.block.container.BlockContainer;
@@ -17,7 +17,7 @@ import net.minecraft.game.level.block.container.BlockContainer;
 public class BlockPistonMoving
 extends BlockContainer {
     public BlockPistonMoving(int n) {
-        super(n, C_c.pulley);
+        super(n, Material.pulley);
         this.b(-1.0f);
     }
 

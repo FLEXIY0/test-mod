@@ -6,14 +6,14 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public final class C_ai
 extends Block {
     private int a;
 
     protected C_ai(int n, int n2) {
-        super(n, Block.c[n2].as, C_c.f);
+        super(n, Block.c[n2].as, Material.f);
         this.a = n2;
         this.a(true);
     }

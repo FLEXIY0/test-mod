@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.b.C_i;
 import net.minecraft.client.a.a.C_j;
 import net.minecraft.client.b.C_l;
@@ -34,12 +34,12 @@ extends C_j {
     }
 
     @Override
-    protected float getDefaultAngle(C_e c_e, float f) {
+    protected float getDefaultAngle(EntityLiving c_e, float f) {
         return this.rotateTentacles((C_i)c_e, f);
     }
 
     @Override
-    protected void rotateCorpse(C_e c_e, float f, float f2, float f3) {
+    protected void rotateCorpse(EntityLiving c_e, float f, float f2, float f3) {
         this.moveTentacles((C_i)c_e, f, f2, f3);
     }
 }

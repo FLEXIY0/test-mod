@@ -5,13 +5,13 @@ package net.minecraft.game.level.block.furniture;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class BlockTable
 extends Block {
     private static String[] NAME_LIST = new String[]{"Oak", "Birch", "Palm", "Pine"};
 
-    public BlockTable(int n, int n2, C_c c_c) {
+    public BlockTable(int n, int n2, Material c_c) {
         super(n, n2, c_c);
         this.hasStates = true;
     }

@@ -11,7 +11,7 @@ import java.util.TreeSet;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_k;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.d.C_a;
 import util.MathHelper;
 
@@ -21,11 +21,11 @@ public class C_m {
     public float explosionX;
     public float explosionY;
     public float explosionZ;
-    public C_b exploder;
+    public Entity exploder;
     public float explosionSize;
     public Set<C_k> destroyedBlockPositions = new HashSet<C_k>();
 
-    public C_m(World c_g, C_b c_b, float f, float f2, float f3, float f4) {
+    public C_m(World c_g, Entity c_b, float f, float f2, float f3, float f4) {
         this.worldObj = c_g;
         this.exploder = c_b;
         this.explosionSize = f4;
@@ -94,12 +94,12 @@ public class C_m {
         int n9 = (int)(f8 + f10 + 1.0f);
         int n10 = (int)(f9 - f10 - 1.0f);
         int n11 = (int)(f9 + f10 + 1.0f);
-        List<C_b> list = this.worldObj.a(this.exploder, new net.minecraft.a.d.C_b(n7, n5, n10, n6, n9, n11));
+        List<Entity> list = this.worldObj.a(this.exploder, new net.minecraft.a.d.C_b(n7, n5, n10, n6, n9, n11));
         C_a c_a = new C_a(f7, f8, f9);
         for (int i = 0; i < list.size(); ++i) {
             float f17;
-            C_b c_b;
-            C_b c_b2 = c_b = list.get(i);
+            Entity c_b;
+            Entity c_b2 = c_b = list.get(i);
             f5 = c_b.h - f7;
             f3 = c_b2.i - f8;
             f2 = c_b2.j - f9;

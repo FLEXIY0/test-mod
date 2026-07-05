@@ -138,15 +138,15 @@ public class C_a {
         return new net.minecraft.client.g.C_a(this.a, c_g, this.a.h);
     }
 
-    public void interactWithEntity(EntityPlayer entityPlayer, net.minecraft.a.c.C_b c_b) {
+    public void interactWithEntity(EntityPlayer entityPlayer, net.minecraft.a.c.Entity c_b) {
         entityPlayer.useCurrentItemOnEntity(c_b);
     }
 
-    public void attackEntity(EntityPlayer entityPlayer, net.minecraft.a.c.C_b c_b, float f) {
+    public void attackEntity(EntityPlayer entityPlayer, net.minecraft.a.c.Entity c_b, float f) {
         entityPlayer.attackTargetEntityWithCurrentItem(c_b, f);
     }
 
-    public void attackEntityUnarmed(EntityPlayer entityPlayer, net.minecraft.a.c.C_b c_b, float f) {
+    public void attackEntityUnarmed(EntityPlayer entityPlayer, net.minecraft.a.c.Entity c_b, float f) {
         entityPlayer.attackTargetEntityWithCharm(c_b, f);
     }
 

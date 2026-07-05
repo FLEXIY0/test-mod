@@ -6,15 +6,15 @@ package net.minecraft.game.level.block.machines;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.game.level.block.machines.BlockPistonMoving;
 
 public class BlockLamp
 extends Block {
-    public BlockLamp(int n, int n2, C_c c_c) {
+    public BlockLamp(int n, int n2, Material c_c) {
         super(n, n2, c_c);
     }
 
@@ -63,8 +63,8 @@ extends Block {
             float f = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
-            C_b c_b = new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4)));
-            new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
+            EntityItem c_b = new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4)));
+            new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
             c_g.spawnEntityInWorld(c_b);
         }
     }

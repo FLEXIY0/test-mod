@@ -8,14 +8,14 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 
 public final class C_c
 extends Block {
     public C_c(int n, int n2) {
-        super(n, n2, net.minecraft.a.a.d.C_c.d);
+        super(n, n2, net.minecraft.a.a.d.Material.d);
     }
 
     @Override
@@ -45,8 +45,8 @@ extends Block {
                 float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                C_b c_b = new C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4)));
-                new C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
+                EntityItem c_b = new EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4)));
+                new EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }
         }
@@ -77,8 +77,8 @@ extends Block {
             float f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f5 = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f6 = c_g.q.nextFloat() * 0.7f + 0.15f;
-            C_b c_b = new C_b(c_g, f + f4, f2 + f5, f3 + f6, new ItemStack(n));
-            new C_b(c_g, f + f4, f2 + f5, f3 + f6, new ItemStack(n)).O = 10;
+            EntityItem c_b = new EntityItem(c_g, f + f4, f2 + f5, f3 + f6, new ItemStack(n));
+            new EntityItem(c_g, f + f4, f2 + f5, f3 + f6, new ItemStack(n)).O = 10;
             c_g.spawnEntityInWorld(c_b);
         }
         return true;

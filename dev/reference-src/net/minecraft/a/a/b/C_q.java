@@ -6,11 +6,11 @@ package net.minecraft.a.a.b;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public abstract class C_q
 extends Block {
-    protected C_q(int n, C_c c_c) {
+    protected C_q(int n, Material c_c) {
         super(n, c_c);
     }
 

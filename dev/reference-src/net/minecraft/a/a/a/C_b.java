@@ -23,7 +23,7 @@ public final class C_b {
         return this.b >= this.a.length;
     }
 
-    public final net.minecraft.a.d.C_a a(net.minecraft.a.c.C_b c_b) {
+    public final net.minecraft.a.d.C_a a(net.minecraft.a.c.Entity c_b) {
         float f = (float)this.a[this.b].a + (float)((int)(c_b.w + 1.0f)) * 0.5f;
         float f2 = this.a[this.b].b;
         float f3 = (float)this.a[this.b].c + (float)((int)(c_b.w + 1.0f)) * 0.5f;

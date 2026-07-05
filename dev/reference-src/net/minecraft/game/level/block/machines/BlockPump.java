@@ -6,12 +6,12 @@ package net.minecraft.game.level.block.machines;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public class BlockPump
 extends Block {
-    public BlockPump(int n, int n2, C_c c_c) {
+    public BlockPump(int n, int n2, Material c_c) {
         super(n, n2, c_c);
         this.a(true);
     }

@@ -20,7 +20,7 @@ import net.minecraft.game.level.block.container.BlockContainer;
 
 public class BlockNetherReactorCore extends BlockContainer {
     public BlockNetherReactorCore(int id, int texture) {
-        super(id, net.minecraft.a.a.d.C_c.d);
+        super(id, net.minecraft.a.a.d.Material.d);
         this.as = texture;
     }
 

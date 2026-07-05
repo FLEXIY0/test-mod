@@ -6,7 +6,7 @@ package net.minecraft.game.level.block.furniture;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.b.C_p;
@@ -18,7 +18,7 @@ extends Block {
     public static final int[][] headBlockToFootBlockMap = new int[][]{{0, 1}, {-1, 0}, {0, -1}, {1, 0}};
 
     public BlockBed(int n) {
-        super(n, 198, C_c.c);
+        super(n, 198, Material.c);
         this.setBounds();
     }
 

@@ -10,7 +10,7 @@ import java.util.Set;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_k;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.d.C_b;
 
 public final class BlockGears
@@ -19,7 +19,7 @@ extends Block {
     private Set<C_k> blocksNeedingUpdate = new HashSet<C_k>();
 
     public BlockGears(int n, int n2) {
-        super(n, n2, C_c.n);
+        super(n, n2, Material.n);
     }
 
     @Override

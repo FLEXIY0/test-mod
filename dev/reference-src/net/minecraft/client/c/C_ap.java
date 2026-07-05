@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.SwingUtilities;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 import net.minecraft.client.C_c;
 import net.minecraft.client.CharacterLoader;
 import net.minecraft.client.a.RenderEngine;
@@ -112,8 +112,8 @@ extends GuiScreen {
                     this.b.w.character = this.id;
                     this.character.saveCharacter(this.id, (NBTTagCompound)object);
                     this.b.statFileWriter = new StatFileWriter(this.b.characters, this.b.z, this.b.h);
-                    C_f.clearRecipes();
-                    C_f.addUnlockedRecipes();
+                    CraftingManager.clearRecipes();
+                    CraftingManager.addUnlockedRecipes();
                 }
                 catch (IOException iOException) {
                     iOException.printStackTrace();
@@ -128,8 +128,8 @@ extends GuiScreen {
             if (guiButton.b == 2) {
                 this.b.w.character = this.id;
                 this.b.statFileWriter = new StatFileWriter(this.b.characters, this.b.z, this.b.h);
-                C_f.clearRecipes();
-                C_f.addUnlockedRecipes();
+                CraftingManager.clearRecipes();
+                CraftingManager.addUnlockedRecipes();
                 this.b.a(this.parent);
             }
         }

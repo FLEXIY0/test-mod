@@ -41,13 +41,13 @@ final class C_f {
       return this;
    }
 
-   public final void a(net.minecraft.a.c.C_b var1) {
+   public final void a(net.minecraft.a.c.Entity var1) {
       if (this.a >= 0 && this.b >= 0 && this.c >= 0) {
          this.d.d[(this.c * this.d.b + this.b) * this.d.a + this.a].add(var1);
       }
    }
 
-   public final void b(net.minecraft.a.c.C_b var1) {
+   public final void b(net.minecraft.a.c.Entity var1) {
       if (this.a >= 0 && this.b >= 0 && this.c >= 0) {
          this.d.d[(this.c * this.d.b + this.b) * this.d.a + this.a].remove(var1);
       }

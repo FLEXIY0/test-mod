@@ -6,7 +6,7 @@ package net.minecraft.network.packet;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.network.NetHandler;
 import net.minecraft.network.packet.Packet;
 import util.MathHelper;
@@ -23,7 +23,7 @@ extends Packet {
     public Packet34EntityTeleport() {
     }
 
-    public Packet34EntityTeleport(C_b c_b) {
+    public Packet34EntityTeleport(Entity c_b) {
         this.entityId = c_b.entityId;
         this.xPosition = MathHelper.a((double)c_b.h * 32.0);
         this.yPosition = MathHelper.a((double)c_b.i * 32.0);

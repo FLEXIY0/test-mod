@@ -18,7 +18,7 @@ import util.MathHelper;
  * Duplicate member names - consider using --renamedupmembers true
  */
 public class C_g
-extends net.minecraft.a.c.C_b
+extends net.minecraft.a.c.Entity
 implements C_b {
     private ItemStack[] cargoItems = new ItemStack[36];
     public int damageTaken = 0;
@@ -44,7 +44,7 @@ implements C_b {
     }
 
     @Override
-    public net.minecraft.a.d.C_b getCollisionBox(net.minecraft.a.c.C_b c_b) {
+    public net.minecraft.a.d.C_b getCollisionBox(net.minecraft.a.c.Entity c_b) {
         return c_b.r;
     }
 
@@ -76,7 +76,7 @@ implements C_b {
     }
 
     @Override
-    public boolean attackEntityFrom(net.minecraft.a.c.C_b c_b, int n, float f) {
+    public boolean attackEntityFrom(net.minecraft.a.c.Entity c_b, int n, float f) {
         if (!this.d.multiplayerWorld && !this.u) {
             this.forwardDirection = -this.forwardDirection;
             this.timeSinceHit = 10;
@@ -124,7 +124,7 @@ implements C_b {
                         n = itemStack.a;
                     }
                     itemStack.a -= n;
-                    net.minecraft.a.c.c.C_b c_b = new net.minecraft.a.c.c.C_b(this.d, this.h + f, this.i + f2, this.j + f3, new ItemStack(itemStack.c, n, itemStack.d));
+                    net.minecraft.a.c.c.EntityItem c_b = new net.minecraft.a.c.c.EntityItem(this.d, this.h + f, this.i + f2, this.j + f3, new ItemStack(itemStack.c, n, itemStack.d));
                     float f4 = 0.05f;
                     c_b.k = (float)this.G.nextGaussian() * f4;
                     c_b.l = (float)this.G.nextGaussian() * f4 + 0.2f;
@@ -398,10 +398,10 @@ implements C_b {
             this.isInReverse = !this.isInReverse;
         }
         this.setRotation(this.n, this.o);
-        List<net.minecraft.a.c.C_b> list = this.d.a(this, this.r.b(0.2f, 0.0f, 0.2f));
+        List<net.minecraft.a.c.Entity> list = this.d.a(this, this.r.b(0.2f, 0.0f, 0.2f));
         if (list != null && list.size() > 0) {
             for (int i = 0; i < list.size(); ++i) {
-                net.minecraft.a.c.C_b c_b = list.get(i);
+                net.minecraft.a.c.Entity c_b = list.get(i);
                 if (c_b == this.riddenByEntity || !c_b.p() || !(c_b instanceof C_g)) continue;
                 c_b.c(this);
             }
@@ -530,7 +530,7 @@ implements C_b {
     }
 
     @Override
-    public void c(net.minecraft.a.c.C_b c_b) {
+    public void c(net.minecraft.a.c.Entity c_b) {
         if (c_b != this.riddenByEntity) {
             super.c(c_b);
         }

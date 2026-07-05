@@ -9,12 +9,12 @@ import net.minecraft.a.a.b.C_aj;
 import net.minecraft.a.a.b.C_am;
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class C_bh
 extends Block {
     protected C_bh(int n) {
-        super(n, C_c.b);
+        super(n, Material.b);
         this.as = 425;
         this.a(true);
         this.hasStates = true;

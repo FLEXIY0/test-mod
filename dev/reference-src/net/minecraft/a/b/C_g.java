@@ -4,7 +4,7 @@
 package net.minecraft.a.b;
 
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -14,7 +14,7 @@ public class C_g
 extends Item {
     float at = 4.0f;
     protected int au;
-    protected C_c materialEffectiveAgainst;
+    protected Material materialEffectiveAgainst;
 
     public C_g(int n, int n2, int n3, Block[] c_xArray) {
         super(n);

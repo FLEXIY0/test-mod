@@ -8,7 +8,7 @@ import com.a.a.NBTTagList;
 import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.a.C_e;
 import net.minecraft.a.c.d.C_a;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -66,7 +66,7 @@ extends C_e {
     }
 
     @Override
-    protected final void a(C_b c_b, float f) {
+    protected final void a(Entity c_b, float f) {
         if (f < 10.0f) {
             f = c_b.h - this.h;
             float f2 = c_b.j - this.j;
@@ -86,7 +86,7 @@ extends C_e {
     }
 
     @Override
-    public void d(C_b c_b) {
+    public void d(Entity c_b) {
         super.d(c_b);
         if (c_b instanceof C_a) {
             C_a c_a = (C_a)c_b;
@@ -173,7 +173,7 @@ extends C_e {
     }
 
     @Override
-    protected void dropFewItems(C_b c_b) {
+    protected void dropFewItems(Entity c_b) {
         int n = this.itemDropped();
         if (n > 0) {
             ItemStack itemStack;

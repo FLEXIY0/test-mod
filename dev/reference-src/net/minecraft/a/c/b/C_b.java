@@ -56,7 +56,7 @@ public class C_b extends C_a {
    }
 
    @Override
-   public final boolean attackEntityFrom(net.minecraft.a.c.C_b var1, int var2, float var3) {
+   public final boolean attackEntityFrom(net.minecraft.a.c.Entity var1, int var2, float var3) {
       if (!this.getSheared() && var1 instanceof EntityPlayer && !this.d.multiplayerWorld) {
          this.setSheared(true);
          int var4 = 1 + this.G.nextInt(3);
@@ -68,8 +68,8 @@ public class C_b extends C_a {
          }
 
          for (int var8 = 0; var8 < var4; var8++) {
-            net.minecraft.a.c.c.C_b var6;
-            net.minecraft.a.c.c.C_b var7 = var6 = this.entityDropItemAndMetadata(Block.cloth.at, 1, this.getFleeceColor(), 1.0F);
+            net.minecraft.a.c.c.EntityItem var6;
+            net.minecraft.a.c.c.EntityItem var7 = var6 = this.entityDropItemAndMetadata(Block.cloth.at, 1, this.getFleeceColor(), 1.0F);
             var7.l = var7.l + this.G.nextFloat() * 0.05F;
             var6.k = var6.k + (this.G.nextFloat() - this.G.nextFloat()) * 0.1F;
             var6.m = var6.m + (this.G.nextFloat() - this.G.nextFloat()) * 0.1F;
@@ -130,7 +130,7 @@ public class C_b extends C_a {
    }
 
    @Override
-   public void d(net.minecraft.a.c.C_b var1) {
+   public void d(net.minecraft.a.c.Entity var1) {
       if (this.d.multiplayerWorld) {
          super.d(var1);
       }

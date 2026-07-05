@@ -19,7 +19,7 @@ public class BlockCauldron extends BlockContainer {
     private final int topEmpty, topWater, bottom;
 
     public BlockCauldron(int id, int side, int topEmpty, int topWater, int bottom) {
-        super(id, net.minecraft.a.a.d.C_c.d);
+        super(id, net.minecraft.a.a.d.Material.d);
         this.as = side;
         this.topEmpty = topEmpty;
         this.topWater = topWater;

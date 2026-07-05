@@ -444,7 +444,7 @@ public class Item {
     public void b(ItemStack itemStack) {
     }
 
-    public void saddleEntity(ItemStack itemStack, net.minecraft.a.c.C_e c_e, EntityPlayer entityPlayer) {
+    public void saddleEntity(ItemStack itemStack, net.minecraft.a.c.EntityLiving c_e, EntityPlayer entityPlayer) {
     }
 
     public boolean isLooting() {

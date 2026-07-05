@@ -10,7 +10,7 @@ import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_d;
 import net.minecraft.a.a.b.a.C_j;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_b;
 import net.minecraft.client.statistics.StatList;
@@ -24,7 +24,7 @@ extends Block {
     private boolean editing;
 
     public BlockPistonBase(int n, int n2, boolean bl, boolean bl2) {
-        super(n, n2, C_c.pulley);
+        super(n, n2, Material.pulley);
         this.isSticky = bl;
         this.editing = bl2;
         this.setStepSound(aG);

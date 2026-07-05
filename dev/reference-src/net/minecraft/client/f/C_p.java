@@ -4,22 +4,22 @@
 package net.minecraft.client.f;
 
 import net.minecraft.a.a.World;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.client.f.C_i;
 import net.minecraft.client.f.C_k;
 import util.MathHelper;
 
 public class C_p
 extends C_k {
-    private C_c materialType;
+    private Material materialType;
     private int bobTimer;
 
-    public C_p(World c_g, float f, float f2, float f3, C_c c_c) {
+    public C_p(World c_g, float f, float f2, float f3, Material c_c) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.m = 0.0f;
         this.l = 0.0f;
         this.k = 0.0f;
-        if (c_c == C_c.f) {
+        if (c_c == Material.f) {
             this.W = 0.0f;
             this.X = 0.0f;
             this.Y = 1.0f;
@@ -41,17 +41,17 @@ extends C_k {
 
     @Override
     public float a(float f) {
-        return this.materialType == C_c.f ? super.a(f) : 1.0f;
+        return this.materialType == Material.f ? super.a(f) : 1.0f;
     }
 
     @Override
     public void b_() {
         double d2;
-        C_c c_c;
+        Material c_c;
         this.e = this.h;
         this.f = this.i;
         this.g = this.j;
-        if (this.materialType == C_c.f) {
+        if (this.materialType == Material.f) {
             this.W = 0.2f;
             this.X = 0.3f;
             this.Y = 1.0f;
@@ -77,7 +77,7 @@ extends C_k {
             this.k();
         }
         if (this.s) {
-            if (this.materialType == C_c.f) {
+            if (this.materialType == Material.f) {
                 this.k();
                 this.d.mc.g.a(new C_i(this.d, this.h, this.i, this.j));
             } else {

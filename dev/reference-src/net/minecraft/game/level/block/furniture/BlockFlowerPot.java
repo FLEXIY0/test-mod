@@ -6,17 +6,17 @@ package net.minecraft.game.level.block.furniture;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 
 public class BlockFlowerPot
 extends Block {
     public BlockFlowerPot(int n, int n2) {
-        super(n, n2, C_c.n);
+        super(n, n2, Material.n);
         this.setBlockBoundsForItemRender();
     }
 
@@ -125,7 +125,7 @@ extends Block {
         float f2 = c_g.q.nextFloat() * f + (1.0f - f) * 0.5f;
         float f3 = c_g.q.nextFloat() * f + (1.0f - f) * 0.5f;
         float f4 = c_g.q.nextFloat() * f + (1.0f - f) * 0.5f;
-        C_b c_b = new C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, itemStack);
+        EntityItem c_b = new EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, itemStack);
         c_b.O = 10;
         c_g.spawnEntityInWorld(c_b);
     }

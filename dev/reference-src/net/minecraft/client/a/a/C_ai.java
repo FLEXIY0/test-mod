@@ -8,7 +8,7 @@ package net.minecraft.client.a.a;
 
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_f;
 import net.minecraft.client.a.a.C_j;
 import net.minecraft.client.b.C_g;
@@ -30,7 +30,7 @@ extends C_j {
     }
 
     @Override
-    protected final boolean a(C_e c_e, int n) {
+    protected final boolean a(EntityLiving c_e, int n) {
         Item item;
         C_f c_f = (C_f)c_e;
         int n2 = 3 - n;
@@ -53,11 +53,11 @@ extends C_j {
     }
 
     @Override
-    protected final void renderEquippedItems(C_e c_e, float f) {
+    protected final void renderEquippedItems(EntityLiving c_e, float f) {
         this.renderSpecials(c_e, f);
     }
 
-    protected void renderSpecials(C_e c_e, float f) {
+    protected void renderSpecials(EntityLiving c_e, float f) {
         if (((C_f)c_e).heldItem != null) {
             GL11.glPushMatrix();
             this.modelBipedMain.d.renderWithRotation(1.0f);

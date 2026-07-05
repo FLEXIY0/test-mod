@@ -80,7 +80,7 @@ public class TileEntityCauldron extends TileEntity {
 
     private void dropPotion(int effect) {
         ItemStack potion = new ItemStack(Item.potion.ap, 1, effect);
-        net.minecraft.a.c.c.C_b drop = new net.minecraft.a.c.c.C_b(
+        net.minecraft.a.c.c.EntityItem drop = new net.minecraft.a.c.c.EntityItem(
                 this.a, (float) this.b + 0.5f, (float) this.c + 1.1f, (float) this.d + 0.5f, potion);
         drop.O = 10;
         this.a.spawnEntityInWorld(drop);

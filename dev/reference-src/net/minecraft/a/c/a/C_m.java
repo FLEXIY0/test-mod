@@ -90,7 +90,7 @@ public class C_m extends C_e {
 
    @Override
    protected void e() {
-      net.minecraft.a.c.C_b var1 = this.b;
+      net.minecraft.a.c.Entity var1 = this.b;
       if (var1 != null) {
          this.faceEntity(var1, 10.0F, 20.0F);
       } else {
@@ -125,12 +125,12 @@ public class C_m extends C_e {
       }
    }
 
-   public void faceEntity(net.minecraft.a.c.C_b var1, float var2, float var3) {
+   public void faceEntity(net.minecraft.a.c.Entity var1, float var2, float var3) {
       float var4 = var1.h - this.h;
       float var5 = var1.j - this.j;
       float var6;
-      if (var1 instanceof net.minecraft.a.c.C_e) {
-         net.minecraft.a.c.C_e var7 = (net.minecraft.a.c.C_e)var1;
+      if (var1 instanceof net.minecraft.a.c.EntityLiving) {
+         net.minecraft.a.c.EntityLiving var7 = (net.minecraft.a.c.EntityLiving)var1;
          var6 = this.i + this.n() - (var7.i + var7.n());
       } else {
          var6 = (var1.r.b + var1.r.e) / 2.0F - (this.i + this.n());

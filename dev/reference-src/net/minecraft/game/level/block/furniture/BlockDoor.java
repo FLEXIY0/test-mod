@@ -6,7 +6,7 @@ package net.minecraft.game.level.block.furniture;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
 import net.minecraft.a.d.C_b;
@@ -17,7 +17,7 @@ extends Block {
     int opening = 0;
     int dropID;
 
-    public BlockDoor(int n, int n2, int n3, C_c c_c) {
+    public BlockDoor(int n, int n2, int n3, Material c_c) {
         super(n, c_c);
         this.as = n2;
         this.dropID = n3;

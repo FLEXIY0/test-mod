@@ -8,7 +8,7 @@ import java.util.List;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.a.C_e;
 import net.minecraft.a.c.a.C_o;
 import net.minecraft.a.c.d.C_f;
@@ -32,8 +32,8 @@ extends C_o {
 
     @Override
     public void f() {
-        C_b c_b;
-        List<C_b> list;
+        Entity c_b;
+        List<Entity> list;
         super.f();
         if (this.b == null && this.d.q.nextInt(100) == 0 && !(list = this.d.a(this, this.r.b(16.0f, 4.0f, 16.0f))).isEmpty() && (c_b = list.get(this.d.q.nextInt(list.size()))) instanceof C_e && !(c_b instanceof EntityPlayer)) {
             this.b = list.get(this.d.q.nextInt(list.size()));
@@ -50,7 +50,7 @@ extends C_o {
     }
 
     @Override
-    protected void a(C_b c_b, float f) {
+    protected void a(Entity c_b, float f) {
         if (f < 10.0f) {
             float f2 = c_b.h - this.h;
             float f3 = c_b.j - this.j;
@@ -93,7 +93,7 @@ extends C_o {
     }
 
     @Override
-    protected void dropFewItems(C_b c_b) {
+    protected void dropFewItems(Entity c_b) {
         int n = this.G.nextInt(16);
         for (int i = 0; i < n; ++i) {
             this.a(Item.snowball.ap, 1, 0.0f);

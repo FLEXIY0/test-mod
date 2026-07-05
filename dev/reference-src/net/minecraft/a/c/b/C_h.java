@@ -65,7 +65,7 @@ public class C_h extends C_a {
          if (this.b == null) {
             List var1 = this.d.a(this, this.r.b(16.0F, 4.0F, 16.0F));
             if (!var1.isEmpty()) {
-               net.minecraft.a.c.C_b var2 = (net.minecraft.a.c.C_b)var1.get(this.d.q.nextInt(var1.size()));
+               net.minecraft.a.c.Entity var2 = (net.minecraft.a.c.Entity)var1.get(this.d.q.nextInt(var1.size()));
                if (var2 instanceof C_f) {
                   this.b = var2;
                } else if (this.G.nextInt(1000) == 0 && !this.isLaying && !this.l()) {
@@ -146,7 +146,7 @@ public class C_h extends C_a {
    }
 
    @Override
-   protected void a(net.minecraft.a.c.C_b var1, float var2) {
+   protected void a(net.minecraft.a.c.Entity var1, float var2) {
       if ((double)var2 < 2.5 && var1.r.e > this.r.b && var1.r.b < this.r.e) {
          this.ac = 20;
          var1.attackEntityFrom(this, 4, 0.4F);
@@ -155,11 +155,11 @@ public class C_h extends C_a {
 
    @Override
    public final boolean l() {
-      return this.d.a(this.r.b(0.0F, 0.0F, 0.0F), net.minecraft.a.a.d.C_c.f);
+      return this.d.a(this.r.b(0.0F, 0.0F, 0.0F), net.minecraft.a.a.d.Material.f);
    }
 
    @Override
-   public boolean attackEntityFrom(net.minecraft.a.c.C_b var1, int var2, float var3) {
+   public boolean attackEntityFrom(net.minecraft.a.c.Entity var1, int var2, float var3) {
       if (super.attackEntityFrom(var1, var2, var3)) {
          if (var1 != this) {
             this.b = var1;

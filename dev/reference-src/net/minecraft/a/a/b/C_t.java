@@ -5,13 +5,13 @@ package net.minecraft.a.a.b;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public final class C_t
 extends Block {
     protected C_t(int n) {
-        super(58, C_c.c);
+        super(58, Material.c);
         this.as = 59;
     }
 

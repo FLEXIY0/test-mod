@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.d.C_g;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.a.a.C_f;
@@ -16,7 +16,7 @@ import util.MathHelper;
 public final class C_ag
 extends C_f {
     @Override
-    public final void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public final void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
         float f6;
         C_g c_g = (C_g)c_b;
         this.a("/item/spears.png");

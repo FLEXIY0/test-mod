@@ -6,17 +6,17 @@ package net.minecraft.a.a.b;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.C_l;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.GameSettings;
 
 public class C_bs
 extends Block {
-    public C_bs(int n, int n2, C_c c_c) {
+    public C_bs(int n, int n2, Material c_c) {
         super(n, n2, c_c);
         this.a(0.0f, 0.0f, 0.0f, 1.0f, 0.125f, 1.0f);
         this.a(true);
@@ -29,8 +29,8 @@ extends Block {
             for (int i = -1; i < 2; ++i) {
                 for (int j = -1; j < 2; ++j) {
                     for (int k = -1; k < 2; ++k) {
-                        C_c c_c = c_g.f(n + i, n2 + k, n3 + j);
-                        if (c_g.a(n + i, n2 + k, n3 + j) != Block.af.at && c_c != C_c.g && c_c != C_c.l && c_g.a(n + i, n2 + k, n3 + j) != Block.lantern.at) continue;
+                        Material c_c = c_g.f(n + i, n2 + k, n3 + j);
+                        if (c_g.a(n + i, n2 + k, n3 + j) != Block.af.at && c_c != Material.g && c_c != Material.l && c_g.a(n + i, n2 + k, n3 + j) != Block.lantern.at) continue;
                         return false;
                     }
                 }
@@ -81,8 +81,8 @@ extends Block {
             for (int i = -1; i < 2; ++i) {
                 for (int j = -1; j < 2; ++j) {
                     for (int k = -1; k < 2; ++k) {
-                        C_c c_c = c_g.f(n + i, n2 + k, n3 + j);
-                        if (c_g.a(n + i, n2 + k, n3 + j) != Block.af.at && c_c != C_c.g && c_c != C_c.l && c_g.a(n + i, n2 + k, n3 + j) != Block.lantern.at) continue;
+                        Material c_c = c_g.f(n + i, n2 + k, n3 + j);
+                        if (c_g.a(n + i, n2 + k, n3 + j) != Block.af.at && c_c != Material.g && c_c != Material.l && c_g.a(n + i, n2 + k, n3 + j) != Block.lantern.at) continue;
                         if (c_g.e(n, n2, n3) >= 1) {
                             c_g.setBlockMetadata(n, n2, n3, c_g.e(n, n2, n3) - 1);
                             continue;
@@ -164,8 +164,8 @@ extends Block {
                 float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                C_b c_b = new C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4)));
-                new C_b(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
+                EntityItem c_b = new EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4)));
+                new EntityItem(c_g, (float)n + f2, (float)n2 + f3, (float)n3 + f4, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }
         }
@@ -186,8 +186,8 @@ extends Block {
                 float f = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;
                 float f3 = c_g.q.nextFloat() * 0.7f + 0.15f;
-                C_b c_b = new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4)));
-                new C_b(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
+                EntityItem c_b = new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4)));
+                new EntityItem(c_g, (float)n + f, (float)n2 + f2, (float)n3 + f3, new ItemStack(n6, 1, this.damageDropped(n4))).O = 10;
                 c_g.spawnEntityInWorld(c_b);
             }
         }
@@ -208,7 +208,7 @@ extends Block {
 
     @Override
     public boolean canCompost() {
-        return this.aC == C_c.h;
+        return this.aC == Material.h;
     }
 }
 

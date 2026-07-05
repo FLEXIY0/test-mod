@@ -23,16 +23,16 @@ import net.minecraft.game.level.block.furniture.BlockChair;
 import net.minecraft.game.level.block.furniture.BlockFenceGate;
 import net.minecraft.game.level.block.furniture.BlockTrapdoor;
 
-public final class C_f {
-   private static final C_f a = new C_f();
+public final class CraftingManager {
+   private static final CraftingManager a = new CraftingManager();
    private List<C_l> b = new ArrayList<>();
    private List<C_l> unlockedRecipes = new ArrayList<>();
 
-   public static final C_f a() {
+   public static final CraftingManager a() {
       return a;
    }
 
-   private C_f() {
+   private CraftingManager() {
       new C_e().a(this);
       new C_h().a(this);
       new C_d().a(this);
@@ -76,6 +76,10 @@ public final class C_f {
       this.a(new ItemStack(Block.aq), "###", "# #", "###", '#', Block.l);
       this.a(new ItemStack(Block.jukeBox), "###", "#X#", "###", '#', Block.m, 'X', Item.j);
       this.a(new ItemStack(Block.noteBlock), "###", "#X#", "###", '#', Block.m, 'X', Block.ak);
+      this.a(new ItemStack(Block.netherReactorCore), "I I", "IDI", "I I", 'I', Item.k, 'D', Item.j); // 6 iron + 1 diamond
+      this.a(new ItemStack(Block.cauldron), "I I", "I I", "III", 'I', Item.k); // cauldron: 7 iron
+      this.a(new ItemStack(Item.potionBottle, 3), "G G", " G ", 'G', Block.B); // 3 glass -> 3 bottles
+
       this.a(new ItemStack(Block.an), "##", "##", '#', Block.m);
       this.a(new ItemStack(Block.snowBlock), "##", "##", '#', Item.snowball);
       this.a(new ItemStack(Block.t), "##", "##", '#', Item.sandball);

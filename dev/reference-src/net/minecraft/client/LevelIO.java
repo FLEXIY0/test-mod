@@ -4,7 +4,7 @@
 package net.minecraft.client;
 
 import net.minecraft.a.a.World;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.d;
 import net.minecraft.client.g.C_a;
 
@@ -18,7 +18,7 @@ extends net.minecraft.a.a.C_a {
     }
 
     @Override
-    protected final C_b a(World c_g, String string) {
+    protected final Entity a(World c_g, String string) {
         return string.equals("LocalPlayer") ? new C_a(this.a, c_g, this.a.h) : super.a(c_g, string);
     }
 }

@@ -5,7 +5,7 @@ package net.minecraft.game.level.block.furniture;
 
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
@@ -14,7 +14,7 @@ public class BlockChair
 extends Block {
     public boolean isOccupied = false;
 
-    public BlockChair(int n, int n2, C_c c_c) {
+    public BlockChair(int n, int n2, Material c_c) {
         super(n, n2, c_c);
         this.hasStates = true;
     }

@@ -11,8 +11,8 @@ import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_j;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.Item;
-import net.minecraft.a.c.C_b;
-import net.minecraft.a.c.C_e;
+import net.minecraft.a.c.Entity;
+import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
 import net.minecraft.client.statistics.AchievementList;
@@ -310,17 +310,17 @@ public final class ItemStack {
         return this.a().a(this, c_g, entityPlayer);
     }
 
-    public void hitEntity(C_e c_e, EntityPlayer entityPlayer) {
+    public void hitEntity(EntityLiving c_e, EntityPlayer entityPlayer) {
         if (entityPlayer.d.z) {
             Item.b[this.c].hitEntity(entityPlayer, this, entityPlayer.d);
         }
     }
 
-    public void useItemOnEntity(C_e c_e, EntityPlayer entityPlayer) {
+    public void useItemOnEntity(EntityLiving c_e, EntityPlayer entityPlayer) {
         this.a().saddleEntity(this, c_e, entityPlayer);
     }
 
-    public int getDamageVsEntity(C_b c_b) {
+    public int getDamageVsEntity(Entity c_b) {
         return Item.b[this.c].a();
     }
 

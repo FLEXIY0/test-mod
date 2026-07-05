@@ -12,7 +12,7 @@ import net.minecraft.a.a.b.C_am;
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.C_bs;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.a.RenderEngine;
 import net.minecraft.client.a.a.C_i;
@@ -34,7 +34,7 @@ public abstract class C_f {
         this.c = 1.0f;
     }
 
-    public abstract void a(C_b var1, float var2, float var3, float var4, float var5, float var6);
+    public abstract void a(Entity var1, float var2, float var3, float var4, float var5, float var6);
 
     protected final void a(String string) {
         RenderEngine.a(this.a.b.a(string));
@@ -91,7 +91,7 @@ public abstract class C_f {
         this.a = c_i;
     }
 
-    public final void a(C_b c_b, float f, float f2, float f3, float f4) {
+    public final void a(Entity c_b, float f, float f2, float f3, float f4) {
         float f5;
         float f6;
         float f7;

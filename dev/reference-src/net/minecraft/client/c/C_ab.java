@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.b.a.C_f;
+import net.minecraft.a.b.a.CraftingManager;
 import net.minecraft.a.b.a.C_l;
 import net.minecraft.a.b.a.C_r;
 import net.minecraft.client.C_c;
@@ -79,7 +79,7 @@ extends C_bm {
             List<C_l> list = this.this$0.switchList();
             ArrayList<C_l> arrayList = new ArrayList<C_l>();
             for (C_l c_l : list) {
-                if (!C_f.a().getUnlockedRecipeList().contains(c_l) || !c_l.getRecipeOutput().getItemName().toLowerCase().contains(C_ac.access$200(this.this$0).toLowerCase())) continue;
+                if (!CraftingManager.a().getUnlockedRecipeList().contains(c_l) || !c_l.getRecipeOutput().getItemName().toLowerCase().contains(C_ac.access$200(this.this$0).toLowerCase())) continue;
                 arrayList.add(c_l);
             }
             if (!C_ac.access$200(this.this$0).isEmpty() && arrayList.size() > 0) {
@@ -223,7 +223,7 @@ extends C_bm {
         }
         String string = "";
         StatFileWriter statFileWriter = d.getMinecraft().statFileWriter;
-        List<C_l> list = C_f.a().getUnlockedRecipeList();
+        List<C_l> list = CraftingManager.a().getUnlockedRecipeList();
         for (int i = 0; i < n7; ++i) {
             for (n4 = 0; n4 < n8; ++n4) {
                 ItemStack itemStack;

@@ -6,11 +6,11 @@ package net.minecraft.game.level.block.container;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public abstract class BlockContainer
 extends Block {
-    public BlockContainer(int n, C_c c_c) {
+    public BlockContainer(int n, Material c_c) {
         super(n, c_c);
         this.isBlockContainer = true;
     }

@@ -5,7 +5,7 @@ package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
 import net.minecraft.a.a.World;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.a.C_e;
 import net.minecraft.a.d.C_a;
 import util.MathHelper;
@@ -60,7 +60,7 @@ extends C_e {
         } else if (!this.b.r()) {
             this.b = null;
         } else {
-            C_b c_b = this.b;
+            Entity c_b = this.b;
             f3 = this.b.h - this.h;
             f2 = c_b.i - this.i;
             f = c_b.j - this.j;
@@ -109,7 +109,7 @@ extends C_e {
     }
 
     @Override
-    protected void a(C_b c_b, float f) {
+    protected void a(Entity c_b, float f) {
         if ((double)f < 1.5 && c_b.r.e > this.r.b && c_b.r.b < this.r.e) {
             this.ac = 20;
             c_b.attackEntityFrom(this, this.a, 0.4f);

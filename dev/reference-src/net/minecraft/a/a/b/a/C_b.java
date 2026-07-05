@@ -7,7 +7,7 @@ import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.TileEntity;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.b.a.C_j;
@@ -187,7 +187,7 @@ implements net.minecraft.a.C_b {
             return 0;
         }
         int n = itemStack.a().ap;
-        return n < 256 && Block.c[n].getMaterial(itemStack.getItemDamage()) == C_c.c ? 300 : (n < 256 && Block.c[n].getMaterial(itemStack.getItemDamage()) == C_c.k ? 200 : (n < 256 && Block.c[n].getMaterial(itemStack.getItemDamage()) == C_c.i ? 100 : (n < 256 && Block.c[n].getMaterial(itemStack.getItemDamage()) == C_c.h ? 150 : (n == Item.z.ap ? 100 : (n == Item.i.ap && itemStack.getItemDamage() == 0 ? 1600 : (n == Item.i.ap && itemStack.getItemDamage() == 1 ? 800 : (n == Block.seaweed.at ? 400 : (n == Block.blockCoal.at ? 14400 : (n == Item.bucketLava.ap ? 20000 : 0)))))))));
+        return n < 256 && Block.c[n].getMaterial(itemStack.getItemDamage()) == Material.c ? 300 : (n < 256 && Block.c[n].getMaterial(itemStack.getItemDamage()) == Material.k ? 200 : (n < 256 && Block.c[n].getMaterial(itemStack.getItemDamage()) == Material.i ? 100 : (n < 256 && Block.c[n].getMaterial(itemStack.getItemDamage()) == Material.h ? 150 : (n == Item.z.ap ? 100 : (n == Item.i.ap && itemStack.getItemDamage() == 0 ? 1600 : (n == Item.i.ap && itemStack.getItemDamage() == 1 ? 800 : (n == Block.seaweed.at ? 400 : (n == Block.blockCoal.at ? 14400 : (n == Item.bucketLava.ap ? 20000 : 0)))))))));
     }
 
     public static boolean isFuel(ItemStack itemStack) {

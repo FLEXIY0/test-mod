@@ -6,11 +6,11 @@ package net.minecraft.game.level.block.machines;
 import java.util.Random;
 import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 
 public class BlockDetector
 extends Block {
-    public BlockDetector(int n, int n2, C_c c_c) {
+    public BlockDetector(int n, int n2, Material c_c) {
         super(n, n2, c_c);
         this.a(true);
     }

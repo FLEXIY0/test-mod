@@ -7,16 +7,16 @@ import com.a.a.NBTTagCompound;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.a.a.World;
-import net.minecraft.a.a.d.C_c;
+import net.minecraft.a.a.d.Material;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_d;
-import net.minecraft.a.c.c.C_b;
+import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.c.C_f;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public class C_a
-extends net.minecraft.a.c.C_b {
+extends net.minecraft.a.c.Entity {
     protected int O = 0;
     public int a = 0;
     public int P;
@@ -123,7 +123,7 @@ extends net.minecraft.a.c.C_b {
         if (!this.c()) {
             if (this.O++ >= 1 && !this.d.multiplayerWorld) {
                 this.k();
-                this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, new ItemStack(Item.ao)));
+                this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(Item.ao)));
             }
         } else {
             this.O = 0;
@@ -154,12 +154,12 @@ extends net.minecraft.a.c.C_b {
         int n6 = (int)(this.i - (float)this.b.d / 32.0f);
         for (int i = 0; i < n2; ++i) {
             for (n = 0; n < n3; ++n) {
-                C_c c_c = this.a != 0 && this.a != 2 ? this.d.f(this.P, n6 + n, n5 + i) : this.d.f(n4 + i, n6 + n, this.R);
+                Material c_c = this.a != 0 && this.a != 2 ? this.d.f(this.P, n6 + n, n5 + i) : this.d.f(n4 + i, n6 + n, this.R);
                 if (c_c.a()) continue;
                 return false;
             }
         }
-        List<net.minecraft.a.c.C_b> list = this.d.r.a(this, this.r);
+        List<net.minecraft.a.c.Entity> list = this.d.r.a(this, this.r);
         for (n = 0; n < list.size(); ++n) {
             if (!(list.get(n) instanceof C_a)) continue;
             return false;
@@ -173,7 +173,7 @@ extends net.minecraft.a.c.C_b {
     }
 
     @Override
-    public boolean attackEntityFrom(net.minecraft.a.c.C_b c_b, int n, float f) {
+    public boolean attackEntityFrom(net.minecraft.a.c.Entity c_b, int n, float f) {
         if (c_b instanceof net.minecraft.a.c.d.C_a || c_b instanceof net.minecraft.a.c.d.C_b) {
             return false;
         }
@@ -182,7 +182,7 @@ extends net.minecraft.a.c.C_b {
             this.k();
             boolean bl2 = bl = !(c_b instanceof EntityPlayer) || c_b instanceof EntityPlayer && ((EntityPlayer)c_b).gamemode != 1;
             if (bl) {
-                this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, new ItemStack(Item.ao)));
+                this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(Item.ao)));
             }
         }
         return true;
@@ -223,7 +223,7 @@ extends net.minecraft.a.c.C_b {
     public void d(float f, float f2, float f3) {
         if (!this.d.multiplayerWorld && (double)(f * f + f2 * f2 + f3 * f3) > 0.0) {
             this.k();
-            this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, new ItemStack(Item.ao)));
+            this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(Item.ao)));
         }
     }
 
@@ -231,7 +231,7 @@ extends net.minecraft.a.c.C_b {
     public void a(float f, float f2, float f3) {
         if (!this.d.multiplayerWorld && (double)(f * f + f2 * f2 + f3 * f3) > 0.0) {
             this.k();
-            this.d.spawnEntityInWorld(new C_b(this.d, this.h, this.i, this.j, new ItemStack(Item.ao)));
+            this.d.spawnEntityInWorld(new EntityItem(this.d, this.h, this.i, this.j, new ItemStack(Item.ao)));
         }
     }
 }

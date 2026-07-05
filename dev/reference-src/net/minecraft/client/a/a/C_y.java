@@ -7,7 +7,7 @@
 package net.minecraft.client.a.a;
 
 import java.util.Random;
-import net.minecraft.a.c.C_b;
+import net.minecraft.a.c.Entity;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.a.a.C_f;
 import org.lwjgl.opengl.GL11;
@@ -96,7 +96,7 @@ extends C_f {
     }
 
     @Override
-    public void a(C_b c_b, float f, float f2, float f3, float f4, float f5) {
+    public void a(Entity c_b, float f, float f2, float f3, float f4, float f5) {
         this.renderBolt((net.minecraft.a.c.c.C_f)c_b, f, f2, f3, f4, f5);
     }
 }
