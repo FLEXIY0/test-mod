@@ -82,14 +82,23 @@ public final class BookLayout {
 
     static final float[] H_SCALE = {1.7f, 1.5f, 1.3f, 1.2f, 1.1f, 1.05f};
 
+    static final int SEL_BG = 0x663A6EA5; // translucent blue selection
+
     private final int width;
     private final Metrics m;
     private int y = 0;
+    private int selStart = -1, selEnd = -1;
 
     private BookLayout(int width, Metrics m) { this.width = width; this.m = m; }
 
     public static BookLayout build(String text, int cursorPos, int width, Metrics m, boolean reading) {
+        return build(text, cursorPos, -1, -1, width, m, reading);
+    }
+
+    public static BookLayout build(String text, int cursorPos, int selStart, int selEnd, int width, Metrics m, boolean reading) {
         BookLayout bl = new BookLayout(width, m);
+        bl.selStart = selStart;
+        bl.selEnd = selEnd;
         try {
             bl.run(text == null ? "" : text, reading ? -1 : cursorPos);
         } catch (Throwable t) {
@@ -117,6 +126,7 @@ public final class BookLayout {
             }
             if (cursorLine < 0) cursorLine = ranges.size() - 1;
         }
+        boolean selActive = selStart >= 0 && selEnd > selStart;
         boolean inFence = false;
         for (int i = 0; i < ranges.size(); i++) {
             int ls = ranges.get(i)[0], le = ranges.get(i)[1];
@@ -124,7 +134,11 @@ public final class BookLayout {
             int top = y;
             boolean fenceToggle = line.trim().startsWith("```");
             if (i == cursorLine) {
-                revealLine(line, cursorPos - ls);
+                revealLine(line, cursorPos - ls, ls);
+                if (fenceToggle) inFence = !inFence;
+            } else if (selActive) {
+                // while selecting, show every line raw so the highlight aligns exactly
+                revealLine(line, -1, ls);
                 if (fenceToggle) inFence = !inFence;
             } else if (fenceToggle) {
                 inFence = !inFence; // hide the ``` fence marker line in preview
@@ -141,7 +155,8 @@ public final class BookLayout {
 
     static final int F_BOLD = 1, F_ITALIC = 2, F_STRIKE = 4, F_HL = 8, F_CODE = 16, F_DIM = 32;
 
-    private void revealLine(String line, int caretCol) {
+    private void revealLine(String line, int caretCol, int lineAbsStart) {
+        boolean drawCaret = caretCol >= 0;
         // block scale: a heading line stays big while its # markers are shown
         int ind = 0;
         while (ind < line.length() && line.charAt(ind) == ' ') ind++;
@@ -159,6 +174,17 @@ public final class BookLayout {
         int lineH = (int) (10 * scale) + 1;
         for (int[] row : rows) {
             int rs = row[0], re = row[1];
+            // selection highlight for this row (exact — the row is raw text)
+            if (selStart >= 0 && selEnd > selStart) {
+                int rowA = lineAbsStart + rs, rowB = lineAbsStart + re;
+                int a = Math.max(selStart, rowA), bsel = Math.min(selEnd, rowB);
+                if (bsel >= a) {
+                    int x0 = (int) (m.width(line.substring(rs, a - lineAbsStart)) * scale);
+                    int x1 = (int) (m.width(line.substring(rs, bsel - lineAbsStart)) * scale);
+                    if (selEnd > rowB) x1 += 3; // selection spans the newline
+                    spans.add(new Span(x0, y - 1, Math.max(1, x1 - x0), lineH, SEL_BG));
+                }
+            }
             int x = 0;
             int i = rs;
             while (i < re) {
@@ -174,14 +200,14 @@ public final class BookLayout {
                 x += segW;
                 i = j;
             }
-            if (caretCol >= rs && caretCol <= re) {
+            if (drawCaret && caretY < 0 && caretCol >= rs && caretCol <= re) {
                 caretX = (int) (m.width(line.substring(rs, Math.min(caretCol, re))) * scale);
                 caretY = y;
                 caretH = (int) (8 * scale);
             }
             y += lineH;
         }
-        if (caretY < 0 && !rows.isEmpty()) {
+        if (drawCaret && caretY < 0 && !rows.isEmpty()) {
             int[] last = rows.get(rows.size() - 1);
             caretX = (int) (m.width(line.substring(last[0], last[1])) * scale);
             caretY = y - lineH;

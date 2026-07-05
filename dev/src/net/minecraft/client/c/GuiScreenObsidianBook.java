@@ -34,6 +34,7 @@ extends GuiScreen {
     private int bookImageHeight = 192;
     private String content = "";
     private int cursorPos;
+    private int selAnchor = -1; // start of an active Shift/Ctrl-A selection, or -1
     private boolean showTools;
     private boolean reading;
     private String status = "";
@@ -259,14 +260,36 @@ extends GuiScreen {
         String text = this.content;
         int len = text.length();
         if (this.cursorPos > len) this.cursorPos = len;
+        boolean shift = Keyboard.isKeyDown(42) || Keyboard.isKeyDown(54);
+
+        // ---- clipboard / select-all shortcuts (Ctrl chars arrive as `c`) ----
+        if (c == '\u0001') { // Ctrl+A: select the whole document
+            this.selAnchor = 0;
+            this.cursorPos = len;
+            return;
+        }
+        if (c == '\u0003') { // Ctrl+C: copy
+            if (this.hasSel()) GuiScreen.setClipboardString(this.selectedText());
+            return;
+        }
+        if (c == '\u0018') { // Ctrl+X: cut
+            if (this.hasSel()) {
+                GuiScreen.setClipboardString(this.selectedText());
+                this.deleteSelection();
+            }
+            return;
+        }
+        if (c == '\u0016') { this.insert(GuiScreen.getClipboardString()); return; } // Ctrl+V
+
         switch (keyCode) {
-            case 203: if (this.cursorPos > 0) --this.cursorPos; return;                  // Left
-            case 205: if (this.cursorPos < len) ++this.cursorPos; return;                // Right
-            case 199: this.cursorPos = lineStart(text, this.cursorPos); return;          // Home
-            case 207: this.cursorPos = lineEnd(text, this.cursorPos); return;            // End
-            case 200: this.cursorPos = moveVertical(text, this.cursorPos, -1); return;   // Up
-            case 208: this.cursorPos = moveVertical(text, this.cursorPos, 1); return;    // Down
+            case 203: this.moveCaret(this.cursorPos > 0 ? this.cursorPos - 1 : 0, shift); return;     // Left
+            case 205: this.moveCaret(this.cursorPos < len ? this.cursorPos + 1 : len, shift); return; // Right
+            case 199: this.moveCaret(lineStart(text, this.cursorPos), shift); return;                 // Home
+            case 207: this.moveCaret(lineEnd(text, this.cursorPos), shift); return;                   // End
+            case 200: this.moveCaret(moveVertical(text, this.cursorPos, -1), shift); return;          // Up
+            case 208: this.moveCaret(moveVertical(text, this.cursorPos, 1), shift); return;           // Down
             case 14: // Backspace
+                if (this.hasSel()) { this.deleteSelection(); return; }
                 if (this.cursorPos > 0) {
                     this.content = text.substring(0, this.cursorPos - 1) + text.substring(this.cursorPos);
                     --this.cursorPos;
@@ -274,17 +297,53 @@ extends GuiScreen {
                 }
                 return;
             case 211: // Delete
+                if (this.hasSel()) { this.deleteSelection(); return; }
                 if (this.cursorPos < len) {
                     this.content = text.substring(0, this.cursorPos) + text.substring(this.cursorPos + 1);
                     this.bookModified = true;
                 }
                 return;
         }
-        if (c == '\u0016') { this.insert(GuiScreen.getClipboardString()); return; } // Ctrl+V
         if (keyCode == 28) { this.insert("\n"); return; }                            // Enter
         if (ChatAllowedCharacters.ALLOWED_CHARACTERS.indexOf(c) >= 0) {
             this.insert(Character.toString(c));
         }
+    }
+
+    // ---- selection helpers ----
+
+    private boolean hasSel() { return this.selAnchor >= 0 && this.selAnchor != this.cursorPos; }
+    private int selMin() { return Math.min(this.selAnchor, this.cursorPos); }
+    private int selMax() { return Math.max(this.selAnchor, this.cursorPos); }
+
+    private String selectedText() {
+        if (!this.hasSel()) return "";
+        int a = Math.max(0, this.selMin());
+        int b = Math.min(this.content.length(), this.selMax());
+        return this.content.substring(a, b);
+    }
+
+    /** Move the caret to `pos`; extend the selection when Shift is held, else drop it. */
+    private void moveCaret(int pos, boolean shift) {
+        if (pos < 0) pos = 0;
+        if (pos > this.content.length()) pos = this.content.length();
+        if (shift) {
+            if (this.selAnchor < 0) this.selAnchor = this.cursorPos;
+        } else {
+            this.selAnchor = -1;
+        }
+        this.cursorPos = pos;
+    }
+
+    /** Delete the active selection and collapse the caret to its start. */
+    private void deleteSelection() {
+        if (!this.hasSel()) { this.selAnchor = -1; return; }
+        int a = Math.max(0, this.selMin());
+        int b = Math.min(this.content.length(), this.selMax());
+        this.content = this.content.substring(0, a) + this.content.substring(b);
+        this.cursorPos = a;
+        this.selAnchor = -1;
+        this.bookModified = true;
     }
 
     /** Insert at the caret. No page-capacity check — overflow flows to a new page. */
@@ -349,6 +408,7 @@ extends GuiScreen {
                 String pageText = this.content.substring(
                         Math.min(this.pageStart + lb.start, this.content.length()),
                         Math.min(this.pageStart + lb.end, this.content.length()));
+                this.selAnchor = -1; // a click collapses any active selection
                 this.cursorPos = this.pageStart + lb.start + columnFromX(pageText, lx, this.metrics());
                 if (this.cursorPos > this.content.length()) this.cursorPos = this.content.length();
                 return;
@@ -393,6 +453,13 @@ extends GuiScreen {
         int pageEnd = starts[page + 1];
         String pageText = this.content.substring(this.pageStart, pageEnd);
         int pageCursor = this.reading ? -1 : (this.cursorPos - this.pageStart);
+        // Clip the selection to this page and make it page-relative for the renderer.
+        int pSelStart = -1, pSelEnd = -1;
+        if (!this.reading && this.hasSel()) {
+            int a = Math.max(this.selMin(), this.pageStart);
+            int b = Math.min(this.selMax(), pageEnd);
+            if (b > a) { pSelStart = a - this.pageStart; pSelEnd = b - this.pageStart; }
+        }
 
         String pageLabel = net.minecraft.client.Lang.tr("Page %1 of %2")
                 .replace("%1", Integer.toString(page + 1)).replace("%2", Integer.toString(pageCount));
@@ -401,7 +468,7 @@ extends GuiScreen {
 
         int textX = n4 + 36;
         int textY = n5 + 16 + 16;
-        this.layout = MarkdownRenderer.render(this.g, pageText, pageCursor, textX, textY, PAGE_WIDTH, this.pageAreaHeight(), this.reading);
+        this.layout = MarkdownRenderer.render(this.g, pageText, pageCursor, pSelStart, pSelEnd, textX, textY, PAGE_WIDTH, this.pageAreaHeight(), this.reading);
         this.layoutX = textX;
         this.layoutY = textY;
 

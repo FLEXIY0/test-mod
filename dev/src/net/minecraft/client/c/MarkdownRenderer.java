@@ -23,9 +23,9 @@ public final class MarkdownRenderer {
         return b;
     }
 
-    public static BookLayout render(final FontRenderer fr, String text, int cursorPos,
+    public static BookLayout render(final FontRenderer fr, String text, int cursorPos, int selStart, int selEnd,
                                     final int x, final int y, int width, int maxHeight, boolean reading) {
-        BookLayout bl = BookLayout.build(text, cursorPos, width, new BookLayout.Metrics() {
+        BookLayout bl = BookLayout.build(text, cursorPos, selStart, selEnd, width, new BookLayout.Metrics() {
             @Override
             public int width(String s) { return fr.a(s); }
         }, reading);
