@@ -61,6 +61,7 @@ public class C_o {
         C_o.addMapping(C_i.class, "Noteblock");
         C_o.addMapping(C_g.class, "Dispenser");
         C_o.addMapping(net.minecraft.a.a.b.a.TileEntityNetherReactor.class, "NetherReactor");
+        C_o.addMapping(net.minecraft.a.a.b.a.TileEntityCauldron.class, "Cauldron");
     }
 }
 

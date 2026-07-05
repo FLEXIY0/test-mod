@@ -77,6 +77,8 @@ public final class C_f {
       this.a(new ItemStack(C_x.jukeBox), "###", "#X#", "###", '#', C_x.m, 'X', Item.j);
       this.a(new ItemStack(C_x.noteBlock), "###", "#X#", "###", '#', C_x.m, 'X', C_x.ak);
       this.a(new ItemStack(C_x.netherReactorCore), "I I", "IDI", "I I", 'I', Item.k, 'D', Item.j); // 6 iron + 1 diamond
+      this.a(new ItemStack(C_x.cauldron), "I I", "I I", "III", 'I', Item.k); // cauldron: 7 iron
+      this.a(new ItemStack(Item.potionBottle, 3), "G G", " G ", 'G', C_x.B); // 3 glass -> 3 bottles
 
       this.a(new ItemStack(C_x.an), "##", "##", '#', C_x.m);
       this.a(new ItemStack(C_x.snowBlock), "##", "##", '#', Item.snowball);

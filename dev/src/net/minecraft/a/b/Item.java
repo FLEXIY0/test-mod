@@ -244,6 +244,9 @@ public class Item {
     public static final Item recordAqua = new C_bb(119, "Washed Away").a(140).setItemName("\u00a7bBlue Record").setItemDescription("Soybean_56", 0);
     public static final Item recordBlack = new C_bb(131, "Disc VIII").a(236).setItemName("\u00a7bBlack Record").setItemDescription("RyPieEye", 0);
     public static final Item recordSpecial = new C_bb(132, "Magnetic Circuit").a(300).setItemName("\u00a7bLost Record").setItemDescription("Notch", 0);
+    // Cauldron brewing (ReIndev port): potion contents icons 960-966 (per effect), bottle 968
+    public static final Item potion = new ItemPotion(190).a(960).setItemName("Potion");
+    public static final Item potionBottle = new Item(191).a(968).setItemName("Glass Bottle");
     public final int ap;
     protected int aq = 64;
     protected int ar = 32;

@@ -188,6 +188,8 @@ public class C_x {
     public static final C_x glowStone = new C_x(198, 965, net.minecraft.a.a.d.C_c.d).b(0.3f).c(1.0f).setName("\u00a7eGlowstone").setStepSound(aH);
     public static final C_x glowingObsidian = new C_x(199, 966, net.minecraft.a.a.d.C_c.d).b(10.0f).a(2000.0f).c(0.75f).setName("\u00a7dGlowing Obsidian").setStepSound(aF);
     public static final C_x netherReactorCore = new net.minecraft.game.level.block.machines.BlockNetherReactorCore(200, 960).b(3.0f).a(10.0f).setName("\u00a7cNether Reactor Core").setStepSound(aF);
+    // Cauldron (ReIndev port): side 967, top-empty 968, top-water 969, bottom 970
+    public static final C_x cauldron = new net.minecraft.game.level.block.machines.BlockCauldron(201, 967, 968, 969, 970).b(2.0f).a(5.0f).setName("Cauldron").setStepSound(aF);
     public static final C_x af = new BlockTorch(50, 79).b(0.0f).c(0.875f).setName("Torch").setStepSound(b).disableNeighborNotifyOnMetadataChange().setDecorationStatus(true);
     public static final C_x ah = new C_ai(52, C_x.p.at).b(0.0f).setName("Water Source").setStepSound(b);
     public static final C_x ai = new C_ai(53, C_x.r.at).b(0.0f).setName("Lava Source").setStepSound(b);
