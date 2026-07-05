@@ -1,11 +1,9 @@
 /*
  * Line-oriented Markdown layout for the Obsidian Book, supporting an Obsidian
- * "Live Preview" hybrid: every source line is rendered formatted EXCEPT the
- * line the caret is on, which is shown as raw editable text. Pure and
- * side-effect free (no OpenGL) so it can be unit-tested headless.
- *
- * Because the caret line is drawn as plain text, caret<->character mapping only
- * has to be exact within that one raw line — the rest is display-only.
+ * "Live Preview" hybrid: every source line is rendered formatted; the line the
+ * caret is on is also formatted but reveals its markdown syntax (dim markers,
+ * headings stay big) with an exact caret. Pure and side-effect free (no OpenGL)
+ * so it can be unit-tested headless.
  *
  * Supported per line: # headings (1-6), - / * / + bullets, 1. ordered,
  * - [ ] / - [x] checkboxes, > quotes, --- rules, ``` fenced code, and inline
@@ -126,7 +124,7 @@ public final class BookLayout {
             int top = y;
             boolean fenceToggle = line.trim().startsWith("```");
             if (i == cursorLine) {
-                rawLine(line, cursorPos - ls);
+                revealLine(line, cursorPos - ls);
                 if (fenceToggle) inFence = !inFence;
             } else if (fenceToggle) {
                 inFence = !inFence; // hide the ``` fence marker line in preview
@@ -139,29 +137,136 @@ public final class BookLayout {
         }
     }
 
-    // ---- raw (caret) line ----
+    // ---- caret line: Obsidian-style reveal (formatting kept, markers visible) ----
 
-    private void rawLine(String line, int caretCol) {
-        List<String> rows = wrapExact(line, width);
-        if (rows.isEmpty()) rows.add("");
-        int consumed = 0;
+    static final int F_BOLD = 1, F_ITALIC = 2, F_STRIKE = 4, F_HL = 8, F_CODE = 16, F_DIM = 32;
+
+    private void revealLine(String line, int caretCol) {
+        // block scale: a heading line stays big while its # markers are shown
+        int ind = 0;
+        while (ind < line.length() && line.charAt(ind) == ' ') ind++;
+        String body = line.substring(ind);
+        int h = 0;
+        while (h < body.length() && body.charAt(h) == '#') h++;
+        boolean heading = h >= 1 && h <= 6 && h < body.length() && body.charAt(h) == ' ';
+        float scale = heading ? H_SCALE[h - 1] : 1f;
+        int baseColor = heading ? HEADING : TEXT;
+
+        int[] flags = styleLine(line);
+        List<int[]> rows = wrapRows(line, scale);
+        if (rows.isEmpty()) rows.add(new int[]{0, 0});
         if (caretCol < 0) caretCol = 0;
-        for (String row : rows) {
-            spans.add(new Span(row, 0, y, 1f, false, false, TEXT));
-            int rowLen = row.length();
-            if (caretCol >= consumed && caretCol <= consumed + rowLen) {
-                int col = caretCol - consumed;
-                caretX = m.width(row.substring(0, Math.min(col, rowLen)));
-                caretY = y;
+        int lineH = (int) (10 * scale) + 1;
+        for (int[] row : rows) {
+            int rs = row[0], re = row[1];
+            int x = 0;
+            int i = rs;
+            while (i < re) {
+                int f = flags[i];
+                int j = i;
+                while (j < re && flags[j] == f) j++;
+                String seg = line.substring(i, j);
+                int segW = (int) (m.width(seg) * scale);
+                int color = (f & F_DIM) != 0 ? RULE : (f & F_CODE) != 0 ? CODE : baseColor;
+                if ((f & F_HL) != 0) spans.add(new Span(x - 1, y - 1, segW + 2, (int) (9 * scale) + 2, HL_BG));
+                spans.add(new Span(seg, x, y, scale, (f & F_BOLD) != 0, (f & F_ITALIC) != 0, color));
+                if ((f & F_STRIKE) != 0) spans.add(new Span(x, y + (int) (4 * scale), segW, 1, color, 1));
+                x += segW;
+                i = j;
             }
-            consumed += rowLen;
-            y += 10;
+            if (caretCol >= rs && caretCol <= re) {
+                caretX = (int) (m.width(line.substring(rs, Math.min(caretCol, re))) * scale);
+                caretY = y;
+                caretH = (int) (8 * scale);
+            }
+            y += lineH;
         }
-        // caret at the very end when it lands past the last row char
         if (caretY < 0 && !rows.isEmpty()) {
-            caretX = m.width(rows.get(rows.size() - 1));
-            caretY = y - 10;
+            int[] last = rows.get(rows.size() - 1);
+            caretX = (int) (m.width(line.substring(last[0], last[1])) * scale);
+            caretY = y - lineH;
+            caretH = (int) (8 * scale);
         }
+    }
+
+    /** Per-character style flags with paired markers: an opening marker only
+     *  formats if a matching close exists, so unclosed markers stay literal. */
+    private int[] styleLine(String s) {
+        int n = s.length();
+        int[] f = new int[n];
+        boolean bold = false, it = false, st = false, hl = false;
+        int i = 0;
+        while (i < n) {
+            char c = s.charAt(i);
+            if (c == '`') {
+                int j = s.indexOf('`', i + 1);
+                if (j > i) {
+                    f[i] |= F_DIM;
+                    for (int k = i + 1; k < j; k++) f[k] |= F_CODE;
+                    f[j] |= F_DIM;
+                    i = j + 1;
+                    continue;
+                }
+            }
+            if (twoAt(s, i, "**") || twoAt(s, i, "__")) {
+                if (bold) { f[i] |= F_DIM; f[i + 1] |= F_DIM; bold = false; i += 2; continue; }
+                if (s.indexOf(s.substring(i, i + 2), i + 2) >= 0) { f[i] |= F_DIM; f[i + 1] |= F_DIM; bold = true; i += 2; continue; }
+            }
+            if (twoAt(s, i, "~~")) {
+                if (st) { f[i] |= F_DIM; f[i + 1] |= F_DIM; st = false; i += 2; continue; }
+                if (s.indexOf("~~", i + 2) >= 0) { f[i] |= F_DIM; f[i + 1] |= F_DIM; st = true; i += 2; continue; }
+            }
+            if (twoAt(s, i, "==")) {
+                if (hl) { f[i] |= F_DIM; f[i + 1] |= F_DIM; hl = false; i += 2; continue; }
+                if (s.indexOf("==", i + 2) >= 0) { f[i] |= F_DIM; f[i + 1] |= F_DIM; hl = true; i += 2; continue; }
+            }
+            if ((c == '*' || c == '_') && !twoAt(s, i, "**") && !twoAt(s, i, "__")) {
+                if (it) { f[i] |= F_DIM; it = false; i++; continue; }
+                if (hasSingle(s, i + 1, c)) { f[i] |= F_DIM; it = true; i++; continue; }
+            }
+            int cur = 0;
+            if (bold) cur |= F_BOLD;
+            if (it) cur |= F_ITALIC;
+            if (st) cur |= F_STRIKE;
+            if (hl) cur |= F_HL;
+            f[i] |= cur;
+            i++;
+        }
+        return f;
+    }
+
+    private static boolean twoAt(String s, int i, String tok) {
+        return i + 1 < s.length() && s.charAt(i) == tok.charAt(0) && s.charAt(i + 1) == tok.charAt(1);
+    }
+    private static boolean hasSingle(String s, int from, char ch) {
+        for (int k = from; k < s.length(); k++) {
+            if (s.charAt(k) == ch && (k + 1 >= s.length() || s.charAt(k + 1) != ch)) return true;
+        }
+        return false;
+    }
+
+    /** Wrap a line into char ranges [start,end) that each fit the box at `scale`. */
+    private List<int[]> wrapRows(String line, float scale) {
+        List<int[]> rows = new ArrayList<int[]>();
+        int n = line.length(), i = 0;
+        while (i < n) {
+            int lastSpace = -1, j = i;
+            while (j < n) {
+                char c = line.charAt(j);
+                if (c == ' ') lastSpace = j;
+                if ((int) (m.width(line.substring(i, j + 1)) * scale) > width && j > i) {
+                    int brk = lastSpace > i ? lastSpace + 1 : j;
+                    rows.add(new int[]{i, brk});
+                    i = brk;
+                    j = -1;
+                    break;
+                }
+                j++;
+            }
+            if (j >= n) { rows.add(new int[]{i, n}); break; }
+        }
+        if (rows.isEmpty()) rows.add(new int[]{0, 0});
+        return rows;
     }
 
     private void codeLine(String line) {
@@ -381,35 +486,4 @@ public final class BookLayout {
         return out;
     }
 
-    /** Wrap preserving every character (concat of rows == line), for the raw caret line. */
-    private List<String> wrapExact(String line, int boxWidth) {
-        List<String> rows = new ArrayList<String>();
-        int i = 0, n = line.length();
-        while (i < n) {
-            int lastSpace = -1, j = i;
-            StringBuilder row = new StringBuilder();
-            while (j < n) {
-                char c = line.charAt(j);
-                row.append(c);
-                if (c == ' ') lastSpace = row.length();
-                if (m.width(row.toString()) > boxWidth && row.length() > 1) {
-                    if (lastSpace > 0 && lastSpace < row.length()) {
-                        row.setLength(lastSpace);
-                        j = i + lastSpace;
-                    } else {
-                        row.setLength(row.length() - 1);
-                        j = j; // break before this char
-                    }
-                    rows.add(row.toString());
-                    i = j;
-                    row = null;
-                    break;
-                }
-                j++;
-            }
-            if (row != null) { rows.add(row.toString()); i = n; }
-        }
-        if (rows.isEmpty()) rows.add("");
-        return rows;
-    }
 }
