@@ -80,6 +80,15 @@ public class ReactorTest {
         Map<?, ?> emap = (Map<?, ?>) s2c.get(null);
         ok(emap.get("PigZombie") == pig, "EntityPigZombie registered in EntityList as 'PigZombie'");
 
+        // 6. sparser wave schedule (fewer, spread-out loot/enemy waves)
+        Class<?> teClass = Class.forName("net.minecraft.a.a.b.a.TileEntityNetherReactor");
+        Object te = teClass.getDeclaredConstructor().newInstance(); // checkLevelChange is pure
+        Method clc = teClass.getMethod("checkLevelChange", int.class);
+        int[] on = {10, 18, 26, 34, 42};
+        for (int m : on) ok((Boolean) clc.invoke(te, m), "wave at sec " + m);
+        int[] off = {13, 20, 22, 25, 30, 40}; // old dense marks now quiet
+        for (int m : off) ok(!(Boolean) clc.invoke(te, m), "no wave at old sec " + m);
+
         System.out.println("ReactorTest: " + pass + " passed, " + fail + " failed");
         if (fail > 0) System.exit(1);
     }

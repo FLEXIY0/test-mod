@@ -27,6 +27,7 @@ public class TileEntityNetherReactor extends C_a {
     private boolean hasFinished = false;
     private int curLevel = 0;
     private short progress = 0;
+    private int collapseTicks = -1; // >=0 while the dome slowly crumbles, -1 when done
 
     // ---- pattern (gold / cobblestone / core), layer 0 = bottom (y-1) ----
     private static int patternAt(int layer, int r, int c) {
@@ -58,7 +59,8 @@ public class TileEntityNetherReactor extends C_a {
 
     @Override
     public void d() {
-        if (!this.isInitialized || this.hasFinished) return;
+        if (!this.isInitialized) return;
+        if (this.hasFinished) { this.tickCollapse(); return; }
         if (this.progress % TPS == 0) {
             int sec = this.progress / TPS;
             if (sec < 10) {
@@ -75,47 +77,74 @@ public class TileEntityNetherReactor extends C_a {
         }
         this.progress = (short) (this.progress + 1);
         if (this.progress > TPS * 46) {
-            this.finishReactorRun();
+            this.beginCollapse();
         }
     }
 
-    public void finishReactorRun() {
+    /** Natural end: mark the core spent, drop the obsidian ring, then let the
+     *  dome crumble slowly (tickCollapse), instead of vanishing all at once. */
+    private void beginCollapse() {
         if (this.hasFinished || !this.isInitialized) return;
         if (this.a.a(this.b, this.c, this.d) == C_x.netherReactorCore.at) {
             BlockNetherReactorCore.setPhase(this.a, this.b, this.c, this.d, 2); // DEACTIVATED
         }
         this.hasFinished = true;
-        this.deteriorateDome(this.b, this.c, this.d);
+        this.collapseTicks = 0;
         for (int i = this.b - 1; i <= this.b + 1; ++i) {
             for (int j = this.c - 1; j <= this.c + 1; ++j) {
                 for (int k = this.d - 1; k <= this.d + 1; ++k) {
                     if (i == this.b && j == this.c && k == this.d) continue;
-                    this.a.a(i, j, k, C_x.ae.at); // ring of obsidian
+                    this.a.a(i, j, k, C_x.ae.at); // ring of obsidian around the spent core
                 }
             }
         }
     }
 
-    // ---- milestones / loot ----
+    /** Crumble a few dome blocks per tick over ~25s so the collapse is gradual. */
+    private void tickCollapse() {
+        if (this.collapseTicks < 0) return;
+        ++this.collapseTicks;
+        if (this.collapseTicks % 4 == 0) {
+            for (int n = 0; n < 4; ++n) {
+                int rx = this.b + this.a.q.nextInt(19) - 9;
+                int ry = this.c - 3 + this.a.q.nextInt(18);
+                int rz = this.d + this.a.q.nextInt(19) - 9;
+                int id = this.a.a(rx, ry, rz);
+                if (id == C_x.netherrack.at || id == C_x.glowingObsidian.at) {
+                    this.a.a(rx, ry, rz, 0);
+                }
+            }
+        }
+        if (this.collapseTicks > TPS * 25) this.collapseTicks = -1; // done
+    }
+
+    /** Instant teardown when the core is broken mid-run (rare). */
+    public void finishReactorRun() {
+        if (this.hasFinished || !this.isInitialized) return;
+        this.hasFinished = true;
+        this.collapseTicks = -1;
+        this.deteriorateDome(this.b, this.c, this.d);
+    }
+
+    // ---- milestones / loot (sparse + random, not a firehose) ----
 
     public boolean checkLevelChange(int sec) {
-        int[] marks = {10, 13, 20, 22, 25, 30, 34, 36, 38, 40};
+        int[] marks = {10, 18, 26, 34, 42}; // fewer waves
         for (int m : marks) if (m == sec) return true;
         return false;
     }
 
+    /** A handful of items per wave, mostly small, with an occasional bonus. */
     public int getNumItemsPerLevel(int lvl) {
-        if (lvl == 0) return 9;
-        if (lvl < 4) return 15;
-        if (lvl < 8) return Math.max(0, this.a.q.nextInt(42) - 4);
-        return Math.max(0, this.a.q.nextInt(27) - 2);
+        int n = this.a.q.nextInt(3);                              // 0-2 usually
+        if (this.a.q.nextInt(4) == 0) n += this.a.q.nextInt(4);   // ~25%: +0-3 bonus
+        if (lvl <= 1) n += 2;                                     // first wave a touch more
+        return n;
     }
 
     public int getNumEnemiesPerLevel(int lvl) {
-        if (lvl == 0) return 3;
-        if (lvl > 4) return 2;
-        if (lvl < 6) return Math.max(0, this.a.q.nextInt(2));
-        return Math.max(0, this.a.q.nextInt(1));
+        if (lvl <= 1) return this.a.q.nextInt(2) + 1; // 1-2
+        return this.a.q.nextInt(2);                    // 0-1
     }
 
     private void spawnItems(int n) {
@@ -295,6 +324,7 @@ public class TileEntityNetherReactor extends C_a {
             this.progress = nbt.c("Progress");
             this.hasFinished = nbt.k("HasFinished");
             this.curLevel = nbt.d("Level");
+            this.collapseTicks = nbt.d("Collapse");
         }
     }
 
@@ -306,5 +336,6 @@ public class TileEntityNetherReactor extends C_a {
         nbt.a("Progress", this.progress);
         nbt.a("HasFinished", this.hasFinished);
         nbt.a("Level", this.curLevel);
+        nbt.a("Collapse", this.collapseTicks);
     }
 }

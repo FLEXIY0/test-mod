@@ -21,4 +21,17 @@ public class EntityPigZombie extends C_f {
         super(world, x, y, z);
         this.V = "/mob/pigzombie.png";
     }
+
+    /**
+     * Nether pigman: never burns. The zombie's AI (final f()) sets the fire
+     * counter J=300 in daylight, but it runs at the END of the update chain
+     * (EntityLiving calls f() after the base fire-damage block), so clearing J
+     * here after super.b_() means the fire block never sees J>0 next tick — no
+     * damage, no flames. Also covers lava, which fits a nether mob.
+     */
+    @Override
+    public void b_() {
+        super.b_();
+        this.J = 0;
+    }
 }
