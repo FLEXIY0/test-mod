@@ -33,5 +33,6 @@ run MouseTest "$SRC/MouseTest.java" "$JAR" dev/libs/lwjgl-2.9.3.jar
 run net.minecraft.client.c.PageTest   "$SRC/net/minecraft/client/c/PageTest.java"
 run net.minecraft.client.c.RevealTest "$SRC/net/minecraft/client/c/RevealTest.java"
 run net.minecraft.client.c.SelTest    "$SRC/net/minecraft/client/c/SelTest.java"
+run net.minecraft.a.a.b.ReactorTest   "$SRC/net/minecraft/a/a/b/ReactorTest.java"
 
 rm -rf "$OUT"
