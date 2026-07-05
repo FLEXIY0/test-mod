@@ -27,6 +27,22 @@ public final class BookIO {
         public volatile String error;
     }
 
+    /** Open a URL in the system browser off the game thread. */
+    public static void openUrlAsync(final String url) {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
+            }
+        }, "obsidianbook-openurl");
+        t.setDaemon(true);
+        t.start();
+    }
+
     public static File exportsDir() {
         File dir;
         try {

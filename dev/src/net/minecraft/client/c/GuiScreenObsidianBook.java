@@ -1,10 +1,9 @@
 /*
- * Obsidian Book editor. Like the normal book editor, but the "Sign" button is
- * replaced with "Улучшить" (Upgrade), which opens three tools:
- *   - "Сохранить как"  : export the whole book as one Markdown file (pages
- *                        separated by "---"), via a native Save-As dialog.
- *   - "Загрузить"      : import a Markdown file back into the book.
- *   - "Скрыть синтаксис": reading view that hides Markdown syntax (commonmark).
+ * Obsidian Book editor with an Obsidian-style "Live Preview": every line is
+ * rendered formatted (BookLayout + MarkdownRenderer) except the line the caret
+ * is on, which is shown raw for editing. The "Sign" button is replaced with
+ * "Улучшить" (Upgrade) → Save as / Load / Reading (full preview). Mouse: click
+ * places the caret, clicks links (opens the browser) and toggles checkboxes.
  */
 package net.minecraft.client.c;
 
@@ -37,6 +36,8 @@ extends GuiScreen {
     private int statusTimer;
     private BookIO.Result saveTask;
     private BookIO.Result loadTask;
+    private BookLayout layout;
+    private int layoutX, layoutY;
     private GuiButtonNextPage buttonNextPage;
     private GuiButtonNextPage buttonPreviousPage;
 
@@ -360,6 +361,83 @@ extends GuiScreen {
         return Math.min(nextStart + col, nextEnd);
     }
 
+    // ---- mouse: click links / checkboxes / place cursor ----
+
+    @Override
+    protected void mouseClick(int mx, int my, int button) {
+        super.mouseClick(mx, my, button); // let GUI buttons handle it first
+        if (button != 0 || this.layout == null) {
+            return;
+        }
+        int lx = mx - this.layoutX;
+        int ly = my - this.layoutY;
+        // 1. links (clickable in both preview and edit)
+        for (BookLayout.Link l : this.layout.links) {
+            if (lx >= l.x && lx <= l.x + l.w && ly >= l.y - 1 && ly <= l.y + l.h) {
+                BookIO.openUrlAsync(l.url);
+                this.setStatus("\u00a77" + net.minecraft.client.Lang.tr("Opening link..."));
+                return;
+            }
+        }
+        if (this.reading) {
+            return; // pure preview: only links are interactive
+        }
+        // 2. checkboxes: toggle
+        for (BookLayout.Check c : this.layout.checks) {
+            if (lx >= c.x - 1 && lx <= c.x + c.size + 1 && ly >= c.y - 1 && ly <= c.y + c.size + 1) {
+                this.signBook(toggleState(this.writePages(), c.markIndex));
+                this.clampCursor();
+                return;
+            }
+        }
+        // 3. place the caret on the clicked line
+        for (BookLayout.LineBox lb : this.layout.lines) {
+            if (ly >= lb.top && ly < lb.bottom) {
+                String line = this.writePages();
+                String lineText = line.substring(Math.min(lb.start, line.length()), Math.min(lb.end, line.length()));
+                final FontRenderer fr = this.g;
+                this.cursorPos = lb.start + columnFromX(lineText, lx, new BookLayout.Metrics() {
+                    @Override
+                    public int width(String s) { return fr.a(s); }
+                });
+                this.clampCursor();
+                return;
+            }
+        }
+    }
+
+    private void clampCursor() {
+        int len = this.writePages().length();
+        if (this.cursorPos < 0) this.cursorPos = 0;
+        if (this.cursorPos > len) this.cursorPos = len;
+    }
+
+    /** Flip the checkbox state char (after '[') between ' ' and 'x'. Pure. */
+    static String toggleState(String text, int bracketIdx) {
+        int s = bracketIdx + 1;
+        if (s < 0 || s >= text.length()) {
+            return text;
+        }
+        char nw = Character.toLowerCase(text.charAt(s)) == 'x' ? ' ' : 'x';
+        return text.substring(0, s) + nw + text.substring(s + 1);
+    }
+
+    /** Approximate character column for a click x within a single line's text. */
+    static int columnFromX(String line, int lx, BookLayout.Metrics m) {
+        if (lx <= 0) {
+            return 0;
+        }
+        int acc = 0;
+        for (int i = 0; i < line.length(); i++) {
+            int w = m.width(line.substring(i, i + 1));
+            if (acc + w / 2 >= lx) {
+                return i;
+            }
+            acc += w;
+        }
+        return line.length();
+    }
+
     private String writePages() {
         if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.b()) {
             NBTTagString nBTTagString = (NBTTagString)this.bookPages.a(this.currPage);
@@ -414,18 +492,14 @@ extends GuiScreen {
         this.g.b(pageLabel, n4 - n9 + this.bookImageWidth - 44, n5 + 16, 0);
         int textX = n4 + 36;
         int textY = n5 + 16 + 16;
-        if (this.reading) {
-            // Full Markdown rendering (bold, italic, headings, lists, code, ...)
-            MarkdownRenderer.render(this.g, raw, textX, textY, 116, this.bookImageHeight - 40);
-        } else {
-            // draw the page with a blinking caret at the cursor position
-            int cp = this.cursorPos;
-            if (cp < 0) cp = 0;
-            if (cp > raw.length()) cp = raw.length();
-            String caret = this.updateCount / 6 % 2 == 0 ? "\u00a70_\u00a70" : "\u00a77_\u00a70";
-            String body = raw.substring(0, cp) + caret + raw.substring(cp);
-            this.g.drawSplitString(body, textX, textY, 116, 0);
-        }
+        // Live-preview hybrid: every line is rendered formatted except the caret's
+        // line (shown raw for editing). In reading mode the whole page is formatted.
+        int cp = this.cursorPos;
+        if (cp < 0) cp = 0;
+        if (cp > raw.length()) cp = raw.length();
+        this.layout = MarkdownRenderer.render(this.g, raw, cp, textX, textY, 116, this.bookImageHeight - 40, this.reading);
+        this.layoutX = textX;
+        this.layoutY = textY;
         if (this.status.length() > 0) {
             int sw = this.g.a(this.status);
             this.g.b(this.status, this.c / 2 - sw / 2, 4 + this.bookImageHeight - 12, 0xFFFFFF);
