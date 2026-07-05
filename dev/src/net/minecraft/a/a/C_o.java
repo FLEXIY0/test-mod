@@ -6,7 +6,7 @@ package net.minecraft.a.a;
 import com.a.a.NBTTagCompound;
 import java.util.HashMap;
 import java.util.Map;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_b;
 import net.minecraft.a.a.b.a.C_c;
 import net.minecraft.a.a.b.a.C_e;
@@ -19,10 +19,10 @@ import net.minecraft.a.a.b.a.C_l;
 import net.minecraft.a.a.b.a.C_m;
 
 public class C_o {
-    private static Map<String, Class<? extends C_a>> nameToClassMap = new HashMap<String, Class<? extends C_a>>();
-    private static Map<Class<? extends C_a>, String> classToNameMap = new HashMap<Class<? extends C_a>, String>();
+    private static Map<String, Class<? extends TileEntity>> nameToClassMap = new HashMap<String, Class<? extends TileEntity>>();
+    private static Map<Class<? extends TileEntity>, String> classToNameMap = new HashMap<Class<? extends TileEntity>, String>();
 
-    private static void addMapping(Class<? extends C_a> clazz, String string) {
+    private static void addMapping(Class<? extends TileEntity> clazz, String string) {
         if (nameToClassMap.containsKey(string)) {
             throw new IllegalArgumentException("Duplicate id: " + string);
         }
@@ -30,10 +30,10 @@ public class C_o {
         classToNameMap.put(clazz, string);
     }
 
-    public static C_a loadFromCompound(NBTTagCompound nBTTagCompound) {
-        C_a c_a = null;
+    public static TileEntity loadFromCompound(NBTTagCompound nBTTagCompound) {
+        TileEntity c_a = null;
         try {
-            Class<? extends C_a> clazz = nameToClassMap.get(nBTTagCompound.g("id"));
+            Class<? extends TileEntity> clazz = nameToClassMap.get(nBTTagCompound.g("id"));
             if (clazz != null) {
                 c_a = clazz.newInstance();
             }

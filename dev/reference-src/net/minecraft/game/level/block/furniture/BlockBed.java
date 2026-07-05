@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.furniture;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -14,7 +14,7 @@ import net.minecraft.client.statistics.AchievementList;
 import net.minecraft.client.statistics.StatList;
 
 public class BlockBed
-extends C_x {
+extends Block {
     public static final int[][] headBlockToFootBlockMap = new int[][]{{0, 1}, {-1, 0}, {0, -1}, {1, 0}};
 
     public BlockBed(int n) {
@@ -25,7 +25,7 @@ extends C_x {
     @Override
     public int a(int n, int n2) {
         if (n == 0) {
-            return C_x.m.as;
+            return Block.m.as;
         }
         int n3 = BlockBed.getDirectionFromMetadata(n2);
         int n4 = C_p.bedDirection[n3][n];
@@ -33,7 +33,7 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3) {
+    public void b(World c_g, int n, int n2, int n3) {
         if (c_g.y.isLaying) {
             c_g.y.isLaying = false;
         }
@@ -60,12 +60,12 @@ extends C_x {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         this.setBounds();
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         c_g.a(n, n2, n3, entityPlayer.n);
         byte by = c_g.e(n, n2, n3);
         int n4 = BlockBed.getDirectionFromMetadata(by);
@@ -114,7 +114,7 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         byte by = c_g.e(n, n2, n3);
         int n5 = BlockBed.getDirectionFromMetadata(by);
         if (BlockBed.isBlockFootOfBed(by)) {
@@ -161,14 +161,14 @@ extends C_x {
         return (n & 4) != 0;
     }
 
-    public static void setBedOccupied(C_g c_g, int n, int n2, int n3, boolean bl) {
+    public static void setBedOccupied(World c_g, int n, int n2, int n3, boolean bl) {
         int n4 = c_g.e(n, n2, n3);
         n4 = bl ? (n4 |= 4) : (n4 &= 0xFFFFFFFB);
         c_g.setBlockMetadataWithNotify(n, n2, n3, n4);
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         if (!BlockBed.isBlockFootOfBed(n4)) {
             super.a(c_g, n, n2, n3, n4, f);
         }

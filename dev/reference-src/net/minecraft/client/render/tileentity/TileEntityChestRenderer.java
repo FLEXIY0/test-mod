@@ -6,8 +6,8 @@
  */
 package net.minecraft.client.render.tileentity;
 
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_c;
 import net.minecraft.client.b.C_q;
 import net.minecraft.client.b.C_y;
@@ -28,7 +28,7 @@ extends TileEntitySpecialRenderer {
         } else {
             object = c_c.getBlockType();
             n = c_c.getBlockMetadata();
-            if (object != null && object == C_x.aj && n == 0) {
+            if (object != null && object == Block.aj && n == 0) {
                 ((BlockChest)object).unifyAdjacentChests(c_c.a, c_c.b, c_c.c, c_c.d);
                 n = c_c.getBlockMetadata();
             }
@@ -60,7 +60,7 @@ extends TileEntitySpecialRenderer {
             if (n == 5) {
                 n2 = -90;
             }
-            if (c_c.getBlockType() == C_x.aj) {
+            if (c_c.getBlockType() == Block.aj) {
                 if (n == 2 && c_c.adjacentChestXPos != null) {
                     GL11.glTranslatef((float)1.0f, (float)0.0f, (float)0.0f);
                 }
@@ -82,7 +82,7 @@ extends TileEntitySpecialRenderer {
     }
 
     @Override
-    public void renderTileEntityAt(C_a c_a, float f, float f2, float f3, float f4) {
+    public void renderTileEntityAt(TileEntity c_a, float f, float f2, float f3, float f4) {
         this.renderTileEntityChestAt((C_c)c_a, f, f2, f3, f4);
     }
 }

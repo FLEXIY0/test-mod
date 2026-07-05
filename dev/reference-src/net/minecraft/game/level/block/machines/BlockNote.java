@@ -3,9 +3,9 @@
  */
 package net.minecraft.game.level.block.machines;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_i;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -28,8 +28,8 @@ extends BlockContainer {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
-        if (n4 > 0 && C_x.c[n4].canProvidePower()) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
+        if (n4 > 0 && Block.c[n4].canProvidePower()) {
             boolean bl = c_g.isBlockGettingPowered(n, n2, n3);
             C_i c_i = (C_i)c_g.j(n, n2, n3);
             if (c_i.previousRedstoneState != bl) {
@@ -42,7 +42,7 @@ extends BlockContainer {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (c_g.multiplayerWorld) {
             return true;
         }
@@ -54,7 +54,7 @@ extends BlockContainer {
     }
 
     @Override
-    public void onBlockClicked(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public void onBlockClicked(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (!c_g.multiplayerWorld) {
             C_i c_i = (C_i)c_g.j(n, n2, n3);
             c_i.triggerNote(c_g, n, n2, n3);
@@ -62,12 +62,12 @@ extends BlockContainer {
     }
 
     @Override
-    public C_a getBlockEntity() {
+    public TileEntity getBlockEntity() {
         return new C_i();
     }
 
     @Override
-    public void playBlock(C_g c_g, int n, int n2, int n3, int n4, int n5) {
+    public void playBlock(World c_g, int n, int n2, int n3, int n4, int n5) {
         float f = (float)Math.pow(2.0, (double)(n5 - 12) / 12.0);
         String string = "harp";
         if (n4 == 1) {

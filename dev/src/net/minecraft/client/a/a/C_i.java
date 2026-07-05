@@ -58,7 +58,7 @@ public final class C_i {
     private FontRenderer fontRenderer;
     public RenderEngine b;
     public net.minecraft.client.a.C_g itemRenderer;
-    public net.minecraft.a.a.C_g c;
+    public net.minecraft.a.a.World c;
     public net.minecraft.a.c.C_e livingPlayer;
     public float d;
     public float playerViewX;
@@ -132,7 +132,7 @@ public final class C_i {
         return c_f;
     }
 
-    public final void cacheActiveRenderInfo(net.minecraft.a.a.C_g c_g, RenderEngine renderEngine, FontRenderer fontRenderer, EntityPlayer entityPlayer, float f) {
+    public final void cacheActiveRenderInfo(net.minecraft.a.a.World c_g, RenderEngine renderEngine, FontRenderer fontRenderer, EntityPlayer entityPlayer, float f) {
         this.c = c_g;
         this.b = renderEngine;
         this.livingPlayer = entityPlayer;
@@ -170,7 +170,7 @@ public final class C_i {
         }
     }
 
-    public final void a(net.minecraft.a.a.C_g c_g) {
+    public final void a(net.minecraft.a.a.World c_g) {
         this.c = c_g;
     }
 

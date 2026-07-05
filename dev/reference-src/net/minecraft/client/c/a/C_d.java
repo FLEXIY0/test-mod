@@ -5,7 +5,7 @@ package net.minecraft.client.c.a;
 
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.C_bs;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_ah;
 import net.minecraft.a.b.C_av;
 import net.minecraft.a.b.C_b;
@@ -69,10 +69,10 @@ extends C_g {
             boolean bl3 = item == Item.i && itemStack.a() instanceof C_bd;
             boolean bl4 = false;
             if (item.ap < 256 && itemStack.c < 256) {
-                C_x c_x = C_x.c[itemStack.c];
-                C_x c_x2 = C_x.c[item.ap];
+                Block c_x = Block.c[itemStack.c];
+                Block c_x2 = Block.c[item.ap];
                 bl2 = c_x != null && c_x2 != null && (c_x instanceof C_bq || c_x instanceof BlockFenceGate || c_x instanceof BlockChair || c_x instanceof net.minecraft.a.a.b.C_bb || c_x instanceof C_bs || c_x instanceof BlockTrapdoor) && c_x2.getClass().equals(c_x.getClass());
-                boolean bl5 = bl4 = c_x != null && c_x2 != null && (c_x2 == C_x.hayBlock || c_x2 == C_x.slimeBlock || c_x2 == C_x.bone) && c_x instanceof net.minecraft.a.a.b.C_bb;
+                boolean bl5 = bl4 = c_x != null && c_x2 != null && (c_x2 == Block.hayBlock || c_x2 == Block.slimeBlock || c_x2 == Block.bone) && c_x instanceof net.minecraft.a.a.b.C_bb;
             }
             if (item != itemStack.a() && !bl && !bl2 && !bl3 && !bl4 || net.minecraft.a.b.a.C_f.a().getUnlockedRecipeList().contains(c_l) || this.thePlayer.d.multiplayerWorld) continue;
             net.minecraft.a.b.a.C_f.a().getUnlockedRecipeList().add(c_l);
@@ -81,11 +81,11 @@ extends C_g {
         if (net.minecraft.a.b.a.C_f.a().getUnlockedRecipeList().size() == net.minecraft.a.b.a.C_f.a().getRecipeList().size()) {
             this.thePlayer.triggerAchievement(AchievementList.recipes);
         }
-        if (itemStack.c == C_x.an.at) {
+        if (itemStack.c == Block.an.at) {
             this.thePlayer.triggerAchievement(AchievementList.buildWorkBench);
-        } else if (itemStack.c == C_x.aq.at) {
+        } else if (itemStack.c == Block.aq.at) {
             this.thePlayer.triggerAchievement(AchievementList.buildFurnace);
-        } else if (itemStack.c == C_x.barrel.at) {
+        } else if (itemStack.c == Block.barrel.at) {
             this.thePlayer.triggerAchievement(AchievementList.buildChest);
         } else if (itemStack.a().isToolSilkTouch()) {
             this.thePlayer.triggerAchievement(AchievementList.silkTouch);
@@ -99,9 +99,9 @@ extends C_g {
             this.thePlayer.triggerAchievement(AchievementList.buildHoe);
         } else if (itemStack.c == Item.fishingRod.ap) {
             this.thePlayer.triggerAchievement(AchievementList.buildFishingRod);
-        } else if (itemStack.c == C_x.lantern.at) {
+        } else if (itemStack.c == Block.lantern.at) {
             this.thePlayer.triggerAchievement(AchievementList.buildLantern);
-        } else if (itemStack.c == C_x.chest.at) {
+        } else if (itemStack.c == Block.chest.at) {
             this.thePlayer.triggerAchievement(AchievementList.endChest);
         }
     }

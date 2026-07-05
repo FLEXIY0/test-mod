@@ -4,12 +4,12 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
 public final class C_k
-extends C_x {
+extends Block {
     protected C_k(int n, int n2) {
         super(55, 62, C_c.n);
     }

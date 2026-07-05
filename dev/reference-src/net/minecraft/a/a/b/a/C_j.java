@@ -6,13 +6,13 @@ package net.minecraft.a.a.b.a;
 import com.a.a.NBTTagCompound;
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_d;
 import net.minecraft.a.d.C_b;
 
 public class C_j
-extends C_a {
+extends TileEntity {
     private int storedBlockID;
     private int storedMetadata;
     private int storedOrientation;
@@ -76,7 +76,7 @@ extends C_a {
     private void updatePushedObjects(float f, float f2) {
         List<net.minecraft.a.c.C_b> list;
         f = !this.extending ? (f -= 1.0f) : 1.0f - f;
-        C_b c_b = C_x.pulleyMoving.getAxisAlignedBB(this.a, this.b, this.c, this.d, this.storedBlockID, f, this.storedOrientation);
+        C_b c_b = Block.pulleyMoving.getAxisAlignedBB(this.a, this.b, this.c, this.d, this.storedBlockID, f, this.storedOrientation);
         if (c_b != null && !(list = this.a.a((net.minecraft.a.c.C_b)null, c_b)).isEmpty()) {
             pushedObjects.addAll(list);
             for (net.minecraft.a.c.C_b c_b2 : pushedObjects) {
@@ -92,7 +92,7 @@ extends C_a {
             this.lastProgress = 1.0f;
             this.a.i(this.b, this.c, this.d);
             this.markForRemoval();
-            if (this.a.a(this.b, this.c, this.d) == C_x.pulleyMoving.at) {
+            if (this.a.a(this.b, this.c, this.d) == Block.pulleyMoving.at) {
                 this.a.setBlockAndMetadataWithNotify(this.b, this.c, this.d, this.storedBlockID, this.storedMetadata);
             }
         }
@@ -102,15 +102,15 @@ extends C_a {
     public void d() {
         this.lastProgress = this.progress;
         if (this.lastProgress >= 1.0f) {
-            C_x c_x;
+            Block c_x;
             this.updatePushedObjects(1.0f, 0.25f);
             this.a.i(this.b, this.c, this.d);
             this.markForRemoval();
             int n = this.a.a(this.b, this.c, this.d);
-            if (n == C_x.pulleyMoving.at) {
+            if (n == Block.pulleyMoving.at) {
                 this.a.setBlockAndMetadataWithNotify(this.b, this.c, this.d, this.storedBlockID, this.storedMetadata);
             }
-            if (n > 0 && (c_x = C_x.c[this.a.a(this.b, this.c, this.d)]) != null) {
+            if (n > 0 && (c_x = Block.c[this.a.a(this.b, this.c, this.d)]) != null) {
                 c_x.b(this.a, this.b, this.c, this.d, n);
             }
         } else {

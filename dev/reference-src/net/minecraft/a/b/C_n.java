@@ -3,8 +3,8 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -22,14 +22,14 @@ extends Item {
     }
 
     @Override
-    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, C_g c_g, int n, int n2, int n3, int n4) {
+    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, World c_g, int n, int n2, int n3, int n4) {
         if (n > 0 && n2 > 0 && n3 > 0 && n < c_g.a - 1 && n2 < c_g.c - 1 && n3 < c_g.b - 1) {
             n4 = c_g.a(n, n2, n3);
             byte by = c_g.e(n, n2, n3);
-            if (c_g.f(n, n2 + 1, n3).a() || n4 != C_x.j.at && n4 != C_x.k.at) {
+            if (c_g.f(n, n2 + 1, n3).a() || n4 != Block.j.at && n4 != Block.k.at) {
                 return false;
             }
-            C_x c_x = C_x.ap;
+            Block c_x = Block.ap;
             float f = (float)n + 0.5f;
             float f2 = (float)n2 + 0.5f;
             float f3 = (float)n3 + 0.5f;
@@ -41,7 +41,7 @@ extends Item {
             }
             c_g.b(n, n2, n3, c_x.at);
             entityPlayer.damageItem(1, itemStack, c_g);
-            if (c_g.q.nextInt(8) == 0 && n4 == C_x.j.at || this.ap == 294) {
+            if (c_g.q.nextInt(8) == 0 && n4 == Block.j.at || this.ap == 294) {
                 int n5 = 0;
                 if (this.ap == Item.J.ap) {
                     n5 = 1;

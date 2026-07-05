@@ -17,10 +17,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import net.minecraft.a.C_j;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_l;
 import net.minecraft.a.a.C_m;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_h;
 import net.minecraft.a.a.b.a.C_i;
 import net.minecraft.a.b.ItemStack;
@@ -165,7 +165,7 @@ extends NetHandler {
                 break;
             }
             case ARROW: {
-                c_b = new net.minecraft.a.c.d.C_a((C_g)this.level, f, f2, f3);
+                c_b = new net.minecraft.a.c.d.C_a((World)this.level, f, f2, f3);
                 break;
             }
             case TNT: {
@@ -279,8 +279,8 @@ extends NetHandler {
     @Override
     public void handleBlockDig(Packet14BlockDig packet14BlockDig) {
         this.mc.g.a(packet14BlockDig.xPosition, packet14BlockDig.yPosition, packet14BlockDig.zPosition);
-        C_g c_g = this.mc.d;
-        C_x c_x = C_x.c[c_g.a(packet14BlockDig.xPosition, packet14BlockDig.yPosition, packet14BlockDig.zPosition)];
+        World c_g = this.mc.d;
+        Block c_x = Block.c[c_g.a(packet14BlockDig.xPosition, packet14BlockDig.yPosition, packet14BlockDig.zPosition)];
         byte by = c_g.e(packet14BlockDig.xPosition, packet14BlockDig.yPosition, packet14BlockDig.zPosition);
         if (c_x != null) {
             net.minecraft.client.e.C_c c_c = this.mc.x;
@@ -295,7 +295,7 @@ extends NetHandler {
 
     @Override
     public void handleDoorChange(Packet61DoorChange packet61DoorChange) {
-        C_x c_x = C_x.c[this.mc.d.a(packet61DoorChange.xCoord, packet61DoorChange.yCoord, packet61DoorChange.zCoord)];
+        Block c_x = Block.c[this.mc.d.a(packet61DoorChange.xCoord, packet61DoorChange.yCoord, packet61DoorChange.zCoord)];
         if (c_x != null) {
             this.mc.d.c(packet61DoorChange.xCoord, packet61DoorChange.yCoord, packet61DoorChange.zCoord, c_x.at);
         }
@@ -470,7 +470,7 @@ extends NetHandler {
     public void handleErrorMessage(String string) {
         if (!this.disconnected) {
             this.disconnected = true;
-            this.mc.a((C_g)null);
+            this.mc.a((World)null);
             this.mc.a(new C_ai("Connection lost", string));
         }
     }
@@ -810,7 +810,7 @@ extends NetHandler {
         byte[] byArray2;
         if (this.levelBytes == null || this.levelMetaBytes == null) {
             this.disconnect();
-            this.mc.a((C_g)null);
+            this.mc.a((World)null);
             this.mc.a(new C_ai("Internal client error", "Failed to load level! No data"));
             return;
         }
@@ -821,7 +821,7 @@ extends NetHandler {
         }
         catch (Exception exception) {
             this.disconnect();
-            this.mc.a((C_g)null);
+            this.mc.a((World)null);
             this.mc.a(new C_ai("Internal client error", "Failed to load level! Wrong data \n" + exception.toString()));
             exception.printStackTrace();
             return;
@@ -831,7 +831,7 @@ extends NetHandler {
         }
         catch (Exception exception) {
             this.disconnect();
-            this.mc.a((C_g)null);
+            this.mc.a((World)null);
             this.mc.a(new C_ai("Internal client error", "Failed to load level! Wrong metabytes\n" + exception.toString()));
             exception.printStackTrace();
             return;
@@ -950,13 +950,13 @@ extends NetHandler {
         this.netManager.networkShutdown("Kicked");
         this.disconnected = true;
         this.mc.a(new C_ai("Disconnected by Server", packet255KickDisconnect.reason));
-        this.mc.a((C_g)null);
+        this.mc.a((World)null);
     }
 
     @Override
     public void handleUpdateSign(Packet130UpdateSign packet130UpdateSign) {
         net.minecraft.a.a.b.a.C_l c_l;
-        net.minecraft.a.a.b.a.C_a c_a = this.mc.d.j(packet130UpdateSign.x, packet130UpdateSign.y, packet130UpdateSign.z);
+        net.minecraft.a.a.b.a.TileEntity c_a = this.mc.d.j(packet130UpdateSign.x, packet130UpdateSign.y, packet130UpdateSign.z);
         if (c_a instanceof net.minecraft.a.a.b.a.C_l && (c_l = (net.minecraft.a.a.b.a.C_l)c_a).isEditable()) {
             for (int i = 0; i < 4; ++i) {
                 c_l.signText[i] = packet130UpdateSign.lines[i];

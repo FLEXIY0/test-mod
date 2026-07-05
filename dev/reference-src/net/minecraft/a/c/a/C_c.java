@@ -5,7 +5,7 @@ package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -23,7 +23,7 @@ extends C_e {
     private boolean boots;
     private Object[][] type = new Object[][]{{new ItemStack(Item.U), new ItemStack(Item.bootsStudded), new ItemStack(Item.Y), new ItemStack(Item.ac), new ItemStack(Item.ak), new ItemStack(Item.bootsEmerald), new ItemStack(Item.ag)}, {new ItemStack(Item.T), new ItemStack(Item.legsStudded), new ItemStack(Item.X), new ItemStack(Item.ab), new ItemStack(Item.aj), new ItemStack(Item.legsEmerald), new ItemStack(Item.af)}, {new ItemStack(Item.S), new ItemStack(Item.plateStudded), new ItemStack(Item.W), new ItemStack(Item.aa), new ItemStack(Item.ai), new ItemStack(Item.plateEmerald), new ItemStack(Item.ae)}, {new ItemStack(Item.R), new ItemStack(Item.helmetStudded), new ItemStack(Item.V), new ItemStack(Item.Z), new ItemStack(Item.ah), new ItemStack(Item.helmetEmerald), new ItemStack(Item.ad)}};
 
-    public C_c(C_g c_g) {
+    public C_c(World c_g) {
         super(c_g);
         this.V = "/mob/skeleton.png";
         if (!c_g.multiplayerWorld) {
@@ -48,7 +48,7 @@ extends C_e {
         }
     }
 
-    public C_c(C_g c_g, float f, float f2, float f3) {
+    public C_c(World c_g, float f, float f2, float f3) {
         this(c_g);
         this.b(f, f2, f3);
     }

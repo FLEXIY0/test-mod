@@ -4,7 +4,7 @@
 package net.minecraft.a.b;
 
 import java.util.List;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_h;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.ItemStack;
@@ -36,7 +36,7 @@ extends C_h {
     }
 
     @Override
-    public void onPlayerStoppedUsing(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer, int n) {
+    public void onPlayerStoppedUsing(ItemStack itemStack, World c_g, EntityPlayer entityPlayer, int n) {
         if (itemStack.getMaxItemUseDuration() - entityPlayer.itemInUseCount >= 18) {
             int n2 = this.getMaxItemUseDuration(itemStack) - n;
             float f = (float)n2 / 20.0f;
@@ -69,7 +69,7 @@ extends C_h {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         if (!c_g.multiplayerWorld) {
             entityPlayer.setItemInUse(itemStack, this.getMaxItemUseDuration(itemStack));
             entityPlayer.addStat(StatList.objectUseStats[this.ap], 1);

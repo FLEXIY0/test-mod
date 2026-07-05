@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.c;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.C_e;
 import net.minecraft.a.c.b.C_a;
@@ -16,7 +16,7 @@ extends C_e {
     protected boolean O = false;
     protected int panic;
 
-    public C_c(C_g c_g) {
+    public C_c(World c_g) {
         super(c_g);
     }
 

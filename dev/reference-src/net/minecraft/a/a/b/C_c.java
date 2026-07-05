@@ -4,8 +4,8 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -13,14 +13,14 @@ import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 
 public final class C_c
-extends C_x {
+extends Block {
     public C_c(int n, int n2) {
         super(n, n2, net.minecraft.a.a.d.C_c.d);
     }
 
     @Override
     public final int a(int n, Random random) {
-        return this.at == C_x.x.at ? Item.i.ap : (this.at == C_x.al.at ? Item.j.ap : (this.at == C_x.oreEmerald.at ? Item.emerald.ap : (this.at == C_x.w.at ? Item.rawIron.ap : (this.at == C_x.v.at ? Item.rawGold.ap : (this.at == C_x.oreAdminium.at ? Item.rawAdminium.ap : this.at)))));
+        return this.at == Block.x.at ? Item.i.ap : (this.at == Block.al.at ? Item.j.ap : (this.at == Block.oreEmerald.at ? Item.emerald.ap : (this.at == Block.w.at ? Item.rawIron.ap : (this.at == Block.v.at ? Item.rawGold.ap : (this.at == Block.oreAdminium.at ? Item.rawAdminium.ap : this.at)))));
     }
 
     @Override
@@ -29,7 +29,7 @@ extends C_x {
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         if (!c_g.multiplayerWorld) {
             int n5 = this.a(c_g.q);
             EntityPlayer entityPlayer = (EntityPlayer)c_g.y;
@@ -53,24 +53,24 @@ extends C_x {
     }
 
     @Override
-    public final boolean directSmelt(C_g c_g, float f, float f2, float f3) {
+    public final boolean directSmelt(World c_g, float f, float f2, float f3) {
         int n = 0;
-        if (this.at == C_x.x.at) {
+        if (this.at == Block.x.at) {
             n = Item.i.ap;
         }
-        if (this.at == C_x.al.at) {
+        if (this.at == Block.al.at) {
             n = Item.j.ap;
         }
-        if (this.at == C_x.w.at) {
+        if (this.at == Block.w.at) {
             n = Item.k.ap;
         }
-        if (this.at == C_x.v.at) {
+        if (this.at == Block.v.at) {
             n = Item.l.ap;
         }
-        if (this.at == C_x.oreEmerald.at) {
+        if (this.at == Block.oreEmerald.at) {
             n = Item.emerald.ap;
         }
-        if (this.at == C_x.oreAdminium.at) {
+        if (this.at == Block.oreAdminium.at) {
             n = Item.ingotAdminium.ap;
         }
         if (c_g.q.nextFloat() <= 1.0f) {

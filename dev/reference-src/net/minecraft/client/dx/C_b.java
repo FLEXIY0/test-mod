@@ -3,8 +3,8 @@
  */
 package net.minecraft.client.dx;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.client.d;
@@ -35,25 +35,25 @@ extends C_a {
         byte by = this.a.d.e(n, n2, n3);
         boolean bl = super.sendBlockRemoved(n, n2, n3, n4);
         ItemStack itemStack2 = this.a.f.b.d();
-        if (bl && this.a.f.canHarvestBlock(C_x.c[n5], by)) {
+        if (bl && this.a.f.canHarvestBlock(Block.c[n5], by)) {
             if (itemStack2 != null) {
                 if (itemStack2.a().isToolSilkTouch()) {
-                    if (itemStack2.a().isBlockAffectiveAgainst(C_x.c[n5]) && !(C_x.c[n5] instanceof BlockDoor)) {
-                        C_x.c[n5].dropBlockAsItemWithChance(this.a.d, n, n2, n3, by);
+                    if (itemStack2.a().isBlockAffectiveAgainst(Block.c[n5]) && !(Block.c[n5] instanceof BlockDoor)) {
+                        Block.c[n5].dropBlockAsItemWithChance(this.a.d, n, n2, n3, by);
                     } else {
-                        C_x.c[n5].f(this.a.d, n, n2, n3, by);
+                        Block.c[n5].f(this.a.d, n, n2, n3, by);
                     }
                 } else if (!itemStack2.a().isToolSilkTouch()) {
-                    C_x.c[n5].f(this.a.d, n, n2, n3, by);
-                    if (itemStack2.a().isBlockAffectiveAgainst(C_x.c[n5]) && C_x.c[n5].canBeDuped() && itemStack2.a().isLooting() && this.a.d.I.nextInt(3) == 0) {
-                        C_x.c[n5].f(this.a.d, n, n2, n3, by);
+                    Block.c[n5].f(this.a.d, n, n2, n3, by);
+                    if (itemStack2.a().isBlockAffectiveAgainst(Block.c[n5]) && Block.c[n5].canBeDuped() && itemStack2.a().isLooting() && this.a.d.I.nextInt(3) == 0) {
+                        Block.c[n5].f(this.a.d, n, n2, n3, by);
                     }
                 }
             } else {
-                C_x.c[n5].f(this.a.d, n, n2, n3, by);
+                Block.c[n5].f(this.a.d, n, n2, n3, by);
             }
         }
-        if (itemStack2 != null && C_x.c[n5].aL > 0.0f) {
+        if (itemStack2 != null && Block.c[n5].aL > 0.0f) {
             Item.b[itemStack2.c].onBlockDestroyed(this.a.f, itemStack2, this.a.d);
             if (itemStack2.a == 0) {
                 this.a.f.h_();
@@ -69,11 +69,11 @@ extends C_a {
     @Override
     public final void clickBlock(int n, int n2, int n3, int n4) {
         int n5 = this.a.d.a(n, n2, n3);
-        if (n5 > 0 && C_x.c[n5].blockStrength(this.a.f, this.a.d.e(n, n2, n3)) >= 1.0f) {
+        if (n5 > 0 && Block.c[n5].blockStrength(this.a.f, this.a.d.e(n, n2, n3)) >= 1.0f) {
             this.sendBlockRemoved(n, n2, n3, n4);
         }
         if (n5 > 0 && this.f == 0.0f) {
-            C_x.c[n5].onBlockClicked(this.a.d, n, n2, n3, this.a.f);
+            Block.c[n5].onBlockClicked(this.a.d, n, n2, n3, this.a.f);
         }
     }
 
@@ -92,7 +92,7 @@ extends C_a {
             if (n == this.c && n2 == this.d && n3 == this.e) {
                 n4 = this.a.d.a(n, n2, n3);
                 if (n4 != 0) {
-                    C_x c_x = C_x.c[n4];
+                    Block c_x = Block.c[n4];
                     float f = 1.0f;
                     if (this.a.f.b.charmSlot[0] != null && this.a.f.b.charmSlot[0].a() == Item.bracelet && !this.a.f.isInWater()) {
                         f = 4.0f;
@@ -138,7 +138,7 @@ extends C_a {
     }
 
     @Override
-    public final void a(C_g c_g) {
+    public final void a(World c_g) {
         super.a(c_g);
         c_g.z = true;
         this.j = new net.minecraft.a.a.C_b(c_g);

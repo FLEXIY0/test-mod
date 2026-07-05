@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.plants;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.game.level.block.plants.BlockFlower;
 
@@ -19,11 +19,11 @@ extends BlockFlower {
 
     @Override
     protected boolean canThisPlantGrowOnThisBlockID(int n) {
-        return n == C_x.t.at || n == C_x.redSand.at || n == C_x.k.at;
+        return n == Block.t.at || n == Block.redSand.at || n == Block.k.at;
     }
 
     @Override
-    public boolean canBlockStay(C_g c_g, int n, int n2, int n3) {
+    public boolean canBlockStay(World c_g, int n, int n2, int n3) {
         return this.canThisPlantGrowOnThisBlockID(c_g.a(n, n2 - 1, n3));
     }
 

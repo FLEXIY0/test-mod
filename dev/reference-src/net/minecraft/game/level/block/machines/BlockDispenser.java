@@ -5,7 +5,7 @@ package net.minecraft.game.level.block.machines;
 
 import com.a.a.NBTTagCompound;
 import java.util.Random;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_g;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
@@ -29,28 +29,28 @@ extends BlockContainer {
     }
 
     @Override
-    public void d(net.minecraft.a.a.C_g c_g, int n, int n2, int n3) {
+    public void d(net.minecraft.a.a.World c_g, int n, int n2, int n3) {
         super.d(c_g, n, n2, n3);
         this.setDispenserDefaultDirection(c_g, n, n2, n3);
     }
 
-    private void setDispenserDefaultDirection(net.minecraft.a.a.C_g c_g, int n, int n2, int n3) {
+    private void setDispenserDefaultDirection(net.minecraft.a.a.World c_g, int n, int n2, int n3) {
         if (!c_g.multiplayerWorld) {
             int n4 = c_g.a(n, n2, n3 - 1);
             int n5 = c_g.a(n, n2, n3 + 1);
             int n6 = c_g.a(n - 1, n2, n3);
             int n7 = c_g.a(n + 1, n2, n3);
             int n8 = 3;
-            if (C_x.e[n4] && !C_x.e[n5]) {
+            if (Block.e[n4] && !Block.e[n5]) {
                 n8 = 3;
             }
-            if (C_x.e[n5] && !C_x.e[n4]) {
+            if (Block.e[n5] && !Block.e[n4]) {
                 n8 = 2;
             }
-            if (C_x.e[n6] && !C_x.e[n7]) {
+            if (Block.e[n6] && !Block.e[n7]) {
                 n8 = 5;
             }
-            if (C_x.e[n7] && !C_x.e[n6]) {
+            if (Block.e[n7] && !Block.e[n6]) {
                 n8 = 4;
             }
             c_g.setBlockMetadataWithNotify(n, n2, n3, n8);
@@ -58,7 +58,7 @@ extends BlockContainer {
     }
 
     @Override
-    public int a(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, int n4) {
+    public int a(net.minecraft.a.a.World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1) {
             return 588;
         }
@@ -75,7 +75,7 @@ extends BlockContainer {
     }
 
     @Override
-    public boolean a(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(net.minecraft.a.a.World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (c_g.multiplayerWorld) {
             return true;
         }
@@ -86,7 +86,7 @@ extends BlockContainer {
         return true;
     }
 
-    private void dispenseItem(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, Random random) {
+    private void dispenseItem(net.minecraft.a.a.World c_g, int n, int n2, int n3, Random random) {
         byte by = c_g.e(n, n2, n3);
         int n4 = 0;
         int n5 = 0;
@@ -158,20 +158,20 @@ extends BlockContainer {
     }
 
     @Override
-    public void b(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(net.minecraft.a.a.World c_g, int n, int n2, int n3, int n4) {
         boolean bl;
-        if (n4 > 0 && C_x.c[n4].canProvidePower() && (bl = c_g.isBlockIndirectlyGettingPowered(n, n2, n3))) {
+        if (n4 > 0 && Block.c[n4].canProvidePower() && (bl = c_g.isBlockIndirectlyGettingPowered(n, n2, n3))) {
             this.dispenseItem(c_g, n, n2, n3, c_g.I);
         }
     }
 
     @Override
-    public net.minecraft.a.a.b.a.C_a getBlockEntity() {
+    public net.minecraft.a.a.b.a.TileEntity getBlockEntity() {
         return new C_g();
     }
 
     @Override
-    public void onBlockPlacedByPlayer(net.minecraft.a.a.C_g c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
+    public void onBlockPlacedByPlayer(net.minecraft.a.a.World c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
         int n5 = MathHelper.a((double)(entityPlayer.n * 4.0f / 360.0f) + 0.5) & 3;
         if (n5 == 0) {
             c_g.setBlockMetadataWithNotify(n, n2, n3, 2);
@@ -189,7 +189,7 @@ extends BlockContainer {
     }
 
     @Override
-    public void b(net.minecraft.a.a.C_g c_g, int n, int n2, int n3) {
+    public void b(net.minecraft.a.a.World c_g, int n, int n2, int n3) {
         C_g c_g2 = (C_g)c_g.j(n, n2, n3);
         if (c_g2 != null) {
             for (int i = 0; i < c_g2.a(); ++i) {

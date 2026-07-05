@@ -4,11 +4,11 @@
 package net.minecraft.a.a.b.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 
-public class C_a {
-    public C_g a;
+public class TileEntity {
+    public World a;
     public int b;
     public int c;
     public int d;
@@ -52,8 +52,8 @@ public class C_a {
         return f4 * f4 + f5 * f5 + f6 * f6;
     }
 
-    public C_x getBlockType() {
-        return C_x.c[this.a.a(this.b, this.c, this.d)];
+    public Block getBlockType() {
+        return Block.c[this.a.a(this.b, this.c, this.d)];
     }
 }
 

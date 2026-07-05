@@ -8,7 +8,7 @@
 package net.minecraft.client.c.a;
 
 import net.minecraft.a.C_k;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.a.RenderEngine;
 import net.minecraft.client.c.C_ac;
 import net.minecraft.client.c.GuiButton;
@@ -20,7 +20,7 @@ import org.lwjgl.opengl.GL11;
 
 public final class C_b
 extends C_j {
-    public C_b(net.minecraft.a.c.e.C_b c_b, C_g c_g, int n, int n2, int n3) {
+    public C_b(net.minecraft.a.c.e.C_b c_b, World c_g, int n, int n2, int n3) {
         super(new C_k(c_b, c_g, n, n2, n3));
     }
 

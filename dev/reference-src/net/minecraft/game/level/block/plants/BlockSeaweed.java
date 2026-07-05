@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.plants;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 import net.minecraft.game.level.block.plants.BlockFlower;
@@ -22,19 +22,19 @@ extends BlockFlower {
 
     @Override
     protected final boolean canThisPlantGrowOnThisBlockID(int n) {
-        return n == C_x.k.at || n == this.at;
+        return n == Block.k.at || n == this.at;
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void b(World c_g, int n, int n2, int n3, int n4) {
         if (!this.canBlockStay(c_g, n, n2, n3)) {
             this.f(c_g, n, n2, n3, c_g.e(n, n2, n3));
-            c_g.b(n, n2, n3, C_x.q.at);
+            c_g.b(n, n2, n3, Block.q.at);
         }
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public void a(World c_g, int n, int n2, int n3, Random random) {
         if (c_g.f(n, n2 + 1, n3) == C_c.f && c_g.f(n, n2 + 2, n3) == C_c.f) {
             int n4 = 1;
             while (c_g.a(n, n2 - n4, n3) == this.at) {
@@ -48,7 +48,7 @@ extends BlockFlower {
     }
 
     @Override
-    public final void d(C_g c_g, int n, int n2, int n3) {
+    public final void d(World c_g, int n, int n2, int n3) {
         if (c_g.a(n, n2 - 1, n3) == this.at) {
             c_g.setBlockMetadata(n, n2 - 1, n3, 15);
         }
@@ -63,21 +63,21 @@ extends BlockFlower {
     }
 
     @Override
-    public boolean canBlockStay(C_g c_g, int n, int n2, int n3) {
+    public boolean canBlockStay(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2 + 1, n3);
-        if (n4 != this.at && n4 != C_x.q.at && n4 != C_x.p.at) {
+        if (n4 != this.at && n4 != Block.q.at && n4 != Block.p.at) {
             return false;
         }
         return this.canThisPlantGrowOnThisBlockID(c_g.a(n, n2 - 1, n3));
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
+    public boolean a(World c_g, int n, int n2, int n3) {
         return this.canBlockStay(c_g, n, n2, n3);
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return null;
     }
 

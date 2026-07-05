@@ -6,8 +6,8 @@ package net.minecraft.game.level.block.container;
 import com.a.a.NBTTagCompound;
 import java.util.Random;
 import net.minecraft.a.C_a;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_c;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -25,7 +25,7 @@ extends BlockContainer {
     }
 
     @Override
-    public void d(C_g c_g, int n, int n2, int n3) {
+    public void d(World c_g, int n, int n2, int n3) {
         super.d(c_g, n, n2, n3);
         this.unifyAdjacentChests(c_g, n, n2, n3);
         int n4 = c_g.a(n, n2, n3 - 1);
@@ -47,7 +47,7 @@ extends BlockContainer {
     }
 
     @Override
-    public void onBlockPlacedByPlayer(C_g c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
+    public void onBlockPlacedByPlayer(World c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
         super.onBlockPlacedByPlayer(c_g, entityPlayer, n, n2, n3, n4);
         int n5 = c_g.a(n, n2, n3 - 1);
         int n6 = c_g.a(n, n2, n3 + 1);
@@ -90,7 +90,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1) {
             return this.as - 1;
         }
@@ -104,16 +104,16 @@ extends BlockContainer {
         if (n5 != this.at && n6 != this.at) {
             if (n7 != this.at && n8 != this.at) {
                 int n9 = 3;
-                if (C_x.e[n5] && !C_x.e[n6]) {
+                if (Block.e[n5] && !Block.e[n6]) {
                     n9 = 3;
                 }
-                if (C_x.e[n6] && !C_x.e[n5]) {
+                if (Block.e[n6] && !Block.e[n5]) {
                     n9 = 2;
                 }
-                if (C_x.e[n7] && !C_x.e[n8]) {
+                if (Block.e[n7] && !Block.e[n8]) {
                     n9 = 5;
                 }
-                if (C_x.e[n8] && !C_x.e[n7]) {
+                if (Block.e[n8] && !Block.e[n7]) {
                     n9 = 4;
                 }
                 return n4 == n9 ? this.as + 1 : this.as;
@@ -129,10 +129,10 @@ extends BlockContainer {
                     n10 = -1 - n10;
                 }
                 int n13 = 3;
-                if ((C_x.e[n5] || C_x.e[n11]) && !C_x.e[n6] && !C_x.e[n12]) {
+                if ((Block.e[n5] || Block.e[n11]) && !Block.e[n6] && !Block.e[n12]) {
                     n13 = 3;
                 }
-                if ((C_x.e[n6] || C_x.e[n12]) && !C_x.e[n5] && !C_x.e[n11]) {
+                if ((Block.e[n6] || Block.e[n12]) && !Block.e[n5] && !Block.e[n11]) {
                     n13 = 2;
                 }
                 return (n4 == n13 ? this.as + 32 : this.as + 64) + n10;
@@ -150,10 +150,10 @@ extends BlockContainer {
                 n14 = -1 - n14;
             }
             int n17 = 5;
-            if ((C_x.e[n7] || C_x.e[n15]) && !C_x.e[n8] && !C_x.e[n16]) {
+            if ((Block.e[n7] || Block.e[n15]) && !Block.e[n8] && !Block.e[n16]) {
                 n17 = 5;
             }
-            if ((C_x.e[n8] || C_x.e[n16]) && !C_x.e[n7] && !C_x.e[n15]) {
+            if ((Block.e[n8] || Block.e[n16]) && !Block.e[n7] && !Block.e[n15]) {
                 n17 = 4;
             }
             return (n4 == n17 ? this.as + 32 : this.as + 64) + n14;
@@ -167,7 +167,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3) {
+    public final boolean a(World c_g, int n, int n2, int n3) {
         int n4 = 0;
         if (c_g.a(n - 1, n2, n3) == this.at) {
             ++n4;
@@ -184,12 +184,12 @@ extends BlockContainer {
         return n4 > 1 ? false : (this.isThereANeighborChest(c_g, n - 1, n2, n3) ? false : (this.isThereANeighborChest(c_g, n + 1, n2, n3) ? false : (this.isThereANeighborChest(c_g, n, n2, n3 - 1) ? false : !this.isThereANeighborChest(c_g, n, n2, n3 + 1))));
     }
 
-    private boolean isThereANeighborChest(C_g c_g, int n, int n2, int n3) {
+    private boolean isThereANeighborChest(World c_g, int n, int n2, int n3) {
         return c_g.a(n, n2, n3) != this.at ? false : (c_g.a(n - 1, n2, n3) == this.at ? true : (c_g.a(n + 1, n2, n3) == this.at ? true : (c_g.a(n, n2, n3 - 1) == this.at ? true : c_g.a(n, n2, n3 + 1) == this.at)));
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3) {
+    public final void b(World c_g, int n, int n2, int n3) {
         C_c c_c = (C_c)c_g.j(n, n2, n3);
         for (int i = 0; i < c_c.a(); ++i) {
             ItemStack itemStack = c_c.a(i);
@@ -222,7 +222,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         net.minecraft.a.C_b c_b = (C_c)c_g.j(n, n2, n3);
         if (c_g.b(n, n2 + 1, n3)) {
             return true;
@@ -274,11 +274,11 @@ extends BlockContainer {
     }
 
     @Override
-    public final net.minecraft.a.a.b.a.C_a getBlockEntity() {
+    public final net.minecraft.a.a.b.a.TileEntity getBlockEntity() {
         return new C_c();
     }
 
-    public void unifyAdjacentChests(C_g c_g, int n, int n2, int n3) {
+    public void unifyAdjacentChests(World c_g, int n, int n2, int n3) {
         if (!c_g.multiplayerWorld) {
             int n4;
             int n5 = c_g.a(n, n2, n3 - 1);
@@ -288,16 +288,16 @@ extends BlockContainer {
             if (n5 != this.at && n6 != this.at) {
                 if (n7 != this.at && n8 != this.at) {
                     n4 = 3;
-                    if (C_x.e[n5] && !C_x.e[n6]) {
+                    if (Block.e[n5] && !Block.e[n6]) {
                         n4 = 3;
                     }
-                    if (C_x.e[n6] && !C_x.e[n5]) {
+                    if (Block.e[n6] && !Block.e[n5]) {
                         n4 = 2;
                     }
-                    if (C_x.e[n7] && !C_x.e[n8]) {
+                    if (Block.e[n7] && !Block.e[n8]) {
                         n4 = 5;
                     }
-                    if (C_x.e[n8] && !C_x.e[n7]) {
+                    if (Block.e[n8] && !Block.e[n7]) {
                         n4 = 4;
                     }
                 } else {
@@ -308,10 +308,10 @@ extends BlockContainer {
                     if (by == 2) {
                         n4 = 2;
                     }
-                    if ((C_x.e[n5] || C_x.e[n9]) && !C_x.e[n6] && !C_x.e[n10]) {
+                    if ((Block.e[n5] || Block.e[n9]) && !Block.e[n6] && !Block.e[n10]) {
                         n4 = 3;
                     }
-                    if ((C_x.e[n6] || C_x.e[n10]) && !C_x.e[n5] && !C_x.e[n9]) {
+                    if ((Block.e[n6] || Block.e[n10]) && !Block.e[n5] && !Block.e[n9]) {
                         n4 = 2;
                     }
                 }
@@ -323,10 +323,10 @@ extends BlockContainer {
                 if (by == 4) {
                     n4 = 4;
                 }
-                if ((C_x.e[n7] || C_x.e[n11]) && !C_x.e[n8] && !C_x.e[n12]) {
+                if ((Block.e[n7] || Block.e[n11]) && !Block.e[n8] && !Block.e[n12]) {
                     n4 = 5;
                 }
-                if ((C_x.e[n8] || C_x.e[n12]) && !C_x.e[n7] && !C_x.e[n11]) {
+                if ((Block.e[n8] || Block.e[n12]) && !Block.e[n7] && !Block.e[n11]) {
                     n4 = 4;
                 }
             }

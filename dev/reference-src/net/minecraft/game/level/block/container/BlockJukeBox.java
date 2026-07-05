@@ -3,8 +3,8 @@
  */
 package net.minecraft.game.level.block.container;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_k;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.ItemStack;
@@ -20,7 +20,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1) {
             return this.as + 1;
         }
@@ -36,7 +36,7 @@ extends BlockContainer {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (c_g.e(n, n2, n3) == 0) {
             return false;
         }
@@ -44,7 +44,7 @@ extends BlockContainer {
         return true;
     }
 
-    public void ejectRecord(C_g c_g, int n, int n2, int n3, int n4) {
+    public void ejectRecord(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.multiplayerWorld) {
             C_k c_k = (C_k)c_g.j(n, n2, n3);
             c_k.record = n4;
@@ -53,7 +53,7 @@ extends BlockContainer {
         }
     }
 
-    public void playMusic(C_g c_g, int n, int n2, int n3) {
+    public void playMusic(World c_g, int n, int n2, int n3) {
         if (!c_g.multiplayerWorld) {
             C_k c_k = (C_k)c_g.j(n, n2, n3);
             int n4 = c_k.record;
@@ -74,20 +74,20 @@ extends BlockContainer {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3) {
+    public void b(World c_g, int n, int n2, int n3) {
         this.playMusic(c_g, n, n2, n3);
         super.b(c_g, n, n2, n3);
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         if (!c_g.multiplayerWorld) {
             super.a(c_g, n, n2, n3, n4, f);
         }
     }
 
     @Override
-    public C_a getBlockEntity() {
+    public TileEntity getBlockEntity() {
         return new C_k();
     }
 }

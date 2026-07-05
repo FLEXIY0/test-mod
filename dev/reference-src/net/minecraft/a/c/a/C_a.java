@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.c.a;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -12,7 +12,7 @@ import net.minecraft.a.c.e.EntityPlayer;
 
 public class C_a
 extends C_e {
-    public C_a(C_g c_g) {
+    public C_a(World c_g) {
         super(c_g);
         this.V = "/mob/zombie.png";
         this.am = 0.5f;
@@ -22,7 +22,7 @@ extends C_e {
         this.a(this.w * 6.0f, this.x * 6.0f);
     }
 
-    public C_a(C_g c_g, float f, float f2, float f3) {
+    public C_a(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.V = "/mob/zombie.png";
         this.am = 0.5f;

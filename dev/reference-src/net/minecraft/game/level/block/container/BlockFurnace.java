@@ -4,9 +4,9 @@
 package net.minecraft.game.level.block.container;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_b;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.ItemStack;
@@ -27,7 +27,7 @@ extends BlockContainer {
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.multiplayerWorld) {
             int n5 = MathHelper.a((double)(c_g.y.n * 4.0f / 360.0f) + 0.5) & 3;
             if (n5 == 0) {
@@ -46,7 +46,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1) {
             return 259;
         }
@@ -62,7 +62,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void b(World c_g, int n, int n2, int n3, Random random) {
         if (this.isActive) {
             if (random.nextInt(24) == 0) {
                 c_g.playSoundAtBlock((float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, "random.furnace", 0.3f, random.nextFloat() * 0.7f + 0.3f);
@@ -94,7 +94,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (c_g.multiplayerWorld) {
             return true;
         }
@@ -104,37 +104,37 @@ extends BlockContainer {
     }
 
     @Override
-    public void d(C_g c_g, int n, int n2, int n3) {
+    public void d(World c_g, int n, int n2, int n3) {
     }
 
     @Override
-    public void onBlockPlacedByPlayer(C_g c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
+    public void onBlockPlacedByPlayer(World c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
         c_g.a(n, n2, n3, this.getBlockEntity());
     }
 
     @Override
-    public final C_a getBlockEntity() {
+    public final TileEntity getBlockEntity() {
         return new C_b();
     }
 
     @Override
     public int a(int n, Random random) {
-        return C_x.aq.at;
+        return Block.aq.at;
     }
 
     @Override
-    public final void dropBlockAsItemWithChance(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void dropBlockAsItemWithChance(World c_g, int n, int n2, int n3, int n4) {
         this.a(c_g, n, n2, n3, n4, 1.0f);
     }
 
-    public static void updateFurnaceBlockState(boolean bl, C_g c_g, int n, int n2, int n3) {
+    public static void updateFurnaceBlockState(boolean bl, World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
-        C_a c_a = c_g.j(n, n2, n3);
+        TileEntity c_a = c_g.j(n, n2, n3);
         keepFurnaceInventory = true;
         if (bl) {
-            c_g.b(n, n2, n3, C_x.ar.at);
+            c_g.b(n, n2, n3, Block.ar.at);
         } else {
-            c_g.b(n, n2, n3, C_x.aq.at);
+            c_g.b(n, n2, n3, Block.aq.at);
         }
         keepFurnaceInventory = false;
         c_g.setBlockMetadata(n, n2, n3, by);
@@ -142,7 +142,7 @@ extends BlockContainer {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3) {
+    public void b(World c_g, int n, int n2, int n3) {
         if (!keepFurnaceInventory) {
             C_b c_b = (C_b)c_g.j(n, n2, n3);
             for (int i = 0; i < c_b.a(); ++i) {

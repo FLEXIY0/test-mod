@@ -6,14 +6,14 @@
  */
 package net.minecraft.client.a;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_aj;
 import net.minecraft.a.a.b.C_ar;
 import net.minecraft.a.a.b.C_bn;
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.C_bt;
 import net.minecraft.a.a.b.C_p;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.client.a.C_d;
 import net.minecraft.game.level.block.container.BlockChest;
@@ -36,7 +36,7 @@ import net.minecraft.game.level.block.plants.BlockStem;
 import org.lwjgl.opengl.GL11;
 
 public final class C_f {
-    private C_g a;
+    private World a;
     private int b = -1;
     private boolean flipTexture = false;
     private boolean c = false;
@@ -48,7 +48,7 @@ public final class C_f {
     private int uvRotateTop = 0;
     private int uvRotateBottom = 0;
 
-    public C_f(C_g c_g) {
+    public C_f(World c_g) {
         this.a = c_g;
     }
 
@@ -59,7 +59,7 @@ public final class C_f {
         this.activeRenderPass = n;
     }
 
-    public final void a(C_x c_x, int n, int n2, int n3, int n4) {
+    public final void a(Block c_x, int n, int n2, int n3, int n4) {
         this.b = n4;
         if (c_x instanceof C_bt || c_x instanceof BlockDetector || c_x instanceof BlockChest) {
             this.activeRenderPass = 2;
@@ -70,13 +70,13 @@ public final class C_f {
         this.b = -1;
     }
 
-    public final void a(C_x c_x, int n, int n2, int n3) {
+    public final void a(Block c_x, int n, int n2, int n3) {
         this.flipTexture = true;
         this.b(c_x, n, n2, n3);
         this.flipTexture = false;
     }
 
-    public final boolean b(C_x c_x, int n, int n2, int n3) {
+    public final boolean b(Block c_x, int n, int n2, int n3) {
         c_x.setBlockBoundsBasedOnState(this.a, n, n2, n3);
         int n4 = c_x.a();
         if (n4 == 0) {
@@ -90,7 +90,7 @@ public final class C_f {
             boolean bl = false;
             if (this.flipTexture || this.c || c_x.d(this.a, n2, n3 - 1, n4, 0)) {
                 f = c_x.f(this.a, n2, n3 - 1, n4);
-                if (C_x.h[c_x.at] > 0) {
+                if (Block.h[c_x.at] > 0) {
                     f = 1.0f;
                 }
                 c_d.a(0.5f * f, 0.5f * f, 0.5f * f);
@@ -102,7 +102,7 @@ public final class C_f {
                 if (c_x instanceof C_aj && !((C_aj)c_x).a) {
                     f = c_x.f(this.a, n2, n3, n4);
                 }
-                if (C_x.h[c_x.at] > 0) {
+                if (Block.h[c_x.at] > 0) {
                     f = 1.0f;
                 }
                 c_d.a(f * 1.0f, f * 1.0f, f * 1.0f);
@@ -111,7 +111,7 @@ public final class C_f {
             }
             if (this.flipTexture || this.c || c_x.d(this.a, n2, n3, n4 - 1, 2)) {
                 f = c_x.f(this.a, n2, n3, n4 - 1);
-                if (C_x.h[c_x.at] > 0) {
+                if (Block.h[c_x.at] > 0) {
                     f = 1.0f;
                 }
                 c_d.a(0.8f * f, 0.8f * f, 0.8f * f);
@@ -120,7 +120,7 @@ public final class C_f {
             }
             if (this.flipTexture || this.c || c_x.d(this.a, n2, n3, n4 + 1, 3)) {
                 f = c_x.f(this.a, n2, n3, n4 + 1);
-                if (C_x.h[c_x.at] > 0) {
+                if (Block.h[c_x.at] > 0) {
                     f = 1.0f;
                 }
                 c_d.a(0.8f * f, 0.8f * f, 0.8f * f);
@@ -129,7 +129,7 @@ public final class C_f {
             }
             if (this.flipTexture || this.c || c_x.d(this.a, n2 - 1, n3, n4, 4)) {
                 f = c_x.f(this.a, n2 - 1, n3, n4);
-                if (C_x.h[c_x.at] > 0) {
+                if (Block.h[c_x.at] > 0) {
                     f = 1.0f;
                 }
                 c_d.a(0.6f * f, 0.6f * f, 0.6f * f);
@@ -138,7 +138,7 @@ public final class C_f {
             }
             if (this.flipTexture || this.c || c_x.d(this.a, n2 + 1, n3, n4, 5)) {
                 f = c_x.f(this.a, n2 + 1, n3, n4);
-                if (C_x.h[c_x.at] > 0) {
+                if (Block.h[c_x.at] > 0) {
                     f = 1.0f;
                 }
                 c_d.a(0.6f * f, 0.6f * f, 0.6f * f);
@@ -248,7 +248,7 @@ public final class C_f {
             byte by = this.a.e(n2, n3, n4);
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -273,7 +273,7 @@ public final class C_f {
             n2 = n17;
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -289,7 +289,7 @@ public final class C_f {
             byte by = this.a.e(n2, n3, n4);
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -304,7 +304,7 @@ public final class C_f {
             n2 = n21;
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -319,7 +319,7 @@ public final class C_f {
             n2 = n23;
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -334,7 +334,7 @@ public final class C_f {
             n2 = n25;
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -349,7 +349,7 @@ public final class C_f {
             n2 = n27;
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -364,7 +364,7 @@ public final class C_f {
             n2 = n29;
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -379,7 +379,7 @@ public final class C_f {
             n2 = n31;
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -408,7 +408,7 @@ public final class C_f {
             float f5 = ((float)n + 15.99f) / 512.0f;
             float f6 = (float)n36 / 512.0f;
             float f7 = ((float)n36 + 15.99f) / 512.0f;
-            if (this.a.b(n2, n3 - 1, n4) || C_x.ag.e(this.a, n2, n3 - 1, n4)) {
+            if (this.a.b(n2, n3 - 1, n4) || Block.ag.e(this.a, n2, n3 - 1, n4)) {
                 float f8 = (float)n2 + 0.5f + 0.2f;
                 float f9 = (float)n2 + 0.5f - 0.2f;
                 float f10 = (float)n4 + 0.5f + 0.2f;
@@ -478,7 +478,7 @@ public final class C_f {
                     f5 = f4;
                     f4 = f16;
                 }
-                if (C_x.ag.e(this.a, n2 - 1, n3, n4)) {
+                if (Block.ag.e(this.a, n2 - 1, n3, n4)) {
                     c_d.a((float)n2 + 0.2f, (float)n3 + 1.4f + 0.0625f, n4 + 1, f5, f6);
                     c_d.a(n2, (float)n3 + 0.0625f, n4 + 1, f5, f7);
                     c_d.a(n2, (float)n3 + 0.0625f, n4, f4, f7);
@@ -488,7 +488,7 @@ public final class C_f {
                     c_d.a(n2, (float)n3 + 0.0625f, n4 + 1, f5, f7);
                     c_d.a((float)n2 + 0.2f, (float)n3 + 1.4f + 0.0625f, n4 + 1, f5, f6);
                 }
-                if (C_x.ag.e(this.a, n2 + 1, n3, n4)) {
+                if (Block.ag.e(this.a, n2 + 1, n3, n4)) {
                     c_d.a((float)(n2 + 1) - 0.2f, (float)n3 + 1.4f + 0.0625f, n4, f4, f6);
                     c_d.a(n2 + 1, (float)n3 + 0.0625f, n4, f4, f7);
                     c_d.a(n2 + 1, (float)n3 + 0.0625f, n4 + 1, f5, f7);
@@ -498,7 +498,7 @@ public final class C_f {
                     c_d.a(n2 + 1, (float)n3 + 0.0625f, n4, f4, f7);
                     c_d.a((float)(n2 + 1) - 0.2f, (float)n3 + 1.4f + 0.0625f, n4, f4, f6);
                 }
-                if (C_x.ag.e(this.a, n2, n3, n4 - 1)) {
+                if (Block.ag.e(this.a, n2, n3, n4 - 1)) {
                     c_d.a(n2, (float)n3 + 1.4f + 0.0625f, (float)n4 + 0.2f, f5, f6);
                     c_d.a(n2, (float)n3 + 0.0625f, n4, f5, f7);
                     c_d.a(n2 + 1, (float)n3 + 0.0625f, n4, f4, f7);
@@ -508,7 +508,7 @@ public final class C_f {
                     c_d.a(n2, (float)n3 + 0.0625f, n4, f5, f7);
                     c_d.a(n2, (float)n3 + 1.4f + 0.0625f, (float)n4 + 0.2f, f5, f6);
                 }
-                if (C_x.ag.e(this.a, n2, n3, n4 + 1)) {
+                if (Block.ag.e(this.a, n2, n3, n4 + 1)) {
                     c_d.a(n2 + 1, (float)n3 + 1.4f + 0.0625f, (float)(n4 + 1) - 0.2f, f4, f6);
                     c_d.a(n2 + 1, (float)n3 + 0.0625f, n4 + 1, f4, f7);
                     c_d.a(n2, (float)n3 + 0.0625f, n4 + 1, f5, f7);
@@ -518,7 +518,7 @@ public final class C_f {
                     c_d.a(n2 + 1, (float)n3 + 0.0625f, n4 + 1, f4, f7);
                     c_d.a(n2 + 1, (float)n3 + 1.4f + 0.0625f, (float)(n4 + 1) - 0.2f, f4, f6);
                 }
-                if (C_x.ag.e(this.a, n2, n3 + 1, n4)) {
+                if (Block.ag.e(this.a, n2, n3 + 1, n4)) {
                     f16 = (float)n2 + 0.5f + 0.5f;
                     float f17 = (float)n2 + 0.5f - 0.5f;
                     float f18 = (float)n4 + 0.5f + 0.5f;
@@ -699,7 +699,7 @@ public final class C_f {
             n2 = n42;
             C_d c_d = C_d.a;
             float f = c_x.f(this.a, n2, n3, n4);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f, f, f);
@@ -718,15 +718,15 @@ public final class C_f {
         return false;
     }
 
-    private boolean renderBlockChest(C_x c_x, int n, int n2, int n3) {
+    private boolean renderBlockChest(Block c_x, int n, int n2, int n3) {
         return true;
     }
 
-    private boolean renderBlockCauldron(C_x c_x, int n, int n2, int n3) {
+    private boolean renderBlockCauldron(Block c_x, int n, int n2, int n3) {
         this.renderStandardBlock(c_x, n, n2, n3);
         C_d c_d = C_d.a;
         float f = c_x.f(this.a, n, n2 + 1, n3);
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f = 1.0f;
         }
         c_d.a(f, f, f);
@@ -756,7 +756,7 @@ public final class C_f {
         return true;
     }
 
-    private void renderBlockCake(C_x c_x, int n, int n2, int n3) {
+    private void renderBlockCake(Block c_x, int n, int n2, int n3) {
         int n4 = n;
         int n5 = n2;
         int n6 = n3;
@@ -764,7 +764,7 @@ public final class C_f {
         n2 = n4;
         float f = c_x.f(this.a, n2, n3 - 1, n6);
         float f2 = c_x.f(this.a, n2, n3, n6);
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f2 = 1.0f;
         }
         C_d c_d = C_d.a;
@@ -782,7 +782,7 @@ public final class C_f {
         this.renderSouthFaceNew(c_x, n2, n3, n6, c_x.a(this.a, n2, n3, n6, 5));
     }
 
-    private void a(C_x c_x, float f, float f2, float f3, float f4, float f5) {
+    private void a(Block c_x, float f, float f2, float f3, float f4, float f5) {
         C_d c_d = C_d.a;
         int n = c_x.a(0);
         if (this.b >= 0) {
@@ -824,7 +824,7 @@ public final class C_f {
         c_d.a(f14, f2 + 1.0f, f3 - 0.0625f, f7, f8);
     }
 
-    private boolean renderBlockSlime(C_x c_x, int n, int n2, int n3) {
+    private boolean renderBlockSlime(Block c_x, int n, int n2, int n3) {
         if (this.activeRenderPass == 0) {
             c_x.a(0.125f, 0.125f, 0.125f, 0.875f, 0.875f, 0.875f);
             boolean bl = this.renderStandardBlock(c_x, n, n2, n3);
@@ -837,7 +837,7 @@ public final class C_f {
         return bl;
     }
 
-    private boolean renderBlockDetector(C_x c_x, int n, int n2, int n3) {
+    private boolean renderBlockDetector(Block c_x, int n, int n2, int n3) {
         if (this.a.e(n, n2, n3) == 4) {
             this.setOverrideBlockTexture(644);
         } else {
@@ -851,7 +851,7 @@ public final class C_f {
         return true;
     }
 
-    private void renderBlockLantern(C_x c_x, int n, int n2, int n3, double d2) {
+    private void renderBlockLantern(Block c_x, int n, int n2, int n3, double d2) {
         if (this.b >= 0) {
             c_x.as = this.b;
         }
@@ -893,37 +893,37 @@ public final class C_f {
         this.renderNorthFace(blockFlowerPot, (float)n + 0.5f - f5, n2, n3, n5);
         this.renderWestFace(blockFlowerPot, n, n2, (float)n3 - 0.5f + f5, n5);
         this.renderEastFace(blockFlowerPot, n, n2, (float)n3 + 0.5f - f5, n5);
-        this.renderTopFace(blockFlowerPot, n, (float)n2 - 0.5f + f5 + 0.1875f, n3, C_x.k.as);
+        this.renderTopFace(blockFlowerPot, n, (float)n2 - 0.5f + f5 + 0.1875f, n3, Block.k.as);
         byte by = this.a.e(n, n2, n3);
         if (by != 0) {
             BlockFlower blockFlower = null;
             switch (by) {
                 case 1: {
-                    blockFlower = C_x.plantRed;
+                    blockFlower = Block.plantRed;
                     break;
                 }
                 case 2: {
-                    blockFlower = C_x.plantYellow;
+                    blockFlower = Block.plantYellow;
                     break;
                 }
                 case 5: {
-                    blockFlower = C_x.plantBlue;
+                    blockFlower = Block.plantBlue;
                     break;
                 }
                 case 6: {
-                    blockFlower = C_x.plantPurple;
+                    blockFlower = Block.plantPurple;
                     break;
                 }
                 case 7: {
-                    blockFlower = C_x.mushroomRed;
+                    blockFlower = Block.mushroomRed;
                     break;
                 }
                 case 8: {
-                    blockFlower = C_x.mushroomBrown;
+                    blockFlower = Block.mushroomBrown;
                     break;
                 }
                 case 15: {
-                    blockFlower = C_x.mushroomGlowing;
+                    blockFlower = Block.mushroomGlowing;
                     break;
                 }
             }
@@ -931,35 +931,35 @@ public final class C_f {
             if (blockFlower != null) {
                 this.b(blockFlower, n, n2, n3);
             } else if (by == 3) {
-                this.drawCrossedSquares(C_x.n, 0, n, n2, n3, 0.75f);
+                this.drawCrossedSquares(Block.n, 0, n, n2, n3, 0.75f);
             } else if (by == 4) {
-                this.drawCrossedSquares(C_x.n, 1, n, n2, n3, 0.75f);
+                this.drawCrossedSquares(Block.n, 1, n, n2, n3, 0.75f);
             } else if (by == 9) {
-                this.drawCrossedSquares(C_x.berryBush, 0, n, n2, n3, 0.75f);
+                this.drawCrossedSquares(Block.berryBush, 0, n, n2, n3, 0.75f);
             } else if (by == 10) {
-                this.drawCrossedSquares(C_x.berryBush, 1, n, n2, n3, 0.75f);
+                this.drawCrossedSquares(Block.berryBush, 1, n, n2, n3, 0.75f);
             } else if (by == 11) {
-                this.drawCrossedSquares(C_x.n, 2, n, n2, n3, 0.75f);
+                this.drawCrossedSquares(Block.n, 2, n, n2, n3, 0.75f);
             } else if (by == 12) {
-                this.drawCrossedSquares(C_x.n, 3, n, n2, n3, 0.75f);
+                this.drawCrossedSquares(Block.n, 3, n, n2, n3, 0.75f);
             } else if (by == 13) {
-                this.drawCrossedSquares(C_x.n, 4, n, n2, n3, 0.75f);
+                this.drawCrossedSquares(Block.n, 4, n, n2, n3, 0.75f);
             } else if (by == 14) {
                 float f6 = 0.125f;
-                C_x.cactus.a(0.5f - f6, 0.0f, 0.5f - f6, 0.5f + f6, 0.25f, 0.5f + f6);
-                this.renderStandardBlock(C_x.cactus, n, n2, n3);
-                C_x.cactus.a(0.5f - f6, 0.25f, 0.5f - f6, 0.5f + f6, 0.5f, 0.5f + f6);
-                this.renderStandardBlock(C_x.cactus, n, n2, n3);
-                C_x.cactus.a(0.5f - f6, 0.5f, 0.5f - f6, 0.5f + f6, 0.75f, 0.5f + f6);
-                this.renderStandardBlock(C_x.cactus, n, n2, n3);
-                C_x.cactus.a(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
+                Block.cactus.a(0.5f - f6, 0.0f, 0.5f - f6, 0.5f + f6, 0.25f, 0.5f + f6);
+                this.renderStandardBlock(Block.cactus, n, n2, n3);
+                Block.cactus.a(0.5f - f6, 0.25f, 0.5f - f6, 0.5f + f6, 0.5f, 0.5f + f6);
+                this.renderStandardBlock(Block.cactus, n, n2, n3);
+                Block.cactus.a(0.5f - f6, 0.5f, 0.5f - f6, 0.5f + f6, 0.75f, 0.5f + f6);
+                this.renderStandardBlock(Block.cactus, n, n2, n3);
+                Block.cactus.a(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
             }
             c_d.addTranslation(-0.0f, -0.25f, -0.0f);
         }
         return true;
     }
 
-    public void drawCrossedSquares(C_x c_x, int n, float f, float f2, float f3, float f4) {
+    public void drawCrossedSquares(Block c_x, int n, float f, float f2, float f3, float f4) {
         C_d c_d = C_d.a;
         int n2 = c_x.a(0, n);
         if (this.b >= 0) {
@@ -994,12 +994,12 @@ public final class C_f {
         c_d.a(f10, f2 + f4, f13, f6, f7);
     }
 
-    private boolean renderBlockFluids(C_x c_x, int n, int n2, int n3) {
+    private boolean renderBlockFluids(Block c_x, int n, int n2, int n3) {
         float f;
         int n4 = n3;
         int n5 = n2;
         int n6 = n;
-        C_x c_x2 = c_x;
+        Block c_x2 = c_x;
         C_d c_d = C_d.a;
         boolean bl = false;
         C_c c_c = c_x2.getMaterial(0);
@@ -1018,28 +1018,28 @@ public final class C_f {
             bl = true;
         }
         c_x2.av = 1.0f - this.getFluidHeight(n6, n5, n4 - 1, c_c);
-        if (this.flipTexture || c_x2.ay > c_x2.av && this.a.a(n6, n5, n4 - 1) != C_x.coralFan.at || this.c || c_x.d(this.a, n6, n5, n4 - 1, 2)) {
+        if (this.flipTexture || c_x2.ay > c_x2.av && this.a.a(n6, n5, n4 - 1) != Block.coralFan.at || this.c || c_x.d(this.a, n6, n5, n4 - 1, 2)) {
             f = c_x.f(this.a, n6, n5, n4 - 1);
             c_d.a(0.8f * f, 0.8f * f, 0.8f * f);
             this.renderEastFace(c_x2, n6, n5, n4, c_x2.a(this.a, n6, n5, n4, 2));
             bl = true;
         }
         c_x2.av = 1.0f - this.getFluidHeight(n6, n5, n4 + 1, c_c);
-        if (this.flipTexture || c_x2.ay > c_x2.av && this.a.a(n6, n5, n4 + 1) != C_x.coralFan.at || this.c || c_x.d(this.a, n6, n5, n4 + 1, 3)) {
+        if (this.flipTexture || c_x2.ay > c_x2.av && this.a.a(n6, n5, n4 + 1) != Block.coralFan.at || this.c || c_x.d(this.a, n6, n5, n4 + 1, 3)) {
             f = c_x.f(this.a, n6, n5, n4 + 1);
             c_d.a(0.8f * f, 0.8f * f, 0.8f * f);
             this.renderWestFace(c_x2, n6, n5, n4, c_x2.a(this.a, n6, n5, n4, 3));
             bl = true;
         }
         c_x2.av = 1.0f - this.getFluidHeight(n6 - 1, n5, n4, c_c);
-        if (this.flipTexture || c_x2.ay > c_x2.av && this.a.a(n6 - 1, n5, n4) != C_x.coralFan.at || this.c || c_x.d(this.a, n6 - 1, n5, n4, 4)) {
+        if (this.flipTexture || c_x2.ay > c_x2.av && this.a.a(n6 - 1, n5, n4) != Block.coralFan.at || this.c || c_x.d(this.a, n6 - 1, n5, n4, 4)) {
             f = c_x.f(this.a, n6 - 1, n5, n4);
             c_d.a(0.6f * f, 0.6f * f, 0.6f * f);
             this.renderNorthFace(c_x2, n6, n5, n4, c_x2.a(this.a, n6, n5, n4, 4));
             bl = true;
         }
         c_x2.av = 1.0f - this.getFluidHeight(n6 + 1, n5, n4, c_c);
-        if (this.flipTexture || c_x2.ay > c_x2.av && this.a.a(n6 + 1, n5, n4) != C_x.coralFan.at || this.c || c_x.d(this.a, n6 + 1, n5, n4, 5)) {
+        if (this.flipTexture || c_x2.ay > c_x2.av && this.a.a(n6 + 1, n5, n4) != Block.coralFan.at || this.c || c_x.d(this.a, n6 + 1, n5, n4, 5)) {
             f = c_x.f(this.a, n6 + 1, n5, n4);
             c_d.a(0.6f * f, 0.6f * f, 0.6f * f);
             this.renderSouthFace(c_x2, n6, n5, n4, c_x2.a(this.a, n6, n5, n4, 5));
@@ -1067,19 +1067,19 @@ public final class C_f {
         return C_p.getFluidHeightPercent(by);
     }
 
-    public static void setLightValue(C_d c_d, C_g c_g, C_x c_x, float f, float f2, float f3, float f4) {
+    public static void setLightValue(C_d c_d, World c_g, Block c_x, float f, float f2, float f3, float f4) {
         float f5 = c_g == null ? f4 : c_x.f(c_g, (int)f, (int)f2, (int)f3) * f4;
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f5 = f4;
         }
         c_d.a(f5, f5, f5);
     }
 
-    private void renderBlockRope(C_x c_x, int n, int n2, int n3) {
+    private void renderBlockRope(Block c_x, int n, int n2, int n3) {
         float f = c_x.f(this.a, n, n2, n3);
         float f2 = c_x.f(this.a, n, n2 + 1, n3);
         float f3 = c_x.f(this.a, n, n2 - 1, n3);
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f = 1.0f;
         }
         C_d c_d = C_d.a;
@@ -1097,11 +1097,11 @@ public final class C_f {
         this.renderSouthFace(c_x, n, n2, n3, c_x.a(this.a, n, n2, n3, 5));
     }
 
-    private void renderBlockRod(C_x c_x, int n, int n2, int n3) {
+    private void renderBlockRod(Block c_x, int n, int n2, int n3) {
         float f = c_x.f(this.a, n, n2, n3);
         float f2 = c_x.f(this.a, n, n2 + 1, n3);
         float f3 = c_x.f(this.a, n, n2 - 1, n3);
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f = 1.0f;
         }
         C_d c_d = C_d.a;
@@ -1137,7 +1137,7 @@ public final class C_f {
         this.b = -1;
     }
 
-    private void a(C_x c_x, int n, float f, float f2, float f3) {
+    private void a(Block c_x, int n, float f, float f2, float f3) {
         C_d c_d = C_d.a;
         int n2 = c_x.a(0, n);
         if (this.b >= 0) {
@@ -1177,7 +1177,7 @@ public final class C_f {
         c_d.a(f8, f10, f3, f5, f6);
     }
 
-    private void renderBlockLeaves(C_x c_x, int n, int n2, int n3) {
+    private void renderBlockLeaves(Block c_x, int n, int n2, int n3) {
         float f;
         int n4 = n;
         int n5 = n2;
@@ -1187,7 +1187,7 @@ public final class C_f {
         C_d c_d = C_d.a;
         if (this.flipTexture || this.c || c_x.d(this.a, n2, n3 - 1, n6, 0)) {
             f = c_x.f(this.a, n2, n3 - 1, n6);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(0.5f * f, 0.5f * f, 0.5f * f);
@@ -1201,7 +1201,7 @@ public final class C_f {
             if (c_x instanceof C_aj && !((C_aj)c_x).a) {
                 f = c_x.f(this.a, n2, n3, n6);
             }
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(f * 1.0f, f * 1.0f, f * 1.0f);
@@ -1212,7 +1212,7 @@ public final class C_f {
         }
         if (this.flipTexture || this.c || c_x.d(this.a, n2, n3, n6 - 1, 2)) {
             f = c_x.f(this.a, n2, n3, n6 - 1);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(0.8f * f, 0.8f * f, 0.8f * f);
@@ -1223,7 +1223,7 @@ public final class C_f {
         }
         if (this.flipTexture || this.c || c_x.d(this.a, n2, n3, n6 + 1, 3)) {
             f = c_x.f(this.a, n2, n3, n6 + 1);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(0.8f * f, 0.8f * f, 0.8f * f);
@@ -1234,7 +1234,7 @@ public final class C_f {
         }
         if (this.flipTexture || this.c || c_x.d(this.a, n2 - 1, n3, n6, 4)) {
             f = c_x.f(this.a, n2 - 1, n3, n6);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(0.6f * f, 0.6f * f, 0.6f * f);
@@ -1245,7 +1245,7 @@ public final class C_f {
         }
         if (this.flipTexture || this.c || c_x.d(this.a, n2 + 1, n3, n6, 5)) {
             f = c_x.f(this.a, n2 + 1, n3, n6);
-            if (C_x.h[c_x.at] > 0) {
+            if (Block.h[c_x.at] > 0) {
                 f = 1.0f;
             }
             c_d.a(0.6f * f, 0.6f * f, 0.6f * f);
@@ -1256,7 +1256,7 @@ public final class C_f {
         }
     }
 
-    private void b(C_x c_x, int n, float f, float f2, float f3) {
+    private void b(Block c_x, int n, float f, float f2, float f3) {
         C_d c_d = C_d.a;
         int n2 = c_x.a(0, n);
         if (this.b >= 0) {
@@ -1310,7 +1310,7 @@ public final class C_f {
         c_d.a(f9, f2 + 1.0f, f11, f5, f6);
     }
 
-    public boolean renderBlockStem(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockStem(Block c_x, int n, int n2, int n3) {
         BlockStem blockStem = (BlockStem)c_x;
         blockStem.setBlockBoundsBasedOnState(this.a, n, n2, n3);
         int n4 = blockStem.getState(this.a, n, n2, n3);
@@ -1324,7 +1324,7 @@ public final class C_f {
         return true;
     }
 
-    public void renderBlockStemSmall(C_x c_x, int n, float f, float f2, float f3, float f4) {
+    public void renderBlockStemSmall(Block c_x, int n, float f, float f2, float f3, float f4) {
         C_d c_d = C_d.a;
         int n2 = c_x.a(0, n);
         if (this.b >= 0) {
@@ -1358,7 +1358,7 @@ public final class C_f {
         c_d.a(f9, f3 + f, f12, f6, f7);
     }
 
-    public void renderBlockStemBig(C_x c_x, int n, int n2, float f, float f2, float f3, float f4) {
+    public void renderBlockStemBig(Block c_x, int n, int n2, float f, float f2, float f3, float f4) {
         C_d c_d = C_d.a;
         int n3 = c_x.a(0, n) + 1;
         if (this.b >= 0) {
@@ -1402,7 +1402,7 @@ public final class C_f {
         }
     }
 
-    private void renderBlockReeds(C_x c_x, int n, float f, float f2, float f3) {
+    private void renderBlockReeds(Block c_x, int n, float f, float f2, float f3) {
         C_d c_d = C_d.a;
         int n2 = c_x.a(0, n);
         if (this.b >= 0) {
@@ -1456,7 +1456,7 @@ public final class C_f {
         c_d.a(f9, f2 + 1.0f, f11, f5, f6);
     }
 
-    public boolean renderBlockCactus(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockCactus(Block c_x, int n, int n2, int n3) {
         int n4 = 0xFFFFFF;
         float f = (float)(n4 >> 16 & 0xFF) / 255.0f;
         float f2 = (float)(n4 >> 8 & 0xFF) / 255.0f;
@@ -1470,7 +1470,7 @@ public final class C_f {
         return this.renderShrunkenBlock(c_x, n, n2, n3, f, f2, f3);
     }
 
-    public boolean renderShrunkenBlock(C_x c_x, int n, int n2, int n3, float f, float f2, float f3) {
+    public boolean renderShrunkenBlock(Block c_x, int n, int n2, int n3, float f, float f2, float f3) {
         float f4;
         C_d c_d = C_d.a;
         boolean bl = false;
@@ -1493,7 +1493,7 @@ public final class C_f {
         float f21 = 0.0625f;
         float f22 = c_x.f(this.a, n, n2 - 1, n3);
         float f23 = c_x.f(this.a, n, n2, n3);
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f23 = 1.0f;
         }
         if (this.flipTexture || this.c || c_x.d(this.a, n, n2 - 1, n3, 0)) {
@@ -1562,7 +1562,7 @@ public final class C_f {
         return bl;
     }
 
-    public boolean renderBlockStrippedLog(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockStrippedLog(Block c_x, int n, int n2, int n3) {
         int n4 = 0xFFFFFF;
         float f = (float)(n4 >> 16 & 0xFF) / 255.0f;
         float f2 = (float)(n4 >> 8 & 0xFF) / 255.0f;
@@ -1594,7 +1594,7 @@ public final class C_f {
         return bl;
     }
 
-    public boolean renderShrunkenBlockWithRotation(C_x c_x, int n, int n2, int n3, float f, float f2, float f3) {
+    public boolean renderShrunkenBlockWithRotation(Block c_x, int n, int n2, int n3, float f, float f2, float f3) {
         float f4;
         C_d c_d = C_d.a;
         boolean bl = false;
@@ -1618,7 +1618,7 @@ public final class C_f {
         float f22 = c_x.f(this.a, n, n2 - 1, n3);
         float f23 = c_x.f(this.a, n, n2, n3);
         byte by = this.a.e(n, n2, n3);
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f23 = 1.0f;
         }
         if (this.flipTexture || this.c || c_x.d(this.a, n, n2 - 1, n3, 0)) {
@@ -1723,7 +1723,7 @@ public final class C_f {
         return bl;
     }
 
-    public boolean renderBlockLog(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockLog(Block c_x, int n, int n2, int n3) {
         byte by = this.a.e(n, n2, n3);
         int n4 = by & 0xC;
         if (n4 == 4) {
@@ -1745,7 +1745,7 @@ public final class C_f {
         return bl;
     }
 
-    public boolean renderBlockBarrel(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockBarrel(Block c_x, int n, int n2, int n3) {
         byte by = this.a.e(n, n2, n3);
         if (by == 4) {
             this.uvRotateEast = 1;
@@ -1776,7 +1776,7 @@ public final class C_f {
         return bl;
     }
 
-    private boolean renderBlockBed(C_x c_x, int n, int n2, int n3) {
+    private boolean renderBlockBed(Block c_x, int n, int n2, int n3) {
         float f;
         C_d c_d = C_d.a;
         byte by = this.a.e(n, n2, n3);
@@ -1910,7 +1910,7 @@ public final class C_f {
         return true;
     }
 
-    public boolean renderBlockChair(C_x c_x, float f, float f2, float f3) {
+    public boolean renderBlockChair(Block c_x, float f, float f2, float f3) {
         float f4;
         C_d c_d = C_d.a;
         int n = c_x.as;
@@ -2118,14 +2118,14 @@ public final class C_f {
         boolean bl3 = true;
         boolean bl4 = true;
         if (this.a != null) {
-            bl &= this.a.a((int)f - 1, (int)f2, (int)f3) != C_x.table.at;
-            bl &= this.a.a((int)f, (int)f2, (int)f3 - 1) != C_x.table.at;
-            bl2 &= this.a.a((int)f + 1, (int)f2, (int)f3) != C_x.table.at;
-            bl2 &= this.a.a((int)f, (int)f2, (int)f3 - 1) != C_x.table.at;
-            bl3 &= this.a.a((int)f - 1, (int)f2, (int)f3) != C_x.table.at;
-            bl3 &= this.a.a((int)f, (int)f2, (int)f3 + 1) != C_x.table.at;
-            bl4 &= this.a.a((int)f + 1, (int)f2, (int)f3) != C_x.table.at;
-            bl4 &= this.a.a((int)f, (int)f2, (int)f3 + 1) != C_x.table.at;
+            bl &= this.a.a((int)f - 1, (int)f2, (int)f3) != Block.table.at;
+            bl &= this.a.a((int)f, (int)f2, (int)f3 - 1) != Block.table.at;
+            bl2 &= this.a.a((int)f + 1, (int)f2, (int)f3) != Block.table.at;
+            bl2 &= this.a.a((int)f, (int)f2, (int)f3 - 1) != Block.table.at;
+            bl3 &= this.a.a((int)f - 1, (int)f2, (int)f3) != Block.table.at;
+            bl3 &= this.a.a((int)f, (int)f2, (int)f3 + 1) != Block.table.at;
+            bl4 &= this.a.a((int)f + 1, (int)f2, (int)f3) != Block.table.at;
+            bl4 &= this.a.a((int)f, (int)f2, (int)f3 + 1) != Block.table.at;
         }
         boolean[] blArray = new boolean[]{bl, bl2, bl3, bl4};
         for (int i = 0; i < 4; ++i) {
@@ -2168,7 +2168,7 @@ public final class C_f {
         return true;
     }
 
-    public boolean renderBlockDoor(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockDoor(Block c_x, int n, int n2, int n3) {
         C_d c_d = C_d.a;
         BlockDoor blockDoor = (BlockDoor)c_x;
         boolean bl = false;
@@ -2181,7 +2181,7 @@ public final class C_f {
         if ((double)blockDoor.av > 0.0) {
             f6 = f5;
         }
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f6 = 1.0f;
         }
         c_d.a(f * f6, f * f6, f * f6);
@@ -2191,7 +2191,7 @@ public final class C_f {
         if ((double)blockDoor.ay < 1.0) {
             f6 = f5;
         }
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f6 = 1.0f;
         }
         c_d.a(f2 * f6, f2 * f6, f2 * f6);
@@ -2201,7 +2201,7 @@ public final class C_f {
         if ((double)blockDoor.aw > 0.0) {
             f6 = f5;
         }
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f6 = 1.0f;
         }
         c_d.a(f3 * f6, f3 * f6, f3 * f6);
@@ -2217,7 +2217,7 @@ public final class C_f {
         if ((double)blockDoor.az < 1.0) {
             f6 = f5;
         }
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f6 = 1.0f;
         }
         c_d.a(f3 * f6, f3 * f6, f3 * f6);
@@ -2233,7 +2233,7 @@ public final class C_f {
         if ((double)blockDoor.au > 0.0) {
             f6 = f5;
         }
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f6 = 1.0f;
         }
         c_d.a(f4 * f6, f4 * f6, f4 * f6);
@@ -2249,7 +2249,7 @@ public final class C_f {
         if ((double)blockDoor.ax < 1.0) {
             f6 = f5;
         }
-        if (C_x.h[c_x.at] > 0) {
+        if (Block.h[c_x.at] > 0) {
             f6 = 1.0f;
         }
         c_d.a(f4 * f6, f4 * f6, f4 * f6);
@@ -2264,7 +2264,7 @@ public final class C_f {
         return bl;
     }
 
-    public boolean renderBlockLadder(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockLadder(Block c_x, int n, int n2, int n3) {
         C_d c_d = C_d.a;
         int n4 = c_x.a(0);
         if (this.b >= 0) {
@@ -2308,7 +2308,7 @@ public final class C_f {
         return true;
     }
 
-    public boolean renderBlockVine(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockVine(Block c_x, int n, int n2, int n3) {
         C_d c_d = C_d.a;
         int n4 = c_x.a(0);
         if (this.b >= 0) {
@@ -2377,7 +2377,7 @@ public final class C_f {
         return true;
     }
 
-    public boolean renderBlockLilyPad(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockLilyPad(Block c_x, int n, int n2, int n3) {
         C_d c_d = C_d.a;
         int n4 = c_x.as;
         if (this.b >= 0) {
@@ -2414,7 +2414,7 @@ public final class C_f {
         return true;
     }
 
-    public boolean renderRails(C_x c_x, int n, int n2, int n3) {
+    public boolean renderRails(Block c_x, int n, int n2, int n3) {
         C_d c_d = C_d.a;
         byte by = this.a.e(n, n2, n3);
         int n4 = c_x.a(0, by);
@@ -2480,7 +2480,7 @@ public final class C_f {
         return true;
     }
 
-    public boolean renderBlockFence(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockFence(Block c_x, int n, int n2, int n3) {
         float f;
         boolean bl = false;
         float f2 = 0.375f;
@@ -2494,16 +2494,16 @@ public final class C_f {
         bl = true;
         boolean bl2 = false;
         boolean bl3 = false;
-        if (n4 == c_x.at || n5 == c_x.at || n4 == C_x.fenceGateOak.at || n5 == C_x.fenceGateOak.at || n4 == C_x.fenceGateBirch.at || n5 == C_x.fenceGateBirch.at || n4 == C_x.fenceGatePalm.at || n5 == C_x.fenceGatePalm.at || n4 == C_x.fenceGateSpruce.at || n5 == C_x.fenceGateSpruce.at || this.a.a((float)(n - 1), (float)n2, (float)n3) || this.a.a((float)(n + 1), (float)n2, (float)n3)) {
+        if (n4 == c_x.at || n5 == c_x.at || n4 == Block.fenceGateOak.at || n5 == Block.fenceGateOak.at || n4 == Block.fenceGateBirch.at || n5 == Block.fenceGateBirch.at || n4 == Block.fenceGatePalm.at || n5 == Block.fenceGatePalm.at || n4 == Block.fenceGateSpruce.at || n5 == Block.fenceGateSpruce.at || this.a.a((float)(n - 1), (float)n2, (float)n3) || this.a.a((float)(n + 1), (float)n2, (float)n3)) {
             bl2 = true;
         }
-        if (n6 == c_x.at || n7 == c_x.at || n6 == C_x.fenceGateOak.at || n7 == C_x.fenceGateOak.at || n6 == C_x.fenceGateBirch.at || n7 == C_x.fenceGateBirch.at || n6 == C_x.fenceGatePalm.at || n7 == C_x.fenceGatePalm.at || n6 == C_x.fenceGateSpruce.at || n7 == C_x.fenceGateSpruce.at || this.a.a((float)n, (float)n2, (float)(n3 - 1)) || this.a.a((float)n, (float)n2, (float)(n3 + 1))) {
+        if (n6 == c_x.at || n7 == c_x.at || n6 == Block.fenceGateOak.at || n7 == Block.fenceGateOak.at || n6 == Block.fenceGateBirch.at || n7 == Block.fenceGateBirch.at || n6 == Block.fenceGatePalm.at || n7 == Block.fenceGatePalm.at || n6 == Block.fenceGateSpruce.at || n7 == Block.fenceGateSpruce.at || this.a.a((float)n, (float)n2, (float)(n3 - 1)) || this.a.a((float)n, (float)n2, (float)(n3 + 1))) {
             bl3 = true;
         }
-        boolean bl4 = this.a.a((float)(n - 1), (float)n2, (float)n3) | n4 == c_x.at | n4 == C_x.fenceGateOak.at | n4 == C_x.fenceGateBirch.at | n4 == C_x.fenceGatePalm.at | n4 == C_x.fenceGateSpruce.at;
-        boolean bl5 = this.a.a((float)(n + 1), (float)n2, (float)n3) | n5 == c_x.at | n5 == C_x.fenceGateOak.at | n5 == C_x.fenceGateBirch.at | n5 == C_x.fenceGatePalm.at | n5 == C_x.fenceGateSpruce.at;
-        boolean bl6 = this.a.a((float)n, (float)n2, (float)(n3 - 1)) | n6 == c_x.at | n6 == C_x.fenceGateOak.at | n6 == C_x.fenceGateBirch.at | n6 == C_x.fenceGatePalm.at | n6 == C_x.fenceGateSpruce.at;
-        boolean bl7 = this.a.a((float)n, (float)n2, (float)(n3 + 1)) | n7 == c_x.at | n7 == C_x.fenceGateOak.at | n7 == C_x.fenceGateBirch.at | n7 == C_x.fenceGatePalm.at | n7 == C_x.fenceGateSpruce.at;
+        boolean bl4 = this.a.a((float)(n - 1), (float)n2, (float)n3) | n4 == c_x.at | n4 == Block.fenceGateOak.at | n4 == Block.fenceGateBirch.at | n4 == Block.fenceGatePalm.at | n4 == Block.fenceGateSpruce.at;
+        boolean bl5 = this.a.a((float)(n + 1), (float)n2, (float)n3) | n5 == c_x.at | n5 == Block.fenceGateOak.at | n5 == Block.fenceGateBirch.at | n5 == Block.fenceGatePalm.at | n5 == Block.fenceGateSpruce.at;
+        boolean bl6 = this.a.a((float)n, (float)n2, (float)(n3 - 1)) | n6 == c_x.at | n6 == Block.fenceGateOak.at | n6 == Block.fenceGateBirch.at | n6 == Block.fenceGatePalm.at | n6 == Block.fenceGateSpruce.at;
+        boolean bl7 = this.a.a((float)n, (float)n2, (float)(n3 + 1)) | n7 == c_x.at | n7 == Block.fenceGateOak.at | n7 == Block.fenceGateBirch.at | n7 == Block.fenceGatePalm.at | n7 == Block.fenceGateSpruce.at;
         if (!bl2 && !bl3) {
             bl2 = true;
         }
@@ -2541,7 +2541,7 @@ public final class C_f {
         return bl;
     }
 
-    public boolean renderBlockFenceGate(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockFenceGate(Block c_x, int n, int n2, int n3) {
         float f;
         float f2;
         float f3;
@@ -2694,7 +2694,7 @@ public final class C_f {
         boolean bl13 = !bl8 && !bl9 && bl6 && bl7;
         byte by = this.a.e(n, n2, n3);
         boolean bl14 = by == 2 || by == 4 || by == 5 || by == 6;
-        C_x c_x = C_x.c[this.a.a(n, n2 + 1, n3)];
+        Block c_x = Block.c[this.a.a(n, n2 + 1, n3)];
         if (c_x instanceof BlockTorch || c_x instanceof BlockFence || c_x instanceof BlockLantern || c_x instanceof BlockRod || bl5 && !bl12 && !bl13) {
             blockWall.a(0.25f, 0.0f, 0.25f, 0.75f, 1.0f, 0.75f);
             if (bl14) {
@@ -2763,7 +2763,7 @@ public final class C_f {
         return true;
     }
 
-    public boolean renderPaneBlock(C_x c_x, int n, int n2, int n3) {
+    public boolean renderPaneBlock(Block c_x, int n, int n2, int n3) {
         BlockPane blockPane = (BlockPane)c_x;
         float f = 0.4375f;
         float f2 = 0.5625f;
@@ -2822,7 +2822,7 @@ public final class C_f {
         return bl6;
     }
 
-    public boolean renderBlockStairs(C_x c_x, int n, int n2, int n3) {
+    public boolean renderBlockStairs(Block c_x, int n, int n2, int n3) {
         boolean bl = true;
         ((C_bq)c_x).renderNormal(this.a, n, n2, n3);
         this.renderStandardBlockNew(c_x, n, n2, n3, n, n2, n3);
@@ -2834,11 +2834,11 @@ public final class C_f {
         return bl;
     }
 
-    public boolean renderStandardBlock(C_x c_x, int n, int n2, int n3) {
+    public boolean renderStandardBlock(Block c_x, int n, int n2, int n3) {
         return this.renderStandardBlock(c_x, n, n2, n3, n, n2, n3);
     }
 
-    public boolean renderStandardBlock(C_x c_x, int n, int n2, int n3, double d2, double d3, double d4) {
+    public boolean renderStandardBlock(Block c_x, int n, int n2, int n3, double d2, double d3, double d4) {
         int n4 = 0xFFFFFF;
         float f = (float)(n4 >> 16 & 0xFF) / 255.0f;
         float f2 = (float)(n4 >> 8 & 0xFF) / 255.0f;
@@ -2846,7 +2846,7 @@ public final class C_f {
         return this.renderStandardBlockWithColorMultiplier(c_x, n, n2, n3, d2, d3, d4, f, f2, f3);
     }
 
-    public boolean renderStandardBlockWithColorMultiplier(C_x c_x, int n, int n2, int n3, double d2, double d3, double d4, float f, float f2, float f3) {
+    public boolean renderStandardBlockWithColorMultiplier(Block c_x, int n, int n2, int n3, double d2, double d3, double d4, float f, float f2, float f3) {
         C_d c_d = C_d.a;
         boolean bl = false;
         float f4 = 0.5f;
@@ -2908,11 +2908,11 @@ public final class C_f {
         return bl;
     }
 
-    public boolean renderStandardBlockNew(C_x c_x, int n, int n2, int n3) {
+    public boolean renderStandardBlockNew(Block c_x, int n, int n2, int n3) {
         return this.renderStandardBlockNew(c_x, n, n2, n3, n, n2, n3);
     }
 
-    public boolean renderStandardBlockNew(C_x c_x, int n, int n2, int n3, double d2, double d3, double d4) {
+    public boolean renderStandardBlockNew(Block c_x, int n, int n2, int n3, double d2, double d3, double d4) {
         int n4 = 0xFFFFFF;
         float f = (float)(n4 >> 16 & 0xFF) / 255.0f;
         float f2 = (float)(n4 >> 8 & 0xFF) / 255.0f;
@@ -2920,7 +2920,7 @@ public final class C_f {
         return this.renderStandardBlockNew(c_x, n, n2, n3, d2, d3, d4, f, f2, f3);
     }
 
-    public boolean renderStandardBlockNew(C_x c_x, int n, int n2, int n3, double d2, double d3, double d4, float f, float f2, float f3) {
+    public boolean renderStandardBlockNew(Block c_x, int n, int n2, int n3, double d2, double d3, double d4, float f, float f2, float f3) {
         C_d c_d = C_d.a;
         boolean bl = false;
         float f4 = 0.5f;
@@ -2989,7 +2989,7 @@ public final class C_f {
         return (float)this.a.e(n, n2, n3) / 9.0f;
     }
 
-    public void renderBottomFace(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderBottomFace(Block c_x, double d2, double d3, double d4, int n) {
         C_d c_d = C_d.a;
         if (this.b >= 0) {
             n = this.b;
@@ -3055,7 +3055,7 @@ public final class C_f {
         c_d.a((float)d14, (float)d15, (float)d17, (float)d6, (float)d8);
     }
 
-    public void renderTopFace(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderTopFace(Block c_x, double d2, double d3, double d4, int n) {
         C_d c_d = C_d.a;
         if (this.b >= 0) {
             n = this.b;
@@ -3121,7 +3121,7 @@ public final class C_f {
         c_d.a((float)d13, (float)d15, (float)d17, (float)d10, (float)d12);
     }
 
-    public void renderEastFace(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderEastFace(Block c_x, double d2, double d3, double d4, int n) {
         double d5;
         C_d c_d = C_d.a;
         if (this.b >= 0) {
@@ -3193,7 +3193,7 @@ public final class C_f {
         c_d.a((float)d13, (float)d15, (float)d17, (float)d7, (float)d9);
     }
 
-    public void renderWestFace(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderWestFace(Block c_x, double d2, double d3, double d4, int n) {
         double d5;
         C_d c_d = C_d.a;
         if (this.b >= 0) {
@@ -3264,7 +3264,7 @@ public final class C_f {
         c_d.a((float)d14, (float)d16, (float)d17, (float)d5, (float)d11);
     }
 
-    public void renderNorthFace(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderNorthFace(Block c_x, double d2, double d3, double d4, int n) {
         double d5;
         C_d c_d = C_d.a;
         if (this.b >= 0) {
@@ -3336,7 +3336,7 @@ public final class C_f {
         c_d.a((float)d13, (float)d14, (float)d17, (float)d7, (float)d9);
     }
 
-    public void renderSouthFace(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderSouthFace(Block c_x, double d2, double d3, double d4, int n) {
         double d5;
         C_d c_d = C_d.a;
         if (this.b >= 0) {
@@ -3408,7 +3408,7 @@ public final class C_f {
         c_d.a((float)d13, (float)d15, (float)d17, (float)d6, (float)d8);
     }
 
-    public void renderEastFaceNew(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderEastFaceNew(Block c_x, double d2, double d3, double d4, int n) {
         double d5;
         C_d c_d = C_d.a;
         if (this.b >= 0) {
@@ -3480,7 +3480,7 @@ public final class C_f {
         c_d.a((float)d13, (float)d15, (float)d17, (float)d7, (float)d9);
     }
 
-    public void renderWestFaceNew(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderWestFaceNew(Block c_x, double d2, double d3, double d4, int n) {
         double d5;
         C_d c_d = C_d.a;
         if (this.b >= 0) {
@@ -3551,7 +3551,7 @@ public final class C_f {
         c_d.a((float)d14, (float)d16, (float)d17, (float)d5, (float)d11);
     }
 
-    public void renderNorthFaceNew(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderNorthFaceNew(Block c_x, double d2, double d3, double d4, int n) {
         double d5;
         C_d c_d = C_d.a;
         if (this.b >= 0) {
@@ -3623,7 +3623,7 @@ public final class C_f {
         c_d.a((float)d13, (float)d14, (float)d17, (float)d7, (float)d9);
     }
 
-    public void renderSouthFaceNew(C_x c_x, double d2, double d3, double d4, int n) {
+    public void renderSouthFaceNew(Block c_x, double d2, double d3, double d4, int n) {
         double d5;
         C_d c_d = C_d.a;
         if (this.b >= 0) {
@@ -3695,7 +3695,7 @@ public final class C_f {
         c_d.a((float)d13, (float)d15, (float)d17, (float)d6, (float)d8);
     }
 
-    public final void renderBlockOnInventory(C_x c_x, int n) {
+    public final void renderBlockOnInventory(Block c_x, int n) {
         C_d c_d = C_d.a;
         int n2 = c_x.a();
         if (n2 == 0 || n2 == 17 || n2 == 22 || n2 == 24 || n2 == 33 || n2 == 200 || n2 == 36) {
@@ -4107,7 +4107,7 @@ public final class C_f {
         }
     }
 
-    public void renderBlocksForLogo(C_x c_x, float f) {
+    public void renderBlocksForLogo(Block c_x, float f) {
         int n = c_x.a();
         C_d c_d = C_d.a;
         if (n == 0) {
@@ -4132,7 +4132,7 @@ public final class C_f {
         }
     }
 
-    public void renderShadow(C_x c_x, float f) {
+    public void renderShadow(Block c_x, float f) {
         int n = c_x.a();
         C_d c_d = C_d.a;
         if (n == 0) {
@@ -4146,7 +4146,7 @@ public final class C_f {
         }
     }
 
-    public boolean renderBlockChairForInventory(C_x c_x, float f, float f2, float f3) {
+    public boolean renderBlockChairForInventory(Block c_x, float f, float f2, float f3) {
         C_d c_d = C_d.a;
         int n = c_x.as;
         if (this.b >= 0) {
@@ -4336,7 +4336,7 @@ public final class C_f {
         return true;
     }
 
-    public boolean renderBlockTableForInventory(C_x c_x, float f, float f2, float f3, int n) {
+    public boolean renderBlockTableForInventory(Block c_x, float f, float f2, float f3, int n) {
         C_d c_d = C_d.a;
         int n2 = c_x.a(0, n);
         if (this.b >= 0) {
@@ -4394,14 +4394,14 @@ public final class C_f {
         boolean bl3 = true;
         boolean bl4 = true;
         if (this.a != null) {
-            bl &= this.a.a((int)f - 1, (int)f2, (int)f3) != C_x.table.at;
-            bl &= this.a.a((int)f, (int)f2, (int)f3 - 1) != C_x.table.at;
-            bl2 &= this.a.a((int)f + 1, (int)f2, (int)f3) != C_x.table.at;
-            bl2 &= this.a.a((int)f, (int)f2, (int)f3 - 1) != C_x.table.at;
-            bl3 &= this.a.a((int)f - 1, (int)f2, (int)f3) != C_x.table.at;
-            bl3 &= this.a.a((int)f, (int)f2, (int)f3 + 1) != C_x.table.at;
-            bl4 &= this.a.a((int)f + 1, (int)f2, (int)f3) != C_x.table.at;
-            bl4 &= this.a.a((int)f, (int)f2, (int)f3 + 1) != C_x.table.at;
+            bl &= this.a.a((int)f - 1, (int)f2, (int)f3) != Block.table.at;
+            bl &= this.a.a((int)f, (int)f2, (int)f3 - 1) != Block.table.at;
+            bl2 &= this.a.a((int)f + 1, (int)f2, (int)f3) != Block.table.at;
+            bl2 &= this.a.a((int)f, (int)f2, (int)f3 - 1) != Block.table.at;
+            bl3 &= this.a.a((int)f - 1, (int)f2, (int)f3) != Block.table.at;
+            bl3 &= this.a.a((int)f, (int)f2, (int)f3 + 1) != Block.table.at;
+            bl4 &= this.a.a((int)f + 1, (int)f2, (int)f3) != Block.table.at;
+            bl4 &= this.a.a((int)f, (int)f2, (int)f3 + 1) != Block.table.at;
         }
         boolean[] blArray = new boolean[]{bl, bl2, bl3, bl4};
         for (int i = 0; i < 4; ++i) {
@@ -4459,13 +4459,13 @@ public final class C_f {
         return true;
     }
 
-    public void renderPistonBaseAllFaces(C_x c_x, int n, int n2, int n3) {
+    public void renderPistonBaseAllFaces(Block c_x, int n, int n2, int n3) {
         this.c = true;
         this.renderPistonBase(c_x, n, n2, n3, true);
         this.c = false;
     }
 
-    private boolean renderPistonBase(C_x c_x, int n, int n2, int n3, boolean bl) {
+    private boolean renderPistonBase(Block c_x, int n, int n2, int n3, boolean bl) {
         byte by = this.a.e(n, n2, n3);
         boolean bl2 = bl || (by & 8) != 0;
         int n4 = BlockPistonBase.getOrientation(by);
@@ -4626,13 +4626,13 @@ public final class C_f {
         c_d.a(f2, f4, f6, f11, f12);
     }
 
-    public void renderPistonExtensionAllFaces(C_x c_x, int n, int n2, int n3, boolean bl) {
+    public void renderPistonExtensionAllFaces(Block c_x, int n, int n2, int n3, boolean bl) {
         this.c = true;
         this.renderPistonExtension(c_x, n, n2, n3, bl);
         this.c = false;
     }
 
-    private boolean renderPistonExtension(C_x c_x, int n, int n2, int n3, boolean bl) {
+    private boolean renderPistonExtension(Block c_x, int n, int n2, int n3, boolean bl) {
         byte by = this.a.e(n, n2, n3);
         int n4 = BlockPistonExtension.getDirectionMeta(by);
         float f = c_x.f(this.a, n, n2, n3);

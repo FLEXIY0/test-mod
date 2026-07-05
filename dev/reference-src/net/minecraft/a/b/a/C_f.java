@@ -7,7 +7,7 @@ import java.util.List;
 import net.minecraft.a.a.b.C_bo;
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.C_bs;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_ah;
 import net.minecraft.a.b.C_av;
 import net.minecraft.a.b.C_ba;
@@ -42,125 +42,125 @@ public final class C_f {
       new C_m().addRecipes(this);
       new C_o().addRecipes(this);
       new C_a().a(this);
-      this.addShapelessRecipe(new ItemStack(Item.B), C_x.mushroomBrown, C_x.mushroomRed, Item.A);
-      this.addShapelessRecipe(new ItemStack(Item.bowlGlowSoup), Item.B, C_x.mushroomGlowing);
-      this.addShapelessRecipe(new ItemStack(C_x.ad), C_x.l, C_x.moss);
-      this.addShapelessRecipe(new ItemStack(C_x.stairMoss), C_x.stairStone, C_x.moss);
-      this.addShapelessRecipe(new ItemStack(C_x.Z, 1, 4), new ItemStack(C_x.Z, 1, 3), C_x.moss);
-      this.addShapelessRecipe(new ItemStack(C_x.stoneBricks, 1, 1), new ItemStack(C_x.stoneBricks, 1, 0), C_x.moss);
-      this.addShapelessRecipe(new ItemStack(C_x.stairStoneBricksMossy), C_x.stairStoneBricks, C_x.moss);
-      this.addShapelessRecipe(new ItemStack(C_x.Z, 1, 10), new ItemStack(C_x.Z, 1, 9), C_x.moss);
-      this.addShapelessRecipe(new ItemStack(Item.minecartChest), Item.minecart, C_x.aj);
-      this.addShapelessRecipe(new ItemStack(Item.minecartFurnace), Item.minecart, C_x.aq);
-      this.addShapelessRecipe(new ItemStack(Item.minecartExplosive), Item.minecart, C_x.ab);
+      this.addShapelessRecipe(new ItemStack(Item.B), Block.mushroomBrown, Block.mushroomRed, Item.A);
+      this.addShapelessRecipe(new ItemStack(Item.bowlGlowSoup), Item.B, Block.mushroomGlowing);
+      this.addShapelessRecipe(new ItemStack(Block.ad), Block.l, Block.moss);
+      this.addShapelessRecipe(new ItemStack(Block.stairMoss), Block.stairStone, Block.moss);
+      this.addShapelessRecipe(new ItemStack(Block.Z, 1, 4), new ItemStack(Block.Z, 1, 3), Block.moss);
+      this.addShapelessRecipe(new ItemStack(Block.stoneBricks, 1, 1), new ItemStack(Block.stoneBricks, 1, 0), Block.moss);
+      this.addShapelessRecipe(new ItemStack(Block.stairStoneBricksMossy), Block.stairStoneBricks, Block.moss);
+      this.addShapelessRecipe(new ItemStack(Block.Z, 1, 10), new ItemStack(Block.Z, 1, 9), Block.moss);
+      this.addShapelessRecipe(new ItemStack(Item.minecartChest), Item.minecart, Block.aj);
+      this.addShapelessRecipe(new ItemStack(Item.minecartFurnace), Item.minecart, Block.aq);
+      this.addShapelessRecipe(new ItemStack(Item.minecartExplosive), Item.minecart, Block.ab);
       this.addShapelessRecipe(new ItemStack(Item.bookAndQuill), Item.book, Item.H);
       this.addShapelessRecipe(new ItemStack(Item.lighter, 1), Item.k, Item.al);
       this.addShapelessRecipe(new ItemStack(Item.f, 1), Item.ingotAdminium, new ItemStack(Item.i, 1, 1));
-      this.addShapelessRecipe(new ItemStack(C_x.plantern, 1), C_x.pumpkin, C_x.lantern);
-      this.a(new ItemStack(C_x.packedIce), "###", "###", "###", '#', C_x.ice);
-      this.a(new ItemStack(C_x.aj), "###", "# #", "###", '#', C_x.m);
-      this.a(new ItemStack(C_x.composter), "# #", "# #", "###", '#', C_x.m);
-      this.a(new ItemStack(C_x.chest), "###", "#X#", "###", '#', Item.ingotAdminium, 'X', Item.pearl);
-      this.a(new ItemStack(C_x.generator), "###", "#X#", "###", '#', Item.k, 'X', C_x.ak);
-      this.a(new ItemStack(C_x.transformer), "###", "X X", "###", '#', Item.k, 'X', C_x.ak);
-      this.a(new ItemStack(C_x.regulator), "###", "X X", "###", '#', Item.l, 'X', C_x.ak);
-      this.a(new ItemStack(C_x.detector), "#X#", "XYX", "#X#", '#', Item.k, 'X', C_x.B, 'Y', C_x.ak);
-      this.a(new ItemStack(C_x.fan), "###", "#X#", "# #", '#', Item.k, 'X', C_x.ak);
-      this.a(new ItemStack(C_x.vacuum), "###", "#X#", "#Y#", '#', Item.l, 'X', C_x.ak, 'Y', C_x.aj);
-      this.a(new ItemStack(C_x.pump), "###", "#X#", "#Y#", '#', Item.k, 'X', C_x.ak, 'Y', Item.bucketEmpty);
-      this.a(new ItemStack(C_x.dispenser), "###", "#X#", "#Y#", '#', Item.k, 'X', C_x.ak, 'Y', Item.g);
-      this.a(new ItemStack(C_x.pulleyBase), " # ", "#X#", "###", '#', Item.k, 'X', C_x.ak);
-      this.a(new ItemStack(C_x.pulleyStickyBase), " # ", "#X#", "###", '#', Item.l, 'X', C_x.ak);
-      this.a(new ItemStack(C_x.observer), "###", "XYX", "###", '#', Item.k, 'X', Item.emerald, 'Y', C_x.ak);
-      this.a(new ItemStack(C_x.barrel), "#X#", "# #", "#X#", '#', Item.z, 'X', C_x.stairSingleWood);
-      this.a(new ItemStack(C_x.aq), "###", "# #", "###", '#', C_x.l);
-      this.a(new ItemStack(C_x.jukeBox), "###", "#X#", "###", '#', C_x.m, 'X', Item.j);
-      this.a(new ItemStack(C_x.noteBlock), "###", "#X#", "###", '#', C_x.m, 'X', C_x.ak);
-      this.a(new ItemStack(C_x.an), "##", "##", '#', C_x.m);
-      this.a(new ItemStack(C_x.snowBlock), "##", "##", '#', Item.snowball);
-      this.a(new ItemStack(C_x.t), "##", "##", '#', Item.sandball);
-      this.a(new ItemStack(C_x.melon), "##", "##", '#', Item.melonSlice);
-      this.a(new ItemStack(C_x.sandStone, 4, 0), "##", "##", '#', C_x.t);
-      this.a(new ItemStack(C_x.sandStone, 4, 1), "##", "##", '#', new ItemStack(C_x.sandStone, 1, 0));
-      this.a(new ItemStack(C_x.sandStone, 4, 2), "##", "##", '#', C_x.redSand);
-      this.a(new ItemStack(C_x.sandStone, 4, 3), "##", "##", '#', new ItemStack(C_x.sandStone, 1, 2));
-      this.a(new ItemStack(C_x.stoneBricks, 4, 0), "##", "##", '#', C_x.i);
-      this.a(new ItemStack(C_x.brimStoneBrick, 4, 0), "##", "##", '#', C_x.brimStone);
-      this.a(new ItemStack(C_x.moonRockBrick, 4, 0), "##", "##", '#', C_x.moonRock);
-      this.a(new ItemStack(C_x.cobweb, 2), "##", "##", '#', Item.G);
-      this.a(new ItemStack(C_x.ab, 1), "X#X", "#X#", "X#X", 'X', Item.I, '#', C_x.t);
-      this.a(new ItemStack(C_x.ab, 1), "X#X", "#X#", "X#X", 'X', Item.I, '#', C_x.redSand);
-      this.a(new ItemStack(C_x.m, 4, 0), "#", '#', new ItemStack(C_x.y, 1, 0));
-      this.a(new ItemStack(C_x.m, 4, 1), "#", '#', new ItemStack(C_x.y, 1, 1));
-      this.a(new ItemStack(C_x.m, 4, 2), "#", '#', new ItemStack(C_x.y, 1, 2));
-      this.a(new ItemStack(C_x.m, 4, 3), "#", '#', new ItemStack(C_x.y, 1, 3));
-      this.a(new ItemStack(C_x.m, 4, 0), "#", '#', new ItemStack(C_x.log, 1, 0));
-      this.a(new ItemStack(C_x.m, 4, 1), "#", '#', new ItemStack(C_x.log, 1, 1));
-      this.a(new ItemStack(C_x.m, 4, 2), "#", '#', new ItemStack(C_x.log, 1, 2));
-      this.a(new ItemStack(C_x.m, 4, 3), "#", '#', new ItemStack(C_x.log, 1, 3));
-      this.a(new ItemStack(C_x.m, 4, 0), "#", '#', new ItemStack(C_x.mushroomStem, 1));
-      this.a(new ItemStack(C_x.m, 4, 0), "#", '#', new ItemStack(C_x.flowerStem, 1));
-      this.a(new ItemStack(C_x.pillar, 2), "#", "#", '#', C_x.moonRockBrick);
-      this.a(new ItemStack(C_x.concrete, 1), "#", "#", '#', new ItemStack(C_x.Z, 1, 0));
-      this.a(new ItemStack(Item.z, 4), "#", "#", '#', C_x.m);
-      this.a(new ItemStack(C_x.af, 4), "X", "#", 'X', Item.i, '#', Item.z);
-      this.a(new ItemStack(C_x.af, 2), "X", "#", 'X', new ItemStack(Item.i, 1, 1), '#', Item.z);
-      this.a(new ItemStack(Item.A, 4), "# #", " # ", '#', C_x.m);
+      this.addShapelessRecipe(new ItemStack(Block.plantern, 1), Block.pumpkin, Block.lantern);
+      this.a(new ItemStack(Block.packedIce), "###", "###", "###", '#', Block.ice);
+      this.a(new ItemStack(Block.aj), "###", "# #", "###", '#', Block.m);
+      this.a(new ItemStack(Block.composter), "# #", "# #", "###", '#', Block.m);
+      this.a(new ItemStack(Block.chest), "###", "#X#", "###", '#', Item.ingotAdminium, 'X', Item.pearl);
+      this.a(new ItemStack(Block.generator), "###", "#X#", "###", '#', Item.k, 'X', Block.ak);
+      this.a(new ItemStack(Block.transformer), "###", "X X", "###", '#', Item.k, 'X', Block.ak);
+      this.a(new ItemStack(Block.regulator), "###", "X X", "###", '#', Item.l, 'X', Block.ak);
+      this.a(new ItemStack(Block.detector), "#X#", "XYX", "#X#", '#', Item.k, 'X', Block.B, 'Y', Block.ak);
+      this.a(new ItemStack(Block.fan), "###", "#X#", "# #", '#', Item.k, 'X', Block.ak);
+      this.a(new ItemStack(Block.vacuum), "###", "#X#", "#Y#", '#', Item.l, 'X', Block.ak, 'Y', Block.aj);
+      this.a(new ItemStack(Block.pump), "###", "#X#", "#Y#", '#', Item.k, 'X', Block.ak, 'Y', Item.bucketEmpty);
+      this.a(new ItemStack(Block.dispenser), "###", "#X#", "#Y#", '#', Item.k, 'X', Block.ak, 'Y', Item.g);
+      this.a(new ItemStack(Block.pulleyBase), " # ", "#X#", "###", '#', Item.k, 'X', Block.ak);
+      this.a(new ItemStack(Block.pulleyStickyBase), " # ", "#X#", "###", '#', Item.l, 'X', Block.ak);
+      this.a(new ItemStack(Block.observer), "###", "XYX", "###", '#', Item.k, 'X', Item.emerald, 'Y', Block.ak);
+      this.a(new ItemStack(Block.barrel), "#X#", "# #", "#X#", '#', Item.z, 'X', Block.stairSingleWood);
+      this.a(new ItemStack(Block.aq), "###", "# #", "###", '#', Block.l);
+      this.a(new ItemStack(Block.jukeBox), "###", "#X#", "###", '#', Block.m, 'X', Item.j);
+      this.a(new ItemStack(Block.noteBlock), "###", "#X#", "###", '#', Block.m, 'X', Block.ak);
+      this.a(new ItemStack(Block.an), "##", "##", '#', Block.m);
+      this.a(new ItemStack(Block.snowBlock), "##", "##", '#', Item.snowball);
+      this.a(new ItemStack(Block.t), "##", "##", '#', Item.sandball);
+      this.a(new ItemStack(Block.melon), "##", "##", '#', Item.melonSlice);
+      this.a(new ItemStack(Block.sandStone, 4, 0), "##", "##", '#', Block.t);
+      this.a(new ItemStack(Block.sandStone, 4, 1), "##", "##", '#', new ItemStack(Block.sandStone, 1, 0));
+      this.a(new ItemStack(Block.sandStone, 4, 2), "##", "##", '#', Block.redSand);
+      this.a(new ItemStack(Block.sandStone, 4, 3), "##", "##", '#', new ItemStack(Block.sandStone, 1, 2));
+      this.a(new ItemStack(Block.stoneBricks, 4, 0), "##", "##", '#', Block.i);
+      this.a(new ItemStack(Block.brimStoneBrick, 4, 0), "##", "##", '#', Block.brimStone);
+      this.a(new ItemStack(Block.moonRockBrick, 4, 0), "##", "##", '#', Block.moonRock);
+      this.a(new ItemStack(Block.cobweb, 2), "##", "##", '#', Item.G);
+      this.a(new ItemStack(Block.ab, 1), "X#X", "#X#", "X#X", 'X', Item.I, '#', Block.t);
+      this.a(new ItemStack(Block.ab, 1), "X#X", "#X#", "X#X", 'X', Item.I, '#', Block.redSand);
+      this.a(new ItemStack(Block.m, 4, 0), "#", '#', new ItemStack(Block.y, 1, 0));
+      this.a(new ItemStack(Block.m, 4, 1), "#", '#', new ItemStack(Block.y, 1, 1));
+      this.a(new ItemStack(Block.m, 4, 2), "#", '#', new ItemStack(Block.y, 1, 2));
+      this.a(new ItemStack(Block.m, 4, 3), "#", '#', new ItemStack(Block.y, 1, 3));
+      this.a(new ItemStack(Block.m, 4, 0), "#", '#', new ItemStack(Block.log, 1, 0));
+      this.a(new ItemStack(Block.m, 4, 1), "#", '#', new ItemStack(Block.log, 1, 1));
+      this.a(new ItemStack(Block.m, 4, 2), "#", '#', new ItemStack(Block.log, 1, 2));
+      this.a(new ItemStack(Block.m, 4, 3), "#", '#', new ItemStack(Block.log, 1, 3));
+      this.a(new ItemStack(Block.m, 4, 0), "#", '#', new ItemStack(Block.mushroomStem, 1));
+      this.a(new ItemStack(Block.m, 4, 0), "#", '#', new ItemStack(Block.flowerStem, 1));
+      this.a(new ItemStack(Block.pillar, 2), "#", "#", '#', Block.moonRockBrick);
+      this.a(new ItemStack(Block.concrete, 1), "#", "#", '#', new ItemStack(Block.Z, 1, 0));
+      this.a(new ItemStack(Item.z, 4), "#", "#", '#', Block.m);
+      this.a(new ItemStack(Block.af, 4), "X", "#", 'X', Item.i, '#', Item.z);
+      this.a(new ItemStack(Block.af, 2), "X", "#", 'X', new ItemStack(Item.i, 1, 1), '#', Item.z);
+      this.a(new ItemStack(Item.A, 4), "# #", " # ", '#', Block.m);
       this.a(new ItemStack(Item.Q, 1), "###", '#', Item.P);
-      this.a(new ItemStack(Item.ao, 1), "###", "#X#", "###", '#', Item.z, 'X', C_x.cloth);
+      this.a(new ItemStack(Item.ao, 1), "###", "#X#", "###", '#', Item.z, 'X', Block.cloth);
       this.a(new ItemStack(Item.itemFrame, 1), "###", "#X#", "###", '#', Item.z, 'X', Item.leather);
-      this.a(new ItemStack(Item.doorOak, 2), "##X", "##X", "##X", '#', new ItemStack(C_x.m, 1, 0));
-      this.a(new ItemStack(Item.doorBirch, 2), "##X", "##X", "##X", '#', new ItemStack(C_x.m, 1, 1));
-      this.a(new ItemStack(Item.doorPalm, 2), "##X", "##X", "##X", '#', new ItemStack(C_x.m, 1, 2));
-      this.a(new ItemStack(Item.doorSpruce, 2), "##X", "##X", "##X", '#', new ItemStack(C_x.m, 1, 3));
+      this.a(new ItemStack(Item.doorOak, 2), "##X", "##X", "##X", '#', new ItemStack(Block.m, 1, 0));
+      this.a(new ItemStack(Item.doorBirch, 2), "##X", "##X", "##X", '#', new ItemStack(Block.m, 1, 1));
+      this.a(new ItemStack(Item.doorPalm, 2), "##X", "##X", "##X", '#', new ItemStack(Block.m, 1, 2));
+      this.a(new ItemStack(Item.doorSpruce, 2), "##X", "##X", "##X", '#', new ItemStack(Block.m, 1, 3));
       this.a(new ItemStack(Item.doorSteel, 2), "##X", "##X", "##X", '#', Item.k);
-      this.a(new ItemStack(C_x.ladder, 2), "#X#", "###", "#X#", '#', Item.z);
-      this.a(new ItemStack(C_x.rail, 16), "YXY", "Y#Y", "YXY", '#', Item.z, 'Y', Item.k);
-      this.a(new ItemStack(C_x.railBooster, 8), "YXY", "Y#Y", "YZY", '#', Item.z, 'Y', Item.l, 'Z', C_x.ak);
+      this.a(new ItemStack(Block.ladder, 2), "#X#", "###", "#X#", '#', Item.z);
+      this.a(new ItemStack(Block.rail, 16), "YXY", "Y#Y", "YXY", '#', Item.z, 'Y', Item.k);
+      this.a(new ItemStack(Block.railBooster, 8), "YXY", "Y#Y", "YZY", '#', Item.z, 'Y', Item.l, 'Z', Block.ak);
       this.a(new ItemStack(Item.minecart, 1), "#X#", "###", '#', Item.k);
-      this.a(new ItemStack(C_x.ak, 8), " X ", "X X", " X ", 'X', Item.k);
+      this.a(new ItemStack(Block.ak, 8), " X ", "X X", " X ", 'X', Item.k);
       this.a(new ItemStack(Item.paper, 3), "###", '#', Item.reed);
       this.a(new ItemStack(Item.paper, 3), "###", '#', Item.bark);
       this.a(new ItemStack(Item.book, 3), "#", "#", "#", '#', Item.paper);
-      this.a(new ItemStack(C_x.ac, 1, 0), "###", "XXX", "###", '#', C_x.m);
-      this.a(new ItemStack(C_x.clay, 1), "##", "##", '#', Item.clay);
-      this.a(new ItemStack(C_x.aa, 1), "##", "##", '#', Item.bricks);
-      this.a(new ItemStack(Item.gapple), "###", "#X#", "###", '#', C_x.W, 'X', Item.apple);
+      this.a(new ItemStack(Block.ac, 1, 0), "###", "XXX", "###", '#', Block.m);
+      this.a(new ItemStack(Block.clay, 1), "##", "##", '#', Item.clay);
+      this.a(new ItemStack(Block.aa, 1), "##", "##", '#', Item.bricks);
+      this.a(new ItemStack(Item.gapple), "###", "#X#", "###", '#', Block.W, 'X', Item.apple);
       this.a(new ItemStack(Item.cake, 1), "###", "XXX", "###", 'X', Item.apple, '#', Item.P);
-      this.a(new ItemStack(C_x.chair, 1), "#  ", "###", "X X", '#', new ItemStack(C_x.m, 1, 0), 'X', Item.z);
-      this.a(new ItemStack(C_x.chairWhite, 1), "#  ", "###", "X X", '#', new ItemStack(C_x.m, 1, 1), 'X', Item.z);
-      this.a(new ItemStack(C_x.chairRed, 1), "#  ", "###", "X X", '#', new ItemStack(C_x.m, 1, 2), 'X', Item.z);
-      this.a(new ItemStack(C_x.chairBlack, 1), "#  ", "###", "X X", '#', new ItemStack(C_x.m, 1, 3), 'X', Item.z);
-      this.a(new ItemStack(C_x.table, 1, 0), "###", "X X", "X X", '#', new ItemStack(C_x.m, 1, 0), 'X', Item.z);
-      this.a(new ItemStack(C_x.table, 1, 1), "###", "X X", "X X", '#', new ItemStack(C_x.m, 1, 1), 'X', Item.z);
-      this.a(new ItemStack(C_x.table, 1, 2), "###", "X X", "X X", '#', new ItemStack(C_x.m, 1, 2), 'X', Item.z);
-      this.a(new ItemStack(C_x.table, 1, 3), "###", "X X", "X X", '#', new ItemStack(C_x.m, 1, 3), 'X', Item.z);
-      this.a(new ItemStack(Item.sign, 3), "###", "###", " X ", 'X', Item.z, '#', new ItemStack(C_x.m, 1, 0));
-      this.a(new ItemStack(Item.signBirch, 3), "###", "###", " X ", 'X', Item.z, '#', new ItemStack(C_x.m, 1, 1));
-      this.a(new ItemStack(Item.signPalm, 3), "###", "###", " X ", 'X', Item.z, '#', new ItemStack(C_x.m, 1, 2));
-      this.a(new ItemStack(Item.signDark, 3), "###", "###", " X ", 'X', Item.z, '#', new ItemStack(C_x.m, 1, 3));
-      this.a(new ItemStack(Item.bed, 1), "###", "XXX", 'X', C_x.m, '#', C_x.cloth);
-      this.a(new ItemStack(C_x.glassPane, 16), "#X#", "XXX", "#X#", '#', C_x.B, 'X', Item.z);
-      this.a(new ItemStack(C_x.ironBars, 16), "###", "###", '#', Item.k);
-      this.a(new ItemStack(C_x.trapdoorWood, 2), "###", "###", '#', new ItemStack(C_x.m, 1, 0));
-      this.a(new ItemStack(C_x.trapdoorBirch, 2), "###", "###", '#', new ItemStack(C_x.m, 1, 1));
-      this.a(new ItemStack(C_x.trapdoorJungle, 2), "###", "###", '#', new ItemStack(C_x.m, 1, 2));
-      this.a(new ItemStack(C_x.trapdoorSpruce, 2), "###", "###", '#', new ItemStack(C_x.m, 1, 3));
-      this.a(new ItemStack(C_x.trapdoorSteel, 2), "##", "##", '#', Item.k);
-      this.a(new ItemStack(C_x.rope, 3), "#", "#", "#", '#', Item.G);
-      this.a(new ItemStack(C_x.rod, 2), "#", "#", "X", '#', Item.l, 'X', C_x.X);
+      this.a(new ItemStack(Block.chair, 1), "#  ", "###", "X X", '#', new ItemStack(Block.m, 1, 0), 'X', Item.z);
+      this.a(new ItemStack(Block.chairWhite, 1), "#  ", "###", "X X", '#', new ItemStack(Block.m, 1, 1), 'X', Item.z);
+      this.a(new ItemStack(Block.chairRed, 1), "#  ", "###", "X X", '#', new ItemStack(Block.m, 1, 2), 'X', Item.z);
+      this.a(new ItemStack(Block.chairBlack, 1), "#  ", "###", "X X", '#', new ItemStack(Block.m, 1, 3), 'X', Item.z);
+      this.a(new ItemStack(Block.table, 1, 0), "###", "X X", "X X", '#', new ItemStack(Block.m, 1, 0), 'X', Item.z);
+      this.a(new ItemStack(Block.table, 1, 1), "###", "X X", "X X", '#', new ItemStack(Block.m, 1, 1), 'X', Item.z);
+      this.a(new ItemStack(Block.table, 1, 2), "###", "X X", "X X", '#', new ItemStack(Block.m, 1, 2), 'X', Item.z);
+      this.a(new ItemStack(Block.table, 1, 3), "###", "X X", "X X", '#', new ItemStack(Block.m, 1, 3), 'X', Item.z);
+      this.a(new ItemStack(Item.sign, 3), "###", "###", " X ", 'X', Item.z, '#', new ItemStack(Block.m, 1, 0));
+      this.a(new ItemStack(Item.signBirch, 3), "###", "###", " X ", 'X', Item.z, '#', new ItemStack(Block.m, 1, 1));
+      this.a(new ItemStack(Item.signPalm, 3), "###", "###", " X ", 'X', Item.z, '#', new ItemStack(Block.m, 1, 2));
+      this.a(new ItemStack(Item.signDark, 3), "###", "###", " X ", 'X', Item.z, '#', new ItemStack(Block.m, 1, 3));
+      this.a(new ItemStack(Item.bed, 1), "###", "XXX", 'X', Block.m, '#', Block.cloth);
+      this.a(new ItemStack(Block.glassPane, 16), "#X#", "XXX", "#X#", '#', Block.B, 'X', Item.z);
+      this.a(new ItemStack(Block.ironBars, 16), "###", "###", '#', Item.k);
+      this.a(new ItemStack(Block.trapdoorWood, 2), "###", "###", '#', new ItemStack(Block.m, 1, 0));
+      this.a(new ItemStack(Block.trapdoorBirch, 2), "###", "###", '#', new ItemStack(Block.m, 1, 1));
+      this.a(new ItemStack(Block.trapdoorJungle, 2), "###", "###", '#', new ItemStack(Block.m, 1, 2));
+      this.a(new ItemStack(Block.trapdoorSpruce, 2), "###", "###", '#', new ItemStack(Block.m, 1, 3));
+      this.a(new ItemStack(Block.trapdoorSteel, 2), "##", "##", '#', Item.k);
+      this.a(new ItemStack(Block.rope, 3), "#", "#", "#", '#', Item.G);
+      this.a(new ItemStack(Block.rod, 2), "#", "#", "X", '#', Item.l, 'X', Block.X);
       this.a(new ItemStack(Item.quiver, 1), "#X ", "# X", "#  ", '#', Item.leather, 'X', Item.G);
       this.a(new ItemStack(Item.quiverAdminium, 1), "#X ", "# X", "#  ", '#', Item.ingotAdminium, 'X', Item.G);
-      this.a(new ItemStack(C_x.lantern, 4), "#A#", "XYX", "###", 'A', Item.ingotAdminium, '#', Item.k, 'X', C_x.B, 'Y', C_x.af);
-      this.a(new ItemStack(C_x.adminiumLamp, 2), "###", "YXY", "###", '#', C_x.B, 'X', C_x.af, 'Y', C_x.ak);
+      this.a(new ItemStack(Block.lantern, 4), "#A#", "XYX", "###", 'A', Item.ingotAdminium, '#', Item.k, 'X', Block.B, 'Y', Block.af);
+      this.a(new ItemStack(Block.adminiumLamp, 2), "###", "YXY", "###", '#', Block.B, 'X', Block.af, 'Y', Block.ak);
       this.a(new ItemStack(Item.flowerPot, 2), "# #", " # ", '#', Item.bricks);
       this.a(new ItemStack(Item.bucketEmpty, 1), "# #", " # ", '#', Item.k);
       this.a(new ItemStack(Item.fishingRod, 1), "  #", " #X", "# X", '#', Item.z, 'X', Item.G);
       this.a(new ItemStack(Item.clock, 1), " X ", "XYX", " X ", 'X', Item.ingotAdminium, 'Y', Item.pearl);
       this.a(new ItemStack(Item.seedsMelon, 1), "X", 'X', Item.melonSlice);
-      this.a(new ItemStack(Item.seedsPumpkin, 2), "X", 'X', C_x.pumpkin);
-      this.a(new ItemStack(Item.pumpkinPie, 1), " X ", "XYX", " X ", 'X', Item.P, 'Y', C_x.pumpkin);
-      this.a(new ItemStack(Item.glowDust, 1), "X", 'X', C_x.mushroomGlowing);
+      this.a(new ItemStack(Item.seedsPumpkin, 2), "X", 'X', Block.pumpkin);
+      this.a(new ItemStack(Item.pumpkinPie, 1), " X ", "XYX", " X ", 'X', Item.P, 'Y', Block.pumpkin);
+      this.a(new ItemStack(Item.glowDust, 1), "X", 'X', Block.mushroomGlowing);
       this.a(new ItemStack(Item.ring, 1), " Y ", "X X", " X ", 'X', Item.ingotAdminium, 'Y', Item.fireBall);
       this.a(new ItemStack(Item.aquaCharm, 1), "X X", "YXY", " Z ", 'X', Item.ingotAdminium, 'Y', Item.fishFin, 'Z', Item.jellyfishTentacle);
       this.a(new ItemStack(Item.coin, 1), " # ", "#X#", " # ", 'X', Item.antlionExtract, '#', Item.l);
@@ -171,10 +171,10 @@ public final class C_f {
       this.a(new ItemStack(Item.gloves, 1), "Y Y", "X X", 'X', Item.ingotAdminium, 'Y', Item.slimeBall);
       this.a(new ItemStack(Item.mirror, 1), " # ", "#X#", " # ", 'X', Item.glowDust, '#', Item.ingotAdminium);
       this.a(new ItemStack(Item.bracelet, 1), "#X#", " # ", 'X', Item.tear, '#', Item.ingotAdminium);
-      this.a(new ItemStack(Item.vial, 1), " Y ", "#X#", " # ", '#', C_x.B, 'X', Item.eye, 'Y', Item.ingotAdminium);
+      this.a(new ItemStack(Item.vial, 1), " Y ", "#X#", " # ", '#', Block.B, 'X', Item.eye, 'Y', Item.ingotAdminium);
 
       for (int var1 = 0; var1 < 16; var1++) {
-         this.a(new ItemStack(C_x.coloredPane, 16, var1), "###", "###", '#', new ItemStack(C_x.glassStained, 1, C_bo.getGlassColor(var1)));
+         this.a(new ItemStack(Block.coloredPane, 16, var1), "###", "###", '#', new ItemStack(Block.glassStained, 1, C_bo.getGlassColor(var1)));
       }
 
       Collections.sort(this.b, new C_i(this));
@@ -210,8 +210,8 @@ public final class C_f {
          ItemStack var15 = null;
          if (var2[var4 + 1] instanceof Item) {
             var15 = new ItemStack((Item)var2[var4 + 1]);
-         } else if (var2[var4 + 1] instanceof C_x) {
-            var15 = new ItemStack((C_x)var2[var4 + 1], 1, -1);
+         } else if (var2[var4 + 1] instanceof Block) {
+            var15 = new ItemStack((Block)var2[var4 + 1], 1, -1);
          } else if (var2[var4 + 1] instanceof ItemStack) {
             var15 = (ItemStack)var2[var4 + 1];
          }
@@ -242,11 +242,11 @@ public final class C_f {
          } else if (var7 instanceof Item) {
             var3.add(new ItemStack((Item)var7));
          } else {
-            if (!(var7 instanceof C_x)) {
+            if (!(var7 instanceof Block)) {
                throw new RuntimeException("Invalid shapeless recipe!");
             }
 
-            var3.add(new ItemStack((C_x)var7));
+            var3.add(new ItemStack((Block)var7));
          }
       }
 
@@ -334,8 +334,8 @@ public final class C_f {
                boolean var7 = var4 == Item.i && var1.a() instanceof C_bd;
                boolean var8 = false;
                if (var4.ap < 256 && var1.c < 256) {
-                  C_x var9 = C_x.c[var1.c];
-                  C_x var10 = C_x.c[var4.ap];
+                  Block var9 = Block.c[var1.c];
+                  Block var10 = Block.c[var4.ap];
                   var6 = var9 != null
                      && var10 != null
                      && (
@@ -349,7 +349,7 @@ public final class C_f {
                      && var10.getClass().equals(var9.getClass());
                   var8 = var9 != null
                      && var10 != null
-                     && (var10 == C_x.hayBlock || var10 == C_x.slimeBlock || var10 == C_x.bone)
+                     && (var10 == Block.hayBlock || var10 == Block.slimeBlock || var10 == Block.bone)
                      && var9 instanceof net.minecraft.a.a.b.C_bb;
                }
 

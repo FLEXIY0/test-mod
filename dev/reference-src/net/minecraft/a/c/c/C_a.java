@@ -4,8 +4,8 @@
 package net.minecraft.a.c.c;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.d;
@@ -17,7 +17,7 @@ public class C_a
 extends C_b {
     public int a = 0;
 
-    public C_a(C_g c_g, float f, float f2, float f3) {
+    public C_a(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.c = true;
         this.a(0.98f, 0.98f);
@@ -34,7 +34,7 @@ extends C_b {
         this.g = f3;
     }
 
-    public C_a(C_g c_g, float f, float f2, float f3, int n) {
+    public C_a(World c_g, float f, float f2, float f3, int n) {
         super(c_g);
         this.c = true;
         this.a(0.98f, 0.98f);
@@ -51,7 +51,7 @@ extends C_b {
         this.g = f3;
     }
 
-    public C_a(C_g c_g) {
+    public C_a(World c_g) {
         super(c_g);
         this.c = true;
         this.a(0.98f, 0.98f);
@@ -106,7 +106,7 @@ extends C_b {
             this.k();
             ((EntityPlayer)c_b).addStat(StatList.tntDefused, 1);
             if (((EntityPlayer)c_b).gamemode != 1) {
-                this.a(C_x.ab.at, 1);
+                this.a(Block.ab.at, 1);
             }
         }
         return true;

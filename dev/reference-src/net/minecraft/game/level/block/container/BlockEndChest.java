@@ -3,21 +3,21 @@
  */
 package net.minecraft.game.level.block.container;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 import util.MathHelper;
 
 public final class BlockEndChest
-extends C_x {
+extends Block {
     public BlockEndChest(int n) {
         super(n, C_c.d);
         this.as = 456;
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.multiplayerWorld) {
             int n5 = MathHelper.a((double)(c_g.y.n * 4.0f / 360.0f) + 0.5) & 3;
             if (n5 == 0) {
@@ -36,7 +36,7 @@ extends C_x {
     }
 
     @Override
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1) {
             return this.as - 1;
         }
@@ -57,7 +57,7 @@ extends C_x {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (c_g.multiplayerWorld) {
             return true;
         }

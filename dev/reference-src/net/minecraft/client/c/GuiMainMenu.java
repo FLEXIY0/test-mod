@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Random;
 import net.minecraft.a.a.LevelOptions;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.client.C_c;
 import net.minecraft.client.Lang;
@@ -256,9 +256,9 @@ extends GuiScreen {
                     GL11.glScalef((float)f3, (float)f3, (float)f3);
                     GL11.glRotatef((float)f5, (float)0.0f, (float)1.0f, (float)0.0f);
                     if (i == 0) {
-                        c_f.renderShadow(C_x.i, f4);
+                        c_f.renderShadow(Block.i, f4);
                     } else {
-                        c_f.renderBlocksForLogo(C_x.i, f4);
+                        c_f.renderBlocksForLogo(Block.i, f4);
                     }
                     GL11.glPopMatrix();
                 }
@@ -343,9 +343,9 @@ extends GuiScreen {
                     GL11.glScalef((float)f3, (float)f3, (float)f3);
                     GL11.glRotatef((float)f5, (float)0.0f, (float)1.0f, (float)0.0f);
                     if (i == 0) {
-                        c_f.renderShadow(C_x.m, f4);
+                        c_f.renderShadow(Block.m, f4);
                     } else {
-                        c_f.renderBlocksForLogo(C_x.m, f4);
+                        c_f.renderBlocksForLogo(Block.m, f4);
                     }
                     GL11.glPopMatrix();
                 }

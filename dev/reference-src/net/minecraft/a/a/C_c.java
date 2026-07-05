@@ -3,9 +3,9 @@
  */
 package net.minecraft.a.a;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_l;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 
 final class C_c {
     public final C_l skyBlock;
@@ -26,7 +26,7 @@ final class C_c {
         this.f = n6;
     }
 
-    public void updateLight(C_g c_g) {
+    public void updateLight(World c_g) {
         for (int i = this.a; i <= this.d; ++i) {
             for (int j = this.c; j <= this.f; ++j) {
                 for (int k = this.b; k <= this.e; ++k) {
@@ -35,7 +35,7 @@ final class C_c {
                     if (i < 0 || i >= c_g.a || j < 0 || j >= c_g.b || k < 0 || k >= c_g.c) continue;
                     int n3 = c_g.getSavedLightValue(this.skyBlock, i, k, j);
                     int n4 = c_g.a(i, k, j);
-                    int n5 = C_x.f[n4];
+                    int n5 = Block.f[n4];
                     if (n5 == 0) {
                         n5 = 1;
                     }
@@ -45,7 +45,7 @@ final class C_c {
                             n6 = 15;
                         }
                     } else if (this.skyBlock == C_l.Block) {
-                        n6 = C_x.h[n4];
+                        n6 = Block.h[n4];
                     }
                     if (n5 >= 15 && n6 == 0) {
                         n2 = 0;

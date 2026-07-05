@@ -3,17 +3,17 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.client.f.C_k;
 
 public final class C_r
 extends C_k {
-    public C_r(C_g c_g, float f, float f2, float f3) {
+    public C_r(World c_g, float f, float f2, float f3) {
         this(c_g, f, f2, f3, 1.0f);
     }
 
-    public C_r(C_g c_g, float f, float f2, float f3, float f4) {
+    public C_r(World c_g, float f, float f2, float f3, float f4) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.a *= 0.1f;
         this.b *= 0.1f;
@@ -56,7 +56,7 @@ extends C_k {
         if (this.S >= this.T) {
             this.k();
             if (this.G.nextInt(50) == 0 && this.d.a((int)this.h, (int)this.i, (int)this.j) == 0 && this.d.a((float)((int)this.h), (float)((int)this.i - 1), (float)((int)this.j))) {
-                this.d.b((int)this.h, (int)this.i, (int)this.j, C_x.leafPile.at);
+                this.d.b((int)this.h, (int)this.i, (int)this.j, Block.leafPile.at);
             }
         }
         this.b = (float)((double)this.b - 0.004);

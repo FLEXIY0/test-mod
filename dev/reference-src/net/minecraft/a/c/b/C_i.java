@@ -4,7 +4,7 @@
 package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -30,7 +30,7 @@ extends C_c {
     private float randomMotionVecY = 0.0f;
     private float randomMotionVecZ = 0.0f;
 
-    public C_i(C_g c_g) {
+    public C_i(World c_g) {
         super(c_g);
         this.V = "/mob/jellyfish.png";
         this.W = 10;
@@ -40,7 +40,7 @@ extends C_c {
         this.A = false;
     }
 
-    public C_i(C_g c_g, float f, float f2, float f3) {
+    public C_i(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.V = "/mob/jellyfish.png";
         this.W = 10;

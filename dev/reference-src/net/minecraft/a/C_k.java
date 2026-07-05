@@ -4,8 +4,8 @@
 package net.minecraft.a;
 
 import net.minecraft.a.C_c;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.b.a.C_f;
 import net.minecraft.a.c.e.C_b;
@@ -18,12 +18,12 @@ public class C_k
 extends C_c {
     public C_a craftMatrix = new C_a(this, 3, 3);
     public net.minecraft.a.C_b craftResult = new C_h();
-    private C_g worldObj;
+    private World worldObj;
     private int posX;
     private int posY;
     private int posZ;
 
-    public C_k(C_b c_b, C_g c_g, int n, int n2, int n3) {
+    public C_k(C_b c_b, World c_g, int n, int n2, int n3) {
         int n4;
         int n5;
         this.worldObj = c_g;
@@ -68,7 +68,7 @@ extends C_c {
 
     @Override
     public boolean isUsableByPlayer(EntityPlayer entityPlayer) {
-        return this.worldObj.a(this.posX, this.posY, this.posZ) != C_x.an.at ? false : entityPlayer.getDistanceSq((float)this.posX + 0.5f, (float)this.posY + 0.5f, (float)this.posZ + 0.5f) <= 64.0f;
+        return this.worldObj.a(this.posX, this.posY, this.posZ) != Block.an.at ? false : entityPlayer.getDistanceSq((float)this.posX + 0.5f, (float)this.posY + 0.5f, (float)this.posZ + 0.5f) <= 64.0f;
     }
 
     @Override

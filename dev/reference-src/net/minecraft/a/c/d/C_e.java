@@ -5,8 +5,8 @@ package net.minecraft.a.c.d;
 
 import com.a.a.NBTTagCompound;
 import java.util.List;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
@@ -22,7 +22,7 @@ extends C_b {
     public net.minecraft.a.c.C_e thrower;
     private int ticksInAirSnowball = 0;
 
-    public C_e(C_g c_g) {
+    public C_e(World c_g) {
         super(c_g);
         this.a(0.25f, 0.25f);
     }
@@ -31,7 +31,7 @@ extends C_b {
     protected void entityInit() {
     }
 
-    public C_e(C_g c_g, net.minecraft.a.c.C_e c_e) {
+    public C_e(World c_g, net.minecraft.a.c.C_e c_e) {
         super(c_g);
         this.thrower = c_e;
         this.a(0.25f, 0.25f);
@@ -48,7 +48,7 @@ extends C_b {
         this.setSnowballHeading(this.k, this.l, this.m, 1.5f, 1.0f);
     }
 
-    public C_e(C_g c_g, float f, float f2, float f3) {
+    public C_e(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.a(0.25f, 0.25f);
         this.b(f, f2, f3);
@@ -110,7 +110,7 @@ extends C_b {
                 n = 0;
             }
             if (!(c_c.g != null && c_c.g.attackEntityFrom(this.thrower, n, 0.4f) || this.d.a((int)this.h, (int)this.i, (int)this.j) != 0 || !this.d.a(this.h, this.i - 1.0f, this.j) || this.d.f((int)this.h, (int)this.i, (int)this.j) instanceof net.minecraft.a.a.d.C_b)) {
-                this.d.a((int)this.h, (int)this.i, (int)this.j, C_x.sandLayer.at);
+                this.d.a((int)this.h, (int)this.i, (int)this.j, Block.sandLayer.at);
             }
             for (int i = 0; i < 8; ++i) {
                 this.d.a("sandballpoof", this.h, this.i, this.j, 0.0f, 0.0f, 0.0f);

@@ -3,8 +3,8 @@
  */
 package net.minecraft.game.level.block.furniture;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_b;
@@ -12,24 +12,24 @@ import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
 
 public class BlockFenceGate
-extends C_x {
+extends Block {
     public BlockFenceGate(int n, int n2) {
         super(n, n2, C_c.c);
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
+    public boolean a(World c_g, int n, int n2, int n3) {
         return !c_g.f(n, n2 - 1, n3).a() ? false : super.a(c_g, n, n2, n3);
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         return BlockFenceGate.isFenceGateOpen(by) ? null : (by != 2 && by != 0 ? C_b.getAABBPool().addOrModifyAABBInPool((float)n + 0.375f, n2, n3, (float)n + 0.625f, (float)n2 + 1.5f, n3 + 1) : C_b.getAABBPool().addOrModifyAABBInPool(n, n2, (float)n3 + 0.375f, n + 1, (float)n2 + 1.5f, (float)n3 + 0.625f));
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         int n4 = BlockFenceGate.getDirection(c_g.e(n, n2, n3));
         if (n4 != 2 && n4 != 0) {
             this.a(0.375f, 0.0f, 0.0f, 0.625f, 1.0f, 1.0f);
@@ -62,13 +62,13 @@ extends C_x {
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         int n5 = (MathHelper.a((double)(c_g.y.n * 4.0f / 360.0f) + 0.5) & 3) % 4;
         c_g.setBlockMetadataWithNotify(n, n2, n3, n5);
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         int n4 = c_g.e(n, n2, n3);
         if (!c_g.multiplayerWorld) {
             if (BlockFenceGate.isOpen(n4)) {

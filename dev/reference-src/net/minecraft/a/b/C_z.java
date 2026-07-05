@@ -4,7 +4,7 @@
 package net.minecraft.a.b;
 
 import net.minecraft.a.a.b.C_am;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_d;
 
 public class C_z
@@ -22,12 +22,12 @@ extends C_d {
 
     @Override
     public String getItemName(int n) {
-        return C_x.carpet.getBlockName(n);
+        return Block.carpet.getBlockName(n);
     }
 
     @Override
     public int getIconFromDamage(int n) {
-        return C_x.carpet.a(2, C_am.getClothColor(n));
+        return Block.carpet.a(2, C_am.getClothColor(n));
     }
 
     @Override

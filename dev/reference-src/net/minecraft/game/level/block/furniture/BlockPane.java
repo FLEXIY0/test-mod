@@ -5,14 +5,14 @@ package net.minecraft.game.level.block.furniture;
 
 import java.util.ArrayList;
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.d.C_b;
 
 public class BlockPane
-extends C_x {
+extends Block {
     private int secondaryTex;
 
     public BlockPane(int n, int n2, int n3, C_c c_c) {
@@ -36,13 +36,13 @@ extends C_x {
     }
 
     @Override
-    public boolean d(C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean d(World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.a(n, n2, n3);
         return n5 == this.at ? false : super.d(c_g, n, n2, n3, n4);
     }
 
     @Override
-    public void getCollidingBoundingBoxes(C_g c_g, int n, int n2, int n3, C_b c_b, ArrayList<C_b> arrayList) {
+    public void getCollidingBoundingBoxes(World c_g, int n, int n2, int n3, C_b c_b, ArrayList<C_b> arrayList) {
         float f = 0.4375f;
         float f2 = 0.5625f;
         float f3 = 0.4375f;
@@ -76,7 +76,7 @@ extends C_x {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         float f = 0.4375f;
         float f2 = 0.5625f;
         float f3 = 0.4375f;
@@ -110,7 +110,7 @@ extends C_x {
 
     @Override
     public final int a(int n, Random random) {
-        if (this.at == C_x.ironBars.at) {
+        if (this.at == Block.ironBars.at) {
             return this.at;
         }
         return Item.z.ap;
@@ -118,14 +118,14 @@ extends C_x {
 
     @Override
     public int a(Random random) {
-        if (this.at == C_x.ironBars.at) {
+        if (this.at == Block.ironBars.at) {
             return 1;
         }
         return 2;
     }
 
     public final boolean doesPaneMatch(int n) {
-        return C_x.e[n] || n == this.at || n == C_x.B.at || n == C_x.z.at || n == C_x.Y.at || n == C_x.Z.at || n == C_x.stairUpsideDown.at || n == C_x.wall.at;
+        return Block.e[n] || n == this.at || n == Block.B.at || n == Block.z.at || n == Block.Y.at || n == Block.Z.at || n == Block.stairUpsideDown.at || n == Block.wall.at;
     }
 }
 

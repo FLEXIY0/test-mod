@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_af;
 import net.minecraft.a.b.C_ag;
 import net.minecraft.a.b.C_am;
@@ -220,7 +220,7 @@ extends C_j {
             this.modelBipedMain.d.renderWithRotation(1.0f);
             this.modelBipedMain.heldItemRight = true;
             GL11.glTranslatef((float)-0.0625f, (float)0.4375f, (float)0.0625f);
-            if (itemStack.c < 256 && C_f.renderItemIn3d(C_x.c[itemStack.c].a())) {
+            if (itemStack.c < 256 && C_f.renderItemIn3d(Block.c[itemStack.c].a())) {
                 f2 = 6.5f;
                 GL11.glTranslatef((float)-1.0f, (float)9.0f, (float)-3.0f);
                 GL11.glRotatef((float)20.0f, (float)1.0f, (float)0.0f, (float)0.0f);

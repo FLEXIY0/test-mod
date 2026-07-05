@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_o;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.C_f;
@@ -25,7 +25,7 @@ public abstract class C_a {
         this.a = c_b;
     }
 
-    public final C_g a(InputStream inputStream) throws IOException {
+    public final World a(InputStream inputStream) throws IOException {
         if (this.a != null) {
             this.a.a("Loading level");
         }
@@ -40,7 +40,7 @@ public abstract class C_a {
         short s = nBTTagCompound3.c("Width");
         short s2 = nBTTagCompound3.c("Length");
         short s3 = nBTTagCompound3.c("Height");
-        C_g c_g = new C_g();
+        World c_g = new World();
         if (this.a != null) {
             this.a.b("Preparing level..");
         }
@@ -134,7 +134,7 @@ public abstract class C_a {
                 int n2 = n % 1024;
                 int n3 = (n >> 10) % 1024;
                 n = (n >> 20) % 1024;
-                net.minecraft.a.a.b.a.C_a c_a = C_o.loadFromCompound(nBTTagCompound4);
+                net.minecraft.a.a.b.a.TileEntity c_a = C_o.loadFromCompound(nBTTagCompound4);
                 if (c_a == null) continue;
                 c_g.a(n2, n3, n, c_a);
                 continue;
@@ -147,11 +147,11 @@ public abstract class C_a {
         return c_g;
     }
 
-    protected C_b a(C_g c_g, String string) {
+    protected C_b a(World c_g, String string) {
         return C_f.createEntityInWorld(string, c_g);
     }
 
-    public final void a(C_g c_g, OutputStream outputStream) throws IOException {
+    public final void a(World c_g, OutputStream outputStream) throws IOException {
         NBTTagCompound nBTTagCompound;
         Object object;
         if (this.a != null) {

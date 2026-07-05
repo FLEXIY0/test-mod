@@ -3,9 +3,9 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_ar;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -22,13 +22,13 @@ extends Item {
         this.ar = 64 << n2;
         this.as = 4 + (n2 << 1);
         this.isToolItem = true;
-        this.blocksEffectiveAgainst = new C_x[]{C_x.cobweb, C_x.deadBush};
+        this.blocksEffectiveAgainst = new Block[]{Block.cobweb, Block.deadBush};
         this.desc[0] = this.as + " damage";
         this.desc[1] = this.ar + " durability";
     }
 
     @Override
-    public float getStrVsBlock(C_x c_x, int n) {
+    public float getStrVsBlock(Block c_x, int n) {
         if (c_x instanceof C_ar) {
             return 9.5f;
         }
@@ -41,13 +41,13 @@ extends Item {
     }
 
     @Override
-    public final void hitEntity(EntityPlayer entityPlayer, ItemStack itemStack, C_g c_g) {
+    public final void hitEntity(EntityPlayer entityPlayer, ItemStack itemStack, World c_g) {
         entityPlayer.damageItem(1, itemStack, c_g);
         entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
     }
 
     @Override
-    public final void onBlockDestroyed(EntityPlayer entityPlayer, ItemStack itemStack, C_g c_g) {
+    public final void onBlockDestroyed(EntityPlayer entityPlayer, ItemStack itemStack, World c_g) {
         entityPlayer.damageItem(2, itemStack, c_g);
         entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
     }
@@ -74,7 +74,7 @@ extends Item {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         entityPlayer.setItemInUse(itemStack, this.getMaxItemUseDuration(itemStack));
         return itemStack;
     }

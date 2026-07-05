@@ -4,8 +4,8 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.C_l;
 import net.minecraft.a.b.Item;
@@ -15,7 +15,7 @@ import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.GameSettings;
 
 public class C_bs
-extends C_x {
+extends Block {
     public C_bs(int n, int n2, C_c c_c) {
         super(n, n2, c_c);
         this.a(0.0f, 0.0f, 0.0f, 1.0f, 0.125f, 1.0f);
@@ -24,19 +24,19 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
-        if (this.at == C_x.snowLayer.at) {
+    public boolean a(World c_g, int n, int n2, int n3) {
+        if (this.at == Block.snowLayer.at) {
             for (int i = -1; i < 2; ++i) {
                 for (int j = -1; j < 2; ++j) {
                     for (int k = -1; k < 2; ++k) {
                         C_c c_c = c_g.f(n + i, n2 + k, n3 + j);
-                        if (c_g.a(n + i, n2 + k, n3 + j) != C_x.af.at && c_c != C_c.g && c_c != C_c.l && c_g.a(n + i, n2 + k, n3 + j) != C_x.lantern.at) continue;
+                        if (c_g.a(n + i, n2 + k, n3 + j) != Block.af.at && c_c != C_c.g && c_c != C_c.l && c_g.a(n + i, n2 + k, n3 + j) != Block.lantern.at) continue;
                         return false;
                     }
                 }
             }
         }
-        return c_g.a(n, n2 - 1, n3) == C_x.z.at ? true : (c_g.a(n, n2 - 1, n3) == C_x.B.at ? true : (c_g.a(n, n2 - 1, n3) == C_x.detector.at ? true : (c_g.a(n, n2 - 1, n3) == C_x.stairUpsideDown.at ? true : (c_g.a(n, n2 - 1, n3) == this.at && c_g.e(n, n2 - 1, n3) < 7 ? true : (!c_g.b(n, n2 - 1, n3) ? false : super.a(c_g, n, n2, n3))))));
+        return c_g.a(n, n2 - 1, n3) == Block.z.at ? true : (c_g.a(n, n2 - 1, n3) == Block.B.at ? true : (c_g.a(n, n2 - 1, n3) == Block.detector.at ? true : (c_g.a(n, n2 - 1, n3) == Block.stairUpsideDown.at ? true : (c_g.a(n, n2 - 1, n3) == this.at && c_g.e(n, n2 - 1, n3) < 7 ? true : (!c_g.b(n, n2 - 1, n3) ? false : super.a(c_g, n, n2, n3))))));
     }
 
     @Override
@@ -55,7 +55,7 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.f(n, n2 - 1, n3).a()) {
             this.f(c_g, n, n2, n3, 0);
             c_g.b(n, n2, n3, 0);
@@ -64,13 +64,13 @@ extends C_x {
     }
 
     @Override
-    public boolean canBlockStay(C_g c_g, int n, int n2, int n3) {
-        return c_g.a(n, n2 - 1, n3) != this.at && (c_g.b(n, n2 - 1, n3) || c_g.a(n, n2 - 1, n3) == C_x.z.at || c_g.a(n, n2 - 1, n3) == C_x.B.at || c_g.a(n, n2 - 1, n3) == this.at);
+    public boolean canBlockStay(World c_g, int n, int n2, int n3) {
+        return c_g.a(n, n2 - 1, n3) != this.at && (c_g.b(n, n2 - 1, n3) || c_g.a(n, n2 - 1, n3) == Block.z.at || c_g.a(n, n2 - 1, n3) == Block.B.at || c_g.a(n, n2 - 1, n3) == this.at);
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, Random random) {
-        if (this.at == C_x.snowLayer.at) {
+    public void a(World c_g, int n, int n2, int n3, Random random) {
+        if (this.at == Block.snowLayer.at) {
             if (c_g.season.currentSeason != 3 && random.nextInt(20) == 0) {
                 if (c_g.e(n, n2, n3) >= 1) {
                     c_g.setBlockMetadata(n, n2, n3, c_g.e(n, n2, n3) - 1);
@@ -82,7 +82,7 @@ extends C_x {
                 for (int j = -1; j < 2; ++j) {
                     for (int k = -1; k < 2; ++k) {
                         C_c c_c = c_g.f(n + i, n2 + k, n3 + j);
-                        if (c_g.a(n + i, n2 + k, n3 + j) != C_x.af.at && c_c != C_c.g && c_c != C_c.l && c_g.a(n + i, n2 + k, n3 + j) != C_x.lantern.at) continue;
+                        if (c_g.a(n + i, n2 + k, n3 + j) != Block.af.at && c_c != C_c.g && c_c != C_c.l && c_g.a(n + i, n2 + k, n3 + j) != Block.lantern.at) continue;
                         if (c_g.e(n, n2, n3) >= 1) {
                             c_g.setBlockMetadata(n, n2, n3, c_g.e(n, n2, n3) - 1);
                             continue;
@@ -95,7 +95,7 @@ extends C_x {
     }
 
     @Override
-    public final void d(C_g c_g, int n, int n2, int n3) {
+    public final void d(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2 - 1, n3);
         if (by >= 7) {
             super.d(c_g, n, n2, n3);
@@ -107,13 +107,13 @@ extends C_x {
     }
 
     @Override
-    public net.minecraft.a.d.C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public net.minecraft.a.d.C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         int n4 = c_g.e(n, n2, n3) & 7;
         return n4 >= 3 && n4 < 7 ? new net.minecraft.a.d.C_b((float)n + this.au, (float)n2 + this.av, (float)n3 + this.aw, (float)n + this.ax, (float)n2 + 0.5f, (float)n3 + this.az) : (n4 >= 7 ? new net.minecraft.a.d.C_b((float)n + this.au, (float)n2 + this.av, (float)n3 + this.aw, (float)n + this.ax, (float)n2 + 1.0f, (float)n3 + this.az) : null);
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         int n4 = c_g.e(n, n2, n3) & 7;
         float f = (float)(2 * (1 + n4)) / 16.0f;
         this.a(0.0f, 0.0f, 0.0f, 1.0f, f, 1.0f);
@@ -136,13 +136,13 @@ extends C_x {
 
     @Override
     public int a(int n, Random random) {
-        if (this.at == C_x.snowLayer.at) {
+        if (this.at == Block.snowLayer.at) {
             return Item.snowball.ap;
         }
-        if (this.at == C_x.sandLayer.at) {
+        if (this.at == Block.sandLayer.at) {
             return Item.sandball.ap;
         }
-        if (this.at == C_x.ash.at) {
+        if (this.at == Block.ash.at) {
             return Item.ash.ap;
         }
         return 0;
@@ -154,7 +154,7 @@ extends C_x {
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         if (!c_g.multiplayerWorld) {
             int n5 = this.a(c_g.q);
             EntityPlayer entityPlayer = (EntityPlayer)c_g.y;
@@ -172,7 +172,7 @@ extends C_x {
     }
 
     @Override
-    public void dropBlockAsMultipleItems(C_g c_g, int n, int n2, int n3, int n4) {
+    public void dropBlockAsMultipleItems(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.multiplayerWorld) {
             int n5 = 0;
             byte by = c_g.e(n, n2, n3);
@@ -195,7 +195,7 @@ extends C_x {
 
     @Override
     public int a(int n, int n2) {
-        if (this.at == C_x.leafPile.at && !GameSettings.fancyTextures) {
+        if (this.at == Block.leafPile.at && !GameSettings.fancyTextures) {
             return this.as + 32;
         }
         return this.as;

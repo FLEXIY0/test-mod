@@ -3,23 +3,23 @@
  */
 package net.minecraft.a.b.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.b.a.C_f;
 
 public class C_m {
-    private Object[][] recipeWalls = new Object[][]{{C_x.l, new ItemStack(C_x.wall, 6, 0)}, {C_x.ad, new ItemStack(C_x.wall, 6, 1)}, {C_x.aa, new ItemStack(C_x.wall, 6, 2)}, {C_x.brimStoneBrick, new ItemStack(C_x.wall, 6, 6)}, {C_x.moonRock, new ItemStack(C_x.wall, 6, 8)}, {C_x.brimStone, new ItemStack(C_x.wall, 6, 9)}};
-    private Object[][] recipeWallsMetadata = new Object[][]{{new ItemStack(C_x.stoneBricks, 1, 0), new ItemStack(C_x.wall, 6, 4)}, {new ItemStack(C_x.stoneBricks, 1, 1), new ItemStack(C_x.wall, 6, 5)}, {new ItemStack(C_x.sandStone, 1, 0), new ItemStack(C_x.wall, 6, 3)}, {new ItemStack(C_x.sandStone, 1, 2), new ItemStack(C_x.wall, 6, 7)}};
-    private Object[][] recipeFences = new Object[][]{{new ItemStack(C_x.m, 1, 0), new ItemStack(C_x.fence, 4, 0)}, {new ItemStack(C_x.m, 1, 1), new ItemStack(C_x.fence, 4, 1)}, {new ItemStack(C_x.m, 1, 2), new ItemStack(C_x.fence, 4, 2)}, {new ItemStack(C_x.m, 1, 3), new ItemStack(C_x.fence, 4, 3)}};
-    private Object[][] recipeFenceGates = new Object[][]{{new ItemStack(C_x.m, 1, 0), new ItemStack(C_x.fenceGateOak)}, {new ItemStack(C_x.m, 1, 1), new ItemStack(C_x.fenceGateBirch)}, {new ItemStack(C_x.m, 1, 2), new ItemStack(C_x.fenceGatePalm)}, {new ItemStack(C_x.m, 1, 3), new ItemStack(C_x.fenceGateSpruce)}};
+    private Object[][] recipeWalls = new Object[][]{{Block.l, new ItemStack(Block.wall, 6, 0)}, {Block.ad, new ItemStack(Block.wall, 6, 1)}, {Block.aa, new ItemStack(Block.wall, 6, 2)}, {Block.brimStoneBrick, new ItemStack(Block.wall, 6, 6)}, {Block.moonRock, new ItemStack(Block.wall, 6, 8)}, {Block.brimStone, new ItemStack(Block.wall, 6, 9)}};
+    private Object[][] recipeWallsMetadata = new Object[][]{{new ItemStack(Block.stoneBricks, 1, 0), new ItemStack(Block.wall, 6, 4)}, {new ItemStack(Block.stoneBricks, 1, 1), new ItemStack(Block.wall, 6, 5)}, {new ItemStack(Block.sandStone, 1, 0), new ItemStack(Block.wall, 6, 3)}, {new ItemStack(Block.sandStone, 1, 2), new ItemStack(Block.wall, 6, 7)}};
+    private Object[][] recipeFences = new Object[][]{{new ItemStack(Block.m, 1, 0), new ItemStack(Block.fence, 4, 0)}, {new ItemStack(Block.m, 1, 1), new ItemStack(Block.fence, 4, 1)}, {new ItemStack(Block.m, 1, 2), new ItemStack(Block.fence, 4, 2)}, {new ItemStack(Block.m, 1, 3), new ItemStack(Block.fence, 4, 3)}};
+    private Object[][] recipeFenceGates = new Object[][]{{new ItemStack(Block.m, 1, 0), new ItemStack(Block.fenceGateOak)}, {new ItemStack(Block.m, 1, 1), new ItemStack(Block.fenceGateBirch)}, {new ItemStack(Block.m, 1, 2), new ItemStack(Block.fenceGatePalm)}, {new ItemStack(Block.m, 1, 3), new ItemStack(Block.fenceGateSpruce)}};
 
     public final void addRecipes(C_f c_f) {
         ItemStack itemStack;
         Object object;
         int n;
         for (n = 0; n < this.recipeWalls.length; ++n) {
-            object = (C_x)this.recipeWalls[n][0];
+            object = (Block)this.recipeWalls[n][0];
             itemStack = (ItemStack)this.recipeWalls[n][1];
             c_f.a(itemStack, "###", "###", Character.valueOf('#'), object);
         }

@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_k;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
 public final class BlockGears
-extends C_x {
+extends Block {
     private boolean providePower = true;
     private Set<C_k> blocksNeedingUpdate = new HashSet<C_k>();
 
@@ -23,7 +23,7 @@ extends C_x {
     }
 
     @Override
-    public final C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public final C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return null;
     }
 
@@ -33,7 +33,7 @@ extends C_x {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         boolean bl = this.canConnectTo(c_g, n, n2, n3 - 1);
         boolean bl2 = this.canConnectTo(c_g, n, n2, n3 + 1);
         boolean bl3 = this.canConnectTo(c_g, n - 1, n2, n3);
@@ -74,17 +74,17 @@ extends C_x {
         this.a(f, f3, f5, f2, f4, f6);
     }
 
-    public boolean canConnectTo(C_g c_g, int n, int n2, int n3) {
+    public boolean canConnectTo(World c_g, int n, int n2, int n3) {
         return c_g.a((float)n, (float)n2, (float)n3);
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
+    public boolean a(World c_g, int n, int n2, int n3) {
         return c_g.b(n - 1, n2, n3) ? true : (c_g.b(n, n2 - 1, n3) ? true : (c_g.b(n, n2 + 1, n3) ? true : (c_g.b(n + 1, n2, n3) ? true : (c_g.b(n, n2, n3 - 1) ? true : c_g.b(n, n2, n3 + 1)))));
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void b(World c_g, int n, int n2, int n3, int n4) {
         super.b(c_g, n, n2, n3, n4);
         if (!c_g.multiplayerWorld) {
             boolean bl = this.a(c_g, n, n2, n3);
@@ -97,7 +97,7 @@ extends C_x {
         }
     }
 
-    private boolean dropGear(C_g c_g, int n, int n2, int n3) {
+    private boolean dropGear(World c_g, int n, int n2, int n3) {
         if (!this.a(c_g, n, n2, n3)) {
             this.f(c_g, n, n2, n3, c_g.e(n, n2, n3));
             c_g.b(n, n2, n3, 0);
@@ -131,7 +131,7 @@ extends C_x {
         return this.as + 2;
     }
 
-    private void updateAndPropagateCurrentStrength(C_g c_g, int n, int n2, int n3) {
+    private void updateAndPropagateCurrentStrength(World c_g, int n, int n2, int n3) {
         this.calculateCurrentChanges(c_g, n, n2, n3, n, n2, n3);
         ArrayList<C_k> arrayList = new ArrayList<C_k>(this.blocksNeedingUpdate);
         this.blocksNeedingUpdate.clear();
@@ -141,7 +141,7 @@ extends C_x {
         }
     }
 
-    private void calculateCurrentChanges(C_g c_g, int n, int n2, int n3, int n4, int n5, int n6) {
+    private void calculateCurrentChanges(World c_g, int n, int n2, int n3, int n4, int n5, int n6) {
         int n7;
         int n8;
         int n9;
@@ -342,7 +342,7 @@ extends C_x {
         }
     }
 
-    private void notifyWireNeighborsOfNeighborChange(C_g c_g, int n, int n2, int n3) {
+    private void notifyWireNeighborsOfNeighborChange(World c_g, int n, int n2, int n3) {
         if (c_g.a(n, n2, n3) == this.at) {
             c_g.c(n, n2, n3, this.at);
             c_g.c(n - 1, n2, n3, this.at);
@@ -355,7 +355,7 @@ extends C_x {
     }
 
     @Override
-    public void d(C_g c_g, int n, int n2, int n3) {
+    public void d(World c_g, int n, int n2, int n3) {
         super.d(c_g, n, n2, n3);
         if (!c_g.multiplayerWorld) {
             this.updateAndPropagateCurrentStrength(c_g, n, n2, n3);
@@ -389,7 +389,7 @@ extends C_x {
     }
 
     @Override
-    public void breakBlock(C_g c_g, int n, int n2, int n3, int n4, int n5) {
+    public void breakBlock(World c_g, int n, int n2, int n3, int n4, int n5) {
         super.breakBlock(c_g, n, n2, n3, n4, n5);
         if (!c_g.multiplayerWorld) {
             c_g.c(n, n2 + 1, n3, this.at);
@@ -426,7 +426,7 @@ extends C_x {
         }
     }
 
-    private int getMaxCurrentStrength(C_g c_g, int n, int n2, int n3, int n4) {
+    private int getMaxCurrentStrength(World c_g, int n, int n2, int n3, int n4) {
         if (c_g.a(n, n2, n3) != this.at) {
             return n4;
         }
@@ -435,12 +435,12 @@ extends C_x {
     }
 
     @Override
-    public boolean isProvidingStrongPower(C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean isProvidingStrongPower(World c_g, int n, int n2, int n3, int n4) {
         return !this.providePower ? false : this.isProvidingWeakPower(c_g, n, n2, n3, n4);
     }
 
     @Override
-    public boolean isProvidingWeakPower(C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean isProvidingWeakPower(World c_g, int n, int n2, int n3, int n4) {
         boolean bl;
         if (!this.providePower) {
             return false;
@@ -480,9 +480,9 @@ extends C_x {
         return this.providePower;
     }
 
-    public static boolean isPowerProviderOrWire(C_g c_g, int n, int n2, int n3, int n4) {
+    public static boolean isPowerProviderOrWire(World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.a(n, n2, n3);
-        if (n5 == C_x.ak.at) {
+        if (n5 == Block.ak.at) {
             byte by = c_g.e(n, n2, n3);
             return n4 == by;
         }
@@ -490,7 +490,7 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, Random random) {
+    public void b(World c_g, int n, int n2, int n3, Random random) {
         byte by = c_g.e(n, n2, n3);
         if (by > 0) {
             float f = (float)n + this.au + (random.nextFloat() - this.ax) * 0.2f;

@@ -7,9 +7,9 @@ import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import java.util.ArrayList;
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_n;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_e;
@@ -26,7 +26,7 @@ public abstract class C_b {
     public C_b riddenByEntity;
     public C_b ridingEntity;
     public boolean c = false;
-    public C_g d;
+    public World d;
     public float e;
     public float f;
     public float g;
@@ -92,7 +92,7 @@ public abstract class C_b {
     public boolean isVisible;
     protected boolean isJumping;
 
-    public C_b(C_g c_g) {
+    public C_b(World c_g) {
         this.d = c_g;
         this.b(0.0f, 0.0f, 0.0f);
         this.dataWatcher.addObject(0, (byte)0);
@@ -196,7 +196,7 @@ public abstract class C_b {
                 for (int k = n3; k <= n6; ++k) {
                     int n7 = this.d.a(i, j, k);
                     if (n7 <= 0) continue;
-                    C_x.c[n7].onEntityCollidedWithBlock(this.d, i, j, k);
+                    Block.c[n7].onEntityCollidedWithBlock(this.d, i, j, k);
                 }
             }
         }
@@ -392,20 +392,20 @@ public abstract class C_b {
                 int n5 = (int)(this.i - 0.2f - this.v);
                 n = (int)this.j;
                 int n6 = this.d.a(n4, n5, n);
-                if (this.d.a(n4, n5 - 1, n) == C_x.fence.at || this.d.a(n4, n5 - 1, n) == C_x.wall.at) {
+                if (this.d.a(n4, n5 - 1, n) == Block.fence.at || this.d.a(n4, n5 - 1, n) == Block.wall.at) {
                     n6 = this.d.a(n4, n5 - 1, n);
                 }
                 if (this.z > (float)this.O && n6 > 0) {
                     ++this.O;
-                    C_n c_n = C_x.c[n6].getStepSound(this.d.e(n4, n5, n));
-                    if (this.d.a(n4, n5 + 1, n) == C_x.snowLayer.at) {
-                        c_n = C_x.soundSnowFootstep;
+                    C_n c_n = Block.c[n6].getStepSound(this.d.e(n4, n5, n));
+                    if (this.d.a(n4, n5 + 1, n) == Block.snowLayer.at) {
+                        c_n = Block.soundSnowFootstep;
                     }
-                    if (!C_x.c[n6].getMaterial(this.d.e(n4, n5, n)).d()) {
+                    if (!Block.c[n6].getMaterial(this.d.e(n4, n5, n)).d()) {
                         this.d.a(this, c_n.b(), c_n.a * 0.15f, c_n.b);
                     }
                     if (this.isJumping) {
-                        C_x.c[n6].g(this.d, n4, n5, n);
+                        Block.c[n6].g(this.d, n4, n5, n);
                     }
                 }
             }
@@ -572,21 +572,21 @@ public abstract class C_b {
             return false;
         }
         int n = this.d.a((int)this.h, (int)(this.i + this.n()), (int)this.j);
-        return n != 0 ? C_x.c[n].getMaterial(this.d.e((int)this.h, (int)(this.i + this.n()), (int)this.j)) == C_c.f : false;
+        return n != 0 ? Block.c[n].getMaterial(this.d.e((int)this.h, (int)(this.i + this.n()), (int)this.j)) == C_c.f : false;
     }
 
     public boolean isOnLadder() {
         int n;
         int n2;
         int n3 = MathHelper.a((double)this.h);
-        return this.d.a(n3, n2 = MathHelper.a((double)this.r.b), n = MathHelper.a((double)this.j)) == C_x.ladder.at;
+        return this.d.a(n3, n2 = MathHelper.a((double)this.r.b), n = MathHelper.a((double)this.j)) == Block.ladder.at;
     }
 
     public boolean isOnVine() {
         int n;
         int n2;
         int n3 = MathHelper.a((double)this.h);
-        return this.d.a(n3, n2 = MathHelper.a((double)this.r.b), n = MathHelper.a((double)this.j)) == C_x.vine.at;
+        return this.d.a(n3, n2 = MathHelper.a((double)this.r.b), n = MathHelper.a((double)this.j)) == Block.vine.at;
     }
 
     public void mountEntity(C_b c_b) {
@@ -723,7 +723,7 @@ public abstract class C_b {
         return this.d != null ? this.d.c(n, n2, n3) : 1.0f;
     }
 
-    public final void a(C_g c_g) {
+    public final void a(World c_g) {
         this.d = c_g;
     }
 
@@ -964,7 +964,7 @@ public abstract class C_b {
         double d2 = this.i + this.n();
         int n3 = MathHelper.a((double)this.h);
         int n4 = this.d.a(n3, n2 = MathHelper.d(MathHelper.a(d2)), n = MathHelper.a((double)this.j));
-        return n4 != 0 && C_x.c[n4].aC == c_c;
+        return n4 != 0 && Block.c[n4].aC == c_c;
     }
 }
 

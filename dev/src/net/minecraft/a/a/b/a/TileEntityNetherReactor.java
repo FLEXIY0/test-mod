@@ -5,21 +5,21 @@
  * builds a netherrack spire/dome, then over ~46 game-seconds transforms the
  * gold/cobblestone pattern into glowing obsidian, showers loot and spawns
  * pigman waves at set milestones, and finally collapses the dome back into
- * obsidian. Ported to the Infdev-era API (C_g world, C_a tile entity,
- * C_x block registry) — the original mod's classes are binary-incompatible.
+ * obsidian. Ported to the Infdev-era API (World world, TileEntity tile entity,
+ * Block block registry) — the original mod's classes are binary-incompatible.
  *
- * Base C_a exposes: a = world (C_g), b/c/d = x/y/z of this tile entity.
+ * Base TileEntity exposes: a = world (World), b/c/d = x/y/z of this tile entity.
  */
 package net.minecraft.a.a.b.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.game.level.block.machines.BlockNetherReactorCore;
 
-public class TileEntityNetherReactor extends C_a {
+public class TileEntityNetherReactor extends TileEntity {
     private static final int TPS = 20;                 // ticks per reactor "second"
     private static final int NUM_ENEMY_SLOTS = 3;
 
@@ -31,7 +31,7 @@ public class TileEntityNetherReactor extends C_a {
 
     // ---- pattern (gold / cobblestone / core), layer 0 = bottom (y-1) ----
     private static int patternAt(int layer, int r, int c) {
-        int gold = C_x.W.at, cobble = C_x.l.at, core = C_x.netherReactorCore.at;
+        int gold = Block.W.at, cobble = Block.l.at, core = Block.netherReactorCore.at;
         switch (layer) {
             case 0: { // all filled: gold corners, cobble edges + centre
                 boolean corner = (r != 1) && (c != 1);
@@ -85,7 +85,7 @@ public class TileEntityNetherReactor extends C_a {
      *  dome crumble slowly (tickCollapse), instead of vanishing all at once. */
     private void beginCollapse() {
         if (this.hasFinished || !this.isInitialized) return;
-        if (this.a.a(this.b, this.c, this.d) == C_x.netherReactorCore.at) {
+        if (this.a.a(this.b, this.c, this.d) == Block.netherReactorCore.at) {
             BlockNetherReactorCore.setPhase(this.a, this.b, this.c, this.d, 2); // DEACTIVATED
         }
         this.hasFinished = true;
@@ -94,7 +94,7 @@ public class TileEntityNetherReactor extends C_a {
             for (int j = this.c - 1; j <= this.c + 1; ++j) {
                 for (int k = this.d - 1; k <= this.d + 1; ++k) {
                     if (i == this.b && j == this.c && k == this.d) continue;
-                    this.a.a(i, j, k, C_x.ae.at); // ring of obsidian around the spent core
+                    this.a.a(i, j, k, Block.ae.at); // ring of obsidian around the spent core
                 }
             }
         }
@@ -110,7 +110,7 @@ public class TileEntityNetherReactor extends C_a {
                 int ry = this.c - 3 + this.a.q.nextInt(18);
                 int rz = this.d + this.a.q.nextInt(19) - 9;
                 int id = this.a.a(rx, ry, rz);
-                if (id == C_x.netherrack.at || id == C_x.glowingObsidian.at) {
+                if (id == Block.netherrack.at || id == Block.glowingObsidian.at) {
                     this.a.a(rx, ry, rz, 0);
                 }
             }
@@ -165,14 +165,14 @@ public class TileEntityNetherReactor extends C_a {
     /** Loot table adapted to blocks/items that exist in Indev++. */
     private ItemStack getSpawnItem() {
         switch (this.a.q.nextInt(10)) {
-            case 0: return new ItemStack(C_x.glowStone, this.a.q.nextInt(2) + 1);
-            case 1: return new ItemStack(C_x.soulSand, this.a.q.nextInt(2) + 3);
-            case 2: return new ItemStack(C_x.netherrack, this.a.q.nextInt(3) + 2);
+            case 0: return new ItemStack(Block.glowStone, this.a.q.nextInt(2) + 1);
+            case 1: return new ItemStack(Block.soulSand, this.a.q.nextInt(2) + 3);
+            case 2: return new ItemStack(Block.netherrack, this.a.q.nextInt(3) + 2);
             case 3: return new ItemStack(Item.i, this.a.q.nextInt(2) + 1); // coal
             case 4: return new ItemStack(Item.l); // gold ingot
             case 5: return new ItemStack(Item.k, this.a.q.nextInt(2) + 1); // iron ingot
             case 6: return new ItemStack(Item.al); // flint
-            case 7: return new ItemStack(C_x.ae); // obsidian
+            case 7: return new ItemStack(Block.ae); // obsidian
             case 8: return new ItemStack(Item.bone); // bone
             default: return this.getLowOddsSpawnItem();
         }
@@ -182,7 +182,7 @@ public class TileEntityNetherReactor extends C_a {
         if (this.a.q.nextInt(10) <= 8) {
             ItemStack[] rare = {
                 new ItemStack(Item.j),                 // diamond
-                new ItemStack(C_x.glowingObsidian),    // glowing obsidian
+                new ItemStack(Block.glowingObsidian),    // glowing obsidian
                 new ItemStack(Item.slimeBall),
                 new ItemStack(Item.H), // feather
             };
@@ -207,12 +207,12 @@ public class TileEntityNetherReactor extends C_a {
 
     public void tickGlowingRedstoneTransformation(int sec) {
         switch (sec) {
-            case 2: this.turnLayerToGlowingObsidian(0, C_x.l.at); break;
-            case 3: this.turnLayerToGlowingObsidian(1, C_x.l.at); break;
-            case 4: this.turnLayerToGlowingObsidian(2, C_x.l.at); break;
-            case 7: this.turnLayerToGlowingObsidian(0, C_x.W.at); break;
-            case 8: this.turnLayerToGlowingObsidian(1, C_x.W.at); break;
-            case 9: this.turnLayerToGlowingObsidian(2, C_x.W.at); break;
+            case 2: this.turnLayerToGlowingObsidian(0, Block.l.at); break;
+            case 3: this.turnLayerToGlowingObsidian(1, Block.l.at); break;
+            case 4: this.turnLayerToGlowingObsidian(2, Block.l.at); break;
+            case 7: this.turnLayerToGlowingObsidian(0, Block.W.at); break;
+            case 8: this.turnLayerToGlowingObsidian(1, Block.W.at); break;
+            case 9: this.turnLayerToGlowingObsidian(2, Block.W.at); break;
         }
     }
 
@@ -220,7 +220,7 @@ public class TileEntityNetherReactor extends C_a {
         for (int i = -1; i <= 1; ++i) {
             for (int j = -1; j <= 1; ++j) {
                 if (patternAt(layer, i + 1, j + 1) != matchId) continue;
-                this.a.a(this.b + i, this.c - 1 + layer, this.d + j, C_x.glowingObsidian.at);
+                this.a.a(this.b + i, this.c - 1 + layer, this.d + j, Block.glowingObsidian.at);
             }
         }
     }
@@ -228,8 +228,8 @@ public class TileEntityNetherReactor extends C_a {
     private void turnGlowingObsidianLayerToObsidian(int layer) {
         for (int i = -1; i <= 1; ++i) {
             for (int j = -1; j <= 1; ++j) {
-                if (this.a.a(this.b + i, this.c - 1 + layer, this.d + j) == C_x.netherReactorCore.at) continue;
-                this.a.a(this.b + i, this.c - 1 + layer, this.d + j, C_x.ae.at);
+                if (this.a.a(this.b + i, this.c - 1 + layer, this.d + j) == Block.netherReactorCore.at) continue;
+                this.a.a(this.b + i, this.c - 1 + layer, this.d + j, Block.ae.at);
             }
         }
     }
@@ -237,7 +237,7 @@ public class TileEntityNetherReactor extends C_a {
     // ---- dome construction ----
 
     public void buildDome(int x, int y, int z) {
-        int nr = C_x.netherrack.at;
+        int nr = Block.netherrack.at;
         this.buildFloorVolume(x, y - 3, z, 8, 2, nr);
         this.buildHollowedVolume(x, y - 1, z, 8, 4, nr, 0);
         this.buildFloorVolume(x, y - 1 + 4, z, 8, 1, nr);

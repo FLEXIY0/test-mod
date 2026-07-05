@@ -6,12 +6,12 @@ package net.minecraft.a.a.b.a;
 import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import net.minecraft.a.C_b;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public final class C_m
-extends C_a
+extends TileEntity
 implements C_b {
     public ItemStack[] vacuumContents = new ItemStack[9];
 

@@ -4,7 +4,7 @@
 package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.a.C_e;
@@ -15,7 +15,7 @@ extends C_e {
     private int Q;
     private int R = 30;
 
-    public C_d(C_g c_g) {
+    public C_d(World c_g) {
         super(c_g);
         this.V = "/mob/creeper.png";
     }
@@ -26,7 +26,7 @@ extends C_e {
         this.dataWatcher.addObject(16, (byte)-1);
     }
 
-    public C_d(C_g c_g, float f, float f2, float f3) {
+    public C_d(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.V = "/mob/creeper.png";
         this.b(f, f2, f3);

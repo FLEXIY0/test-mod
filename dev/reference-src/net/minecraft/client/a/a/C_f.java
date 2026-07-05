@@ -6,12 +6,12 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_aj;
 import net.minecraft.a.a.b.C_am;
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.C_bs;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.a.RenderEngine;
@@ -123,9 +123,9 @@ public abstract class C_f {
                     for (int i = (int)(f11 - 2.0f); i <= (int)f11; ++i) {
                         for (int j = (int)(f14 - f9); j <= (int)(f14 + f9); ++j) {
                             float f15;
-                            int n2 = ((C_g)object).a(n, i - 1, j);
-                            if (n2 <= 0 || ((C_g)object).d(n, i, j) <= 3) continue;
-                            C_x c_x = C_x.c[n2];
+                            int n2 = ((World)object).a(n, i - 1, j);
+                            if (n2 <= 0 || ((World)object).d(n, i, j) <= 3) continue;
+                            Block c_x = Block.c[n2];
                             C_d c_d = C_d.a;
                             f8 = (f13 - (f11 - (float)i) / 2.0f) * 0.5f * c_f.a.c.c(n, i, j);
                             if (!(f15 >= 0.0f)) continue;
@@ -155,8 +155,8 @@ public abstract class C_f {
         }
         if (c_b.J > 0) {
             GL11.glDisable((int)2896);
-            int n3 = C_x.ag.as;
-            n = (C_x.ag.as & 0x1F) << 4;
+            int n3 = Block.ag.as;
+            n = (Block.ag.as & 0x1F) << 4;
             int n4 = n3 >> 1 & 0x1F0;
             f9 = (float)n / 512.0f;
             f11 = ((float)n + 15.99f) / 512.0f;

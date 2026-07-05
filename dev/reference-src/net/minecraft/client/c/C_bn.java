@@ -9,7 +9,7 @@ package net.minecraft.client.c;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.c.C_bm;
@@ -185,7 +185,7 @@ extends C_bm {
             Item item = Item.b[statCrafting.getItemID()];
             String string = ("" + item.getItemName()).trim();
             if (statCrafting.getItemID() < 256) {
-                C_x c_x = C_x.c[statCrafting.getItemID()];
+                Block c_x = Block.c[statCrafting.getItemID()];
                 string = ("" + c_x.getBlockName()).trim();
             }
             if (string.length() > 0) {

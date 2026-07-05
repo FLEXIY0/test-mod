@@ -3,8 +3,8 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.C_d;
 import net.minecraft.a.b.ItemStack;
@@ -21,7 +21,7 @@ extends C_d {
     }
 
     @Override
-    public final ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public final ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         int n;
         int n2;
         int n3;
@@ -40,7 +40,7 @@ extends C_d {
             return itemStack;
         }
         if (c_c.a == 0 && c_g.f(n3 = c_c.b, n2 = c_c.c, n = c_c.d) == C_c.f && c_g.e(n3, n2, n) == 0 && c_c.e == 1) {
-            c_g.b(n3, n2 + 1, n, C_x.lilyPad.at);
+            c_g.b(n3, n2 + 1, n, Block.lilyPad.at);
             c_g.a((float)n3, (float)(n2 + 1), (float)n, "step.grass", 1.0f, 0.8f);
             entityPlayer.swingItem();
             if (c_g.gamemode == 0) {

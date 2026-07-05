@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.a;
 
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.c.C_b;
 
 public interface C_d {
@@ -27,7 +27,7 @@ public interface C_d {
 
     public void h();
 
-    public void updateTileEntity(int var1, int var2, int var3, C_a var4);
+    public void updateTileEntity(int var1, int var2, int var3, TileEntity var4);
 
     public void playRecord(String var1, int var2, int var3, int var4);
 

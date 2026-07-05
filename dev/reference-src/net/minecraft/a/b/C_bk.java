@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -17,7 +17,7 @@ extends Item {
     }
 
     @Override
-    public boolean throwInFire(C_g c_g, float f, float f2, float f3) {
+    public boolean throwInFire(World c_g, float f, float f2, float f3) {
         int n = 0;
         if (this.ap == Item.rawIron.ap) {
             n = Item.k.ap;

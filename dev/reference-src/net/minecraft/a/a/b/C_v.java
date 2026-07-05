@@ -8,14 +8,14 @@ public final class C_v extends C_ad {
 
    @Override
    protected final boolean b(int var1) {
-      return C_x.e[var1];
+      return Block.e[var1];
    }
 
    @Override
-   public final boolean e(net.minecraft.a.a.C_g var1, int var2, int var3, int var4) {
+   public final boolean e(net.minecraft.a.a.World var1, int var2, int var3, int var4) {
       if (var1.d(var2, var3, var4) <= 13) {
          var2 = var1.a(var2, var3 - 1, var4);
-         if (C_x.e[var2]) {
+         if (Block.e[var2]) {
             return true;
          }
       }

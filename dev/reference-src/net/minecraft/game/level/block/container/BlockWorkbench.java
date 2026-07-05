@@ -3,13 +3,13 @@
  */
 package net.minecraft.game.level.block.container;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public final class BlockWorkbench
-extends C_x {
+extends Block {
     public BlockWorkbench(int n) {
         super(58, C_c.c);
         this.as = 107;
@@ -17,11 +17,11 @@ extends C_x {
 
     @Override
     public final int a(int n) {
-        return n == 1 ? this.as - 32 : (n == 0 ? C_x.m.a(0) : (n != 2 && n != 4 ? this.as : this.as + 1));
+        return n == 1 ? this.as - 32 : (n == 0 ? Block.m.a(0) : (n != 2 && n != 4 ? this.as : this.as + 1));
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (c_g.multiplayerWorld) {
             return true;
         }

@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.a;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.c.C_a;
 
 public class LevelOptions {
@@ -21,7 +21,7 @@ public class LevelOptions {
     public int theme = 0;
     public String file;
 
-    public C_g generate(net.minecraft.client.C_a c_a, String string) {
+    public World generate(net.minecraft.client.C_a c_a, String string) {
         C_a c_a2 = new C_a(c_a);
         c_a2.worldGen = this;
         c_a2.a = this.type == 1;

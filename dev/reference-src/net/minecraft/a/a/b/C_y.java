@@ -4,11 +4,11 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public final class C_y
-extends C_x {
+extends Block {
     public C_y(int n, int n2) {
         super(47, 35, C_c.c);
     }

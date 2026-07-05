@@ -5,22 +5,22 @@ package net.minecraft.a.a.a;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.a.C_a;
 import net.minecraft.a.a.a.C_b;
 import net.minecraft.a.a.a.C_d;
 import net.minecraft.a.a.b.C_am;
 import net.minecraft.a.a.b.C_bq;
 import net.minecraft.a.a.b.C_bs;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 
 public final class C_c {
-    private C_g a;
+    private World a;
     private C_d b = new C_d();
     private Map<Integer, C_a> c = new HashMap<Integer, C_a>();
     private C_a[] d = new C_a[32];
 
-    public C_c(C_g c_g) {
+    public C_c(World c_g) {
         this.a = c_g;
     }
 
@@ -160,7 +160,7 @@ public final class C_c {
                 for (int k = n3; k < n3 + c_a.c; ++k) {
                     if (k >= 0 && k < this.a.b) {
                         net.minecraft.a.a.d.C_c c_c = this.a.f(n, n2, n3);
-                        C_x c_x = C_x.c[this.a.a(n, n2, n3)];
+                        Block c_x = Block.c[this.a.a(n, n2, n3)];
                         if (c_c.c() && !(c_x instanceof C_bs) && !(c_x instanceof C_am) && !(c_x instanceof C_bq)) {
                             return 0;
                         }

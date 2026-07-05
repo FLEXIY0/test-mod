@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.a.c;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.client.a.c.C_b;
 
 public final class C_e
@@ -12,7 +12,7 @@ extends C_b {
     private float[] f = new float[320];
 
     public C_e() {
-        super(C_x.ag.as);
+        super(Block.ag.as);
     }
 
     @Override

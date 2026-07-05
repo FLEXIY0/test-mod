@@ -9,7 +9,7 @@ public class C_h extends C_a {
    private float rotation;
    private byte type;
 
-   public C_h(net.minecraft.a.a.C_g var1) {
+   public C_h(net.minecraft.a.a.World var1) {
       super(var1);
       if (var1.getRaining() && var1.season.currentSeason == 3) {
          this.type = 1;
@@ -30,7 +30,7 @@ public class C_h extends C_a {
       this.a(0.7F, 0.4F);
    }
 
-   public C_h(net.minecraft.a.a.C_g var1, float var2, float var3, float var4) {
+   public C_h(net.minecraft.a.a.World var1, float var2, float var3, float var4) {
       super(var1);
       if (var1.getRaining() && var1.season.currentSeason == 3) {
          this.type = 1;

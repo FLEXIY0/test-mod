@@ -4,7 +4,7 @@
 package net.minecraft.a.b;
 
 import net.minecraft.a.a.b.C_at;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_d;
 
 public class C_w
@@ -22,12 +22,12 @@ extends C_d {
 
     @Override
     public String getItemName(int n) {
-        return C_x.stoneBricks.getBlockName(n);
+        return Block.stoneBricks.getBlockName(n);
     }
 
     @Override
     public int getIconFromDamage(int n) {
-        return C_x.stoneBricks.a(2, C_at.getCoralColor(n));
+        return Block.stoneBricks.a(2, C_at.getCoralColor(n));
     }
 
     @Override

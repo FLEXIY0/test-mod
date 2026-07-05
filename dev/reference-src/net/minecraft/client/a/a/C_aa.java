@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.c.C_g;
 import net.minecraft.a.d.C_a;
@@ -70,15 +70,15 @@ extends C_f {
         GL11.glRotatef((float)90.0f, (float)0.0f, (float)1.0f, (float)0.0f);
         switch (c_g.minecartType) {
             case 1: {
-                new net.minecraft.client.a.C_f().renderBlockOnInventory(C_x.aj, 0);
+                new net.minecraft.client.a.C_f().renderBlockOnInventory(Block.aj, 0);
                 break;
             }
             case 2: {
-                new net.minecraft.client.a.C_f().renderBlockOnInventory(C_x.aq, 0);
+                new net.minecraft.client.a.C_f().renderBlockOnInventory(Block.aq, 0);
                 break;
             }
             case 3: {
-                new net.minecraft.client.a.C_f().renderBlockOnInventory(C_x.ab, 0);
+                new net.minecraft.client.a.C_f().renderBlockOnInventory(Block.ab, 0);
             }
         }
         GL11.glScalef((float)(1.0f / f6), (float)(1.0f / f6), (float)(1.0f / f6));

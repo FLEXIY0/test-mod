@@ -6,7 +6,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.potion.PotionManager;
 
@@ -23,7 +23,7 @@ public class ItemPotion extends Item {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, C_g world, EntityPlayer player) {
+    public ItemStack a(ItemStack itemStack, World world, EntityPlayer player) {
         PotionManager.drink(player, itemStack.d);
         if (player.gamemode != 1) --itemStack.a;
         return itemStack;

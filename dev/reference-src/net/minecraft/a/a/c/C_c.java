@@ -4,7 +4,7 @@
 package net.minecraft.a.a.c;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.c.C_b;
 import util.MathHelper;
 
@@ -12,7 +12,7 @@ public class C_c
 extends C_b {
     static final byte[] otherCoordPairs = new byte[]{2, 0, 0, 1, 2, 1};
     Random rand = new Random();
-    C_g worldObj;
+    World worldObj;
     int[] basePos = new int[]{0, 0, 0};
     int heightLimit = 0;
     int height;
@@ -272,7 +272,7 @@ extends C_b {
     }
 
     @Override
-    public boolean generate(C_g c_g, Random random, int n, int n2, int n3) {
+    public boolean generate(World c_g, Random random, int n, int n2, int n3) {
         this.worldObj = c_g;
         long l = random.nextLong();
         this.rand.setSeed(l);

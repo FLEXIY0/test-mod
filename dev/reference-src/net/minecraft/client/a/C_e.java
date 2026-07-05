@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_bm;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -179,7 +179,7 @@ public final class C_e {
       if (var1 != 0.0F) {
          this.l.setSeed((long)this.e * 312987231L);
          net.minecraft.a.c.C_e var2 = this.b.cameraMob;
-         net.minecraft.a.a.C_g var3 = this.b.d;
+         net.minecraft.a.a.World var3 = this.b.d;
          int var4 = MathHelper.a((double)var2.h);
          int var5 = MathHelper.a((double)var2.i);
          int var6 = MathHelper.a((double)var2.j);
@@ -198,16 +198,16 @@ public final class C_e {
                float var20 = this.l.nextFloat();
                float var21 = this.l.nextFloat();
                if (var19 > 0) {
-                  if (C_x.c[var19].getMaterial(0) == net.minecraft.a.a.d.C_c.g) {
-                     this.b.g.a(new net.minecraft.client.f.C_j(var3, (float)var16 + var20, (float)var18 + 0.1F - C_x.c[var19].av, (float)var17 + var21));
+                  if (Block.c[var19].getMaterial(0) == net.minecraft.a.a.d.C_c.g) {
+                     this.b.g.a(new net.minecraft.client.f.C_j(var3, (float)var16 + var20, (float)var18 + 0.1F - Block.c[var19].av, (float)var17 + var21));
                   } else {
                      if (this.l.nextInt(++var14) == 0) {
                         var8 = (double)((float)var16 + var20);
-                        var10 = (double)((float)var18 + 0.1F) - (double)C_x.c[var19].av;
+                        var10 = (double)((float)var18 + 0.1F) - (double)Block.c[var19].av;
                         var12 = (double)((float)var17 + var21);
                      }
 
-                     this.b.g.a(new net.minecraft.client.f.C_i(var3, (float)var16 + var20, (float)var18 + 0.1F - C_x.c[var19].av, (float)var17 + var21));
+                     this.b.g.a(new net.minecraft.client.f.C_i(var3, (float)var16 + var20, (float)var18 + 0.1F - Block.c[var19].av, (float)var17 + var21));
                   }
                }
             }
@@ -227,7 +227,7 @@ public final class C_e {
    private void playWindSound() {
       this.l.setSeed((long)this.e * 312987231L);
       net.minecraft.a.c.C_e var1 = this.b.cameraMob;
-      net.minecraft.a.a.C_g var2 = this.b.d;
+      net.minecraft.a.a.World var2 = this.b.d;
       if (this.l.nextInt(250) < this.windSoundCounter++ && var2.season.currentSeason == 2 && var2.getWindForce() >= 0.2F && var2.type != 5 && var2.type != 8) {
          this.windSoundCounter = 0;
          double var3 = (double)MathHelper.a((double)var1.h);
@@ -248,7 +248,7 @@ public final class C_e {
 
    public void playRandomAmbience() {
       this.l.setSeed((long)this.e * 312987231L);
-      net.minecraft.a.a.C_g var1 = this.b.d;
+      net.minecraft.a.a.World var1 = this.b.d;
       if (var1.season.seasonProgress >= 0.3F && var1.season.seasonProgress <= 0.7F && var1.season.currentSeason < 2) {
          String var2 = null;
          this.b.x.a.setVolume("ambience", this.soundVolume * this.b.w.ambienceVol * this.b.w.masterVol);
@@ -312,7 +312,7 @@ public final class C_e {
       float var2 = this.b.d.getRainStatus(var1);
       if (var2 > 0.0F) {
          net.minecraft.a.c.C_e var3 = this.b.cameraMob;
-         net.minecraft.a.a.C_g var4 = this.b.d;
+         net.minecraft.a.a.World var4 = this.b.d;
          int var5 = MathHelper.a((double)var3.h);
          int var6 = MathHelper.a((double)var3.i);
          int var7 = MathHelper.a((double)var3.j);
@@ -490,7 +490,7 @@ public final class C_e {
                }
 
                net.minecraft.client.g.C_a var17 = this.b.f;
-               net.minecraft.a.a.C_g var18 = this.b.d;
+               net.minecraft.a.a.World var18 = this.b.d;
                C_b var19 = this.b.e;
                GL11.glViewport(0, 0, this.b.b, this.b.c);
                this.f(0.0F);
@@ -640,7 +640,7 @@ public final class C_e {
       }
 
       net.minecraft.client.g.C_a var52 = this.b.f;
-      net.minecraft.a.a.C_g var53 = this.b.d;
+      net.minecraft.a.a.World var53 = this.b.d;
       C_b var54 = this.b.e;
       net.minecraft.client.f.C_d var22 = this.b.g;
       GL11.glViewport(0, 0, this.b.b, this.b.c);
@@ -788,7 +788,7 @@ public final class C_e {
                for (int var75 = var71 - 1; var75 <= var71 + 1; var75++) {
                   int var37;
                   if ((var37 = var53.a(var74, var35, var75)) > 0) {
-                     var73.a(C_x.c[var37], var74, var35, var75);
+                     var73.a(Block.c[var37], var74, var35, var75);
                   }
                }
             }
@@ -907,7 +907,7 @@ public final class C_e {
    }
 
    private void f(float var1) {
-      net.minecraft.a.a.C_g var2 = this.b.d;
+      net.minecraft.a.a.World var2 = this.b.d;
       net.minecraft.client.g.C_a var3 = this.b.f;
       float var4 = 0.25F;
       var4 = 1.0F - (float)Math.pow((double)var4, 0.25);
@@ -966,8 +966,8 @@ public final class C_e {
          }
       }
 
-      C_x var20;
-      if ((var20 = C_x.c[var2.a((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j)]) != null
+      Block var20;
+      if ((var20 = Block.c[var2.a((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j)]) != null
          && var20.getMaterial(var2.e((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j)) != net.minecraft.a.a.d.C_c.a) {
          net.minecraft.a.a.d.C_c var22;
          if ((var22 = var20.getMaterial(var2.e((int)var3.h, (int)(var3.i + 0.12F), (int)var3.j))) == net.minecraft.a.a.d.C_c.f) {
@@ -995,7 +995,7 @@ public final class C_e {
    }
 
    private void d() {
-      net.minecraft.a.a.C_g var1 = this.b.d;
+      net.minecraft.a.a.World var1 = this.b.d;
       net.minecraft.client.g.C_a var2 = this.b.f;
       float var3 = this.r;
       float var4 = this.q;
@@ -1006,8 +1006,8 @@ public final class C_e {
       GL11.glFog(2918, this.o);
       GL11.glNormal3f(0.0F, -1.0F, 0.0F);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-      C_x var6;
-      if ((var6 = C_x.c[var1.a((int)var2.h, (int)(var2.i + 0.12F), (int)var2.j)]) != null
+      Block var6;
+      if ((var6 = Block.c[var1.a((int)var2.h, (int)(var2.i + 0.12F), (int)var2.j)]) != null
          && var6.getMaterial(var1.e((int)var2.h, (int)(var2.i + 0.12F), (int)var2.j)).d()
          && !var2.canBreatheUnderwater()) {
          net.minecraft.a.a.d.C_c var7 = var6.getMaterial(var1.e((int)var2.h, (int)(var2.i + 0.12F), (int)var2.j));

@@ -3,31 +3,31 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.f.C_k;
 
 public class C_y
 extends C_k {
-    public C_y(C_g c_g, float f, float f2, float f3, Item item) {
+    public C_y(World c_g, float f, float f2, float f3, Item item) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.P = item.getIconFromDamage(0);
         this.Y = 1.0f;
         this.X = 1.0f;
         this.W = 1.0f;
-        this.V = C_x.snowBlock.aB;
+        this.V = Block.snowBlock.aB;
         this.U /= 2.0f;
     }
 
-    public C_y(C_g c_g, float f, float f2, float f3, int n) {
+    public C_y(World c_g, float f, float f2, float f3, int n) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.P = n;
         this.Y = 1.0f;
         this.X = 1.0f;
         this.W = 1.0f;
-        this.V = C_x.snowBlock.aB;
+        this.V = Block.snowBlock.aB;
         this.U /= 2.0f;
     }
 

@@ -8,7 +8,7 @@
  */
 package net.minecraft.client.c.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.C_b;
@@ -289,11 +289,11 @@ extends C_j {
         GL11.glPushMatrix();
         GL11.glEnable((int)2977);
         GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-        k.a(this.b.m, new ItemStack(C_x.j), n2 - 17, n3 + 20);
-        k.a(this.b.m, new ItemStack(C_x.aj), n2 - 17, n3 + 133 - 1);
-        k.a(this.b.m, new ItemStack(C_x.i), n2 - 17, n3 + 133 + 27);
+        k.a(this.b.m, new ItemStack(Block.j), n2 - 17, n3 + 20);
+        k.a(this.b.m, new ItemStack(Block.aj), n2 - 17, n3 + 133 - 1);
+        k.a(this.b.m, new ItemStack(Block.i), n2 - 17, n3 + 133 + 27);
         C_c.a();
-        k.a(this.b.m, new ItemStack(C_x.n), n2 - 17, n3 + 32 + 15);
+        k.a(this.b.m, new ItemStack(Block.n), n2 - 17, n3 + 32 + 15);
         k.a(this.b.m, new ItemStack(Item.i), n2 - 17, n3 + 48 + 36 - 8);
         k.a(this.b.m, new ItemStack(Item.d), n2 - 17, n3 + 64 + 54 - 15);
         GL11.glDisable((int)2977);

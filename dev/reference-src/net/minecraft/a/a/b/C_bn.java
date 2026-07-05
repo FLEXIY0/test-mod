@@ -3,20 +3,20 @@
  */
 package net.minecraft.a.a.b;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
 public class C_bn
-extends C_x {
+extends Block {
     protected C_bn(int n, int n2, C_c c_c) {
         super(n, n2, c_c);
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
-        if (c_g.a((float)n, (float)(n2 - 1), (float)n3) || c_g.a((float)n, (float)(n2 + 1), (float)n3) || c_g.a(n, n2 - 1, n3) == C_x.j.at) {
+    public boolean a(World c_g, int n, int n2, int n3) {
+        if (c_g.a((float)n, (float)(n2 - 1), (float)n3) || c_g.a((float)n, (float)(n2 + 1), (float)n3) || c_g.a(n, n2 - 1, n3) == Block.j.at) {
             return true;
         }
         if (c_g.a(n, n2 - 1, n3) == this.at && c_g.e(n, n2, n3) < 3) {
@@ -26,7 +26,7 @@ extends C_x {
     }
 
     @Override
-    public boolean canBlockStay(C_g c_g, int n, int n2, int n3) {
+    public boolean canBlockStay(World c_g, int n, int n2, int n3) {
         if (c_g.a((float)n, (float)(n2 - 1), (float)n3) || c_g.a((float)n, (float)(n2 + 1), (float)n3)) {
             return true;
         }
@@ -37,7 +37,7 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         if (!this.canBlockStay(c_g, n, n2, n3)) {
             this.f(c_g, n, n2, n3, c_g.e(n, n2, n3));
             c_g.b(n, n2, n3, 0);
@@ -57,7 +57,7 @@ extends C_x {
     }
 
     @Override
-    public final void d(C_g c_g, int n, int n2, int n3) {
+    public final void d(World c_g, int n, int n2, int n3) {
         if (c_g.a(n, n2 + 1, n3) != this.at && (c_g.a(n, n2 - 1, n3) == this.at || c_g.a((float)n, (float)(n2 - 1), (float)n3))) {
             c_g.setBlockMetadata(n, n2, n3, 2);
         } else if (c_g.a(n, n2 - 1, n3) != this.at && (c_g.a(n, n2 + 1, n3) == this.at || c_g.a((float)n, (float)(n2 + 1), (float)n3))) {
@@ -90,19 +90,19 @@ extends C_x {
     }
 
     @Override
-    public C_b getSelectedBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getSelectedBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         this.setBlockBoundsBasedOnState(c_g, n, n2, n3);
         return super.getSelectedBoundingBoxFromPool(c_g, n, n2, n3);
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         this.setBlockBoundsBasedOnState(c_g, n, n2, n3);
         return super.getCollisionBoundingBoxFromPool(c_g, n, n2, n3);
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         this.setSpikeSize(c_g.e(n, n2, n3));
     }
 

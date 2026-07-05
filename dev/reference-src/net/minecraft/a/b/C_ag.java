@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_ba;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -22,7 +22,7 @@ extends Item {
     }
 
     @Override
-    public final ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public final ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         Item[] itemArray = new Item[]{Item.dart, Item.dartPoison};
         boolean bl = false;
         int n = 0;
@@ -54,7 +54,7 @@ extends Item {
         return itemStack;
     }
 
-    private void useBow(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer, int n) {
+    private void useBow(ItemStack itemStack, World c_g, EntityPlayer entityPlayer, int n) {
         c_g.a(entityPlayer, "random.throw", 1.0f, 1.0f / (a.nextFloat() * 0.4f + 0.8f));
         if (!c_g.multiplayerWorld) {
             c_g.spawnEntityInWorld(new C_b(c_g, entityPlayer, n));

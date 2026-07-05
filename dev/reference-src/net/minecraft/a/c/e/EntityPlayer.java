@@ -11,7 +11,7 @@ import java.util.List;
 import net.minecraft.a.C_c;
 import net.minecraft.a.C_j;
 import net.minecraft.a.C_m;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_l;
 import net.minecraft.a.b.C_aa;
 import net.minecraft.a.b.C_q;
@@ -62,7 +62,7 @@ extends C_e {
     public int itemInUseCount;
     public ItemStack itemInUse;
 
-    public EntityPlayer(net.minecraft.a.a.C_g c_g) {
+    public EntityPlayer(net.minecraft.a.a.World c_g) {
         super(c_g);
         if (c_g != null) {
             this.inventorySlots = new C_j(this.b, !c_g.multiplayerWorld);
@@ -214,7 +214,7 @@ extends C_e {
             this.resetEffects();
         }
         if (itemStack != null && itemStack.c == Item.aquaCharm.ap && !this.isInWater() && this.isSneaking == 2 && this.d.g((int)this.h, (int)this.i - 1, (int)this.j)) {
-            this.d.a((int)this.h, (int)this.i - 1, (int)this.j, C_x.ice.at);
+            this.d.a((int)this.h, (int)this.i - 1, (int)this.j, Block.ice.at);
             itemStack.damageItem2(1, this.d);
             this.addStat(StatList.objectUseStats[itemStack.c], 1);
         }
@@ -447,9 +447,9 @@ extends C_e {
         }
     }
 
-    public final boolean canHarvestBlock(C_x c_x, byte by) {
+    public final boolean canHarvestBlock(Block c_x, byte by) {
         ItemStack itemStack;
-        C_x c_x2 = c_x;
+        Block c_x2 = c_x;
         C_b c_b = this.b;
         return c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.d && c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.magma && c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.e && c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.vacuum && c_x2.getMaterial(by) != net.minecraft.a.a.d.C_c.pulley ? true : ((itemStack = c_b.a(c_b.c)) != null ? Item.b[itemStack.c].canHarvestBlock(c_x2, by) : false);
     }
@@ -749,7 +749,7 @@ extends C_e {
         return 0.0f;
     }
 
-    public void damageItem(int n, ItemStack itemStack, net.minecraft.a.a.C_g c_g) {
+    public void damageItem(int n, ItemStack itemStack, net.minecraft.a.a.World c_g) {
         if (this.gamemode == 1) {
             return;
         }

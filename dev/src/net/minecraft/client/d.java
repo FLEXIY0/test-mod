@@ -13,7 +13,7 @@ import java.nio.IntBuffer;
 import javax.swing.JOptionPane;
 import net.minecraft.a.a.LevelOptions;
 import net.minecraft.a.a.b.C_aa;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_bm;
 import net.minecraft.a.b.C_t;
 import net.minecraft.a.b.Item;
@@ -59,7 +59,7 @@ public final class d implements Runnable {
    public int b;
    public int c;
    public C_g G = new C_g(20.0F);
-   public net.minecraft.a.a.C_g d;
+   public net.minecraft.a.a.World d;
    public net.minecraft.client.a.C_b e;
    public CharacterLoader characters;
    public net.minecraft.client.g.C_a f;
@@ -578,7 +578,7 @@ public final class d implements Runnable {
 
          int var6 = this.d.a(var2, var3, var4);
          if (var1 == 1) {
-            if (this.f.isSneaking == 0 && C_x.c[var6] != null) {
+            if (this.f.isSneaking == 0 && Block.c[var6] != null) {
                if (this.d.multiplayerWorld && this.v != null) {
                   if (this.a.sendPlaceBlock(this.f, this.d, this.f.b.d(), var2, var3, var4, this.v.e)
                      && this.v.a == 0
@@ -586,7 +586,7 @@ public final class d implements Runnable {
                      this.f.swingItem();
                      return;
                   }
-               } else if (C_x.c[var6].a(this.d, var2, var3, var4, this.f) && this.v.a == 0 && (var6 = this.d.a(var2, var3, var4)) > 0) {
+               } else if (Block.c[var6].a(this.d, var2, var3, var4, this.f) && this.v.a == 0 && (var6 = this.d.a(var2, var3, var4)) > 0) {
                   this.f.swingItem();
                   return;
                }
@@ -608,7 +608,7 @@ public final class d implements Runnable {
             }
 
             ItemStack var7 = this.f.b.d();
-            if (var7 != null && (var6 == 0 || var6 > 0 && var6 != C_x.doorOak.at)) {
+            if (var7 != null && (var6 == 0 || var6 > 0 && var6 != Block.doorOak.at)) {
                var3 = var7.a;
                if (this.a.sendUseItem(this.f, this.d, var7) || var7 != null && var7.a != var3) {
                   this.q.a.d();
@@ -649,7 +649,7 @@ public final class d implements Runnable {
                return;
             }
          } else if (this.v.a == 0) {
-            C_x var8 = C_x.c[this.d.a(var2, var3, var4)];
+            Block var8 = Block.c[this.d.a(var2, var3, var4)];
             if (var1 != 0) {
                ItemStack var16 = this.f.b.d();
                var2 = this.v.b;
@@ -674,7 +674,7 @@ public final class d implements Runnable {
                if (var16.a != var6) {
                   this.q.a.d();
                }
-            } else if (var8 != C_x.o && this.a instanceof net.minecraft.client.dx.C_b
+            } else if (var8 != Block.o && this.a instanceof net.minecraft.client.dx.C_b
                || this.a instanceof net.minecraft.client.dx.C_c
                || this.a instanceof net.minecraft.client.dx.C_d) {
                if (!this.d.containsFire(var2, var3, var4, this.v.e)) {
@@ -751,8 +751,8 @@ public final class d implements Runnable {
          this.x.a.setVolume("streaming", this.w.streamingVol * this.w.masterVol);
          float var2 = 12.0F;
          net.minecraft.client.g.C_a var3 = this.f;
-         int var4 = this.d.countBlocks(var3.r.b(var2 + 2.0F, var2 + 2.0F, var2 + 2.0F), C_x.p.at);
-         var4 += this.d.countBlocks(var3.r.b(var2 + 2.0F, var2 + 2.0F, var2 + 2.0F), C_x.q.at);
+         int var4 = this.d.countBlocks(var3.r.b(var2 + 2.0F, var2 + 2.0F, var2 + 2.0F), Block.p.at);
+         var4 += this.d.countBlocks(var3.r.b(var2 + 2.0F, var2 + 2.0F, var2 + 2.0F), Block.q.at);
          double var5 = (double)MathHelper.a((double)var3.h);
          double var7 = (double)MathHelper.a((double)var3.i);
          double var9 = (double)MathHelper.a((double)var3.j);
@@ -994,115 +994,115 @@ public final class d implements Runnable {
                      if (this.v.a == 0) {
                         int var16 = this.d.a(this.v.b, this.v.c, this.v.d);
                         int var21 = 0;
-                        C_x var27 = C_x.c[var16];
+                        Block var27 = Block.c[var16];
                         boolean var30 = this.a instanceof net.minecraft.client.dx.C_c;
-                        net.minecraft.a.a.b.a.C_a var6 = null;
+                        net.minecraft.a.a.b.a.TileEntity var6 = null;
                         if (var30 && Keyboard.isKeyDown(29) && var27 instanceof BlockContainer) {
                            var6 = this.d.j(this.v.b, this.v.c, this.v.d);
                         }
 
-                        if (var16 == C_x.Y.at) {
-                           var16 = C_x.Z.at;
+                        if (var16 == Block.Y.at) {
+                           var16 = Block.Z.at;
                         }
 
-                        if (var16 == C_x.stairUpsideDown.at) {
-                           var16 = C_x.Z.at;
+                        if (var16 == Block.stairUpsideDown.at) {
+                           var16 = Block.Z.at;
                         }
 
-                        if (var16 == C_x.stairDoubleWood.at) {
-                           var16 = C_x.stairSingleWood.at;
+                        if (var16 == Block.stairDoubleWood.at) {
+                           var16 = Block.stairSingleWood.at;
                         }
 
-                        if (var16 == C_x.stairUpsideDownWood.at) {
-                           var16 = C_x.stairSingleWood.at;
+                        if (var16 == Block.stairUpsideDownWood.at) {
+                           var16 = Block.stairSingleWood.at;
                         }
 
-                        if (var16 == C_x.reeds.at) {
+                        if (var16 == Block.reeds.at) {
                            var16 = Item.reed.ap;
                         }
 
-                        if (var16 == C_x.doorOak.at) {
+                        if (var16 == Block.doorOak.at) {
                            var16 = Item.doorOak.ap;
                         }
 
-                        if (var16 == C_x.doorPalm.at) {
+                        if (var16 == Block.doorPalm.at) {
                            var16 = Item.doorPalm.ap;
                         }
 
-                        if (var16 == C_x.doorSpruce.at) {
+                        if (var16 == Block.doorSpruce.at) {
                            var16 = Item.doorSpruce.ap;
                         }
 
-                        if (var16 == C_x.doorBirch.at) {
+                        if (var16 == Block.doorBirch.at) {
                            var16 = Item.doorBirch.ap;
                         }
 
-                        if (var16 == C_x.doorSteel.at) {
+                        if (var16 == Block.doorSteel.at) {
                            var16 = Item.doorSteel.ap;
                         }
 
-                        if (var16 == C_x.flowerPot.at) {
+                        if (var16 == Block.flowerPot.at) {
                            var16 = Item.flowerPot.ap;
                         }
 
-                        if (var16 == C_x.bed.at) {
+                        if (var16 == Block.bed.at) {
                            var16 = Item.bed.ap;
                         }
 
-                        if (var16 == C_x.cake.at) {
+                        if (var16 == Block.cake.at) {
                            var16 = Item.cake.ap;
                         }
 
-                        if (var16 == C_x.signStanding.at || var16 == C_x.signWall.at || var16 == C_x.signHanging.at) {
+                        if (var16 == Block.signStanding.at || var16 == Block.signWall.at || var16 == Block.signHanging.at) {
                            var16 = Item.sign.ap;
                         }
 
-                        if (var16 == C_x.signBirchStanding.at || var16 == C_x.signBirchWall.at || var16 == C_x.signBirchHanging.at) {
+                        if (var16 == Block.signBirchStanding.at || var16 == Block.signBirchWall.at || var16 == Block.signBirchHanging.at) {
                            var16 = Item.signBirch.ap;
                         }
 
-                        if (var16 == C_x.signPalmStanding.at || var16 == C_x.signPalmWall.at || var16 == C_x.signPalmHanging.at) {
+                        if (var16 == Block.signPalmStanding.at || var16 == Block.signPalmWall.at || var16 == Block.signPalmHanging.at) {
                            var16 = Item.signPalm.ap;
                         }
 
-                        if (var16 == C_x.signDarkStanding.at || var16 == C_x.signDarkWall.at || var16 == C_x.signDarkHanging.at) {
+                        if (var16 == Block.signDarkStanding.at || var16 == Block.signDarkWall.at || var16 == Block.signDarkHanging.at) {
                            var16 = Item.signDark.ap;
                         }
 
-                        if (var16 == C_x.ao.at) {
+                        if (var16 == Block.ao.at) {
                            var16 = Item.O.ap;
                         }
 
-                        if (var16 == C_x.melonStem.at) {
+                        if (var16 == Block.melonStem.at) {
                            var16 = Item.seedsMelon.ap;
                         }
 
-                        if (var16 == C_x.pumpkinStem.at) {
+                        if (var16 == Block.pumpkinStem.at) {
                            var16 = Item.seedsPumpkin.ap;
                         }
 
-                        if (var16 == C_x.ar.at) {
-                           var16 = C_x.aq.at;
+                        if (var16 == Block.ar.at) {
+                           var16 = Block.aq.at;
                         }
 
-                        if (var16 == C_x.generatorActive.at) {
-                           var16 = C_x.generator.at;
+                        if (var16 == Block.generatorActive.at) {
+                           var16 = Block.generator.at;
                         }
 
-                        if (var16 == C_x.pulleyExtension.at) {
-                           var16 = C_x.pulleyBase.at;
+                        if (var16 == Block.pulleyExtension.at) {
+                           var16 = Block.pulleyBase.at;
                         }
 
-                        if (var16 == C_x.pulleyBaseActive.at) {
-                           var16 = C_x.pulleyBase.at;
+                        if (var16 == Block.pulleyBaseActive.at) {
+                           var16 = Block.pulleyBase.at;
                         }
 
-                        if (var16 == C_x.pulleyStickyBaseActive.at) {
-                           var16 = C_x.pulleyStickyBase.at;
+                        if (var16 == Block.pulleyStickyBaseActive.at) {
+                           var16 = Block.pulleyStickyBase.at;
                         }
 
-                        if (var16 == C_x.adminiumLampLit.at) {
-                           var16 = C_x.adminiumLamp.at;
+                        if (var16 == Block.adminiumLampLit.at) {
+                           var16 = Block.adminiumLamp.at;
                         }
 
                         if (var27 instanceof C_aa) {
@@ -1352,7 +1352,7 @@ public final class d implements Runnable {
       System.gc();
       String var3 = this.h != null ? this.h.b : "anonymous";
       var1.cheats = this.characters.currentCharacter.k("Cheats");
-      net.minecraft.a.a.C_g var4 = var1.generate(this.p, var3);
+      net.minecraft.a.a.World var4 = var1.generate(this.p, var3);
       var4.f = var2;
       var4.fileName = var2 + ".mclevel";
       var4.parentName = var2;
@@ -1376,7 +1376,7 @@ public final class d implements Runnable {
       System.gc();
       String var4 = this.h != null ? this.h.b : "anonymous";
       var1.cheats = this.characters.currentCharacter.k("Cheats");
-      net.minecraft.a.a.C_g var5 = var1.generate(this.p, var4);
+      net.minecraft.a.a.World var5 = var1.generate(this.p, var4);
       var5.f = var2;
       var5.fileName = var2;
       var5.gamemode = this.characters.currentCharacter.c("Gamemode");
@@ -1432,7 +1432,7 @@ public final class d implements Runnable {
    public final void loadLevel(String var1) {
       try {
          File var2 = new File(this.z, "saves/" + var1);
-         net.minecraft.a.a.C_g var3 = this.levelIo.a(new FileInputStream(var2));
+         net.minecraft.a.a.World var3 = this.levelIo.a(new FileInputStream(var2));
          var3.fileName = var1;
          var3.active = false;
          if (var3.parentName.isEmpty()) {
@@ -1454,7 +1454,7 @@ public final class d implements Runnable {
             return;
          }
 
-         net.minecraft.a.a.C_g var5 = this.levelIo.a(new FileInputStream(var4));
+         net.minecraft.a.a.World var5 = this.levelIo.a(new FileInputStream(var4));
          var5.fileName = var1;
          var5.active = false;
          if (var5.parentName.isEmpty()) {
@@ -1481,11 +1481,11 @@ public final class d implements Runnable {
       var7.delete();
    }
 
-   public final void a(net.minecraft.a.a.C_g var1) {
+   public final void a(net.minecraft.a.a.World var1) {
       this.setLevel(var1, 0, false);
    }
 
-   public final void setLevel(net.minecraft.a.a.C_g var1, int var2, boolean var3) {
+   public final void setLevel(net.minecraft.a.a.World var1, int var2, boolean var3) {
       this.saveLevel();
       this.saveCharacter();
       this.statFileWriter.syncStats();
@@ -1554,7 +1554,7 @@ public final class d implements Runnable {
          this.O.d = 0;
          this.P.d = 0;
          int var4 = this.m.a("/water.png");
-         if (var1.m == C_x.p.at) {
+         if (var1.m == Block.p.at) {
             this.O.d = var4;
          } else {
             this.P.d = var4;
@@ -1568,7 +1568,7 @@ public final class d implements Runnable {
 
    public void respawn() {
       if (this.isMultiplayerWorld()) {
-         net.minecraft.a.a.C_g var10 = this.d;
+         net.minecraft.a.a.World var10 = this.d;
          this.a((GuiScreen)null);
          int var11 = this.f.entityId;
          this.f = null;
@@ -1678,11 +1678,11 @@ public final class d implements Runnable {
       return this.f instanceof net.minecraft.client.g.C_d ? ((net.minecraft.client.g.C_d)this.f).sendQueue : null;
    }
 
-   public net.minecraft.a.a.C_g updateBorderTexture(net.minecraft.a.a.C_g var1) {
+   public net.minecraft.a.a.World updateBorderTexture(net.minecraft.a.a.World var1) {
       this.O.d = 0;
       this.P.d = 0;
       int var2 = this.m.a("/water.png");
-      if (var1.m == C_x.p.at) {
+      if (var1.m == Block.p.at) {
          this.O.d = var2;
       } else {
          this.P.d = var2;

@@ -4,9 +4,9 @@
 package net.minecraft.game.level.block.container;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_l;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
@@ -17,12 +17,12 @@ import net.minecraft.game.level.block.container.BlockContainer;
 
 public class BlockSign
 extends BlockContainer {
-    private Class<? extends C_a> signEntityClass;
+    private Class<? extends TileEntity> signEntityClass;
     private int itemDropID;
     private int type;
     private int[] colorTable = new int[]{0xAA0000, 0xFFAA00, 0xFFFF55, 0x55FF55, 2752298, 4063131, 0x55FFFF, 5615103, 0x5555FF, 0x88008B, 0xAA00AA, 0xFF55FF, 15940202, 4209214, 9342610, 0xFFFFFF};
 
-    public BlockSign(int n, Class<? extends C_a> clazz, int n2, int n3, int n4) {
+    public BlockSign(int n, Class<? extends TileEntity> clazz, int n2, int n3, int n4) {
         super(n, C_c.c);
         this.type = n3;
         this.as = n4;
@@ -34,18 +34,18 @@ extends BlockContainer {
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return null;
     }
 
     @Override
-    public C_b getSelectedBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getSelectedBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         this.setBlockBoundsBasedOnState(c_g, n, n2, n3);
         return super.getSelectedBoundingBoxFromPool(c_g, n, n2, n3);
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         if (this.type == 1) {
             byte by = c_g.e(n, n2, n3);
             float f = 0.28125f;
@@ -85,7 +85,7 @@ extends BlockContainer {
     }
 
     @Override
-    public C_a getBlockEntity() {
+    public TileEntity getBlockEntity() {
         try {
             return this.signEntityClass.newInstance();
         }
@@ -95,7 +95,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (c_g.multiplayerWorld) {
             return false;
         }
@@ -126,8 +126,8 @@ extends BlockContainer {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
-        return c_g.a(n, n2, n3) == 0 && (c_g.a(n, n2 - 1, n3) == C_x.fence.at || c_g.a(n, n2 + 1, n3) == C_x.fence.at || c_g.a(n, n2 - 1, n3) == C_x.wall.at || c_g.a(n, n2 + 1, n3) == C_x.wall.at || c_g.a((float)n, (float)(n2 - 1), (float)n3) || c_g.a((float)n, (float)(n2 + 1), (float)n3) || c_g.a((float)(n - 1), (float)n2, (float)n3) || c_g.a((float)(n + 1), (float)n2, (float)n3) || c_g.a((float)n, (float)n2, (float)(n3 - 1)) || c_g.a((float)n, (float)n2, (float)(n3 + 1)));
+    public boolean a(World c_g, int n, int n2, int n3) {
+        return c_g.a(n, n2, n3) == 0 && (c_g.a(n, n2 - 1, n3) == Block.fence.at || c_g.a(n, n2 + 1, n3) == Block.fence.at || c_g.a(n, n2 - 1, n3) == Block.wall.at || c_g.a(n, n2 + 1, n3) == Block.wall.at || c_g.a((float)n, (float)(n2 - 1), (float)n3) || c_g.a((float)n, (float)(n2 + 1), (float)n3) || c_g.a((float)(n - 1), (float)n2, (float)n3) || c_g.a((float)(n + 1), (float)n2, (float)n3) || c_g.a((float)n, (float)n2, (float)(n3 - 1)) || c_g.a((float)n, (float)n2, (float)(n3 + 1)));
     }
 
     @Override
@@ -136,7 +136,7 @@ extends BlockContainer {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         boolean bl = false;
         if (this.type == 0) {
             if (!c_g.f(n, n2 - 1, n3).a()) {

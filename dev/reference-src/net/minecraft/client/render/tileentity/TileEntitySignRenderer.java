@@ -6,8 +6,8 @@
  */
 package net.minecraft.client.render.tileentity;
 
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_l;
 import net.minecraft.client.b.C_ae;
 import net.minecraft.client.c.FontRenderer;
@@ -21,10 +21,10 @@ extends TileEntitySpecialRenderer {
     public void renderTileEntitySignAt(C_l c_l, float f, float f2, float f3, float f4) {
         float f5;
         int n;
-        C_x c_x = c_l.getBlockType();
+        Block c_x = c_l.getBlockType();
         GL11.glPushMatrix();
         float f6 = 0.6666667f;
-        if (c_x == C_x.signStanding || c_x == C_x.signBirchStanding || c_x == C_x.signPalmStanding || c_x == C_x.signDarkStanding) {
+        if (c_x == Block.signStanding || c_x == Block.signBirchStanding || c_x == Block.signPalmStanding || c_x == Block.signDarkStanding) {
             GL11.glTranslatef((float)(f + 0.5f), (float)(f2 + 0.75f * f6), (float)(f3 + 0.5f));
             float f7 = (float)(c_l.getBlockMetadata() * 360) / 16.0f;
             GL11.glRotatef((float)(-f7), (float)0.0f, (float)1.0f, (float)0.0f);
@@ -32,14 +32,14 @@ extends TileEntitySpecialRenderer {
             this.modelSign.signLeg1.e = false;
             this.modelSign.signLeg2.e = false;
             this.modelSign.signPole.e = false;
-        } else if (c_x == C_x.signHanging || c_x == C_x.signBirchHanging || c_x == C_x.signPalmHanging || c_x == C_x.signDarkHanging) {
+        } else if (c_x == Block.signHanging || c_x == Block.signBirchHanging || c_x == Block.signPalmHanging || c_x == Block.signDarkHanging) {
             GL11.glTranslatef((float)(f + 0.5f), (float)(f2 + 0.75f * f6), (float)(f3 + 0.5f));
             float f8 = (float)(c_l.getBlockMetadata() * 360) / 16.0f;
             GL11.glRotatef((float)(-f8), (float)0.0f, (float)1.0f, (float)0.0f);
             GL11.glTranslatef((float)0.0f, (float)-0.5f, (float)0.0f);
             this.modelSign.signStick.e = false;
             n = c_l.a.a(c_l.b, c_l.c + 1, c_l.d);
-            if (n == C_x.fence.at || n == C_x.glassPane.at || n == C_x.wall.at) {
+            if (n == Block.fence.at || n == Block.glassPane.at || n == Block.wall.at) {
                 this.modelSign.signLeg1.e = false;
                 this.modelSign.signLeg2.e = false;
                 this.modelSign.signPole.e = true;
@@ -68,11 +68,11 @@ extends TileEntitySpecialRenderer {
             this.modelSign.signLeg2.e = false;
             this.modelSign.signPole.e = false;
         }
-        if (c_x == C_x.signBirchStanding || c_x == C_x.signBirchHanging || c_x == C_x.signBirchWall) {
+        if (c_x == Block.signBirchStanding || c_x == Block.signBirchHanging || c_x == Block.signBirchWall) {
             this.bindTextureByName("/item/sign_birch.png");
-        } else if (c_x == C_x.signPalmStanding || c_x == C_x.signPalmHanging || c_x == C_x.signPalmWall) {
+        } else if (c_x == Block.signPalmStanding || c_x == Block.signPalmHanging || c_x == Block.signPalmWall) {
             this.bindTextureByName("/item/sign_palm.png");
-        } else if (c_x == C_x.signDarkStanding || c_x == C_x.signDarkHanging || c_x == C_x.signDarkWall) {
+        } else if (c_x == Block.signDarkStanding || c_x == Block.signDarkHanging || c_x == Block.signDarkWall) {
             this.bindTextureByName("/item/sign_dark_oak.png");
         } else {
             this.bindTextureByName("/item/sign.png");
@@ -103,7 +103,7 @@ extends TileEntitySpecialRenderer {
     }
 
     @Override
-    public void renderTileEntityAt(C_a c_a, float f, float f2, float f3, float f4) {
+    public void renderTileEntityAt(TileEntity c_a, float f, float f2, float f3, float f4) {
         this.renderTileEntitySignAt((C_l)c_a, f, f2, f3, f4);
     }
 }

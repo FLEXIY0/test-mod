@@ -11,9 +11,9 @@ import com.a.a.NBTTagList;
 import java.io.File;
 import java.util.HashMap;
 import net.minecraft.a.C_m;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.LevelOptions;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_h;
 import net.minecraft.a.b.C_bm;
 import net.minecraft.a.b.Item;
@@ -51,7 +51,7 @@ extends EntityPlayer {
     public float prevTimeInPortal;
     private static HashMap<Integer, String> subtype = new C_e();
 
-    public C_a(d d2, C_g c_g, C_l c_l) {
+    public C_a(d d2, World c_g, C_l c_l) {
         super(c_g);
         this.an = d2;
         if (c_l != null) {
@@ -60,7 +60,7 @@ extends EntityPlayer {
         }
     }
 
-    public C_a(d d2, C_g c_g, C_l c_l, boolean bl, boolean bl2, String string, String string2, int n, int n2, int n3) {
+    public C_a(d d2, World c_g, C_l c_l, boolean bl, boolean bl2, String string, String string2, int n, int n2, int n3) {
         super(c_g);
         this.an = d2;
         this.cheats = bl;
@@ -547,7 +547,7 @@ extends EntityPlayer {
         }
     }
 
-    public boolean canHarvestBlock(C_x c_x) {
+    public boolean canHarvestBlock(Block c_x) {
         return this.canHarvestBlock(c_x, (byte)0);
     }
 

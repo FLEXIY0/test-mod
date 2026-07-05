@@ -7,7 +7,7 @@
 package net.minecraft.client.a.a;
 
 import net.minecraft.a.a.b.C_bq;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
 import net.minecraft.a.c.c.C_e;
@@ -49,7 +49,7 @@ extends C_f {
             GL11.glRotatef((float)(c_e.n + 180.0f), (float)0.0f, (float)0.0f, (float)1.0f);
             GL11.glTranslatef((float)1.0f, (float)0.0f, (float)0.0f);
         }
-        C_x c_x = C_x.m;
+        Block c_x = Block.m;
         float f = 0.0625f;
         float f2 = 0.75f;
         float f3 = f2 / 2.0f;
@@ -92,7 +92,7 @@ extends C_f {
             } else if (c_e.a == 5) {
                 GL11.glRotatef((float)(c_e.n + 180.0f), (float)1.0f, (float)0.0f, (float)0.0f);
             }
-            if (itemStack.a().ap >= 256 || !net.minecraft.client.a.C_f.renderItemIn3d(C_x.c[itemStack.getItemID()].a())) {
+            if (itemStack.a().ap >= 256 || !net.minecraft.client.a.C_f.renderItemIn3d(Block.c[itemStack.getItemID()].a())) {
                 if (c_e.n == 180.0f || c_e.n == 0.0f) {
                     GL11.glTranslatef((float)(0.223125f * (float)this.offsetZ[c_e.a]), (float)-0.18f, (float)(-0.453125f * (float)this.offsetZ[c_e.a]));
                 } else {
@@ -109,7 +109,7 @@ extends C_f {
                 GL11.glRotatef((float)(45 * c_e.getRotation()), (float)0.0f, (float)0.0f, (float)1.0f);
                 GL11.glTranslatef((float)-0.22f, (float)-0.22f, (float)0.0f);
             } else {
-                C_x c_x = C_x.c[itemStack.getItemID()];
+                Block c_x = Block.c[itemStack.getItemID()];
                 boolean bl = c_x instanceof BlockFence || c_x instanceof BlockTable || c_x instanceof BlockFenceGate || c_x instanceof BlockChair || c_x instanceof C_bq;
                 GL11.glTranslatef((float)(-0.453125f * (float)this.offsetX[c_e.a]), (float)0.0f, (float)(-0.453125f * (float)this.offsetZ[c_e.a]));
                 if (c_e.a == 4) {

@@ -20,7 +20,7 @@ extends C_c {
     private float waypointZ;
     public boolean tamed = false;
 
-    public C_g(net.minecraft.a.a.C_g c_g) {
+    public C_g(net.minecraft.a.a.World c_g) {
         super(c_g);
         this.V = this.type == 1 ? "/mob/salmon.png" : "/mob/cod.png";
         this.W = 5;
@@ -28,7 +28,7 @@ extends C_c {
         this.A = false;
     }
 
-    public C_g(net.minecraft.a.a.C_g c_g, int n) {
+    public C_g(net.minecraft.a.a.World c_g, int n) {
         super(c_g);
         this.type = n;
         this.V = this.type == 1 ? "/mob/salmon.png" : "/mob/cod.png";
@@ -37,7 +37,7 @@ extends C_c {
         this.A = false;
     }
 
-    public C_g(net.minecraft.a.a.C_g c_g, float f, float f2, float f3) {
+    public C_g(net.minecraft.a.a.World c_g, float f, float f2, float f3) {
         super(c_g);
         this.type = this.G.nextInt(2);
         this.V = this.type == 1 ? "/mob/salmon.png" : "/mob/cod.png";

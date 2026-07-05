@@ -4,19 +4,19 @@
 package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.b.C_a;
 
 public class C_c
 extends C_a {
-    public C_c(C_g c_g) {
+    public C_c(World c_g) {
         super(c_g);
         this.V = "/mob/pig.png";
         this.a(0.9f, 0.9f);
     }
 
-    public C_c(C_g c_g, float f, float f2, float f3) {
+    public C_c(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.V = "/mob/pig.png";
         this.a(0.9f, 0.9f);

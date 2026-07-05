@@ -1,0 +1,9 @@
+# Second-pass Beta-style class renames applied to the CURRENT customjar by
+# RemapBeta.java (currentInternalName,newBetaInternalName). Class-level only —
+# methods/fields keep their obfuscated names (add readable aliases via a facade).
+# Re-runnable: add lines and re-run the pipeline (see tools/deobf/README.md).
+#
+# Batch 1 — core trinity (the three most-referenced engine classes):
+net/minecraft/a/a/b/C_x,net/minecraft/a/a/b/Block
+net/minecraft/a/a/C_g,net/minecraft/a/a/World
+net/minecraft/a/a/b/a/C_a,net/minecraft/a/a/b/a/TileEntity

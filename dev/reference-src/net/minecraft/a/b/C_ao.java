@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_e;
@@ -17,7 +17,7 @@ extends Item {
     }
 
     @Override
-    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, C_g c_g, int n, int n2, int n3, int n4) {
+    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, World c_g, int n, int n2, int n3, int n4) {
         if (c_g.multiplayerWorld) {
             return false;
         }
@@ -44,7 +44,7 @@ extends Item {
         return false;
     }
 
-    private void placeItemFrame(ItemStack itemStack, EntityPlayer entityPlayer, C_g c_g, int n, int n2, int n3, int n4, byte by) {
+    private void placeItemFrame(ItemStack itemStack, EntityPlayer entityPlayer, World c_g, int n, int n2, int n3, int n4, byte by) {
         C_e c_e = new C_e(c_g, n, n2, n3, by);
         if (c_e.c()) {
             c_g.spawnEntityInWorld(c_e);

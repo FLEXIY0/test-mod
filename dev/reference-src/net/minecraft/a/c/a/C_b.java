@@ -4,8 +4,8 @@
 package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.a.C_e;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -15,7 +15,7 @@ public class C_b
 extends C_e {
     public int type = this.G.nextInt(2);
 
-    public C_b(C_g c_g) {
+    public C_b(World c_g) {
         super(c_g);
         this.V = this.type == 1 ? "/mob/spider_brown.png" : "/mob/spider.png";
         this.V = "/mob/spider.png";
@@ -23,7 +23,7 @@ extends C_e {
         this.am = 0.8f;
     }
 
-    public C_b(C_g c_g, float f, float f2, float f3) {
+    public C_b(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.V = this.type == 1 ? "/mob/spider_brown.png" : "/mob/spider.png";
         this.a(1.4f, 0.9f);
@@ -73,9 +73,9 @@ extends C_e {
         return false;
     }
 
-    public void spawnCobweb(C_g c_g) {
+    public void spawnCobweb(World c_g) {
         if (c_g.a((int)this.h, (int)this.i, (int)this.j) == 0) {
-            c_g.b((int)this.h, (int)this.i, (int)this.j, C_x.cobweb.at);
+            c_g.b((int)this.h, (int)this.i, (int)this.j, Block.cobweb.at);
         }
     }
 

@@ -4,9 +4,9 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_p;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
@@ -26,7 +26,7 @@ extends C_p {
         if (c_c == C_c.g) {
             this.as = 46;
         }
-        C_x.g[n] = true;
+        Block.g[n] = true;
         this.aE = n;
         this.aD = n + 1;
         this.a(0.01f, -0.09f, 0.01f, 1.01f, 0.90999997f, 1.01f);
@@ -34,17 +34,17 @@ extends C_p {
     }
 
     @Override
-    public final void d(C_g c_g, int n, int n2, int n3) {
+    public final void d(World c_g, int n, int n2, int n3) {
         c_g.e(n, n2, n3, this.aE);
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         this.e(c_g, n, n2, n3, 0);
     }
 
     @Override
-    public final boolean e(C_g c_g, int n, int n2, int n3, int n4) {
+    public final boolean e(World c_g, int n, int n2, int n3, int n4) {
         int n5;
         int n6;
         int n7;
@@ -121,13 +121,13 @@ extends C_p {
         return bl;
     }
 
-    private void updateFlow(C_g c_g, int n, int n2, int n3) {
+    private void updateFlow(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         c_g.setBlockAndMetadata(n, n2, n3, this.at + 1, by);
         c_g.markBlocksDirty(n, n2, n3, n, n2, n3);
     }
 
-    public final void flowOutwards(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void flowOutwards(World c_g, int n, int n2, int n3, Random random) {
         int n4;
         int n5;
         int n6 = this.getFlowDecay(c_g, n, n2, n3);
@@ -179,7 +179,7 @@ extends C_p {
             int n9 = n3;
             n4 = n2;
             n5 = n;
-            C_g c_g2 = c_g;
+            World c_g2 = c_g;
             C_m c_m = this;
             for (n8 = 0; n8 < 4; ++n8) {
                 c_m.flowCost[n8] = 1000;
@@ -231,7 +231,7 @@ extends C_p {
         }
     }
 
-    private int calculateFlowCost(C_g c_g, int n, int n2, int n3, int n4, int n5) {
+    private int calculateFlowCost(World c_g, int n, int n2, int n3, int n4, int n5) {
         int n6 = 1000;
         for (int i = 0; i < 4; ++i) {
             if (i == 0 && n5 == 1 || i == 1 && n5 == 0 || i == 2 && n5 == 3 || i == 3 && n5 == 2) continue;
@@ -259,27 +259,27 @@ extends C_p {
         return n6;
     }
 
-    private void flowIntoBlock(C_g c_g, int n, int n2, int n3, int n4) {
+    private void flowIntoBlock(World c_g, int n, int n2, int n3, int n4) {
         if (this.liquidCanDisplaceBlock(c_g, n, n2, n3)) {
             int n5 = c_g.a(n, n2, n3);
             if (n5 > 0) {
-                C_x.c[n5].f(c_g, n, n2, n3, c_g.e(n, n2, n3));
+                Block.c[n5].f(c_g, n, n2, n3, c_g.e(n, n2, n3));
             }
             c_g.setBlockAndMetadataWithNotify(n, n2, n3, this.at, n4);
         }
     }
 
-    private boolean liquidCanDisplaceBlock(C_g c_g, int n, int n2, int n3) {
+    private boolean liquidCanDisplaceBlock(World c_g, int n, int n2, int n3) {
         C_c c_c = c_g.f(n, n2, n3);
         return c_c == this.aC ? false : (c_c == C_c.g ? false : !C_m.blockBlocksFlow(c_g, n, n2, n3));
     }
 
-    private static boolean blockBlocksFlow(C_g c_g, int n, int n2, int n3) {
+    private static boolean blockBlocksFlow(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2, n3);
-        return n4 != C_x.doorOak.at && n4 != C_x.signStanding.at && n4 != C_x.ladder.at ? (n4 == 0 ? false : C_x.c[n4].aC.a()) : true;
+        return n4 != Block.doorOak.at && n4 != Block.signStanding.at && n4 != Block.ladder.at ? (n4 == 0 ? false : Block.c[n4].aC.a()) : true;
     }
 
-    private int getSmallestFlowDecay(C_g c_g, int n, int n2, int n3, int n4) {
+    private int getSmallestFlowDecay(World c_g, int n, int n2, int n3, int n4) {
         int n5 = this.getFlowDecay(c_g, n, n2, n3);
         if (n5 < 0) {
             return n4;
@@ -293,7 +293,7 @@ extends C_p {
         return n4 >= 0 && n5 >= n4 ? n4 : n5;
     }
 
-    private boolean a(C_g c_g, int n, int n2, int n3, int n4, int n5, int n6) {
+    private boolean a(World c_g, int n, int n2, int n3, int n4, int n5, int n6) {
         if (!this.e(c_g, n4, n5, n6)) {
             return false;
         }
@@ -315,9 +315,9 @@ extends C_p {
     }
 
     @Override
-    public final boolean d(C_g c_g, int n, int n2, int n3, int n4) {
+    public final boolean d(World c_g, int n, int n2, int n3, int n4) {
         int n5;
-        return n >= 0 && n2 >= 0 && n3 >= 0 && n < c_g.a && n3 < c_g.b ? ((n5 = c_g.a(n, n2, n3)) != this.aE && n5 != this.aD && n5 != C_x.coralFan.at ? (n4 == 1 && (c_g.a(n - 1, n2, n3) == 0 || c_g.a(n + 1, n2, n3) == 0 || c_g.a(n, n2, n3 - 1) == 0 || c_g.a(n, n2, n3 + 1) == 0) ? true : super.d(c_g, n, n2, n3, n4)) : false) : false;
+        return n >= 0 && n2 >= 0 && n3 >= 0 && n < c_g.a && n3 < c_g.b ? ((n5 = c_g.a(n, n2, n3)) != this.aE && n5 != this.aD && n5 != Block.coralFan.at ? (n4 == 1 && (c_g.a(n - 1, n2, n3) == 0 || c_g.a(n + 1, n2, n3) == 0 || c_g.a(n, n2, n3 - 1) == 0 || c_g.a(n, n2, n3 + 1) == 0) ? true : super.d(c_g, n, n2, n3, n4)) : false) : false;
     }
 
     @Override
@@ -326,7 +326,7 @@ extends C_p {
     }
 
     @Override
-    public final C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public final C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return null;
     }
 
@@ -335,7 +335,7 @@ extends C_p {
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void b(World c_g, int n, int n2, int n3, int n4) {
     }
 
     @Override
@@ -353,21 +353,21 @@ extends C_p {
         return this.aC == C_c.f ? 1 : 0;
     }
 
-    private static boolean h(C_g c_g, int n, int n2, int n3) {
-        if (c_g.a(n, n2, n3) == C_x.ag.at || c_g.a(n, n2, n3) == C_x.hellfire.at) {
+    private static boolean h(World c_g, int n, int n2, int n3) {
+        if (c_g.a(n, n2, n3) == Block.ag.at || c_g.a(n, n2, n3) == Block.hellfire.at) {
             c_g.b(n, n2, n3, 0);
             return true;
         }
-        if (c_g.a(n, n2, n3) != C_x.r.at && c_g.a(n, n2, n3) != C_x.s.at) {
+        if (c_g.a(n, n2, n3) != Block.r.at && c_g.a(n, n2, n3) != Block.s.at) {
             return false;
         }
-        c_g.b(n, n2, n3, C_x.ae.at);
+        c_g.b(n, n2, n3, Block.ae.at);
         return true;
     }
 
-    private static boolean i(C_g c_g, int n, int n2, int n3) {
-        if (C_x.ag.b(c_g.a(n, n2, n3))) {
-            C_x.ag.h(c_g, n, n2, n3);
+    private static boolean i(World c_g, int n, int n2, int n3) {
+        if (Block.ag.b(c_g.a(n, n2, n3))) {
+            Block.ag.h(c_g, n, n2, n3);
             return true;
         }
         return false;

@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.f.C_k;
 
@@ -11,7 +11,7 @@ public class C_z
 extends C_k {
     private int textureOffset = 140;
 
-    public C_z(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6) {
+    public C_z(World c_g, float f, float f2, float f3, float f4, float f5, float f6) {
         super(c_g, f, f2, f3, f4, f5, f6);
         this.l = (float)((double)this.l * (double)0.2f);
         if ((double)f4 == 0.0 && (double)f6 == 0.0) {

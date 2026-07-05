@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.C_b;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.a.a.C_i;
@@ -21,7 +21,7 @@ extends C_k {
     private int ac = 0;
     private float ad;
 
-    public C_e(C_g c_g, C_b c_b, net.minecraft.a.c.C_e c_e, float f) {
+    public C_e(World c_g, C_b c_b, net.minecraft.a.c.C_e c_e, float f) {
         super(c_g, c_b.h, c_b.i, c_b.j, c_b.k, c_b.l, c_b.m);
         this.Z = c_b;
         this.aa = c_e;

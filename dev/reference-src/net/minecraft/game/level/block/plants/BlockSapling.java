@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.plants;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.c.C_c;
 import net.minecraft.a.a.c.C_d;
 import net.minecraft.a.a.c.C_e;
@@ -22,7 +22,7 @@ extends BlockFlower {
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         super.a(c_g, n, n2, n3, random);
         if (c_g.d(n, n2 + 1, n3) >= 9 && random.nextInt(125) == 0) {
             byte by = c_g.e(n, n2, n3);
@@ -59,7 +59,7 @@ extends BlockFlower {
     public int a(int n, int n2) {
         switch (n2) {
             case 1: {
-                this.as = C_x.ladder.as + n2;
+                this.as = Block.ladder.as + n2;
                 break;
             }
             case 2: {

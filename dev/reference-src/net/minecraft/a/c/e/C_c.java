@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.c.e;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -19,7 +19,7 @@ extends EntityPlayer {
     private float newPositionX;
     private float newPositionY;
 
-    public C_c(C_g c_g, String string) {
+    public C_c(World c_g, String string) {
         super(c_g);
         this.name = string;
         this.v = 0.0f;

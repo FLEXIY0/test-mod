@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.a.c;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.client.a.c.C_b;
 import net.minecraft.client.d;
 
@@ -15,7 +15,7 @@ extends C_b {
     private float[] h = new float[256];
 
     public C_f() {
-        super(C_x.p.as);
+        super(Block.p.as);
     }
 
     @Override

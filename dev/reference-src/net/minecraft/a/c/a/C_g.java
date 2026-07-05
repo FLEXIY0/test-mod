@@ -1,7 +1,7 @@
 package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -11,14 +11,14 @@ public class C_g extends C_e {
    private int existence;
    private int stayBuried = 0;
 
-   public C_g(net.minecraft.a.a.C_g var1) {
+   public C_g(net.minecraft.a.a.World var1) {
       super(var1);
       this.V = "/mob/antlion.png";
       this.a(0.7F, 0.5F);
       this.am = 0.8F;
    }
 
-   public C_g(net.minecraft.a.a.C_g var1, float var2, float var3, float var4) {
+   public C_g(net.minecraft.a.a.World var1, float var2, float var3, float var4) {
       super(var1);
       this.V = "/mob/antlion.png";
       this.a(0.7F, 0.5F);
@@ -36,8 +36,8 @@ public class C_g extends C_e {
    protected void e() {
       super.e();
       if (!this.d.multiplayerWorld) {
-         C_x var1 = C_x.c[this.d.a((int)this.h, (int)this.i - 1, (int)this.j)];
-         if (this.G.nextInt(250) == 0 && !this.isLaying && this.s && var1 != null && (var1.at == C_x.t.at || var1.at == C_x.redSand.at)) {
+         Block var1 = Block.c[this.d.a((int)this.h, (int)this.i - 1, (int)this.j)];
+         if (this.G.nextInt(250) == 0 && !this.isLaying && this.s && var1 != null && (var1.at == Block.t.at || var1.at == Block.redSand.at)) {
             this.isLaying = true;
             this.d.a(this, var1.getStepSound(0).a(), (var1.getStepSound(0).a + 1.0F) / 2.0F, var1.getStepSound(0).b * 0.8F);
             this.d.mc.g.a((int)this.h, (int)this.i - 1, (int)this.j);
@@ -114,7 +114,7 @@ public class C_g extends C_e {
                this.n = (float)(Math.atan2((double)var4, (double)var3) * 180.0 / (float) Math.PI) - 90.0F;
                this.O = true;
             } else {
-               C_x var9 = C_x.c[this.d.a((int)this.h, (int)this.i - 1, (int)this.j)];
+               Block var9 = Block.c[this.d.a((int)this.h, (int)this.i - 1, (int)this.j)];
                if (var9 != null) {
                   this.d.a(this, var9.getStepSound(0).a(), (var9.getStepSound(0).a + 1.0F) / 2.0F, var9.getStepSound(0).b * 0.8F);
                }
@@ -197,12 +197,12 @@ public class C_g extends C_e {
    }
 
    private void teleportEntity() {
-      C_x var1 = C_x.c[this.d.a((int)this.h, (int)this.i - 1, (int)this.j)];
+      Block var1 = Block.c[this.d.a((int)this.h, (int)this.i - 1, (int)this.j)];
       if (this.isLaying) {
          int var2 = (int)this.h + (this.G.nextInt(20) - 10);
          int var3 = (int)this.j + (this.G.nextInt(20) - 10);
          int var4 = this.d.a(var2, var3);
-         if ((this.d.a(var2, var4 - 1, var3) == C_x.t.at || this.d.a(var2, var4 - 1, var3) == C_x.redSand.at) && var1 != null) {
+         if ((this.d.a(var2, var4 - 1, var3) == Block.t.at || this.d.a(var2, var4 - 1, var3) == Block.redSand.at) && var1 != null) {
             this.d.a(this, var1.getStepSound(0).a(), (var1.getStepSound(0).a + 1.0F) / 2.0F, var1.getStepSound(0).b * 0.8F);
             this.d.mc.g.a((int)this.h, (int)this.i - 1, (int)this.j);
             this.b((float)var2 + 0.5F, (float)(var4 + 1), (float)var3 + 0.5F);
@@ -255,7 +255,7 @@ public class C_g extends C_e {
 
    @Override
    protected final int itemDropped() {
-      return C_x.t.at;
+      return Block.t.at;
    }
 
    @Override

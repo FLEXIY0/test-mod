@@ -9,9 +9,9 @@ package net.minecraft.client.a;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_b;
 import net.minecraft.client.a.C_d;
@@ -22,7 +22,7 @@ import org.lwjgl.opengl.GL11;
 import util.MathHelper;
 
 public final class C_h {
-    private C_g g;
+    private World g;
     private int h = -1;
     private static C_d i = C_d.a;
     public static int a = 0;
@@ -43,10 +43,10 @@ public final class C_h {
     public boolean d = true;
     public boolean e;
     public int f;
-    public List<C_a> tileEntityRenderers = new ArrayList<C_a>();
-    private List<C_a> tileEntities;
+    public List<TileEntity> tileEntityRenderers = new ArrayList<TileEntity>();
+    private List<TileEntity> tileEntities;
 
-    public C_h(C_g c_g, List<C_a> list, int n, int n2, int n3, int n4, int n5) {
+    public C_h(World c_g, List<TileEntity> list, int n, int n2, int n3, int n4, int n5) {
         this.u = new C_f(c_g);
         this.g = c_g;
         this.tileEntities = list;
@@ -83,7 +83,7 @@ public final class C_h {
             for (n = 0; n < 2; ++n) {
                 this.p[n] = true;
             }
-            HashSet<C_a> hashSet = new HashSet<C_a>();
+            HashSet<TileEntity> hashSet = new HashSet<TileEntity>();
             hashSet.addAll(this.tileEntityRenderers);
             this.tileEntityRenderers.clear();
             for (n = 0; n < 2; ++n) {
@@ -100,14 +100,14 @@ public final class C_h {
                             Object object;
                             int n10;
                             if ((n10 = this.g.d[n8++] & 0xFF) <= 0) continue;
-                            if (n == 0 && C_x.c[n10].hasTileEntity() && TileEntityRenderer.instance.hasSpecialRenderer((C_a)(object = this.g.j(k, i, j)))) {
-                                this.tileEntityRenderers.add((C_a)object);
+                            if (n == 0 && Block.c[n10].hasTileEntity() && TileEntityRenderer.instance.hasSpecialRenderer((TileEntity)(object = this.g.j(k, i, j)))) {
+                                this.tileEntityRenderers.add((TileEntity)object);
                             }
-                            if ((n9 = ((C_x)(object = C_x.c[n10])).f()) != n) {
+                            if ((n9 = ((Block)(object = Block.c[n10])).f()) != n) {
                                 bl = true;
                             }
                             if (n9 != n && n9 != 2) continue;
-                            bl2 |= this.u.b((C_x)object, k, i, j);
+                            bl2 |= this.u.b((Block)object, k, i, j);
                         }
                     }
                 }
@@ -118,7 +118,7 @@ public final class C_h {
                 }
                 if (!bl) break;
             }
-            HashSet<C_a> hashSet2 = new HashSet<C_a>();
+            HashSet<TileEntity> hashSet2 = new HashSet<TileEntity>();
             hashSet2.addAll(this.tileEntityRenderers);
             hashSet2.removeAll(hashSet);
             this.tileEntities.addAll(hashSet2);

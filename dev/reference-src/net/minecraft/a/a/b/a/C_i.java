@@ -4,12 +4,12 @@
 package net.minecraft.a.a.b.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.d.C_c;
 
 public class C_i
-extends C_a {
+extends TileEntity {
     public byte note = 0;
     public boolean previousRedstoneState = false;
 
@@ -37,7 +37,7 @@ extends C_a {
         this.onInventoryChanged();
     }
 
-    public void triggerNote(C_g c_g, int n, int n2, int n3) {
+    public void triggerNote(World c_g, int n, int n2, int n3) {
         if (c_g.f(n, n2 + 1, n3) == C_c.a) {
             C_c c_c = c_g.f(n, n2 - 1, n3);
             int n4 = 0;

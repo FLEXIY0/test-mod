@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_ba;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.Item;
@@ -23,7 +23,7 @@ extends Item {
     }
 
     @Override
-    public void onPlayerStoppedUsing(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer, int n) {
+    public void onPlayerStoppedUsing(ItemStack itemStack, World c_g, EntityPlayer entityPlayer, int n) {
         boolean bl = false;
         int n2 = 0;
         int n3 = this.getMaxItemUseDuration(itemStack) - n;
@@ -61,7 +61,7 @@ extends Item {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         if (entityPlayer.b.containsItem(Item.h) || c_g.gamemode == 1) {
             if (!c_g.multiplayerWorld) {
                 entityPlayer.setItemInUse(itemStack, this.getMaxItemUseDuration(itemStack));
@@ -72,7 +72,7 @@ extends Item {
         return itemStack;
     }
 
-    private void useBow(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer, int n, float f) {
+    private void useBow(ItemStack itemStack, World c_g, EntityPlayer entityPlayer, int n, float f) {
         c_g.a(entityPlayer, "random.bow", 1.0f, 1.0f / (a.nextFloat() * 0.4f + 0.8f));
         if (!c_g.multiplayerWorld) {
             c_g.spawnEntityInWorld(new C_a(c_g, entityPlayer, n, f));

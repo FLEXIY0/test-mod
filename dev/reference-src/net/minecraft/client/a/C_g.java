@@ -8,7 +8,7 @@ package net.minecraft.client.a;
 
 import net.minecraft.a.a.b.C_am;
 import net.minecraft.a.a.b.C_bs;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_af;
 import net.minecraft.a.b.C_bm;
 import net.minecraft.a.b.C_q;
@@ -37,11 +37,11 @@ public final class C_g {
 
     public void renderItem(ItemStack itemStack) {
         GL11.glPushMatrix();
-        if (itemStack.c < 256 && C_f.renderItemIn3d(C_x.c[itemStack.c].a())) {
+        if (itemStack.c < 256 && C_f.renderItemIn3d(Block.c[itemStack.c].a())) {
             GL11.glBindTexture((int)3553, (int)this.a.m.a("/terrain.png"));
             GL11.glEnable((int)3042);
             GL11.glBlendFunc((int)770, (int)771);
-            this.g.renderBlockOnInventory(C_x.c[itemStack.c], itemStack.d);
+            this.g.renderBlockOnInventory(Block.c[itemStack.c], itemStack.d);
             GL11.glDisable((int)3042);
         } else {
             float f;
@@ -144,11 +144,11 @@ public final class C_g {
 
     public void renderItemIntoFrame(ItemStack itemStack) {
         GL11.glPushMatrix();
-        if (itemStack.c < 256 && C_f.renderItemIn3d(C_x.c[itemStack.c].a())) {
+        if (itemStack.c < 256 && C_f.renderItemIn3d(Block.c[itemStack.c].a())) {
             GL11.glBindTexture((int)3553, (int)this.a.m.a("/terrain.png"));
             GL11.glEnable((int)3042);
             GL11.glBlendFunc((int)770, (int)771);
-            this.g.renderBlockOnInventory(C_x.c[itemStack.c], itemStack.d);
+            this.g.renderBlockOnInventory(Block.c[itemStack.c], itemStack.d);
             GL11.glDisable((int)3042);
         } else {
             float f;
@@ -332,16 +332,16 @@ public final class C_g {
                         GL11.glRotatef((float)335.0f, (float)0.0f, (float)0.0f, (float)1.0f);
                     }
                 }
-                if (this.b.c < 256 && C_f.renderItemIn3d(C_x.c[this.b.c].a())) {
+                if (this.b.c < 256 && C_f.renderItemIn3d(Block.c[this.b.c].a())) {
                     GL11.glBindTexture((int)3553, (int)this.a.m.a("/terrain.png"));
                     GL11.glEnable((int)3042);
                     GL11.glBlendFunc((int)770, (int)771);
                     GL11.glPushMatrix();
-                    C_x c_x = C_x.c[this.b.c];
+                    Block c_x = Block.c[this.b.c];
                     if (c_x instanceof C_am || c_x instanceof C_bs) {
                         GL11.glTranslatef((float)0.0f, (float)0.5f, (float)0.0f);
                     }
-                    this.g.renderBlockOnInventory(C_x.c[this.b.c], this.b.d);
+                    this.g.renderBlockOnInventory(Block.c[this.b.c], this.b.d);
                     GL11.glTranslatef((float)0.0f, (float)0.0f, (float)0.0f);
                     GL11.glPopMatrix();
                     GL11.glDisable((int)3042);
@@ -493,7 +493,7 @@ public final class C_g {
             GL11.glBlendFunc((int)770, (int)771);
             for (n = 0; n < 2; ++n) {
                 GL11.glPushMatrix();
-                int n2 = C_x.ag.as;
+                int n2 = Block.ag.as;
                 int n3 = (n2 & 0x1F) << 4;
                 n2 = n2 >> 1 & 0x1F0;
                 float f4 = (float)n3 / 512.0f;

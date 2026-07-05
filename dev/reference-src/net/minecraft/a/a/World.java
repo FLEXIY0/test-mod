@@ -20,8 +20,8 @@ import net.minecraft.a.a.C_l;
 import net.minecraft.a.a.C_n;
 import net.minecraft.a.a.C_p;
 import net.minecraft.a.a.a.C_c;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -33,7 +33,7 @@ import net.minecraft.client.statistics.StatList;
 import net.minecraft.game.level.block.container.BlockContainer;
 import util.MathHelper;
 
-public class C_g {
+public class World {
     private static float[] F = new float[16];
     public int a;
     public int b;
@@ -52,8 +52,8 @@ public class C_g {
     public int defaultBlock;
     public List<C_d> n;
     private List<C_e> G;
-    public Map<Object, C_a> o;
-    public List<C_a> H;
+    public Map<Object, TileEntity> o;
+    public List<TileEntity> H;
     int[] p;
     public Random q;
     public Random I;
@@ -129,13 +129,13 @@ public class C_g {
     public String parentName;
     public static HashMap<Integer, Integer> seasonColor;
 
-    public C_g() {
-        this.m = C_x.p.at;
-        this.defaultBlock = C_x.j.at;
+    public World() {
+        this.m = Block.p.at;
+        this.defaultBlock = Block.j.at;
         this.n = new ArrayList<C_d>();
         this.G = new LinkedList<C_e>();
-        this.o = new HashMap<Object, C_a>();
-        this.H = new ArrayList<C_a>();
+        this.o = new HashMap<Object, TileEntity>();
+        this.H = new ArrayList<TileEntity>();
         this.q = new Random();
         this.I = new Random();
         this.J = this.q.nextInt();
@@ -213,11 +213,11 @@ public class C_g {
                     int n4 = 0;
                     if (this.type != 8) {
                         if (j <= 1 && j < this.t - 1 && byArray[((j + 1) * this.b + i) * this.a + n2] == 0 && this.type == 5) {
-                            n4 = C_x.s.at;
+                            n4 = Block.s.at;
                         } else if (j < this.t - 1) {
-                            n4 = C_x.o.at;
+                            n4 = Block.o.at;
                         } else if (j < this.t) {
-                            n4 = this.t > this.s && this.m == C_x.p.at ? (this.theme == 4 ? C_x.mycelium.at : this.defaultBlock) : (this.type == 4 ? C_x.redSand.at : (this.theme == 4 ? C_x.mycelium.at : C_x.k.at));
+                            n4 = this.t > this.s && this.m == Block.p.at ? (this.theme == 4 ? Block.mycelium.at : this.defaultBlock) : (this.type == 4 ? Block.redSand.at : (this.theme == 4 ? Block.mycelium.at : Block.k.at));
                         } else if (j < this.s) {
                             n4 = this.m;
                         }
@@ -272,11 +272,11 @@ public class C_g {
                     int n4 = 0;
                     if (this.type != 8) {
                         if (j <= 1 && j < this.t - 1 && byArray[((j + 1) * this.b + i) * this.a + n2] == 0) {
-                            n4 = C_x.s.at;
+                            n4 = Block.s.at;
                         } else if (j < this.t - 1) {
-                            n4 = C_x.o.at;
+                            n4 = Block.o.at;
                         } else if (j < this.t) {
-                            n4 = this.t > this.s && this.m == C_x.p.at ? (this.theme == 4 ? C_x.mycelium.at : this.defaultBlock) : (this.type == 4 ? C_x.redSand.at : C_x.k.at);
+                            n4 = this.t > this.s && this.m == Block.p.at ? (this.theme == 4 ? Block.mycelium.at : this.defaultBlock) : (this.type == 4 ? Block.redSand.at : Block.k.at);
                         } else if (j < this.s) {
                             n4 = this.m;
                         }
@@ -361,7 +361,7 @@ public class C_g {
             n7 = n - 2;
             for (n6 = n3 - 3; n6 <= n3 + 3; ++n6) {
                 for (n5 = n2 - 3 - 2; n5 <= n2 + 3; ++n5) {
-                    if (C_x.e[this.a(n6, n7, n5)]) continue;
+                    if (Block.e[this.a(n6, n7, n5)]) continue;
                     continue block0;
                 }
             }
@@ -404,7 +404,7 @@ public class C_g {
         for (int i = n; i < n2; ++i) {
             for (int j = n5; j < n6; ++j) {
                 for (int k = n3 - 1; k < n4; ++k) {
-                    C_x c_x = C_x.c[this.a(i, k, j)];
+                    Block c_x = Block.c[this.a(i, k, j)];
                     if (c_x == null) continue;
                     c_x.getCollidingBoundingBoxes(this, i, k, j, c_b2, this.collidingBoxes);
                     net.minecraft.a.d.C_b c_b3 = c_x.getCollisionBoundingBoxFromPool(this, i, k, j);
@@ -464,16 +464,16 @@ public class C_g {
             }
             int n6 = this.getHeightValue(n, n3);
             if (n4 == 0 && (n == 0 || n3 == 0 || n == this.a - 1 || n3 == this.b - 1) && n2 >= this.t && n2 < this.s) {
-                n4 = C_x.p.at;
+                n4 = Block.p.at;
             }
             byte by = this.d[(n2 * this.b + n3) * this.a + n];
             this.d[(n2 * this.b + n3) * this.a + n] = (byte)n4;
             if (by != 0 && !this.multiplayerWorld) {
-                C_x.c[by & 0xFF].b(this, n, n2, n3);
-                C_x.c[by & 0xFF].breakBlock(this, n, n2, n3, by, this.e(n, n2, n3));
+                Block.c[by & 0xFF].b(this, n, n2, n3);
+                Block.c[by & 0xFF].breakBlock(this, n, n2, n3, by, this.e(n, n2, n3));
             }
             this.setBlockMetadata(n, n2, n3, n5);
-            if (C_x.f[n4] != 0) {
+            if (Block.f[n4] != 0) {
                 if (n2 >= n6) {
                     this.relightBlock(n, n2 + 1, n3);
                 }
@@ -483,8 +483,8 @@ public class C_g {
             this.scheduleLightingUpdate(C_l.Sky, n, n2, n3, n, n2, n3);
             this.scheduleLightingUpdate(C_l.Block, n, n2, n3, n, n2, n3);
             this.updateSkylight_do(n, n3);
-            if (n4 != 0 && !this.multiplayerWorld && n4 != C_x.Z.at && n4 != C_x.stairUpsideDown.at) {
-                C_x.c[n4].d(this, n, n2, n3);
+            if (n4 != 0 && !this.multiplayerWorld && n4 != Block.Z.at && n4 != Block.stairUpsideDown.at) {
+                Block.c[n4].d(this, n, n2, n3);
             }
             for (int i = 0; i < this.n.size(); ++i) {
                 this.n.get(i).a(n, n2, n3);
@@ -598,7 +598,7 @@ public class C_g {
         if (n2 > n4) {
             n5 = n2;
         }
-        while (n5 > 0 && C_x.f[this.a(n, n5 - 1, n3)] == 0) {
+        while (n5 > 0 && Block.f[this.a(n, n5 - 1, n3)] == 0) {
             --n5;
         }
         if (n5 != n4) {
@@ -644,7 +644,7 @@ public class C_g {
             n7 = 15;
             int n12 = n5;
             while (n5 > 0 && n7 > 0) {
-                if ((n6 = C_x.f[this.a(n, --n5, n3)]) == 0) {
+                if ((n6 = Block.f[this.a(n, --n5, n3)]) == 0) {
                     n6 = 1;
                 }
                 if ((n7 -= n6) < 0) {
@@ -652,7 +652,7 @@ public class C_g {
                 }
                 this.setSavedLightValue(C_l.Sky, n, n5, n3, n7);
             }
-            while (n5 > 0 && C_x.f[this.a(n, n5 - 1, n3)] == 0) {
+            while (n5 > 0 && Block.f[this.a(n, n5 - 1, n3)] == 0) {
                 --n5;
             }
             if (n5 != n12) {
@@ -696,8 +696,8 @@ public class C_g {
                 if (this.l(n, n2, n3)) {
                     n4 = 15;
                 }
-            } else if (c_l == C_l.Block && C_x.h[n5 = this.a(n, n2, n3)] > n4) {
-                n4 = C_x.h[n5];
+            } else if (c_l == C_l.Block && Block.h[n5 = this.a(n, n2, n3)] > n4) {
+                n4 = Block.h[n5];
             }
             if (this.getSavedLightValue(c_l, n, n2, n3) != n4) {
                 this.scheduleLightingUpdate(c_l, n, n2, n3, n, n2, n3);
@@ -750,7 +750,7 @@ public class C_g {
                 return false;
             }
             if (n4 == 0 && (n == 0 || n3 == 0 || n == this.a - 1 || n3 == this.b - 1) && n2 >= this.t && n2 < this.s) {
-                n4 = C_x.p.at;
+                n4 = Block.p.at;
             }
             this.d[(n2 * this.b + n3) * this.a + n] = (byte)n4;
             this.setBlockMetadata(n, n2, n3, 0);
@@ -794,7 +794,7 @@ public class C_g {
     public void setBlockMetadataWithNotify(int n, int n2, int n3, int n4) {
         this.setBlockMetadata(n, n2, n3, n4);
         int n5 = this.a(n, n2, n3);
-        if (C_x.hasMetadata[n5 & 0xFF]) {
+        if (Block.hasMetadata[n5 & 0xFF]) {
             this.notifyBlockChange(n, n2, n3, n5);
         } else {
             this.c(n, n2, n3, n5);
@@ -833,8 +833,8 @@ public class C_g {
     }
 
     private void h(int n, int n2, int n3, int n4) {
-        C_x c_x;
-        if (n >= 0 && n2 >= 0 && n3 >= 0 && n < this.a && n2 < this.c && n3 < this.b && (c_x = C_x.c[this.d[(n2 * this.b + n3) * this.a + n] & 0xFF]) != null) {
+        Block c_x;
+        if (n >= 0 && n2 >= 0 && n3 >= 0 && n < this.a && n2 < this.c && n3 < this.b && (c_x = Block.c[this.d[(n2 * this.b + n3) * this.a + n] & 0xFF]) != null) {
             c_x.b(this, n, n2, n3, n4);
         }
     }
@@ -859,7 +859,7 @@ public class C_g {
     }
 
     public boolean b(int n, int n2, int n3) {
-        C_x c_x = C_x.c[this.a(n, n2, n3)];
+        Block c_x = Block.c[this.a(n, n2, n3)];
         return c_x == null ? false : c_x.isOpaqueCube(this.e(n, n2, n3));
     }
 
@@ -867,7 +867,7 @@ public class C_g {
         this.r.a();
         this.tileEntityFlag = true;
         for (int i = 0; i < this.H.size(); ++i) {
-            C_a c_a = this.H.get(i);
+            TileEntity c_a = this.H.get(i);
             if (!c_a.isRemoving()) {
                 c_a.d();
             }
@@ -1200,7 +1200,7 @@ public class C_g {
             n4 = c_e.b;
             n3 = c_e.a;
             if (n3 < 0 || n4 < 0 || n5 < 0 || n3 >= this.a || n4 >= this.c || n5 >= this.b || (n2 = this.d[(c_e.b * this.b + c_e.c) * this.a + c_e.a]) != c_e.d || n2 <= 0 || this.physicsDisabled) continue;
-            C_x.c[n2].a(this, c_e.a, c_e.b, c_e.c, this.q);
+            Block.c[n2].a(this, c_e.a, c_e.b, c_e.c, this.q);
         }
         this.K += this.a * this.b * this.c;
         n12 = this.K / 200;
@@ -1215,7 +1215,7 @@ public class C_g {
             block3: for (n2 = n3 - n4; n2 <= n3 + n4; ++n2) {
                 for (n = n5 - n4; n <= n5 + n4; ++n) {
                     int n14 = this.a(n2, n);
-                    if (n14 <= n13 || this.a(n2, n14 - 1, n) != C_x.rod.at) continue;
+                    if (n14 <= n13 || this.a(n2, n14 - 1, n) != Block.rod.at) continue;
                     n3 = n2;
                     n5 = n;
                     n13 = n14;
@@ -1236,28 +1236,28 @@ public class C_g {
             if (n15 >= 1 && n15 < this.c) {
                 n = this.a(n3, n15 - 1, n2);
                 n5 = this.a(n3, n15, n2);
-                C_x c_x = C_x.tallGrass;
+                Block c_x = Block.tallGrass;
                 if (this.season.currentSeason == 3) {
-                    c_x = C_x.snowLayer;
+                    c_x = Block.snowLayer;
                     if (this.theme == 1) {
-                        c_x = C_x.ash;
+                        c_x = Block.ash;
                     }
                 }
                 if (this.type == 4) {
-                    c_x = C_x.sandLayer;
+                    c_x = Block.sandLayer;
                 }
-                if (c_x.at == C_x.tallGrass.at) {
-                    if (this.I.nextInt(150) == 0 && n5 == 0 && c_x.canBlockStay(this, n3, n15, n2) && n != 0 && n != C_x.ice.at && C_x.c[n].getMaterial(0).c() && this.season.currentSeason == 0) {
+                if (c_x.at == Block.tallGrass.at) {
+                    if (this.I.nextInt(150) == 0 && n5 == 0 && c_x.canBlockStay(this, n3, n15, n2) && n != 0 && n != Block.ice.at && Block.c[n].getMaterial(0).c() && this.season.currentSeason == 0) {
                         this.b(n3, n15, n2, c_x.at);
                     }
-                } else if (n5 == 0 && c_x.canBlockStay(this, n3, n15, n2) && n != 0 && n != C_x.ice.at && C_x.c[n].getMaterial(0).c()) {
+                } else if (n5 == 0 && c_x.canBlockStay(this, n3, n15, n2) && n != 0 && n != Block.ice.at && Block.c[n].getMaterial(0).c()) {
                     this.b(n3, n15, n2, c_x.at);
                 }
-                if (n == c_x.at && c_x.at != C_x.tallGrass.at && this.e(n3, n15 - 1, n2) < 7 && this.thundering) {
+                if (n == c_x.at && c_x.at != Block.tallGrass.at && this.e(n3, n15 - 1, n2) < 7 && this.thundering) {
                     this.setBlockMetadataWithNotify(n3, n15 - 1, n2, this.e(n3, n15 - 1, n2) + 1);
                 }
-                if (this.season.currentSeason == 3 && (n == C_x.q.at || n == C_x.p.at) && this.e(n3, n15 - 1, n2) == 0 && this.theme != 1 && this.type != 4) {
-                    this.b(n3, n15 - 1, n2, C_x.ice.at);
+                if (this.season.currentSeason == 3 && (n == Block.q.at || n == Block.p.at) && this.e(n3, n15 - 1, n2) == 0 && this.theme != 1 && this.type != 4) {
+                    this.b(n3, n15 - 1, n2, Block.ice.at);
                 }
             }
         }
@@ -1267,8 +1267,8 @@ public class C_g {
             n3 = n4 >> n7 & n9;
             n2 = n4 & n10;
             n = this.d[((n4 = n4 >> n7 + n8 & n11) * this.b + n3) * this.a + n2];
-            if (!C_x.d[n & 0xFF] || this.physicsDisabled) continue;
-            C_x.c[n & 0xFF].a(this, n2, n4, n3, this.q);
+            if (!Block.d[n & 0xFF] || this.physicsDisabled) continue;
+            Block.c[n & 0xFF].a(this, n2, n4, n3, this.q);
         }
         if (this.type == 5) {
             if (this.soundCounter > 0) {
@@ -1349,7 +1349,7 @@ public class C_g {
         for (int i = n; i < n2; ++i) {
             for (n = n3; n < n4; ++n) {
                 for (int j = n5; j < n6; ++j) {
-                    C_x c_x = C_x.c[this.a(i, n, j)];
+                    Block c_x = Block.c[this.a(i, n, j)];
                     if (c_x == null || !c_x.getMaterial(this.e(i, n, j)).d()) continue;
                     return true;
                 }
@@ -1367,7 +1367,7 @@ public class C_g {
         for (int i = (int)c_b.a; i < n; ++i) {
             for (int j = n2; j < n3; ++j) {
                 for (int k = n4; k < n5; ++k) {
-                    if (this.a(i, j, k) != C_x.ag.at) continue;
+                    if (this.a(i, j, k) != Block.ag.at) continue;
                     return true;
                 }
             }
@@ -1385,7 +1385,7 @@ public class C_g {
             for (int j = n2; j < n3; ++j) {
                 for (int k = n4; k < n5; ++k) {
                     int n6 = this.a(i, j, k);
-                    if (n6 != C_x.hellfire.at) continue;
+                    if (n6 != Block.hellfire.at) continue;
                     return true;
                 }
             }
@@ -1403,7 +1403,7 @@ public class C_g {
             for (int j = n2; j < n3; ++j) {
                 for (int k = n4; k < n5; ++k) {
                     int n6 = this.a(i, j, k);
-                    if (n6 != C_x.ag.at && n6 != C_x.r.at && n6 != C_x.s.at) continue;
+                    if (n6 != Block.ag.at && n6 != Block.r.at && n6 != Block.s.at) continue;
                     return true;
                 }
             }
@@ -1420,7 +1420,7 @@ public class C_g {
         for (int i = (int)c_b.a; i < n; ++i) {
             for (int j = n2; j < n3; ++j) {
                 for (int k = n4; k < n5; ++k) {
-                    C_x c_x = C_x.c[this.a(i, j, k)];
+                    Block c_x = Block.c[this.a(i, j, k)];
                     if (c_x == null || c_x.getMaterial(this.e(i, j, k)) != c_c) continue;
                     return true;
                 }
@@ -1432,7 +1432,7 @@ public class C_g {
     public void e(int n, int n2, int n3, int n4) {
         C_e c_e = new C_e(n, n2, n3, n4);
         if (n4 > 0) {
-            c_e.e = n3 = C_x.c[n4].e();
+            c_e.e = n3 = Block.c[n4].e();
         }
         this.G.add(c_e);
     }
@@ -1440,7 +1440,7 @@ public class C_g {
     public void immediateUpdate(int n, int n2, int n3, int n4) {
         C_e c_e = new C_e(n, n2, n3, n4);
         if (n4 > 0) {
-            c_e.e = n3 = C_x.c[n4].e();
+            c_e.e = n3 = Block.c[n4].e();
         }
         this.G.add(0, c_e);
     }
@@ -1468,29 +1468,29 @@ public class C_g {
 
     public boolean a(float f, float f2, float f3) {
         int n = this.a((int)f, (int)f2, (int)f3);
-        return n > 0 && C_x.c[n].isOpaqueCube(this.e((int)f, (int)f2, (int)f3));
+        return n > 0 && Block.c[n].isOpaqueCube(this.e((int)f, (int)f2, (int)f3));
     }
 
     public boolean isSolidTile(int n, int n2, int n3) {
-        C_x c_x = C_x.c[this.a(n, n2, n3)];
+        Block c_x = Block.c[this.a(n, n2, n3)];
         return c_x == null ? false : c_x.d();
     }
 
     public boolean isQuicksand(float f, float f2, float f3) {
         int n = this.a((int)f, (int)f2, (int)f3);
-        return n > 0 && C_x.c[n].at == C_x.quickSand.at;
+        return n > 0 && Block.c[n].at == Block.quickSand.at;
     }
 
     public int a(int n, int n2) {
         int n3;
-        for (n3 = this.c; (this.a(n, n3 - 1, n2) == 0 || C_x.c[this.a(n, n3 - 1, n2)].getMaterial(this.a(n, n3 - 1, n2)) == net.minecraft.a.a.d.C_c.a) && n3 > 0; --n3) {
+        for (n3 = this.c; (this.a(n, n3 - 1, n2) == 0 || Block.c[this.a(n, n3 - 1, n2)].getMaterial(this.a(n, n3 - 1, n2)) == net.minecraft.a.a.d.C_c.a) && n3 > 0; --n3) {
         }
         return n3;
     }
 
     public int getLastUncoveredBlock(int n, int n2) {
         int n3;
-        for (n3 = this.c / 4; (this.a(n, n3 + 1, n2) == 0 || C_x.c[this.a(n, n3 + 1, n2)].getMaterial(this.a(n, n3 + 1, n2)) == net.minecraft.a.a.d.C_c.a) && n3 < this.c; ++n3) {
+        for (n3 = this.c / 4; (this.a(n, n3 + 1, n2) == 0 || Block.c[this.a(n, n3 + 1, n2)].getMaterial(this.a(n, n3 + 1, n2)) == net.minecraft.a.a.d.C_c.a) && n3 < this.c; ++n3) {
         }
         return n3;
     }
@@ -1560,17 +1560,17 @@ public class C_g {
 
     public net.minecraft.a.a.d.C_c f(int n, int n2, int n3) {
         int n4 = this.a(n, n2, n3);
-        return n4 == 0 ? net.minecraft.a.a.d.C_c.a : C_x.c[n4].getMaterial(this.e(n, n2, n3));
+        return n4 == 0 ? net.minecraft.a.a.d.C_c.a : Block.c[n4].getMaterial(this.e(n, n2, n3));
     }
 
     public boolean g(int n, int n2, int n3) {
         int n4 = this.a(n, n2, n3);
-        return n4 > 0 && C_x.c[n4].getMaterial(this.e(n, n2, n3)) == net.minecraft.a.a.d.C_c.f;
+        return n4 > 0 && Block.c[n4].getMaterial(this.e(n, n2, n3)) == net.minecraft.a.a.d.C_c.f;
     }
 
     public boolean isLava(int n, int n2, int n3) {
         int n4 = this.a(n, n2, n3);
-        return n4 > 0 && C_x.c[n4].getMaterial(this.e(n, n2, n3)) == net.minecraft.a.a.d.C_c.g;
+        return n4 > 0 && Block.c[n4].getMaterial(this.e(n, n2, n3)) == net.minecraft.a.a.d.C_c.g;
     }
 
     public net.minecraft.a.d.C_c a(net.minecraft.a.d.C_a c_a, net.minecraft.a.d.C_a c_a2) {
@@ -1589,7 +1589,7 @@ public class C_g {
                 int n6 = MathHelper.a((double)c_a.c);
                 int n7 = this.a(n4, n5, n6);
                 byte by = this.e(n4, n5, n6);
-                C_x c_x = C_x.c[n7];
+                Block c_x = Block.c[n7];
                 if ((!bl2 || c_x == null || c_x.getCollisionBoundingBoxFromPool(this, n4, n5, n6) != null) && n7 > 0 && c_x.canCollideCheck(by, bl) && (c_c = c_x.a(this, n4, n5, n6, c_a, c_a2)) != null) {
                     return c_c;
                 }
@@ -1682,7 +1682,7 @@ public class C_g {
                     }
                     int n9 = this.a(n4, n5, n6);
                     byte by2 = this.e(n4, n5, n6);
-                    C_x c_x2 = C_x.c[n9];
+                    Block c_x2 = Block.c[n9];
                     if (bl2 && c_x2 != null && c_x2.getCollisionBoundingBoxFromPool(this, n4, n5, n6) == null || n9 <= 0 || !c_x2.canCollideCheck(by2, bl) || (c_c2 = c_x2.a(this, n4, n5, n6, c_a, c_a2)) == null) continue;
                     return c_c2;
                 }
@@ -1693,10 +1693,10 @@ public class C_g {
         return null;
     }
 
-    public boolean genBigFlowerFeature1(int n, boolean bl, C_g c_g, Random random, int n2, int n3, int n4) {
+    public boolean genBigFlowerFeature1(int n, boolean bl, World c_g, Random random, int n2, int n3, int n4) {
         int n5 = random.nextInt(4) + n;
         boolean bl2 = true;
-        int n6 = C_x.flowerPetal.at;
+        int n6 = Block.flowerPetal.at;
         if (n3 >= 1 && n3 + n5 + 1 <= c_g.c) {
             int n7;
             int n8;
@@ -1715,7 +1715,7 @@ public class C_g {
                     for (n8 = n4 - n10; n8 <= n4 + n10 && bl2; ++n8) {
                         if (n11 >= 0 && n9 >= 0 && n8 >= 0 && n9 < this.a && n8 < this.b && n11 < this.c) {
                             n7 = c_g.a(n9, n11, n8);
-                            if (n7 == 0 || n7 == C_x.plantPurple.at || n7 == C_x.plantBlue.at || n7 == C_x.plantYellow.at || n7 == C_x.plantRed.at) continue;
+                            if (n7 == 0 || n7 == Block.plantPurple.at || n7 == Block.plantBlue.at || n7 == Block.plantYellow.at || n7 == Block.plantRed.at) continue;
                             bl2 = false;
                             continue;
                         }
@@ -1728,8 +1728,8 @@ public class C_g {
                 return false;
             }
             n11 = c_g.a(n2, n3 - 1, n4);
-            if ((n11 == C_x.j.at || n11 == C_x.k.at) && n3 < c_g.c - n5 - 1) {
-                c_g.a(n2, n3 - 1, n4, C_x.k.at);
+            if ((n11 == Block.j.at || n11 == Block.k.at) && n3 < c_g.c - n5 - 1) {
+                c_g.a(n2, n3 - 1, n4, Block.k.at);
                 n10 = 3;
                 n9 = 0;
                 for (n8 = n3 - n10 + n5; n8 <= n3 + n5; ++n8) {
@@ -1739,14 +1739,14 @@ public class C_g {
                         int n13 = i - n2;
                         for (int j = n4 - n12; j <= n4 + n12; ++j) {
                             int n14 = j - n4;
-                            if ((Math.abs(n13) != n12 || Math.abs(n14) != n12 || random.nextInt(2) != 0 && n7 != 0) && C_x.e[c_g.a(i, n8, j)]) continue;
+                            if ((Math.abs(n13) != n12 || Math.abs(n14) != n12 || random.nextInt(2) != 0 && n7 != 0) && Block.e[c_g.a(i, n8, j)]) continue;
                         }
                     }
                 }
                 for (n8 = 0; n8 < n5; ++n8) {
                     n7 = c_g.a(n2, n3 + n8, n4);
-                    if (n7 != 0 && n7 != C_x.plantRed.at && n7 != C_x.plantYellow.at && n7 != C_x.plantPurple.at && n7 != C_x.plantBlue.at) continue;
-                    c_g.setBlockAndMetadata(n2, n3 + n8, n4, C_x.flowerStem.at, 0);
+                    if (n7 != 0 && n7 != Block.plantRed.at && n7 != Block.plantYellow.at && n7 != Block.plantPurple.at && n7 != Block.plantBlue.at) continue;
+                    c_g.setBlockAndMetadata(n2, n3 + n8, n4, Block.flowerStem.at, 0);
                     c_g.setBlockAndMetadata(n2 - 1, n3 + (n5 - 1), n4, n6, 1);
                     c_g.setBlockAndMetadata(n2 + 1, n3 + (n5 - 1), n4, n6, 1);
                     c_g.setBlockAndMetadata(n2, n3 + (n5 - 1), n4 - 1, n6, 1);
@@ -1787,10 +1787,10 @@ public class C_g {
         return false;
     }
 
-    public boolean genBigFlowerFeature2(int n, boolean bl, C_g c_g, Random random, int n2, int n3, int n4) {
+    public boolean genBigFlowerFeature2(int n, boolean bl, World c_g, Random random, int n2, int n3, int n4) {
         int n5 = random.nextInt(4) + n;
         boolean bl2 = true;
-        int n6 = C_x.flowerPetal.at;
+        int n6 = Block.flowerPetal.at;
         if (n3 >= 1 && n3 + n5 + 1 <= c_g.c) {
             int n7;
             int n8;
@@ -1809,7 +1809,7 @@ public class C_g {
                     for (n8 = n4 - n10; n8 <= n4 + n10 && bl2; ++n8) {
                         if (n11 >= 0 && n9 >= 0 && n8 >= 0 && n9 < this.a && n8 < this.b && n11 < this.c) {
                             n7 = c_g.a(n9, n11, n8);
-                            if (n7 == 0 || n7 == C_x.plantPurple.at || n7 == C_x.plantBlue.at || n7 == C_x.plantYellow.at || n7 == C_x.plantRed.at) continue;
+                            if (n7 == 0 || n7 == Block.plantPurple.at || n7 == Block.plantBlue.at || n7 == Block.plantYellow.at || n7 == Block.plantRed.at) continue;
                             bl2 = false;
                             continue;
                         }
@@ -1822,8 +1822,8 @@ public class C_g {
                 return false;
             }
             n11 = c_g.a(n2, n3 - 1, n4);
-            if ((n11 == C_x.j.at || n11 == C_x.k.at) && n3 < c_g.c - n5 - 1) {
-                c_g.a(n2, n3 - 1, n4, C_x.k.at);
+            if ((n11 == Block.j.at || n11 == Block.k.at) && n3 < c_g.c - n5 - 1) {
+                c_g.a(n2, n3 - 1, n4, Block.k.at);
                 n10 = 3;
                 n9 = 0;
                 for (n8 = n3 - n10 + n5; n8 <= n3 + n5; ++n8) {
@@ -1833,14 +1833,14 @@ public class C_g {
                         int n13 = i - n2;
                         for (int j = n4 - n12; j <= n4 + n12; ++j) {
                             int n14 = j - n4;
-                            if ((Math.abs(n13) != n12 || Math.abs(n14) != n12 || random.nextInt(2) != 0 && n7 != 0) && C_x.e[c_g.a(i, n8, j)]) continue;
+                            if ((Math.abs(n13) != n12 || Math.abs(n14) != n12 || random.nextInt(2) != 0 && n7 != 0) && Block.e[c_g.a(i, n8, j)]) continue;
                         }
                     }
                 }
                 for (n8 = 0; n8 < n5; ++n8) {
                     n7 = c_g.a(n2, n3 + n8, n4);
-                    if (n7 != 0 && n7 != C_x.plantRed.at && n7 != C_x.plantYellow.at && n7 != C_x.plantPurple.at && n7 != C_x.plantBlue.at) continue;
-                    c_g.setBlockAndMetadata(n2, n3 + n8, n4, C_x.flowerStem.at, 0);
+                    if (n7 != 0 && n7 != Block.plantRed.at && n7 != Block.plantYellow.at && n7 != Block.plantPurple.at && n7 != Block.plantBlue.at) continue;
+                    c_g.setBlockAndMetadata(n2, n3 + n8, n4, Block.flowerStem.at, 0);
                     c_g.setBlockAndMetadata(n2, n3 + n5, n4, n6, 0);
                     c_g.setBlockAndMetadata(n2 - 1, n3 + n5, n4, n6, 0);
                     c_g.setBlockAndMetadata(n2 + 1, n3 + n5, n4, n6, 0);
@@ -1860,11 +1860,11 @@ public class C_g {
                     c_g.setBlockAndMetadata(n2 + 2, n3 + n5, n4 + 1, n6, 0);
                 }
                 if (random.nextInt(2) == 0) {
-                    c_g.setBlockAndMetadata(n2 - 1, n3 + n8 / 6 + 1, n4, C_x.flowerStem.at, 0);
-                    c_g.setBlockAndMetadata(n2 + 1, n3 + n8 / 6 + 2, n4, C_x.flowerStem.at, 0);
+                    c_g.setBlockAndMetadata(n2 - 1, n3 + n8 / 6 + 1, n4, Block.flowerStem.at, 0);
+                    c_g.setBlockAndMetadata(n2 + 1, n3 + n8 / 6 + 2, n4, Block.flowerStem.at, 0);
                 } else {
-                    c_g.setBlockAndMetadata(n2, n3 + n8 / 6 + 1, n4 - 1, C_x.flowerStem.at, 0);
-                    c_g.setBlockAndMetadata(n2, n3 + n8 / 6 + 2, n4 + 1, C_x.flowerStem.at, 0);
+                    c_g.setBlockAndMetadata(n2, n3 + n8 / 6 + 1, n4 - 1, Block.flowerStem.at, 0);
+                    c_g.setBlockAndMetadata(n2, n3 + n8 / 6 + 2, n4 + 1, Block.flowerStem.at, 0);
                 }
                 this.cantGrow = false;
                 return true;
@@ -1876,10 +1876,10 @@ public class C_g {
         return false;
     }
 
-    public boolean genBigFlowerFeature3(int n, boolean bl, C_g c_g, Random random, int n2, int n3, int n4) {
+    public boolean genBigFlowerFeature3(int n, boolean bl, World c_g, Random random, int n2, int n3, int n4) {
         int n5 = random.nextInt(4) + n;
         boolean bl2 = true;
-        int n6 = C_x.flowerPetal.at;
+        int n6 = Block.flowerPetal.at;
         if (n3 >= 1 && n3 + n5 + 1 <= c_g.c) {
             int n7;
             int n8;
@@ -1898,7 +1898,7 @@ public class C_g {
                     for (n8 = n4 - n10; n8 <= n4 + n10 && bl2; ++n8) {
                         if (n11 >= 0 && n9 >= 0 && n8 >= 0 && n9 < this.a && n8 < this.b && n11 < this.c) {
                             n7 = c_g.a(n9, n11, n8);
-                            if (n7 == 0 || n7 == C_x.plantPurple.at || n7 == C_x.plantBlue.at || n7 == C_x.plantYellow.at || n7 == C_x.plantRed.at) continue;
+                            if (n7 == 0 || n7 == Block.plantPurple.at || n7 == Block.plantBlue.at || n7 == Block.plantYellow.at || n7 == Block.plantRed.at) continue;
                             bl2 = false;
                             continue;
                         }
@@ -1911,8 +1911,8 @@ public class C_g {
                 return false;
             }
             n11 = c_g.a(n2, n3 - 1, n4);
-            if ((n11 == C_x.j.at || n11 == C_x.k.at) && n3 < c_g.c - n5 - 1) {
-                c_g.a(n2, n3 - 1, n4, C_x.k.at);
+            if ((n11 == Block.j.at || n11 == Block.k.at) && n3 < c_g.c - n5 - 1) {
+                c_g.a(n2, n3 - 1, n4, Block.k.at);
                 n10 = 3;
                 n9 = 0;
                 for (n8 = n3 - n10 + n5; n8 <= n3 + n5; ++n8) {
@@ -1922,14 +1922,14 @@ public class C_g {
                         int n13 = i - n2;
                         for (int j = n4 - n12; j <= n4 + n12; ++j) {
                             int n14 = j - n4;
-                            if ((Math.abs(n13) != n12 || Math.abs(n14) != n12 || random.nextInt(2) != 0 && n7 != 0) && C_x.e[c_g.a(i, n8, j)]) continue;
+                            if ((Math.abs(n13) != n12 || Math.abs(n14) != n12 || random.nextInt(2) != 0 && n7 != 0) && Block.e[c_g.a(i, n8, j)]) continue;
                         }
                     }
                 }
                 for (n8 = 0; n8 < n5; ++n8) {
                     n7 = c_g.a(n2, n3 + n8, n4);
-                    if (n7 != 0 && n7 != C_x.plantRed.at && n7 != C_x.plantYellow.at && n7 != C_x.plantPurple.at && n7 != C_x.plantBlue.at) continue;
-                    c_g.setBlockAndMetadata(n2, n3 + n8, n4, C_x.flowerStem.at, 0);
+                    if (n7 != 0 && n7 != Block.plantRed.at && n7 != Block.plantYellow.at && n7 != Block.plantPurple.at && n7 != Block.plantBlue.at) continue;
+                    c_g.setBlockAndMetadata(n2, n3 + n8, n4, Block.flowerStem.at, 0);
                     c_g.setBlockAndMetadata(n2 - 1, n3 + (n5 - 1), n4, n6, 3);
                     c_g.setBlockAndMetadata(n2 + 1, n3 + (n5 - 1), n4, n6, 3);
                     c_g.setBlockAndMetadata(n2, n3 + (n5 - 1), n4 - 1, n6, 3);
@@ -1987,10 +1987,10 @@ public class C_g {
         return false;
     }
 
-    public boolean genBigFlowerFeature4(int n, boolean bl, C_g c_g, Random random, int n2, int n3, int n4) {
+    public boolean genBigFlowerFeature4(int n, boolean bl, World c_g, Random random, int n2, int n3, int n4) {
         int n5 = random.nextInt(4) + n;
         boolean bl2 = true;
-        int n6 = C_x.flowerPetal.at;
+        int n6 = Block.flowerPetal.at;
         if (n3 >= 1 && n3 + n5 + 1 <= c_g.c) {
             int n7;
             int n8;
@@ -2009,7 +2009,7 @@ public class C_g {
                     for (n8 = n4 - n10; n8 <= n4 + n10 && bl2; ++n8) {
                         if (n11 >= 0 && n9 >= 0 && n8 >= 0 && n9 < this.a && n8 < this.b && n11 < this.c) {
                             n7 = c_g.a(n9, n11, n8);
-                            if (n7 == 0 || n7 == C_x.plantPurple.at || n7 == C_x.plantBlue.at || n7 == C_x.plantYellow.at || n7 == C_x.plantRed.at) continue;
+                            if (n7 == 0 || n7 == Block.plantPurple.at || n7 == Block.plantBlue.at || n7 == Block.plantYellow.at || n7 == Block.plantRed.at) continue;
                             bl2 = false;
                             continue;
                         }
@@ -2022,8 +2022,8 @@ public class C_g {
                 return false;
             }
             n11 = c_g.a(n2, n3 - 1, n4);
-            if ((n11 == C_x.j.at || n11 == C_x.k.at) && n3 < c_g.c - n5 - 1) {
-                c_g.a(n2, n3 - 1, n4, C_x.k.at);
+            if ((n11 == Block.j.at || n11 == Block.k.at) && n3 < c_g.c - n5 - 1) {
+                c_g.a(n2, n3 - 1, n4, Block.k.at);
                 n10 = 3;
                 n9 = 0;
                 for (n8 = n3 - n10 + n5; n8 <= n3 + n5; ++n8) {
@@ -2033,14 +2033,14 @@ public class C_g {
                         int n13 = i - n2;
                         for (int j = n4 - n12; j <= n4 + n12; ++j) {
                             int n14 = j - n4;
-                            if ((Math.abs(n13) != n12 || Math.abs(n14) != n12 || random.nextInt(2) != 0 && n7 != 0) && C_x.e[c_g.a(i, n8, j)]) continue;
+                            if ((Math.abs(n13) != n12 || Math.abs(n14) != n12 || random.nextInt(2) != 0 && n7 != 0) && Block.e[c_g.a(i, n8, j)]) continue;
                         }
                     }
                 }
                 for (n8 = 0; n8 < n5; ++n8) {
                     n7 = c_g.a(n2, n3 + n8, n4);
-                    if (n7 != 0 && n7 != C_x.plantRed.at && n7 != C_x.plantYellow.at && n7 != C_x.plantPurple.at && n7 != C_x.plantBlue.at) continue;
-                    c_g.setBlockAndMetadata(n2, n3 + n8, n4, C_x.flowerStem.at, 0);
+                    if (n7 != 0 && n7 != Block.plantRed.at && n7 != Block.plantYellow.at && n7 != Block.plantPurple.at && n7 != Block.plantBlue.at) continue;
+                    c_g.setBlockAndMetadata(n2, n3 + n8, n4, Block.flowerStem.at, 0);
                     c_g.setBlockAndMetadata(n2 - 1, n3 + (n5 - 1), n4, n6, 2);
                     c_g.setBlockAndMetadata(n2 + 1, n3 + (n5 - 1), n4, n6, 2);
                     c_g.setBlockAndMetadata(n2, n3 + (n5 - 1), n4 - 1, n6, 2);
@@ -2113,14 +2113,14 @@ public class C_g {
                     c_g.setBlockAndMetadata(n2 + 1, n3 + n5 + 2, n4 + 2, n6, 2);
                     c_g.setBlockAndMetadata(n2 - 1, n3 + n5 + 2, n4 + 2, n6, 2);
                 }
-                c_g.setBlockAndMetadata(n2 + 1, n3 + n8 / 2, n4, C_x.flowerStem.at, 0);
-                c_g.setBlockAndMetadata(n2 - 1, n3 + n8 / 2, n4, C_x.flowerStem.at, 0);
-                c_g.setBlockAndMetadata(n2, n3 + n8 / 2, n4 + 1, C_x.flowerStem.at, 0);
-                c_g.setBlockAndMetadata(n2, n3 + n8 / 2, n4 - 1, C_x.flowerStem.at, 0);
-                c_g.setBlockAndMetadata(n2 + 2, n3 + n8 / 2 + 1, n4, C_x.flowerStem.at, 0);
-                c_g.setBlockAndMetadata(n2 - 2, n3 + n8 / 2 + 1, n4, C_x.flowerStem.at, 0);
-                c_g.setBlockAndMetadata(n2, n3 + n8 / 2 + 1, n4 + 2, C_x.flowerStem.at, 0);
-                c_g.setBlockAndMetadata(n2, n3 + n8 / 2 + 1, n4 - 2, C_x.flowerStem.at, 0);
+                c_g.setBlockAndMetadata(n2 + 1, n3 + n8 / 2, n4, Block.flowerStem.at, 0);
+                c_g.setBlockAndMetadata(n2 - 1, n3 + n8 / 2, n4, Block.flowerStem.at, 0);
+                c_g.setBlockAndMetadata(n2, n3 + n8 / 2, n4 + 1, Block.flowerStem.at, 0);
+                c_g.setBlockAndMetadata(n2, n3 + n8 / 2, n4 - 1, Block.flowerStem.at, 0);
+                c_g.setBlockAndMetadata(n2 + 2, n3 + n8 / 2 + 1, n4, Block.flowerStem.at, 0);
+                c_g.setBlockAndMetadata(n2 - 2, n3 + n8 / 2 + 1, n4, Block.flowerStem.at, 0);
+                c_g.setBlockAndMetadata(n2, n3 + n8 / 2 + 1, n4 + 2, Block.flowerStem.at, 0);
+                c_g.setBlockAndMetadata(n2, n3 + n8 / 2 + 1, n4 - 2, Block.flowerStem.at, 0);
                 this.cantGrow = false;
                 return true;
             }
@@ -2131,17 +2131,17 @@ public class C_g {
         return false;
     }
 
-    private void generateVines(C_g c_g, int n, int n2, int n3, int n4) {
-        c_g.setBlockAndMetadata(n, n2, n3, C_x.vine.at, n4);
+    private void generateVines(World c_g, int n, int n2, int n3, int n4) {
+        c_g.setBlockAndMetadata(n, n2, n3, Block.vine.at, n4);
         int n5 = 4;
         while (c_g.a(n, --n2, n3) == 0 && n5 > 0) {
-            c_g.setBlockAndMetadata(n, n2, n3, C_x.vine.at, n4);
+            c_g.setBlockAndMetadata(n, n2, n3, Block.vine.at, n4);
             --n5;
         }
         return;
     }
 
-    public boolean growSwampTrees(C_g c_g, Random random, int n, int n2, int n3) {
+    public boolean growSwampTrees(World c_g, Random random, int n, int n2, int n3) {
         int n4 = random.nextInt(4) + 5;
         while (c_g.f(n, n2 - 1, n3) == net.minecraft.a.a.d.C_c.f) {
             --n2;
@@ -2165,8 +2165,8 @@ public class C_g {
                     for (n6 = n3 - n8; n6 <= n3 + n8 && bl; ++n6) {
                         if (n9 >= 0 && n9 < c_g.c && n7 > 0 && n7 < c_g.a && n6 > 0 && n6 < c_g.b) {
                             n5 = c_g.a(n7, n9, n6);
-                            if (n5 == 0 || n5 == C_x.z.at) continue;
-                            if (n5 != C_x.q.at && n5 != C_x.p.at) {
+                            if (n5 == 0 || n5 == Block.z.at) continue;
+                            if (n5 != Block.q.at && n5 != Block.p.at) {
                                 bl = false;
                                 continue;
                             }
@@ -2182,9 +2182,9 @@ public class C_g {
                 return false;
             }
             n9 = c_g.a(n, n2 - 1, n3);
-            if ((n9 == C_x.j.at || n9 == C_x.k.at) && n2 < c_g.c - n4 - 1) {
+            if ((n9 == Block.j.at || n9 == Block.k.at) && n2 < c_g.c - n4 - 1) {
                 int n10;
-                c_g.a(n, n2 - 1, n3, C_x.k.at);
+                c_g.a(n, n2 - 1, n3, Block.k.at);
                 for (n10 = n2 - 3 + n4; n10 <= n2 + n4; ++n10) {
                     n7 = n10 - (n2 + n4);
                     n6 = 2 - n7 / 2;
@@ -2192,22 +2192,22 @@ public class C_g {
                         n8 = n5 - n;
                         for (int i = n3 - n6; i <= n3 + n6; ++i) {
                             int n11 = i - n3;
-                            if (Math.abs(n8) == n6 && Math.abs(n11) == n6 && (random.nextInt(2) == 0 || n7 == 0) || C_x.e[c_g.a(n5, n10, i)] || this.a(n5, n10, i) == C_x.portal.at) continue;
-                            c_g.a(n5, n10, i, C_x.z.at);
+                            if (Math.abs(n8) == n6 && Math.abs(n11) == n6 && (random.nextInt(2) == 0 || n7 == 0) || Block.e[c_g.a(n5, n10, i)] || this.a(n5, n10, i) == Block.portal.at) continue;
+                            c_g.a(n5, n10, i, Block.z.at);
                         }
                     }
                 }
                 for (n10 = 0; n10 < n4; ++n10) {
                     n7 = c_g.a(n, n2 + n10, n3);
-                    if (n7 != 0 && n7 != C_x.z.at && n7 != C_x.p.at && n7 != C_x.q.at) continue;
-                    c_g.a(n, n2 + n10, n3, C_x.y.at);
+                    if (n7 != 0 && n7 != Block.z.at && n7 != Block.p.at && n7 != Block.q.at) continue;
+                    c_g.a(n, n2 + n10, n3, Block.y.at);
                 }
                 for (n10 = n2 - 3 + n4; n10 <= n2 + n4; ++n10) {
                     n7 = n10 - (n2 + n4);
                     n6 = 2 - n7 / 2;
                     for (n5 = n - n6; n5 <= n + n6; ++n5) {
                         for (n8 = n3 - n6; n8 <= n3 + n6; ++n8) {
-                            if (c_g.a(n5, n10, n8) != C_x.z.at) continue;
+                            if (c_g.a(n5, n10, n8) != Block.z.at) continue;
                             if (random.nextInt(4) == 0 && c_g.a(n5 - 1, n10, n8) == 0) {
                                 this.generateVines(c_g, n5 - 1, n10, n8, 4);
                             }
@@ -2263,8 +2263,8 @@ public class C_g {
                 return false;
             }
             n9 = this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF;
-            if ((n9 == C_x.j.at || n9 == C_x.k.at) && n2 < this.c - n5 - 1) {
-                this.b(n, n2 - 1, n3, C_x.k.at);
+            if ((n9 == Block.j.at || n9 == Block.k.at) && n2 < this.c - n5 - 1) {
+                this.b(n, n2 - 1, n3, Block.k.at);
                 for (n8 = n2 - 3 + n5; n8 <= n2 + n5; ++n8) {
                     n7 = n8 - (n2 + n5);
                     n6 = 1 - n7 / 2;
@@ -2272,30 +2272,30 @@ public class C_g {
                         int n10 = i - n;
                         block9: for (n9 = n3 - n6; n9 <= n3 + n6; ++n9) {
                             int n11 = n9 - n3;
-                            if (Math.abs(n10) == n6 && Math.abs(n11) == n6 && (this.q.nextInt(2) == 0 || n7 == 0) || C_x.e[this.a(i, n8, n9)] || this.a(i, n8, n9) == C_x.portal.at || n4 == 3) continue;
+                            if (Math.abs(n10) == n6 && Math.abs(n11) == n6 && (this.q.nextInt(2) == 0 || n7 == 0) || Block.e[this.a(i, n8, n9)] || this.a(i, n8, n9) == Block.portal.at || n4 == 3) continue;
                             switch (n4) {
                                 case 1: {
-                                    this.setBlockAndMetadataWithNotify(i, n8, n9, C_x.z.at, this.q.nextInt(2) + 1);
+                                    this.setBlockAndMetadataWithNotify(i, n8, n9, Block.z.at, this.q.nextInt(2) + 1);
                                     continue block9;
                                 }
                                 case 2: {
-                                    this.setBlockAndMetadataWithNotify(i, n8, n9, C_x.z.at, 3);
+                                    this.setBlockAndMetadataWithNotify(i, n8, n9, Block.z.at, 3);
                                     continue block9;
                                 }
                                 default: {
-                                    this.setBlockAndMetadataWithNotify(i, n8, n9, C_x.z.at, n4);
+                                    this.setBlockAndMetadataWithNotify(i, n8, n9, Block.z.at, n4);
                                 }
                             }
                         }
                     }
                 }
                 for (n8 = 0; n8 < n5; ++n8) {
-                    if (C_x.e[this.a(n, n2 + n8, n3)]) continue;
+                    if (Block.e[this.a(n, n2 + n8, n3)]) continue;
                     if (n4 == 2) {
-                        this.setBlockAndMetadataWithNotify(n, n2 + n8, n3, C_x.y.at, 1);
+                        this.setBlockAndMetadataWithNotify(n, n2 + n8, n3, Block.y.at, 1);
                         continue;
                     }
-                    this.b(n, n2 + n8, n3, C_x.y.at);
+                    this.b(n, n2 + n8, n3, Block.y.at);
                 }
                 return true;
             }
@@ -2331,8 +2331,8 @@ public class C_g {
                 return false;
             }
             n7 = this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF;
-            if ((n7 == C_x.j.at || n7 == C_x.k.at || n7 == C_x.moss.at) && n2 < this.c - n4 - 1) {
-                this.b(n, n2 - 1, n3, C_x.k.at);
+            if ((n7 == Block.j.at || n7 == Block.k.at || n7 == Block.moss.at) && n2 < this.c - n4 - 1) {
+                this.b(n, n2 - 1, n3, Block.k.at);
                 int n8 = 2;
                 if (n4 == 4) {
                     n8 = 3;
@@ -2344,13 +2344,13 @@ public class C_g {
                         for (n7 = n3 - 1; n7 <= n3 + 1; ++n7) {
                             int n10 = n7 - n3;
                             if (n5 != -1 && (n5 != -2 || n4 != 4) && Math.abs(n9) == 1 && Math.abs(n10) == 1) continue;
-                            this.setBlockAndMetadataWithNotify(i, n6, n7, C_x.z.at, 5);
+                            this.setBlockAndMetadataWithNotify(i, n6, n7, Block.z.at, 5);
                         }
                     }
                 }
                 for (n6 = 0; n6 < n4; ++n6) {
-                    if (C_x.e[this.a(n, n2 + n6, n3)]) continue;
-                    this.setBlockAndMetadataWithNotify(n, n2 + n6, n3, C_x.y.at, 3);
+                    if (Block.e[this.a(n, n2 + n6, n3)]) continue;
+                    this.setBlockAndMetadataWithNotify(n, n2 + n6, n3, Block.y.at, 3);
                 }
                 return true;
             }
@@ -2391,15 +2391,15 @@ public class C_g {
                 return false;
             }
             n9 = this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF;
-            if ((n9 == C_x.j.at || n9 == C_x.k.at) && n2 < this.c - n4 - 1) {
+            if ((n9 == Block.j.at || n9 == Block.k.at) && n2 < this.c - n4 - 1) {
                 int n10;
                 int n11;
-                this.b(n, n2 - 1, n3, C_x.k.at);
+                this.b(n, n2 - 1, n3, Block.k.at);
                 if (n5 != 0) {
-                    this.b(n, n2 - 1, n3 + 1 * n5, C_x.k.at);
-                    this.b(n + 1 * n5, n2 - 1, n3, C_x.k.at);
-                    this.b(n, n2 - 1, n3 - 1 * n5, C_x.k.at);
-                    this.b(n - 1 * n5, n2 - 1, n3, C_x.k.at);
+                    this.b(n, n2 - 1, n3 + 1 * n5, Block.k.at);
+                    this.b(n + 1 * n5, n2 - 1, n3, Block.k.at);
+                    this.b(n, n2 - 1, n3 - 1 * n5, Block.k.at);
+                    this.b(n - 1 * n5, n2 - 1, n3, Block.k.at);
                 }
                 n8 = n + 2 * n5;
                 int n12 = n2 + n4;
@@ -2408,33 +2408,33 @@ public class C_g {
                     n8 = n;
                     n13 = n3 + 2 * n5;
                 }
-                this.setBlockAndMetadataWithNotify(n8, n12, n13, C_x.z.at, 4);
-                this.setBlockAndMetadataWithNotify(n8, n12 + 1, n13, C_x.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8, n12, n13, Block.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8, n12 + 1, n13, Block.z.at, 4);
                 for (n11 = 1; n11 <= 3; ++n11) {
                     n10 = n12;
                     if (n11 == 3) {
                         --n10;
                     }
-                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13 - n11, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13 + n11, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13 - n11, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13 + n11, C_x.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13 - n11, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13 + n11, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13 - n11, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13 + n11, Block.z.at, 4);
                 }
-                this.setBlockAndMetadataWithNotify(n8 + 1, n12 - 1, n13, C_x.z.at, 4);
-                this.setBlockAndMetadataWithNotify(n8 - 1, n12 - 1, n13, C_x.z.at, 4);
-                this.setBlockAndMetadataWithNotify(n8, n12 - 1, n13 + 1, C_x.z.at, 4);
-                this.setBlockAndMetadataWithNotify(n8, n12 - 1, n13 - 1, C_x.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8 + 1, n12 - 1, n13, Block.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8 - 1, n12 - 1, n13, Block.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8, n12 - 1, n13 + 1, Block.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8, n12 - 1, n13 - 1, Block.z.at, 4);
                 for (n11 = 1; n11 <= 4; ++n11) {
                     n10 = n12;
                     if (n11 == 4) {
                         --n10;
                     }
-                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8, n10, n13 + n11, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8, n10, n13 - n11, C_x.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8, n10, n13 + n11, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8, n10, n13 - n11, Block.z.at, 4);
                 }
-                this.setBlockAndMetadataWithNotify(n, n2 + n7, n3, C_x.y.at, 2);
+                this.setBlockAndMetadataWithNotify(n, n2 + n7, n3, Block.y.at, 2);
                 for (n11 = 0; n11 < n4; ++n11) {
                     n10 = n11 / 2;
                     if (n10 > 2) {
@@ -2445,16 +2445,16 @@ public class C_g {
                         n14 = 1;
                     }
                     if (n6 == 1) {
-                        this.setBlockAndMetadataWithNotify(n, n2 + n11 + n14, n3 + n10 * n5, C_x.y.at, 2);
+                        this.setBlockAndMetadataWithNotify(n, n2 + n11 + n14, n3 + n10 * n5, Block.y.at, 2);
                     } else {
-                        this.setBlockAndMetadataWithNotify(n + n10 * n5, n2 + n11 + n14, n3, C_x.y.at, 2);
+                        this.setBlockAndMetadataWithNotify(n + n10 * n5, n2 + n11 + n14, n3, Block.y.at, 2);
                     }
                     if (n5 == 0) continue;
-                    this.setBlockAndMetadataWithNotify(n, n2, n3 + 1 * n5, C_x.y.at, 2);
-                    this.setBlockAndMetadataWithNotify(n + 1 * n5, n2, n3, C_x.y.at, 2);
-                    this.setBlockAndMetadataWithNotify(n, n2, n3 - 1 * n5, C_x.y.at, 2);
-                    this.setBlockAndMetadataWithNotify(n - 1 * n5, n2, n3, C_x.y.at, 2);
-                    this.setBlockAndMetadataWithNotify(n, n2, n3, C_x.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n, n2, n3 + 1 * n5, Block.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n + 1 * n5, n2, n3, Block.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n, n2, n3 - 1 * n5, Block.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n - 1 * n5, n2, n3, Block.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n, n2, n3, Block.y.at, 2);
                 }
                 return true;
             }
@@ -2483,7 +2483,7 @@ public class C_g {
                 for (int i = n - n8; i <= n + n8 && bl; ++i) {
                     for (int j = n3 - n8; j <= n3 + n8 && bl; ++j) {
                         if (i >= 0 && n9 >= 0 && j >= 0 && i < this.a && n9 < this.c && j < this.b) {
-                            if ((this.d[(n9 * this.b + j) * this.a + i] & 0xFF) == C_x.q.at) continue;
+                            if ((this.d[(n9 * this.b + j) * this.a + i] & 0xFF) == Block.q.at) continue;
                             bl = false;
                             continue;
                         }
@@ -2495,28 +2495,28 @@ public class C_g {
                 return false;
             }
             n9 = this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF;
-            if (n9 == C_x.coral.at && n2 < this.c - n4 - 1) {
-                this.setBlockAndMetadataWithNotify(n, n2 + n7, n3, C_x.coral.at, n5);
+            if (n9 == Block.coral.at && n2 < this.c - n4 - 1) {
+                this.setBlockAndMetadataWithNotify(n, n2 + n7, n3, Block.coral.at, n5);
                 for (n8 = 0; n8 < n4; ++n8) {
                     int n10 = n8 / 2;
                     if (n6 == 0) {
-                        this.setBlockAndMetadataWithNotify(n, n2 + n7 + 1, n3 + 1, C_x.coral.at, n5);
-                        this.setBlockAndMetadataWithNotify(n + 1, n2 + n7 + 1, n3, C_x.coral.at, n5);
-                        this.setBlockAndMetadataWithNotify(n, n2 + n8, n3 + n10 + 1, C_x.coral.at, n5);
-                        this.setBlockAndMetadataWithNotify(n + n10 + 1, n2 + n8, n3, C_x.coral.at, n5);
+                        this.setBlockAndMetadataWithNotify(n, n2 + n7 + 1, n3 + 1, Block.coral.at, n5);
+                        this.setBlockAndMetadataWithNotify(n + 1, n2 + n7 + 1, n3, Block.coral.at, n5);
+                        this.setBlockAndMetadataWithNotify(n, n2 + n8, n3 + n10 + 1, Block.coral.at, n5);
+                        this.setBlockAndMetadataWithNotify(n + n10 + 1, n2 + n8, n3, Block.coral.at, n5);
                         continue;
                     }
                     if (n6 == 2) {
-                        this.setBlockAndMetadataWithNotify(n, n2 + n7 + 1, n3 - 1, C_x.coral.at, n5);
-                        this.setBlockAndMetadataWithNotify(n - 1, n2 + n7 + 1, n3, C_x.coral.at, n5);
-                        this.setBlockAndMetadataWithNotify(n, n2 + n8, n3 - n10 - 1, C_x.coral.at, n5);
-                        this.setBlockAndMetadataWithNotify(n - n10 - 1, n2 + n8, n3, C_x.coral.at, n5);
+                        this.setBlockAndMetadataWithNotify(n, n2 + n7 + 1, n3 - 1, Block.coral.at, n5);
+                        this.setBlockAndMetadataWithNotify(n - 1, n2 + n7 + 1, n3, Block.coral.at, n5);
+                        this.setBlockAndMetadataWithNotify(n, n2 + n8, n3 - n10 - 1, Block.coral.at, n5);
+                        this.setBlockAndMetadataWithNotify(n - n10 - 1, n2 + n8, n3, Block.coral.at, n5);
                         continue;
                     }
-                    this.setBlockAndMetadataWithNotify(n, n2 + n8, n3 + n10 - n6, C_x.coral.at, n5);
-                    this.setBlockAndMetadataWithNotify(n + n10 - n6, n2 + n8, n3, C_x.coral.at, n5);
-                    this.setBlockAndMetadataWithNotify(n, n2 + n8, n3 - n10 - n6, C_x.coral.at, n5);
-                    this.setBlockAndMetadataWithNotify(n - n10 - n6, n2 + n8, n3, C_x.coral.at, n5);
+                    this.setBlockAndMetadataWithNotify(n, n2 + n8, n3 + n10 - n6, Block.coral.at, n5);
+                    this.setBlockAndMetadataWithNotify(n + n10 - n6, n2 + n8, n3, Block.coral.at, n5);
+                    this.setBlockAndMetadataWithNotify(n, n2 + n8, n3 - n10 - n6, Block.coral.at, n5);
+                    this.setBlockAndMetadataWithNotify(n - n10 - n6, n2 + n8, n3, Block.coral.at, n5);
                 }
                 return true;
             }
@@ -2566,63 +2566,63 @@ public class C_g {
                 return false;
             }
             n18 = this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF;
-            if ((n18 == C_x.s.at || n18 == C_x.r.at) && n2 < this.c - n4 - 1) {
+            if ((n18 == Block.s.at || n18 == Block.r.at) && n2 < this.c - n4 - 1) {
                 for (n17 = -1; n17 < 2; ++n17) {
                     for (int i = -1; i < 2; ++i) {
-                        this.b(n + n17, n2 - 1, n3 + i, C_x.ae.at);
+                        this.b(n + n17, n2 - 1, n3 + i, Block.ae.at);
                     }
                 }
                 for (n17 = 0; n17 < n4; ++n17) {
-                    if (C_x.e[this.a(n, n2 + n17, n3)]) continue;
-                    this.b(n, n2 + n17, n3, C_x.ae.at);
+                    if (Block.e[this.a(n, n2 + n17, n3)]) continue;
+                    this.b(n, n2 + n17, n3, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n5; ++n17) {
-                    if (C_x.e[this.a(n + 1, n2 + n17, n3)]) continue;
-                    this.b(n + 1, n2 + n17, n3, C_x.ae.at);
+                    if (Block.e[this.a(n + 1, n2 + n17, n3)]) continue;
+                    this.b(n + 1, n2 + n17, n3, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n6; ++n17) {
-                    if (C_x.e[this.a(n, n2 + n17, n3 + 1)]) continue;
-                    this.b(n, n2 + n17, n3 + 1, C_x.ae.at);
+                    if (Block.e[this.a(n, n2 + n17, n3 + 1)]) continue;
+                    this.b(n, n2 + n17, n3 + 1, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n7; ++n17) {
-                    if (C_x.e[this.a(n, n2 + n17, n3 - 1)]) continue;
-                    this.b(n, n2 + n17, n3 - 1, C_x.ae.at);
+                    if (Block.e[this.a(n, n2 + n17, n3 - 1)]) continue;
+                    this.b(n, n2 + n17, n3 - 1, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n8; ++n17) {
-                    if (C_x.e[this.a(n - 1, n2 + n17, n3)]) continue;
-                    this.b(n - 1, n2 + n17, n3, C_x.ae.at);
+                    if (Block.e[this.a(n - 1, n2 + n17, n3)]) continue;
+                    this.b(n - 1, n2 + n17, n3, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n9; ++n17) {
-                    if (C_x.e[this.a(n - 1, n2 + n17, n3 - 1)]) continue;
-                    this.b(n - 1, n2 + n17, n3 - 1, C_x.ae.at);
+                    if (Block.e[this.a(n - 1, n2 + n17, n3 - 1)]) continue;
+                    this.b(n - 1, n2 + n17, n3 - 1, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n10; ++n17) {
-                    if (C_x.e[this.a(n + 1, n2 + n17, n3 + 1)]) continue;
-                    this.b(n + 1, n2 + n17, n3 + 1, C_x.ae.at);
+                    if (Block.e[this.a(n + 1, n2 + n17, n3 + 1)]) continue;
+                    this.b(n + 1, n2 + n17, n3 + 1, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n11; ++n17) {
-                    if (C_x.e[this.a(n - 1, n2 + n17, n3 + 1)]) continue;
-                    this.b(n - 1, n2 + n17, n3 + 1, C_x.ae.at);
+                    if (Block.e[this.a(n - 1, n2 + n17, n3 + 1)]) continue;
+                    this.b(n - 1, n2 + n17, n3 + 1, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n12; ++n17) {
-                    if (C_x.e[this.a(n + 1, n2 + n17, n3 - 1)]) continue;
-                    this.b(n + 1, n2 + n17, n3 - 1, C_x.ae.at);
+                    if (Block.e[this.a(n + 1, n2 + n17, n3 - 1)]) continue;
+                    this.b(n + 1, n2 + n17, n3 - 1, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n13; ++n17) {
-                    if (C_x.e[this.a(n + 2, n2 + n17, n3)]) continue;
-                    this.b(n + 2, n2 - 1 + n17, n3, C_x.ae.at);
+                    if (Block.e[this.a(n + 2, n2 + n17, n3)]) continue;
+                    this.b(n + 2, n2 - 1 + n17, n3, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n14; ++n17) {
-                    if (C_x.e[this.a(n - 2, n2 + n17, n3)]) continue;
-                    this.b(n - 2, n2 - 1 + n17, n3, C_x.ae.at);
+                    if (Block.e[this.a(n - 2, n2 + n17, n3)]) continue;
+                    this.b(n - 2, n2 - 1 + n17, n3, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n15; ++n17) {
-                    if (C_x.e[this.a(n, n2 + n17, n3 + 2)]) continue;
-                    this.b(n, n2 - 1 + n17, n3 + 2, C_x.ae.at);
+                    if (Block.e[this.a(n, n2 + n17, n3 + 2)]) continue;
+                    this.b(n, n2 - 1 + n17, n3 + 2, Block.ae.at);
                 }
                 for (n17 = 0; n17 < n16; ++n17) {
-                    if (C_x.e[this.a(n, n2 + n17, n3 - 2)]) continue;
-                    this.b(n, n2 - 1 + n17, n3 - 2, C_x.ae.at);
+                    if (Block.e[this.a(n, n2 + n17, n3 - 2)]) continue;
+                    this.b(n, n2 - 1 + n17, n3 - 2, Block.ae.at);
                 }
                 return true;
             }
@@ -2666,10 +2666,10 @@ public class C_g {
                 return;
             }
             n9 = this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF;
-            if ((n9 == C_x.j.at || n9 == C_x.k.at) && n2 < this.c - n4 - 1) {
+            if ((n9 == Block.j.at || n9 == Block.k.at) && n2 < this.c - n4 - 1) {
                 int n10;
                 int n11;
-                this.b(n, n2 - 1, n3, C_x.k.at);
+                this.b(n, n2 - 1, n3, Block.k.at);
                 n8 = n + 2 * n5;
                 int n12 = n2 + n4;
                 int n13 = n3;
@@ -2677,33 +2677,33 @@ public class C_g {
                     n8 = n;
                     n13 = n3 + 2 * n5;
                 }
-                this.setBlockAndMetadataWithNotify(n8, n12, n13, C_x.z.at, 4);
-                this.setBlockAndMetadataWithNotify(n8, n12 + 1, n13, C_x.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8, n12, n13, Block.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8, n12 + 1, n13, Block.z.at, 4);
                 for (n11 = 1; n11 <= 3; ++n11) {
                     n10 = n12;
                     if (n11 == 3) {
                         --n10;
                     }
-                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13 - n11, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13 + n11, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13 - n11, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13 + n11, C_x.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13 - n11, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13 + n11, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13 - n11, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13 + n11, Block.z.at, 4);
                 }
-                this.setBlockAndMetadataWithNotify(n8 + 1, n12 - 1, n13, C_x.z.at, 4);
-                this.setBlockAndMetadataWithNotify(n8 - 1, n12 - 1, n13, C_x.z.at, 4);
-                this.setBlockAndMetadataWithNotify(n8, n12 - 1, n13 + 1, C_x.z.at, 4);
-                this.setBlockAndMetadataWithNotify(n8, n12 - 1, n13 - 1, C_x.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8 + 1, n12 - 1, n13, Block.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8 - 1, n12 - 1, n13, Block.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8, n12 - 1, n13 + 1, Block.z.at, 4);
+                this.setBlockAndMetadataWithNotify(n8, n12 - 1, n13 - 1, Block.z.at, 4);
                 for (n11 = 1; n11 <= 4; ++n11) {
                     n10 = n12;
                     if (n11 == 4) {
                         --n10;
                     }
-                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8, n10, n13 + n11, C_x.z.at, 4);
-                    this.setBlockAndMetadataWithNotify(n8, n10, n13 - n11, C_x.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 + n11, n10, n13, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8 - n11, n10, n13, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8, n10, n13 + n11, Block.z.at, 4);
+                    this.setBlockAndMetadataWithNotify(n8, n10, n13 - n11, Block.z.at, 4);
                 }
-                this.setBlockAndMetadataWithNotify(n, n2 + n7, n3, C_x.y.at, 2);
+                this.setBlockAndMetadataWithNotify(n, n2 + n7, n3, Block.y.at, 2);
                 for (n11 = 0; n11 < n4; ++n11) {
                     n10 = n11 / 2;
                     if (n10 > 2) {
@@ -2714,16 +2714,16 @@ public class C_g {
                         n14 = 1;
                     }
                     if (n6 == 1) {
-                        this.setBlockAndMetadataWithNotify(n, n2 + n11 + n14, n3 + n10 * n5, C_x.y.at, 2);
+                        this.setBlockAndMetadataWithNotify(n, n2 + n11 + n14, n3 + n10 * n5, Block.y.at, 2);
                     } else {
-                        this.setBlockAndMetadataWithNotify(n + n10 * n5, n2 + n11 + n14, n3, C_x.y.at, 2);
+                        this.setBlockAndMetadataWithNotify(n + n10 * n5, n2 + n11 + n14, n3, Block.y.at, 2);
                     }
                     if (n5 == 0) continue;
-                    this.setBlockAndMetadataWithNotify(n, n2, n3 + 1 * n5, C_x.y.at, 2);
-                    this.setBlockAndMetadataWithNotify(n + 1 * n5, n2, n3, C_x.y.at, 2);
-                    this.setBlockAndMetadataWithNotify(n, n2, n3 - 1 * n5, C_x.y.at, 2);
-                    this.setBlockAndMetadataWithNotify(n - 1 * n5, n2, n3, C_x.y.at, 2);
-                    this.setBlockAndMetadataWithNotify(n, n2, n3, C_x.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n, n2, n3 + 1 * n5, Block.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n + 1 * n5, n2, n3, Block.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n, n2, n3 - 1 * n5, Block.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n - 1 * n5, n2, n3, Block.y.at, 2);
+                    this.setBlockAndMetadataWithNotify(n, n2, n3, Block.y.at, 2);
                 }
                 this.cantGrow = false;
             } else {
@@ -2771,8 +2771,8 @@ public class C_g {
                 return;
             }
             n9 = this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF;
-            if ((n9 == C_x.j.at || n9 == C_x.k.at) && n2 < this.c - n5 - 1) {
-                this.b(n, n2 - 1, n3, C_x.k.at);
+            if ((n9 == Block.j.at || n9 == Block.k.at) && n2 < this.c - n5 - 1) {
+                this.b(n, n2 - 1, n3, Block.k.at);
                 for (n8 = n2 - 3 + n5; n8 <= n2 + n5; ++n8) {
                     n7 = n8 - (n2 + n5);
                     n6 = 1 - n7 / 2;
@@ -2780,26 +2780,26 @@ public class C_g {
                         int n10 = i - n;
                         for (n9 = n3 - n6; n9 <= n3 + n6; ++n9) {
                             int n11 = n9 - n3;
-                            if (Math.abs(n10) == n6 && Math.abs(n11) == n6 && (this.q.nextInt(2) == 0 || n7 == 0) || C_x.e[this.a(i, n8, n9)] || this.a(i, n8, n9) == C_x.portal.at) continue;
+                            if (Math.abs(n10) == n6 && Math.abs(n11) == n6 && (this.q.nextInt(2) == 0 || n7 == 0) || Block.e[this.a(i, n8, n9)] || this.a(i, n8, n9) == Block.portal.at) continue;
                             if (n4 == 1) {
-                                this.setBlockAndMetadataWithNotify(i, n8, n9, C_x.z.at, this.q.nextInt(2) + 1);
+                                this.setBlockAndMetadataWithNotify(i, n8, n9, Block.z.at, this.q.nextInt(2) + 1);
                                 continue;
                             }
                             if (n4 == 2) {
-                                this.setBlockAndMetadataWithNotify(i, n8, n9, C_x.z.at, 3);
+                                this.setBlockAndMetadataWithNotify(i, n8, n9, Block.z.at, 3);
                                 continue;
                             }
-                            this.setBlockAndMetadataWithNotify(i, n8, n9, C_x.z.at, n4);
+                            this.setBlockAndMetadataWithNotify(i, n8, n9, Block.z.at, n4);
                         }
                     }
                 }
                 for (n8 = 0; n8 < n5; ++n8) {
-                    if (C_x.e[this.a(n, n2 + n8, n3)]) continue;
+                    if (Block.e[this.a(n, n2 + n8, n3)]) continue;
                     if (n4 == 2) {
-                        this.setBlockAndMetadataWithNotify(n, n2 + n8, n3, C_x.y.at, 1);
+                        this.setBlockAndMetadataWithNotify(n, n2 + n8, n3, Block.y.at, 1);
                         continue;
                     }
-                    this.b(n, n2 + n8, n3, C_x.y.at);
+                    this.b(n, n2 + n8, n3, Block.y.at);
                 }
                 this.cantGrow = false;
             } else {
@@ -2837,8 +2837,8 @@ public class C_g {
                 return;
             }
             n7 = this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF;
-            if ((n7 == C_x.j.at || n7 == C_x.k.at) && n2 < this.c - n4 - 1) {
-                this.b(n, n2 - 1, n3, C_x.k.at);
+            if ((n7 == Block.j.at || n7 == Block.k.at) && n2 < this.c - n4 - 1) {
+                this.b(n, n2 - 1, n3, Block.k.at);
                 int n8 = 2;
                 if (n4 == 4) {
                     n8 = 3;
@@ -2850,13 +2850,13 @@ public class C_g {
                         for (n7 = n3 - 1; n7 <= n3 + 1; ++n7) {
                             int n10 = n7 - n3;
                             if (n5 != -1 && (n5 != -2 || n4 != 4) && Math.abs(n9) == 1 && Math.abs(n10) == 1) continue;
-                            this.setBlockAndMetadataWithNotify(i, n6, n7, C_x.z.at, 5);
+                            this.setBlockAndMetadataWithNotify(i, n6, n7, Block.z.at, 5);
                         }
                     }
                 }
                 for (n6 = 0; n6 < n4; ++n6) {
-                    if (C_x.e[this.a(n, n2 + n6, n3)]) continue;
-                    this.setBlockAndMetadataWithNotify(n, n2 + n6, n3, C_x.y.at, 3);
+                    if (Block.e[this.a(n, n2 + n6, n3)]) continue;
+                    this.setBlockAndMetadataWithNotify(n, n2 + n6, n3, Block.y.at, 3);
                 }
                 this.cantGrow = false;
             } else {
@@ -2885,7 +2885,7 @@ public class C_g {
                     for (n7 = n3 - n9; n7 <= n3 + n9 && bl; ++n7) {
                         if (n10 >= 0 && n8 >= 0 && n7 >= 0 && n8 < this.a && n7 < this.b && n10 < this.c) {
                             n6 = this.a(n8, n10, n7);
-                            if (n6 == 0 || n6 == C_x.z.at || n6 == C_x.B.at || n6 == C_x.portal.at) continue;
+                            if (n6 == 0 || n6 == Block.z.at || n6 == Block.B.at || n6 == Block.portal.at) continue;
                             bl = false;
                             continue;
                         }
@@ -2897,7 +2897,7 @@ public class C_g {
                 this.cantGrow = true;
             } else {
                 n10 = this.a(n, n2 - 1, n3);
-                if (n10 != C_x.mycelium.at) {
+                if (n10 != Block.mycelium.at) {
                     this.cantGrow = true;
                 } else {
                     n9 = n2 + n5;
@@ -2937,17 +2937,17 @@ public class C_g {
                                 if (n11 == 5 && n8 < n2 + n5) {
                                     n11 = 0;
                                 }
-                                if (n11 == 0 && n2 < n2 + n5 - 1 || C_x.e[this.a(n6, n8, i)]) continue;
-                                this.setBlockAndMetadata(n6, n8, i, C_x.mushroomCap.at, n4);
+                                if (n11 == 0 && n2 < n2 + n5 - 1 || Block.e[this.a(n6, n8, i)]) continue;
+                                this.setBlockAndMetadata(n6, n8, i, Block.mushroomCap.at, n4);
                             }
                         }
                     }
                     for (n8 = 0; n8 < n5; ++n8) {
                         n7 = this.a(n, n2 + n8, n3);
-                        if (C_x.e[n7]) continue;
-                        this.a(n, n2 + n8, n3, C_x.mushroomStem.at);
+                        if (Block.e[n7]) continue;
+                        this.a(n, n2 + n8, n3, Block.mushroomStem.at);
                     }
-                    this.a(n, n2 - 1, n3, C_x.k.at);
+                    this.a(n, n2 - 1, n3, Block.k.at);
                     this.cantGrow = false;
                 }
             }
@@ -2974,7 +2974,7 @@ public class C_g {
                     for (n7 = n3 - n9; n7 <= n3 + n9 && bl; ++n7) {
                         if (n10 >= 0 && n8 >= 0 && n7 >= 0 && n8 < this.a && n7 < this.b && n10 < this.c) {
                             n6 = this.a(n8, n10, n7);
-                            if (n6 == 0 || n6 == C_x.z.at || n6 == C_x.B.at || n6 == C_x.portal.at) continue;
+                            if (n6 == 0 || n6 == Block.z.at || n6 == Block.B.at || n6 == Block.portal.at) continue;
                             bl = false;
                             continue;
                         }
@@ -2986,7 +2986,7 @@ public class C_g {
                 return false;
             }
             n10 = this.a(n, n2 - 1, n3);
-            if (n10 != C_x.mycelium.at) {
+            if (n10 != Block.mycelium.at) {
                 return false;
             }
             n9 = n2 + n5;
@@ -3026,17 +3026,17 @@ public class C_g {
                         if (n11 == 5 && n8 < n2 + n5) {
                             n11 = 0;
                         }
-                        if (n11 == 0 && n2 < n2 + n5 - 1 || C_x.e[this.a(n6, n8, i)]) continue;
-                        this.setBlockAndMetadata(n6, n8, i, C_x.mushroomCap.at, n4);
+                        if (n11 == 0 && n2 < n2 + n5 - 1 || Block.e[this.a(n6, n8, i)]) continue;
+                        this.setBlockAndMetadata(n6, n8, i, Block.mushroomCap.at, n4);
                     }
                 }
             }
             for (n8 = 0; n8 < n5; ++n8) {
                 n7 = this.a(n, n2 + n8, n3);
-                if (C_x.e[n7]) continue;
-                this.a(n, n2 + n8, n3, C_x.mushroomStem.at);
+                if (Block.e[n7]) continue;
+                this.a(n, n2 + n8, n3, Block.mushroomStem.at);
             }
-            this.a(n, n2 - 1, n3, C_x.k.at);
+            this.a(n, n2 - 1, n3, Block.k.at);
             return true;
         }
         return false;
@@ -3068,10 +3068,10 @@ public class C_g {
         if (!bl) {
             return false;
         }
-        if ((this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF) == C_x.t.at && n2 < this.c - n5 - 1) {
+        if ((this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF) == Block.t.at && n2 < this.c - n5 - 1) {
             for (n4 = 0; n4 < n5; ++n4) {
-                if (!C_x.cactus.canBlockStay(this, n, n2 + n4, n3)) continue;
-                this.a(n, n2 + n4, n3, C_x.cactus.at);
+                if (!Block.cactus.canBlockStay(this, n, n2 + n4, n3)) continue;
+                this.a(n, n2 + n4, n3, Block.cactus.at);
             }
             return true;
         }
@@ -3083,10 +3083,10 @@ public class C_g {
         if (n2 < n4) {
             return false;
         }
-        if (this.a(n, n2, n3) == C_x.k.at && this.f(n, n2 + 1, n3) == net.minecraft.a.a.d.C_c.f && n2 < this.c - n4 - 1) {
+        if (this.a(n, n2, n3) == Block.k.at && this.f(n, n2 + 1, n3) == net.minecraft.a.a.d.C_c.f && n2 < this.c - n4 - 1) {
             for (int i = 0; i < n4; ++i) {
-                if (!C_x.seaweed.canBlockStay(this, n, n2 + i + 1, n3)) continue;
-                this.a(n, n2 + i + 1, n3, C_x.seaweed.at);
+                if (!Block.seaweed.canBlockStay(this, n, n2 + i + 1, n3)) continue;
+                this.a(n, n2 + i + 1, n3, Block.seaweed.at);
             }
             return true;
         }
@@ -3098,10 +3098,10 @@ public class C_g {
         if (n2 < n4) {
             return false;
         }
-        if (this.a(n, n2, n3) == C_x.coral.at && this.f(n, n2 + 1, n3) == net.minecraft.a.a.d.C_c.f && n2 < this.c - n4 - 1) {
+        if (this.a(n, n2, n3) == Block.coral.at && this.f(n, n2 + 1, n3) == net.minecraft.a.a.d.C_c.f && n2 < this.c - n4 - 1) {
             for (int i = 0; i < n4; ++i) {
-                if (!C_x.coralFan.canBlockStay(this, n, n2 + i + 1, n3)) continue;
-                this.setBlockAndMetadata(n, n2 + i + 1, n3, C_x.coralFan.at, this.e(n, n2, n3));
+                if (!Block.coralFan.canBlockStay(this, n, n2 + i + 1, n3)) continue;
+                this.setBlockAndMetadata(n, n2 + i + 1, n3, Block.coralFan.at, this.e(n, n2, n3));
             }
             return true;
         }
@@ -3134,10 +3134,10 @@ public class C_g {
         if (!bl) {
             return false;
         }
-        if ((this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF) == C_x.i.at && n2 < this.c - n5 - 1) {
+        if ((this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF) == Block.i.at && n2 < this.c - n5 - 1) {
             for (n4 = 0; n4 < n5; ++n4) {
-                if (!C_x.stalactite.canBlockStay(this, n, n2 + n4, n3)) continue;
-                this.a(n, n2 + n4, n3, C_x.stalactite.at);
+                if (!Block.stalactite.canBlockStay(this, n, n2 + n4, n3)) continue;
+                this.a(n, n2 + n4, n3, Block.stalactite.at);
                 if (this.a((float)n, (float)(n2 - 1), (float)n3) && n5 > 1) {
                     this.setBlockMetadata(n, n2, n3, 0);
                     continue;
@@ -3145,7 +3145,7 @@ public class C_g {
                 this.setBlockMetadata(n, n2, n3, 2);
             }
             for (n4 = 0; n4 < n5; ++n4) {
-                if (this.a(n, n2 + n4 - 1, n3) != C_x.stalactite.at || this.a(n, n2 + n4 + 1, n3) != C_x.stalactite.at || n5 <= 2) continue;
+                if (this.a(n, n2 + n4 - 1, n3) != Block.stalactite.at || this.a(n, n2 + n4 + 1, n3) != Block.stalactite.at || n5 <= 2) continue;
                 this.setBlockMetadata(n, n2 + n4, n3, 1);
             }
             return true;
@@ -3179,19 +3179,19 @@ public class C_g {
         if (!bl) {
             return false;
         }
-        if ((this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF) == C_x.i.at && n2 < this.c - n5 - 1) {
-            if (this.a(n, n2 + 1, n3) == C_x.i.at) {
+        if ((this.d[((n2 - 1) * this.b + n3) * this.a + n] & 0xFF) == Block.i.at && n2 < this.c - n5 - 1) {
+            if (this.a(n, n2 + 1, n3) == Block.i.at) {
                 for (n4 = 0; n4 < n5; ++n4) {
                     if (this.a(n, n2 - n4, n3) != 0 || this.a(n, n2 - n4 - 1, n3) != 0) continue;
-                    this.a(n, n2 - n4, n3, C_x.stalactite.at);
+                    this.a(n, n2 - n4, n3, Block.stalactite.at);
                     this.setBlockMetadata(n, n2, n3, 4);
                 }
             }
             for (n4 = 0; n4 < n5; ++n4) {
-                if (this.a(n, n2 - n4 + 1, n3) == C_x.stalactite.at && this.a(n, n2 - n4 - 1, n3) == C_x.stalactite.at && n5 > 2) {
+                if (this.a(n, n2 - n4 + 1, n3) == Block.stalactite.at && this.a(n, n2 - n4 - 1, n3) == Block.stalactite.at && n5 > 2) {
                     this.setBlockMetadata(n, n2 - n4, n3, 5);
                 }
-                if (!this.a((float)n, (float)(n2 - n4 + 1), (float)n3) || this.a(n, n2 - n4 - 1, n3) != C_x.stalactite.at) continue;
+                if (!this.a((float)n, (float)(n2 - n4 + 1), (float)n3) || this.a(n, n2 - n4 - 1, n3) != Block.stalactite.at) continue;
                 this.setBlockMetadata(n, n2 - n4, n3, 3);
             }
             return true;
@@ -3265,7 +3265,7 @@ public class C_g {
                         n2 = (int)f8;
                         n = this.a(n4, n3, n2);
                         if (n > 0) {
-                            f16 -= (C_x.c[n].g() + 0.3f) * 0.3f;
+                            f16 -= (Block.c[n].g() + 0.3f) * 0.3f;
                         }
                         if (f16 > 0.0f) {
                             int n8 = n4 + (n3 << 10) + (n2 << 10 << 10);
@@ -3351,9 +3351,9 @@ public class C_g {
                 this.a("smoke", f5, f9, f7, f6, f11, f23);
             }
             if (n2 <= 0) continue;
-            C_x.c[n2].a(this, n7, n4, n3, this.e(n7, n4, n3), 0.3f);
+            Block.c[n2].a(this, n7, n4, n3, this.e(n7, n4, n3), 0.3f);
             this.b(n7, n4, n3, 0);
-            C_x.c[n2].c(this, n7, n4, n3);
+            Block.c[n2].c(this, n7, n4, n3);
         }
     }
 
@@ -3400,11 +3400,11 @@ public class C_g {
             int n11 = n10 + 1;
             this.P[0] = n + (n3 << 10);
             int by = -9999;
-            if (n4 == C_x.q.at || n4 == C_x.p.at) {
-                int n12 = C_x.ah.at;
+            if (n4 == Block.q.at || n4 == Block.p.at) {
+                int n12 = Block.ah.at;
             }
-            if (n4 == C_x.s.at || n4 == C_x.r.at) {
-                n7 = C_x.ai.at;
+            if (n4 == Block.s.at || n4 == Block.r.at) {
+                n7 = Block.ai.at;
             }
             do {
                 bl = false;
@@ -3774,7 +3774,7 @@ public class C_g {
 
     public boolean isBlockProvidingPowerTo(int n, int n2, int n3, int n4) {
         int n5 = this.a(n, n2, n3);
-        return n5 == 0 ? false : C_x.c[n5].isProvidingStrongPower(this, n, n2, n3, n4);
+        return n5 == 0 ? false : Block.c[n5].isProvidingStrongPower(this, n, n2, n3, n4);
     }
 
     public boolean isBlockGettingPowered(int n, int n2, int n3) {
@@ -3783,7 +3783,7 @@ public class C_g {
 
     public boolean isBlockIndirectlyProvidingPowerTo(int n, int n2, int n3, int n4) {
         int n5 = this.a(n, n2, n3);
-        C_x c_x = C_x.c[n5];
+        Block c_x = Block.c[n5];
         boolean bl = false;
         boolean bl2 = false;
         if (this.b(n, n2, n3)) {
@@ -3793,7 +3793,7 @@ public class C_g {
             }
         }
         if (!bl2) {
-            bl |= n5 == 0 ? false : C_x.c[n5].isProvidingWeakPower(this, n, n2, n3, n4);
+            bl |= n5 == 0 ? false : Block.c[n5].isProvidingWeakPower(this, n, n2, n3, n4);
         }
         return bl;
     }
@@ -3883,7 +3883,7 @@ public class C_g {
         if (n4 == 5) {
             ++n;
         }
-        if (this.a(n, n2, n3) == C_x.ag.at || this.a(n, n2, n3) == C_x.hellfire.at) {
+        if (this.a(n, n2, n3) == Block.ag.at || this.a(n, n2, n3) == Block.hellfire.at) {
             bl = true;
             this.a((float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, "random.fizz", 0.5f, 2.6f + (this.q.nextFloat() - this.q.nextFloat()) * 0.8f);
             this.b(n, n2, n3, 0);
@@ -3892,14 +3892,14 @@ public class C_g {
         return bl;
     }
 
-    public void a(int n, int n2, int n3, C_a c_a) {
+    public void a(int n, int n2, int n3, TileEntity c_a) {
         if (c_a != null && !c_a.isRemoving()) {
             this.H.add(c_a);
             c_a.a = this;
             c_a.b = n;
             c_a.c = n2;
             c_a.d = n3;
-            if (this.a(n, n2, n3) != 0 && C_x.c[this.a(n, n2, n3)] instanceof BlockContainer) {
+            if (this.a(n, n2, n3) != 0 && Block.c[this.a(n, n2, n3)] instanceof BlockContainer) {
                 c_a.unmarkForRemoval();
                 this.o.put(n + (n2 << 10) + (n3 << 10 << 10), c_a);
             } else {
@@ -3909,11 +3909,11 @@ public class C_g {
     }
 
     public void i(int n, int n2, int n3) {
-        C_a c_a = this.j(n, n2, n3);
+        TileEntity c_a = this.j(n, n2, n3);
         if (c_a != null && this.tileEntityFlag) {
             c_a.markForRemoval();
         } else {
-            C_a c_a2;
+            TileEntity c_a2;
             if (c_a != null) {
                 this.H.remove(c_a);
             }
@@ -3923,16 +3923,16 @@ public class C_g {
         }
     }
 
-    public C_a j(int n, int n2, int n3) {
+    public TileEntity j(int n, int n2, int n3) {
         int n4 = n + (n2 << 10) + (n3 << 10 << 10);
-        C_a c_a = this.o.get(n4);
+        TileEntity c_a = this.o.get(n4);
         if (c_a == null) {
             int n5 = this.a(n, n2, n3);
-            if (n5 <= 0 || !C_x.c[n5].hasTileEntity()) {
+            if (n5 <= 0 || !Block.c[n5].hasTileEntity()) {
                 return null;
             }
             if (c_a == null) {
-                c_a = ((BlockContainer)C_x.c[n5]).getBlockEntity();
+                c_a = ((BlockContainer)Block.c[n5]).getBlockEntity();
                 this.a(n, n2, n3, c_a);
             }
             c_a = this.o.get(n4);
@@ -3959,7 +3959,7 @@ public class C_g {
             int n6 = n + this.q.nextInt(16) - this.q.nextInt(16);
             int n7 = this.a(n6, n5 = n2 + this.q.nextInt(16) - this.q.nextInt(16), n4 = n3 + this.q.nextInt(16) - this.q.nextInt(16));
             if (n7 <= 0) continue;
-            C_x.c[n7].b(this, n6, n5, n4, this.I);
+            Block.c[n7].b(this, n6, n5, n4, this.I);
         }
     }
 
@@ -3991,7 +3991,7 @@ public class C_g {
         return n2 >= this.getHeightValue(n, n3);
     }
 
-    public void updateTileEntity(int n, int n2, int n3, C_a c_a) {
+    public void updateTileEntity(int n, int n2, int n3, TileEntity c_a) {
         for (int i = 0; i < this.n.size(); ++i) {
             this.n.get(i).updateTileEntity(n, n2, n3, c_a);
         }
@@ -4007,14 +4007,14 @@ public class C_g {
     public void powerBlock(int n, int n2, int n3, int n4, int n5) {
         int n6 = this.a(n, n2, n3);
         if (n6 > 0) {
-            C_x.c[n6].powerBlock(this, n, n2, n3, n4, n5);
+            Block.c[n6].powerBlock(this, n, n2, n3, n4, n5);
         }
     }
 
     public void playNoteAt(int n, int n2, int n3, int n4, int n5) {
         int n6 = this.a(n, n2, n3);
         if (n6 > 0) {
-            C_x.c[n6].playBlock(this, n, n2, n3, n4, n5);
+            Block.c[n6].playBlock(this, n, n2, n3, n4, n5);
         }
     }
 
@@ -4061,7 +4061,7 @@ public class C_g {
     public void sendQuittingDisconnectingPacket() {
     }
 
-    public ItemStack storeTEInStack(ItemStack itemStack, C_a c_a) {
+    public ItemStack storeTEInStack(ItemStack itemStack, TileEntity c_a) {
         NBTTagCompound nBTTagCompound = new NBTTagCompound();
         c_a.b(nBTTagCompound);
         itemStack.setTagInfo("BlockEntityTag", nBTTagCompound);
@@ -4073,7 +4073,7 @@ public class C_g {
         seasonColor = new C_p();
         for (int i = 0; i <= 15; ++i) {
             float f = 1.0f - (float)i / 15.0f;
-            C_g.F[i] = (1.0f - f) / (f * 3.0f + 1.0f) * 0.95f + 0.05f;
+            World.F[i] = (1.0f - f) / (f * 3.0f + 1.0f) * 0.95f + 0.05f;
         }
         N = 0;
     }

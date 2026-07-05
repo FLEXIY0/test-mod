@@ -10,7 +10,7 @@ public final class C_g
 extends C_k {
     private float Z;
 
-    public C_g(net.minecraft.a.a.C_g c_g, float f, float f2, float f3) {
+    public C_g(net.minecraft.a.a.World c_g, float f, float f2, float f3) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.a *= 0.8f;
         this.b *= 0.8f;

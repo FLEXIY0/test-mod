@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.furniture;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -14,7 +14,7 @@ import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 
 public class BlockFlowerPot
-extends C_x {
+extends Block {
     public BlockFlowerPot(int n, int n2) {
         super(n, n2, C_c.n);
         this.setBlockBoundsForItemRender();
@@ -47,7 +47,7 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         ItemStack itemStack = entityPlayer.b.d();
         if (itemStack == null) {
             if (c_g.e(n, n2, n3) != 0) {
@@ -80,7 +80,7 @@ extends C_x {
         return false;
     }
 
-    public int idPicked(C_g c_g, int n, int n2, int n3) {
+    public int idPicked(World c_g, int n, int n2, int n3) {
         ItemStack itemStack = BlockFlowerPot.getPlantForMeta(c_g.e(n, n2, n3));
         return itemStack == null ? Item.flowerPot.ap : itemStack.c;
     }
@@ -96,20 +96,20 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
-        return c_g.a(n, n2, n3) == 0 && (c_g.a((float)n, (float)(n2 - 1), (float)n3) || c_g.a(n, n2 - 1, n3) == C_x.table.at);
+    public boolean a(World c_g, int n, int n2, int n3) {
+        return c_g.a(n, n2, n3) == 0 && (c_g.a((float)n, (float)(n2 - 1), (float)n3) || c_g.a(n, n2 - 1, n3) == Block.table.at);
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
-        if (!c_g.b(n, n2 - 1, n3) && c_g.a(n, n2 - 1, n3) != C_x.table.at) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
+        if (!c_g.b(n, n2 - 1, n3) && c_g.a(n, n2 - 1, n3) != Block.table.at) {
             this.f(c_g, n, n2, n3, c_g.e(n, n2, n3));
             c_g.b(n, n2, n3, 0);
         }
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         ItemStack itemStack;
         super.a(c_g, n, n2, n3, n4, f);
         if (!c_g.multiplayerWorld && n4 > 0 && (itemStack = BlockFlowerPot.getPlantForMeta(n4)) != null) {
@@ -117,7 +117,7 @@ extends C_x {
         }
     }
 
-    protected void dropBlockAsItem_do(C_g c_g, int n, int n2, int n3, ItemStack itemStack) {
+    protected void dropBlockAsItem_do(World c_g, int n, int n2, int n3, ItemStack itemStack) {
         if (c_g.multiplayerWorld) {
             return;
         }
@@ -137,49 +137,49 @@ extends C_x {
     public static ItemStack getPlantForMeta(int n) {
         switch (n) {
             case 1: {
-                return new ItemStack(C_x.plantRed);
+                return new ItemStack(Block.plantRed);
             }
             case 2: {
-                return new ItemStack(C_x.plantYellow);
+                return new ItemStack(Block.plantYellow);
             }
             case 3: {
-                return new ItemStack(C_x.n, 1, 0);
+                return new ItemStack(Block.n, 1, 0);
             }
             case 4: {
-                return new ItemStack(C_x.n, 1, 1);
+                return new ItemStack(Block.n, 1, 1);
             }
             case 5: {
-                return new ItemStack(C_x.plantBlue);
+                return new ItemStack(Block.plantBlue);
             }
             case 6: {
-                return new ItemStack(C_x.plantPurple);
+                return new ItemStack(Block.plantPurple);
             }
             case 7: {
-                return new ItemStack(C_x.mushroomRed);
+                return new ItemStack(Block.mushroomRed);
             }
             case 8: {
-                return new ItemStack(C_x.mushroomBrown);
+                return new ItemStack(Block.mushroomBrown);
             }
             case 9: {
-                return new ItemStack(C_x.berryBush, 1, 0);
+                return new ItemStack(Block.berryBush, 1, 0);
             }
             case 10: {
-                return new ItemStack(C_x.berryBush, 1, 1);
+                return new ItemStack(Block.berryBush, 1, 1);
             }
             case 11: {
-                return new ItemStack(C_x.n, 1, 2);
+                return new ItemStack(Block.n, 1, 2);
             }
             case 12: {
-                return new ItemStack(C_x.n, 1, 3);
+                return new ItemStack(Block.n, 1, 3);
             }
             case 13: {
-                return new ItemStack(C_x.n, 1, 4);
+                return new ItemStack(Block.n, 1, 4);
             }
             case 14: {
-                return new ItemStack(C_x.cactus);
+                return new ItemStack(Block.cactus);
             }
             case 15: {
-                return new ItemStack(C_x.mushroomGlowing);
+                return new ItemStack(Block.mushroomGlowing);
             }
         }
         return null;
@@ -187,31 +187,31 @@ extends C_x {
 
     public static int getMetaForPlant(ItemStack itemStack) {
         int n = itemStack.a().ap;
-        if (n == C_x.plantRed.at) {
+        if (n == Block.plantRed.at) {
             return 1;
         }
-        if (n == C_x.plantYellow.at) {
+        if (n == Block.plantYellow.at) {
             return 2;
         }
-        if (n == C_x.plantBlue.at) {
+        if (n == Block.plantBlue.at) {
             return 5;
         }
-        if (n == C_x.plantPurple.at) {
+        if (n == Block.plantPurple.at) {
             return 6;
         }
-        if (n == C_x.mushroomBrown.at) {
+        if (n == Block.mushroomBrown.at) {
             return 8;
         }
-        if (n == C_x.mushroomRed.at) {
+        if (n == Block.mushroomRed.at) {
             return 7;
         }
-        if (n == C_x.cactus.at) {
+        if (n == Block.cactus.at) {
             return 14;
         }
-        if (n == C_x.mushroomGlowing.at) {
+        if (n == Block.mushroomGlowing.at) {
             return 15;
         }
-        if (n == C_x.n.at) {
+        if (n == Block.n.at) {
             switch (itemStack.getItemDamage()) {
                 case 0: {
                     return 3;
@@ -230,7 +230,7 @@ extends C_x {
                 }
             }
         }
-        if (n == C_x.berryBush.at) {
+        if (n == Block.berryBush.at) {
             switch (itemStack.getItemDamage()) {
                 case 0: {
                     return 9;

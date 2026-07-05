@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.client.f.C_i;
 import net.minecraft.client.f.C_k;
@@ -14,7 +14,7 @@ extends C_k {
     private C_c materialType;
     private int bobTimer;
 
-    public C_p(C_g c_g, float f, float f2, float f3, C_c c_c) {
+    public C_p(World c_g, float f, float f2, float f3, C_c c_c) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.m = 0.0f;
         this.l = 0.0f;

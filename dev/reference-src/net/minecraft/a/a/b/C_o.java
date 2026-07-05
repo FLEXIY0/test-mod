@@ -5,7 +5,7 @@ package net.minecraft.a.a.b;
 
 import java.util.Random;
 import net.minecraft.a.a.b.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -23,14 +23,14 @@ extends C_g {
     }
 
     @Override
-    public final void a(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(net.minecraft.a.a.World c_g, int n, int n2, int n3, Random random) {
         int n4 = 4;
         int n5 = 4;
         if (!c_g.b(n, n2 - 1, n3)) {
             for (int i = n - n4; i <= n + n4; ++i) {
                 for (int j = n2 - n5; j <= n2; ++j) {
                     for (int k = n3 - n4; k <= n3 + n4; ++k) {
-                        if (c_g.a(i, j, k) != C_x.y.at && c_g.a(i, j, k) != C_x.log.at) continue;
+                        if (c_g.a(i, j, k) != Block.y.at && c_g.a(i, j, k) != Block.log.at) continue;
                         return;
                     }
                 }
@@ -52,7 +52,7 @@ extends C_g {
 
     @Override
     public final int a(int n, Random random) {
-        return C_x.n.at;
+        return Block.n.at;
     }
 
     private int altDrop(int n, Random random) {
@@ -60,7 +60,7 @@ extends C_g {
     }
 
     @Override
-    public final void a(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public final void a(net.minecraft.a.a.World c_g, int n, int n2, int n3, int n4, float f) {
         if (!c_g.multiplayerWorld) {
             int n5 = this.a(c_g.q);
             for (int i = 0; i < n5; ++i) {
@@ -90,7 +90,7 @@ extends C_g {
     }
 
     @Override
-    public void dropBlockAsItemWithChance(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, int n4) {
+    public void dropBlockAsItemWithChance(net.minecraft.a.a.World c_g, int n, int n2, int n3, int n4) {
         int n5 = 1;
         for (int i = 0; i < n5; ++i) {
             int n6;
@@ -153,7 +153,7 @@ extends C_g {
     }
 
     @Override
-    public final void b(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, Random random) {
+    public final void b(net.minecraft.a.a.World c_g, int n, int n2, int n3, Random random) {
         float f;
         float f2;
         float f3;

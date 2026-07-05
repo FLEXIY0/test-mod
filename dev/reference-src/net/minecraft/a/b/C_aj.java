@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_e;
@@ -56,7 +56,7 @@ extends Item {
     }
 
     @Override
-    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, net.minecraft.a.a.C_g c_g, int n, int n2, int n3, int n4) {
+    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, net.minecraft.a.a.World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.a(n, n2, n3);
         if (n4 == 0) {
             --n2;
@@ -187,7 +187,7 @@ extends Item {
                 }
                 if (c_e != null && !c_g.multiplayerWorld) {
                     f = c_e.x / 2.0f;
-                    if (n5 == C_x.fence.at || n5 == C_x.fenceGateOak.at) {
+                    if (n5 == Block.fence.at || n5 == Block.fenceGateOak.at) {
                         f = c_e.x / 2.0f + 0.5f;
                     }
                     c_e.b((float)n + 0.5f, (float)n2 + f, (float)n3 + 0.5f, 0.0f, 0.0f);

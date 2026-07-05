@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.c.C_a;
 import net.minecraft.client.a.a.C_f;
@@ -45,14 +45,14 @@ extends C_f {
         }
         f2 = (1.0f - ((float)c_a2.a - f5 + 1.0f) / 100.0f) * 0.8f;
         this.a("/terrain.png");
-        this.d.renderBlockOnInventory(C_x.ab, 0);
+        this.d.renderBlockOnInventory(Block.ab, 0);
         if (c_a2.a / 5 % 2 == 0) {
             GL11.glDisable((int)3553);
             GL11.glDisable((int)2896);
             GL11.glEnable((int)3042);
             GL11.glBlendFunc((int)770, (int)772);
             GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)f2);
-            this.d.renderBlockOnInventory(C_x.ab, 0);
+            this.d.renderBlockOnInventory(Block.ab, 0);
             GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
             GL11.glDisable((int)3042);
             GL11.glEnable((int)2896);

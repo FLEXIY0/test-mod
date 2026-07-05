@@ -3,25 +3,25 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.f.C_k;
 
 public class C_u
 extends C_k {
-    public C_u(C_g c_g, float f, float f2, float f3, Item item) {
+    public C_u(World c_g, float f, float f2, float f3, Item item) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.P = item.getIconFromDamage(0);
         this.Y = 1.0f;
         this.X = 1.0f;
         this.W = 1.0f;
-        this.V = C_x.i.aB;
+        this.V = Block.i.aB;
         this.U /= 2.0f;
     }
 
-    public C_u(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6, Item item) {
+    public C_u(World c_g, float f, float f2, float f3, float f4, float f5, float f6, Item item) {
         this(c_g, f, f2, f3, item);
         this.k *= 0.1f;
         this.l *= 0.1f;

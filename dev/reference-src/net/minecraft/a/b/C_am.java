@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_d;
@@ -26,7 +26,7 @@ extends Item {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         if (entityPlayer.fishEntity != null) {
             int n = entityPlayer.fishEntity.catchFish();
             entityPlayer.damageItem(n, itemStack, c_g);

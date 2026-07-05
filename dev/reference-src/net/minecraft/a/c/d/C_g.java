@@ -5,7 +5,7 @@ package net.minecraft.a.c.d;
 
 import com.a.a.NBTTagCompound;
 import java.util.List;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -32,7 +32,7 @@ extends C_b {
     public int id = 0;
     private int maxDMG;
 
-    public C_g(net.minecraft.a.a.C_g c_g, C_e c_e, int n, int n2, int n3, int n4, float f) {
+    public C_g(net.minecraft.a.a.World c_g, C_e c_e, int n, int n2, int n3, int n4, float f) {
         super(c_g);
         this.owner = c_e;
         this.a(0.5f, 0.5f);
@@ -52,11 +52,11 @@ extends C_b {
         this.setArrowHeading(this.k, this.l, this.m, f * 1.5f, 1.0f);
     }
 
-    public C_g(net.minecraft.a.a.C_g c_g) {
+    public C_g(net.minecraft.a.a.World c_g) {
         super(c_g);
     }
 
-    public C_g(net.minecraft.a.a.C_g c_g, float f, float f2, float f3) {
+    public C_g(net.minecraft.a.a.World c_g, float f, float f2, float f3) {
         super(c_g);
         this.a(0.5f, 0.5f);
         this.b(f, f2, f3);
@@ -93,8 +93,8 @@ extends C_b {
         super.b_();
         int n = this.d.a(this.xTile, this.yTile, this.zTile);
         if (n > 0) {
-            C_x.c[n].setBlockBoundsBasedOnState(this.d, this.xTile, this.yTile, this.zTile);
-            object = C_x.c[n].getCollisionBoundingBoxFromPool(this.d, this.xTile, this.yTile, this.zTile);
+            Block.c[n].setBlockBoundsBasedOnState(this.d, this.xTile, this.yTile, this.zTile);
+            object = Block.c[n].getCollisionBoundingBoxFromPool(this.d, this.xTile, this.yTile, this.zTile);
             if (object != null && ((net.minecraft.a.d.C_b)object).isVecInside(new C_a(this.h, this.i, this.j))) {
                 this.inGround = true;
             }

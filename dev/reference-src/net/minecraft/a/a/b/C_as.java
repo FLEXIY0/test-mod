@@ -3,8 +3,8 @@
  */
 package net.minecraft.a.a.b;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -13,13 +13,13 @@ import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.AchievementList;
 
 public class C_as
-extends C_x {
+extends Block {
     protected C_as(int n, int n2, C_c c_c) {
         super(n, n2, c_c);
     }
 
     @Override
-    public int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public int a(World c_g, int n, int n2, int n3, int n4) {
         return n4 == 0 ? this.as + 1 : (n4 == 1 ? this.as + 2 : this.as);
     }
 
@@ -29,7 +29,7 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         float f;
         boolean bl;
         if (c_g.multiplayerWorld) {

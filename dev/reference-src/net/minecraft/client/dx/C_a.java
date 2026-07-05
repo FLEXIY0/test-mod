@@ -3,8 +3,8 @@
  */
 package net.minecraft.client.dx;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.GuiScreen;
@@ -25,7 +25,7 @@ public class C_a {
         this.a = d2;
     }
 
-    public void a(C_g c_g) {
+    public void a(World c_g) {
     }
 
     public void clickBlock(int n, int n2, int n3, int n4) {
@@ -39,8 +39,8 @@ public class C_a {
     public boolean sendBlockRemoved(int n, int n2, int n3, int n4) {
         Object object;
         this.a.g.a(n, n2, n3);
-        C_g c_g = this.a.d;
-        C_x c_x = C_x.c[c_g.a(n, n2, n3)];
+        World c_g = this.a.d;
+        Block c_x = Block.c[c_g.a(n, n2, n3)];
         byte by = c_g.e(n, n2, n3);
         if (c_x != null) {
             StatBase statBase;
@@ -49,7 +49,7 @@ public class C_a {
             }
             this.a.f.addStat(StatList.mineBlockStatArray[c_x.at], 1);
             this.a.f.addStat(StatList.blocksBrokenStat, 1);
-            if (c_x.at == C_x.i.at && (Integer)(object = Integer.valueOf(d.getMinecraft().statFileWriter.getStatCount(statBase = StatList.mineBlockStatArray[c_x.at]))) >= 3456) {
+            if (c_x.at == Block.i.at && (Integer)(object = Integer.valueOf(d.getMinecraft().statFileWriter.getStatCount(statBase = StatList.mineBlockStatArray[c_x.at]))) >= 3456) {
                 this.a.f.triggerAchievement(AchievementList.cobblestone);
             }
         }
@@ -126,15 +126,15 @@ public class C_a {
         return null;
     }
 
-    public boolean sendPlaceBlock(EntityPlayer entityPlayer, C_g c_g, ItemStack itemStack, int n, int n2, int n3, int n4) {
+    public boolean sendPlaceBlock(EntityPlayer entityPlayer, World c_g, ItemStack itemStack, int n, int n2, int n3, int n4) {
         int n5 = c_g.a(n, n2, n3);
         if (!c_g.multiplayerWorld) {
             return itemStack == null ? false : itemStack.useItem(entityPlayer, c_g, n, n2, n3, n4);
         }
-        return n5 > 0 && C_x.c[n5].a(c_g, n, n2, n3, entityPlayer) ? true : (itemStack == null ? false : itemStack.useItem(entityPlayer, c_g, n, n2, n3, n4));
+        return n5 > 0 && Block.c[n5].a(c_g, n, n2, n3, entityPlayer) ? true : (itemStack == null ? false : itemStack.useItem(entityPlayer, c_g, n, n2, n3, n4));
     }
 
-    public EntityPlayer createPlayer(C_g c_g) {
+    public EntityPlayer createPlayer(World c_g) {
         return new net.minecraft.client.g.C_a(this.a, c_g, this.a.h);
     }
 
@@ -150,7 +150,7 @@ public class C_a {
         entityPlayer.attackTargetEntityWithCharm(c_b, f);
     }
 
-    public boolean sendUseItem(EntityPlayer entityPlayer, C_g c_g, ItemStack itemStack) {
+    public boolean sendUseItem(EntityPlayer entityPlayer, World c_g, ItemStack itemStack) {
         if (this.a.v != null && this.a.v.g != null && this.a.v.g instanceof net.minecraft.a.c.c.C_e) {
             return false;
         }
@@ -170,7 +170,7 @@ public class C_a {
         entityPlayer.stopUsingItem();
     }
 
-    public void useSpecial(EntityPlayer entityPlayer, C_g c_g, ItemStack itemStack) {
+    public void useSpecial(EntityPlayer entityPlayer, World c_g, ItemStack itemStack) {
     }
 }
 

@@ -3,8 +3,8 @@
  */
 package net.minecraft.client.render.tileentity;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.client.a.RenderEngine;
 import net.minecraft.client.c.FontRenderer;
 import net.minecraft.client.render.tileentity.TileEntityRenderer;
@@ -12,7 +12,7 @@ import net.minecraft.client.render.tileentity.TileEntityRenderer;
 public abstract class TileEntitySpecialRenderer {
     protected TileEntityRenderer tileEntityRenderer;
 
-    public abstract void renderTileEntityAt(C_a var1, float var2, float var3, float var4, float var5);
+    public abstract void renderTileEntityAt(TileEntity var1, float var2, float var3, float var4, float var5);
 
     protected void bindTextureByName(String string) {
         RenderEngine renderEngine = this.tileEntityRenderer.renderEngine;
@@ -23,7 +23,7 @@ public abstract class TileEntitySpecialRenderer {
         this.tileEntityRenderer = tileEntityRenderer;
     }
 
-    public void cacheSpecialRenderInfo(C_g c_g) {
+    public void cacheSpecialRenderInfo(World c_g) {
     }
 
     public FontRenderer getFontRenderer() {

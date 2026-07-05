@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.plants;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -14,9 +14,9 @@ import net.minecraft.game.level.block.plants.BlockFlower;
 
 public class BlockStem
 extends BlockFlower {
-    private C_x fruitType;
+    private Block fruitType;
 
-    public BlockStem(int n, int n2, C_x c_x) {
+    public BlockStem(int n, int n2, Block c_x) {
         super(n, n2);
         this.fruitType = c_x;
         this.a(true);
@@ -27,7 +27,7 @@ extends BlockFlower {
 
     @Override
     protected final boolean canThisPlantGrowOnThisBlockID(int n) {
-        return n == C_x.ap.at;
+        return n == Block.ap.at;
     }
 
     @Override
@@ -36,7 +36,7 @@ extends BlockFlower {
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public void a(World c_g, int n, int n2, int n3, Random random) {
         float f;
         super.a(c_g, n, n2, n3, random);
         if (c_g.d(n, n2 + 1, n3) >= 9 && random.nextInt((int)(100.0f / (f = this.tickBlock(c_g, n, n2, n3)))) == 0) {
@@ -78,11 +78,11 @@ extends BlockFlower {
         }
     }
 
-    public void fertilize(C_g c_g, int n, int n2, int n3) {
+    public void fertilize(World c_g, int n, int n2, int n3) {
         c_g.setBlockMetadataWithNotify(n, n2, n3, 7);
     }
 
-    private float tickBlock(C_g c_g, int n, int n2, int n3) {
+    private float tickBlock(World c_g, int n, int n2, int n3) {
         float f = 1.0f;
         int n4 = c_g.a(n, n2, n3 - 1);
         int n5 = c_g.a(n, n2, n3 + 1);
@@ -99,7 +99,7 @@ extends BlockFlower {
             for (int j = n3 - 1; j <= n3 + 1; ++j) {
                 int n12 = c_g.a(i, n2 - 1, j);
                 float f2 = 0.0f;
-                if (n12 == C_x.ap.at) {
+                if (n12 == Block.ap.at) {
                     f2 = 1.0f;
                     if (c_g.e(i, n2 - 1, j) > 0 && c_g.season.currentSeason != 3) {
                         switch (c_g.season.currentSeason) {
@@ -145,26 +145,26 @@ extends BlockFlower {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         this.ay = (float)(c_g.e(n, n2, n3) * 2 + 2) / 16.0f;
         float f = 0.125f;
         this.a(0.5f - f, 0.0f, 0.5f - f, 0.5f + f, this.ay, 0.5f + f);
     }
 
-    public int getState(C_g c_g, int n, int n2, int n3) {
+    public int getState(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         return by < 7 ? -1 : (c_g.a(n - 1, n2, n3) == this.fruitType.at ? 0 : (c_g.a(n + 1, n2, n3) == this.fruitType.at ? 1 : (c_g.a(n, n2, n3 - 1) == this.fruitType.at ? 2 : (c_g.a(n, n2, n3 + 1) == this.fruitType.at ? 3 : -1))));
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         super.a(c_g, n, n2, n3, n4, f);
         if (!c_g.multiplayerWorld) {
             Item item = null;
-            if (this.fruitType == C_x.pumpkin) {
+            if (this.fruitType == Block.pumpkin) {
                 item = Item.seedsPumpkin;
             }
-            if (this.fruitType == C_x.melon) {
+            if (this.fruitType == Block.melon) {
                 item = Item.seedsMelon;
             }
             if (c_g.q.nextInt(15) <= n4) {

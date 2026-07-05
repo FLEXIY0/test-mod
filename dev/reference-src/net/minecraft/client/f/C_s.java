@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.d.C_b;
 import net.minecraft.client.f.C_k;
 import util.MathHelper;
@@ -15,7 +15,7 @@ extends C_k {
     private float waypointY;
     private float waypointZ;
 
-    public C_s(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6) {
+    public C_s(World c_g, float f, float f2, float f3, float f4, float f5, float f6) {
         super(c_g, f, f2, f3, f4, f5, f6);
         this.W = 1.0f;
         this.X = 1.0f;

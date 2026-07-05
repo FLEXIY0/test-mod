@@ -4,9 +4,9 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_ad;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -21,10 +21,10 @@ extends C_ad {
     }
 
     protected final boolean b(int n) {
-        return n == C_x.ap.at;
+        return n == Block.ap.at;
     }
 
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         int n4;
         super.a(c_g, n, n2, n3, random);
         if (c_g.d(n, n2 + 1, n3) >= 9 && (n4 = c_g.e(n, n2, n3)) < 7) {
@@ -32,7 +32,7 @@ extends C_ad {
             int n5 = n3;
             int n6 = n2;
             int n7 = n;
-            C_g c_g2 = c_g;
+            World c_g2 = c_g;
             C_f c_f = this;
             float f2 = 1.0f;
             int n8 = c_g2.a(n7, n6, n5 - 1);
@@ -50,7 +50,7 @@ extends C_ad {
                 for (n11 = n5 - 1; n11 <= n5 + 1; ++n11) {
                     n12 = c_g2.a(n9, n6 - 1, n11);
                     float f3 = 0.0f;
-                    if (n12 == C_x.ap.at) {
+                    if (n12 == Block.ap.at) {
                         f3 = 1.0f;
                         if (c_g2.e(n9, n6 - 1, n11) > 0) {
                             f3 = 3.0f;
@@ -82,7 +82,7 @@ extends C_ad {
         return 6;
     }
 
-    public final void c(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void c(World c_g, int n, int n2, int n3, int n4) {
         super.c(c_g, n, n2, n3, n4);
         for (int i = 0; i < 3; ++i) {
             if (c_g.q.nextInt(15) > n4) continue;

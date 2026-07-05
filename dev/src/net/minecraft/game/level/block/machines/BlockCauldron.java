@@ -8,8 +8,8 @@
  */
 package net.minecraft.game.level.block.machines;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.TileEntityCauldron;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -27,7 +27,7 @@ public class BlockCauldron extends BlockContainer {
     }
 
     @Override
-    public C_a getBlockEntity() {
+    public TileEntity getBlockEntity() {
         return new TileEntityCauldron();
     }
 
@@ -39,8 +39,8 @@ public class BlockCauldron extends BlockContainer {
     }
 
     @Override
-    public boolean a(C_g world, int x, int y, int z, EntityPlayer player) {
-        C_a te = world.j(x, y, z);
+    public boolean a(World world, int x, int y, int z, EntityPlayer player) {
+        TileEntity te = world.j(x, y, z);
         if (!(te instanceof TileEntityCauldron)) return false;
         ItemStack held = player.b.d();
         return ((TileEntityCauldron) te).itemUsed(player, held);

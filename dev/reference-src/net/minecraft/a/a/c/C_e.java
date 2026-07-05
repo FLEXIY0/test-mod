@@ -4,8 +4,8 @@
 package net.minecraft.a.a.c;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.c.C_b;
 
 public class C_e
@@ -14,7 +14,7 @@ extends C_b {
     private final int leavesMetadata = 5;
 
     @Override
-    public boolean generate(C_g c_g, Random random, int n, int n2, int n3) {
+    public boolean generate(World c_g, Random random, int n, int n2, int n3) {
         int n4 = random.nextInt(4) + 6;
         int n5 = 1 + random.nextInt(2);
         int n6 = n4 - n5;
@@ -32,7 +32,7 @@ extends C_b {
                     for (n9 = n3 - n11; n9 <= n3 + n11 && bl; ++n9) {
                         if (n12 >= 0 && n12 < c_g.c && n10 >= 0 && n10 < c_g.a && n9 >= 0 && n9 < c_g.b) {
                             n8 = c_g.a(n10, n12, n9);
-                            if (n8 == 0 || n8 == C_x.z.at) continue;
+                            if (n8 == 0 || n8 == Block.z.at) continue;
                             bl = false;
                             continue;
                         }
@@ -45,10 +45,10 @@ extends C_b {
                 return false;
             }
             n12 = c_g.a(n, n2 - 1, n3);
-            if ((n12 == C_x.j.at || n12 == C_x.k.at) && n2 < c_g.c - n4 - 1) {
+            if ((n12 == Block.j.at || n12 == Block.k.at) && n2 < c_g.c - n4 - 1) {
                 int n13;
                 int n14;
-                c_g.a(n, n2 - 1, n3, C_x.k.at);
+                c_g.a(n, n2 - 1, n3, Block.k.at);
                 n11 = random.nextInt(2);
                 n10 = 1;
                 n9 = 0;
@@ -58,8 +58,8 @@ extends C_b {
                         int n15 = n13 - n;
                         for (int i = n3 - n11; i <= n3 + n11; ++i) {
                             int n16 = i - n3;
-                            if (Math.abs(n15) == n11 && Math.abs(n16) == n11 && n11 > 0 || C_x.e[c_g.a(n13, n14, i)]) continue;
-                            c_g.setBlockAndMetadata(n13, n14, i, C_x.z.at, this.leavesMetadata);
+                            if (Math.abs(n15) == n11 && Math.abs(n16) == n11 && n11 > 0 || Block.e[c_g.a(n13, n14, i)]) continue;
+                            c_g.setBlockAndMetadata(n13, n14, i, Block.z.at, this.leavesMetadata);
                         }
                     }
                     if (n11 >= n10) {
@@ -74,8 +74,8 @@ extends C_b {
                 n8 = random.nextInt(3);
                 for (n14 = 0; n14 < n4 - n8; ++n14) {
                     n13 = c_g.a(n, n2 + n14, n3);
-                    if (n13 != 0 && n13 != C_x.z.at) continue;
-                    c_g.setBlockAndMetadata(n, n2 + n14, n3, C_x.y.at, this.treeMetadata);
+                    if (n13 != 0 && n13 != Block.z.at) continue;
+                    c_g.setBlockAndMetadata(n, n2 + n14, n3, Block.y.at, this.treeMetadata);
                 }
                 c_g.cantGrow = false;
                 return true;

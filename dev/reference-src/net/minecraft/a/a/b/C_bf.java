@@ -4,14 +4,14 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
 
 public class C_bf
-extends C_x {
+extends Block {
     private static String[] NAME_LIST = new String[]{"Brown", "Red", "Gloshroom"};
 
     protected C_bf(int n) {
@@ -26,7 +26,7 @@ extends C_x {
 
     @Override
     public final int a(int n, Random random) {
-        return n == 0 ? C_x.mushroomBrown.at : (n == 1 ? C_x.mushroomRed.at : (n == 2 ? C_x.mushroomGlowing.at : 0));
+        return n == 0 ? Block.mushroomBrown.at : (n == 1 ? Block.mushroomRed.at : (n == 2 ? Block.mushroomGlowing.at : 0));
     }
 
     @Override
@@ -53,7 +53,7 @@ extends C_x {
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         if (!c_g.multiplayerWorld) {
             int n5 = this.a(c_g.q);
             for (int i = 0; i < n5; ++i) {

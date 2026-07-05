@@ -5,8 +5,8 @@ package net.minecraft.a.c.c;
 
 import com.a.a.NBTTagCompound;
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 
 public class C_c
@@ -15,7 +15,7 @@ extends C_b {
     public int id;
     private Random random = new Random();
 
-    public C_c(C_g c_g, float f, float f2, float f3, int n) {
+    public C_c(World c_g, float f, float f2, float f3, int n) {
         super(c_g);
         this.a(0.98f, 0.98f);
         this.v = this.x / 2.0f;
@@ -30,7 +30,7 @@ extends C_b {
         this.id = n;
     }
 
-    public C_c(C_g c_g) {
+    public C_c(World c_g) {
         super(c_g);
         this.a(0.98f, 0.98f);
         this.v = this.x / 2.0f;
@@ -85,9 +85,9 @@ extends C_b {
         int n = this.d.a((int)this.h, (int)this.i, (int)this.j);
         int n2 = this.d.a((int)this.h, (int)this.i - 1, (int)this.j);
         net.minecraft.a.a.d.C_c c_c = this.d.f((int)this.h, (int)this.i, (int)this.j);
-        if (this.s || n2 == C_x.quickSand.at) {
+        if (this.s || n2 == Block.quickSand.at) {
             if (!this.d.multiplayerWorld) {
-                if (!this.d.a(this.h, this.i, this.j) && n != 0 && c_c != net.minecraft.a.a.d.C_c.f && c_c != net.minecraft.a.a.d.C_c.g && c_c != net.minecraft.a.a.d.C_c.pulley || n2 == C_x.stalactite.at) {
+                if (!this.d.a(this.h, this.i, this.j) && n != 0 && c_c != net.minecraft.a.a.d.C_c.f && c_c != net.minecraft.a.a.d.C_c.g && c_c != net.minecraft.a.a.d.C_c.pulley || n2 == Block.stalactite.at) {
                     this.a(this.id, 1);
                 } else {
                     this.d.b((int)this.h, (int)this.i, (int)this.j, this.id);

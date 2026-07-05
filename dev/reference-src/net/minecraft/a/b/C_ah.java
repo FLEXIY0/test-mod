@@ -3,8 +3,8 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -13,19 +13,19 @@ import util.MathHelper;
 
 public class C_ah
 extends Item {
-    C_x door;
+    Block door;
 
-    protected C_ah(int n, C_x c_x) {
+    protected C_ah(int n, Block c_x) {
         super(n);
         this.door = c_x;
     }
 
     @Override
-    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, C_g c_g, int n, int n2, int n3, int n4) {
+    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, World c_g, int n, int n2, int n3, int n4) {
         if (n4 != 1) {
             return false;
         }
-        C_x c_x = this.door;
+        Block c_x = this.door;
         if (!c_x.a(c_g, n, ++n2, n3)) {
             return false;
         }

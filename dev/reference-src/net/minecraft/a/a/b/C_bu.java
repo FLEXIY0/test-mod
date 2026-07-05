@@ -5,13 +5,13 @@ package net.minecraft.a.a.b;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_k;
 import net.minecraft.a.a.b.C_bc;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 
 class C_bu {
-    private C_g worldObj;
+    private World worldObj;
     private int trackX;
     private int trackY;
     private int trackZ;
@@ -19,7 +19,7 @@ class C_bu {
     private List<C_k> connectedTracks;
     final C_bc minecartTrack;
 
-    public C_bu(C_bc c_bc, C_g c_g, int n, int n2, int n3) {
+    public C_bu(C_bc c_bc, World c_g, int n, int n2, int n3) {
         this.minecartTrack = c_bc;
         this.connectedTracks = new ArrayList<C_k>();
         this.worldObj = c_g;
@@ -77,9 +77,9 @@ class C_bu {
     }
 
     private boolean isMinecartTrack(int n, int n2, int n3) {
-        C_x c_x = C_x.c[this.worldObj.a(n, n2, n3)];
-        C_x c_x2 = C_x.c[this.worldObj.a(n, n2 + 1, n3)];
-        C_x c_x3 = C_x.c[this.worldObj.a(n, n2 - 1, n3)];
+        Block c_x = Block.c[this.worldObj.a(n, n2, n3)];
+        Block c_x2 = Block.c[this.worldObj.a(n, n2 + 1, n3)];
+        Block c_x3 = Block.c[this.worldObj.a(n, n2 - 1, n3)];
         if (c_x instanceof C_bc) {
             return true;
         }
@@ -90,9 +90,9 @@ class C_bu {
     }
 
     private C_bu getMinecartTrackLogic(C_k c_k) {
-        C_x c_x = C_x.c[this.worldObj.a(c_k.x, c_k.y, c_k.z)];
-        C_x c_x2 = C_x.c[this.worldObj.a(c_k.x, c_k.y + 1, c_k.z)];
-        C_x c_x3 = C_x.c[this.worldObj.a(c_k.x, c_k.y - 1, c_k.z)];
+        Block c_x = Block.c[this.worldObj.a(c_k.x, c_k.y, c_k.z)];
+        Block c_x2 = Block.c[this.worldObj.a(c_k.x, c_k.y + 1, c_k.z)];
+        Block c_x3 = Block.c[this.worldObj.a(c_k.x, c_k.y - 1, c_k.z)];
         if (c_x instanceof C_bc) {
             return new C_bu(this.minecartTrack, this.worldObj, c_k.x, c_k.y, c_k.z);
         }
@@ -157,10 +157,10 @@ class C_bu {
         boolean bl2 = this.isInTrack(this.trackX, this.trackY, this.trackZ + 1);
         boolean bl3 = this.isInTrack(this.trackX - 1, this.trackY, this.trackZ);
         boolean bl4 = this.isInTrack(this.trackX + 1, this.trackY, this.trackZ);
-        C_x c_x = C_x.c[this.worldObj.a(this.trackX, this.trackY + 1, this.trackZ - 1)];
-        C_x c_x2 = C_x.c[this.worldObj.a(this.trackX, this.trackY + 1, this.trackZ + 1)];
-        C_x c_x3 = C_x.c[this.worldObj.a(this.trackX + 1, this.trackY + 1, this.trackZ)];
-        C_x c_x4 = C_x.c[this.worldObj.a(this.trackX - 1, this.trackY + 1, this.trackZ)];
+        Block c_x = Block.c[this.worldObj.a(this.trackX, this.trackY + 1, this.trackZ - 1)];
+        Block c_x2 = Block.c[this.worldObj.a(this.trackX, this.trackY + 1, this.trackZ + 1)];
+        Block c_x3 = Block.c[this.worldObj.a(this.trackX + 1, this.trackY + 1, this.trackZ)];
+        Block c_x4 = Block.c[this.worldObj.a(this.trackX - 1, this.trackY + 1, this.trackZ)];
         int n = -1;
         if (bl || bl2) {
             n = 0;
@@ -216,10 +216,10 @@ class C_bu {
         boolean bl4 = this.canConnectFrom(this.trackX, this.trackY, this.trackZ + 1);
         boolean bl5 = this.canConnectFrom(this.trackX - 1, this.trackY, this.trackZ);
         boolean bl6 = this.canConnectFrom(this.trackX + 1, this.trackY, this.trackZ);
-        C_x c_x = C_x.c[this.worldObj.a(this.trackX, this.trackY + 1, this.trackZ - 1)];
-        C_x c_x2 = C_x.c[this.worldObj.a(this.trackX, this.trackY + 1, this.trackZ + 1)];
-        C_x c_x3 = C_x.c[this.worldObj.a(this.trackX + 1, this.trackY + 1, this.trackZ)];
-        C_x c_x4 = C_x.c[this.worldObj.a(this.trackX - 1, this.trackY + 1, this.trackZ)];
+        Block c_x = Block.c[this.worldObj.a(this.trackX, this.trackY + 1, this.trackZ - 1)];
+        Block c_x2 = Block.c[this.worldObj.a(this.trackX, this.trackY + 1, this.trackZ + 1)];
+        Block c_x3 = Block.c[this.worldObj.a(this.trackX + 1, this.trackY + 1, this.trackZ)];
+        Block c_x4 = Block.c[this.worldObj.a(this.trackX - 1, this.trackY + 1, this.trackZ)];
         int n = -1;
         if ((bl3 || bl4) && !bl5 && !bl6) {
             n = 0;

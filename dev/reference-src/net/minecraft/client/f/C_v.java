@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.f.C_k;
 import util.MathHelper;
@@ -12,11 +12,11 @@ public class C_v
 extends C_k {
     float size;
 
-    public C_v(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6) {
+    public C_v(World c_g, float f, float f2, float f3, float f4, float f5, float f6) {
         this(c_g, f, f2, f3, f4, f5, f6, 2.0f);
     }
 
-    public C_v(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6, float f7) {
+    public C_v(World c_g, float f, float f2, float f3, float f4, float f5, float f6, float f7) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.k = (float)((double)this.k * (double)0.01f);
         this.l = (float)((double)this.l * (double)0.01f);

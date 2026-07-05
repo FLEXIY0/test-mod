@@ -3,16 +3,16 @@
  */
 package net.minecraft.game.level.block.furniture;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
 public class BlockWall
-extends C_x {
+extends Block {
     private static String[] NAME_LIST = new String[]{"Cobblestone", "Mossy Cobble", "Brick", "Sandstone", "Stone Brick", "Mossy Brick", "Basalt Brick", "Red Sandstone", "Moon Rock", "Basalt"};
 
-    public BlockWall(int n, C_x c_x) {
+    public BlockWall(int n, Block c_x) {
         super(n, c_x.as, c_x.aC);
         this.b(c_x.aL);
         this.a(c_x.aM / 3.0f);
@@ -36,7 +36,7 @@ extends C_x {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         boolean bl = this.canConnectWallTo(c_g, n, n2, n3 - 1);
         boolean bl2 = this.canConnectWallTo(c_g, n, n2, n3 + 1);
         boolean bl3 = this.canConnectWallTo(c_g, n - 1, n2, n3);
@@ -72,16 +72,16 @@ extends C_x {
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         this.setBlockBoundsBasedOnState(c_g, n, n2, n3);
         this.ay = 1.5f;
         return super.getCollisionBoundingBoxFromPool(c_g, n, n2, n3);
     }
 
-    public boolean canConnectWallTo(C_g c_g, int n, int n2, int n3) {
+    public boolean canConnectWallTo(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2, n3);
-        if (n4 != this.at && n4 != C_x.fenceGateOak.at && n4 != C_x.fenceGateBirch.at && n4 != C_x.fenceGatePalm.at && n4 != C_x.fenceGateSpruce.at && n4 != C_x.glassPane.at && n4 != C_x.ironBars.at && n4 != C_x.coloredPane.at && !c_g.a((float)n, (float)n2, (float)n3)) {
-            C_x c_x = C_x.c[n4];
+        if (n4 != this.at && n4 != Block.fenceGateOak.at && n4 != Block.fenceGateBirch.at && n4 != Block.fenceGatePalm.at && n4 != Block.fenceGateSpruce.at && n4 != Block.glassPane.at && n4 != Block.ironBars.at && n4 != Block.coloredPane.at && !c_g.a((float)n, (float)n2, (float)n3)) {
+            Block c_x = Block.c[n4];
             return c_x != null && c_x.isOpaqueCube(c_g.e(n, n2, n3)) && c_x.c() ? c_x.aC != C_c.pumpkin : false;
         }
         return true;

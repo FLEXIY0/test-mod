@@ -2,7 +2,7 @@ package net.minecraft.a.a.b.a;
 
 import java.lang.reflect.Field;
 import java.util.Map;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemPotion;
 import net.minecraft.game.level.block.machines.BlockCauldron;
@@ -19,11 +19,11 @@ public class CauldronTest {
     static void ok(boolean c, String m) { if (c) pass++; else { fail++; System.out.println("FAIL: " + m); } }
 
     public static void main(String[] a) throws Exception {
-        Class.forName("net.minecraft.a.a.b.C_x"); // register blocks + auto item-blocks
+        Class.forName("net.minecraft.a.a.b.Block"); // register blocks + auto item-blocks
         Class.forName("net.minecraft.a.b.Item");  // register items
 
         // 1. cauldron block + per-face textures (side / top-empty / top-water / bottom)
-        C_x cauldron = C_x.c[201];
+        Block cauldron = Block.c[201];
         ok(cauldron instanceof BlockCauldron, "block 201 is BlockCauldron");
         ok(cauldron.a(2, 0) == 967, "cauldron side = 967 (got " + cauldron.a(2, 0) + ")");
         ok(cauldron.a(1, 0) == 968, "cauldron top empty = 968");
@@ -46,7 +46,7 @@ public class CauldronTest {
         ok(TileEntityCauldron.ingredientToEffect(Item.H.ap) == PotionManager.SPEED, "feather -> speed");
         ok(TileEntityCauldron.ingredientToEffect(Item.slimeBall.ap) == PotionManager.JUMP, "slimeball -> jump");
         ok(TileEntityCauldron.ingredientToEffect(Item.i.ap) == PotionManager.FIRE_RESIST, "coal -> fire resist");
-        ok(TileEntityCauldron.ingredientToEffect(C_x.glowStone.at) == PotionManager.NIGHT_VISION, "glowstone -> night vision");
+        ok(TileEntityCauldron.ingredientToEffect(Block.glowStone.at) == PotionManager.NIGHT_VISION, "glowstone -> night vision");
         ok(TileEntityCauldron.ingredientToEffect(Item.k.ap) == -1, "iron ingot brews nothing");
 
         // 4. tile entity registered for save/load

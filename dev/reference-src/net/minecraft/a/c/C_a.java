@@ -6,7 +6,7 @@ package net.minecraft.a.c;
 import com.a.a.NBTTagCompound;
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -24,13 +24,13 @@ extends net.minecraft.a.c.C_b {
     public int R;
     public C_d b;
 
-    public C_a(C_g c_g) {
+    public C_a(World c_g) {
         super(c_g);
         this.v = 0.0f;
         this.a(0.5f, 0.5f);
     }
 
-    public C_a(C_g c_g, int n, int n2, int n3, int n4, int n5) {
+    public C_a(World c_g, int n, int n2, int n3, int n4, int n5) {
         this(c_g);
         this.P = n;
         this.Q = n2;
@@ -56,7 +56,7 @@ extends net.minecraft.a.c.C_b {
         this.b(n4);
     }
 
-    public C_a(C_g c_g, int n, int n2, int n3, int n4, String string, int n5) {
+    public C_a(World c_g, int n, int n2, int n3, int n4, String string, int n5) {
         this(c_g, n, n2, n3, n4, n5);
     }
 

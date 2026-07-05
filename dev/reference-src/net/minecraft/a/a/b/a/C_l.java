@@ -4,10 +4,10 @@
 package net.minecraft.a.a.b.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.a.TileEntity;
 
 public class C_l
-extends C_a {
+extends TileEntity {
     public String[] signText = new String[]{"", "", "", ""};
     public int lineBeingEdited = -1;
     public int textColor = 0;

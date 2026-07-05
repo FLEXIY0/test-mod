@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.c;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.c.C_ac;
 import net.minecraft.client.c.C_bs;
 import net.minecraft.client.c.GuiButton;
@@ -44,7 +44,7 @@ extends GuiScreen {
             if (this.b.d != null) {
                 this.b.d.active = true;
             }
-            this.b.a((C_g)null);
+            this.b.a((World)null);
             this.b.f = null;
             this.b.a(new GuiMainMenu());
         }

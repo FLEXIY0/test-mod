@@ -3,15 +3,15 @@
  */
 package net.minecraft.game.level.block.furniture;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
 
 public class BlockChair
-extends C_x {
+extends Block {
     public boolean isOccupied = false;
 
     public BlockChair(int n, int n2, C_c c_c) {
@@ -20,12 +20,12 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
-        return c_g.a(n, n2 - 1, n3) == C_x.quickSand.at ? false : (!c_g.b(n, n2 - 1, n3) ? false : super.a(c_g, n, n2, n3));
+    public boolean a(World c_g, int n, int n2, int n3) {
+        return c_g.a(n, n2 - 1, n3) == Block.quickSand.at ? false : (!c_g.b(n, n2 - 1, n3) ? false : super.a(c_g, n, n2, n3));
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.f(n, n2 - 1, n3).a()) {
             this.f(c_g, n, n2, n3, c_g.e(n, n2, n3));
             c_g.b(n, n2, n3, 0);
@@ -34,12 +34,12 @@ extends C_x {
     }
 
     @Override
-    public boolean canBlockStay(C_g c_g, int n, int n2, int n3) {
+    public boolean canBlockStay(World c_g, int n, int n2, int n3) {
         return !c_g.f(n, n2 - 1, n3).a();
     }
 
     @Override
-    public final void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void g(World c_g, int n, int n2, int n3, int n4) {
         int n5 = MathHelper.a((double)(c_g.y.n * 4.0f / 360.0f) + 0.5) & 3;
         if (n5 == 0) {
             c_g.setBlockMetadataWithNotify(n, n2, n3, 2);
@@ -56,7 +56,7 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3) {
+    public void b(World c_g, int n, int n2, int n3) {
         if (c_g.y.isSitting) {
             c_g.y.isSitting = false;
         }
@@ -83,7 +83,7 @@ extends C_x {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (!(c_g.multiplayerWorld || entityPlayer.isInWater() || entityPlayer.isSneaking != 0 || c_g.a(n, n2 + 1, n3) != 0 || entityPlayer.isLaying || entityPlayer.isFlying)) {
             entityPlayer.m = 0.0f;
             entityPlayer.l = 0.0f;

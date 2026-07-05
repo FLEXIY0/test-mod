@@ -4,7 +4,7 @@
 package net.minecraft.client.f;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.C_b;
 import net.minecraft.client.a.C_d;
 import util.MathHelper;
@@ -28,7 +28,7 @@ extends C_b {
     public static float interpY;
     public static float interpZ;
 
-    public C_k(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6) {
+    public C_k(World c_g, float f, float f2, float f3, float f4, float f5, float f6) {
         super(c_g);
         this.a(0.2f, 0.2f);
         this.v = this.x / 2.0f;

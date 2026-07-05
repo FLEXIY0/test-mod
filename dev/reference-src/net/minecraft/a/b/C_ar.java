@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_d;
 
 public class C_ar
@@ -21,7 +21,7 @@ extends C_d {
 
     @Override
     public String getItemName(int n) {
-        return C_x.j.getBlockName(n);
+        return Block.j.getBlockName(n);
     }
 
     @Override
@@ -31,7 +31,7 @@ extends C_d {
 
     @Override
     public int getIconFromDamage(int n) {
-        return C_x.j.a(0, n);
+        return Block.j.a(0, n);
     }
 }
 

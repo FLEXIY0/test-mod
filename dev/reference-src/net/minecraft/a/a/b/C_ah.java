@@ -4,46 +4,46 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
 public final class C_ah
-extends C_x {
+extends Block {
     private int[] a = new int[256];
     private int[] b = new int[256];
 
     protected C_ah(int n, int n2) {
         super(n, n2, C_c.l);
-        this.c(C_x.m.at, 5, 20);
-        this.c(C_x.y.at, 5, 5);
-        this.c(C_x.log.at, 5, 5);
-        this.c(C_x.z.at, 30, 60);
-        this.c(C_x.tallGrass.at, 30, 60);
-        this.c(C_x.plantBlue.at, 30, 60);
-        this.c(C_x.plantPurple.at, 30, 60);
-        this.c(C_x.plantRed.at, 30, 60);
-        this.c(C_x.plantYellow.at, 30, 60);
-        this.c(C_x.n.at, 30, 60);
-        this.c(C_x.ab.at, 15, 100);
-        this.c(C_x.cloth.at, 30, 60);
-        this.c(C_x.stairWood.at, 5, 20);
-        this.c(C_x.chair.at, 10, 30);
-        this.c(C_x.chairBlack.at, 10, 30);
-        this.c(C_x.chairWhite.at, 10, 30);
-        this.c(C_x.chairRed.at, 10, 30);
-        this.c(C_x.table.at, 10, 30);
-        this.c(C_x.stairWood.at, 10, 30);
-        this.c(C_x.stairWoodBlack.at, 10, 30);
-        this.c(C_x.stairWoodWhite.at, 10, 30);
-        this.c(C_x.stairWoodCherry.at, 10, 30);
-        this.c(C_x.carpet.at, 30, 60);
-        this.c(C_x.fence.at, 10, 30);
-        this.c(C_x.fenceGateOak.at, 10, 30);
-        this.c(C_x.fenceGateBirch.at, 10, 30);
-        this.c(C_x.fenceGateSpruce.at, 10, 30);
-        this.c(C_x.fenceGatePalm.at, 10, 30);
+        this.c(Block.m.at, 5, 20);
+        this.c(Block.y.at, 5, 5);
+        this.c(Block.log.at, 5, 5);
+        this.c(Block.z.at, 30, 60);
+        this.c(Block.tallGrass.at, 30, 60);
+        this.c(Block.plantBlue.at, 30, 60);
+        this.c(Block.plantPurple.at, 30, 60);
+        this.c(Block.plantRed.at, 30, 60);
+        this.c(Block.plantYellow.at, 30, 60);
+        this.c(Block.n.at, 30, 60);
+        this.c(Block.ab.at, 15, 100);
+        this.c(Block.cloth.at, 30, 60);
+        this.c(Block.stairWood.at, 5, 20);
+        this.c(Block.chair.at, 10, 30);
+        this.c(Block.chairBlack.at, 10, 30);
+        this.c(Block.chairWhite.at, 10, 30);
+        this.c(Block.chairRed.at, 10, 30);
+        this.c(Block.table.at, 10, 30);
+        this.c(Block.stairWood.at, 10, 30);
+        this.c(Block.stairWoodBlack.at, 10, 30);
+        this.c(Block.stairWoodWhite.at, 10, 30);
+        this.c(Block.stairWoodCherry.at, 10, 30);
+        this.c(Block.carpet.at, 30, 60);
+        this.c(Block.fence.at, 10, 30);
+        this.c(Block.fenceGateOak.at, 10, 30);
+        this.c(Block.fenceGateBirch.at, 10, 30);
+        this.c(Block.fenceGateSpruce.at, 10, 30);
+        this.c(Block.fenceGatePalm.at, 10, 30);
         this.a(true);
     }
 
@@ -53,7 +53,7 @@ extends C_x {
     }
 
     @Override
-    public final C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public final C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return null;
     }
 
@@ -83,7 +83,7 @@ extends C_x {
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         if (!c_g.multiplayerWorld) {
             byte by = c_g.e(n, n2, n3);
             if (by < 15) {
@@ -95,9 +95,9 @@ extends C_x {
                 by2 = 0;
             }
             if (!this.i(c_g, n, n2, n3)) {
-                C_x c_x;
-                if ((!c_g.b(n, n2 - 1, n3) || by > by2) && ((c_x = C_x.c[c_g.a(n, n2 - 1, n3)]) != C_x.blockCoal && c_x != C_x.magma || c_g.isBloodMoon())) {
-                    c_g.b(n, n2, n3, C_x.ash.at);
+                Block c_x;
+                if ((!c_g.b(n, n2 - 1, n3) || by > by2) && ((c_x = Block.c[c_g.a(n, n2 - 1, n3)]) != Block.blockCoal && c_x != Block.magma || c_g.isBloodMoon())) {
+                    c_g.b(n, n2, n3, Block.ash.at);
                 }
             } else if (!this.e(c_g, n, n2 - 1, n3) && by == 15 && random.nextInt(4) == 0) {
                 c_g.b(n, n2, n3, 0);
@@ -138,23 +138,23 @@ extends C_x {
         }
     }
 
-    private void a(C_g c_g, int n, int n2, int n3, int n4, Random random) {
+    private void a(World c_g, int n, int n2, int n3, int n4, Random random) {
         int n5 = this.b[c_g.a(n, n2, n3)];
         if (random.nextInt(n4) < n5 && !c_g.multiplayerWorld) {
             boolean bl;
-            boolean bl2 = bl = c_g.a(n, n2, n3) == C_x.ab.at;
+            boolean bl2 = bl = c_g.a(n, n2, n3) == Block.ab.at;
             if (random.nextInt(2) == 0) {
                 c_g.b(n, n2, n3, this.at);
             } else {
                 c_g.b(n, n2, n3, 0);
             }
             if (bl) {
-                C_x.ab.c(c_g, n, n2, n3, 0);
+                Block.ab.c(c_g, n, n2, n3, 0);
             }
         }
     }
 
-    private boolean i(C_g c_g, int n, int n2, int n3) {
+    private boolean i(World c_g, int n, int n2, int n3) {
         return this.e(c_g, n + 1, n2, n3) ? true : (this.e(c_g, n - 1, n2, n3) ? true : (this.e(c_g, n, n2 - 1, n3) ? true : (this.e(c_g, n, n2 + 1, n3) ? true : (this.e(c_g, n, n2, n3 - 1) ? true : this.e(c_g, n, n2, n3 + 1)))));
     }
 
@@ -163,29 +163,29 @@ extends C_x {
         return false;
     }
 
-    public final boolean e(C_g c_g, int n, int n2, int n3) {
+    public final boolean e(World c_g, int n, int n2, int n3) {
         return this.a[c_g.a(n, n2, n3)] > 0;
     }
 
-    private int e(C_g c_g, int n, int n2, int n3, int n4) {
+    private int e(World c_g, int n, int n2, int n3, int n4) {
         int n5 = this.a[c_g.a(n, n2, n3)];
         return n5 > n4 ? n5 : n4;
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3) {
+    public final boolean a(World c_g, int n, int n2, int n3) {
         return c_g.b(n, n2 - 1, n3) || this.i(c_g, n, n2, n3);
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void b(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.b(n, n2 - 1, n3) && !this.i(c_g, n, n2, n3)) {
             c_g.b(n, n2, n3, 0);
         }
     }
 
     @Override
-    public void d(C_g c_g, int n, int n2, int n3) {
+    public void d(World c_g, int n, int n2, int n3) {
         if (!c_g.b(n, n2 - 1, n3) && !this.i(c_g, n, n2, n3)) {
             c_g.b(n, n2, n3, 0);
         } else {
@@ -197,7 +197,7 @@ extends C_x {
         return this.a[n] > 0;
     }
 
-    public final void h(C_g c_g, int n, int n2, int n3) {
+    public final void h(World c_g, int n, int n2, int n3) {
         boolean bl = false;
         bl = C_ah.j(c_g, n, n2 + 1, n3);
         if (!bl) {
@@ -216,12 +216,12 @@ extends C_x {
             bl = C_ah.j(c_g, n, n2 - 1, n3);
         }
         if (!bl) {
-            c_g.b(n, n2, n3, C_x.ag.at);
+            c_g.b(n, n2, n3, Block.ag.at);
         }
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void b(World c_g, int n, int n2, int n3, Random random) {
         block12: {
             block11: {
                 float f;
@@ -231,8 +231,8 @@ extends C_x {
                 if (random.nextInt(24) == 0) {
                     c_g.a((float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, "fire.fire", 1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f);
                 }
-                if (c_g.b(n, n2 - 1, n3) || C_x.ag.e(c_g, n, n2 - 1, n3)) break block11;
-                if (C_x.ag.e(c_g, n - 1, n2, n3)) {
+                if (c_g.b(n, n2 - 1, n3) || Block.ag.e(c_g, n, n2 - 1, n3)) break block11;
+                if (Block.ag.e(c_g, n - 1, n2, n3)) {
                     for (n4 = 0; n4 < 2; ++n4) {
                         f3 = (float)n + random.nextFloat() * 0.1f;
                         f2 = (float)n2 + random.nextFloat();
@@ -240,7 +240,7 @@ extends C_x {
                         c_g.a("largesmoke", f3, f2, f, 0.0f, 0.0f, 0.0f);
                     }
                 }
-                if (C_x.ag.e(c_g, n + 1, n2, n3)) {
+                if (Block.ag.e(c_g, n + 1, n2, n3)) {
                     for (n4 = 0; n4 < 2; ++n4) {
                         f3 = (float)(n + 1) - random.nextFloat() * 0.1f;
                         f2 = (float)n2 + random.nextFloat();
@@ -248,7 +248,7 @@ extends C_x {
                         c_g.a("largesmoke", f3, f2, f, 0.0f, 0.0f, 0.0f);
                     }
                 }
-                if (C_x.ag.e(c_g, n, n2, n3 - 1)) {
+                if (Block.ag.e(c_g, n, n2, n3 - 1)) {
                     for (n4 = 0; n4 < 2; ++n4) {
                         f3 = (float)n + random.nextFloat();
                         f2 = (float)n2 + random.nextFloat();
@@ -256,7 +256,7 @@ extends C_x {
                         c_g.a("largesmoke", f3, f2, f, 0.0f, 0.0f, 0.0f);
                     }
                 }
-                if (C_x.ag.e(c_g, n, n2, n3 + 1)) {
+                if (Block.ag.e(c_g, n, n2, n3 + 1)) {
                     for (n4 = 0; n4 < 2; ++n4) {
                         f3 = (float)n + random.nextFloat();
                         f2 = (float)n2 + random.nextFloat();
@@ -264,7 +264,7 @@ extends C_x {
                         c_g.a("largesmoke", f3, f2, f, 0.0f, 0.0f, 0.0f);
                     }
                 }
-                if (!C_x.ag.e(c_g, n, n2 + 1, n3)) break block12;
+                if (!Block.ag.e(c_g, n, n2 + 1, n3)) break block12;
                 for (n4 = 0; n4 < 2; ++n4) {
                     f3 = (float)n + random.nextFloat();
                     f2 = (float)(n2 + 1) - random.nextFloat() * 0.1f;
@@ -282,13 +282,13 @@ extends C_x {
         }
     }
 
-    private static boolean j(C_g c_g, int n, int n2, int n3) {
+    private static boolean j(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2, n3);
-        if (n4 == C_x.ag.at) {
+        if (n4 == Block.ag.at) {
             return true;
         }
         if (n4 == 0) {
-            c_g.b(n, n2, n3, C_x.ag.at);
+            c_g.b(n, n2, n3, Block.ag.at);
             return true;
         }
         return false;

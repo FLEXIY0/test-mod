@@ -4,7 +4,7 @@
 package net.minecraft.client.c.a;
 
 import net.minecraft.a.C_b;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -45,7 +45,7 @@ extends C_g {
         if (itemStack.c == Item.i.ap && itemStack.d == 1) {
             this.thePlayer.triggerAchievement(AchievementList.charcoal);
         }
-        if (itemStack.c == C_x.A.at) {
+        if (itemStack.c == Block.A.at) {
             this.thePlayer.triggerAchievement(AchievementList.spong);
         }
     }

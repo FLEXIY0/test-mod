@@ -5,7 +5,7 @@ package net.minecraft.a.c.d;
 
 import com.a.a.NBTTagCompound;
 import java.util.List;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.C_e;
 import net.minecraft.a.d.C_a;
@@ -20,7 +20,7 @@ extends C_b {
     public C_e thrower;
     private int ticksInAirSnowball = 0;
 
-    public C_c(C_g c_g) {
+    public C_c(World c_g) {
         super(c_g);
         this.a(0.25f, 0.25f);
     }
@@ -29,7 +29,7 @@ extends C_b {
     protected void entityInit() {
     }
 
-    public C_c(C_g c_g, C_e c_e) {
+    public C_c(World c_g, C_e c_e) {
         super(c_g);
         this.thrower = c_e;
         this.a(0.25f, 0.25f);
@@ -46,7 +46,7 @@ extends C_b {
         this.setSnowballHeading(this.k, this.l, this.m, 1.5f, 1.0f);
     }
 
-    public C_c(C_g c_g, float f, float f2, float f3) {
+    public C_c(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.a(0.25f, 0.25f);
         this.b(f, f2, f3);

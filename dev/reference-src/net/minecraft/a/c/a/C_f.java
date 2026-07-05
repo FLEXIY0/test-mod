@@ -5,8 +5,8 @@ package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -32,7 +32,7 @@ extends C_e {
     protected int doorBreakTime;
     public ItemStack heldItem;
 
-    public C_f(C_g c_g) {
+    public C_f(World c_g) {
         super(c_g);
         this.V = "/mob/zombie.png";
         this.am = 0.5f;
@@ -65,7 +65,7 @@ extends C_e {
         }
     }
 
-    public C_f(C_g c_g, float f, float f2, float f3) {
+    public C_f(World c_g, float f, float f2, float f3) {
         this(c_g);
         this.b(f, f2, f3);
     }
@@ -84,9 +84,9 @@ extends C_e {
                 this.am = 0.5f;
                 for (int i = -1; i < 2; ++i) {
                     for (int j = -1; j < 2; ++j) {
-                        C_x c_x = C_x.c[this.d.a((int)this.h + i, (int)this.i, (int)this.j)];
-                        C_x c_x2 = C_x.c[this.d.a((int)this.h, (int)this.i, (int)this.j + j)];
-                        if (c_x instanceof BlockDoor && c_x != C_x.doorSteel) {
+                        Block c_x = Block.c[this.d.a((int)this.h + i, (int)this.i, (int)this.j)];
+                        Block c_x2 = Block.c[this.d.a((int)this.h, (int)this.i, (int)this.j + j)];
+                        if (c_x instanceof BlockDoor && c_x != Block.doorSteel) {
                             this.chasingDoor = true;
                             this.doorBreakTime = 240;
                             this.doorPosX = (int)this.h + i;
@@ -95,7 +95,7 @@ extends C_e {
                             this.distanceX = (float)this.doorPosX + 0.5f - this.h;
                             this.distanceZ = (float)this.doorPosZ + 0.5f - this.j;
                         }
-                        if (!(c_x2 instanceof BlockDoor) || c_x2 == C_x.doorSteel) continue;
+                        if (!(c_x2 instanceof BlockDoor) || c_x2 == Block.doorSteel) continue;
                         this.chasingDoor = true;
                         this.doorBreakTime = 240;
                         this.doorPosX = (int)this.h;
@@ -106,7 +106,7 @@ extends C_e {
                     }
                 }
             } else {
-                C_x c_x;
+                Block c_x;
                 float f = (float)this.doorPosX + 0.5f - this.h;
                 float f3 = (float)this.doorPosZ + 0.5f - this.j;
                 float f4 = this.distanceX * f + this.distanceZ * f3;
@@ -118,7 +118,7 @@ extends C_e {
                 if (this.G.nextInt(20) == 0) {
                     this.d.a(this, "random.wood", 1.0f, (this.G.nextFloat() - this.G.nextFloat()) * 0.2f + 1.0f);
                 }
-                if (!((c_x = C_x.c[this.d.a(this.doorPosX, this.doorPosY, this.doorPosZ)]) instanceof BlockDoor)) {
+                if (!((c_x = Block.c[this.d.a(this.doorPosX, this.doorPosY, this.doorPosZ)]) instanceof BlockDoor)) {
                     this.chasingDoor = false;
                 }
                 if (--this.doorBreakTime == 0) {

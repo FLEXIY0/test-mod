@@ -4,7 +4,7 @@
 package net.minecraft.client.c.a;
 
 import net.minecraft.a.C_b;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.client.c.a.C_g;
@@ -18,7 +18,7 @@ extends C_g {
     @Override
     public boolean a(ItemStack itemStack) {
         Item item = itemStack.a();
-        return item.ap != C_x.barrel.at;
+        return item.ap != Block.barrel.at;
     }
 }
 

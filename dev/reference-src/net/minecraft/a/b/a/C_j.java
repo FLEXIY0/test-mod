@@ -5,7 +5,7 @@ package net.minecraft.a.b.a;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 
@@ -18,25 +18,25 @@ public class C_j {
     }
 
     private C_j() {
-        this.addSmelting(C_x.w.at, new ItemStack(Item.k));
-        this.addSmelting(C_x.v.at, new ItemStack(Item.l));
-        this.addSmelting(C_x.al.at, new ItemStack(Item.j));
-        this.addSmelting(C_x.oreEmerald.at, new ItemStack(Item.emerald));
-        this.addSmelting(C_x.oreAdminium.at, new ItemStack(Item.ingotAdminium));
-        this.addSmelting(C_x.x.at, new ItemStack(Item.i, 1, 0));
+        this.addSmelting(Block.w.at, new ItemStack(Item.k));
+        this.addSmelting(Block.v.at, new ItemStack(Item.l));
+        this.addSmelting(Block.al.at, new ItemStack(Item.j));
+        this.addSmelting(Block.oreEmerald.at, new ItemStack(Item.emerald));
+        this.addSmelting(Block.oreAdminium.at, new ItemStack(Item.ingotAdminium));
+        this.addSmelting(Block.x.at, new ItemStack(Item.i, 1, 0));
         this.addSmelting(Item.rawIron.ap, new ItemStack(Item.k));
         this.addSmelting(Item.rawGold.ap, new ItemStack(Item.l));
         this.addSmelting(Item.rawAdminium.ap, new ItemStack(Item.ingotAdminium));
-        this.addSmelting(C_x.t.at, new ItemStack(C_x.B));
-        this.addSmelting(C_x.redSand.at, new ItemStack(C_x.B));
+        this.addSmelting(Block.t.at, new ItemStack(Block.B));
+        this.addSmelting(Block.redSand.at, new ItemStack(Block.B));
         this.addSmelting(Item.am.ap, new ItemStack(Item.an));
         this.addSmelting(Item.fishRaw.ap, new ItemStack(Item.fishCooked));
-        this.addSmelting(C_x.l.at, new ItemStack(C_x.i));
-        this.addSmelting(C_x.y.at, new ItemStack(Item.i, 1, 1));
-        this.addSmelting(C_x.log.at, new ItemStack(Item.i, 1, 1));
+        this.addSmelting(Block.l.at, new ItemStack(Block.i));
+        this.addSmelting(Block.y.at, new ItemStack(Item.i, 1, 1));
+        this.addSmelting(Block.log.at, new ItemStack(Item.i, 1, 1));
         this.addSmelting(Item.clay.ap, new ItemStack(Item.bricks));
         this.addSmelting(Item.antlionTusk.ap, new ItemStack(Item.antlionExtract));
-        this.addSmelting(C_x.coral.at, new ItemStack(C_x.A));
+        this.addSmelting(Block.coral.at, new ItemStack(Block.A));
     }
 
     public void addSmelting(int n, ItemStack itemStack) {

@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.c;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.c.FontRenderer;
 import net.minecraft.client.c.GuiButton;
 import net.minecraft.client.c.GuiMainMenu;
@@ -39,7 +39,7 @@ extends GuiScreen {
             this.b.f.doRespawn();
         }
         if (guiButton.b == 1) {
-            this.b.a((C_g)null);
+            this.b.a((World)null);
             this.b.f = null;
             this.b.a(new GuiMainMenu());
         }

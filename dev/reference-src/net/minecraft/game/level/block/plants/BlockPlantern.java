@@ -3,19 +3,19 @@
  */
 package net.minecraft.game.level.block.plants;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import util.MathHelper;
 
 public class BlockPlantern
-extends C_x {
+extends Block {
     public BlockPlantern(int n, int n2, C_c c_c) {
         super(n, n2, c_c);
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.multiplayerWorld) {
             int n5 = MathHelper.a((double)(c_g.y.n * 4.0f / 360.0f) + 0.5) & 3;
             if (n5 == 0) {
@@ -34,7 +34,7 @@ extends C_x {
     }
 
     @Override
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1 || n4 == 0) {
             return this.as + 1;
         }

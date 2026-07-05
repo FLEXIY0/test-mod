@@ -5,7 +5,7 @@ package net.minecraft.client.a.c;
 
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.client.a.c.C_b;
 import util.MathHelper;
 
@@ -17,7 +17,7 @@ extends C_b {
     private int h;
 
     public C_c(int n) {
-        super(C_x.ak.as + n);
+        super(Block.ak.as + n);
         this.h = (n << 1) - 1;
         this.e = 2;
         try {

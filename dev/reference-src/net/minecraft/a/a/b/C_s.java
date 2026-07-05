@@ -4,10 +4,10 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_q;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_b;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -22,38 +22,38 @@ extends C_q {
         this.as = 45;
     }
 
-    public final void d(C_g c_g, int n, int n2, int n3) {
+    public final void d(World c_g, int n, int n2, int n3) {
         super.d(c_g, n, n2, n3);
         C_s.e(c_g, n, n2, n3);
     }
 
-    private static void e(C_g c_g, int n, int n2, int n3) {
+    private static void e(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2, n3 - 1);
         int n5 = c_g.a(n, n2, n3 + 1);
         int n6 = c_g.a(n - 1, n2, n3);
         int n7 = c_g.a(n + 1, n2, n3);
         int n8 = 3;
-        if (C_x.e[n4] && !C_x.e[n5]) {
+        if (Block.e[n4] && !Block.e[n5]) {
             n8 = 3;
         }
-        if (C_x.e[n5] && !C_x.e[n4]) {
+        if (Block.e[n5] && !Block.e[n4]) {
             n8 = 2;
         }
-        if (C_x.e[n6] && !C_x.e[n7]) {
+        if (Block.e[n6] && !Block.e[n7]) {
             n8 = 5;
         }
-        if (C_x.e[n7] && !C_x.e[n6]) {
+        if (Block.e[n7] && !Block.e[n6]) {
             n8 = 4;
         }
         c_g.f(n, n2, n3, n8);
     }
 
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1) {
-            return C_x.i.as;
+            return Block.i.as;
         }
         if (n4 == 0) {
-            return C_x.i.as;
+            return Block.i.as;
         }
         byte by = c_g.e(n, n2, n3);
         if (by == 0) {
@@ -69,7 +69,7 @@ extends C_q {
         return this.as - 1;
     }
 
-    public final void b(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void b(World c_g, int n, int n2, int n3, Random random) {
         if (!this.a) {
             return;
         }
@@ -101,10 +101,10 @@ extends C_q {
 
     public final int a(int n) {
         if (n == 1) {
-            return C_x.i.at;
+            return Block.i.at;
         }
         if (n == 0) {
-            return C_x.i.at;
+            return Block.i.at;
         }
         if (n == 3) {
             return this.as - 1;
@@ -112,13 +112,13 @@ extends C_q {
         return this.as;
     }
 
-    public final boolean a(C_g object, int n, int n2, int n3, EntityPlayer entityPlayer) {
-        object = (C_b)((C_g)object).j(n, n2, n3);
+    public final boolean a(World object, int n, int n2, int n3, EntityPlayer entityPlayer) {
+        object = (C_b)((World)object).j(n, n2, n3);
         entityPlayer.a((C_b)object);
         return true;
     }
 
-    protected final C_a a_() {
+    protected final TileEntity a_() {
         return new C_b();
     }
 }

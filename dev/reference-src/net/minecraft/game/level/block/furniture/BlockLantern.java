@@ -4,13 +4,13 @@
 package net.minecraft.game.level.block.furniture;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_bq;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public final class BlockLantern
-extends C_x {
+extends Block {
     public BlockLantern(int n, int n2) {
         super(n, n2, C_c.solid);
         this.a(true);
@@ -40,25 +40,25 @@ extends C_x {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3) {
+    public final boolean a(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2 - 1, n3);
-        C_x c_x = C_x.c[c_g.a(n, n2 + 1, n3)];
-        if (n4 == C_x.table.at || n4 == C_x.wall.at || n4 == C_x.fence.at || n4 == C_x.stairUpsideDown.at || c_x == C_x.fence || c_x == C_x.rope || c_x == C_x.wall || c_x instanceof C_bq && c_g.e(n, n2 + 1, n3) <= 3 || c_x == C_x.Z) {
+        Block c_x = Block.c[c_g.a(n, n2 + 1, n3)];
+        if (n4 == Block.table.at || n4 == Block.wall.at || n4 == Block.fence.at || n4 == Block.stairUpsideDown.at || c_x == Block.fence || c_x == Block.rope || c_x == Block.wall || c_x instanceof C_bq && c_g.e(n, n2 + 1, n3) <= 3 || c_x == Block.Z) {
             return true;
         }
         return c_g.b(n, n2 - 1, n3) || c_g.b(n, n2 + 1, n3);
     }
 
     @Override
-    public final void g(C_g c_g, int n, int n2, int n3, int n4) {
-        C_x c_x = C_x.c[c_g.a(n, n2 + 1, n3)];
-        if (c_g.b(n, n2 + 1, n3) || c_x == C_x.fence || c_x == C_x.wall || c_x == C_x.rope || c_x == C_x.Z || c_x instanceof C_bq && c_g.e(n, n2 + 1, n3) <= 3) {
+    public final void g(World c_g, int n, int n2, int n3, int n4) {
+        Block c_x = Block.c[c_g.a(n, n2 + 1, n3)];
+        if (c_g.b(n, n2 + 1, n3) || c_x == Block.fence || c_x == Block.wall || c_x == Block.rope || c_x == Block.Z || c_x instanceof C_bq && c_g.e(n, n2 + 1, n3) <= 3) {
             c_g.setBlockMetadata(n, n2, n3, 1);
         }
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         super.a(c_g, n, n2, n3, random);
         if (c_g.e(n, n2, n3) == 0) {
             this.d(c_g, n, n2, n3);
@@ -66,7 +66,7 @@ extends C_x {
     }
 
     @Override
-    public final void d(C_g c_g, int n, int n2, int n3) {
+    public final void d(World c_g, int n, int n2, int n3) {
         if (c_g.b(n, n2 + 1, n3)) {
             c_g.setBlockMetadata(n, n2, n3, 1);
         }
@@ -74,12 +74,12 @@ extends C_x {
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void b(World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.a(n, n2 - 1, n3);
-        C_x c_x = C_x.c[c_g.a(n, n2 + 1, n3)];
+        Block c_x = Block.c[c_g.a(n, n2 + 1, n3)];
         if (this.dropLanternIfCantStay(c_g, n, n2, n3)) {
             boolean bl = false;
-            if (!(c_g.b(n, n2 - 1, n3) || n5 == C_x.table.at || n5 == C_x.fence.at || n5 == C_x.wall.at || c_x == C_x.wall || c_x == C_x.fence || c_x == C_x.rope || c_x == C_x.Z || c_x instanceof C_bq || c_g.b(n, n2 + 1, n3))) {
+            if (!(c_g.b(n, n2 - 1, n3) || n5 == Block.table.at || n5 == Block.fence.at || n5 == Block.wall.at || c_x == Block.wall || c_x == Block.fence || c_x == Block.rope || c_x == Block.Z || c_x instanceof C_bq || c_g.b(n, n2 + 1, n3))) {
                 bl = true;
             }
             if (!c_g.b(n, n2 - 1, n3) && c_g.b(n, n2 + 1, n3)) {
@@ -95,7 +95,7 @@ extends C_x {
         }
     }
 
-    private boolean dropLanternIfCantStay(C_g c_g, int n, int n2, int n3) {
+    private boolean dropLanternIfCantStay(World c_g, int n, int n2, int n3) {
         if (!this.a(c_g, n, n2, n3)) {
             this.f(c_g, n, n2, n3, c_g.e(n, n2, n3));
             c_g.b(n, n2, n3, 0);
@@ -105,7 +105,7 @@ extends C_x {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         if (by == 1) {
             this.a(0.2f, 0.375f, 0.2f, 0.8f, 1.0f, 0.8f);

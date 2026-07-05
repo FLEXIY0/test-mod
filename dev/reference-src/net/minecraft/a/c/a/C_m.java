@@ -10,7 +10,7 @@ public class C_m extends C_e {
    public float offsetX;
    private int slimeJumpDelay = 0;
 
-   public C_m(net.minecraft.a.a.C_g var1) {
+   public C_m(net.minecraft.a.a.World var1) {
       super(var1);
       this.V = "/mob/slime.png";
       int var2 = 1 << this.G.nextInt(3);
@@ -19,7 +19,7 @@ public class C_m extends C_e {
       this.setSlimeSize(var2);
    }
 
-   public C_m(net.minecraft.a.a.C_g var1, float var2, float var3, float var4) {
+   public C_m(net.minecraft.a.a.World var1, float var2, float var3, float var4) {
       super(var1);
       this.V = "/mob/slime.png";
       int var5 = 1 << this.G.nextInt(3);

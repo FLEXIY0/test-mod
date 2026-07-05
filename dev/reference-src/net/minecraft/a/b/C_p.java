@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_b;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -25,7 +25,7 @@ extends Item {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         if (entityPlayer.gamemode != 1 && entityPlayer.W < 20) {
             if (!(this instanceof C_b)) {
                 --itemStack.a;
@@ -49,7 +49,7 @@ extends Item {
     }
 
     @Override
-    public boolean throwInFire(C_g c_g, float f, float f2, float f3) {
+    public boolean throwInFire(World c_g, float f, float f2, float f3) {
         if (this.ap == Item.am.ap || this.ap == Item.fishRaw.ap) {
             int n = 0;
             if (this.ap == Item.am.ap) {

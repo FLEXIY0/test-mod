@@ -8,8 +8,8 @@ package net.minecraft.client.render.tileentity;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_c;
 import net.minecraft.a.a.b.a.C_i;
 import net.minecraft.a.a.b.a.C_j;
@@ -29,7 +29,7 @@ public class TileEntityRenderer {
     public static TileEntityRenderer instance = new TileEntityRenderer();
     private FontRenderer fontRenderer;
     public RenderEngine renderEngine;
-    public C_g worldObj;
+    public World worldObj;
     public EntityPlayer entityPlayer;
     public float playerYaw;
     public float playerPitch;
@@ -49,22 +49,22 @@ public class TileEntityRenderer {
 
     public TileEntitySpecialRenderer getSpecialRendererForClass(Class<?> clazz) {
         TileEntitySpecialRenderer tileEntitySpecialRenderer = this.specialRendererMap.get(clazz);
-        if (tileEntitySpecialRenderer == null && clazz != C_a.class) {
+        if (tileEntitySpecialRenderer == null && clazz != TileEntity.class) {
             tileEntitySpecialRenderer = this.getSpecialRendererForClass(clazz.getSuperclass());
             this.specialRendererMap.put(clazz, tileEntitySpecialRenderer);
         }
         return tileEntitySpecialRenderer;
     }
 
-    public boolean hasSpecialRenderer(C_a c_a) {
+    public boolean hasSpecialRenderer(TileEntity c_a) {
         return this.getSpecialRendererForEntity(c_a) != null;
     }
 
-    public TileEntitySpecialRenderer getSpecialRendererForEntity(C_a c_a) {
+    public TileEntitySpecialRenderer getSpecialRendererForEntity(TileEntity c_a) {
         return c_a == null ? null : this.getSpecialRendererForClass(c_a.getClass());
     }
 
-    public void cacheActiveRenderInfo(C_g c_g, RenderEngine renderEngine, FontRenderer fontRenderer, EntityPlayer entityPlayer, float f) {
+    public void cacheActiveRenderInfo(World c_g, RenderEngine renderEngine, FontRenderer fontRenderer, EntityPlayer entityPlayer, float f) {
         if (this.worldObj != c_g) {
             this.cacheSpecialRenderInfo(c_g);
         }
@@ -78,7 +78,7 @@ public class TileEntityRenderer {
         this.playerZ = entityPlayer.D + (entityPlayer.j - entityPlayer.D) * f;
     }
 
-    private void cacheSpecialRenderInfo(C_g c_g) {
+    private void cacheSpecialRenderInfo(World c_g) {
         this.worldObj = c_g;
         for (TileEntitySpecialRenderer tileEntitySpecialRenderer : this.specialRendererMap.values()) {
             if (tileEntitySpecialRenderer == null) continue;
@@ -86,7 +86,7 @@ public class TileEntityRenderer {
         }
     }
 
-    public void renderTileEntity(C_a c_a, float f) {
+    public void renderTileEntity(TileEntity c_a, float f) {
         if (c_a.getDistanceFrom(this.playerX, this.playerY, this.playerZ) < 4096.0f) {
             float f2 = this.worldObj.c(c_a.b, c_a.c, c_a.d);
             if (this.worldObj.mc.f.nightVision && (f2 += 0.7f) > 1.0f) {
@@ -97,7 +97,7 @@ public class TileEntityRenderer {
         }
     }
 
-    public void renderTileEntityAt(C_a c_a, float f, float f2, float f3, float f4) {
+    public void renderTileEntityAt(TileEntity c_a, float f, float f2, float f3, float f4) {
         TileEntitySpecialRenderer tileEntitySpecialRenderer = this.getSpecialRendererForEntity(c_a);
         if (tileEntitySpecialRenderer != null) {
             tileEntitySpecialRenderer.renderTileEntityAt(c_a, f, f2, f3, f4);

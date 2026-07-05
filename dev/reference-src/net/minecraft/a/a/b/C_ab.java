@@ -4,13 +4,13 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
 public final class C_ab
-extends C_x {
+extends Block {
     protected C_ab(int n) {
         super(n, C_c.b);
         this.as = 101;
@@ -20,7 +20,7 @@ extends C_x {
     }
 
     @Override
-    public final C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public final C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return new C_b(n, n2, n3, n + 1, n2 + 1, n3 + 1);
     }
 
@@ -40,7 +40,7 @@ extends C_x {
     }
 
     @Override
-    public final void dropBlockAsItemWithChance(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void dropBlockAsItemWithChance(World c_g, int n, int n2, int n3, int n4) {
         this.a(c_g, n, n2, n3, n4, 1.0f);
     }
 
@@ -50,7 +50,7 @@ extends C_x {
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         if (random.nextInt(5) == 0 && !c_g.multiplayerWorld) {
             int n4;
             int n5;
@@ -58,7 +58,7 @@ extends C_x {
             int n6 = n3;
             int n7 = n2;
             int n8 = n;
-            C_g c_g2 = c_g;
+            World c_g2 = c_g;
             int n9 = n - 4;
             block0: while (true) {
                 if (n9 > n8 + 4) {
@@ -94,36 +94,36 @@ extends C_x {
                     break;
                 }
                 for (n4 = n6; n4 <= n6; ++n4) {
-                    if (c_g2.a(n5, n7 + 1, n4) != C_x.ao.at) continue;
+                    if (c_g2.a(n5, n7 + 1, n4) != Block.ao.at) continue;
                     bl = true;
                     break block3;
                 }
                 ++n5;
             }
             if (!bl) {
-                c_g.b(n, n2, n3, C_x.k.at);
+                c_g.b(n, n2, n3, Block.k.at);
             }
         }
     }
 
     @Override
-    public final void g(C_g c_g, int n, int n2, int n3) {
+    public final void g(World c_g, int n, int n2, int n3) {
         if (c_g.q.nextInt(4) == 0) {
-            c_g.b(n, n2, n3, C_x.k.at);
+            c_g.b(n, n2, n3, Block.k.at);
         }
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void b(World c_g, int n, int n2, int n3, int n4) {
         super.b(c_g, n, n2, n3, n4);
         if (c_g.f(n, n2 + 1, n3).a()) {
-            c_g.b(n, n2, n3, C_x.k.at);
+            c_g.b(n, n2, n3, Block.k.at);
         }
     }
 
     @Override
     public final int a(int n, Random random) {
-        return C_x.k.a(0, random);
+        return Block.k.a(0, random);
     }
 }
 

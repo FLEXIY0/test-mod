@@ -4,7 +4,7 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_ae;
 import net.minecraft.a.a.d.C_c;
 
@@ -33,7 +33,7 @@ extends C_ae {
     }
 
     @Override
-    public int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public int a(World c_g, int n, int n2, int n3, int n4) {
         return this.a(n4, c_g.e(n, n2, n3));
     }
 

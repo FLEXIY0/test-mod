@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -30,7 +30,7 @@ extends Item {
     }
 
     @Override
-    public final ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public final ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         ItemStack itemStack2 = itemStack.copy();
         entityPlayer.b.a[entityPlayer.b.c] = entityPlayer.b.b[3 - this.as];
         entityPlayer.b.b[3 - this.as] = itemStack2;
@@ -39,7 +39,7 @@ extends Item {
     }
 
     @Override
-    public boolean throwInFire(C_g c_g, float f, float f2, float f3) {
+    public boolean throwInFire(World c_g, float f, float f2, float f3) {
         if (this.au == 6) {
             int n = 0;
             if (this.ap == Item.bootsStudded.ap) {

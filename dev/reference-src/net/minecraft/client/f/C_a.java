@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.f.C_k;
 
 public final class C_a
@@ -11,7 +11,7 @@ extends C_k {
     int type = 0;
     private double raiseSpd = 0.002;
 
-    public C_a(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6, int n) {
+    public C_a(World c_g, float f, float f2, float f3, float f4, float f5, float f6, int n) {
         super(c_g, f, f2, f3, f4, f5, f6);
         this.W = 1.0f;
         this.X = 1.0f;

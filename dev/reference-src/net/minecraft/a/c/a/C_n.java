@@ -5,8 +5,8 @@ package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
 import java.util.List;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.a.C_e;
@@ -17,13 +17,13 @@ import util.MathHelper;
 
 public class C_n
 extends C_o {
-    public C_n(C_g c_g) {
+    public C_n(World c_g) {
         super(c_g);
         this.V = "/mob/snowman.png";
         this.a(0.4f, 1.8f);
     }
 
-    public C_n(C_g c_g, int n, int n2, int n3) {
+    public C_n(World c_g, int n, int n2, int n3) {
         super(c_g);
         this.V = "/mob/snowman.png";
         this.a(0.4f, 1.8f);
@@ -44,8 +44,8 @@ extends C_o {
         for (n = 0; n < 4; ++n) {
             int n4;
             n2 = MathHelper.a((double)this.h + (double)((float)(n % 2 * 2 - 1) * 0.25f));
-            if (this.d.a(n2, n3 = MathHelper.a((double)this.i), n4 = MathHelper.a((double)this.j + (double)((float)(n / 2 % 2 * 2 - 1) * 0.25f))) != 0 || this.d.a(n2, n3 - 1, n4) == C_x.snowLayer.at || !C_x.snowLayer.a(this.d, n2, n3, n4)) continue;
-            this.d.b(n2, n3, n4, C_x.snowLayer.at);
+            if (this.d.a(n2, n3 = MathHelper.a((double)this.i), n4 = MathHelper.a((double)this.j + (double)((float)(n / 2 % 2 * 2 - 1) * 0.25f))) != 0 || this.d.a(n2, n3 - 1, n4) == Block.snowLayer.at || !Block.snowLayer.a(this.d, n2, n3, n4)) continue;
+            this.d.b(n2, n3, n4, Block.snowLayer.at);
         }
     }
 

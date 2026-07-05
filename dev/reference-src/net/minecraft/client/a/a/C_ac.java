@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.C_e;
 import net.minecraft.a.c.b.C_k;
@@ -30,7 +30,7 @@ extends C_j {
 
     protected void renderMooshroomEquippedItems(C_k c_k, float f) {
         super.renderEquippedItems(c_k, f);
-        BlockFlower blockFlower = c_k.getType() == 1 ? C_x.mushroomBrown : C_x.mushroomRed;
+        BlockFlower blockFlower = c_k.getType() == 1 ? Block.mushroomBrown : Block.mushroomRed;
         this.a("/terrain.png");
         GL11.glEnable((int)2884);
         GL11.glPushMatrix();

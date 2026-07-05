@@ -3,9 +3,9 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_ao;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_e;
@@ -51,9 +51,9 @@ extends Item {
     }
 
     @Override
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.a(n, n2, n3);
-        if (n5 == C_x.cloth.at && c_g.e(n, n2, n3) != 15 - itemStack.getItemDamage() && !c_g.multiplayerWorld) {
+        if (n5 == Block.cloth.at && c_g.e(n, n2, n3) != 15 - itemStack.getItemDamage() && !c_g.multiplayerWorld) {
             c_g.setBlockMetadata(n, n2, n3, 15 - itemStack.getItemDamage());
             if (entityPlayer.gamemode != 1) {
                 --itemStack.a;
@@ -61,7 +61,7 @@ extends Item {
             entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
             return true;
         }
-        if (n5 == C_x.carpet.at && c_g.e(n, n2, n3) != 15 - itemStack.getItemDamage() && !c_g.multiplayerWorld) {
+        if (n5 == Block.carpet.at && c_g.e(n, n2, n3) != 15 - itemStack.getItemDamage() && !c_g.multiplayerWorld) {
             c_g.setBlockMetadata(n, n2, n3, 15 - itemStack.getItemDamage());
             if (entityPlayer.gamemode != 1) {
                 --itemStack.a;
@@ -69,7 +69,7 @@ extends Item {
             entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
             return true;
         }
-        if (n5 == C_x.glassStained.at && c_g.e(n, n2, n3) != 15 - itemStack.getItemDamage() && !c_g.multiplayerWorld) {
+        if (n5 == Block.glassStained.at && c_g.e(n, n2, n3) != 15 - itemStack.getItemDamage() && !c_g.multiplayerWorld) {
             c_g.setBlockMetadata(n, n2, n3, 15 - itemStack.getItemDamage());
             if (entityPlayer.gamemode != 1) {
                 --itemStack.a;
@@ -77,15 +77,15 @@ extends Item {
             entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
             return true;
         }
-        if (n5 == C_x.B.at && !c_g.multiplayerWorld) {
-            c_g.setBlockAndMetadata(n, n2, n3, C_x.glassStained.at, 15 - itemStack.getItemDamage());
+        if (n5 == Block.B.at && !c_g.multiplayerWorld) {
+            c_g.setBlockAndMetadata(n, n2, n3, Block.glassStained.at, 15 - itemStack.getItemDamage());
             if (entityPlayer.gamemode != 1) {
                 --itemStack.a;
             }
             entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
             return true;
         }
-        if (n5 == C_x.coloredPane.at && c_g.e(n, n2, n3) != itemStack.getItemDamage() && !c_g.multiplayerWorld) {
+        if (n5 == Block.coloredPane.at && c_g.e(n, n2, n3) != itemStack.getItemDamage() && !c_g.multiplayerWorld) {
             c_g.setBlockMetadata(n, n2, n3, itemStack.getItemDamage());
             if (entityPlayer.gamemode != 1) {
                 --itemStack.a;

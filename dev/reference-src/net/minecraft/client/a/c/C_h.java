@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.a.c;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.client.a.c.C_b;
 
 public final class C_h
@@ -12,7 +12,7 @@ extends C_b {
     private float[] lastFireFrame = new float[320];
 
     public C_h() {
-        super(C_x.hellfire.as);
+        super(Block.hellfire.as);
     }
 
     @Override

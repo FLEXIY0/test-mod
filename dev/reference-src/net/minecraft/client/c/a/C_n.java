@@ -7,7 +7,7 @@
  */
 package net.minecraft.client.c.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_l;
 import net.minecraft.client.c.ChatAllowedCharacters;
 import net.minecraft.client.c.GuiButton;
@@ -88,8 +88,8 @@ extends GuiScreen {
         float f2 = 93.75f;
         GL11.glScalef((float)(-f2), (float)(-f2), (float)(-f2));
         GL11.glRotatef((float)180.0f, (float)0.0f, (float)1.0f, (float)0.0f);
-        C_x c_x = this.sign.getBlockType();
-        if (c_x == C_x.signStanding || c_x == C_x.signHanging || c_x == C_x.signBirchStanding || c_x == C_x.signBirchHanging || c_x == C_x.signPalmStanding || c_x == C_x.signPalmHanging || c_x == C_x.signDarkStanding || c_x == C_x.signDarkHanging) {
+        Block c_x = this.sign.getBlockType();
+        if (c_x == Block.signStanding || c_x == Block.signHanging || c_x == Block.signBirchStanding || c_x == Block.signBirchHanging || c_x == Block.signPalmStanding || c_x == Block.signPalmHanging || c_x == Block.signDarkStanding || c_x == Block.signDarkHanging) {
             float f3 = (float)(this.sign.getBlockMetadata() * 360) / 16.0f;
             GL11.glRotatef((float)f3, (float)0.0f, (float)1.0f, (float)0.0f);
             GL11.glTranslatef((float)0.0f, (float)0.3125f, (float)0.0f);

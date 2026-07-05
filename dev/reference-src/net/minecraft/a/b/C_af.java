@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -23,7 +23,7 @@ extends Item {
     }
 
     @Override
-    public void onPlayerStoppedUsing(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer, int n) {
+    public void onPlayerStoppedUsing(ItemStack itemStack, World c_g, EntityPlayer entityPlayer, int n) {
         if ((entityPlayer.b.hasItem(Item.arrowAdminium.ap) || c_g.gamemode == 1) && itemStack.getMaxItemUseDuration() - entityPlayer.itemInUseCount >= 24) {
             int n2 = this.getMaxItemUseDuration(itemStack) - n;
             float f = (float)n2 / 20.0f;
@@ -53,7 +53,7 @@ extends Item {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         if (this.ap == Item.crossbowLoaded.ap) {
             C_a c_a = new C_a(c_g, entityPlayer, 1, 2.0f);
             c_g.a(entityPlayer, "random.crossbow", 1.0f, 1.0f / (a.nextFloat() * 0.4f + 0.8f));

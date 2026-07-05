@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.b.a.C_f;
@@ -137,8 +137,8 @@ public class StatList {
     private static StatBase[] initMinableStats(String string, int n) {
         StatBase[] statBaseArray = new StatBase[256];
         for (int i = 0; i < 256; ++i) {
-            if (C_x.c[i] == null || !C_x.c[i].getEnableStats()) continue;
-            String string2 = C_x.c[i].getBlockName();
+            if (Block.c[i] == null || !Block.c[i].getEnableStats()) continue;
+            String string2 = Block.c[i].getBlockName();
             statBaseArray[i] = new StatCrafting(n + i, string2, i).registerStat();
             objectMineStats.add((StatCrafting)statBaseArray[i]);
         }
@@ -210,17 +210,17 @@ public class StatList {
     }
 
     private static void replaceAllSimilarBlocks(StatBase[] statBaseArray) {
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.q.at, C_x.p.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.s.at, C_x.r.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.ar.at, C_x.aq.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.Y.at, C_x.Z.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.stairUpsideDown.at, C_x.Z.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.generatorActive.at, C_x.generator.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.pulleyBaseActive.at, C_x.pulleyBase.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.pulleyStickyBaseActive.at, C_x.pulleyStickyBase.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.pulleyExtension.at, C_x.pulleyBase.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.pulleyMoving.at, C_x.pulleyBase.at);
-        StatList.replaceSimilarBlocks(statBaseArray, C_x.adminiumLampLit.at, C_x.adminiumLamp.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.q.at, Block.p.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.s.at, Block.r.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.ar.at, Block.aq.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.Y.at, Block.Z.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.stairUpsideDown.at, Block.Z.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.generatorActive.at, Block.generator.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.pulleyBaseActive.at, Block.pulleyBase.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.pulleyStickyBaseActive.at, Block.pulleyStickyBase.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.pulleyExtension.at, Block.pulleyBase.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.pulleyMoving.at, Block.pulleyBase.at);
+        StatList.replaceSimilarBlocks(statBaseArray, Block.adminiumLampLit.at, Block.adminiumLamp.at);
     }
 
     private static void replaceSimilarBlocks(StatBase[] statBaseArray, int n, int n2) {

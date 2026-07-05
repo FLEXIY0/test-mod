@@ -19,7 +19,7 @@ public class C_e
 extends C_a {
     private float itemDropChance = 1.0f;
 
-    public C_e(net.minecraft.a.a.C_g c_g) {
+    public C_e(net.minecraft.a.a.World c_g) {
         super(c_g);
     }
 
@@ -28,7 +28,7 @@ extends C_a {
         return this.a == 5 ? -1.0f : 0.0f;
     }
 
-    public C_e(net.minecraft.a.a.C_g c_g, int n, int n2, int n3, int n4) {
+    public C_e(net.minecraft.a.a.World c_g, int n, int n2, int n3, int n4) {
         this(c_g);
         this.P = n;
         this.Q = n2;

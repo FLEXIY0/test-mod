@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.container;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_e;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.ItemStack;
@@ -28,7 +28,7 @@ extends BlockContainer {
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         int n5 = ((EntityPlayer)c_g.y).b.d().d & 3;
         byte by = 0;
         switch (n4) {
@@ -63,7 +63,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3) {
+    public final void b(World c_g, int n, int n2, int n3) {
         C_e c_e = (C_e)c_g.j(n, n2, n3);
         boolean bl = true;
         if (c_g.gamemode == 0) {
@@ -89,11 +89,11 @@ extends BlockContainer {
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         C_e c_e = (C_e)c_g.j(n, n2, n3);
         if (c_g.multiplayerWorld) {
             return true;
@@ -103,7 +103,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final C_a getBlockEntity() {
+    public final TileEntity getBlockEntity() {
         return new C_e();
     }
 }

@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -19,7 +19,7 @@ extends Item {
     }
 
     @Override
-    public final ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public final ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         ItemStack itemStack2 = itemStack.copy();
         entityPlayer.b.a[entityPlayer.b.c] = entityPlayer.b.charmSlot[0];
         entityPlayer.b.charmSlot[0] = itemStack2;

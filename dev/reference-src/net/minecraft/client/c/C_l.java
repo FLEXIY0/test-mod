@@ -12,7 +12,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.C_b;
@@ -277,7 +277,7 @@ extends Gui {
                 String string = "empty";
                 if (this.d.v != null) {
                     if (this.d.v.a == 0) {
-                        C_x c_x = C_x.c[this.d.d.a(this.d.v.b, this.d.v.c, this.d.v.d)];
+                        Block c_x = Block.c[this.d.d.a(this.d.v.b, this.d.v.c, this.d.v.d)];
                         byte by = this.d.d.e(this.d.v.b, this.d.v.c, this.d.v.d);
                         string = c_x.getBlockName(by) + " (" + c_x.at + ":" + by + ") at " + this.d.v.b + "x " + this.d.v.c + "y " + this.d.v.d + "z ";
                     } else if (this.d.v.a == 1) {
@@ -396,10 +396,10 @@ extends Gui {
         GL11.glBlendFunc((int)770, (int)771);
         GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)f);
         GL11.glBindTexture((int)3553, (int)this.d.m.a("/terrain.png"));
-        float f2 = (float)((C_x.portal.as + this.meta) % 32) / 32.0f;
-        float f3 = (float)((C_x.portal.as + this.meta) / 32) / 32.0f;
-        float f4 = (float)((C_x.portal.as + this.meta) % 32 + 1) / 32.0f;
-        float f5 = (float)((C_x.portal.as + this.meta) / 32 + 1) / 32.0f;
+        float f2 = (float)((Block.portal.as + this.meta) % 32) / 32.0f;
+        float f3 = (float)((Block.portal.as + this.meta) / 32) / 32.0f;
+        float f4 = (float)((Block.portal.as + this.meta) % 32 + 1) / 32.0f;
+        float f5 = (float)((Block.portal.as + this.meta) / 32 + 1) / 32.0f;
         net.minecraft.client.a.C_d c_d = net.minecraft.client.a.C_d.a;
         c_d.b();
         c_d.a(0.0f, n2, -90.0f, f2, f5);

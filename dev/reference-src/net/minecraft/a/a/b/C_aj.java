@@ -4,12 +4,12 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public final class C_aj
-extends C_x {
+extends Block {
     public boolean a;
     public static final String[] NAME_LIST = new String[]{"Stone", "Brick", "Cobblestone", "Mossy Cobble", "Sandstone", "Stone Brick", "Mossy Brick", "Smooth Sandstone", "Basalt Brick", "Red Sandstone", "Smooth Red Sandstone", "Moon Brick"};
     public static final String[] NAME_LIST2 = new String[]{"Oak", "Birch", "Palm", "Pine"};
@@ -47,13 +47,13 @@ extends C_x {
                 return n <= 1 ? 6 : 5;
             }
             case 1: {
-                return C_x.aa.as;
+                return Block.aa.as;
             }
             case 2: {
-                return C_x.l.as;
+                return Block.l.as;
             }
             case 3: {
-                return C_x.ad.as;
+                return Block.ad.as;
             }
             case 4: {
                 return n == 1 ? 301 : (n == 0 ? 302 : 300);
@@ -133,35 +133,35 @@ extends C_x {
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         byte by = c_g.e(n, n2, n3);
         byte by2 = c_g.e(n, n2 - 1, n3);
         byte by3 = c_g.e(n, n2 + 1, n3);
         if (this.aC == C_c.c) {
             if (n4 == 0) {
-                if (c_g.a(n, n2 + 1, n3) != C_x.stairUpsideDownWood.at) {
+                if (c_g.a(n, n2 + 1, n3) != Block.stairUpsideDownWood.at) {
                     c_g.setBlockAndMetadataWithNotify(n, n2, n3, C_aj.stairUpsideDownWood.at, by);
                 } else if (by == by3) {
                     c_g.b(n, n2, n3, 0);
-                    c_g.setBlockAndMetadataWithNotify(n, n2 + 1, n3, C_x.stairDoubleWood.at, by);
+                    c_g.setBlockAndMetadataWithNotify(n, n2 + 1, n3, Block.stairDoubleWood.at, by);
                 }
             }
             if (n4 == 1 && by == by2 && c_g.a(n, n2 - 1, n3) == C_aj.stairSingleWood.at) {
                 c_g.b(n, n2, n3, 0);
-                c_g.setBlockAndMetadataWithNotify(n, n2 - 1, n3, C_x.stairDoubleWood.at, by);
+                c_g.setBlockAndMetadataWithNotify(n, n2 - 1, n3, Block.stairDoubleWood.at, by);
             }
         } else {
             if (n4 == 0) {
-                if (c_g.a(n, n2 + 1, n3) != C_x.stairUpsideDown.at) {
+                if (c_g.a(n, n2 + 1, n3) != Block.stairUpsideDown.at) {
                     c_g.setBlockAndMetadataWithNotify(n, n2, n3, C_aj.stairUpsideDown.at, by);
                 } else if (by == by3) {
                     c_g.b(n, n2, n3, 0);
-                    c_g.setBlockAndMetadataWithNotify(n, n2 + 1, n3, C_x.Y.at, by);
+                    c_g.setBlockAndMetadataWithNotify(n, n2 + 1, n3, Block.Y.at, by);
                 }
             }
             if (n4 == 1 && by == by2 && c_g.a(n, n2 - 1, n3) == C_aj.Z.at) {
                 c_g.b(n, n2, n3, 0);
-                c_g.setBlockAndMetadataWithNotify(n, n2 - 1, n3, C_x.Y.at, by);
+                c_g.setBlockAndMetadataWithNotify(n, n2 - 1, n3, Block.Y.at, by);
             }
         }
     }
@@ -169,9 +169,9 @@ extends C_x {
     @Override
     public final int a(int n, Random random) {
         if (this.aC == C_c.c) {
-            return C_x.stairSingleWood.at;
+            return Block.stairSingleWood.at;
         }
-        return C_x.Z.at;
+        return Block.Z.at;
     }
 
     @Override
@@ -180,7 +180,7 @@ extends C_x {
     }
 
     @Override
-    public final boolean d(C_g c_g, int n, int n2, int n3, int n4) {
+    public final boolean d(World c_g, int n, int n2, int n3, int n4) {
         return n4 == 1 || n4 == 0 ? true : (!super.d(c_g, n, n2, n3, n4) ? false : (n4 == 0 ? true : c_g.a(n, n2, n3) != this.at));
     }
 }

@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.C_e;
 import net.minecraft.client.a.C_f;
@@ -29,7 +29,7 @@ extends C_j {
 
     protected void renderMooshroomEquippedItems(net.minecraft.a.c.b.C_j c_j, float f) {
         super.renderEquippedItems(c_j, f);
-        BlockFlower blockFlower = C_x.plantYellow;
+        BlockFlower blockFlower = Block.plantYellow;
         this.a("/terrain.png");
         GL11.glEnable((int)2884);
         GL11.glPushMatrix();

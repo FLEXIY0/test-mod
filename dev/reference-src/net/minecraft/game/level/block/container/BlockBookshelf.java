@@ -5,8 +5,8 @@ package net.minecraft.game.level.block.container;
 
 import com.a.a.NBTTagCompound;
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_f;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.ItemStack;
@@ -38,7 +38,7 @@ extends BlockContainer {
     }
 
     @Override
-    public int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public int a(World c_g, int n, int n2, int n3, int n4) {
         byte by = c_g.e(n, n2, n3);
         if (by >= 8) {
             return n4 <= 1 ? 4 : 67;
@@ -57,7 +57,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final void b(C_g c_g, int n, int n2, int n3) {
+    public final void b(World c_g, int n, int n2, int n3) {
         C_f c_f = (C_f)c_g.j(n, n2, n3);
         for (int i = 0; i < c_f.a(); ++i) {
             ItemStack itemStack = c_f.a(i);
@@ -90,7 +90,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         C_f c_f = (C_f)c_g.j(n, n2, n3);
         if (c_g.multiplayerWorld) {
             return true;
@@ -100,7 +100,7 @@ extends BlockContainer {
     }
 
     @Override
-    public final C_a getBlockEntity() {
+    public final TileEntity getBlockEntity() {
         return new C_f();
     }
 }

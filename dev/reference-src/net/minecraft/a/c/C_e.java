@@ -6,9 +6,9 @@ package net.minecraft.a.c;
 import com.a.a.NBTTagCompound;
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_n;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -56,7 +56,7 @@ extends C_b {
     protected float newRotationYaw;
     protected float newRotationPitch;
 
-    public C_e(C_g c_g) {
+    public C_e(World c_g) {
         super(c_g);
         this.isJumping = false;
         this.am = 0.7f;
@@ -67,7 +67,7 @@ extends C_b {
         this.E = 0.5f;
     }
 
-    public C_e(C_g c_g, float f, float f2, float f3) {
+    public C_e(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.isJumping = false;
         this.am = 0.7f;
@@ -181,7 +181,7 @@ extends C_b {
             block10: for (int i = -5; i < 6; ++i) {
                 int n2 = this.d.a((int)this.h, (int)this.i, (int)this.j + i);
                 int n3 = this.d.a((int)this.h + n, (int)this.i, (int)this.j);
-                if (n2 == C_x.fan.at) {
+                if (n2 == Block.fan.at) {
                     switch (this.d.e((int)this.h, (int)this.i, (int)this.j + i)) {
                         case 6: {
                             if (i <= 0) break;
@@ -194,7 +194,7 @@ extends C_b {
                         }
                     }
                 }
-                if (n3 != C_x.fan.at) continue;
+                if (n3 != Block.fan.at) continue;
                 switch (this.d.e((int)this.h + n, (int)this.i, (int)this.j)) {
                     case 8: {
                         if (n <= 0) continue block10;
@@ -473,13 +473,13 @@ extends C_b {
     protected void b(float f) {
         int n = (int)Math.ceil(f - 3.0f);
         if (n > 0 && this.d.type != 8) {
-            if (this.d.a((int)this.h, (int)(this.i - 0.2f - this.v), (int)this.j) == C_x.stalactite.at) {
+            if (this.d.a((int)this.h, (int)(this.i - 0.2f - this.v), (int)this.j) == Block.stalactite.at) {
                 this.attackEntityFrom(null, 100, 0.0f);
             } else {
                 this.attackEntityFrom(null, n, 0.0f);
                 n = this.d.a((int)this.h, (int)(this.i - 0.2f - this.v), (int)this.j);
                 if (n > 0 && !this.d.multiplayerWorld) {
-                    C_n c_n = C_x.c[n].getStepSound(this.d.e((int)this.h, (int)(this.i - 0.2f - this.v), (int)this.j));
+                    C_n c_n = Block.c[n].getStepSound(this.d.e((int)this.h, (int)(this.i - 0.2f - this.v), (int)this.j));
                     this.d.playSoundAtBlock(this.h, this.i, this.j, c_n.b(), c_n.a * 0.5f, c_n.b * 0.75f);
                     if (this.d.mc.w.particleCount == 0) {
                         this.d.mc.g.a((int)this.h, (int)(this.i - 0.2f - this.v), (int)this.j);

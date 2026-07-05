@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_p;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -16,7 +16,7 @@ extends C_p {
     }
 
     @Override
-    public final ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public final ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         super.a(itemStack, c_g, entityPlayer);
         if (this.ap == Item.bowlGlowSoup.ap) {
             entityPlayer.nightVision = true;

@@ -7,11 +7,11 @@ import java.util.HashMap;
 import net.minecraft.client.C_l;
 
 final class C_x
-extends HashMap<String, net.minecraft.a.a.b.C_x> {
+extends HashMap<String, net.minecraft.a.a.b.Block> {
     private static final long serialVersionUID = 1L;
 
     C_x() {
-        for (net.minecraft.a.a.b.C_x c_x : C_l.a) {
+        for (net.minecraft.a.a.b.Block c_x : C_l.a) {
             for (int i = 0; i < c_x.getMaxDamage() + 1; ++i) {
                 String string = c_x.getBlockName(i).toLowerCase().replace(" ", "_");
                 if (string.startsWith("&")) {

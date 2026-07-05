@@ -4,7 +4,7 @@
 package net.minecraft.client.dx;
 
 import net.minecraft.a.a.C_b;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_bm;
 import net.minecraft.a.b.C_t;
 import net.minecraft.a.b.Item;
@@ -46,7 +46,7 @@ extends C_a {
     }
 
     @Override
-    public final void a(C_g c_g) {
+    public final void a(World c_g) {
         super.a(c_g);
         c_g.z = false;
         this.c = new C_b(c_g);

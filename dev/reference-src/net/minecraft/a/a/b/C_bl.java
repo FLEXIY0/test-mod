@@ -3,12 +3,12 @@
  */
 package net.minecraft.a.a.b;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public class C_bl
-extends C_x {
+extends Block {
     protected C_bl(int n, int n2) {
         super(n, n2, C_c.d);
         this.as = n2;
@@ -48,7 +48,7 @@ extends C_x {
     }
 
     @Override
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         byte by = c_g.e(n, n2, n3);
         if (by <= 1) {
             if (n4 == 1) {

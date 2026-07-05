@@ -4,7 +4,7 @@
 package net.minecraft.a.b;
 
 import net.minecraft.a.a.b.C_bo;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_d;
 
 public class C_aq
@@ -22,12 +22,12 @@ extends C_d {
 
     @Override
     public String getItemName(int n) {
-        return C_x.glassStained.getBlockName(n);
+        return Block.glassStained.getBlockName(n);
     }
 
     @Override
     public int getIconFromDamage(int n) {
-        return C_x.glassStained.a(2, C_bo.getGlassColor(n));
+        return Block.glassStained.a(2, C_bo.getGlassColor(n));
     }
 
     @Override

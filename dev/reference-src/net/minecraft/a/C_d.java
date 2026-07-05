@@ -5,7 +5,7 @@ package net.minecraft.a;
 
 import net.minecraft.a.C_b;
 import net.minecraft.a.C_c;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.a.C_g;
@@ -50,7 +50,7 @@ extends C_c {
                 if (!this.isSlotFree(itemStack2, 9, this.slots.size(), false)) {
                     return null;
                 }
-            } else if (itemStack.a().ap != C_x.barrel.at) {
+            } else if (itemStack.a().ap != Block.barrel.at) {
                 if (!this.isSlotFree(itemStack2, 0, 9, false)) {
                     return null;
                 }

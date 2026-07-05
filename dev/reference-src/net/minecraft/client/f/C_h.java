@@ -3,13 +3,13 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.f.C_k;
 
 public final class C_h
 extends C_k {
-    public C_h(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6) {
+    public C_h(World c_g, float f, float f2, float f3, float f4, float f5, float f6) {
         super(c_g, f, f2, f3, f4, f5, f6);
         this.a = f4 + (float)(Math.random() * 2.0 - 1.0) * 0.05f;
         this.b = f5 + (float)(Math.random() * 2.0 - 1.0) * 0.05f;

@@ -4,12 +4,12 @@
 package net.minecraft.game.level.block.machines;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public class BlockObserver
-extends C_x {
+extends Block {
     public BlockObserver(int n, C_c c_c) {
         super(n, c_c);
         this.as = 716;
@@ -17,15 +17,15 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
-        if (n4 != C_x.generatorActive.at && n4 != C_x.generator.at && c_g.e(n, n2, n3) != 4 && !c_g.multiplayerWorld) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
+        if (n4 != Block.generatorActive.at && n4 != Block.generator.at && c_g.e(n, n2, n3) != 4 && !c_g.multiplayerWorld) {
             c_g.setBlockMetadata(n, n2, n3, 4);
             c_g.e(n, n2, n3, n4);
         }
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public void a(World c_g, int n, int n2, int n3, Random random) {
         if (!c_g.multiplayerWorld) {
             c_g.setBlockMetadata(n, n2, n3, 0);
         }
@@ -45,7 +45,7 @@ extends C_x {
     }
 
     @Override
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1 || n4 == 0) {
             return 718;
         }

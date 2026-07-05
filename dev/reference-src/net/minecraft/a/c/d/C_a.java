@@ -5,8 +5,8 @@ package net.minecraft.a.c.d;
 
 import com.a.a.NBTTagCompound;
 import java.util.List;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -29,7 +29,7 @@ extends C_b {
     private int U = 0;
     public int arrowType = 0;
 
-    public C_a(C_g c_g, C_e c_e, int n, float f) {
+    public C_a(World c_g, C_e c_e, int n, float f) {
         super(c_g);
         this.S = c_e;
         this.a(0.5f, 0.5f);
@@ -46,11 +46,11 @@ extends C_b {
         this.a(this.k, this.l, this.m, f * 1.5f, 1.0f);
     }
 
-    public C_a(C_g c_g) {
+    public C_a(World c_g) {
         super(c_g);
     }
 
-    public C_a(C_g c_g, float f, float f2, float f3) {
+    public C_a(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.a(0.5f, 0.5f);
         this.b(f, f2, f3);
@@ -86,8 +86,8 @@ extends C_b {
         super.b_();
         int n2 = this.d.a(this.b, this.O, this.P);
         if (n2 > 0) {
-            C_x.c[n2].setBlockBoundsBasedOnState(this.d, this.b, this.O, this.P);
-            object = C_x.c[n2].getCollisionBoundingBoxFromPool(this.d, this.b, this.O, this.P);
+            Block.c[n2].setBlockBoundsBasedOnState(this.d, this.b, this.O, this.P);
+            object = Block.c[n2].getCollisionBoundingBoxFromPool(this.d, this.b, this.O, this.P);
             if (object != null && ((net.minecraft.a.d.C_b)object).isVecInside(new net.minecraft.a.d.C_a(this.h, this.i, this.j))) {
                 this.R = true;
             }

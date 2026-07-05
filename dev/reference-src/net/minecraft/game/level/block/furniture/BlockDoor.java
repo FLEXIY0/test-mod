@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.furniture;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_a;
@@ -13,7 +13,7 @@ import net.minecraft.a.d.C_b;
 import net.minecraft.client.statistics.StatList;
 
 public class BlockDoor
-extends C_x {
+extends Block {
     int opening = 0;
     int dropID;
 
@@ -69,19 +69,19 @@ extends C_x {
     }
 
     @Override
-    public C_b getSelectedBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getSelectedBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         this.setBlockBoundsBasedOnState(c_g, n, n2, n3);
         return super.getSelectedBoundingBoxFromPool(c_g, n, n2, n3);
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         this.setBlockBoundsBasedOnState(c_g, n, n2, n3);
         return super.getCollisionBoundingBoxFromPool(c_g, n, n2, n3);
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         this.setDoorRotation(this.getState(c_g.e(n, n2, n3)));
     }
 
@@ -103,8 +103,8 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
-        if (this.at == C_x.doorSteel.at) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+        if (this.at == Block.doorSteel.at) {
             return false;
         }
         byte by = c_g.e(n, n2, n3);
@@ -129,13 +129,13 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         byte by = c_g.e(n, n2, n3);
         if ((by & 8) != 0) {
             if (c_g.a(n, n2 - 1, n3) != this.at) {
                 c_g.b(n, n2, n3, 0);
             }
-            if (n4 > 0 && C_x.c[n4].canProvidePower()) {
+            if (n4 > 0 && Block.c[n4].canProvidePower()) {
                 this.b(c_g, n, n2 - 1, n3, n4);
             }
         } else {
@@ -155,14 +155,14 @@ extends C_x {
                 if (!c_g.multiplayerWorld && c_g.gamemode == 0) {
                     this.f(c_g, n, n2, n3, by);
                 }
-            } else if (n4 > 0 && C_x.c[n4].canProvidePower()) {
+            } else if (n4 > 0 && Block.c[n4].canProvidePower()) {
                 boolean bl2 = c_g.isBlockIndirectlyGettingPowered(n, n2, n3) || c_g.isBlockIndirectlyGettingPowered(n, n2 + 1, n3);
                 this.onPoweredBlockChange(c_g, n, n2, n3, bl2);
             }
         }
     }
 
-    public void onPoweredBlockChange(C_g c_g, int n, int n2, int n3, boolean bl) {
+    public void onPoweredBlockChange(World c_g, int n, int n2, int n3, boolean bl) {
         byte by = c_g.e(n, n2, n3);
         if ((by & 8) != 0) {
             if (c_g.a(n, n2 - 1, n3) == this.at) {
@@ -191,7 +191,7 @@ extends C_x {
     }
 
     @Override
-    public net.minecraft.a.d.C_c a(C_g c_g, int n, int n2, int n3, C_a c_a, C_a c_a2) {
+    public net.minecraft.a.d.C_c a(World c_g, int n, int n2, int n3, C_a c_a, C_a c_a2) {
         this.setBlockBoundsBasedOnState(c_g, n, n2, n3);
         return super.a(c_g, n, n2, n3, c_a, c_a2);
     }
@@ -201,7 +201,7 @@ extends C_x {
     }
 
     @Override
-    public final boolean a(C_g c_g, int n, int n2, int n3) {
+    public final boolean a(World c_g, int n, int n2, int n3) {
         return n2 >= c_g.c - 1 ? false : c_g.b(n, n2 - 1, n3) && c_g.a(n, n2 + 1, n3) == 0 && c_g.a(n, n2, n3) == 0 && super.a(c_g, n, n2, n3);
     }
 

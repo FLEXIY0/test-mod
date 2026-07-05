@@ -4,7 +4,7 @@
 package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_j;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -17,13 +17,13 @@ extends C_c {
     protected int a = 2;
     public ItemStack[] armorInventory = new ItemStack[4];
 
-    public C_e(C_g c_g) {
+    public C_e(World c_g) {
         super(c_g);
         this.W = 20;
         this.V = "/char2.png";
     }
 
-    public C_e(C_g c_g, float f, float f2, float f3) {
+    public C_e(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.W = 20;
         this.V = "/char2.png";

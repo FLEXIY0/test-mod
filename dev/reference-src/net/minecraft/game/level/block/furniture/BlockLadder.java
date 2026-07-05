@@ -4,19 +4,19 @@
 package net.minecraft.game.level.block.furniture;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
 public class BlockLadder
-extends C_x {
+extends Block {
     public BlockLadder(int n, int n2) {
         super(n, n2, C_c.n);
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         float f = 0.125f;
         if (by == 2) {
@@ -35,7 +35,7 @@ extends C_x {
     }
 
     @Override
-    public C_b getSelectedBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getSelectedBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         float f = 0.125f;
         if (by == 2) {
@@ -69,12 +69,12 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
+    public boolean a(World c_g, int n, int n2, int n3) {
         return c_g.b(n - 1, n2, n3) ? true : (c_g.b(n + 1, n2, n3) ? true : (c_g.b(n, n2, n3 - 1) ? true : c_g.b(n, n2, n3 + 1)));
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.e(n, n2, n3);
         if ((n5 == 0 || n4 == 2) && c_g.b(n, n2, n3 + 1)) {
             n5 = 2;
@@ -92,7 +92,7 @@ extends C_x {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         byte by = c_g.e(n, n2, n3);
         boolean bl = false;
         if (by == 2 && c_g.b(n, n2, n3 + 1)) {

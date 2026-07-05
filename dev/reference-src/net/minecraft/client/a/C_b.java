@@ -54,8 +54,8 @@ import util.MathHelper;
 
 public final class C_b
 implements net.minecraft.a.a.C_d {
-    public List<net.minecraft.a.a.b.a.C_a> tileEntities = new ArrayList<net.minecraft.a.a.b.a.C_a>();
-    private net.minecraft.a.a.C_g b;
+    public List<net.minecraft.a.a.b.a.TileEntity> tileEntities = new ArrayList<net.minecraft.a.a.b.a.TileEntity>();
+    private net.minecraft.a.a.World b;
     private RenderEngine c;
     private int d;
     private IntBuffer e = BufferUtils.createIntBuffer((int)65536);
@@ -128,7 +128,7 @@ implements net.minecraft.a.a.C_d {
         GL11.glEndList();
     }
 
-    public final void a(net.minecraft.a.a.C_g c_g) {
+    public final void a(net.minecraft.a.a.World c_g) {
         if (this.b != null) {
             this.b.b(this);
         }
@@ -682,10 +682,10 @@ implements net.minecraft.a.a.C_d {
     public final void f() {
         float f = this.b.c(0, this.b.g(), 0);
         GL11.glBindTexture((int)3553, (int)this.c.a("/dirt.png"));
-        if (this.b.type == 4 && this.b.m == net.minecraft.a.a.b.C_x.r.at) {
+        if (this.b.type == 4 && this.b.m == net.minecraft.a.a.b.Block.r.at) {
             GL11.glBindTexture((int)3553, (int)this.c.a("/redsand.png"));
         }
-        if (this.b.g() > this.b.h() && this.b.m == net.minecraft.a.a.b.C_x.p.at) {
+        if (this.b.g() > this.b.h() && this.b.m == net.minecraft.a.a.b.Block.p.at) {
             if (this.b.type == 4) {
                 GL11.glBindTexture((int)3553, (int)this.c.a("/sand.png"));
             } else if (this.b.theme == 4) {
@@ -730,7 +730,7 @@ implements net.minecraft.a.a.C_d {
         GL11.glEnable((int)3042);
         GL11.glBindTexture((int)3553, (int)this.c.a("/water.png"));
         float f = this.b.c(0, this.b.h(), 0);
-        if (net.minecraft.a.a.b.C_x.h[this.b.m] > 0) {
+        if (net.minecraft.a.a.b.Block.h[this.b.m] > 0) {
             f = 1.0f;
         }
         GL11.glColor4f((float)f, (float)f, (float)f, (float)1.0f);
@@ -754,8 +754,8 @@ implements net.minecraft.a.a.C_d {
         }
         int n2 = 2048 / n;
         c_d.b();
-        float f2 = net.minecraft.a.a.b.C_x.p.au;
-        float f3 = net.minecraft.a.a.b.C_x.p.aw;
+        float f2 = net.minecraft.a.a.b.Block.p.au;
+        float f3 = net.minecraft.a.a.b.Block.p.aw;
         for (int i = -n * n2; i < this.b.a + n * n2; i += n) {
             for (int j = -n * n2; j < this.b.b + n * n2; j += n) {
                 float f4 = f - 0.111f;
@@ -803,12 +803,12 @@ implements net.minecraft.a.a.C_d {
             GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)0.5f);
             GL11.glPushMatrix();
             n2 = this.b.a(c_c.b, c_c.c, c_c.d);
-            net.minecraft.a.a.b.C_x c_x = n2 > 0 ? net.minecraft.a.a.b.C_x.c[n2] : null;
+            net.minecraft.a.a.b.Block c_x = n2 > 0 ? net.minecraft.a.a.b.Block.c[n2] : null;
             GL11.glDisable((int)3008);
             c_d.b();
             c_d.c();
             if (c_x == null) {
-                c_x = net.minecraft.a.a.b.C_x.i;
+                c_x = net.minecraft.a.a.b.Block.i;
             }
             this.n.a(c_x, c_c.b, c_c.c, c_c.d, 481 + (int)(this.a * 10.0f));
             c_d.a();
@@ -831,8 +831,8 @@ implements net.minecraft.a.a.C_d {
         GL11.glDepthMask((boolean)false);
         n = this.b.a(c_c.b, c_c.c, c_c.d);
         if (n > 0) {
-            c_b = net.minecraft.a.a.b.C_x.c[n].getSelectedBoundingBoxFromPool(this.b, c_c.b, c_c.c, c_c.d).b(0.002f, 0.002f, 0.002f);
-            net.minecraft.a.a.b.C_x.c[n].setBlockBoundsBasedOnState(this.b, c_c.b, c_c.c, c_c.d);
+            c_b = net.minecraft.a.a.b.Block.c[n].getSelectedBoundingBoxFromPool(this.b, c_c.b, c_c.c, c_c.d).b(0.002f, 0.002f, 0.002f);
+            net.minecraft.a.a.b.Block.c[n].setBlockBoundsBasedOnState(this.b, c_c.b, c_c.c, c_c.d);
             c_d = C_d.a;
             c_d.a(3);
             c_d.b(c_b.a, c_b.b, c_b.c);
@@ -1067,7 +1067,7 @@ implements net.minecraft.a.a.C_d {
     }
 
     @Override
-    public void updateTileEntity(int n, int n2, int n3, net.minecraft.a.a.b.a.C_a c_a) {
+    public void updateTileEntity(int n, int n2, int n3, net.minecraft.a.a.b.a.TileEntity c_a) {
     }
 
     @Override

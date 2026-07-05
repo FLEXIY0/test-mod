@@ -4,7 +4,7 @@
 package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.a.C_e;
 import net.minecraft.a.d.C_a;
@@ -18,7 +18,7 @@ extends C_e {
     private float waypointZ;
     private float rotation;
 
-    public C_d(C_g c_g) {
+    public C_d(World c_g) {
         super(c_g);
         this.V = "/mob/bat.png";
         this.a(0.5f, 0.9f);
@@ -28,7 +28,7 @@ extends C_e {
         this.A = false;
     }
 
-    public C_d(C_g c_g, float f, float f2, float f3) {
+    public C_d(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.V = "/mob/bat.png";
         this.a(0.5f, 0.9f);

@@ -4,7 +4,7 @@
 package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -22,7 +22,7 @@ extends C_e {
     private float waypointZ;
     private boolean canShoot = true;
 
-    public C_h(C_g c_g) {
+    public C_h(World c_g) {
         super(c_g);
         this.V = "/mob/harpy.png";
         this.a(0.8f, 2.4f);
@@ -31,7 +31,7 @@ extends C_e {
         this.A = false;
     }
 
-    public C_h(C_g c_g, float f, float f2, float f3) {
+    public C_h(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.V = "/mob/harpy.png";
         this.a(0.8f, 2.4f);

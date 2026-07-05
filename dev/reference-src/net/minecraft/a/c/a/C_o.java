@@ -4,12 +4,12 @@
 package net.minecraft.a.c.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.C_c;
 
 public abstract class C_o
 extends C_c {
-    public C_o(C_g c_g) {
+    public C_o(World c_g) {
         super(c_g);
     }
 

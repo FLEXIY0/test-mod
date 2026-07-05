@@ -3,11 +3,11 @@
  */
 package net.minecraft.a.a.b;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public class C_ao
-extends C_x {
+extends Block {
     private static String[] NAME_LIST = new String[]{"Red", "Orange", "Yellow", "Chartreuse", "Green", "Spring Green", "Cyan", "Capri", "Ultramarine", "Violet", "Purple", "Magenta", "Rose", "Dark Gray", "Light Gray", "White"};
 
     public C_ao() {

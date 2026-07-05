@@ -3,12 +3,12 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.f.C_k;
 
 public class C_w
 extends C_k {
-    public C_w(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6) {
+    public C_w(World c_g, float f, float f2, float f3, float f4, float f5, float f6) {
         super(c_g, f, f2, f3, f4, f5, f6);
         this.a *= 0.1f;
         this.b *= 0.1f;

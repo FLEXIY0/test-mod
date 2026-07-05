@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.render.tileentity;
 
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_i;
 import net.minecraft.client.c.FontRenderer;
 import net.minecraft.client.render.tileentity.TileEntitySpecialRenderer;
@@ -83,7 +83,7 @@ extends TileEntitySpecialRenderer {
     }
 
     @Override
-    public void renderTileEntityAt(C_a c_a, float f, float f2, float f3, float f4) {
+    public void renderTileEntityAt(TileEntity c_a, float f, float f2, float f3, float f4) {
         this.renderTileEntityNoteAt((C_i)c_a, f, f2, f3, f4);
     }
 }

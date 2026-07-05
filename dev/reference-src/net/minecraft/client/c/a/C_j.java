@@ -10,7 +10,7 @@ package net.minecraft.client.c.a;
 import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import net.minecraft.a.C_b;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.client.C_c;
@@ -145,7 +145,7 @@ extends GuiScreen {
                 if (n5 >= n14) continue;
                 n5 = n14;
             }
-            if (itemStack.c == C_x.barrel.at && itemStack.hasTagCompound() && itemStack.getTagCompound().i("BlockEntityTag").j("Items").b() > 0) {
+            if (itemStack.c == Block.barrel.at && itemStack.hasTagCompound() && itemStack.getTagCompound().i("BlockEntityTag").j("Items").b() > 0) {
                 Object object;
                 int n16;
                 C_j.drawGradientRect(n + 10 + (n5 > 52 ? n5 : 52), n2 - 1 + n4 - 56, n + 6, n2 - 13 - 56, 0x60050500, -1607454624, 1.5f);

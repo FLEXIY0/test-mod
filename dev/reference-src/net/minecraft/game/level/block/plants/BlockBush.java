@@ -4,7 +4,7 @@
 package net.minecraft.game.level.block.plants;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -21,7 +21,7 @@ extends BlockFlower {
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         byte by;
         super.a(c_g, n, n2, n3, random);
         if (c_g.d(n, n2 + 1, n3) >= 9 && random.nextInt(50) == 0 && (by = c_g.e(n, n2, n3)) < 1) {
@@ -31,7 +31,7 @@ extends BlockFlower {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (c_g.multiplayerWorld) {
             return true;
         }
@@ -50,7 +50,7 @@ extends BlockFlower {
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         super.a(c_g, n, n2, n3, n4, f);
         if (!c_g.multiplayerWorld && n4 == 1) {
             float f2 = c_g.q.nextFloat() * 0.7f + 0.15f;

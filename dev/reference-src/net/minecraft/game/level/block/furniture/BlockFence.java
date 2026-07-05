@@ -3,14 +3,14 @@
  */
 package net.minecraft.game.level.block.furniture;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 import net.minecraft.game.level.block.furniture.BlockFenceGate;
 
 public class BlockFence
-extends C_x {
+extends Block {
     private static String[] NAME_LIST = new String[]{"Oak", "Birch", "Palm", "Pine"};
 
     public BlockFence(int n, int n2) {
@@ -19,7 +19,7 @@ extends C_x {
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         boolean bl = this.canConnectFenceTo(c_g, n, n2, n3 - 1);
         boolean bl2 = this.canConnectFenceTo(c_g, n, n2, n3 + 1);
         boolean bl3 = this.canConnectFenceTo(c_g, n - 1, n2, n3);
@@ -44,7 +44,7 @@ extends C_x {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         boolean bl = this.canConnectFenceTo(c_g, n, n2, n3 - 1);
         boolean bl2 = this.canConnectFenceTo(c_g, n, n2, n3 + 1);
         boolean bl3 = this.canConnectFenceTo(c_g, n - 1, n2, n3);
@@ -68,11 +68,11 @@ extends C_x {
         this.a(f, 0.0f, f3, f2, 1.0f, f4);
     }
 
-    public boolean canConnectFenceTo(C_g c_g, int n, int n2, int n3) {
+    public boolean canConnectFenceTo(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2, n3);
-        C_x c_x = C_x.c[n4];
+        Block c_x = Block.c[n4];
         if (n4 != this.at && !(c_x instanceof BlockFenceGate)) {
-            C_x c_x2 = C_x.c[n4];
+            Block c_x2 = Block.c[n4];
             return c_x2 != null && c_x2.c();
         }
         return true;

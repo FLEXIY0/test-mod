@@ -4,8 +4,8 @@
 package net.minecraft.game.level.block.plants;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -22,18 +22,18 @@ extends BlockFlower {
 
     @Override
     protected final boolean canThisPlantGrowOnThisBlockID(int n) {
-        return n == C_x.ap.at;
+        return n == Block.ap.at;
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         byte by;
         super.a(c_g, n, n2, n3, random);
         if (c_g.d(n, n2 + 1, n3) >= 9 && (by = c_g.e(n, n2, n3)) < 7) {
             int n4 = n3;
             int n5 = n2;
             int n6 = n;
-            C_g c_g2 = c_g;
+            World c_g2 = c_g;
             float f = 1.0f;
             int n7 = c_g.a(n, n2, n3 - 1);
             int n8 = c_g.a(n, n2, n3 + 1);
@@ -50,7 +50,7 @@ extends BlockFlower {
                 for (n10 = n4 - 1; n10 <= n4 + 1; ++n10) {
                     n11 = c_g2.a(n8, n5 - 1, n10);
                     float f2 = 0.0f;
-                    if (n11 == C_x.ap.at) {
+                    if (n11 == Block.ap.at) {
                         f2 = 1.0f;
                         if (c_g2.e(n8, n5 - 1, n10) > 0 && c_g2.season.currentSeason != 3) {
                             switch (c_g2.season.currentSeason) {
@@ -103,7 +103,7 @@ extends BlockFlower {
     }
 
     @Override
-    public final void c(C_g c_g, int n, int n2, int n3, int n4) {
+    public final void c(World c_g, int n, int n2, int n3, int n4) {
         super.c(c_g, n, n2, n3, n4);
         if (!c_g.multiplayerWorld) {
             for (int i = 0; i < 3; ++i) {
@@ -119,7 +119,7 @@ extends BlockFlower {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         int n4 = c_g.e(n, n2, n3) & 7;
         float f = (float)(2 * (1 + n4)) / 16.0f;
         this.a(0.0f, 0.0f, 0.0f, 1.0f, f, 1.0f);
@@ -135,7 +135,7 @@ extends BlockFlower {
         return 1;
     }
 
-    public void fertilize(C_g c_g, int n, int n2, int n3) {
+    public void fertilize(World c_g, int n, int n2, int n3) {
         c_g.setBlockMetadataWithNotify(n, n2, n3, 7);
     }
 }

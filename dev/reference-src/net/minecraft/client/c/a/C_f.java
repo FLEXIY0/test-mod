@@ -7,7 +7,7 @@
  */
 package net.minecraft.client.c.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -155,7 +155,7 @@ extends C_j {
             GL11.glPushMatrix();
             GL11.glEnable((int)2977);
             GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-            k.a(this.b.m, new ItemStack(C_x.i), n3 - 17, n4 + 114 - 3);
+            k.a(this.b.m, new ItemStack(Block.i), n3 - 17, n4 + 114 - 3);
             GL11.glDisable((int)2977);
             C_c.a();
             GL11.glPopMatrix();

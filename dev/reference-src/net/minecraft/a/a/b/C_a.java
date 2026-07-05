@@ -5,9 +5,9 @@ package net.minecraft.a.a.b;
 
 import java.util.Random;
 import net.minecraft.a.C_b;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_q;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.b.a.C_c;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -21,7 +21,7 @@ extends C_q {
         this.as = 26;
     }
 
-    public final int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public final int a(World c_g, int n, int n2, int n3, int n4) {
         if (n4 == 1) {
             return this.as - 1;
         }
@@ -46,10 +46,10 @@ extends C_q {
                 n9 = -1 - n9;
             }
             n = 5;
-            if ((C_x.e[n7] || C_x.e[n10]) && !C_x.e[n8] && !C_x.e[n11]) {
+            if ((Block.e[n7] || Block.e[n10]) && !Block.e[n8] && !Block.e[n11]) {
                 n = 5;
             }
-            if ((C_x.e[n8] || C_x.e[n11]) && !C_x.e[n7] && !C_x.e[n10]) {
+            if ((Block.e[n8] || Block.e[n11]) && !Block.e[n7] && !Block.e[n10]) {
                 n = 4;
             }
             return (n4 == n ? this.as + 16 : this.as + 32) + n9;
@@ -68,25 +68,25 @@ extends C_q {
                 n12 = -1 - n12;
             }
             n = 3;
-            if ((C_x.e[n5] || C_x.e[n13]) && !C_x.e[n6] && !C_x.e[n14]) {
+            if ((Block.e[n5] || Block.e[n13]) && !Block.e[n6] && !Block.e[n14]) {
                 n = 3;
             }
-            if ((C_x.e[n6] || C_x.e[n14]) && !C_x.e[n5] && !C_x.e[n13]) {
+            if ((Block.e[n6] || Block.e[n14]) && !Block.e[n5] && !Block.e[n13]) {
                 n = 2;
             }
             return (n4 == n ? this.as + 16 : this.as + 32) + n12;
         }
         int n15 = 3;
-        if (C_x.e[n5] && !C_x.e[n6]) {
+        if (Block.e[n5] && !Block.e[n6]) {
             n15 = 3;
         }
-        if (C_x.e[n6] && !C_x.e[n5]) {
+        if (Block.e[n6] && !Block.e[n5]) {
             n15 = 2;
         }
-        if (C_x.e[n7] && !C_x.e[n8]) {
+        if (Block.e[n7] && !Block.e[n8]) {
             n15 = 5;
         }
-        if (C_x.e[n8] && !C_x.e[n7]) {
+        if (Block.e[n8] && !Block.e[n7]) {
             n15 = 4;
         }
         if (n4 == n15) {
@@ -108,7 +108,7 @@ extends C_q {
         return this.as;
     }
 
-    public final boolean a(C_g c_g, int n, int n2, int n3) {
+    public final boolean a(World c_g, int n, int n2, int n3) {
         int n4 = 0;
         if (c_g.a(n - 1, n2, n3) == this.at) {
             ++n4;
@@ -137,7 +137,7 @@ extends C_q {
         return !this.e(c_g, n, n2, n3 + 1);
     }
 
-    private boolean e(C_g c_g, int n, int n2, int n3) {
+    private boolean e(World c_g, int n, int n2, int n3) {
         if (c_g.a(n, n2, n3) != this.at) {
             return false;
         }
@@ -153,7 +153,7 @@ extends C_q {
         return c_g.a(n, n2, n3 + 1) == this.at;
     }
 
-    public final void b(C_g c_g, int n, int n2, int n3) {
+    public final void b(World c_g, int n, int n2, int n3) {
         C_c c_c = (C_c)c_g.j(n, n2, n3);
         for (int i = 0; i < c_c.a(); ++i) {
             ItemStack itemStack = c_c.a(i);
@@ -177,7 +177,7 @@ extends C_q {
         super.b(c_g, n, n2, n3);
     }
 
-    public final boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public final boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         C_b c_b = (C_c)c_g.j(n, n2, n3);
         if (c_g.b(n, n2 + 1, n3)) {
             return true;
@@ -210,7 +210,7 @@ extends C_q {
         return true;
     }
 
-    protected final net.minecraft.a.a.b.a.C_a a_() {
+    protected final net.minecraft.a.a.b.a.TileEntity a_() {
         return new C_c();
     }
 }

@@ -9,28 +9,28 @@ import net.minecraft.game.level.block.machines.BlockNetherReactorCore;
 /**
  * Headless checks for the native Nether Reactor port: block registration,
  * per-phase textures, the gold/cobblestone activation pattern, and the tile
- * entity name mapping. Runs against the built jar (in-package for C_x's
+ * entity name mapping. Runs against the built jar (in-package for Block's
  * protected name field; reflection for the block's private pattern).
  */
 public class ReactorTest {
     static int pass = 0, fail = 0;
     static void ok(boolean c, String m) { if (c) pass++; else { fail++; System.out.println("FAIL: " + m); } }
 
-    static String name(C_x b) throws Exception {
-        Field f = C_x.class.getDeclaredField("name"); f.setAccessible(true);
+    static String name(Block b) throws Exception {
+        Field f = Block.class.getDeclaredField("name"); f.setAccessible(true);
         return (String) f.get(b);
     }
 
     public static void main(String[] a) throws Exception {
-        // force C_x static init (registers all blocks + auto item-blocks)
-        Class.forName("net.minecraft.a.a.b.C_x");
+        // force Block static init (registers all blocks + auto item-blocks)
+        Class.forName("net.minecraft.a.a.b.Block");
 
         // 1. the five new blocks exist at their ids with the spliced textures
         int[] ids = {196, 197, 198, 199, 200};
         int[] tex = {963, 964, 965, 966, 960};
         String[] want = {"Netherrack", "Soul Sand", "Glowstone", "Glowing Obsidian", "Nether Reactor Core"};
         for (int i = 0; i < ids.length; i++) {
-            C_x b = C_x.c[ids[i]];
+            Block b = Block.c[ids[i]];
             ok(b != null, "block id " + ids[i] + " registered");
             if (b == null) continue;
             ok(b.as == tex[i], "block " + ids[i] + " texture " + tex[i] + " (got " + b.as + ")");
@@ -39,7 +39,7 @@ public class ReactorTest {
         }
 
         // 2. reactor core is the right class and gives per-phase textures
-        C_x core = C_x.c[200];
+        Block core = Block.c[200];
         ok(core instanceof BlockNetherReactorCore, "core is BlockNetherReactorCore");
         ok(core.a(0, 0) == 960, "core phase0 texture 960 (got " + core.a(0, 0) + ")");
         ok(core.a(0, 1) == 961, "core phase1 texture 961 (got " + core.a(0, 1) + ")");
@@ -49,7 +49,7 @@ public class ReactorTest {
         // 3. the activation pattern (gold corners / cobble frame / core centre)
         Method pat = BlockNetherReactorCore.class.getDeclaredMethod("patternAt", int.class, int.class, int.class);
         pat.setAccessible(true);
-        int gold = C_x.W.at, cobble = C_x.l.at, coreId = C_x.netherReactorCore.at;
+        int gold = Block.W.at, cobble = Block.l.at, coreId = Block.netherReactorCore.at;
         // layer 0 (bottom): corners gold, rest cobble
         ok((Integer) pat.invoke(null, 0, 0, 0) == gold, "L0 corner = gold");
         ok((Integer) pat.invoke(null, 0, 1, 1) == cobble, "L0 centre = cobble");

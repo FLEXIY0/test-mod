@@ -36,7 +36,7 @@ public class C_z {
     private static HashMap<String, Integer> difficulty = new C_u();
     private static HashMap<String, Integer> season = new C_v();
     private static HashMap<String, Integer> time = new C_w();
-    private static HashMap<String, net.minecraft.a.a.b.C_x> blocksList = new C_x();
+    private static HashMap<String, net.minecraft.a.a.b.Block> blocksList = new C_x();
     private static HashMap<String, Integer> blocksData = new C_y();
 
     public static void executeCommand(d d2, String string) {
@@ -263,7 +263,7 @@ public class C_z {
                     block80: for (int i = 0; i < 1024; ++i) {
                         Object object = Item.b[i];
                         if (i < 256) {
-                            net.minecraft.a.a.b.C_x c_x = net.minecraft.a.a.b.C_x.c[i];
+                            net.minecraft.a.a.b.Block c_x = net.minecraft.a.a.b.Block.c[i];
                             bl2 = c_x == null || C_l.a.contains(c_x);
                         }
                         if (object == null || !bl2) continue;
@@ -532,11 +532,11 @@ public class C_z {
                                 int n19 = d2.d.a(i, j, k);
                                 byte by = d2.d.e(i, j, k);
                                 if (blocksList.get(stringArray[7].toLowerCase()) != null) {
-                                    net.minecraft.a.a.b.C_x c_x = blocksList.get(stringArray[7].toLowerCase());
+                                    net.minecraft.a.a.b.Block c_x = blocksList.get(stringArray[7].toLowerCase());
                                     int n20 = blocksData.get(stringArray[7].toLowerCase());
                                     if (stringArray.length > 8) {
                                         if (stringArray.length > 9) {
-                                            net.minecraft.a.a.b.C_x c_x2 = blocksList.get(stringArray[9].toLowerCase());
+                                            net.minecraft.a.a.b.Block c_x2 = blocksList.get(stringArray[9].toLowerCase());
                                             int n21 = blocksData.get(stringArray[9].toLowerCase());
                                             if (stringArray[8].equalsIgnoreCase("replace") && n19 == c_x.at && n20 == by) {
                                                 d2.d.setBlockAndMetadata(i, j, k, c_x2.at, n21);

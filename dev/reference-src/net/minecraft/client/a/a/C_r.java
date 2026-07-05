@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.a.a;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.c.C_c;
 import net.minecraft.client.a.a.C_f;
@@ -29,7 +29,7 @@ extends C_f {
         GL11.glPushMatrix();
         GL11.glTranslatef((float)f2, (float)f3, (float)f4);
         this.a("/terrain.png");
-        this.blockRenderer.renderBlockOnInventory(C_x.c[c_c.id], 0);
+        this.blockRenderer.renderBlockOnInventory(Block.c[c_c.id], 0);
         GL11.glPopMatrix();
     }
 }

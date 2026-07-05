@@ -5,17 +5,17 @@ package net.minecraft.a.a.b;
 
 import java.util.ArrayList;
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_b;
 import util.MathHelper;
 
 public class C_bq
-extends C_x {
-    private C_x modelBlock;
+extends Block {
+    private Block modelBlock;
 
-    protected C_bq(int n, C_x c_x, int n2) {
+    protected C_bq(int n, Block c_x, int n2) {
         super(n, c_x.as, c_x.getMaterial(0));
         this.modelBlock = c_x;
         this.b(c_x.aL);
@@ -26,12 +26,12 @@ extends C_x {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         this.a(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return super.getCollisionBoundingBoxFromPool(c_g, n, n2, n3);
     }
 
@@ -41,7 +41,7 @@ extends C_x {
     }
 
     @Override
-    public void getCollidingBoundingBoxes(C_g c_g, int n, int n2, int n3, C_b c_b, ArrayList<C_b> arrayList) {
+    public void getCollidingBoundingBoxes(World c_g, int n, int n2, int n3, C_b c_b, ArrayList<C_b> arrayList) {
         byte by = c_g.e(n, n2, n3);
         if (by == 0) {
             this.a(0.0f, 0.0f, 0.0f, 0.5f, 0.5f, 1.0f);
@@ -69,12 +69,12 @@ extends C_x {
         }
     }
 
-    private boolean setBoundState(C_g c_g, int n, int n2, int n3, int n4) {
+    private boolean setBoundState(World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.a(n, n2, n3);
         return C_bq.isBlockStairsID(n5) && c_g.e(n, n2, n3) == n4;
     }
 
-    public void renderNormal(C_g c_g, int n, int n2, int n3) {
+    public void renderNormal(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         if ((by & 4) != 0) {
             this.a(0.0f, 0.5f, 0.0f, 1.0f, 1.0f, 1.0f);
@@ -83,7 +83,7 @@ extends C_x {
         }
     }
 
-    public boolean renderCornerInner(C_g c_g, int n, int n2, int n3) {
+    public boolean renderCornerInner(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         int n4 = by & 3;
         float f = 0.5f;
@@ -160,7 +160,7 @@ extends C_x {
         return bl;
     }
 
-    public boolean renderCornerOuter(C_g c_g, int n, int n2, int n3) {
+    public boolean renderCornerOuter(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         int n4 = by & 3;
         float f = 0.5f;
@@ -242,7 +242,7 @@ extends C_x {
     }
 
     public static boolean isBlockStairsID(int n) {
-        return n > 0 && C_x.c[n] instanceof C_bq;
+        return n > 0 && Block.c[n] instanceof C_bq;
     }
 
     @Override
@@ -261,22 +261,22 @@ extends C_x {
     }
 
     @Override
-    public boolean d(C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean d(World c_g, int n, int n2, int n3, int n4) {
         return super.d(c_g, n, n2, n3, n4);
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, Random random) {
+    public void b(World c_g, int n, int n2, int n3, Random random) {
         this.modelBlock.b(c_g, n, n2, n3, random);
     }
 
     @Override
-    public void c(C_g c_g, int n, int n2, int n3, int n4) {
+    public void c(World c_g, int n, int n2, int n3, int n4) {
         this.modelBlock.c(c_g, n, n2, n3, n4);
     }
 
     @Override
-    public float f(C_g c_g, int n, int n2, int n3) {
+    public float f(World c_g, int n, int n2, int n3) {
         return this.modelBlock.f(c_g, n, n2, n3);
     }
 
@@ -297,13 +297,13 @@ extends C_x {
 
     @Override
     public int a(int n) {
-        if (this.at == C_x.stairSandstone.at) {
+        if (this.at == Block.stairSandstone.at) {
             return this.modelBlock.a(n);
         }
-        if (this.at == C_x.stairRedSandstone.at) {
+        if (this.at == Block.stairRedSandstone.at) {
             return n == 1 ? 452 : (n == 0 ? 453 : 451);
         }
-        if (this.at == C_x.stairMoonBricks.at) {
+        if (this.at == Block.stairMoonBricks.at) {
             if (n == 2 || n == 4) {
                 return 612;
             }
@@ -318,7 +318,7 @@ extends C_x {
     }
 
     @Override
-    public C_b getSelectedBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getSelectedBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return this.modelBlock.getSelectedBoundingBoxFromPool(c_g, n, n2, n3);
     }
 
@@ -328,38 +328,38 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
+    public boolean a(World c_g, int n, int n2, int n3) {
         return this.modelBlock.a(c_g, n, n2, n3);
     }
 
     @Override
-    public void d(C_g c_g, int n, int n2, int n3) {
+    public void d(World c_g, int n, int n2, int n3) {
         this.b(c_g, n, n2, n3, 0);
         this.modelBlock.d(c_g, n, n2, n3);
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3) {
+    public void b(World c_g, int n, int n2, int n3) {
         this.modelBlock.b(c_g, n, n2, n3);
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public void a(World c_g, int n, int n2, int n3, Random random) {
         this.modelBlock.a(c_g, n, n2, n3, random);
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         return this.modelBlock.a(c_g, n, n2, n3, entityPlayer);
     }
 
     @Override
-    public void c(C_g c_g, int n, int n2, int n3) {
+    public void c(World c_g, int n, int n2, int n3) {
         this.modelBlock.c(c_g, n, n2, n3);
     }
 
     @Override
-    public void onBlockPlacedByPlayer(C_g c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
+    public void onBlockPlacedByPlayer(World c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
         int n5 = MathHelper.a((double)(entityPlayer.n * 4.0f / 360.0f) + 0.5) & 3;
         if (n5 == 0) {
             if (c_g.a(n, n2 + 1, n3) != 0 && n4 == 0) {

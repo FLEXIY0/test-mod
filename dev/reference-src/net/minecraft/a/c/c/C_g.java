@@ -7,7 +7,7 @@ import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import java.util.List;
 import net.minecraft.a.C_b;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -31,7 +31,7 @@ implements C_b {
     private int fuel;
     private static final int[][][] matrix = new int[][][]{new int[][]{{0, 0, -1}, {0, 0, 1}}, new int[][]{{-1, 0, 0}, {1, 0, 0}}, new int[][]{{-1, -1, 0}, {1, 0, 0}}, new int[][]{{-1, 0, 0}, {1, -1, 0}}, new int[][]{{0, 0, -1}, {0, -1, 1}}, new int[][]{{0, -1, -1}, {0, 0, 1}}, new int[][]{{0, 0, 1}, {1, 0, 0}}, new int[][]{{0, 0, 1}, {-1, 0, 0}}, new int[][]{{0, 0, -1}, {-1, 0, 0}}, new int[][]{{0, 0, -1}, {1, 0, 0}}};
 
-    public C_g(net.minecraft.a.a.C_g c_g) {
+    public C_g(net.minecraft.a.a.World c_g) {
         super(c_g);
         this.c = true;
         this.a(0.98f, 0.7f);
@@ -57,7 +57,7 @@ implements C_b {
         return true;
     }
 
-    public C_g(net.minecraft.a.a.C_g c_g, float f, float f2, float f3, int n) {
+    public C_g(net.minecraft.a.a.World c_g, float f, float f2, float f3, int n) {
         this(c_g);
         this.b(f, f2 + this.v, f3);
         this.k = 0.0f;
@@ -86,15 +86,15 @@ implements C_b {
                     this.a(Item.minecart.ap, 1, 0.0f);
                     switch (this.minecartType) {
                         case 1: {
-                            this.a(C_x.aj.at, 1);
+                            this.a(Block.aj.at, 1);
                             break;
                         }
                         case 2: {
-                            this.a(C_x.aq.at, 1);
+                            this.a(Block.aq.at, 1);
                             break;
                         }
                         case 3: {
-                            this.a(C_x.ab.at, 1);
+                            this.a(Block.ab.at, 1);
                         }
                     }
                 }
@@ -154,13 +154,13 @@ implements C_b {
         this.p = this.n;
         this.l = (float)((double)this.l - (double)0.04f);
         int n3 = MathHelper.a((double)this.h);
-        if (this.d.a(n3, (n2 = MathHelper.a((double)this.i)) - 1, n = MathHelper.a((double)this.j)) == C_x.rail.at || this.d.a(n3, n2 - 1, n) == C_x.railBooster.at) {
+        if (this.d.a(n3, (n2 = MathHelper.a((double)this.i)) - 1, n = MathHelper.a((double)this.j)) == Block.rail.at || this.d.a(n3, n2 - 1, n) == Block.railBooster.at) {
             --n2;
         }
         double d3 = 0.4;
         double d4 = 0.0078125;
         boolean bl = false;
-        if (this.d.a(n3, n2, n) == C_x.rail.at || this.d.a(n3, n2, n) == C_x.railBooster.at) {
+        if (this.d.a(n3, n2, n) == Block.rail.at || this.d.a(n3, n2, n) == Block.railBooster.at) {
             double d5;
             C_a c_a;
             double d6;
@@ -242,7 +242,7 @@ implements C_b {
                 this.b(this.h, this.i + (float)nArray[1][1], this.j);
             }
             if (this.riddenByEntity != null) {
-                if (this.d.a(n3, n2, n) == C_x.railBooster.at) {
+                if (this.d.a(n3, n2, n) == Block.railBooster.at) {
                     this.k = (float)((double)this.k * 1.296999979019165);
                     this.l = (float)((double)this.l * 0.0);
                     this.m = (float)((double)this.m * 1.296999979019165);
@@ -264,7 +264,7 @@ implements C_b {
                     this.m = -256.0f;
                 }
             } else {
-                if (this.d.a(n3, n2, n) == C_x.railBooster.at) {
+                if (this.d.a(n3, n2, n) == Block.railBooster.at) {
                     this.k = (float)((double)this.k * 1.0);
                     this.l = (float)((double)this.l * 0.0);
                     this.m = (float)((double)this.m * 1.0);
@@ -384,7 +384,7 @@ implements C_b {
                 for (int k = n8; k <= n11; ++k) {
                     int n12 = this.d.a(i, j, k);
                     if (n12 <= 0) continue;
-                    C_x.c[n12].onEntityCollidedWithBlock(this.d, i, j, k);
+                    Block.c[n12].onEntityCollidedWithBlock(this.d, i, j, k);
                 }
             }
         }
@@ -423,10 +423,10 @@ implements C_b {
         int n;
         int n2;
         int n3 = MathHelper.a(d2);
-        if (this.d.a(n3, (n2 = MathHelper.a(d3)) - 1, n = MathHelper.a(d4)) == C_x.rail.at || this.d.a(n3, n2 - 1, n) == C_x.railBooster.at) {
+        if (this.d.a(n3, (n2 = MathHelper.a(d3)) - 1, n = MathHelper.a(d4)) == Block.rail.at || this.d.a(n3, n2 - 1, n) == Block.railBooster.at) {
             --n2;
         }
-        if (this.d.a(n3, n2, n) == C_x.rail.at || this.d.a(n3, n2, n) == C_x.railBooster.at) {
+        if (this.d.a(n3, n2, n) == Block.rail.at || this.d.a(n3, n2, n) == Block.railBooster.at) {
             byte by = this.d.e(n3, n2, n);
             d3 = n2;
             if (by >= 2 && by <= 5) {
@@ -450,10 +450,10 @@ implements C_b {
         int n;
         int n2;
         int n3 = MathHelper.a(d2);
-        if (this.d.a(n3, (n2 = MathHelper.a(d3)) - 1, n = MathHelper.a(d4)) == C_x.rail.at || this.d.a(n3, n2 - 1, n) == C_x.railBooster.at) {
+        if (this.d.a(n3, (n2 = MathHelper.a(d3)) - 1, n = MathHelper.a(d4)) == Block.rail.at || this.d.a(n3, n2 - 1, n) == Block.railBooster.at) {
             --n2;
         }
-        if (this.d.a(n3, n2, n) == C_x.rail.at || this.d.a(n3, n2, n) == C_x.railBooster.at) {
+        if (this.d.a(n3, n2, n) == Block.rail.at || this.d.a(n3, n2, n) == Block.railBooster.at) {
             byte by = this.d.e(n3, n2, n);
             d3 = n2;
             if (by >= 2 && by <= 5) {

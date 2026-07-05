@@ -6,7 +6,7 @@ package net.minecraft.a.b;
 import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import com.a.a.NBTTagString;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -19,7 +19,7 @@ extends Item {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         entityPlayer.displayGUIBook(itemStack);
         return itemStack;
     }

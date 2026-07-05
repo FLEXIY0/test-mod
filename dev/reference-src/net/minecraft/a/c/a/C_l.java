@@ -3,8 +3,8 @@
  */
 package net.minecraft.a.c.a;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -13,7 +13,7 @@ import net.minecraft.a.c.e.EntityPlayer;
 
 public class C_l
 extends C_e {
-    public C_l(C_g c_g) {
+    public C_l(World c_g) {
         super(c_g);
         this.V = "/mob/termite.png";
         this.a(0.9f, 0.9f);
@@ -23,7 +23,7 @@ extends C_e {
         this.A = false;
     }
 
-    public C_l(C_g c_g, float f, float f2, float f3) {
+    public C_l(World c_g, float f, float f2, float f3) {
         super(c_g, f, f2, f3);
         this.V = "/mob/termite.png";
         this.a(0.9f, 0.9f);
@@ -51,7 +51,7 @@ extends C_e {
     @Override
     public final boolean a(float f, float f2, float f3) {
         this.b(f, f2 + this.x / 2.0f, f3);
-        return this.d.a((int)f, (int)f2 - 1, (int)f3) == C_x.mycelium.at && this.d.d(this.r) && this.d.getCollidingBoundingBoxes(this, this.r).size() == 0 && !this.d.b(this.r);
+        return this.d.a((int)f, (int)f2 - 1, (int)f3) == Block.mycelium.at && this.d.d(this.r) && this.d.getCollidingBoundingBoxes(this, this.r).size() == 0 && !this.d.b(this.r);
     }
 
     @Override
@@ -92,7 +92,7 @@ extends C_e {
 
     @Override
     public float a(int n, int n2, int n3) {
-        return this.d.a(n, n2 - 1, n3) == C_x.mycelium.at ? 10.0f : super.a(n, n2, n3);
+        return this.d.a(n, n2 - 1, n3) == Block.mycelium.at ? 10.0f : super.a(n, n2, n3);
     }
 
     @Override

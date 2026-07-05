@@ -2,10 +2,10 @@ package net.minecraft.a.a.c;
 
 import java.util.ArrayList;
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_l;
 import net.minecraft.a.a.LevelOptions;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.client.d;
 import net.minecraft.client.statistics.StatList;
 import net.minecraft.game.level.block.plants.BlockBush;
@@ -42,7 +42,7 @@ public final class C_a {
       this.e = var1;
    }
 
-   public final C_g a(String var1, int var2, int var3, int var4) {
+   public final World a(String var1, int var2, int var3, int var4) {
       int var5 = 1;
       if (this.b) {
          var5 = var4 / 2 / 48 + 1;
@@ -58,7 +58,7 @@ public final class C_a {
       }
 
       this.e.a("Generating level");
-      C_g var6 = new C_g();
+      World var6 = new World();
       var6.s = this.k;
       var6.t = this.l;
       this.f = var2;
@@ -315,30 +315,30 @@ public final class C_a {
                      int var48 = var46 - var47;
                      if (this.desertGen) {
                         if (var39) {
-                           var44 = C_x.quickSand.at;
+                           var44 = Block.quickSand.at;
                         } else {
-                           var44 = C_x.t.at;
+                           var44 = Block.t.at;
                         }
                      } else if (this.moonGen) {
-                        var44 = C_x.moonRock.at;
+                        var44 = Block.moonRock.at;
                      } else if (!this.mountainGen || var42 < var48) {
-                        var44 = C_x.k.at;
+                        var44 = Block.k.at;
                      } else if (this.theme == 1) {
-                        var44 = C_x.brimStone.at;
+                        var44 = Block.brimStone.at;
                      } else {
-                        var44 = C_x.packedIce.at;
+                        var44 = Block.packedIce.at;
                      }
                   }
 
                   if (var42 == var11 && this.desertGen) {
-                     var44 = C_x.sandStone.at;
+                     var44 = Block.sandStone.at;
                   }
 
                   if (var42 < var11) {
                      if (this.moonGen) {
-                        var44 = C_x.moonRock.at;
+                        var44 = Block.moonRock.at;
                      } else {
-                        var44 = C_x.i.at;
+                        var44 = Block.i.at;
                      }
                   }
 
@@ -402,20 +402,20 @@ public final class C_a {
                int var197 = var60.j[((var65 - 1) * var60.g + var85) * var60.f + var63] & 255;
                if (!this.moonGen) {
                   if (!this.desertGen) {
-                     if ((var194 == C_x.p.at || var194 == C_x.q.at || var194 == 0) && var65 <= var60.k - 1 && var182) {
+                     if ((var194 == Block.p.at || var194 == Block.q.at || var194 == 0) && var65 <= var60.k - 1 && var182) {
                         if (this.b && var197 == 0) {
-                           var60.j[var192] = (byte)C_x.cloudBlock.at;
+                           var60.j[var192] = (byte)Block.cloudBlock.at;
                         } else {
-                           var60.j[var192] = (byte)C_x.u.at;
+                           var60.j[var192] = (byte)Block.u.at;
                         }
                      }
                   } else if (var194 == 0 && var65 <= var60.k - 1 && var182) {
                      if (this.theme == 1) {
-                        var60.j[var192] = (byte)C_x.k.at;
+                        var60.j[var192] = (byte)Block.k.at;
                      } else if (this.theme == 4) {
-                        var60.j[var192] = (byte)C_x.mycelium.at;
+                        var60.j[var192] = (byte)Block.mycelium.at;
                      } else {
-                        var60.j[var192] = (byte)C_x.j.at;
+                        var60.j[var192] = (byte)Block.j.at;
                      }
                   }
 
@@ -423,43 +423,43 @@ public final class C_a {
                      int var202 = -1;
                      if (var65 <= var16 && var178) {
                         if (this.b && var197 == 0) {
-                           var202 = C_x.cloudBlock.at;
+                           var202 = Block.cloudBlock.at;
                         } else {
-                           var202 = C_x.t.at;
+                           var202 = Block.t.at;
                         }
                      }
 
                      if (this.theme == 1 && var185 && !this.cavesGen) {
-                        var202 = C_x.j.at;
+                        var202 = Block.j.at;
                      }
 
-                     if (((var194 = var60.j[((var65 + 1) * var60.g + var85) * var60.f + var63] & 255) == C_x.p.at || var194 == C_x.q.at || var194 == 0)
+                     if (((var194 = var60.j[((var65 + 1) * var60.g + var85) * var60.f + var63] & 255) == Block.p.at || var194 == Block.q.at || var194 == 0)
                         && var65 < var60.k - 1
                         && var185) {
                         if (this.b && var197 == 0) {
-                           var202 = C_x.cloudBlock.at;
+                           var202 = Block.cloudBlock.at;
                         } else {
-                           var202 = C_x.clay.at;
+                           var202 = Block.clay.at;
                         }
                      }
 
                      if (this.oceanGen) {
                         boolean var204 = var162.a((double)var63, (double)var85) > 8.0;
                         if (var65 <= var16 && var204) {
-                           var202 = C_x.coral.at;
+                           var202 = Block.coral.at;
                         }
                      }
 
                      if (this.theme == 1 && var187) {
                         if (this.b && var197 == 0) {
-                           var202 = C_x.cloudBlock.at;
+                           var202 = Block.cloudBlock.at;
                         } else {
-                           var202 = C_x.magma.at;
+                           var202 = Block.magma.at;
                         }
                      }
 
                      if (this.theme == 1 && var189) {
-                        var202 = C_x.ae.at;
+                        var202 = Block.ae.at;
                      }
 
                      if (var60.j[var192] != 0 && var202 > 0) {
@@ -539,7 +539,7 @@ public final class C_a {
                            && var190 < var62.h - 1
                            && var193 < var62.g - 1) {
                            int var56 = (var190 * var62.g + var193) * var62.f + var50;
-                           if (var62.j[var56] == C_x.i.at) {
+                           if (var62.j[var56] == Block.i.at) {
                               var62.j[var56] = 0;
                            }
                         }
@@ -551,26 +551,26 @@ public final class C_a {
       }
 
       if (this.cavesGen) {
-         this.a(C_x.x.at, 1000, 10, var4);
-         this.a(C_x.w.at, 800, 8, var4);
-         this.a(C_x.v.at, 500, 6, var4);
-         this.a(C_x.al.at, 500, 2, var4);
-         this.a(C_x.oreEmerald.at, 4000, 1, var4);
-         this.a(C_x.oreAdminium.at, 1000, 1, var4);
+         this.a(Block.x.at, 1000, 10, var4);
+         this.a(Block.w.at, 800, 8, var4);
+         this.a(Block.v.at, 500, 6, var4);
+         this.a(Block.al.at, 500, 2, var4);
+         this.a(Block.oreEmerald.at, 4000, 1, var4);
+         this.a(Block.oreAdminium.at, 1000, 1, var4);
       } else {
-         this.a(C_x.x.at, 1000, 10, var4);
-         this.a(C_x.w.at, 800, 8, var4 / 2);
-         this.a(C_x.v.at, 500, 6, var4 / 3);
-         this.a(C_x.oreEmerald.at, 4000, 1, var4 / 4);
-         this.a(C_x.al.at, 500, 2, var4 / 5);
-         this.a(C_x.oreAdminium.at, 1000, 1, var4 / 5);
+         this.a(Block.x.at, 1000, 10, var4);
+         this.a(Block.w.at, 800, 8, var4 / 2);
+         this.a(Block.v.at, 500, 6, var4 / 3);
+         this.a(Block.oreEmerald.at, 4000, 1, var4 / 4);
+         this.a(Block.al.at, 500, 2, var4 / 5);
+         this.a(Block.oreAdminium.at, 1000, 1, var4 / 5);
       }
 
-      this.populateLargeOreVeins(C_x.u.at, 90, 1, 4);
+      this.populateLargeOreVeins(Block.u.at, 90, 1, 4);
       if (this.theme == 1) {
-         this.populateLargeOreVeins(C_x.brimStone.at, 90, 1, 4);
+         this.populateLargeOreVeins(Block.brimStone.at, 90, 1, 4);
       } else {
-         this.populateLargeOreVeins(C_x.k.at, 90, 1, 4);
+         this.populateLargeOreVeins(Block.k.at, 90, 1, 4);
       }
 
       this.e.b("Melting..");
@@ -600,9 +600,9 @@ public final class C_a {
       if (!this.moonGen) {
          this.a();
          if (!this.b && !this.cavesGen) {
-            var5 = C_x.q.at;
+            var5 = Block.q.at;
             if (this.theme == 1 && !this.oceanGen) {
-               var5 = C_x.s.at;
+               var5 = Block.s.at;
             }
 
             for (int var57 = 0; var57 < var2; var57++) {
@@ -629,7 +629,7 @@ public final class C_a {
          var6.v = 1049600;
          var6.B = var6.A = 7;
          if (!this.oceanGen) {
-            var6.m = C_x.r.at;
+            var6.m = Block.r.at;
          }
 
          if (this.b) {
@@ -659,16 +659,16 @@ public final class C_a {
          var6.w = 1649945;
          var6.v = 1653785;
          var6.B = var6.A = 12;
-         var6.defaultBlock = C_x.mycelium.at;
+         var6.defaultBlock = Block.mycelium.at;
       } else if (this.moonGen) {
          var6.v = 0;
          var6.w = 0;
          var6.x = 0;
          var6.B = var6.A = 0;
          var6.u = var4 + 64;
-         var6.defaultBlock = C_x.moonRock.at;
+         var6.defaultBlock = Block.moonRock.at;
       } else if (this.desertGen) {
-         var6.defaultBlock = C_x.t.at;
+         var6.defaultBlock = Block.t.at;
       }
 
       var6.s = this.k;
@@ -690,9 +690,9 @@ public final class C_a {
       var6.generate(var2, var4, var3, this.j, (byte[])null, null, null);
       if (this.marshGen) {
          if (this.theme == 1) {
-            var5 = C_x.s.at;
+            var5 = Block.s.at;
          } else {
-            var5 = C_x.q.at;
+            var5 = Block.q.at;
          }
 
          for (int var75 = 0; var75 < this.f; var75++) {
@@ -770,33 +770,33 @@ public final class C_a {
       if (!this.cavesGen && !this.oceanGen) {
          if (this.theme == 1) {
             this.b();
-            this.populateFlowersAndMushrooms(var6, (BlockFlower)C_x.deadBush, var76);
+            this.populateFlowersAndMushrooms(var6, (BlockFlower)Block.deadBush, var76);
          } else {
             this.b();
-            this.populateFlowersAndMushrooms(var6, C_x.plantYellow, var76);
+            this.populateFlowersAndMushrooms(var6, Block.plantYellow, var76);
             this.b();
-            this.populateFlowersAndMushrooms(var6, C_x.plantRed, var76);
+            this.populateFlowersAndMushrooms(var6, Block.plantRed, var76);
             this.b();
-            this.populateFlowersAndMushrooms(var6, C_x.plantPurple, var76);
+            this.populateFlowersAndMushrooms(var6, Block.plantPurple, var76);
             this.b();
-            this.populateFlowersAndMushrooms(var6, C_x.plantBlue, var76);
+            this.populateFlowersAndMushrooms(var6, Block.plantBlue, var76);
          }
 
          this.b();
-         this.populateFlowersAndMushrooms(var6, C_x.mushroomBrown, 50);
+         this.populateFlowersAndMushrooms(var6, Block.mushroomBrown, 50);
          this.b();
-         this.populateFlowersAndMushrooms(var6, C_x.mushroomRed, 50);
+         this.populateFlowersAndMushrooms(var6, Block.mushroomRed, 50);
          this.b();
          if (this.theme == 4) {
-            this.populateFlowersAndMushrooms(var6, C_x.mushroomGlowing, 50);
+            this.populateFlowersAndMushrooms(var6, Block.mushroomGlowing, 50);
          }
 
          if (this.worldGen.seasons == 3) {
-            this.populateFlowersAndMushrooms(var6, C_x.berryBush, 50);
+            this.populateFlowersAndMushrooms(var6, Block.berryBush, 50);
          }
 
          if (this.marshGen) {
-            this.populateFlowersAndMushrooms(var6, (BlockFlower)C_x.lilyPad, 200);
+            this.populateFlowersAndMushrooms(var6, (BlockFlower)Block.lilyPad, 200);
          }
       }
 
@@ -807,9 +807,9 @@ public final class C_a {
       if (this.worldGen.seasons == 2 || this.worldGen.seasons == 1) {
          int var80;
          if (this.worldGen.seasons == 2) {
-            var80 = C_x.pumpkin.at;
+            var80 = Block.pumpkin.at;
          } else {
-            var80 = C_x.melon.at;
+            var80 = Block.melon.at;
          }
 
          for (int var88 = 0; var88 < var6.a; var88++) {
@@ -829,7 +829,7 @@ public final class C_a {
                int var96 = var81 + this.i.nextInt(16) + 8;
                int var108 = var89 + this.i.nextInt(16) + 8;
                if (this.i.nextInt(100) == 0) {
-                  this.populateGrass(var6, this.i, var96, var6.a(var81, var89), var108, C_x.tallGrass.at);
+                  this.populateGrass(var6, this.i, var96, var6.a(var81, var89), var108, Block.tallGrass.at);
                }
             }
          }
@@ -849,77 +849,77 @@ public final class C_a {
       this.b();
       this.a(0.0F);
       net.minecraft.a.a.c.a.C_c var91 = new net.minecraft.a.a.c.a.C_c(this.i, 8);
-      int var98 = C_x.ae.at;
+      int var98 = Block.ae.at;
 
       for (int var110 = 0; var110 < this.f; var110++) {
          this.a((float)var110 * 100.0F / (float)(this.f - 1));
 
          for (int var124 = 0; var124 < this.h; var124++) {
             for (int var139 = 0; var139 < this.g; var139++) {
-               if (var6.a(var110, var124 + 1, var139) != C_x.q.at
-                  && var6.a(var110, var124 + 1, var139) != C_x.p.at
-                  && var6.a(var110, var124, var139) == C_x.clay.at) {
-                  var6.a(var110, var124, var139, C_x.t.at);
+               if (var6.a(var110, var124 + 1, var139) != Block.q.at
+                  && var6.a(var110, var124 + 1, var139) != Block.p.at
+                  && var6.a(var110, var124, var139) == Block.clay.at) {
+                  var6.a(var110, var124, var139, Block.t.at);
                }
 
-               if ((var6.a(var110, var124 + 1, var139) == C_x.p.at || var6.a(var110, var124 + 1, var139) == C_x.q.at)
-                  && (var6.a(var110, var124, var139) == C_x.s.at || var6.a(var110, var124, var139) == C_x.r.at)) {
+               if ((var6.a(var110, var124 + 1, var139) == Block.p.at || var6.a(var110, var124 + 1, var139) == Block.q.at)
+                  && (var6.a(var110, var124, var139) == Block.s.at || var6.a(var110, var124, var139) == Block.r.at)) {
                   var6.b(var110, var124, var139, var98);
                }
 
-               if ((var6.a(var110, var124 + 1, var139) == C_x.r.at || var6.a(var110, var124 + 1, var139) == C_x.s.at)
-                  && (var6.a(var110, var124, var139) == C_x.q.at || var6.a(var110, var124, var139) == C_x.p.at)) {
+               if ((var6.a(var110, var124 + 1, var139) == Block.r.at || var6.a(var110, var124 + 1, var139) == Block.s.at)
+                  && (var6.a(var110, var124, var139) == Block.q.at || var6.a(var110, var124, var139) == Block.p.at)) {
                   var6.b(var110, var124, var139, var98);
                }
 
                if (this.desertGen
                   && (
-                     var6.a(var110, var124 - 1, var139) == C_x.t.at
-                        || var6.a(var110, var124 - 1, var139) == C_x.quickSand.at
-                        || var6.a(var110, var124 - 1, var139) == C_x.j.at
+                     var6.a(var110, var124 - 1, var139) == Block.t.at
+                        || var6.a(var110, var124 - 1, var139) == Block.quickSand.at
+                        || var6.a(var110, var124 - 1, var139) == Block.j.at
                   )
-                  && (var6.a(var110, var124, var139) == C_x.q.at || var6.a(var110, var124, var139) == C_x.p.at)) {
-                  var6.b(var110, var124 - 1, var139, C_x.k.at);
+                  && (var6.a(var110, var124, var139) == Block.q.at || var6.a(var110, var124, var139) == Block.p.at)) {
+                  var6.b(var110, var124 - 1, var139, Block.k.at);
                }
 
                if (this.cavesGen) {
                   if (var124 == this.h / 2 + 1) {
-                     var6.b(var110, var124 - 1, var139, C_x.o.at);
+                     var6.b(var110, var124 - 1, var139, Block.o.at);
                   }
 
                   boolean var151 = var91.a((double)var110, (double)var139) > 64.0;
-                  if (var6.a(var110, var124 + 1, var139) == 0 && var6.a(var110, var124, var139) == C_x.i.at && var151) {
-                     var6.b(var110, var124, var139, C_x.moss.at);
+                  if (var6.a(var110, var124 + 1, var139) == 0 && var6.a(var110, var124, var139) == Block.i.at && var151) {
+                     var6.b(var110, var124, var139, Block.moss.at);
                   }
                }
 
-               if (this.oceanGen && var6.a(var110, var124, var139) == C_x.coral.at) {
+               if (this.oceanGen && var6.a(var110, var124, var139) == Block.coral.at) {
                   var6.setBlockMetadata(var110, var124, var139, this.i.nextInt(4));
                }
 
                if (this.worldGen.seasons == 3 && this.worldGen.seasonLock && !this.desertGen && !this.moonGen && !this.cavesGen) {
-                  int var152 = C_x.snowLayer.at;
+                  int var152 = Block.snowLayer.at;
                   if (this.theme == 1) {
-                     var152 = C_x.ash.at;
+                     var152 = Block.ash.at;
                   }
 
                   int var164 = var6.a(var110, var139);
-                  if (var6.a((float)var110, (float)(var164 - 1), (float)var139) || var6.a(var110, var164 - 1, var139) == C_x.z.at) {
+                  if (var6.a((float)var110, (float)(var164 - 1), (float)var139) || var6.a(var110, var164 - 1, var139) == Block.z.at) {
                      var6.a(var110, var164, var139, var152);
-                  } else if (var6.a(var110, var164 - 1, var139) == C_x.q.at || var6.a(var110, var164 - 1, var139) == C_x.p.at) {
-                     var6.a(var110, var164 - 1, var139, C_x.ice.at);
-                  } else if (var6.a(var110, var164 - 1, var139) == C_x.lilyPad.at) {
-                     var6.a(var110, var164 - 2, var139, C_x.ice.at);
+                  } else if (var6.a(var110, var164 - 1, var139) == Block.q.at || var6.a(var110, var164 - 1, var139) == Block.p.at) {
+                     var6.a(var110, var164 - 1, var139, Block.ice.at);
+                  } else if (var6.a(var110, var164 - 1, var139) == Block.lilyPad.at) {
+                     var6.a(var110, var164 - 2, var139, Block.ice.at);
                      var6.a(var110, var164 - 1, var139, 0);
                   }
                }
 
                if (this.theme == 1) {
-                  if (var6.a(var110, var124, var139) == C_x.t.at) {
-                     var6.a(var110, var124, var139, C_x.redSand.at);
+                  if (var6.a(var110, var124, var139) == Block.t.at) {
+                     var6.a(var110, var124, var139, Block.redSand.at);
                   }
 
-                  if (var6.a(var110, var124, var139) == C_x.sandStone.at) {
+                  if (var6.a(var110, var124, var139) == Block.sandStone.at) {
                      var6.setBlockMetadata(var110, var124, var139, 2);
                   }
                }
@@ -929,11 +929,11 @@ public final class C_a {
 
       if (this.cavesGen) {
          this.growCaveTrees(var6);
-         this.populateFlowersAndMushrooms(var6, C_x.mushroomRed, 50);
+         this.populateFlowersAndMushrooms(var6, Block.mushroomRed, 50);
          this.b();
-         this.populateFlowersAndMushrooms(var6, C_x.mushroomBrown, 50);
+         this.populateFlowersAndMushrooms(var6, Block.mushroomBrown, 50);
          this.b();
-         this.populateFlowersAndMushrooms(var6, C_x.mushroomGlowing, 50);
+         this.populateFlowersAndMushrooms(var6, Block.mushroomGlowing, 50);
          this.b();
 
          for (int var54 = 0; var54 < 50; var54++) {
@@ -958,7 +958,7 @@ public final class C_a {
             int var165 = this.i.nextInt(this.h - 2 * var141) + var141;
             int var170 = this.i.nextInt(this.g - 2 * var141) + var141;
             if (var6.f(var153, var165, var170) == net.minecraft.a.a.d.C_c.f) {
-               this.generateSpheres(var153, var165, var170, var141, C_x.B.at, var6);
+               this.generateSpheres(var153, var165, var170, var141, Block.B.at, var6);
             }
 
             if (var126 == 5) {
@@ -976,16 +976,16 @@ public final class C_a {
          for (int var127 = 0; var127 < var6.a; var127++) {
             for (int var142 = 0; var142 < var6.b; var142++) {
                for (int var154 = 0; var154 < var6.c; var154++) {
-                  if (var6.a(var127, var154, var142) == C_x.k.at && var6.a(var127, var154 + 1, var142) == 0) {
+                  if (var6.a(var127, var154, var142) == Block.k.at && var6.a(var127, var154 + 1, var142) == 0) {
                      if (this.theme == 4) {
-                        var6.a(var127, var154, var142, C_x.mycelium.at);
+                        var6.a(var127, var154, var142, Block.mycelium.at);
                      } else {
-                        var6.a(var127, var154, var142, C_x.j.at);
+                        var6.a(var127, var154, var142, Block.j.at);
                      }
                   }
 
-                  if (var6.a(var127, var154, var142) == C_x.packedIce.at && var6.a(var127, var154 + 1, var142) == 0) {
-                     var6.a(var127, var154, var142, C_x.snowBlock.at);
+                  if (var6.a(var127, var154, var142) == Block.packedIce.at && var6.a(var127, var154 + 1, var142) == 0) {
+                     var6.a(var127, var154, var142, Block.snowBlock.at);
                   }
                }
             }
@@ -1015,9 +1015,9 @@ public final class C_a {
          if (this.worldGen.seasons == 2 || this.worldGen.seasons == 1) {
             int var129;
             if (this.worldGen.seasons == 2) {
-               var129 = C_x.pumpkin.at;
+               var129 = Block.pumpkin.at;
             } else {
-               var129 = C_x.melon.at;
+               var129 = Block.melon.at;
             }
 
             for (int var143 = 0; var143 < var6.a; var143++) {
@@ -1055,15 +1055,15 @@ public final class C_a {
 
       if (this.oceanGen) {
          this.b();
-         this.populateFlowersAndMushrooms(var6, C_x.plantYellow, var76);
+         this.populateFlowersAndMushrooms(var6, Block.plantYellow, var76);
          this.b();
-         this.populateFlowersAndMushrooms(var6, C_x.plantRed, var76);
+         this.populateFlowersAndMushrooms(var6, Block.plantRed, var76);
          this.b();
-         this.populateFlowersAndMushrooms(var6, C_x.plantPurple, var76);
+         this.populateFlowersAndMushrooms(var6, Block.plantPurple, var76);
          this.b();
-         this.populateFlowersAndMushrooms(var6, C_x.plantBlue, var76);
+         this.populateFlowersAndMushrooms(var6, Block.plantBlue, var76);
          if (this.worldGen.seasons == 3) {
-            this.populateFlowersAndMushrooms(var6, C_x.berryBush, 50);
+            this.populateFlowersAndMushrooms(var6, Block.berryBush, 50);
          }
       }
 
@@ -1084,7 +1084,7 @@ public final class C_a {
       }
    }
 
-   private void initWorld(C_g var1, String var2) {
+   private void initWorld(World var1, String var2) {
       var1.h = System.currentTimeMillis();
       var1.g = var2;
       var1.f = this.worldGen.name;
@@ -1118,7 +1118,7 @@ public final class C_a {
       d.getMinecraft().statFileWriter.writeStat(StatList.createWorldStat, 1);
    }
 
-   private static void a(C_g var0) {
+   private static void a(World var0) {
       int var1 = var0.i;
       int var2 = var0.j;
       int var3 = var0.k;
@@ -1126,11 +1126,11 @@ public final class C_a {
       for (int var4 = var1 - 3; var4 <= var1 + 3; var4++) {
          for (int var5 = var2 - 2; var5 <= var2 + 2; var5++) {
             for (int var6 = var3 - 3; var6 <= var3 + 3; var6++) {
-               int var7 = var5 < var2 - 1 ? C_x.ae.at : 0;
+               int var7 = var5 < var2 - 1 ? Block.ae.at : 0;
                if (var4 == var1 - 3 || var6 == var3 - 3 || var4 == var1 + 3 || var6 == var3 + 3 || var5 == var2 - 2 || var5 == var2 + 2) {
-                  var7 = C_x.i.at;
+                  var7 = Block.i.at;
                   if (var5 >= var2 - 1) {
-                     var7 = C_x.m.at;
+                     var7 = Block.m.at;
                   }
                }
 
@@ -1143,11 +1143,11 @@ public final class C_a {
          }
       }
 
-      var0.b(var1 - 3 + 1, var2, var3, C_x.af.at);
-      var0.b(var1 + 3 - 1, var2, var3, C_x.af.at);
+      var0.b(var1 - 3 + 1, var2, var3, Block.af.at);
+      var0.b(var1 + 3 - 1, var2, var3, Block.af.at);
    }
 
-   public final void generateDebugHouse(C_g var1) {
+   public final void generateDebugHouse(World var1) {
       int var2 = var1.i;
       int var3 = var1.j;
       int var4 = var1.k;
@@ -1155,9 +1155,9 @@ public final class C_a {
       for (int var5 = var2 - 3; var5 <= var2 + 3; var5++) {
          for (int var6 = var3 - 2; var6 <= var3 + 2; var6++) {
             for (int var7 = var4 - 3; var7 <= var4 + 3; var7++) {
-               int var8 = var6 < var3 - 1 ? C_x.ae.at : 0;
+               int var8 = var6 < var3 - 1 ? Block.ae.at : 0;
                if (var5 == var2 - 3 || var7 == var4 - 3 || var5 == var2 + 3 || var7 == var4 + 3 || var6 == var3 - 2 || var6 == var3 + 2) {
-                  var8 = C_x.ad.at;
+                  var8 = Block.ad.at;
                }
 
                if (var7 == var4 - 3 && var5 == var2 && var6 >= var3 - 1 && var6 <= var3) {
@@ -1169,11 +1169,11 @@ public final class C_a {
          }
       }
 
-      var1.b(var2 - 3 + 1, var3, var4, C_x.af.at);
-      var1.b(var2 + 3 - 1, var3, var4, C_x.af.at);
+      var1.b(var2 - 3 + 1, var3, var4, Block.af.at);
+      var1.b(var2 + 3 - 1, var3, var4, Block.af.at);
    }
 
-   private void generateGateway(C_g var1, int var2) {
+   private void generateGateway(World var1, int var2) {
       int var3 = var1.i;
       int var4 = var1.j - 1;
       int var5 = var1.k;
@@ -1181,27 +1181,27 @@ public final class C_a {
       for (int var6 = -1; var6 <= 2; var6++) {
          for (int var7 = -1; var7 <= 3; var7++) {
             boolean var8 = var6 == -1 || var6 == 2 || var7 == -1 || var7 == 3;
-            var1.a(var3 + var6, var4 + var7, var5, var8 ? C_x.ae.at : 0);
+            var1.a(var3 + var6, var4 + var7, var5, var8 ? Block.ae.at : 0);
             var1.a(var3 + var6, var4 + var7 + 1, var5 - 1, 0);
             var1.a(var3 + var6, var4 + var7 + 1, var5 + 1, 0);
             if (var1.a(var3 + var6, var4 - 1, var5 + 1) == 0) {
-               var1.a(var3 + var6, var4 - 1, var5 + 1, C_x.ae.at);
+               var1.a(var3 + var6, var4 - 1, var5 + 1, Block.ae.at);
             }
 
             if (var1.a(var3 + var6, var4 - 1, var5 - 1) == 0) {
-               var1.a(var3 + var6, var4 - 1, var5 - 1, C_x.ae.at);
+               var1.a(var3 + var6, var4 - 1, var5 - 1, Block.ae.at);
             }
          }
       }
 
       for (int var9 = 0; var9 < 2; var9++) {
          for (int var10 = 0; var10 < 3; var10++) {
-            var1.setBlockAndMetadata(var3 + var9, var4 + var10, var5, C_x.portal.at, var2);
+            var1.setBlockAndMetadata(var3 + var9, var4 + var10, var5, Block.portal.at, var2);
          }
       }
    }
 
-   private void b(C_g var1) {
+   private void b(World var1) {
       for (int var2 = 0; var2 < this.f; var2++) {
          this.a((float)var2 * 100.0F / (float)(this.f - 1));
 
@@ -1212,23 +1212,23 @@ public final class C_a {
                   var5 = true;
                }
 
-               if (var1.a(var2, var3, var4) == C_x.k.at && !var1.f(var2, var3 + 1, var4).b() && var5) {
+               if (var1.a(var2, var3, var4) == Block.k.at && !var1.f(var2, var3 + 1, var4).b() && var5) {
                   if (this.theme == 4) {
-                     var1.a(var2, var3, var4, C_x.mycelium.at);
+                     var1.a(var2, var3, var4, Block.mycelium.at);
                   } else {
-                     var1.a(var2, var3, var4, C_x.j.at);
+                     var1.a(var2, var3, var4, Block.j.at);
                   }
                }
 
-               if (var1.a(var2, var3, var4) == C_x.packedIce.at && !var1.f(var2, var3 + 1, var4).b()) {
-                  var1.a(var2, var3, var4, C_x.snowBlock.at);
+               if (var1.a(var2, var3, var4) == Block.packedIce.at && !var1.f(var2, var3 + 1, var4).b()) {
+                  var1.a(var2, var3, var4, Block.snowBlock.at);
                }
             }
          }
       }
    }
 
-   private void c(C_g var1) {
+   private void c(World var1) {
       int var2 = this.f * this.g * this.h / 80000;
       C_c var3 = new C_c(false);
       C_d var4 = new C_d();
@@ -1294,7 +1294,7 @@ public final class C_a {
       }
    }
 
-   private void growCaveTrees(C_g var1) {
+   private void growCaveTrees(World var1) {
       int var2 = this.f * this.g * this.h / 256;
 
       for (int var3 = 0; var3 < var2; var3++) {
@@ -1323,7 +1323,7 @@ public final class C_a {
       }
    }
 
-   private void growPalmTrees(C_g var1) {
+   private void growPalmTrees(World var1) {
       int var2 = this.f * this.g * this.h / 80000;
 
       for (int var3 = 0; var3 < var2; var3++) {
@@ -1352,7 +1352,7 @@ public final class C_a {
       }
    }
 
-   private void growMushrooms(C_g var1) {
+   private void growMushrooms(World var1) {
       int var2 = this.f * this.g * this.h / 80000;
 
       for (int var3 = 0; var3 < var2; var3++) {
@@ -1382,7 +1382,7 @@ public final class C_a {
       }
    }
 
-   private void growFlowers(C_g var1) {
+   private void growFlowers(World var1) {
       int var2 = this.f * this.g * this.h / 80000;
 
       for (int var3 = 0; var3 < var2; var3++) {
@@ -1421,7 +1421,7 @@ public final class C_a {
       }
    }
 
-   private void growCorals(C_g var1) {
+   private void growCorals(World var1) {
       int var2 = this.f * this.g * this.h / 80000;
 
       for (int var3 = 0; var3 < var2; var3++) {
@@ -1450,7 +1450,7 @@ public final class C_a {
       }
    }
 
-   private void growSpikes(C_g var1) {
+   private void growSpikes(World var1) {
       int var2 = this.f * this.g * this.h / 80000;
       int var3 = 100;
       if (this.a || this.marshGen) {
@@ -1487,7 +1487,7 @@ public final class C_a {
       }
    }
 
-   private void growCacti(C_g var1) {
+   private void growCacti(World var1) {
       int var2 = this.f * this.g * this.h / 80000;
 
       for (int var3 = 0; var3 < var2; var3++) {
@@ -1516,7 +1516,7 @@ public final class C_a {
       }
    }
 
-   private void growSeaweed(C_g var1) {
+   private void growSeaweed(World var1) {
       int var2 = this.f * this.g * this.h / 8000;
 
       for (int var3 = 0; var3 < var2; var3++) {
@@ -1545,7 +1545,7 @@ public final class C_a {
       }
    }
 
-   private void growCoralFans(C_g var1) {
+   private void growCoralFans(World var1) {
       int var2 = this.f * this.g * this.h / 8000;
 
       for (int var3 = 0; var3 < var2; var3++) {
@@ -1574,7 +1574,7 @@ public final class C_a {
       }
    }
 
-   private void growStalactites(C_g var1) {
+   private void growStalactites(World var1) {
       int var2 = this.f * this.g * this.h / 80000;
       int var3 = this.i.nextInt(2);
 
@@ -1614,7 +1614,7 @@ public final class C_a {
       }
    }
 
-   private void populateFlowersAndMushrooms(C_g var1, BlockFlower var2, int var3) {
+   private void populateFlowersAndMushrooms(World var1, BlockFlower var2, int var3) {
       var3 = (int)((long)this.f * (long)this.g * (long)this.h * (long)var3 / 1600000L);
 
       for (int var4 = 0; var4 < var3; var4++) {
@@ -1654,7 +1654,7 @@ public final class C_a {
       }
    }
 
-   private void populateDeadBush(C_g var1) {
+   private void populateDeadBush(World var1) {
       for (int var2 = 0; var2 < 500; var2++) {
          int var3 = this.i.nextInt(this.f);
          int var4 = this.i.nextInt(this.h);
@@ -1671,14 +1671,14 @@ public final class C_a {
                && var5 < this.g
                && var4 < this.h
                && var1.a(var3, var4, var5) == 0
-               && C_x.deadBush.canBlockStay(var1, var3, var4, var5)) {
-               var1.b(var3, var4, var5, C_x.deadBush.at);
+               && Block.deadBush.canBlockStay(var1, var3, var4, var5)) {
+               var1.b(var3, var4, var5, Block.deadBush.at);
             }
          }
       }
    }
 
-   public boolean populateReeds(C_g var1, Random var2, int var3, int var4, int var5) {
+   public boolean populateReeds(World var1, Random var2, int var3, int var4, int var5) {
       for (int var6 = 0; var6 < 20; var6++) {
          int var7 = var3 + var2.nextInt(4) - var2.nextInt(4);
          int var8 = var4;
@@ -1693,8 +1693,8 @@ public final class C_a {
             int var10 = 2 + var2.nextInt(var2.nextInt(3) + 1);
 
             for (int var11 = 0; var11 < var10; var11++) {
-               if (C_x.reeds.canBlockStay(var1, var7, var8 + var11, var9)) {
-                  var1.a(var7, var8 + var11, var9, C_x.reeds.at);
+               if (Block.reeds.canBlockStay(var1, var7, var8 + var11, var9)) {
+                  var1.a(var7, var8 + var11, var9, Block.reeds.at);
                }
             }
          }
@@ -1703,17 +1703,17 @@ public final class C_a {
       return true;
    }
 
-   public boolean populateVines(C_g var1, Random var2, int var3, int var4, int var5) {
+   public boolean populateVines(World var1, Random var2, int var3, int var4, int var5) {
       for (int var6 = 0; var6 < 20; var6++) {
          int var7 = var3 + var2.nextInt(4) - var2.nextInt(4);
          int var8 = var4;
          int var9 = var5 + var2.nextInt(4) - var2.nextInt(4);
          if (var1.f(var7, var4, var9) == net.minecraft.a.a.d.C_c.a
             && (
-               var1.a(var7 + 1, var4, var9) == C_x.moss.at
-                  || var1.a(var7 - 1, var4, var9) == C_x.moss.at
-                  || var1.a(var7, var4, var9 + 1) == C_x.moss.at
-                  || var1.a(var7, var4, var9 - 1) == C_x.moss.at
+               var1.a(var7 + 1, var4, var9) == Block.moss.at
+                  || var1.a(var7 - 1, var4, var9) == Block.moss.at
+                  || var1.a(var7, var4, var9 + 1) == Block.moss.at
+                  || var1.a(var7, var4, var9 - 1) == Block.moss.at
             )) {
             int var10 = 2 + var2.nextInt(var2.nextInt(14) + 1);
             byte var11 = 0;
@@ -1729,8 +1729,8 @@ public final class C_a {
 
             for (int var12 = 0; var12 < var10; var12++) {
                if (var1.a(var7, var8 - var12, var9) == 0) {
-                  var1.a(var7, var8 - var12, var9, C_x.vine.at);
-                  C_x.vine.g(var1, var7, var8 - var12, var9, var11);
+                  var1.a(var7, var8 - var12, var9, Block.vine.at);
+                  Block.vine.g(var1, var7, var8 - var12, var9, var11);
                }
             }
          }
@@ -1739,34 +1739,34 @@ public final class C_a {
       return true;
    }
 
-   public boolean populatePumpkins(C_g var1, Random var2, int var3, int var4, int var5, int var6) {
+   public boolean populatePumpkins(World var1, Random var2, int var3, int var4, int var5, int var6) {
       for (int var7 = 0; var7 < 64; var7++) {
          int var8 = var3 + var2.nextInt(8) - var2.nextInt(8);
          int var9 = var4 + var2.nextInt(4) - var2.nextInt(4);
          int var10 = var5 + var2.nextInt(8) - var2.nextInt(8);
          if (var1.f(var8, var9, var10) == net.minecraft.a.a.d.C_c.a
-            && var1.a(var8, var9 - 1, var10) == C_x.j.at
-            && C_x.pumpkin.canExist(var1, var8, var9, var10)) {
+            && var1.a(var8, var9 - 1, var10) == Block.j.at
+            && Block.pumpkin.canExist(var1, var8, var9, var10)) {
             var1.a(var8, var9, var10, var6);
-            var1.a(var8, var9 - 1, var10, C_x.k.at);
+            var1.a(var8, var9 - 1, var10, Block.k.at);
          }
       }
 
       return true;
    }
 
-   public boolean populateGrass(C_g var1, Random var2, int var3, int var4, int var5, int var6) {
+   public boolean populateGrass(World var1, Random var2, int var3, int var4, int var5, int var6) {
       int var7;
       do {
          var7 = var1.a(var3, var4, var5);
          var4--;
-      } while ((var7 == 0 || var7 == C_x.z.at) && var4 > 0);
+      } while ((var7 == 0 || var7 == Block.z.at) && var4 > 0);
 
       for (int var8 = 0; var8 < var1.c; var8++) {
          int var9 = var3 + var2.nextInt(8) - var2.nextInt(8);
          int var10 = var4 + var2.nextInt(4) - var2.nextInt(4);
          int var11 = var5 + var2.nextInt(8) - var2.nextInt(8);
-         if (!var1.isSolidTile(var9, var10, var11) && C_x.c[var6].canBlockStay(var1, var9, var10, var11)) {
+         if (!var1.isSolidTile(var9, var10, var11) && Block.c[var6].canBlockStay(var1, var9, var10, var11)) {
             var1.a(var9, var10, var11, var6);
          }
       }
@@ -1820,7 +1820,7 @@ public final class C_a {
                            && var22 < this.h - 1
                            && var23 < this.g - 1) {
                            int var27 = (var22 * this.g + var23) * this.f + var21;
-                           if (this.j[var27] == C_x.i.at) {
+                           if (this.j[var27] == Block.i.at) {
                               this.j[var27] = var6;
                               var5++;
                            }
@@ -1878,7 +1878,7 @@ public final class C_a {
                         && var21 < this.h - 1
                         && var22 < this.g - 1) {
                         int var26 = (var21 * this.g + var22) * this.f + var20;
-                        if (this.j[var26] == C_x.i.at) {
+                        if (this.j[var26] == Block.i.at) {
                            this.j[var26] = var5;
                         }
                      }
@@ -1893,20 +1893,20 @@ public final class C_a {
       return var1 * var1 + var2 * var2 + var3 * var3 <= var4 * var4;
    }
 
-   private boolean generateSpheres(int var1, int var2, int var3, int var4, int var5, C_g var6) {
+   private boolean generateSpheres(int var1, int var2, int var3, int var4, int var5, World var6) {
       byte var7 = (byte)var5;
       byte var8 = (byte)this.i.nextInt(5);
-      byte var9 = (byte)C_x.k.at;
+      byte var9 = (byte)Block.k.at;
       if (var8 == 1) {
-         var9 = (byte)C_x.t.at;
+         var9 = (byte)Block.t.at;
       }
 
       if (var8 == 1 && this.theme == 1) {
-         var9 = (byte)C_x.redSand.at;
+         var9 = (byte)Block.redSand.at;
       }
 
       if (var8 == 2) {
-         var9 = (byte)C_x.packedIce.at;
+         var9 = (byte)Block.packedIce.at;
       }
 
       for (int var10 = 0; var10 <= var4; var10++) {
@@ -1980,7 +1980,7 @@ public final class C_a {
                   }
 
                   if (var29 < var27) {
-                     var38 = C_x.i.at;
+                     var38 = Block.i.at;
                   }
 
                   if (var38 != 0) {
@@ -1991,18 +1991,18 @@ public final class C_a {
          }
       }
 
-      this.a(C_x.x.at, 1000, 10, (var41 << 2) / 5);
-      this.a(C_x.w.at, 800, 8, var41 * 3 / 5);
-      this.a(C_x.v.at, 500, 6, (var41 << 1) / 5);
-      this.a(C_x.al.at, 500, 2, var41 / 5);
-      this.a(C_x.oreEmerald.at, 4000, 1, var41 / 5);
+      this.a(Block.x.at, 1000, 10, (var41 << 2) / 5);
+      this.a(Block.w.at, 800, 8, var41 * 3 / 5);
+      this.a(Block.v.at, 500, 6, (var41 << 1) / 5);
+      this.a(Block.al.at, 500, 2, var41 / 5);
+      this.a(Block.oreEmerald.at, 4000, 1, var41 / 5);
       return true;
    }
 
    private void a() {
-      int var1 = C_x.q.at;
+      int var1 = Block.q.at;
       if (this.theme == 1) {
-         var1 = C_x.s.at;
+         var1 = Block.s.at;
       }
 
       int var2 = this.f * this.g * this.h / 1000;
@@ -2061,7 +2061,7 @@ public final class C_a {
          if (this.j[(var5 * this.g + var6) * this.f + var4] == 0) {
             long var7;
             if ((var7 = this.a(var4, var5, var6, 0, 255)) > 0L && var7 < 640L) {
-               this.a(var4, var5, var6, 255, C_x.s.at);
+               this.a(var4, var5, var6, 255, Block.s.at);
             } else {
                this.a(var4, var5, var6, 255, 0);
             }
@@ -2162,8 +2162,8 @@ public final class C_a {
 
             if (var17 > 0) {
                byte var26 = this.j[var2 - var1];
-               if ((var6 == C_x.r.at || var6 == C_x.s.at) && (var26 == C_x.p.at || var26 == C_x.q.at)) {
-                  this.j[var2 - var1] = (byte)C_x.ae.at;
+               if ((var6 == Block.r.at || var6 == Block.s.at) && (var26 == Block.p.at || var26 == Block.q.at)) {
+                  this.j[var2 - var1] = (byte)Block.ae.at;
                }
 
                boolean var31;

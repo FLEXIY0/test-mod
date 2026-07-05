@@ -1,7 +1,7 @@
 package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -34,14 +34,14 @@ public class C_b extends C_a {
       {0.3F, 0.2F, 0.1F}
    };
 
-   public C_b(net.minecraft.a.a.C_g var1) {
+   public C_b(net.minecraft.a.a.World var1) {
       super(var1);
       this.V = "/mob/sheep.png";
       this.a(0.9F, 1.3F);
       this.setFleeceColor(this.G.nextInt(3));
    }
 
-   public C_b(net.minecraft.a.a.C_g var1, float var2, float var3, float var4) {
+   public C_b(net.minecraft.a.a.World var1, float var2, float var3, float var4) {
       super(var1);
       this.V = "/mob/sheep.png";
       this.a(0.9F, 1.3F);
@@ -69,7 +69,7 @@ public class C_b extends C_a {
 
          for (int var8 = 0; var8 < var4; var8++) {
             net.minecraft.a.c.c.C_b var6;
-            net.minecraft.a.c.c.C_b var7 = var6 = this.entityDropItemAndMetadata(C_x.cloth.at, 1, this.getFleeceColor(), 1.0F);
+            net.minecraft.a.c.c.C_b var7 = var6 = this.entityDropItemAndMetadata(Block.cloth.at, 1, this.getFleeceColor(), 1.0F);
             var7.l = var7.l + this.G.nextFloat() * 0.05F;
             var6.k = var6.k + (this.G.nextFloat() - this.G.nextFloat()) * 0.1F;
             var6.m = var6.m + (this.G.nextFloat() - this.G.nextFloat()) * 0.1F;
@@ -94,11 +94,11 @@ public class C_b extends C_a {
       int var3 = (int)(this.h + var1);
       int var4 = (int)(this.i - 1.0F);
       int var5 = (int)(this.j + var2);
-      C_x var6 = C_x.c[this.d.a(var3, var4, var5)];
+      Block var6 = Block.c[this.d.a(var3, var4, var5)];
       if (this.getSheared()) {
          if (this.grazing) {
             this.aj = this.ak = 0.0F;
-            if (this.d.a(var3, var4, var5) == C_x.j.at && (this.d.a(var3, var4, var5) != C_x.j.at || this.d.e(var3, var4, var5) != 1)) {
+            if (this.d.a(var3, var4, var5) == Block.j.at && (this.d.a(var3, var4, var5) != Block.j.at || this.d.e(var3, var4, var5) != 1)) {
                if (++this.grazingTime == 60) {
                   if (var6 != null) {
                      this.d.a(this, var6.getStepSound(0).a(), (var6.getStepSound(0).a + 1.0F) / 2.0F, var6.getStepSound(0).b * 0.8F);
@@ -106,7 +106,7 @@ public class C_b extends C_a {
 
                   this.d.mc.g.a(var3, var4, var5);
                   if (!this.d.multiplayerWorld) {
-                     this.d.a(var3, var4, var5, C_x.k.at);
+                     this.d.a(var3, var4, var5, Block.k.at);
                   }
 
                   if (this.G.nextInt(5) == 0) {
@@ -119,7 +119,7 @@ public class C_b extends C_a {
                this.grazing = false;
                this.o = 0.0F;
             }
-         } else if (this.d.a(var3, var4, var5) == C_x.j.at && this.d.e(var3, var4, var5) == 0 && this.G.nextInt(100) == 0) {
+         } else if (this.d.a(var3, var4, var5) == Block.j.at && this.d.e(var3, var4, var5) == 0 && this.G.nextInt(100) == 0) {
             this.grazing = true;
             this.grazingTime = 0;
          }

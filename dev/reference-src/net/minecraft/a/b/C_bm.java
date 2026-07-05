@@ -26,7 +26,7 @@ extends Item {
     }
 
     @Override
-    public void onPlayerStoppedUsing(ItemStack itemStack, net.minecraft.a.a.C_g c_g, EntityPlayer entityPlayer, int n) {
+    public void onPlayerStoppedUsing(ItemStack itemStack, net.minecraft.a.a.World c_g, EntityPlayer entityPlayer, int n) {
         int n2 = this.getMaxItemUseDuration(itemStack) - n;
         float f = (float)n2 / 20.0f;
         if ((double)(f = (f * f + f * 2.0f) / 3.0f) < 0.1) {
@@ -56,7 +56,7 @@ extends Item {
     }
 
     @Override
-    public ItemStack a(ItemStack itemStack, net.minecraft.a.a.C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, net.minecraft.a.a.World c_g, EntityPlayer entityPlayer) {
         if (!c_g.multiplayerWorld) {
             entityPlayer.setItemInUse(itemStack, this.getMaxItemUseDuration(itemStack));
         }
@@ -64,13 +64,13 @@ extends Item {
     }
 
     @Override
-    public final void hitEntity(EntityPlayer entityPlayer, ItemStack itemStack, net.minecraft.a.a.C_g c_g) {
+    public final void hitEntity(EntityPlayer entityPlayer, ItemStack itemStack, net.minecraft.a.a.World c_g) {
         entityPlayer.damageItem(1, itemStack, c_g);
         entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
     }
 
     @Override
-    public final void onBlockDestroyed(EntityPlayer entityPlayer, ItemStack itemStack, net.minecraft.a.a.C_g c_g) {
+    public final void onBlockDestroyed(EntityPlayer entityPlayer, ItemStack itemStack, net.minecraft.a.a.World c_g) {
         entityPlayer.damageItem(2, itemStack, c_g);
         entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
     }

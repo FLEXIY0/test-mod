@@ -37,12 +37,12 @@ public class C_f {
         classToIDMapping.put(clazz, n);
     }
 
-    public static C_b createEntityInWorld(String string, net.minecraft.a.a.C_g c_g) {
+    public static C_b createEntityInWorld(String string, net.minecraft.a.a.World c_g) {
         C_b c_b = null;
         try {
             Class<? extends C_b> clazz = stringToClassMapping.get(string);
             if (clazz != null) {
-                c_b = clazz.getConstructor(net.minecraft.a.a.C_g.class).newInstance(c_g);
+                c_b = clazz.getConstructor(net.minecraft.a.a.World.class).newInstance(c_g);
             }
         }
         catch (Exception exception) {
@@ -51,12 +51,12 @@ public class C_f {
         return c_b;
     }
 
-    public static C_b createEntityFromNBT(NBTTagCompound nBTTagCompound, net.minecraft.a.a.C_g c_g) {
+    public static C_b createEntityFromNBT(NBTTagCompound nBTTagCompound, net.minecraft.a.a.World c_g) {
         C_b c_b = null;
         try {
             Class<? extends C_b> clazz = stringToClassMapping.get(nBTTagCompound.g("id"));
             if (clazz != null) {
-                c_b = clazz.getConstructor(net.minecraft.a.a.C_g.class).newInstance(c_g);
+                c_b = clazz.getConstructor(net.minecraft.a.a.World.class).newInstance(c_g);
             }
         }
         catch (Exception exception) {
@@ -70,12 +70,12 @@ public class C_f {
         return c_b;
     }
 
-    public static C_b createEntity(int n, net.minecraft.a.a.C_g c_g) {
+    public static C_b createEntity(int n, net.minecraft.a.a.World c_g) {
         C_b c_b = null;
         try {
             Class<? extends C_b> clazz = IDtoClassMapping.get(n);
             if (clazz != null) {
-                c_b = clazz.getConstructor(net.minecraft.a.a.C_g.class).newInstance(c_g);
+                c_b = clazz.getConstructor(net.minecraft.a.a.World.class).newInstance(c_g);
             }
         }
         catch (Exception exception) {

@@ -4,9 +4,9 @@
 package net.minecraft.game.level.block.machines;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_d;
 import net.minecraft.a.a.b.a.C_j;
 import net.minecraft.a.a.d.C_c;
@@ -22,17 +22,17 @@ extends BlockContainer {
     }
 
     @Override
-    public C_a getBlockEntity() {
+    public TileEntity getBlockEntity() {
         return null;
     }
 
     @Override
-    public void d(C_g c_g, int n, int n2, int n3) {
+    public void d(World c_g, int n, int n2, int n3) {
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3) {
-        C_a c_a = c_g.j(n, n2, n3);
+    public void b(World c_g, int n, int n2, int n3) {
+        TileEntity c_a = c_g.j(n, n2, n3);
         if (c_a != null && c_a instanceof C_j) {
             ((C_j)c_a).clearPistonTileEntity();
         } else {
@@ -41,7 +41,7 @@ extends BlockContainer {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
+    public boolean a(World c_g, int n, int n2, int n3) {
         return false;
     }
 
@@ -61,7 +61,7 @@ extends BlockContainer {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         if (!c_g.multiplayerWorld && c_g.j(n, n2, n3) == null) {
             c_g.b(n, n2, n3, 0);
             return true;
@@ -75,26 +75,26 @@ extends BlockContainer {
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, int n4, float f) {
+    public void a(World c_g, int n, int n2, int n3, int n4, float f) {
         C_j c_j;
         if (!c_g.multiplayerWorld && (c_j = this.getTileEntityAtLocation(c_g, n, n2, n3)) != null) {
-            C_x.c[c_j.getStoredBlockID()].f(c_g, n, n2, n3, c_j.getBlockMetadata());
+            Block.c[c_j.getStoredBlockID()].f(c_g, n, n2, n3, c_j.getBlockMetadata());
         }
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.multiplayerWorld && c_g.j(n, n2, n3) == null) {
             c_g.b(n, n2, n3, 0);
         }
     }
 
-    public static C_a getTileEntity(int n, int n2, int n3, boolean bl, boolean bl2) {
+    public static TileEntity getTileEntity(int n, int n2, int n3, boolean bl, boolean bl2) {
         return new C_j(n, n2, n3, bl, bl2);
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         C_j c_j = this.getTileEntityAtLocation(c_g, n, n2, n3);
         if (c_j == null) {
             return null;
@@ -107,10 +107,10 @@ extends BlockContainer {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         C_j c_j = this.getTileEntityAtLocation(c_g, n, n2, n3);
         if (c_j != null) {
-            C_x c_x = C_x.c[c_j.getStoredBlockID()];
+            Block c_x = Block.c[c_j.getStoredBlockID()];
             if (c_x == null || c_x == this) {
                 return;
             }
@@ -129,9 +129,9 @@ extends BlockContainer {
         }
     }
 
-    public C_b getAxisAlignedBB(C_g c_g, int n, int n2, int n3, int n4, float f, int n5) {
+    public C_b getAxisAlignedBB(World c_g, int n, int n2, int n3, int n4, float f, int n5) {
         if (n4 != 0 && n4 != this.at) {
-            C_b c_b = C_x.c[n4].getCollisionBoundingBoxFromPool(c_g, n, n2, n3);
+            C_b c_b = Block.c[n4].getCollisionBoundingBoxFromPool(c_g, n, n2, n3);
             if (c_b == null) {
                 return null;
             }
@@ -155,8 +155,8 @@ extends BlockContainer {
         return null;
     }
 
-    private C_j getTileEntityAtLocation(C_g c_g, int n, int n2, int n3) {
-        C_a c_a = c_g.j(n, n2, n3);
+    private C_j getTileEntityAtLocation(World c_g, int n, int n2, int n3) {
+        TileEntity c_a = c_g.j(n, n2, n3);
         return c_a != null && c_a instanceof C_j ? (C_j)c_a : null;
     }
 }

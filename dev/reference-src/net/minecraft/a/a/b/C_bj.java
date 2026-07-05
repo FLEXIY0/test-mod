@@ -3,11 +3,11 @@
  */
 package net.minecraft.a.a.b;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public class C_bj
-extends C_x {
+extends Block {
     private static String[] NAME_LIST = new String[]{"Oak", "Birch", "Palm", "Pine"};
 
     protected C_bj(int n, int n2, C_c c_c) {

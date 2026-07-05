@@ -5,7 +5,7 @@ package net.minecraft.network;
 
 import java.util.HashSet;
 import java.util.Set;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.C_b;
 import net.minecraft.client.d;
 import net.minecraft.network.NetClientHandler;
@@ -14,7 +14,7 @@ import net.minecraft.network.packet.Packet255KickDisconnect;
 import util.C_d;
 
 public class WorldClient
-extends C_g {
+extends World {
     private NetClientHandler sendQueue;
     private C_d entityHashSet = new C_d();
     private Set<C_b> entityList = new HashSet<C_b>();

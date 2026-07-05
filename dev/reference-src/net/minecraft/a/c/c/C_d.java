@@ -5,7 +5,7 @@ package net.minecraft.a.c.c;
 
 import com.a.a.NBTTagCompound;
 import java.util.List;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
@@ -41,17 +41,17 @@ extends net.minecraft.a.c.C_b {
     private Item[] lootList = new Item[]{Item.leather, Item.G, Item.bone, Item.rottenFlesh, Item.z, Item.fishFin};
     private boolean bait = false;
 
-    public C_d(C_g c_g) {
+    public C_d(World c_g) {
         super(c_g);
         this.a(0.25f, 0.25f);
     }
 
-    public C_d(C_g c_g, float f, float f2, float f3) {
+    public C_d(World c_g, float f, float f2, float f3) {
         this(c_g);
         this.b(f, f2, f3);
     }
 
-    public C_d(C_g c_g, EntityPlayer entityPlayer) {
+    public C_d(World c_g, EntityPlayer entityPlayer) {
         super(c_g);
         this.angler = entityPlayer;
         this.angler.fishEntity = this;
@@ -69,7 +69,7 @@ extends net.minecraft.a.c.C_b {
         this.setMotionAndAngles(this.k, this.l, this.m, 1.5f, 1.0f);
     }
 
-    public C_d(C_g c_g, EntityPlayer entityPlayer, boolean bl) {
+    public C_d(World c_g, EntityPlayer entityPlayer, boolean bl) {
         this(c_g, entityPlayer);
         this.bait = bl;
     }

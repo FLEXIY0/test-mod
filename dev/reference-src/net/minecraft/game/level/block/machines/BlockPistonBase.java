@@ -5,9 +5,9 @@ package net.minecraft.game.level.block.machines;
 
 import java.util.ArrayList;
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_d;
 import net.minecraft.a.a.b.a.C_j;
 import net.minecraft.a.a.d.C_c;
@@ -19,7 +19,7 @@ import net.minecraft.game.level.block.machines.BlockPistonMoving;
 import util.MathHelper;
 
 public class BlockPistonBase
-extends C_x {
+extends Block {
     private boolean isSticky;
     private boolean editing;
 
@@ -64,17 +64,17 @@ extends C_x {
 
     @Override
     public int a(int n, Random random) {
-        if (this.at == C_x.pulleyBaseActive.at) {
-            return C_x.pulleyBase.at;
+        if (this.at == Block.pulleyBaseActive.at) {
+            return Block.pulleyBase.at;
         }
-        if (this.at == C_x.pulleyStickyBaseActive.at) {
-            return C_x.pulleyStickyBase.at;
+        if (this.at == Block.pulleyStickyBaseActive.at) {
+            return Block.pulleyStickyBase.at;
         }
         return this.at;
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    public boolean a(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         byte by = c_g.e(n, n2, n3);
         int n4 = BlockPistonBase.getOrientation(by);
         boolean bl = this.isIndirectlyPowered(c_g, n, n2, n3, n4);
@@ -82,15 +82,15 @@ extends C_x {
             if (by != 7) {
                 if (!BlockPistonBase.isExtended(by)) {
                     if (BlockPistonBase.canExtend(c_g, n, n2, n3, n4)) {
-                        int n5 = C_x.pulleyBase.at;
-                        n5 = this.at == n5 ? C_x.pulleyBaseActive.at : (this.at == C_x.pulleyBaseActive.at ? C_x.pulleyBase.at : C_x.pulleyStickyBaseActive.at);
+                        int n5 = Block.pulleyBase.at;
+                        n5 = this.at == n5 ? Block.pulleyBaseActive.at : (this.at == Block.pulleyBaseActive.at ? Block.pulleyBase.at : Block.pulleyStickyBaseActive.at);
                         c_g.setBlockAndMetadata(n, n2, n3, n5, n4 | 8);
                         c_g.powerBlock(n, n2, n3, 0, n4);
                         entityPlayer.addStat(StatList.pistonUse, 1);
                     }
                 } else if (BlockPistonBase.isExtended(by)) {
-                    int n6 = C_x.pulleyBaseActive.at;
-                    n6 = this.at == n6 ? C_x.pulleyBase.at : (this.at == C_x.pulleyBase.at ? C_x.pulleyBaseActive.at : C_x.pulleyStickyBase.at);
+                    int n6 = Block.pulleyBaseActive.at;
+                    n6 = this.at == n6 ? Block.pulleyBase.at : (this.at == Block.pulleyBase.at ? Block.pulleyBaseActive.at : Block.pulleyStickyBase.at);
                     c_g.setBlockAndMetadata(n, n2, n3, n6, n4);
                     c_g.powerBlock(n, n2, n3, 1, n4);
                     entityPlayer.addStat(StatList.pistonUse, 1);
@@ -102,14 +102,14 @@ extends C_x {
     }
 
     @Override
-    public void onBlockPlacedByPlayer(C_g c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
+    public void onBlockPlacedByPlayer(World c_g, EntityPlayer entityPlayer, int n, int n2, int n3, int n4) {
         int n5 = BlockPistonBase.determineOrientation(c_g, n, n2, n3, entityPlayer);
         c_g.setBlockMetadataWithNotify(n, n2, n3, n5);
         this.updatePistonState(c_g, n, n2, n3);
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         if (this.editing) {
             this.updatePistonStateReverse(c_g, n, n2, n3);
         } else {
@@ -117,7 +117,7 @@ extends C_x {
         }
     }
 
-    private void updatePistonState(C_g c_g, int n, int n2, int n3) {
+    private void updatePistonState(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         int n4 = BlockPistonBase.getOrientation(by);
         boolean bl = this.isIndirectlyPowered(c_g, n, n2, n3, n4);
@@ -134,7 +134,7 @@ extends C_x {
         }
     }
 
-    private void updatePistonStateReverse(C_g c_g, int n, int n2, int n3) {
+    private void updatePistonStateReverse(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         int n4 = BlockPistonBase.getOrientation(by);
         boolean bl = c_g.isBlockIndirectlyGettingPowered(n, n2, n3);
@@ -151,12 +151,12 @@ extends C_x {
         }
     }
 
-    private boolean isIndirectlyPowered(C_g c_g, int n, int n2, int n3, int n4) {
+    private boolean isIndirectlyPowered(World c_g, int n, int n2, int n3, int n4) {
         return n4 != 0 && c_g.isBlockIndirectlyProvidingPowerTo(n, n2 - 1, n3, 0) ? true : (n4 != 1 && c_g.isBlockIndirectlyProvidingPowerTo(n, n2 + 1, n3, 1) ? true : (n4 != 2 && c_g.isBlockIndirectlyProvidingPowerTo(n, n2, n3 - 1, 2) ? true : (n4 != 3 && c_g.isBlockIndirectlyProvidingPowerTo(n, n2, n3 + 1, 3) ? true : (n4 != 5 && c_g.isBlockIndirectlyProvidingPowerTo(n + 1, n2, n3, 5) ? true : (n4 != 4 && c_g.isBlockIndirectlyProvidingPowerTo(n - 1, n2, n3, 4) ? true : (c_g.isBlockIndirectlyProvidingPowerTo(n, n2, n3, 0) ? true : (c_g.isBlockIndirectlyProvidingPowerTo(n, n2 + 2, n3, 1) ? true : (c_g.isBlockIndirectlyProvidingPowerTo(n, n2 + 1, n3 - 1, 2) ? true : (c_g.isBlockIndirectlyProvidingPowerTo(n, n2 + 1, n3 + 1, 3) ? true : (c_g.isBlockIndirectlyProvidingPowerTo(n - 1, n2 + 1, n3, 4) ? true : c_g.isBlockIndirectlyProvidingPowerTo(n + 1, n2 + 1, n3, 5)))))))))));
     }
 
     @Override
-    public void powerBlock(C_g c_g, int n, int n2, int n3, int n4, int n5) {
+    public void powerBlock(World c_g, int n, int n2, int n3, int n4, int n5) {
         if (n4 == 0) {
             if (this.tryExtend(c_g, n, n2, n3, n5)) {
                 c_g.setBlockMetadataWithNotify(n, n2, n3, n5 | 8);
@@ -165,29 +165,29 @@ extends C_x {
                 c_g.setBlockMetadata(n, n2, n3, n5);
             }
         } else if (n4 == 1) {
-            C_a c_a = c_g.j(n + C_d.offsetsXForSide[n5], n2 + C_d.offsetsYForSide[n5], n3 + C_d.offsetsZForSide[n5]);
+            TileEntity c_a = c_g.j(n + C_d.offsetsXForSide[n5], n2 + C_d.offsetsYForSide[n5], n3 + C_d.offsetsZForSide[n5]);
             if (c_a != null && c_a instanceof C_j) {
                 ((C_j)c_a).clearPistonTileEntity();
             }
-            c_g.setBlockAndMetadata(n, n2, n3, C_x.pulleyMoving.at, n5);
+            c_g.setBlockAndMetadata(n, n2, n3, Block.pulleyMoving.at, n5);
             c_g.a(n, n2, n3, BlockPistonMoving.getTileEntity(this.at, n5, n5, false, true));
             if (this.isSticky) {
                 C_j c_j;
-                C_a c_a2;
+                TileEntity c_a2;
                 int n6 = n + C_d.offsetsXForSide[n5] * 2;
                 int n7 = n2 + C_d.offsetsYForSide[n5] * 2;
                 int n8 = n3 + C_d.offsetsZForSide[n5] * 2;
                 int n9 = c_g.a(n6, n7, n8);
                 int n10 = c_g.e(n6, n7, n8);
                 boolean bl = false;
-                if (n9 == C_x.pulleyMoving.at && (c_a2 = c_g.j(n6, n7, n8)) != null && c_a2 instanceof C_j && (c_j = (C_j)c_a2).getPistonOrientation() == n5 && c_j.isExtending()) {
+                if (n9 == Block.pulleyMoving.at && (c_a2 = c_g.j(n6, n7, n8)) != null && c_a2 instanceof C_j && (c_j = (C_j)c_a2).getPistonOrientation() == n5 && c_j.isExtending()) {
                     c_j.clearPistonTileEntity();
                     n9 = c_j.getStoredBlockID();
                     n10 = c_j.getBlockMetadata();
                     bl = true;
                 }
-                if (!bl && n9 > 0 && BlockPistonBase.canPushBlock(n9, c_g, n6, n7, n8, false) && (C_x.c[n9].getMobilityFlag() == 0 || n9 == C_x.pulleyBase.at || n9 == C_x.pulleyStickyBase.at || n9 == C_x.pulleyBaseActive.at || n9 == C_x.pulleyStickyBaseActive.at)) {
-                    c_g.setBlockAndMetadata(n += C_d.offsetsXForSide[n5], n2 += C_d.offsetsYForSide[n5], n3 += C_d.offsetsZForSide[n5], C_x.pulleyMoving.at, n10);
+                if (!bl && n9 > 0 && BlockPistonBase.canPushBlock(n9, c_g, n6, n7, n8, false) && (Block.c[n9].getMobilityFlag() == 0 || n9 == Block.pulleyBase.at || n9 == Block.pulleyStickyBase.at || n9 == Block.pulleyBaseActive.at || n9 == Block.pulleyStickyBaseActive.at)) {
+                    c_g.setBlockAndMetadata(n += C_d.offsetsXForSide[n5], n2 += C_d.offsetsYForSide[n5], n3 += C_d.offsetsZForSide[n5], Block.pulleyMoving.at, n10);
                     c_g.a(n, n2, n3, BlockPistonMoving.getTileEntity(n9, n10, n5, false, false));
                     c_g.b(n6, n7, n8, 0);
                 } else if (!bl) {
@@ -201,7 +201,7 @@ extends C_x {
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(C_g c_g, int n, int n2, int n3) {
+    public void setBlockBoundsBasedOnState(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         if (BlockPistonBase.isExtended(by)) {
             switch (BlockPistonBase.getOrientation(by)) {
@@ -240,13 +240,13 @@ extends C_x {
     }
 
     @Override
-    public void getCollidingBoundingBoxes(C_g c_g, int n, int n2, int n3, C_b c_b, ArrayList<C_b> arrayList) {
+    public void getCollidingBoundingBoxes(World c_g, int n, int n2, int n3, C_b c_b, ArrayList<C_b> arrayList) {
         this.a(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
         super.getCollidingBoundingBoxes(c_g, n, n2, n3, c_b, arrayList);
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         this.setBlockBoundsBasedOnState(c_g, n, n2, n3);
         return super.getCollisionBoundingBoxFromPool(c_g, n, n2, n3);
     }
@@ -264,7 +264,7 @@ extends C_x {
         return (n & 8) != 0;
     }
 
-    private static int determineOrientation(C_g c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
+    private static int determineOrientation(World c_g, int n, int n2, int n3, EntityPlayer entityPlayer) {
         int n4;
         if (MathHelper.e(entityPlayer.h - (float)n) < 2.0f && MathHelper.e(entityPlayer.j - (float)n3) < 2.0f) {
             double d2 = (double)entityPlayer.i + 1.82 - (double)entityPlayer.v;
@@ -278,30 +278,30 @@ extends C_x {
         return (n4 = MathHelper.a((double)(entityPlayer.n * 4.0f / 360.0f) + 0.5) & 3) == 0 ? 2 : (n4 == 1 ? 5 : (n4 == 2 ? 3 : (n4 == 3 ? 4 : 0)));
     }
 
-    private static boolean canPushBlock(int n, C_g c_g, int n2, int n3, int n4, boolean bl) {
+    private static boolean canPushBlock(int n, World c_g, int n2, int n3, int n4, boolean bl) {
         if (n2 <= 1 || n3 <= 1 || n4 <= 1 || n2 >= c_g.a - 2 || n3 >= c_g.c - 2 || n4 >= c_g.b - 2) {
             return false;
         }
-        if (n == C_x.ae.at) {
+        if (n == Block.ae.at) {
             return false;
         }
-        if (n != C_x.pulleyBase.at && n != C_x.pulleyStickyBase.at && n != C_x.pulleyBaseActive.at && n != C_x.pulleyStickyBaseActive.at) {
-            if (C_x.c[n].getHardness() == -1.0f) {
+        if (n != Block.pulleyBase.at && n != Block.pulleyStickyBase.at && n != Block.pulleyBaseActive.at && n != Block.pulleyStickyBaseActive.at) {
+            if (Block.c[n].getHardness() == -1.0f) {
                 return false;
             }
-            if (C_x.c[n].getMobilityFlag() == 2) {
+            if (Block.c[n].getMobilityFlag() == 2) {
                 return false;
             }
-            if (!bl && C_x.c[n].getMobilityFlag() == 1) {
+            if (!bl && Block.c[n].getMobilityFlag() == 1) {
                 return false;
             }
         } else if (BlockPistonBase.isExtended(c_g.e(n2, n3, n4))) {
             return false;
         }
-        return !(C_x.c[n] instanceof BlockContainer);
+        return !(Block.c[n] instanceof BlockContainer);
     }
 
-    private static boolean canExtend(C_g c_g, int n, int n2, int n3, int n4) {
+    private static boolean canExtend(World c_g, int n, int n2, int n3, int n4) {
         int n5 = n + C_d.offsetsXForSide[n4];
         int n6 = n2 + C_d.offsetsYForSide[n4];
         int n7 = n3 + C_d.offsetsZForSide[n4];
@@ -317,7 +317,7 @@ extends C_x {
             if (!BlockPistonBase.canPushBlock(n8, c_g, n5, n6, n7, true)) {
                 return false;
             }
-            if (C_x.c[n8].getMobilityFlag() == 1) break;
+            if (Block.c[n8].getMobilityFlag() == 1) break;
             if (i == 12) {
                 return false;
             }
@@ -328,7 +328,7 @@ extends C_x {
         return true;
     }
 
-    private boolean tryExtend(C_g c_g, int n, int n2, int n3, int n4) {
+    private boolean tryExtend(World c_g, int n, int n2, int n3, int n4) {
         int n5;
         int n6;
         int n7 = n + C_d.offsetsXForSide[n4];
@@ -346,7 +346,7 @@ extends C_x {
             if (!BlockPistonBase.canPushBlock(n5, c_g, n7, n8, n9, true)) {
                 return false;
             }
-            if (C_x.c[n5].getMobilityFlag() != 1) {
+            if (Block.c[n5].getMobilityFlag() != 1) {
                 if (n6 == 12) {
                     return false;
                 }
@@ -355,9 +355,9 @@ extends C_x {
                 n9 += C_d.offsetsZForSide[n4];
                 continue;
             }
-            C_x.c[n5].f(c_g, n7, n8, n9, c_g.e(n7, n8, n9));
-            if (n5 == C_x.ao.at) {
-                C_x.c[n5].c(c_g, n7, n8, n9, c_g.e(n7, n8, n9));
+            Block.c[n5].f(c_g, n7, n8, n9, c_g.e(n7, n8, n9));
+            if (n5 == Block.ao.at) {
+                Block.c[n5].c(c_g, n7, n8, n9, c_g.e(n7, n8, n9));
             }
             c_g.b(n7, n8, n9, 0);
             break;
@@ -369,10 +369,10 @@ extends C_x {
             int n11 = c_g.a(n6, n5, n10);
             byte by = c_g.e(n6, n5, n10);
             if (n11 == this.at && n6 == n && n5 == n2 && n10 == n3) {
-                c_g.setBlockAndMetadata(n7, n8, n9, C_x.pulleyMoving.at, n4 | (this.isSticky ? 8 : 0));
-                c_g.a(n7, n8, n9, BlockPistonMoving.getTileEntity(C_x.pulleyExtension.at, n4 | (this.isSticky ? 8 : 0), n4, true, false));
+                c_g.setBlockAndMetadata(n7, n8, n9, Block.pulleyMoving.at, n4 | (this.isSticky ? 8 : 0));
+                c_g.a(n7, n8, n9, BlockPistonMoving.getTileEntity(Block.pulleyExtension.at, n4 | (this.isSticky ? 8 : 0), n4, true, false));
             } else {
-                c_g.setBlockAndMetadata(n7, n8, n9, C_x.pulleyMoving.at, by);
+                c_g.setBlockAndMetadata(n7, n8, n9, Block.pulleyMoving.at, by);
                 c_g.a(n7, n8, n9, BlockPistonMoving.getTileEntity(n11, by, n4, true, false));
             }
             n7 = n6;

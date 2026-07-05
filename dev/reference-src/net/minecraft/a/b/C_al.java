@@ -4,8 +4,8 @@
 package net.minecraft.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.c.C_b;
 import net.minecraft.a.a.c.C_c;
 import net.minecraft.a.a.c.C_d;
@@ -28,18 +28,18 @@ extends Item {
     }
 
     @Override
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, World c_g, int n, int n2, int n3, int n4) {
         int n5;
         int n6;
         int n7;
         int n8 = c_g.a(n, n2, n3);
-        C_x c_x = C_x.c[n8];
+        Block c_x = Block.c[n8];
         boolean bl = false;
-        if (n8 == C_x.k.at && !c_g.a((float)n, (float)(n2 + 1), (float)n3)) {
+        if (n8 == Block.k.at && !c_g.a((float)n, (float)(n2 + 1), (float)n3)) {
             if (c_g.theme == 4) {
-                c_g.a(n, n2, n3, C_x.mycelium.at);
+                c_g.a(n, n2, n3, Block.mycelium.at);
             } else {
-                c_g.a(n, n2, n3, C_x.j.at);
+                c_g.a(n, n2, n3, Block.j.at);
             }
             if (c_g.type == 8) {
                 entityPlayer.triggerAchievement(AchievementList.moonTerraform);
@@ -49,7 +49,7 @@ extends Item {
             }
             bl = true;
         }
-        if (n8 == C_x.n.at) {
+        if (n8 == Block.n.at) {
             n7 = c_g.e(n, n2, n3);
             if (!c_g.multiplayerWorld) {
                 C_b c_b;
@@ -74,7 +74,7 @@ extends Item {
                     c_g.growTree(n, n2, n3, n7);
                 }
                 if (c_g.cantGrow) {
-                    c_g.d(n, n2, n3, C_x.n.at);
+                    c_g.d(n, n2, n3, Block.n.at);
                 } else if (entityPlayer.gamemode != 1) {
                     --itemStack.a;
                 }
@@ -114,7 +114,7 @@ extends Item {
             entityPlayer.addStat(StatList.mushroomGrowth, 1);
             bl = true;
         }
-        if (c_x == C_x.plantRed || c_x == C_x.plantBlue || c_x == C_x.plantYellow || c_x == C_x.plantPurple) {
+        if (c_x == Block.plantRed || c_x == Block.plantBlue || c_x == Block.plantYellow || c_x == Block.plantPurple) {
             if (!c_g.multiplayerWorld) {
                 c_g.d(n, n2, n3, 0);
                 switch (c_x.at) {
@@ -143,34 +143,34 @@ extends Item {
             entityPlayer.addStat(StatList.flowerGrowth, 1);
             bl = true;
         }
-        if (n8 == C_x.ao.at) {
+        if (n8 == Block.ao.at) {
             if (!c_g.multiplayerWorld) {
-                ((BlockCrops)C_x.ao).fertilize(c_g, n, n2, n3);
+                ((BlockCrops)Block.ao).fertilize(c_g, n, n2, n3);
                 if (entityPlayer.gamemode != 1) {
                     --itemStack.a;
                 }
             }
             bl = true;
         }
-        if (n8 == C_x.pumpkinStem.at) {
+        if (n8 == Block.pumpkinStem.at) {
             if (!c_g.multiplayerWorld) {
-                ((BlockStem)C_x.pumpkinStem).fertilize(c_g, n, n2, n3);
+                ((BlockStem)Block.pumpkinStem).fertilize(c_g, n, n2, n3);
                 if (entityPlayer.gamemode != 1) {
                     --itemStack.a;
                 }
             }
             bl = true;
         }
-        if (n8 == C_x.melonStem.at) {
+        if (n8 == Block.melonStem.at) {
             if (!c_g.multiplayerWorld) {
-                ((BlockStem)C_x.melonStem).fertilize(c_g, n, n2, n3);
+                ((BlockStem)Block.melonStem).fertilize(c_g, n, n2, n3);
                 if (entityPlayer.gamemode != 1) {
                     --itemStack.a;
                 }
             }
             bl = true;
         }
-        if (n8 == C_x.j.at) {
+        if (n8 == Block.j.at) {
             if (!c_g.multiplayerWorld) {
                 if (entityPlayer.gamemode != 1) {
                     --itemStack.a;
@@ -180,32 +180,32 @@ extends Item {
                     int n10 = n2 + 1;
                     n6 = n3;
                     for (n5 = 0; n5 < n7 / 16; ++n5) {
-                        if (c_g.a(n9 += this.itemRand.nextInt(3) - 1, (n10 += (this.itemRand.nextInt(3) - 1) * this.itemRand.nextInt(3) / 2) - 1, n6 += this.itemRand.nextInt(3) - 1) != C_x.j.at || c_g.b(n9, n10, n6)) continue block9;
+                        if (c_g.a(n9 += this.itemRand.nextInt(3) - 1, (n10 += (this.itemRand.nextInt(3) - 1) * this.itemRand.nextInt(3) / 2) - 1, n6 += this.itemRand.nextInt(3) - 1) != Block.j.at || c_g.b(n9, n10, n6)) continue block9;
                     }
                     if (c_g.a(n9, n10, n6) == 0) {
                         if (this.itemRand.nextInt(3) == 0) {
-                            c_g.b(n9, n10, n6, C_x.tallGrass.at);
+                            c_g.b(n9, n10, n6, Block.tallGrass.at);
                         } else if (this.itemRand.nextInt(3) == 0) {
-                            c_g.b(n9, n10, n6, C_x.plantYellow.at);
+                            c_g.b(n9, n10, n6, Block.plantYellow.at);
                         } else if (this.itemRand.nextInt(3) == 0) {
-                            c_g.b(n9, n10, n6, C_x.plantRed.at);
+                            c_g.b(n9, n10, n6, Block.plantRed.at);
                         } else if (this.itemRand.nextInt(3) == 0) {
-                            c_g.b(n9, n10, n6, C_x.plantPurple.at);
+                            c_g.b(n9, n10, n6, Block.plantPurple.at);
                         } else if (this.itemRand.nextInt(3) == 0) {
-                            c_g.b(n9, n10, n6, C_x.plantBlue.at);
+                            c_g.b(n9, n10, n6, Block.plantBlue.at);
                         } else if (this.itemRand.nextInt(6) == 0) {
-                            c_g.setBlockAndMetadataWithNotify(n9, n10, n6, C_x.n.at, this.itemRand.nextInt(2));
+                            c_g.setBlockAndMetadataWithNotify(n9, n10, n6, Block.n.at, this.itemRand.nextInt(2));
                         } else if (this.itemRand.nextInt(6) == 0 && c_g.season.currentSeason == 3) {
-                            c_g.setBlockAndMetadataWithNotify(n9, n10, n6, C_x.berryBush.at, 1);
+                            c_g.setBlockAndMetadataWithNotify(n9, n10, n6, Block.berryBush.at, 1);
                         }
                     }
-                    if (!C_x.reeds.canBlockStay(c_g, n9, n10, n6)) continue;
-                    c_g.a(n9, n10, n6, C_x.reeds.at);
+                    if (!Block.reeds.canBlockStay(c_g, n9, n10, n6)) continue;
+                    c_g.a(n9, n10, n6, Block.reeds.at);
                 }
             }
             bl = true;
         }
-        if (n8 == C_x.mycelium.at) {
+        if (n8 == Block.mycelium.at) {
             if (!c_g.multiplayerWorld) {
                 if (entityPlayer.gamemode != 1) {
                     --itemStack.a;
@@ -215,19 +215,19 @@ extends Item {
                     int n12 = n2 + 1;
                     n6 = n3;
                     for (n5 = 0; n5 < n7 / 16; ++n5) {
-                        if (c_g.a(n11 += this.itemRand.nextInt(3) - 1, (n12 += (this.itemRand.nextInt(3) - 1) * this.itemRand.nextInt(3) / 2) - 1, n6 += this.itemRand.nextInt(3) - 1) != C_x.mycelium.at || c_g.b(n11, n12, n6)) continue block11;
+                        if (c_g.a(n11 += this.itemRand.nextInt(3) - 1, (n12 += (this.itemRand.nextInt(3) - 1) * this.itemRand.nextInt(3) / 2) - 1, n6 += this.itemRand.nextInt(3) - 1) != Block.mycelium.at || c_g.b(n11, n12, n6)) continue block11;
                     }
                     if (c_g.a(n11, n12, n6) != 0) continue;
                     if (this.itemRand.nextInt(3) == 0) {
-                        c_g.b(n11, n12, n6, C_x.mushroomBrown.at);
+                        c_g.b(n11, n12, n6, Block.mushroomBrown.at);
                         continue;
                     }
                     if (this.itemRand.nextInt(3) == 0) {
-                        c_g.b(n11, n12, n6, C_x.mushroomRed.at);
+                        c_g.b(n11, n12, n6, Block.mushroomRed.at);
                         continue;
                     }
                     if (this.itemRand.nextInt(3) != 0) continue;
-                    c_g.b(n11, n12, n6, C_x.mushroomGlowing.at);
+                    c_g.b(n11, n12, n6, Block.mushroomGlowing.at);
                 }
             }
             bl = true;

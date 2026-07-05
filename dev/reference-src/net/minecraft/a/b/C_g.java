@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -16,7 +16,7 @@ extends Item {
     protected int au;
     protected C_c materialEffectiveAgainst;
 
-    public C_g(int n, int n2, int n3, C_x[] c_xArray) {
+    public C_g(int n, int n2, int n3, Block[] c_xArray) {
         super(n);
         this.blocksEffectiveAgainst = c_xArray;
         this.aq = 1;
@@ -30,7 +30,7 @@ extends Item {
     }
 
     @Override
-    public final float getStrVsBlock(C_x c_x, int n) {
+    public final float getStrVsBlock(Block c_x, int n) {
         for (int i = 0; i < this.blocksEffectiveAgainst.length; ++i) {
             if (this.blocksEffectiveAgainst[i] != c_x && c_x.getMaterial(n) != this.materialEffectiveAgainst) continue;
             return this.at;
@@ -39,13 +39,13 @@ extends Item {
     }
 
     @Override
-    public final void hitEntity(EntityPlayer entityPlayer, ItemStack itemStack, net.minecraft.a.a.C_g c_g) {
+    public final void hitEntity(EntityPlayer entityPlayer, ItemStack itemStack, net.minecraft.a.a.World c_g) {
         entityPlayer.damageItem(2, itemStack, c_g);
         entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
     }
 
     @Override
-    public final void onBlockDestroyed(EntityPlayer entityPlayer, ItemStack itemStack, net.minecraft.a.a.C_g c_g) {
+    public final void onBlockDestroyed(EntityPlayer entityPlayer, ItemStack itemStack, net.minecraft.a.a.World c_g) {
         entityPlayer.damageItem(1, itemStack, c_g);
         entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);
     }

@@ -3,11 +3,11 @@
  */
 package net.minecraft.a.a.b;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public final class C_d
-extends C_x {
+extends Block {
     public C_d(int n, int n2) {
         super(n, C_c.e);
         this.as = n2;

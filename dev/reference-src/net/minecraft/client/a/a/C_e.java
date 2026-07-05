@@ -7,7 +7,7 @@
 package net.minecraft.client.a.a;
 
 import java.util.Random;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
 import net.minecraft.client.GameSettings;
@@ -30,10 +30,10 @@ extends C_f {
 
     public final void renderItemIntoGUI(RenderEngine renderEngine, int n, int n2, int n3, int n4, int n5) {
         if (n >= 0) {
-            if (n < 256 && net.minecraft.client.a.C_f.renderItemIn3d(C_x.c[n].a())) {
+            if (n < 256 && net.minecraft.client.a.C_f.renderItemIn3d(Block.c[n].a())) {
                 int n6 = n;
                 RenderEngine.a(renderEngine.a("/terrain.png"));
-                C_x c_x = C_x.c[n6];
+                Block c_x = Block.c[n6];
                 GL11.glPushMatrix();
                 GL11.glTranslatef((float)(n4 - 2), (float)(n5 + 3), (float)100.0f);
                 GL11.glScalef((float)1.0f, (float)1.0f, (float)-1.0f);
@@ -155,13 +155,13 @@ extends C_f {
         GL11.glEnable((int)2977);
         GL11.glEnable((int)3042);
         GL11.glBlendFunc((int)770, (int)771);
-        if (itemStack.c < 256 && net.minecraft.client.a.C_f.renderItemIn3d(C_x.c[itemStack.c].a())) {
+        if (itemStack.c < 256 && net.minecraft.client.a.C_f.renderItemIn3d(Block.c[itemStack.c].a())) {
             if (GameSettings.fancyItems) {
                 GL11.glRotatef((float)f5, (float)0.0f, (float)1.0f, (float)0.0f);
             }
             this.a("/terrain.png");
             f = 0.25f;
-            if (!C_x.c[itemStack.c].c() && itemStack.c != C_x.Z.at) {
+            if (!Block.c[itemStack.c].c() && itemStack.c != Block.Z.at) {
                 f = 0.5f;
             }
             GL11.glScalef((float)f, (float)f, (float)f);
@@ -173,10 +173,10 @@ extends C_f {
                     f5 = (c_e.e.nextFloat() * 2.0f - 1.0f) * 0.2f / f;
                     GL11.glTranslatef((float)f3, (float)f4, (float)f5);
                 }
-                if (!C_x.c[itemStack.c].c() && itemStack.c != C_x.Z.at) {
+                if (!Block.c[itemStack.c].c() && itemStack.c != Block.Z.at) {
                     GL11.glScalef((float)0.5f, (float)0.5f, (float)0.5f);
                 }
-                c_e.d.renderBlockOnInventory(C_x.c[itemStack.c], itemStack.d);
+                c_e.d.renderBlockOnInventory(Block.c[itemStack.c], itemStack.d);
                 GL11.glPopMatrix();
             }
         } else if (GameSettings.fancyItems) {

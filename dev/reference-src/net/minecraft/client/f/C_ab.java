@@ -6,7 +6,7 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.C_c;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.a.RenderEngine;
@@ -16,7 +16,7 @@ import org.lwjgl.opengl.GL11;
 
 public class C_ab
 extends C_k {
-    public C_ab(C_g c_g, float f, float f2, float f3, float f4) {
+    public C_ab(World c_g, float f, float f2, float f3, float f4) {
         super(c_g, f, f2, f3, 0.0f, 0.0f, 0.0f);
         this.T = 4;
         this.X = this.Y = this.G.nextFloat() * 0.6f + 0.4f;

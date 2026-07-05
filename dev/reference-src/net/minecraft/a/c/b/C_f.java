@@ -4,7 +4,7 @@
 package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.b.C_a;
@@ -18,14 +18,14 @@ extends C_a {
     public float newPos;
     public float fallDMG = 1.0f;
 
-    public C_f(C_g c_g) {
+    public C_f(World c_g) {
         super(c_g);
         this.V = "/mob/duck.png";
         this.a(0.6f, 0.8f);
         this.W = 4;
     }
 
-    public C_f(C_g c_g, float f, float f2, float f3) {
+    public C_f(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.V = "/mob/duck.png";
         this.a(0.6f, 0.8f);

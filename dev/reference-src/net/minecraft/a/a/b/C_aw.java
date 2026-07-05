@@ -4,15 +4,15 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.a.C_n;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public class C_aw
-extends C_x {
+extends Block {
     protected C_aw(int n, int n2) {
         super(n, C_c.pumpkin);
         this.as = n2;
@@ -55,9 +55,9 @@ extends C_x {
     }
 
     @Override
-    public void d(C_g c_g, int n, int n2, int n3) {
+    public void d(World c_g, int n, int n2, int n3) {
         super.d(c_g, n, n2, n3);
-        if (this.at == C_x.pumpkin.at && c_g.a(n, n2 - 1, n3) == C_x.snowBlock.at && c_g.a(n, n2 - 2, n3) == C_x.snowBlock.at) {
+        if (this.at == Block.pumpkin.at && c_g.a(n, n2 - 1, n3) == Block.snowBlock.at && c_g.a(n, n2 - 2, n3) == Block.snowBlock.at) {
             c_g.a(n, n2, n3, 0);
             c_g.a(n, n2 - 1, n3, 0);
             c_g.a(n, n2 - 2, n3, 0);
@@ -66,7 +66,7 @@ extends C_x {
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         int n5 = ((EntityPlayer)c_g.y).b.d().d & 3;
         byte by = 0;
         switch (n4) {
@@ -89,9 +89,9 @@ extends C_x {
     }
 
     @Override
-    public boolean canExist(C_g c_g, int n, int n2, int n3) {
+    public boolean canExist(World c_g, int n, int n2, int n3) {
         int n4 = c_g.a(n, n2, n3);
-        return (n4 == 0 || C_x.c[n4].getMaterial(0).a()) && c_g.b(n, n2 - 1, n3);
+        return (n4 == 0 || Block.c[n4].getMaterial(0).a()) && c_g.b(n, n2 - 1, n3);
     }
 
     @Override

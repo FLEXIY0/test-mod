@@ -8,18 +8,18 @@
  * Fluid state (0 empty / 1 water) is mirrored in the block metadata so the top
  * texture changes. Registered in C_o as "Cauldron".
  *
- * Base C_a: a = world, b/c/d = x/y/z.
+ * Base TileEntity: a = world, b/c/d = x/y/z.
  */
 package net.minecraft.a.a.b.a;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.potion.PotionManager;
 
-public class TileEntityCauldron extends C_a {
+public class TileEntityCauldron extends TileEntity {
     private static final int BREW_TIME = 40; // ticks until the potion is ready
 
     public int fluid = 0;        // 0 = empty, 1 = water
@@ -105,7 +105,7 @@ public class TileEntityCauldron extends C_a {
         if (itemId == Item.H.ap) return PotionManager.SPEED;            // feather
         if (itemId == Item.slimeBall.ap) return PotionManager.JUMP;     // slimeball
         if (itemId == Item.i.ap) return PotionManager.FIRE_RESIST;      // coal
-        if (itemId == C_x.glowStone.at) return PotionManager.NIGHT_VISION; // glowstone block
+        if (itemId == Block.glowStone.at) return PotionManager.NIGHT_VISION; // glowstone block
         return -1;
     }
 

@@ -4,20 +4,20 @@
 package net.minecraft.game.level.block.plants;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.d.C_b;
 
 public class BlockVine
-extends C_x {
+extends Block {
     public BlockVine(int n, int n2) {
         super(n, n2, C_c.i);
         this.a(true);
     }
 
     @Override
-    public int a(C_g c_g, int n, int n2, int n3, int n4) {
+    public int a(World c_g, int n, int n2, int n3, int n4) {
         if (c_g.type == 4) {
             return 331;
         }
@@ -25,12 +25,12 @@ extends C_x {
     }
 
     @Override
-    public C_b getCollisionBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getCollisionBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         return null;
     }
 
     @Override
-    public C_b getSelectedBoundingBoxFromPool(C_g c_g, int n, int n2, int n3) {
+    public C_b getSelectedBoundingBoxFromPool(World c_g, int n, int n2, int n3) {
         byte by = c_g.e(n, n2, n3);
         float f = 0.125f;
         if (by == 2) {
@@ -64,45 +64,45 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
-        if (c_g.a(n - 1, n2, n3) == C_x.z.at || c_g.a(n + 1, n2, n3) == C_x.z.at || c_g.a(n, n2 - 1, n3) == C_x.z.at || c_g.a(n, n2 + 1, n3) == C_x.z.at || c_g.a(n, n2, n3 - 1) == C_x.z.at || c_g.a(n, n2, n3 + 1) == C_x.z.at) {
+    public boolean a(World c_g, int n, int n2, int n3) {
+        if (c_g.a(n - 1, n2, n3) == Block.z.at || c_g.a(n + 1, n2, n3) == Block.z.at || c_g.a(n, n2 - 1, n3) == Block.z.at || c_g.a(n, n2 + 1, n3) == Block.z.at || c_g.a(n, n2, n3 - 1) == Block.z.at || c_g.a(n, n2, n3 + 1) == Block.z.at) {
             return true;
         }
         return c_g.b(n - 1, n2, n3) ? true : (c_g.b(n + 1, n2, n3) ? true : (c_g.b(n, n2, n3 - 1) ? true : c_g.b(n, n2, n3 + 1)));
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.e(n, n2, n3);
-        if (!(n5 != 0 && n4 != 2 || !c_g.b(n, n2, n3 + 1) && c_g.a(n, n2, n3 + 1) != C_x.z.at)) {
+        if (!(n5 != 0 && n4 != 2 || !c_g.b(n, n2, n3 + 1) && c_g.a(n, n2, n3 + 1) != Block.z.at)) {
             n5 = 2;
         }
-        if (!(n5 != 0 && n4 != 3 || !c_g.b(n, n2, n3 - 1) && c_g.a(n, n2, n3 - 1) != C_x.z.at)) {
+        if (!(n5 != 0 && n4 != 3 || !c_g.b(n, n2, n3 - 1) && c_g.a(n, n2, n3 - 1) != Block.z.at)) {
             n5 = 3;
         }
-        if (!(n5 != 0 && n4 != 4 || !c_g.b(n + 1, n2, n3) && c_g.a(n + 1, n2, n3) != C_x.z.at)) {
+        if (!(n5 != 0 && n4 != 4 || !c_g.b(n + 1, n2, n3) && c_g.a(n + 1, n2, n3) != Block.z.at)) {
             n5 = 4;
         }
-        if (!(n5 != 0 && n4 != 5 || !c_g.b(n - 1, n2, n3) && c_g.a(n - 1, n2, n3) != C_x.z.at)) {
+        if (!(n5 != 0 && n4 != 5 || !c_g.b(n - 1, n2, n3) && c_g.a(n - 1, n2, n3) != Block.z.at)) {
             n5 = 5;
         }
         c_g.setBlockMetadataWithNotify(n, n2, n3, n5);
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         byte by = c_g.e(n, n2, n3);
         boolean bl = false;
-        if (by == 2 && (c_g.b(n, n2, n3 + 1) || c_g.a(n, n2, n3 + 1) == C_x.z.at)) {
+        if (by == 2 && (c_g.b(n, n2, n3 + 1) || c_g.a(n, n2, n3 + 1) == Block.z.at)) {
             bl = true;
         }
-        if (by == 3 && (c_g.b(n, n2, n3 - 1) || c_g.a(n, n2, n3 - 1) == C_x.z.at)) {
+        if (by == 3 && (c_g.b(n, n2, n3 - 1) || c_g.a(n, n2, n3 - 1) == Block.z.at)) {
             bl = true;
         }
-        if (by == 4 && (c_g.b(n + 1, n2, n3) || c_g.a(n + 1, n2, n3) == C_x.z.at)) {
+        if (by == 4 && (c_g.b(n + 1, n2, n3) || c_g.a(n + 1, n2, n3) == Block.z.at)) {
             bl = true;
         }
-        if (by == 5 && (c_g.b(n - 1, n2, n3) || c_g.a(n - 1, n2, n3) == C_x.z.at)) {
+        if (by == 5 && (c_g.b(n - 1, n2, n3) || c_g.a(n - 1, n2, n3) == Block.z.at)) {
             bl = true;
         }
         if (!bl) {
@@ -112,9 +112,9 @@ extends C_x {
     }
 
     @Override
-    public void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public void a(World c_g, int n, int n2, int n3, Random random) {
         if (random.nextInt(25) == 0 && c_g.a(n, n2 - 1, n3) == 0) {
-            c_g.setBlockAndMetadata(n, n2 - 1, n3, C_x.vine.at, c_g.e(n, n2, n3));
+            c_g.setBlockAndMetadata(n, n2 - 1, n3, Block.vine.at, c_g.e(n, n2, n3));
         }
     }
 

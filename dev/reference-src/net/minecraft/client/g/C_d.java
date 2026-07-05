@@ -7,7 +7,7 @@
 package net.minecraft.client.g;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.c.C_b;
 import net.minecraft.client.C_l;
 import net.minecraft.client.d;
@@ -42,7 +42,7 @@ extends C_a {
     private int fallDistanceOnServer = 0;
     public boolean canUpdate = false;
 
-    public C_d(d d2, C_g c_g, C_l c_l, NetClientHandler netClientHandler) {
+    public C_d(d d2, World c_g, C_l c_l, NetClientHandler netClientHandler) {
         super(d2, c_g, c_l);
         this.sendQueue = netClientHandler;
     }

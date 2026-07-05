@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.C_g;
 import net.minecraft.a.b.ItemStack;
@@ -12,7 +12,7 @@ import net.minecraft.client.statistics.StatList;
 
 public final class C_a
 extends C_g {
-    private static C_x[] as = new C_x[]{C_x.l, C_x.i, C_x.ad, C_x.w, C_x.X, C_x.x, C_x.W, C_x.v, C_x.al, C_x.am, C_x.oreEmerald, C_x.blockEmerald, C_x.blockCoal, C_x.ae, C_x.ar, C_x.aq, C_x.B, C_x.ice, C_x.glassPane, C_x.oreAdminium, C_x.blockAdminium, C_x.stalactite, C_x.magma, C_x.brimStone, C_x.brimStoneBrick, C_x.moonRockBrick, C_x.rail, C_x.railBooster, C_x.generator, C_x.generatorActive, C_x.fan, C_x.vacuum, C_x.pump, C_x.pulleyBase, C_x.pulleyStickyBase, C_x.pulleyBaseActive, C_x.pulleyStickyBaseActive, C_x.ak, C_x.lantern, C_x.transformer, C_x.doorSteel, C_x.rod, C_x.trapdoorSteel, C_x.regulator, C_x.adminiumLamp, C_x.detector, C_x.ironBars, C_x.adminiumLampLit, C_x.glassStained};
+    private static Block[] as = new Block[]{Block.l, Block.i, Block.ad, Block.w, Block.X, Block.x, Block.W, Block.v, Block.al, Block.am, Block.oreEmerald, Block.blockEmerald, Block.blockCoal, Block.ae, Block.ar, Block.aq, Block.B, Block.ice, Block.glassPane, Block.oreAdminium, Block.blockAdminium, Block.stalactite, Block.magma, Block.brimStone, Block.brimStoneBrick, Block.moonRockBrick, Block.rail, Block.railBooster, Block.generator, Block.generatorActive, Block.fan, Block.vacuum, Block.pump, Block.pulleyBase, Block.pulleyStickyBase, Block.pulleyBaseActive, Block.pulleyStickyBaseActive, Block.ak, Block.lantern, Block.transformer, Block.doorSteel, Block.rod, Block.trapdoorSteel, Block.regulator, Block.adminiumLamp, Block.detector, Block.ironBars, Block.adminiumLampLit, Block.glassStained};
     private int at;
 
     public C_a(int n, int n2) {
@@ -22,22 +22,22 @@ extends C_g {
     }
 
     @Override
-    public final boolean canHarvestBlock(C_x c_x, int n) {
+    public final boolean canHarvestBlock(Block c_x, int n) {
         if (this.ap == 285) {
-            return c_x == C_x.ae && c_x == C_x.blockAdminium && c_x == C_x.oreAdminium ? this.at > 3 : true;
+            return c_x == Block.ae && c_x == Block.blockAdminium && c_x == Block.oreAdminium ? this.at > 3 : true;
         }
-        return c_x == C_x.ae ? this.at > 3 : (c_x != C_x.blockAdminium && c_x != C_x.oreAdminium ? (c_x != C_x.am && c_x != C_x.al ? (c_x != C_x.W && c_x != C_x.v && c_x != C_x.blockEmerald && c_x != C_x.oreEmerald ? (c_x != C_x.X && c_x != C_x.w ? (c_x.getMaterial(n) == C_c.d || c_x.getMaterial(n) == C_c.magma || c_x.getMaterial(n) == C_c.pulley || c_x.getMaterial(n) == C_c.vacuum ? true : c_x.getMaterial(n) == C_c.e) : this.at > 0) : this.at >= 2) : this.at >= 3) : this.at > 3);
+        return c_x == Block.ae ? this.at > 3 : (c_x != Block.blockAdminium && c_x != Block.oreAdminium ? (c_x != Block.am && c_x != Block.al ? (c_x != Block.W && c_x != Block.v && c_x != Block.blockEmerald && c_x != Block.oreEmerald ? (c_x != Block.X && c_x != Block.w ? (c_x.getMaterial(n) == C_c.d || c_x.getMaterial(n) == C_c.magma || c_x.getMaterial(n) == C_c.pulley || c_x.getMaterial(n) == C_c.vacuum ? true : c_x.getMaterial(n) == C_c.e) : this.at > 0) : this.at >= 2) : this.at >= 3) : this.at > 3);
     }
 
     @Override
-    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, net.minecraft.a.a.C_g c_g, int n, int n2, int n3, int n4) {
+    public final boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, net.minecraft.a.a.World c_g, int n, int n2, int n3, int n4) {
         if (n > 0 && n2 > 0 && n3 > 0 && n < c_g.a - 1 && n2 < c_g.c - 1 && n3 < c_g.b - 1 && !c_g.multiplayerWorld) {
             n4 = c_g.a(n, n2, n3);
             byte by = c_g.e(n, n2, n3);
-            if (n4 != C_x.Y.at) {
+            if (n4 != Block.Y.at) {
                 return false;
             }
-            C_x c_x = C_x.Z;
+            Block c_x = Block.Z;
             float f = (float)n + 0.5f;
             float f2 = (float)n2 + 0.5f;
             float f3 = (float)n3 + 0.5f;

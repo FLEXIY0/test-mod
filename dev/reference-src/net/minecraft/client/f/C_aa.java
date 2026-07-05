@@ -3,14 +3,14 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.client.f.C_k;
 import util.MathHelper;
 
 public class C_aa
 extends C_k {
-    public C_aa(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6) {
+    public C_aa(World c_g, float f, float f2, float f3, float f4, float f5, float f6) {
         super(c_g, f, f2 - 0.125f, f3, f4, f5, f6);
         this.W = 0.4f;
         this.X = 0.4f;

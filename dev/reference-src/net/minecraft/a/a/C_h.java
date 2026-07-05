@@ -2,12 +2,12 @@ package net.minecraft.a.a;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 
 public final class C_h {
    private int a = 0;
    private List b = new ArrayList();
-   private C_g c;
+   private World c;
    private int d;
    private int e;
    private int f;
@@ -24,7 +24,7 @@ public final class C_h {
    private int q = 0;
    private int r;
 
-   public C_h(C_g var1) {
+   public C_h(World var1) {
       this.c = var1;
       this.d = var1.a;
       this.e = var1.b;
@@ -105,8 +105,8 @@ public final class C_h {
       // 0f: aload 0
       // 10: iload 1
       // 11: aload 0
-      // 12: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 15: getfield net/minecraft/a/a/C_g.B I
+      // 12: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 15: getfield net/minecraft/a/a/World.B I
       // 18: isub
       // 19: putfield net/minecraft/a/a/C_h.r I
       // 1c: aload 0
@@ -115,13 +115,13 @@ public final class C_h {
       // 23: return
       // 24: aload 0
       // 25: aload 0
-      // 26: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 29: getfield net/minecraft/a/a/C_g.B I
+      // 26: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 29: getfield net/minecraft/a/a/World.B I
       // 2c: putfield net/minecraft/a/a/C_h.q I
       // 2f: aload 0
-      // 30: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
+      // 30: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
       // 33: iload 1
-      // 34: putfield net/minecraft/a/a/C_g.B I
+      // 34: putfield net/minecraft/a/a/World.B I
       // 37: aload 0
       // 38: getfield net/minecraft/a/a/C_h.p Lnet/minecraft/a/a/C_c;
       // 3b: ifnull 47
@@ -137,14 +137,14 @@ public final class C_h {
       // 4e: bipush 0
       // 4f: bipush 0
       // 50: aload 0
-      // 51: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 54: getfield net/minecraft/a/a/C_g.a I
+      // 51: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 54: getfield net/minecraft/a/a/World.a I
       // 57: aload 0
-      // 58: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 5b: getfield net/minecraft/a/a/C_g.c I
+      // 58: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 5b: getfield net/minecraft/a/a/World.c I
       // 5e: aload 0
-      // 5f: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 62: getfield net/minecraft/a/a/C_g.b I
+      // 5f: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 62: getfield net/minecraft/a/a/World.b I
       // 65: invokespecial net/minecraft/a/a/C_c.<init> (Lnet/minecraft/a/a/C_h;IIIIII)V
       // 68: putfield net/minecraft/a/a/C_h.p Lnet/minecraft/a/a/C_c;
       // 6b: return
@@ -225,7 +225,7 @@ public final class C_h {
       // 05b: istore 7
       // 05d: iload 7
       // 05f: ifle 087
-      // 062: getstatic net/minecraft/a/a/b/C_x.f [I
+      // 062: getstatic net/minecraft/a/a/b/Block.f [I
       // 065: aload 0
       // 066: getfield net/minecraft/a/a/C_h.g [B
       // 069: iload 7
@@ -265,7 +265,7 @@ public final class C_h {
       // 0a5: iload 2
       // 0a6: iadd
       // 0a7: istore 8
-      // 0a9: getstatic net/minecraft/a/a/b/C_x.h [I
+      // 0a9: getstatic net/minecraft/a/a/b/Block.h [I
       // 0ac: aload 0
       // 0ad: getfield net/minecraft/a/a/C_h.g [B
       // 0b0: iload 8
@@ -377,13 +377,13 @@ public final class C_h {
       // 181: istore 6
       // 183: iload 6
       // 185: aload 0
-      // 186: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 189: getfield net/minecraft/a/a/C_g.n Ljava/util/List;
+      // 186: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 189: getfield net/minecraft/a/a/World.n Ljava/util/List;
       // 18c: invokeinterface java/util/List.size ()I 1
       // 191: if_icmpge 1b3
       // 194: aload 0
-      // 195: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 198: getfield net/minecraft/a/a/C_g.n Ljava/util/List;
+      // 195: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 198: getfield net/minecraft/a/a/World.n Ljava/util/List;
       // 19b: iload 6
       // 19d: invokeinterface java/util/List.get (I)Ljava/lang/Object; 2
       // 1a2: checkcast net/minecraft/a/a/C_d
@@ -517,13 +517,13 @@ public final class C_h {
       // 045: istore 3
       // 046: iload 3
       // 047: aload 0
-      // 048: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 04b: getfield net/minecraft/a/a/C_g.n Ljava/util/List;
+      // 048: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 04b: getfield net/minecraft/a/a/World.n Ljava/util/List;
       // 04e: invokeinterface java/util/List.size ()I 1
       // 053: if_icmpge 089
       // 056: aload 0
-      // 057: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 05a: getfield net/minecraft/a/a/C_g.n Ljava/util/List;
+      // 057: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 05a: getfield net/minecraft/a/a/World.n Ljava/util/List;
       // 05d: iload 3
       // 05e: invokeinterface java/util/List.get (I)Ljava/lang/Object; 2
       // 063: checkcast net/minecraft/a/a/C_d
@@ -642,7 +642,7 @@ public final class C_h {
       // 147: istore 11
       // 149: iload 11
       // 14b: ifle 172
-      // 14e: getstatic net/minecraft/a/a/b/C_x.f [I
+      // 14e: getstatic net/minecraft/a/a/b/Block.f [I
       // 151: aload 3
       // 152: getfield net/minecraft/a/a/C_h.g [B
       // 155: iload 11
@@ -709,8 +709,8 @@ public final class C_h {
       // 1cc: aload 1
       // 1cd: dup
       // 1ce: astore 3
-      // 1cf: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/C_g;
-      // 1d2: getfield net/minecraft/a/a/C_g.B I
+      // 1cf: getfield net/minecraft/a/a/C_h.c Lnet/minecraft/a/a/World;
+      // 1d2: getfield net/minecraft/a/a/World.B I
       // 1d5: istore 4
       // 1d7: sipush -999
       // 1da: istore 5
@@ -906,7 +906,7 @@ public final class C_h {
       // 340: iadd
       // 341: baload
       // 342: istore 13
-      // 344: getstatic net/minecraft/a/a/b/C_x.f [I
+      // 344: getstatic net/minecraft/a/a/b/Block.f [I
       // 347: iload 13
       // 349: iaload
       // 34a: dup
@@ -1106,11 +1106,11 @@ public final class C_h {
       // 490: iload 18
       // 492: istore 16
       // 494: iload 16
-      // 496: getstatic net/minecraft/a/a/b/C_x.h [I
+      // 496: getstatic net/minecraft/a/a/b/Block.h [I
       // 499: iload 13
       // 49b: iaload
       // 49c: if_icmpge 4a7
-      // 49f: getstatic net/minecraft/a/a/b/C_x.h [I
+      // 49f: getstatic net/minecraft/a/a/b/Block.h [I
       // 4a2: iload 13
       // 4a4: iaload
       // 4a5: istore 16

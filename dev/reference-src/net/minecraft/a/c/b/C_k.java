@@ -4,8 +4,8 @@
 package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -14,20 +14,20 @@ import net.minecraft.a.c.e.EntityPlayer;
 
 public class C_k
 extends C_e {
-    public C_k(C_g c_g) {
+    public C_k(World c_g) {
         super(c_g);
         this.a(0.9f, 1.3f);
         this.V = this.getType() == 0 ? "/mob/redcow.png" : "/mob/browncow.png";
     }
 
-    public C_k(C_g c_g, int n) {
+    public C_k(World c_g, int n) {
         super(c_g);
         this.a(0.9f, 1.3f);
         this.setType(n);
         this.V = this.getType() == 0 ? "/mob/redcow.png" : "/mob/browncow.png";
     }
 
-    public C_k(C_g c_g, float f, float f2, float f3) {
+    public C_k(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.a(0.9f, 1.3f);
         this.b(f, f2, f3);
@@ -65,13 +65,13 @@ extends C_e {
 
     @Override
     protected final float a(int n, int n2, int n3) {
-        return this.d.a(n, n2 - 1, n3) == C_x.mycelium.at ? 10.0f : this.d.c(n, n2, n3) - 0.5f;
+        return this.d.a(n, n2 - 1, n3) == Block.mycelium.at ? 10.0f : this.d.c(n, n2, n3) - 0.5f;
     }
 
     @Override
     public final boolean a(float f, float f2, float f3) {
         this.b(f, f2 + this.x / 2.0f, f3);
-        return this.d.d((int)f, (int)f2, (int)f3) > 8 && this.d.a((int)f, (int)f2 - 1, (int)f3) == C_x.mycelium.at && this.d.d(this.r) && this.d.getCollidingBoundingBoxes(this, this.r).size() == 0 && !this.d.b(this.r);
+        return this.d.d((int)f, (int)f2, (int)f3) > 8 && this.d.a((int)f, (int)f2 - 1, (int)f3) == Block.mycelium.at && this.d.d(this.r) && this.d.getCollidingBoundingBoxes(this, this.r).size() == 0 && !this.d.b(this.r);
     }
 
     @Override
@@ -90,7 +90,7 @@ extends C_e {
                 this.a(n, 1);
             }
             n3 = this.G.nextInt(3);
-            int n5 = n2 = this.getType() == 0 ? C_x.mushroomRed.at : C_x.mushroomBrown.at;
+            int n5 = n2 = this.getType() == 0 ? Block.mushroomRed.at : Block.mushroomBrown.at;
             if (c_b != null && c_b instanceof EntityPlayer && (itemStack = ((EntityPlayer)c_b).b.d()) != null && (itemStack.a() == Item.C || itemStack.a() == Item.battleAxeGold || itemStack.a() == Item.spearGold)) {
                 ++n3;
             }

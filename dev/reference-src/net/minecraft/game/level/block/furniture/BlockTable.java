@@ -3,12 +3,12 @@
  */
 package net.minecraft.game.level.block.furniture;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public class BlockTable
-extends C_x {
+extends Block {
     private static String[] NAME_LIST = new String[]{"Oak", "Birch", "Palm", "Pine"};
 
     public BlockTable(int n, int n2, C_c c_c) {
@@ -17,15 +17,15 @@ extends C_x {
     }
 
     @Override
-    public boolean a(C_g c_g, int n, int n2, int n3) {
-        if (c_g.a(n, n2 - 1, n3) == C_x.quickSand.at || !c_g.b(n, n2 - 1, n3)) {
+    public boolean a(World c_g, int n, int n2, int n3) {
+        if (c_g.a(n, n2 - 1, n3) == Block.quickSand.at || !c_g.b(n, n2 - 1, n3)) {
             return false;
         }
         return super.a(c_g, n, n2, n3);
     }
 
     @Override
-    public void b(C_g c_g, int n, int n2, int n3, int n4) {
+    public void b(World c_g, int n, int n2, int n3, int n4) {
         if (!c_g.f(n, n2 - 1, n3).a()) {
             this.f(c_g, n, n2, n3, c_g.e(n, n2, n3));
             c_g.b(n, n2, n3, 0);
@@ -34,7 +34,7 @@ extends C_x {
     }
 
     @Override
-    public boolean d(C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean d(World c_g, int n, int n2, int n3, int n4) {
         return !c_g.b(n, n2, n3) && c_g.a(n, n2, n3) != this.at;
     }
 

@@ -3,9 +3,9 @@
  */
 package net.minecraft.a.a;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.C_bs;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.c.C_e;
 import net.minecraft.a.c.a.C_a;
@@ -23,9 +23,9 @@ import net.minecraft.game.entity.md3.EntityRana;
 import net.minecraft.game.entity.md3.EntitySteve;
 
 public class C_b {
-    private C_g a;
+    private World a;
 
-    public C_b(C_g c_g) {
+    public C_b(World c_g) {
         this.a = c_g;
     }
 
@@ -85,7 +85,7 @@ public class C_b {
             n10 = (int)(Math.min(this.a.q.nextFloat(), this.a.q.nextFloat()) * (float)this.a.c);
             n9 = this.a.q.nextInt(this.a.b);
             net.minecraft.a.c.a.C_g c_g = new net.minecraft.a.c.a.C_g(this.a);
-            if (!(this.a.b(n11, n10, n9) || this.a.a(n11, n10 - 1, n9) != C_x.t.at && this.a.a(n11, n10 - 1, n9) != C_x.redSand.at)) {
+            if (!(this.a.b(n11, n10, n9) || this.a.a(n11, n10 - 1, n9) != Block.t.at && this.a.a(n11, n10 - 1, n9) != Block.redSand.at)) {
                 f7 = this.a.q.nextFloat() * 360.0f;
                 ((C_e)c_g).b(n11, n10 + 1, n9, f7, 0.0f);
                 this.a.spawnEntityInWorld(c_g);
@@ -204,7 +204,7 @@ public class C_b {
                     if (c_c instanceof net.minecraft.a.c.a.C_e && c_b.a.E == 0) {
                         c_c = null;
                     }
-                    if (c_c == null || c_b.a.b(n4, n3, n2) || !c_b.a.b(n4, n3 - 1, n2) && !(C_x.c[c_b.a.a(n4, n3 - 1, n2)] instanceof C_bs) || !((C_e)c_c).a(f6, f5, f4)) continue;
+                    if (c_c == null || c_b.a.b(n4, n3, n2) || !c_b.a.b(n4, n3 - 1, n2) && !(Block.c[c_b.a.a(n4, n3 - 1, n2)] instanceof C_bs) || !((C_e)c_c).a(f6, f5, f4)) continue;
                     f = c_b.a.q.nextFloat() * 360.0f;
                     ((C_e)c_c).b(f6, f5, f4, f, 0.0f);
                     ++n14;
@@ -265,7 +265,7 @@ public class C_b {
                             c_c = new net.minecraft.a.c.b.C_h(c_b.a);
                         }
                     }
-                    if (c_c == null || c_b.a.b(n4, n3, n2) || !c_b.a.b(n4, n3 - 1, n2) && !(C_x.c[c_b.a.a(n4, n3 - 1, n2)] instanceof C_bs) || !((C_e)c_c).a(f6, f5, f4)) continue;
+                    if (c_c == null || c_b.a.b(n4, n3, n2) || !c_b.a.b(n4, n3 - 1, n2) && !(Block.c[c_b.a.a(n4, n3 - 1, n2)] instanceof C_bs) || !((C_e)c_c).a(f6, f5, f4)) continue;
                     f = c_b.a.q.nextFloat() * 360.0f;
                     ((C_e)c_c).b(f6, f5, f4, f, 0.0f);
                     ++n17;

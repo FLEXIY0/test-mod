@@ -1,8 +1,8 @@
 package net.minecraft.a.c.e;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.b.C_j;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -77,10 +77,10 @@ public final class C_b implements net.minecraft.a.C_b {
       return -1;
    }
 
-   public final void swapItem(int var1, int var2, d var3, C_a var4) {
+   public final void swapItem(int var1, int var2, d var3, TileEntity var4) {
       int var5 = this.d(var1);
       if (var1 > 0 && var1 < 256) {
-         C_x var6 = C_x.c[var1];
+         Block var6 = Block.c[var1];
          if (var6.hasStates) {
             var5 = this.getInventorySlotContainItemAndMetadata(var1, var2);
          }
@@ -132,7 +132,7 @@ public final class C_b implements net.minecraft.a.C_b {
       if (!var3.isMultiplayerWorld()) {
          int var4 = this.d(var1);
          if (var1 > 0 && var1 < 256) {
-            C_x var5 = C_x.c[var1];
+            Block var5 = Block.c[var1];
             if (var5.hasStates) {
                var4 = this.getInventorySlotContainItemAndMetadata(var1, var2);
             }
@@ -159,7 +159,7 @@ public final class C_b implements net.minecraft.a.C_b {
    public void replaceItem(int var1, int var2) {
       int var3 = this.d(var1);
       if (var1 > 0 && var1 < 256) {
-         C_x var4 = C_x.c[var1];
+         Block var4 = Block.c[var1];
          if (var4.hasStates) {
             var3 = this.getInventorySlotContainItemAndMetadata(var1, var2);
          }

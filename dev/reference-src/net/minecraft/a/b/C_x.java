@@ -28,7 +28,7 @@ extends Item {
     }
 
     @Override
-    public final ItemStack a(ItemStack itemStack, net.minecraft.a.a.C_g c_g, EntityPlayer entityPlayer) {
+    public final ItemStack a(ItemStack itemStack, net.minecraft.a.a.World c_g, EntityPlayer entityPlayer) {
         float f = entityPlayer.q + (entityPlayer.o - entityPlayer.q);
         float f2 = entityPlayer.p + (entityPlayer.n - entityPlayer.p);
         float f3 = entityPlayer.e + (entityPlayer.h - entityPlayer.e);
@@ -100,10 +100,10 @@ extends Item {
                     ++n;
                 }
                 if (c_g.a(n, n2, n3) == 0 || !c_g.f(n, n2, n3).a()) {
-                    if (this.isFull == net.minecraft.a.a.b.C_x.p.at && c_g.theme == 1) {
+                    if (this.isFull == net.minecraft.a.a.b.Block.p.at && c_g.theme == 1) {
                         for (int i = 0; i < 20; ++i) {
                             float f8 = (float)n + c_g.q.nextFloat();
-                            float f9 = (float)n2 + net.minecraft.a.a.b.C_x.p.av;
+                            float f9 = (float)n2 + net.minecraft.a.a.b.Block.p.av;
                             float f10 = (float)n3 + c_g.q.nextFloat();
                             c_g.a("smoke", f8, f9, f10, 0.0f, 0.0f, 0.0f);
                         }

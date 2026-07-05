@@ -3,15 +3,15 @@
  */
 package net.minecraft.client.f;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.client.a.C_d;
 import net.minecraft.client.f.C_k;
 import net.minecraft.game.level.block.furniture.BlockDoor;
 
 public final class C_m
 extends C_k {
-    public C_m(C_g c_g, float f, float f2, float f3, float f4, float f5, float f6, C_x c_x, int n) {
+    public C_m(World c_g, float f, float f2, float f3, float f4, float f5, float f6, Block c_x, int n) {
         super(c_g, f, f2, f3, f4, f5, f6);
         this.P = c_x instanceof BlockDoor ? c_x.as : c_x.a(2, n);
         this.V = c_x.aB;

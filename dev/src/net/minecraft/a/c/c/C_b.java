@@ -6,9 +6,9 @@ package net.minecraft.a.c.c;
 import com.a.a.NBTTagCompound;
 import java.util.HashSet;
 import java.util.LinkedList;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.a.b.a.C_m;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
@@ -26,7 +26,7 @@ extends net.minecraft.a.c.C_b {
     private int R = 5;
     public float P = (float)(Math.random() * Math.PI * 2.0);
 
-    public C_b(C_g c_g, float f, float f2, float f3, ItemStack itemStack) {
+    public C_b(World c_g, float f, float f2, float f3, ItemStack itemStack) {
         super(c_g);
         this.a(0.25f, 0.25f);
         this.v = this.x / 2.0f;
@@ -39,7 +39,7 @@ extends net.minecraft.a.c.C_b {
         this.A = false;
     }
 
-    public C_b(C_g c_g) {
+    public C_b(World c_g) {
         super(c_g);
         this.a(0.25f, 0.25f);
         this.v = this.x / 2.0f;
@@ -119,10 +119,10 @@ extends net.minecraft.a.c.C_b {
                 int n7 = this.d.a((int)this.h, (int)this.i, (int)this.j + j);
                 n6 = this.d.a((int)this.h + i, (int)this.i, (int)this.j);
                 n5 = 1;
-                if (n7 == C_x.vacuum.at || n6 == C_x.vacuum.at) {
+                if (n7 == Block.vacuum.at || n6 == Block.vacuum.at) {
                     n5 = -1;
                 }
-                if (n7 == C_x.fan.at || n7 == C_x.vacuum.at) {
+                if (n7 == Block.fan.at || n7 == Block.vacuum.at) {
                     switch (this.d.e((int)this.h, (int)this.i, (int)this.j + j)) {
                         case 6: {
                             if (j <= 0) break;
@@ -135,7 +135,7 @@ extends net.minecraft.a.c.C_b {
                         }
                     }
                 }
-                if (n6 != C_x.fan.at && n6 != C_x.vacuum.at) continue;
+                if (n6 != Block.fan.at && n6 != Block.vacuum.at) continue;
                 switch (this.d.e((int)this.h + i, (int)this.i, (int)this.j)) {
                     case 8: {
                         if (i <= 0) continue block19;
@@ -158,13 +158,13 @@ extends net.minecraft.a.c.C_b {
         f3 -= (float)n6;
         f2 -= (float)n5;
         f -= (float)n8;
-        if (C_x.e[this.d.a(n6, n5, n8)] && this.d.a(n6, n5, n8) != C_x.quickSand.at) {
-            n4 = !C_x.e[this.d.a(n6 - 1, n5, n8)] ? 1 : 0;
-            n3 = !C_x.e[this.d.a(n6 + 1, n5, n8)] ? 1 : 0;
-            n2 = !C_x.e[this.d.a(n6, n5 - 1, n8)] ? 1 : 0;
-            n = !C_x.e[this.d.a(n6, n5 + 1, n8)] ? 1 : 0;
-            boolean bl = !C_x.e[this.d.a(n6, n5, n8 - 1)];
-            boolean bl2 = !C_x.e[this.d.a(n6, n5, n8 + 1)];
+        if (Block.e[this.d.a(n6, n5, n8)] && this.d.a(n6, n5, n8) != Block.quickSand.at) {
+            n4 = !Block.e[this.d.a(n6 - 1, n5, n8)] ? 1 : 0;
+            n3 = !Block.e[this.d.a(n6 + 1, n5, n8)] ? 1 : 0;
+            n2 = !Block.e[this.d.a(n6, n5 - 1, n8)] ? 1 : 0;
+            n = !Block.e[this.d.a(n6, n5 + 1, n8)] ? 1 : 0;
+            boolean bl = !Block.e[this.d.a(n6, n5, n8 - 1)];
+            boolean bl2 = !Block.e[this.d.a(n6, n5, n8 + 1)];
             int n9 = -1;
             float f4 = 9999.0f;
             if (n4 != 0 && f3 < 9999.0f) {
@@ -224,9 +224,9 @@ extends net.minecraft.a.c.C_b {
             this.k();
         }
         if (this.isInVacuum() && !this.d.multiplayerWorld) {
-            C_a c_a = this.d.j(MathHelper.a((double)this.h), MathHelper.a((double)(this.i - 1.0f)), MathHelper.a((double)this.j));
+            TileEntity c_a = this.d.j(MathHelper.a((double)this.h), MathHelper.a((double)(this.i - 1.0f)), MathHelper.a((double)this.j));
             n3 = this.d.a(MathHelper.a((double)this.h), MathHelper.a((double)(this.i - 1.0f)), MathHelper.a((double)this.j));
-            if (n3 == C_x.vacuum.at && c_a != null && c_a instanceof C_m && ((C_m)c_a).storePartialItemStack(this.a)) {
+            if (n3 == Block.vacuum.at && c_a != null && c_a instanceof C_m && ((C_m)c_a).storePartialItemStack(this.a)) {
                 this.k();
             }
         }
@@ -254,7 +254,7 @@ extends net.minecraft.a.c.C_b {
         int bx = MathHelper.a((double)this.h);
         int by = MathHelper.a((double)(this.i - 0.2f));
         int bz = MathHelper.a((double)this.j);
-        if (this.d.a(bx, by, bz) != C_x.ae.at) {
+        if (this.d.a(bx, by, bz) != Block.ae.at) {
             return;
         }
         this.d.a(this, "random.explode", 2.0f, 0.9f + this.G.nextFloat() * 0.2f);
@@ -275,7 +275,7 @@ extends net.minecraft.a.c.C_b {
         this.k();
     }
 
-    private void floodFillPortal(C_g c_g, int n, int n2, int n3, int n4) {
+    private void floodFillPortal(World c_g, int n, int n2, int n3, int n4) {
         HashSet<Long> hashSet = new HashSet<Long>();
         LinkedList<int[]> linkedList = new LinkedList<int[]>();
         linkedList.add(new int[]{n, n2, n3});
@@ -287,7 +287,7 @@ extends net.minecraft.a.c.C_b {
             long l = ((long)n7 & 0x3FFFFFFL) << 38 | ((long)(n6 = nArray[1]) & 0xFFFL) << 26 | (long)(n5 = nArray[2]) & 0x3FFFFFFL;
             if (hashSet.contains(l)) continue;
             hashSet.add(l);
-            if (c_g.a(n7, n6, n5) != C_x.portal.at) continue;
+            if (c_g.a(n7, n6, n5) != Block.portal.at) continue;
             if (c_g.e(n7, n6, n5) != n4) {
                 c_g.setBlockMetadataWithNotify(n7, n6, n5, n4);
             }
@@ -311,7 +311,7 @@ extends net.minecraft.a.c.C_b {
             float f = this.j;
             float f2 = this.i;
             float f3 = this.h;
-            C_g c_g = this.d;
+            World c_g = this.d;
             ItemStack itemStack = this.a;
             if (this.a.a().throwInFire(c_g, f3, f2, f)) {
                 --itemStack.a;
@@ -371,7 +371,7 @@ extends net.minecraft.a.c.C_b {
                 entityPlayer.addStat(StatList.collectStat, 1);
                 entityPlayer.addStat(StatList.objectObtainStats[this.a.c], 1);
                 this.k();
-                if (this.a.c == C_x.y.at || this.a.c == C_x.mushroomStem.at || this.a.c == C_x.flowerStem.at) {
+                if (this.a.c == Block.y.at || this.a.c == Block.mushroomStem.at || this.a.c == Block.flowerStem.at) {
                     entityPlayer.triggerAchievement(AchievementList.getWood);
                 }
                 if (this.a.c == Item.j.ap) {

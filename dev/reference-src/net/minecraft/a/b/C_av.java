@@ -3,7 +3,7 @@
  */
 package net.minecraft.a.b;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_g;
@@ -21,9 +21,9 @@ extends Item {
     }
 
     @Override
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, net.minecraft.a.a.C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, net.minecraft.a.a.World c_g, int n, int n2, int n3, int n4) {
         int n5 = c_g.a(n, n2, n3);
-        if (n5 == C_x.rail.at || n5 == C_x.railBooster.at) {
+        if (n5 == Block.rail.at || n5 == Block.railBooster.at) {
             if (!c_g.multiplayerWorld) {
                 c_g.spawnEntityInWorld(new C_g(c_g, (float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, this.minecartType));
                 entityPlayer.addStat(StatList.objectUseStats[itemStack.c], 1);

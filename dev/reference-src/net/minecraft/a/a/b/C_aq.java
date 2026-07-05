@@ -4,29 +4,29 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
 
 public class C_aq
-extends C_x {
+extends Block {
     protected C_aq(int n, int n2) {
         super(n, n2, C_c.d);
         this.a(true);
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         if (random.nextInt(20) == 0 && (c_g.f(n + 1, n2, n3) == C_c.f || c_g.f(n - 1, n2, n3) == C_c.f || c_g.f(n, n2, n3 + 1) == C_c.f || c_g.f(n, n2, n3 - 1) == C_c.f)) {
-            c_g.b(n, n2, n3, C_x.ad.at);
+            c_g.b(n, n2, n3, Block.ad.at);
         }
     }
 
     @Override
-    public final boolean directSmelt(C_g c_g, float f, float f2, float f3) {
-        int n = C_x.i.at;
+    public final boolean directSmelt(World c_g, float f, float f2, float f3) {
+        int n = Block.i.at;
         if (c_g.q.nextFloat() <= 1.0f) {
             float f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f5 = c_g.q.nextFloat() * 0.7f + 0.15f;

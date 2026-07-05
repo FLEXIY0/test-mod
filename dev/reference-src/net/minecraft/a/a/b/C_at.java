@@ -3,14 +3,14 @@
  */
 package net.minecraft.a.a.b;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.C_b;
 
 public class C_at
-extends C_x {
+extends Block {
     private static String[] NAME_LIST = new String[]{"Purple", "Blue", "Red", "Yellow"};
 
     protected C_at(int n, int n2, C_c c_c) {
@@ -43,8 +43,8 @@ extends C_x {
     }
 
     @Override
-    public final boolean directSmelt(C_g c_g, float f, float f2, float f3) {
-        int n = C_x.A.at;
+    public final boolean directSmelt(World c_g, float f, float f2, float f3) {
+        int n = Block.A.at;
         if (c_g.q.nextFloat() <= 1.0f) {
             float f4 = c_g.q.nextFloat() * 0.7f + 0.15f;
             float f5 = c_g.q.nextFloat() * 0.7f + 0.15f;

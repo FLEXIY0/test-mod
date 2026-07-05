@@ -4,8 +4,8 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
@@ -13,7 +13,7 @@ import net.minecraft.a.c.c.C_b;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public final class C_br
-extends C_x {
+extends Block {
     private Random rand = new Random();
     private static String[] NAME_LIST = new String[]{"Oak", "Birch", "Palm", "Pine"};
 
@@ -34,7 +34,7 @@ extends C_x {
     }
 
     @Override
-    public boolean d(C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean d(World c_g, int n, int n2, int n3, int n4) {
         return true;
     }
 
@@ -44,7 +44,7 @@ extends C_x {
     }
 
     @Override
-    public void g(C_g c_g, int n, int n2, int n3, int n4) {
+    public void g(World c_g, int n, int n2, int n3, int n4) {
         int n5 = ((EntityPlayer)c_g.y).b.d().d & 3;
         byte by = 0;
         switch (n4) {
@@ -91,7 +91,7 @@ extends C_x {
 
     @Override
     public final int a(int n, Random random) {
-        return C_x.log.at;
+        return Block.log.at;
     }
 
     @Override
@@ -110,7 +110,7 @@ extends C_x {
     }
 
     @Override
-    public final boolean directSmelt(C_g c_g, float f, float f2, float f3) {
+    public final boolean directSmelt(World c_g, float f, float f2, float f3) {
         int n = Item.i.ap;
         int n2 = this.rand.nextInt(3) + 1;
         for (int i = 0; i < n2; ++i) {

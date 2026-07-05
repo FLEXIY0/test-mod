@@ -4,7 +4,7 @@
 package net.minecraft.a.c.b;
 
 import com.a.a.NBTTagCompound;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -15,20 +15,20 @@ public class C_e
 extends C_a {
     int type = 0;
 
-    public C_e(C_g c_g) {
+    public C_e(World c_g) {
         super(c_g);
         this.V = this.type == 1 ? "/mob/cow_bw.png" : "/mob/cow.png";
         this.a(0.9f, 1.3f);
     }
 
-    public C_e(C_g c_g, int n) {
+    public C_e(World c_g, int n) {
         super(c_g);
         this.a(0.9f, 1.3f);
         this.type = n;
         this.V = this.type == 1 ? "/mob/cow_bw.png" : "/mob/cow.png";
     }
 
-    public C_e(C_g c_g, float f, float f2, float f3) {
+    public C_e(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.type = this.G.nextInt(4);
         this.V = this.type == 1 ? "/mob/cow_bw.png" : "/mob/cow.png";

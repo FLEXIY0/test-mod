@@ -4,7 +4,7 @@
 package net.minecraft.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.C_a;
 import net.minecraft.a.b.C_aa;
 import net.minecraft.a.b.C_ac;
@@ -55,7 +55,7 @@ import net.minecraft.client.statistics.StatList;
 public class Item {
     protected static Random a = new Random();
     public static Item[] b = new Item[1024];
-    public net.minecraft.a.a.b.C_x[] blocksEffectiveAgainst;
+    public net.minecraft.a.a.b.Block[] blocksEffectiveAgainst;
     public static final Item c = new C_l(0, 2).a(162).setItemName("Iron Shovel");
     public static final Item d = new C_a(1, 2).a(194).setItemName("Iron Pickaxe");
     public static final Item e = new C_h(2, 2).a(226).setItemName("Iron Axe");
@@ -95,7 +95,7 @@ public class Item {
     public static final Item L = new C_n(36, 2).a(258).setItemName("Iron Hoe");
     public static final Item M = new C_n(37, 4).a(259).setItemName("\u00a7bDiamond Hoe");
     public static final Item N = new C_n(38, 0).a(260).setItemName("Golden Hoe").setItemDescription("Fortune", 1);
-    public static final Item O = new C_f(39, net.minecraft.a.a.b.C_x.ao.at).a(9).setItemName("Wheat Seeds").setDecor(true);
+    public static final Item O = new C_f(39, net.minecraft.a.a.b.Block.ao.at).a(9).setItemName("Wheat Seeds").setDecor(true);
     public static final Item P = new C_bd(40).a(41).setItemName("Wheat");
     public static final Item Q = new C_p(41, 5).a(73).setItemName("Bread").setStackSize(2);
     public static final Item R = new C_j(42, 0, 0, 0).a(0).setItemName("Cloth Helmet");
@@ -122,7 +122,7 @@ public class Item {
     public static final Item am = new C_p(63, 3).a(167).setItemName("Raw Porkchop");
     public static final Item an = new C_p(64, 8).a(168).setItemName("Cooked Porkchop");
     public static final Item ao = new C_o(65).a(42).setItemName("Painting").setDecor(true);
-    public static final Item doorOak = new C_ah(66, net.minecraft.a.a.b.C_x.doorOak).a(74).setItemName("Oak Door").setDecor(true);
+    public static final Item doorOak = new C_ah(66, net.minecraft.a.a.b.Block.doorOak).a(74).setItemName("Oak Door").setDecor(true);
     public static final Item emerald = new C_bd(67).a(104).setItemName("\u00a7aEmerald");
     public static final Item swordEmerald = new C_c(68, 3).a(133).setDamageVsEntity(8).setItemName("\u00a7aEmerald Sword");
     public static final Item shovelEmerald = new C_l(69, 3).a(165).setItemName("\u00a7aEmerald Shovel");
@@ -133,7 +133,7 @@ public class Item {
     public static final Item plateEmerald = new C_j(74, 4, 5, 1).a(45).setItemName("\u00a7aEmerald Chestplate");
     public static final Item legsEmerald = new C_j(75, 4, 5, 2).a(77).setItemName("\u00a7aEmerald Leggings");
     public static final Item bootsEmerald = new C_j(76, 4, 5, 3).a(109).setItemName("\u00a7aEmerald Boots");
-    public static final Item reed = new C_bc(77, net.minecraft.a.a.b.C_x.reeds).a(106).setItemName("Reeds").setDecor(true);
+    public static final Item reed = new C_bc(77, net.minecraft.a.a.b.Block.reeds).a(106).setItemName("Reeds").setDecor(true);
     public static final Item paper = new Item(78).a(169).setItemName("Paper");
     public static final Item book = new Item(79).a(170).setItemName("Book");
     public static final Item bone = new Item(80).a(137).setItemName("Bone");
@@ -147,7 +147,7 @@ public class Item {
     public static final Item legsStudded = new C_j(88, 2, 6, 2).a(78).setItemName("Studded Leggings");
     public static final Item bootsStudded = new C_j(89, 2, 6, 3).a(110).setItemName("Studded Boots");
     public static final Item gapple = new C_ap(90, 20).a(11).setItemName("\u00a7bGolden Apple").setItemDescription("+10 Absorption", 1);
-    public static final Item cake = new C_bc(91, net.minecraft.a.a.b.C_x.cake).a(43).setItemName("Apple Pie").setDecor(true);
+    public static final Item cake = new C_bc(91, net.minecraft.a.a.b.Block.cake).a(43).setItemName("Apple Pie").setDecor(true);
     public static final Item sign = new C_bh(92, 0).a(75).setItemName("Oak Sign").setDecor(true);
     public static final Item signBirch = new C_bh(162, 1).a(448).setItemName("Birch Sign").setDecor(true);
     public static final Item signPalm = new C_bh(163, 2).a(449).setItemName("Palm Sign").setDecor(true);
@@ -163,11 +163,11 @@ public class Item {
     public static final Item battleAxeDiamond = new C_t(101, 4).a(291).setItemName("\u00a7bDiamond Battleaxe");
     public static final Item battleAxeGold = new C_t(102, 0).a(292).setSilkTouch(true).setItemName("Golden Battleaxe").setItemDescription("Looting", 3);
     public static final Item battleAxeEmerald = new C_t(103, 3).a(293).setItemName("\u00a7aEmerald Battleaxe");
-    public static final Item flowerPot = new C_bc(104, net.minecraft.a.a.b.C_x.flowerPot).a(139).setItemName("Flower Pot").setDecor(true);
+    public static final Item flowerPot = new C_bc(104, net.minecraft.a.a.b.Block.flowerPot).a(139).setItemName("Flower Pot").setDecor(true);
     public static final Item itemFrame = new C_ao(105).a(171).setItemName("Item Frame").setDecor(true);
     public static final Item bucketEmpty = new C_x(106, 0).a(232).setItemName("Empty Bucket");
-    public static final Item bucketWater = new C_x(107, net.minecraft.a.a.b.C_x.p.at).a(264).setItemName("Water Bucket");
-    public static final Item bucketLava = new C_x(108, net.minecraft.a.a.b.C_x.r.at).a(296).setItemName("Lava Bucket");
+    public static final Item bucketWater = new C_x(107, net.minecraft.a.a.b.Block.p.at).a(264).setItemName("Water Bucket");
+    public static final Item bucketLava = new C_x(108, net.minecraft.a.a.b.Block.r.at).a(296).setItemName("Lava Bucket");
     public static final Item fishingRod = new C_am(109).a(198).setItemName("Fishing Rod");
     public static final Item fishRaw = new C_p(110, 2).a(199).setItemName("Raw Fish").setStackSize(2);
     public static final Item fishCooked = new C_p(111, 5).a(200).setItemName("Cooked Fish").setStackSize(2);
@@ -175,8 +175,8 @@ public class Item {
     public static final Item debugStick = new C_bn(121).a(266).setItemName("\u00a7dDebug Stick");
     public static final Item clock = new Item(122).a(298).setItemName("\u00a7dMoon Watch").setStackSize(1).setToolItem(true);
     public static final Item melonSlice = new C_p(123, 2).a(141).setItemName("Melon Slice").setStackSize(4);
-    public static final Item seedsMelon = new C_f(124, net.minecraft.a.a.b.C_x.melonStem.at).a(173).setItemName("Melon Seeds").setDecor(true);
-    public static final Item seedsPumpkin = new C_f(125, net.minecraft.a.a.b.C_x.pumpkinStem.at).a(174).setItemName("Pumpkin Seeds").setDecor(true);
+    public static final Item seedsMelon = new C_f(124, net.minecraft.a.a.b.Block.melonStem.at).a(173).setItemName("Melon Seeds").setDecor(true);
+    public static final Item seedsPumpkin = new C_f(125, net.minecraft.a.a.b.Block.pumpkinStem.at).a(174).setItemName("Pumpkin Seeds").setDecor(true);
     public static final Item berry = new C_p(126, 1).a(142).setItemName("Wild Berries").setStackSize(8);
     public static final Item pumpkinPie = new C_p(127, 10).a(205).setItemName("Pumpkin Pastry");
     public static final Item ash = new Item(128).a(237).setItemName("Ashes");
@@ -188,9 +188,9 @@ public class Item {
     public static final Item antlionExtract = new Item(136).a(270).setItemName("\u00a7dAntlion Extract");
     public static final Item glowDust = new Item(137).a(301).setItemName("\u00a7dGlodust");
     public static final Item bowlGlowSoup = new C_b(138, 10).a(302).setItemName("Gloshroom Stew").setItemDescription("Nightivision 60s", 1);
-    public static final Item doorBirch = new C_ah(139, net.minecraft.a.a.b.C_x.doorBirch).a(239).setItemName("Birch Door").setDecor(true);
-    public static final Item doorPalm = new C_ah(140, net.minecraft.a.a.b.C_x.doorPalm).a(271).setItemName("Palm Door").setDecor(true);
-    public static final Item doorSpruce = new C_ah(141, net.minecraft.a.a.b.C_x.doorSpruce).a(303).setItemName("Pine Door").setDecor(true);
+    public static final Item doorBirch = new C_ah(139, net.minecraft.a.a.b.Block.doorBirch).a(239).setItemName("Birch Door").setDecor(true);
+    public static final Item doorPalm = new C_ah(140, net.minecraft.a.a.b.Block.doorPalm).a(271).setItemName("Palm Door").setDecor(true);
+    public static final Item doorSpruce = new C_ah(141, net.minecraft.a.a.b.Block.doorSpruce).a(303).setItemName("Pine Door").setDecor(true);
     public static final Item jellyfishTentacle = new Item(142).a(267).setItemName("\u00a7bJellyfish Tentacle");
     public static final Item fishFin = new Item(143).a(202).setItemName("\u00a7bFish Fin");
     public static final Item spearWood = new C_bm(144, 0).a(416).setItemName("Wooden Spear").setItemDescription("Chance to Crit", 2);
@@ -221,7 +221,7 @@ public class Item {
     public static final Item gloves = new C_aa(171).a(451).setItemName("\u00a7eClimbing Gloves").setItemDescription("Wall Climbing", 1).setItemDescription("+3 Unarmed DMG", 2);
     public static final Item mirror = new C_aa(172).a(452).setItemName("\u00a7eMagic Mirror").setItemDescription("Free Respawn", 1);
     public static final Item bracelet = new C_aa(173).a(453).setItemName("\u00a7eBuilder's Bracelet").setItemDescription("+2 Block Reach", 1).setItemDescription("Haste", 2);
-    public static final Item doorSteel = new C_ah(174, net.minecraft.a.a.b.C_x.doorSteel).a(384).setItemName("Iron Door").setDecor(true);
+    public static final Item doorSteel = new C_ah(174, net.minecraft.a.a.b.Block.doorSteel).a(384).setItemName("Iron Door").setDecor(true);
     public static final Item quiverAdminium = new C_ba(175).a(386).setItemName("\u00a7dAdminium Quiver").setItemDescription("Infinity", 1);
     public static final Item sandball = new C_bl(176, 2).a(238).setItemName("Sandball");
     public static final Item vial = new C_aa(177).a(387).setItemName("\u00a7ePoison Vial").setItemDescription("Poison Immunity", 1).setItemDescription("Poison Touch", 2);
@@ -233,7 +233,7 @@ public class Item {
     public static final Item bark = new C_s(183).a(396).setItemName("Bark");
     public static final Item crossbow = new C_af(184).a(454).setItemName("Crossbow");
     public static final Item crossbowLoaded = new C_af(185).a(457).setItemName("Loaded Crossbow");
-    public static final Item bucketFish = new C_x(186, net.minecraft.a.a.b.C_x.p.at).a(397).setStackSize(1).setItemName("Fish Bucket");
+    public static final Item bucketFish = new C_x(186, net.minecraft.a.a.b.Block.p.at).a(397).setStackSize(1).setItemName("Fish Bucket");
     public static final Item recordGold = new C_bb(112, "Classic Blues").a(12).setItemName("\u00a7bGolden Record").setItemDescription("Soybean_56", 0);
     public static final Item recordGreen = new C_bb(113, "Spaced Out").a(44).setItemName("\u00a7bGreen Record").setItemDescription("Soybean_56", 0);
     public static final Item recordRed = new C_bb(114, "Eternal Suspense").a(76).setItemName("\u00a7bRed Record").setItemDescription("Soybean_56", 0);
@@ -322,9 +322,9 @@ public class Item {
         return this.silkTouch;
     }
 
-    public boolean isBlockAffectiveAgainst(net.minecraft.a.a.b.C_x c_x) {
+    public boolean isBlockAffectiveAgainst(net.minecraft.a.a.b.Block c_x) {
         if (this.blocksEffectiveAgainst != null) {
-            for (net.minecraft.a.a.b.C_x c_x2 : this.blocksEffectiveAgainst) {
+            for (net.minecraft.a.a.b.Block c_x2 : this.blocksEffectiveAgainst) {
                 if (!c_x2.equals(c_x)) continue;
                 return true;
             }
@@ -340,19 +340,19 @@ public class Item {
         return 0;
     }
 
-    public boolean a(ItemStack itemStack, C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean a(ItemStack itemStack, World c_g, int n, int n2, int n3, int n4) {
         return false;
     }
 
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, World c_g, int n, int n2, int n3, int n4) {
         return false;
     }
 
-    public float getStrVsBlock(net.minecraft.a.a.b.C_x c_x, int n) {
+    public float getStrVsBlock(net.minecraft.a.a.b.Block c_x, int n) {
         return 1.0f;
     }
 
-    public ItemStack a(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack a(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         return itemStack;
     }
 
@@ -368,13 +368,13 @@ public class Item {
         return false;
     }
 
-    public void hitEntity(EntityPlayer entityPlayer, ItemStack itemStack, C_g c_g) {
+    public void hitEntity(EntityPlayer entityPlayer, ItemStack itemStack, World c_g) {
     }
 
-    public void onBlockDestroyed(EntityPlayer entityPlayer, ItemStack itemStack, C_g c_g) {
+    public void onBlockDestroyed(EntityPlayer entityPlayer, ItemStack itemStack, World c_g) {
     }
 
-    public boolean throwInFire(C_g c_g, float f, float f2, float f3) {
+    public boolean throwInFire(World c_g, float f, float f2, float f3) {
         return false;
     }
 
@@ -386,7 +386,7 @@ public class Item {
         return this;
     }
 
-    public boolean canHarvestBlock(net.minecraft.a.a.b.C_x c_x, int n) {
+    public boolean canHarvestBlock(net.minecraft.a.a.b.Block c_x, int n) {
         return false;
     }
 
@@ -451,7 +451,7 @@ public class Item {
         return this.looting;
     }
 
-    public void onPlayerStoppedUsing(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer, int n) {
+    public void onPlayerStoppedUsing(ItemStack itemStack, World c_g, EntityPlayer entityPlayer, int n) {
     }
 
     public int getMaxItemUseDuration(ItemStack itemStack) {
@@ -462,7 +462,7 @@ public class Item {
         return C_q.none;
     }
 
-    public ItemStack onFoodEaten(ItemStack itemStack, C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack onFoodEaten(ItemStack itemStack, World c_g, EntityPlayer entityPlayer) {
         return itemStack;
     }
 

@@ -3,8 +3,8 @@
  */
 package net.minecraft.client.dx;
 
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.C_b;
@@ -63,8 +63,8 @@ extends C_a {
                 this.a.f.h_();
             }
         }
-        if (bl && this.a.f.canHarvestBlock(C_x.c[n5])) {
-            C_x.c[n5].f(this.a.d, n, n2, n3, by);
+        if (bl && this.a.f.canHarvestBlock(Block.c[n5])) {
+            Block.c[n5].f(this.a.d, n, n2, n3, by);
         }
         return bl;
     }
@@ -85,7 +85,7 @@ extends C_a {
             if (n5 <= 0 || this.curBlockDamageMP == 0.0f) {
                 // empty if block
             }
-            if (n5 > 0 && C_x.c[n5].a(this.a.f) >= 1.0f) {
+            if (n5 > 0 && Block.c[n5].a(this.a.f) >= 1.0f) {
                 this.extinguishFire(n, n2, n3, n4);
                 this.sendBlockRemoved(n, n2, n3, n4);
             } else {
@@ -119,7 +119,7 @@ extends C_a {
         if (n4 == 5) {
             ++n;
         }
-        if (this.a.d.a(n, n2, n3) == C_x.ag.at || this.a.d.a(n, n2, n3) == C_x.hellfire.at) {
+        if (this.a.d.a(n, n2, n3) == Block.ag.at || this.a.d.a(n, n2, n3) == Block.hellfire.at) {
             this.a.d.a((float)n + 0.5f, (float)n2 + 0.5f, (float)n3 + 0.5f, "random.fizz", 0.5f, 2.6f + (this.a.d.q.nextFloat() - this.a.d.q.nextFloat()) * 0.8f);
             this.netClientHandler.addToSendQueue(new Packet14BlockDig(0, n, n2, n3, n4));
         }
@@ -145,7 +145,7 @@ extends C_a {
             } else if (n == this.currentBlockX && n2 == this.currentBlockY && n3 == this.currentblockZ) {
                 n4 = this.a.d.a(n, n2, n3);
                 if (n4 != 0) {
-                    C_x c_x = C_x.c[n4];
+                    Block c_x = Block.c[n4];
                     float f = 1.0f;
                     if (this.a.f.b.charmSlot[0] != null && this.a.f.b.charmSlot[0].a() == Item.bracelet && !this.a.f.isInWater()) {
                         f = 4.0f;
@@ -199,7 +199,7 @@ extends C_a {
     }
 
     @Override
-    public final void a(C_g c_g) {
+    public final void a(World c_g) {
         super.a(c_g);
     }
 
@@ -218,7 +218,7 @@ extends C_a {
     }
 
     @Override
-    public boolean sendPlaceBlock(EntityPlayer entityPlayer, C_g c_g, ItemStack itemStack, int n, int n2, int n3, int n4) {
+    public boolean sendPlaceBlock(EntityPlayer entityPlayer, World c_g, ItemStack itemStack, int n, int n2, int n3, int n4) {
         this.syncCurrentPlayItem();
         boolean bl = super.sendPlaceBlock(entityPlayer, c_g, itemStack, n, n2, n3, n4);
         this.netClientHandler.addToSendQueue(new Packet15Place(n, n2, n3, n4, entityPlayer.b.d()));
@@ -226,7 +226,7 @@ extends C_a {
     }
 
     @Override
-    public boolean sendUseItem(EntityPlayer entityPlayer, C_g c_g, ItemStack itemStack) {
+    public boolean sendUseItem(EntityPlayer entityPlayer, World c_g, ItemStack itemStack) {
         this.syncCurrentPlayItem();
         this.netClientHandler.addToSendQueue(new Packet15Place(-1, -1, -1, 255, entityPlayer.b.d()));
         boolean bl = super.sendUseItem(entityPlayer, c_g, itemStack);
@@ -234,12 +234,12 @@ extends C_a {
     }
 
     @Override
-    public void useSpecial(EntityPlayer entityPlayer, C_g c_g, ItemStack itemStack) {
+    public void useSpecial(EntityPlayer entityPlayer, World c_g, ItemStack itemStack) {
         this.netClientHandler.addToSendQueue(new Packet27UseCharm(itemStack));
     }
 
     @Override
-    public net.minecraft.client.g.C_a createPlayer(C_g c_g) {
+    public net.minecraft.client.g.C_a createPlayer(World c_g) {
         return new net.minecraft.client.g.C_d(this.a, c_g, this.a.h, this.netClientHandler);
     }
 

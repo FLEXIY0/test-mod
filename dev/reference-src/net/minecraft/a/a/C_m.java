@@ -8,16 +8,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.a.C_k;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.d.C_a;
 import util.MathHelper;
 
 public class C_m {
     public boolean isFlaming = false;
-    private C_g worldObj;
+    private World worldObj;
     public float explosionX;
     public float explosionY;
     public float explosionZ;
@@ -25,7 +25,7 @@ public class C_m {
     public float explosionSize;
     public Set<C_k> destroyedBlockPositions = new HashSet<C_k>();
 
-    public C_m(C_g c_g, C_b c_b, float f, float f2, float f3, float f4) {
+    public C_m(World c_g, C_b c_b, float f, float f2, float f3, float f4) {
         this.worldObj = c_g;
         this.exploder = c_b;
         this.explosionSize = f4;
@@ -75,7 +75,7 @@ public class C_m {
                         n2 = (int)f4;
                         n = this.worldObj.a(n4, n3, n2);
                         if (n > 0) {
-                            f16 -= (C_x.c[n].g() + 0.3f) * 0.3f;
+                            f16 -= (Block.c[n].g() + 0.3f) * 0.3f;
                         }
                         if (f16 > 0.0f) {
                             int n8 = n4 + (n3 << 10) + (n2 << 10 << 10);
@@ -145,9 +145,9 @@ public class C_m {
                 this.worldObj.a("smoke", f22, f5, f2, f, f11, f3);
             }
             if (n2 <= 0) continue;
-            C_x.c[n2].a(this.worldObj, n7, n4, n3, this.worldObj.e(n7, n4, n3), 0.3f);
+            Block.c[n2].a(this.worldObj, n7, n4, n3, this.worldObj.e(n7, n4, n3), 0.3f);
             this.worldObj.b(n7, n4, n3, 0);
-            C_x.c[n2].c(this.worldObj, n7, n4, n3);
+            Block.c[n2].c(this.worldObj, n7, n4, n3);
         }
     }
 
@@ -177,9 +177,9 @@ public class C_m {
                 this.worldObj.a("smoke", f, f2, f3, f4, f5, f6);
             }
             if (n4 <= 0) continue;
-            C_x.c[n4].a(this.worldObj, n, n2, n3, this.worldObj.e(n, n2, n3), 0.3f);
+            Block.c[n4].a(this.worldObj, n, n2, n3, this.worldObj.e(n, n2, n3), 0.3f);
             this.worldObj.b(n, n2, n3, 0);
-            C_x.c[n4].c(this.worldObj, n, n2, n3);
+            Block.c[n4].c(this.worldObj, n, n2, n3);
         }
     }
 

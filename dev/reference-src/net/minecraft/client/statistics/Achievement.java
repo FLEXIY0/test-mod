@@ -3,7 +3,7 @@
  */
 package net.minecraft.client.statistics;
 
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.client.statistics.AchievementList;
@@ -23,7 +23,7 @@ extends StatBase {
         this(n, string, string2, new ItemStack(item), achievement);
     }
 
-    public Achievement(int n, String string, String string2, C_x c_x, Achievement achievement) {
+    public Achievement(int n, String string, String string2, Block c_x, Achievement achievement) {
         this(n, string, string2, new ItemStack(c_x), achievement);
     }
 

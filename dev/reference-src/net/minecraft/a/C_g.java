@@ -9,7 +9,7 @@ import java.util.List;
 import net.minecraft.a.C_b;
 import net.minecraft.a.C_c;
 import net.minecraft.a.a.b.C_o;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
@@ -34,9 +34,9 @@ extends C_c {
             for (n3 = 0; n3 < C_l.a.size(); ++n3) {
                 n2 = 0;
                 object = C_l.a.get(n3);
-                for (n = 0; n <= ((C_x)object).getMaxDamage(); ++n) {
+                for (n = 0; n <= ((Block)object).getMaxDamage(); ++n) {
                     if (object instanceof C_o && n == 2) continue;
-                    this.mainInventory.add(new ItemStack((C_x)object, 1, n));
+                    this.mainInventory.add(new ItemStack((Block)object, 1, n));
                 }
             }
             for (n3 = 0; n3 < C_l.registeredItemList.size(); ++n3) {
@@ -73,16 +73,16 @@ extends C_c {
                     n2 = 0;
                     object = C_l.a.get(n3);
                     if (C_m.page == 1) {
-                        if (((C_x)object).isDecoration) continue;
-                        for (n = 0; n <= ((C_x)object).getMaxDamage(); ++n) {
+                        if (((Block)object).isDecoration) continue;
+                        for (n = 0; n <= ((Block)object).getMaxDamage(); ++n) {
                             if (object instanceof C_o && n == 2) continue;
-                            this.blocks.add(new ItemStack((C_x)object, 1, n));
+                            this.blocks.add(new ItemStack((Block)object, 1, n));
                         }
                         continue;
                     }
-                    if (C_m.page != 2 || !((C_x)object).isDecoration) continue;
-                    for (n = 0; n <= ((C_x)object).getMaxDamage(); ++n) {
-                        this.plants.add(new ItemStack((C_x)object, 1, n));
+                    if (C_m.page != 2 || !((Block)object).isDecoration) continue;
+                    for (n = 0; n <= ((Block)object).getMaxDamage(); ++n) {
+                        this.plants.add(new ItemStack((Block)object, 1, n));
                     }
                 }
             }
@@ -222,16 +222,16 @@ extends C_c {
         if (C_m.page < 3 || C_m.page == 6) {
             for (n = 0; n < C_l.a.size(); ++n) {
                 object = C_l.a.get(n);
-                for (int i = 0; i <= ((C_x)object).getMaxDamage(); ++i) {
+                for (int i = 0; i <= ((Block)object).getMaxDamage(); ++i) {
                     if (object instanceof C_o && i == 2) continue;
-                    ItemStack itemStack = new ItemStack((C_x)object, 1, i);
+                    ItemStack itemStack = new ItemStack((Block)object, 1, i);
                     String string2 = itemStack.getItemName().toLowerCase();
-                    if (C_m.page == 1 && !((C_x)object).isDecoration) {
+                    if (C_m.page == 1 && !((Block)object).isDecoration) {
                         if (!string2.contains(string.toLowerCase())) continue;
                         this.blocks.add(itemStack);
                         continue;
                     }
-                    if (C_m.page == 2 && ((C_x)object).isDecoration) {
+                    if (C_m.page == 2 && ((Block)object).isDecoration) {
                         if (!string2.contains(string.toLowerCase())) continue;
                         this.plants.add(itemStack);
                         continue;

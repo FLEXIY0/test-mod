@@ -3,18 +3,18 @@
  */
 package net.minecraft.game.entity.md3;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.c.C_b;
 import net.minecraft.a.c.a.C_e;
 
 public class EntitySteve
 extends C_e {
-    public EntitySteve(C_g c_g) {
+    public EntitySteve(World c_g) {
         super(c_g);
     }
 
-    public EntitySteve(C_g c_g, float f, float f2, float f3) {
+    public EntitySteve(World c_g, float f, float f2, float f3) {
         super(c_g);
         this.W = 20;
         this.b(f, f2, f3);

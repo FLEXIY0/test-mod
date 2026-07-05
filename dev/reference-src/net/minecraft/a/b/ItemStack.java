@@ -6,8 +6,8 @@ package net.minecraft.a.b;
 import com.a.a.NBTBase;
 import com.a.a.NBTTagCompound;
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.C_j;
 import net.minecraft.a.b.C_q;
 import net.minecraft.a.b.Item;
@@ -27,15 +27,15 @@ public final class ItemStack {
     public NBTTagCompound stackTagCompound;
     private static Random rand = new Random();
 
-    public ItemStack(C_x c_x) {
+    public ItemStack(Block c_x) {
         this(c_x, 1);
     }
 
-    public ItemStack(C_x c_x, int n) {
+    public ItemStack(Block c_x, int n) {
         this(c_x.at, n);
     }
 
-    public ItemStack(C_x c_x, int n, int n2) {
+    public ItemStack(Block c_x, int n, int n2) {
         this(c_x.at, n, n2);
     }
 
@@ -156,7 +156,7 @@ public final class ItemStack {
         return !this.hasTagCompound() || !this.getTagCompound().k("Unbreakable");
     }
 
-    public final void damageItem(int n, C_g c_g) {
+    public final void damageItem(int n, World c_g) {
         if (!this.isItemStackDamageable() || c_g.gamemode == 1) {
             return;
         }
@@ -189,7 +189,7 @@ public final class ItemStack {
         }
     }
 
-    public final void damageItem2(int n, C_g c_g) {
+    public final void damageItem2(int n, World c_g) {
         if (!this.isItemStackDamageable() || c_g.gamemode == 1) {
             return;
         }
@@ -306,7 +306,7 @@ public final class ItemStack {
         return this.a + "x" + Item.b[this.c].getItemName() + "@" + this.d + (this.hasTagCompound() ? "+NBT" : "");
     }
 
-    public ItemStack useItemRightClick(C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack useItemRightClick(World c_g, EntityPlayer entityPlayer) {
         return this.a().a(this, c_g, entityPlayer);
     }
 
@@ -324,11 +324,11 @@ public final class ItemStack {
         return Item.b[this.c].a();
     }
 
-    public boolean useItem(EntityPlayer entityPlayer, C_g c_g, int n, int n2, int n3, int n4) {
+    public boolean useItem(EntityPlayer entityPlayer, World c_g, int n, int n2, int n3, int n4) {
         return this.a().onItemUse(this, entityPlayer, c_g, n, n2, n3, n4);
     }
 
-    public void updateAnimations(C_g c_g, EntityPlayer entityPlayer, int n, boolean bl) {
+    public void updateAnimations(World c_g, EntityPlayer entityPlayer, int n, boolean bl) {
         if (this.b > 0) {
             --this.b;
         }
@@ -337,11 +337,11 @@ public final class ItemStack {
         }
     }
 
-    public void onPlayerStoppedUsing(C_g c_g, EntityPlayer entityPlayer, int n) {
+    public void onPlayerStoppedUsing(World c_g, EntityPlayer entityPlayer, int n) {
         this.a().onPlayerStoppedUsing(this, c_g, entityPlayer, n);
     }
 
-    public ItemStack onFoodEaten(C_g c_g, EntityPlayer entityPlayer) {
+    public ItemStack onFoodEaten(World c_g, EntityPlayer entityPlayer) {
         return this.a().onFoodEaten(this, c_g, entityPlayer);
     }
 

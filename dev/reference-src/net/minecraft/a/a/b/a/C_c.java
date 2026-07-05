@@ -6,13 +6,13 @@ package net.minecraft.a.a.b.a;
 import com.a.a.NBTTagCompound;
 import com.a.a.NBTTagList;
 import net.minecraft.a.C_b;
-import net.minecraft.a.a.b.C_x;
-import net.minecraft.a.a.b.a.C_a;
+import net.minecraft.a.a.b.Block;
+import net.minecraft.a.a.b.a.TileEntity;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.e.EntityPlayer;
 
 public final class C_c
-extends C_a
+extends TileEntity
 implements C_b {
     public ItemStack[] e = new ItemStack[36];
     public boolean adjacentChestChecked = false;
@@ -110,16 +110,16 @@ implements C_b {
             this.adjacentChestXPos = null;
             this.adjacentChestXNeg = null;
             this.adjacentChestZPos = null;
-            if (this.a.a(this.b - 1, this.c, this.d) == C_x.aj.at) {
+            if (this.a.a(this.b - 1, this.c, this.d) == Block.aj.at) {
                 this.adjacentChestXNeg = (C_c)this.a.j(this.b - 1, this.c, this.d);
             }
-            if (this.a.a(this.b + 1, this.c, this.d) == C_x.aj.at) {
+            if (this.a.a(this.b + 1, this.c, this.d) == Block.aj.at) {
                 this.adjacentChestXPos = (C_c)this.a.j(this.b + 1, this.c, this.d);
             }
-            if (this.a.a(this.b, this.c, this.d - 1) == C_x.aj.at) {
+            if (this.a.a(this.b, this.c, this.d - 1) == Block.aj.at) {
                 this.adjacentChestZNeg = (C_c)this.a.j(this.b, this.c, this.d - 1);
             }
-            if (this.a.a(this.b, this.c, this.d + 1) == C_x.aj.at) {
+            if (this.a.a(this.b, this.c, this.d + 1) == Block.aj.at) {
                 this.adjacentChestZPos = (C_c)this.a.j(this.b, this.c, this.d + 1);
             }
             if (this.adjacentChestZNeg != null) {

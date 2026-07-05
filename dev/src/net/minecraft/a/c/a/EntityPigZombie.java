@@ -9,15 +9,15 @@
  */
 package net.minecraft.a.c.a;
 
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 
 public class EntityPigZombie extends C_f {
-    public EntityPigZombie(C_g world) {
+    public EntityPigZombie(World world) {
         super(world);
         this.V = "/mob/pigzombie.png";
     }
 
-    public EntityPigZombie(C_g world, float x, float y, float z) {
+    public EntityPigZombie(World world, float x, float y, float z) {
         super(world, x, y, z);
         this.V = "/mob/pigzombie.png";
     }

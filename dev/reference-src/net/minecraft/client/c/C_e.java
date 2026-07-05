@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import net.minecraft.a.a.C_g;
+import net.minecraft.a.a.World;
 import net.minecraft.client.LevelIO;
 import net.minecraft.client.c.C_f;
 import net.minecraft.client.c.GuiButton;
@@ -128,7 +128,7 @@ implements Runnable {
     protected void a(File object) {
         try {
             object = new FileInputStream((File)object);
-            C_g c_g = new LevelIO(this.b, this.b.p).a((InputStream)object);
+            World c_g = new LevelIO(this.b, this.b.p).a((InputStream)object);
             ((FileInputStream)object).close();
             this.b.a(c_g);
             return;

@@ -4,22 +4,22 @@
 package net.minecraft.a.a.b;
 
 import java.util.Random;
-import net.minecraft.a.a.C_g;
-import net.minecraft.a.a.b.C_x;
+import net.minecraft.a.a.World;
+import net.minecraft.a.a.b.Block;
 import net.minecraft.a.a.d.C_c;
 
 public final class C_ai
-extends C_x {
+extends Block {
     private int a;
 
     protected C_ai(int n, int n2) {
-        super(n, C_x.c[n2].as, C_c.f);
+        super(n, Block.c[n2].as, C_c.f);
         this.a = n2;
         this.a(true);
     }
 
     @Override
-    public final void d(C_g c_g, int n, int n2, int n3) {
+    public final void d(World c_g, int n, int n2, int n3) {
         super.d(c_g, n, n2, n3);
         if (c_g.a(n - 1, n2, n3) == 0) {
             c_g.b(n - 1, n2, n3, this.a);
@@ -36,7 +36,7 @@ extends C_x {
     }
 
     @Override
-    public final void a(C_g c_g, int n, int n2, int n3, Random random) {
+    public final void a(World c_g, int n, int n2, int n3, Random random) {
         super.a(c_g, n, n2, n3, random);
         if (c_g.a(n - 1, n2, n3) == 0) {
             c_g.b(n - 1, n2, n3, this.a);
