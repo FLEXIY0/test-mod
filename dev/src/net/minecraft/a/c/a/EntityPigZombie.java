@@ -1,7 +1,7 @@
 /*
  * Zombie Pigman for the Nether Reactor's enemy waves (Indev++ port).
  *
- * Extends the vanilla zombie (C_f) so it inherits AI, drops and the humanoid
+ * Extends the vanilla zombie (EntityZombie) so it inherits AI, drops and the humanoid
  * model — the client's entity render manager falls back to the superclass
  * renderer for unknown classes, so this renders with the zombie/biped model
  * but its own "/mob/pigzombie.png" skin. Registered in EntityList (a.c.C_f)
@@ -11,7 +11,7 @@ package net.minecraft.a.c.a;
 
 import net.minecraft.a.a.World;
 
-public class EntityPigZombie extends C_f {
+public class EntityPigZombie extends EntityZombie {
     public EntityPigZombie(World world) {
         super(world);
         this.V = "/mob/pigzombie.png";

@@ -37,6 +37,7 @@ extends C_a {
         ItemStack itemStack;
         int n5 = this.a.d.a(n, n2, n3);
         byte by = this.a.d.e(n, n2, n3);
+        net.minecraft.platform.Hooks.fireBlockBreak(this.a.d, n, n2, n3, n5); // platform event
         boolean bl = super.sendBlockRemoved(n, n2, n3, n4);
         ItemStack itemStack2 = this.a.f.b.d();
         if (bl && this.a.f.canHarvestBlock(Block.c[n5], by)) {

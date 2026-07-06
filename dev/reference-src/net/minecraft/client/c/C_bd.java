@@ -27,7 +27,7 @@ import net.minecraft.client.c.GuiButton;
 import net.minecraft.client.c.GuiMainMenu;
 import net.minecraft.client.c.GuiScreen;
 import net.minecraft.client.c.ScaledResolution;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 import net.minecraft.client.statistics.StatFileWriter;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -47,7 +47,7 @@ extends GuiScreen {
     private static final String[] GAMEMODE = new String[]{"Survival", "Creative", "Hardcore"};
     private static final String[] DIFFICULTIES = new String[]{"Peaceful", "Easy", "Normal", "Hard"};
     private CharacterLoader character;
-    C_a player;
+    EntityPlayerSP player;
 
     public C_bd(CharacterLoader characterLoader, int n) {
         this.character = characterLoader;
@@ -73,7 +73,7 @@ extends GuiScreen {
         this.e.add(new GuiButton(4, this.c / 2 + 5, this.d / 4 + 96 + 24, 150, 20, this.getSetting(4)));
         this.e.add(new C_bk(5, this.c / 2 + 34, this.d / 4 + 5));
         this.e.add(new GuiButton(0, this.c / 2 - 100, this.d / 4 + 144 + 12, "Create character"));
-        this.player = new C_a(this.b, null, this.b.h);
+        this.player = new EntityPlayerSP(this.b, null, this.b.h);
         if (this.character.currentCharacter != null) {
             this.player.d(this.character.currentCharacter);
         }
@@ -300,7 +300,7 @@ extends GuiScreen {
         this.b(n3 + 0, n4 + 79, 0, 159, 61, 7);
         this.b(n3 + 61, n4 + 0, 169, 0, 7, 79);
         this.b(n3 + 61, n4 + 79, 169, 159, 7, 7);
-        C_a c_a = this.player;
+        EntityPlayerSP c_a = this.player;
         int n5 = 33;
         int n6 = 75;
         GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);

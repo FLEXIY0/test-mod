@@ -12,7 +12,7 @@ import net.minecraft.client.c.C_ap;
 import net.minecraft.client.c.C_bd;
 import net.minecraft.client.c.GuiButton;
 import net.minecraft.client.c.GuiScreen;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 import net.minecraft.client.statistics.StatFileWriter;
 
 public class C_bg
@@ -156,7 +156,7 @@ extends GuiScreen {
 
     private void newCharacter(int n) {
         NBTTagCompound nBTTagCompound = new NBTTagCompound();
-        C_a c_a = new C_a(this.b, null, this.b.h);
+        EntityPlayerSP c_a = new EntityPlayerSP(this.b, null, this.b.h);
         c_a.c(nBTTagCompound);
         this.b.characters.currentCharacter = nBTTagCompound;
         this.b.w.character = n;

@@ -31,7 +31,7 @@ import net.minecraft.client.c.GuiCredits;
 import net.minecraft.client.c.GuiOptions;
 import net.minecraft.client.c.GuiScreen;
 import net.minecraft.client.c.ScaledResolution;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 import util.MathHelper;
@@ -44,7 +44,7 @@ extends GuiScreen {
     String[] minecraftLogo = new String[]{" *   * * *   * *** *** *** *** *** ***", " ** ** * **  * *   *   * * * * *    * ", " * * * * * * * **  *   **  *** **   * ", " *   * * *  ** *   *   * * * * *    * ", " *   * * *   * *** *** * * * * *    * "};
     String[] subtitle = new String[]{" * *   * **  *** * *    *  ", " * **  * * * *   * *    *  ", " * * * * * * *** * *  *****", " * *  ** * * *   * *    *  ", " * *   * **  ***  *     *  "};
     private C_m[][] logoEffects;
-    private C_a player;
+    private EntityPlayerSP player;
     private LevelOptions worldOptions;
     private int panoramaTimer = 0;
 
@@ -76,7 +76,7 @@ extends GuiScreen {
         this.e.add(new GuiButton(7, this.c - 73, this.d / 3 + 83, 54, 20, "Switch..."));
         this.e.add(new C_am(5, this.c / 2 - 125, this.d / 4 + 120 + 12));
         this.worldOptions = new LevelOptions();
-        this.player = new C_a(this.b, null, this.b.h);
+        this.player = new EntityPlayerSP(this.b, null, this.b.h);
         try {
             if (this.b.characters.currentCharacter != null) {
                 this.player.d(this.b.characters.currentCharacter);
@@ -459,7 +459,7 @@ extends GuiScreen {
         this.b(n3, n4, 0, 0, 68, 110);
         GuiMainMenu.a(this.g, this.player.name, n3 + 34, n4 - 10, 0xFFFFFF);
         GuiMainMenu.a(this.g, "\u00a7eScore: \u00a7f" + this.player.P, n3 + 34, n4 + 113, 0xFFFFFF);
-        C_a c_a = this.player;
+        EntityPlayerSP c_a = this.player;
         int n5 = 33;
         int n6 = 75;
         GL11.glEnable((int)2977);

@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import net.minecraft.client.d;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 
 public class CharacterLoader {
     public NBTTagCompound currentCharacter;
@@ -23,7 +23,7 @@ public class CharacterLoader {
                 this.currentCharacter = this.readCharacter(n);
             } else {
                 NBTTagCompound nBTTagCompound = new NBTTagCompound();
-                C_a c_a = new C_a(this.mc, null, this.mc.h);
+                EntityPlayerSP c_a = new EntityPlayerSP(this.mc, null, this.mc.h);
                 c_a.c(nBTTagCompound);
                 this.currentCharacter = nBTTagCompound;
             }

@@ -14,7 +14,7 @@ import net.minecraft.a.c.a.C_e;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.game.level.block.furniture.BlockDoor;
 
-public class C_f
+public class EntityZombie
 extends C_e {
     private boolean helmet;
     private boolean armor;
@@ -32,7 +32,7 @@ extends C_e {
     protected int doorBreakTime;
     public ItemStack heldItem;
 
-    public C_f(World c_g) {
+    public EntityZombie(World c_g) {
         super(c_g);
         this.V = "/mob/zombie.png";
         this.am = 0.5f;
@@ -65,7 +65,7 @@ extends C_e {
         }
     }
 
-    public C_f(World c_g, float f, float f2, float f3) {
+    public EntityZombie(World c_g, float f, float f2, float f3) {
         this(c_g);
         this.b(f, f2, f3);
     }

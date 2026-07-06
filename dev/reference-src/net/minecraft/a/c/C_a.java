@@ -50,7 +50,7 @@ extends net.minecraft.a.c.Entity {
                 this.b = n5 > 0 ? (C_d)((Object)arrayList.get(n5 - 1)) : (C_d)((Object)arrayList.get(this.G.nextInt(arrayList.size())));
             }
             catch (Exception exception) {
-                ((net.minecraft.client.g.C_a)c_g.y).chatMessage("\u00a7cNot enough room!");
+                ((net.minecraft.client.g.EntityPlayerSP)c_g.y).chatMessage("\u00a7cNot enough room!");
             }
         }
         this.b(n4);

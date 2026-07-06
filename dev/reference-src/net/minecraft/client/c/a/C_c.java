@@ -17,7 +17,7 @@ public final class C_c
 extends C_j {
     private C_b k;
 
-    public C_c(net.minecraft.a.c.e.C_b c_b, C_b c_b2) {
+    public C_c(net.minecraft.a.c.e.InventoryPlayer c_b, C_b c_b2) {
         super(new C_h(c_b, c_b2));
         this.k = c_b2;
     }

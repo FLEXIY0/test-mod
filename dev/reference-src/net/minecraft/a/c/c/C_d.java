@@ -11,7 +11,7 @@ import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.c.EntityItem;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.a.d.C_c;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 import net.minecraft.client.statistics.AchievementList;
 import net.minecraft.client.statistics.StatList;
 import util.MathHelper;
@@ -341,7 +341,7 @@ extends net.minecraft.a.c.Entity {
             c_b.l = f6 * f9 + MathHelper.c(f8) * 0.08f;
             c_b.m = f7 * f9;
             this.d.spawnEntityInWorld(c_b);
-            ((C_a)this.angler).addStat(StatList.fishCaughtStat, 1);
+            ((EntityPlayerSP)this.angler).addStat(StatList.fishCaughtStat, 1);
             n = 1;
         }
         if (this.inGround) {

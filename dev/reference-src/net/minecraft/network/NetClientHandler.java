@@ -392,7 +392,7 @@ extends NetHandler {
 
     @Override
     public void handleFlying(Packet10Flying packet10Flying) {
-        net.minecraft.client.g.C_a c_a = this.mc.f;
+        net.minecraft.client.g.EntityPlayerSP c_a = this.mc.f;
         float f = c_a.h;
         float f2 = c_a.i;
         float f3 = c_a.j;
@@ -688,7 +688,7 @@ extends NetHandler {
             this.mc.f.a(c_b);
             this.mc.f.craftingInventory.windowId = packet100OpenWindow.windowId;
         } else if (packet100OpenWindow.inventoryType == 1) {
-            net.minecraft.client.g.C_a c_a = this.mc.f;
+            net.minecraft.client.g.EntityPlayerSP c_a = this.mc.f;
             this.mc.f.displayWorkbenchGUI(MathHelper.a((double)c_a.h), MathHelper.a((double)c_a.i), MathHelper.a((double)c_a.j));
             this.mc.f.craftingInventory.windowId = packet100OpenWindow.windowId;
         } else if (packet100OpenWindow.inventoryType == 3) {

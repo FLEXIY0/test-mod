@@ -44,7 +44,7 @@ extends GuiScreen {
 
     @Override
     protected final void a(GuiButton guiButton) {
-        net.minecraft.client.g.C_a c_a;
+        net.minecraft.client.g.EntityPlayerSP c_a;
         C_a c_a2;
         if (guiButton.b == 0) {
             --this.selectedPainting;

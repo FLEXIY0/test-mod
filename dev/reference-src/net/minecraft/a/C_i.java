@@ -6,7 +6,7 @@ package net.minecraft.a;
 import net.minecraft.a.C_c;
 import net.minecraft.a.a.b.a.C_h;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.e.C_b;
+import net.minecraft.a.c.e.InventoryPlayer;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.a.C_g;
 
@@ -14,7 +14,7 @@ public class C_i
 extends C_c {
     private C_h generatorBlock;
 
-    public C_i(C_b c_b, C_h c_h) {
+    public C_i(InventoryPlayer c_b, C_h c_h) {
         int n;
         this.generatorBlock = c_h;
         this.addSlot(new C_g(c_h, 0, 80, 35));

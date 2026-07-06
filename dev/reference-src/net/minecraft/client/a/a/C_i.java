@@ -84,7 +84,7 @@ public final class C_i {
         this.e.put(net.minecraft.a.c.b.C_g.class, new C_j(new net.minecraft.client.b.C_t(), 0.25f));
         this.e.put(net.minecraft.a.c.a.C_d.class, new C_c());
         this.e.put(net.minecraft.a.c.a.C_c.class, new C_ad(new net.minecraft.client.b.C_m(), 0.5f));
-        this.e.put(net.minecraft.a.c.a.C_f.class, new C_ai(new net.minecraft.client.b.C_g(), 0.5f));
+        this.e.put(net.minecraft.a.c.a.EntityZombie.class, new C_ai(new net.minecraft.client.b.C_g(), 0.5f));
         this.e.put(net.minecraft.a.c.a.C_i.class, new C_v(new net.minecraft.client.b.C_g(), 0.5f));
         this.e.put(net.minecraft.a.c.a.C_k.class, new C_j(new net.minecraft.client.b.C_g(), 0.5f));
         this.e.put(net.minecraft.a.c.a.C_j.class, new C_j(new net.minecraft.client.b.C_w(), 0.5f));

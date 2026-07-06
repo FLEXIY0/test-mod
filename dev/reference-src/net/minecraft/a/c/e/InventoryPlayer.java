@@ -9,7 +9,7 @@ import net.minecraft.a.b.ItemStack;
 import net.minecraft.client.d;
 import net.minecraft.network.packet.Packet202CreativeInventory;
 
-public final class C_b implements net.minecraft.a.C_b {
+public final class InventoryPlayer implements net.minecraft.a.C_b {
    public ItemStack[] a = new ItemStack[36];
    public ItemStack[] b = new ItemStack[4];
    public ItemStack[] quiverInventory = new ItemStack[3];
@@ -19,7 +19,7 @@ public final class C_b implements net.minecraft.a.C_b {
    private ItemStack itemStack;
    public boolean inventoryChanged = false;
 
-   public C_b(EntityPlayer var1) {
+   public InventoryPlayer(EntityPlayer var1) {
       this.d = var1;
    }
 
@@ -222,7 +222,7 @@ public final class C_b implements net.minecraft.a.C_b {
       int var3 = var1.c;
       int var4 = var3;
       int var5 = var1.d;
-      C_b var6 = this;
+      InventoryPlayer var6 = this;
       int var7 = 0;
 
       int var8;
@@ -308,7 +308,7 @@ public final class C_b implements net.minecraft.a.C_b {
       int var3 = var1.c;
       int var4 = var3;
       int var5 = var1.d;
-      C_b var6 = this;
+      InventoryPlayer var6 = this;
       int var7 = 0;
 
       int var8;
@@ -535,8 +535,7 @@ public final class C_b implements net.minecraft.a.C_b {
 
    public int getDamageVsEntity(net.minecraft.a.c.Entity var1) {
       ItemStack var2 = this.a(this.c);
-      int base = var2 != null ? var2.getDamageVsEntity(var1) : 1;
-      return base + net.minecraft.potion.PotionManager.strengthBonus(); // Strength potion
+      return var2 != null ? var2.getDamageVsEntity(var1) : 1;
    }
 
    public int getCharmDamageVsEntity(net.minecraft.a.c.Entity var1) {

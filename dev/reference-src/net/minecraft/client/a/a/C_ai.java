@@ -9,7 +9,7 @@ package net.minecraft.client.a.a;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.c.EntityLiving;
-import net.minecraft.a.c.a.C_f;
+import net.minecraft.a.c.a.EntityZombie;
 import net.minecraft.client.a.a.C_j;
 import net.minecraft.client.b.C_g;
 import net.minecraft.client.b.C_l;
@@ -32,7 +32,7 @@ extends C_j {
     @Override
     protected final boolean a(EntityLiving c_e, int n) {
         Item item;
-        C_f c_f = (C_f)c_e;
+        EntityZombie c_f = (EntityZombie)c_e;
         int n2 = 3 - n;
         ItemStack itemStack = c_f.armorInventory[n2];
         if (itemStack != null && (item = itemStack.a()) instanceof net.minecraft.a.b.C_j) {
@@ -58,7 +58,7 @@ extends C_j {
     }
 
     protected void renderSpecials(EntityLiving c_e, float f) {
-        if (((C_f)c_e).heldItem != null) {
+        if (((EntityZombie)c_e).heldItem != null) {
             GL11.glPushMatrix();
             this.modelBipedMain.d.renderWithRotation(1.0f);
             this.modelBipedMain.heldItemRight = true;
@@ -68,7 +68,7 @@ extends C_j {
             GL11.glScalef((float)f2, (float)(-f2), (float)f2);
             GL11.glRotatef((float)-100.0f, (float)1.0f, (float)0.0f, (float)0.0f);
             GL11.glRotatef((float)45.0f, (float)0.0f, (float)1.0f, (float)0.0f);
-            this.a.itemRenderer.renderItem(((C_f)c_e).heldItem);
+            this.a.itemRenderer.renderItem(((EntityZombie)c_e).heldItem);
             GL11.glPopMatrix();
         }
     }

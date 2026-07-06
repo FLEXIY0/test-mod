@@ -38,7 +38,7 @@ import net.minecraft.client.statistics.StatList;
 import org.lwjgl.input.Keyboard;
 import util.MathHelper;
 
-public class C_a
+public class EntityPlayerSP
 extends EntityPlayer {
     public C_b a;
     protected d an;
@@ -51,7 +51,7 @@ extends EntityPlayer {
     public float prevTimeInPortal;
     private static HashMap<Integer, String> subtype = new C_e();
 
-    public C_a(d d2, World c_g, C_l c_l) {
+    public EntityPlayerSP(d d2, World c_g, C_l c_l) {
         super(c_g);
         this.an = d2;
         if (c_l != null) {
@@ -60,7 +60,7 @@ extends EntityPlayer {
         }
     }
 
-    public C_a(d d2, World c_g, C_l c_l, boolean bl, boolean bl2, String string, String string2, int n, int n2, int n3) {
+    public EntityPlayerSP(d d2, World c_g, C_l c_l, boolean bl, boolean bl2, String string, String string2, int n, int n2, int n3) {
         super(c_g);
         this.an = d2;
         this.cheats = bl;
@@ -319,11 +319,11 @@ extends EntityPlayer {
         super.a(nBTTagCompound);
         nBTTagCompound.a("Score", this.P);
         nBTTagCompound.a("Skin", this.skinId);
-        net.minecraft.a.c.e.C_b c_b = this.b;
+        net.minecraft.a.c.e.InventoryPlayer c_b = this.b;
         C_m c_m = this.inventoryChest;
         NBTTagList nBTTagList = new NBTTagList();
         NBTTagList nBTTagList2 = new NBTTagList();
-        net.minecraft.a.c.e.C_b c_b2 = c_b;
+        net.minecraft.a.c.e.InventoryPlayer c_b2 = c_b;
         for (n = 0; n < c_b2.a.length; ++n) {
             if (c_b2.a[n] == null) continue;
             nBTTagCompound2 = new NBTTagCompound();
@@ -374,7 +374,7 @@ extends EntityPlayer {
         NBTTagList nBTTagList = nBTTagCompound.j("Inventory");
         NBTTagList nBTTagList2 = nBTTagCompound.j("InventoryChest");
         NBTTagList nBTTagList3 = nBTTagList;
-        net.minecraft.a.c.e.C_b c_b = this.b;
+        net.minecraft.a.c.e.InventoryPlayer c_b = this.b;
         C_m c_m = this.inventoryChest;
         c_m.mainInventory = new ItemStack[27];
         c_b.a = new ItemStack[36];
@@ -489,8 +489,6 @@ extends EntityPlayer {
             this.an.a(new GuiScreenBook(this, itemStack, false));
         } else if (item == Item.bookAndQuill) {
             this.an.a(new GuiScreenBook(this, itemStack, true));
-        } else if (item == Item.obsidianBookAndQuill) {
-            this.an.a(new net.minecraft.client.c.GuiScreenObsidianBook(this, itemStack, true));
         }
     }
 

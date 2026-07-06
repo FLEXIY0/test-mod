@@ -27,7 +27,7 @@ import net.minecraft.client.c.ChatAllowedCharacters;
 import net.minecraft.client.c.GuiButton;
 import net.minecraft.client.c.GuiScreen;
 import net.minecraft.client.c.ScaledResolution;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 import net.minecraft.client.statistics.StatFileWriter;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -46,7 +46,7 @@ extends GuiScreen {
     private boolean hardcoreEnabled;
     private boolean canLoadImageFile = true;
     private CharacterLoader character;
-    private C_a player;
+    private EntityPlayerSP player;
     private C_bg parent;
     private static final String[] DIFFICULTIES = new String[]{"Peaceful", "Easy", "Normal", "Hard"};
 
@@ -80,7 +80,7 @@ extends GuiScreen {
         this.e.add(new GuiButton(0, this.c / 2 - 103, this.d / 4 + 144, 100, 20, "Save"));
         this.e.add(new GuiButton(2, this.c / 2 + 2, this.d / 4 + 144, 100, 20, "Cancel"));
         this.e.add(new C_bk(1, this.c / 2 + 34, this.d / 4 + 5));
-        this.player = new C_a(this.b, null, this.b.h);
+        this.player = new EntityPlayerSP(this.b, null, this.b.h);
         if (this.character.currentCharacter != null) {
             this.player.d(this.character.currentCharacter);
         }
@@ -234,7 +234,7 @@ extends GuiScreen {
         this.b(n3 + 0, n4 + 79, 0, 159, 61, 7);
         this.b(n3 + 61, n4 + 0, 169, 0, 7, 79);
         this.b(n3 + 61, n4 + 79, 169, 159, 7, 7);
-        C_a c_a = this.player;
+        EntityPlayerSP c_a = this.player;
         int n5 = 33;
         int n6 = 75;
         GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
@@ -304,12 +304,12 @@ extends GuiScreen {
         return c_ap.skinID;
     }
 
-    static /* synthetic */ C_a access$402(C_ap c_ap, C_a c_a) {
+    static /* synthetic */ EntityPlayerSP access$402(C_ap c_ap, EntityPlayerSP c_a) {
         c_ap.player = c_a;
         return c_ap.player;
     }
 
-    static /* synthetic */ C_a access$400(C_ap c_ap) {
+    static /* synthetic */ EntityPlayerSP access$400(C_ap c_ap) {
         return c_ap.player;
     }
 }

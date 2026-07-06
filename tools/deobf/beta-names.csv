@@ -19,3 +19,7 @@ net/minecraft/a/a/C_o,net/minecraft/a/a/TileEntityRegistry
 net/minecraft/a/b/a/C_f,net/minecraft/a/b/a/CraftingManager
 net/minecraft/a/c/C_f,net/minecraft/a/c/EntityList
 net/minecraft/a/a/d/C_c,net/minecraft/a/a/d/Material
+# Batch 3 — player-side classes:
+net/minecraft/a/c/e/C_b,net/minecraft/a/c/e/InventoryPlayer
+net/minecraft/a/c/a/C_f,net/minecraft/a/c/a/EntityZombie
+net/minecraft/client/g/C_a,net/minecraft/client/g/EntityPlayerSP

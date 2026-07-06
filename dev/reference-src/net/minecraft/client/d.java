@@ -62,7 +62,7 @@ public final class d implements Runnable {
    public net.minecraft.a.a.World d;
    public net.minecraft.client.a.C_b e;
    public CharacterLoader characters;
-   public net.minecraft.client.g.C_a f;
+   public net.minecraft.client.g.EntityPlayerSP f;
    public net.minecraft.a.c.EntityLiving cameraMob;
    public C_d g;
    public C_l h = null;
@@ -622,7 +622,7 @@ public final class d implements Runnable {
             }
          } else if (this.v.a == 1) {
             if (var1 == 0 && !this.f.isBlocking()) {
-               net.minecraft.a.c.e.C_b var18 = this.f.b;
+               net.minecraft.a.c.e.InventoryPlayer var18 = this.f.b;
                ItemStack var17;
                int var19 = (var17 = this.f.b.a(var18.c)) != null ? Item.b[var17.c].a() : 1;
                if (var19 > 0) {
@@ -743,7 +743,7 @@ public final class d implements Runnable {
          this.x.a.setVolume("BgMusic", this.w.musicVol * this.w.masterVol);
          this.x.a.setVolume("streaming", this.w.streamingVol * this.w.masterVol);
          float var2 = 12.0F;
-         net.minecraft.client.g.C_a var3 = this.f;
+         net.minecraft.client.g.EntityPlayerSP var3 = this.f;
          int var4 = this.d.countBlocks(var3.r.b(var2 + 2.0F, var2 + 2.0F, var2 + 2.0F), Block.p.at);
          var4 += this.d.countBlocks(var3.r.b(var2 + 2.0F, var2 + 2.0F, var2 + 2.0F), Block.q.at);
          double var5 = (double)MathHelper.a((double)var3.h);
@@ -801,7 +801,7 @@ public final class d implements Runnable {
                }
 
                while (Keyboard.next()) {
-                  net.minecraft.client.g.C_a var25 = this.f;
+                  net.minecraft.client.g.EntityPlayerSP var25 = this.f;
                   int var28 = Keyboard.getEventKey();
                   boolean var17 = Keyboard.getEventKeyState();
                   if ((this.o == null || this.o.f) && !this.f.isSitting && !this.f.isLaying && this.cameraMob == this.f) {
@@ -937,7 +937,7 @@ public final class d implements Runnable {
 
             int var14;
             if ((var14 = Mouse.getEventDWheel()) != 0) {
-               net.minecraft.a.c.e.C_b var19 = this.f.b;
+               net.minecraft.a.c.e.InventoryPlayer var19 = this.f.b;
                if (this.w.scrollInvert) {
                   var14 *= -1;
                }
@@ -1130,7 +1130,7 @@ public final class d implements Runnable {
                               var22 = 3;
                            }
 
-                           if (this.v.g instanceof net.minecraft.a.c.a.C_f) {
+                           if (this.v.g instanceof net.minecraft.a.c.a.EntityZombie) {
                               var22 = 4;
                            }
 
@@ -1491,13 +1491,13 @@ public final class d implements Runnable {
       this.x.a.stop("ambience");
       if (var1 != null) {
          var1.a();
-         this.f = (net.minecraft.client.g.C_a)var1.b(net.minecraft.client.g.C_a.class);
+         this.f = (net.minecraft.client.g.EntityPlayerSP)var1.b(net.minecraft.client.g.EntityPlayerSP.class);
          this.cameraMob = this.f;
          var1.y = this.f;
          var1.mc = this;
          if (this.f == null) {
             if (!var1.multiplayerWorld) {
-               this.f = new net.minecraft.client.g.C_a(this, var1, this.h);
+               this.f = new net.minecraft.client.g.EntityPlayerSP(this, var1, this.h);
             } else {
                this.f = (net.minecraft.client.g.C_d)this.a.createPlayer(var1);
             }
@@ -1577,7 +1577,7 @@ public final class d implements Runnable {
          boolean var2 = false;
          String var3 = "Player";
          String var4 = "";
-         net.minecraft.a.c.e.C_b var5 = null;
+         net.minecraft.a.c.e.InventoryPlayer var5 = null;
          net.minecraft.a.C_m var6 = null;
          int var7 = 2;
          int var8 = 0;
@@ -1601,7 +1601,7 @@ public final class d implements Runnable {
             var9 = this.f.gamemode;
          }
 
-         this.f = (net.minecraft.client.g.C_a)this.a.createPlayer(this.d);
+         this.f = (net.minecraft.client.g.EntityPlayerSP)this.a.createPlayer(this.d);
          this.f.cheats = var1;
          this.f.keepInventory = var2;
          this.f.name = var3;

@@ -9,7 +9,7 @@ import net.minecraft.a.b.C_ba;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.b.a.CraftingManager;
-import net.minecraft.a.c.e.C_b;
+import net.minecraft.a.c.e.InventoryPlayer;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.a.C_a;
 import net.minecraft.client.c.a.C_d;
@@ -27,12 +27,12 @@ extends C_c {
     public boolean isSinglePlayer = false;
     private net.minecraft.a.C_b deleteSlot = new C_h();
 
-    public C_j(C_b c_b) {
+    public C_j(InventoryPlayer c_b) {
         this(c_b, true);
         this.isMainInventory = true;
     }
 
-    public C_j(C_b c_b, boolean bl) {
+    public C_j(InventoryPlayer c_b, boolean bl) {
         int n;
         int n2;
         this.isSinglePlayer = bl;

@@ -10,7 +10,7 @@ import net.minecraft.a.a.d.Material;
 import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_a;
 import net.minecraft.a.c.a.C_d;
-import net.minecraft.a.c.a.C_f;
+import net.minecraft.a.c.a.EntityZombie;
 import net.minecraft.a.c.a.C_h;
 import net.minecraft.a.c.a.C_i;
 import net.minecraft.a.c.a.C_j;
@@ -196,7 +196,7 @@ public class C_b {
                         c_c = this.a.type == 8 ? new EntityBlackSteve(c_b.a) : new net.minecraft.a.c.a.C_b(c_b.a);
                     }
                     if (n15 == 3) {
-                        c_c = this.a.type == 8 ? new EntitySteve(c_b.a) : (this.a.theme == 4 ? new C_i(c_b.a) : (this.a.type == 4 ? new C_k(c_b.a) : new C_f(c_b.a)));
+                        c_c = this.a.type == 8 ? new EntitySteve(c_b.a) : (this.a.theme == 4 ? new C_i(c_b.a) : (this.a.type == 4 ? new C_k(c_b.a) : new EntityZombie(c_b.a)));
                     }
                     if (n15 == 4 && this.a.type == 5) {
                         c_c = new C_m(c_b.a);

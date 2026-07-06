@@ -8,7 +8,7 @@ package net.minecraft.client.c.a;
 
 import net.minecraft.a.C_i;
 import net.minecraft.a.a.b.a.C_h;
-import net.minecraft.a.c.e.C_b;
+import net.minecraft.a.c.e.InventoryPlayer;
 import net.minecraft.client.a.RenderEngine;
 import net.minecraft.client.c.GuiButton;
 import net.minecraft.client.c.GuiScreen;
@@ -22,7 +22,7 @@ public final class C_o
 extends C_j {
     private C_h containerInventory;
 
-    public C_o(C_b c_b, C_h c_h) {
+    public C_o(InventoryPlayer c_b, C_h c_h) {
         super(new C_i(c_b, c_h));
         this.containerInventory = c_h;
     }

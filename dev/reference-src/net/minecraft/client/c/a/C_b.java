@@ -20,7 +20,7 @@ import org.lwjgl.opengl.GL11;
 
 public final class C_b
 extends C_j {
-    public C_b(net.minecraft.a.c.e.C_b c_b, World c_g, int n, int n2, int n3) {
+    public C_b(net.minecraft.a.c.e.InventoryPlayer c_b, World c_g, int n, int n2, int n3) {
         super(new C_k(c_b, c_g, n, n2, n3));
     }
 

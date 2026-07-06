@@ -22,7 +22,7 @@ public class TileEntityRegistry {
     private static Map<String, Class<? extends TileEntity>> nameToClassMap = new HashMap<String, Class<? extends TileEntity>>();
     private static Map<Class<? extends TileEntity>, String> classToNameMap = new HashMap<Class<? extends TileEntity>, String>();
 
-    private static void addMapping(Class<? extends TileEntity> clazz, String string) {
+    public static void addMapping(Class<? extends TileEntity> clazz, String string) { // opened for ModRegistry
         if (nameToClassMap.containsKey(string)) {
             throw new IllegalArgumentException("Duplicate id: " + string);
         }

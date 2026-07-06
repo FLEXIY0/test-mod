@@ -112,7 +112,7 @@ public class EntityList {
         EntityList.addMapping(net.minecraft.a.c.a.C_g.class, "Antlion", 55);
         EntityList.addMapping(C_l.class, "Slug", 78);
         EntityList.addMapping(C_i.class, "Husk", 79);
-        EntityList.addMapping(net.minecraft.a.c.a.C_f.class, "Zombie", 51);
+        EntityList.addMapping(net.minecraft.a.c.a.EntityZombie.class, "Zombie", 51);
         EntityList.addMapping(C_k.class, "Mummy", 64);
         EntityList.addMapping(net.minecraft.a.c.a.C_a.class, "Giant", 54);
         EntityList.addMapping(net.minecraft.a.c.c.EntityItem.class, "Item", 1);

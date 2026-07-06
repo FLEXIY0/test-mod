@@ -20,7 +20,7 @@ import net.minecraft.client.a.C_d;
 import net.minecraft.client.a.C_f;
 import net.minecraft.client.a.a.C_i;
 import net.minecraft.client.d;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 import org.lwjgl.opengl.GL11;
 import util.MathHelper;
 
@@ -248,13 +248,13 @@ public final class C_g {
             float f3;
             float f4;
             float f5 = this.d + (this.c - this.d) * f;
-            C_a c_a = this.a.f;
+            EntityPlayerSP c_a = this.a.f;
             GL11.glPushMatrix();
             GL11.glRotatef((float)(c_a.q + (c_a.o - c_a.q) * f), (float)1.0f, (float)0.0f, (float)0.0f);
             GL11.glRotatef((float)(c_a.p + (c_a.n - c_a.p) * f), (float)0.0f, (float)1.0f, (float)0.0f);
             C_c.b();
             GL11.glPopMatrix();
-            if (c_a instanceof C_a && this.a.w.viewBobbing) {
+            if (c_a instanceof EntityPlayerSP && this.a.w.viewBobbing) {
                 f4 = c_a.prevRenderArmPitch + (c_a.renderArmPitch - c_a.prevRenderArmPitch) * f;
                 f3 = c_a.prevRenderArmYaw + (c_a.renderArmYaw - c_a.prevRenderArmYaw) * f;
                 GL11.glRotatef((float)((c_a.o - f4) * 0.1f), (float)1.0f, (float)0.0f, (float)0.0f);
@@ -540,7 +540,7 @@ public final class C_g {
     public final void a() {
         float f;
         this.d = this.c;
-        C_a c_a = this.a.f;
+        EntityPlayerSP c_a = this.a.f;
         ItemStack itemStack = c_a.b.d();
         float f2 = (itemStack == this.b ? 1.0f : 0.0f) - this.c;
         if (f < -0.4f) {

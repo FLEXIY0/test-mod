@@ -73,7 +73,7 @@ public class ReactorTest {
         // 5. pigman mob: subclasses the zombie (so the render manager's superclass
         //    fallback reuses the zombie renderer) and is registered in EntityList
         Class<?> pig = Class.forName("net.minecraft.a.c.a.EntityPigZombie");
-        ok(pig.getSuperclass() == Class.forName("net.minecraft.a.c.a.C_f"),
+        ok(pig.getSuperclass() == Class.forName("net.minecraft.a.c.a.EntityZombie"),
                 "EntityPigZombie extends zombie (render fallback)");
         Class<?> elist = Class.forName("net.minecraft.a.c.EntityList");
         Field s2c = elist.getDeclaredField("stringToClassMapping"); s2c.setAccessible(true);

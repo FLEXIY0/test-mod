@@ -10,7 +10,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import net.minecraft.client.c.C_bc;
 import net.minecraft.client.c.C_bd;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 
 final class C_bb
 extends Thread {
@@ -44,7 +44,7 @@ extends Thread {
                         nBTTagCompound.a("Skin", this.screen.skinID);
                     }
                     C_bd.access$200(this.screen).saveCharacter(C_bd.access$000(this.screen), nBTTagCompound);
-                    this.screen.player = new C_a(this.screen.b, null, this.screen.b.h);
+                    this.screen.player = new EntityPlayerSP(this.screen.b, null, this.screen.b.h);
                     if (C_bd.access$200((C_bd)this.screen).currentCharacter != null) {
                         this.screen.player.d(C_bd.access$200((C_bd)this.screen).currentCharacter);
                     }

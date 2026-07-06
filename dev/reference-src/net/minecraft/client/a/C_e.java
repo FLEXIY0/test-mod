@@ -73,7 +73,7 @@ public final class C_e {
    }
 
    private net.minecraft.a.d.C_a b(float var1) {
-      net.minecraft.client.g.C_a var2 = this.b.f;
+      net.minecraft.client.g.EntityPlayerSP var2 = this.b.f;
       float var3 = this.b.f.e + (var2.h - var2.e) * var1;
       float var4 = var2.f + (var2.i - var2.f) * var1;
       var1 = var2.g + (var2.j - var2.g) * var1;
@@ -81,7 +81,7 @@ public final class C_e {
    }
 
    private void c(float var1) {
-      net.minecraft.client.g.C_a var2 = this.b.f;
+      net.minecraft.client.g.EntityPlayerSP var2 = this.b.f;
       float var3 = (float)this.b.f.Y - var1;
       if (var2.W <= 0) {
          var1 += (float)var2.ab;
@@ -99,7 +99,7 @@ public final class C_e {
    }
 
    private void d(float var1) {
-      net.minecraft.client.g.C_a var2 = this.b.f;
+      net.minecraft.client.g.EntityPlayerSP var2 = this.b.f;
       float var3 = this.b.f.z - var2.y;
       var3 = var2.z + var3 * var1;
       float var4 = var2.Q + (var2.R - var2.Q) * var1;
@@ -128,7 +128,7 @@ public final class C_e {
          float var4 = (float)this.b.y.a * var8;
          float var5 = (float)this.b.y.b * var8;
          float var10 = var5 * (float)var6;
-         net.minecraft.client.g.C_a var12 = this.b.f;
+         net.minecraft.client.g.EntityPlayerSP var12 = this.b.f;
          float var13 = this.b.f.o;
          float var14 = var12.n;
          var12.n = (float)((double)var12.n + (double)var4 * 0.15);
@@ -489,7 +489,7 @@ public final class C_e {
                   this.j = BufferUtils.createByteBuffer(this.b.b * this.b.c << 2);
                }
 
-               net.minecraft.client.g.C_a var17 = this.b.f;
+               net.minecraft.client.g.EntityPlayerSP var17 = this.b.f;
                net.minecraft.a.a.World var18 = this.b.d;
                C_b var19 = this.b.e;
                GL11.glViewport(0, 0, this.b.b, this.b.c);
@@ -596,13 +596,13 @@ public final class C_e {
       float var12 = var7 * var9;
       float var13 = this.b.a.b();
       float var14 = var13 - 1.0F;
-      if (var3 instanceof net.minecraft.client.g.C_a) {
-         if (((net.minecraft.client.g.C_a)var3).b.a[((net.minecraft.client.g.C_a)var3).b.c] != null
-            && ((net.minecraft.client.g.C_a)var3).b.a[((net.minecraft.client.g.C_a)var3).b.c].a() instanceof C_bm) {
+      if (var3 instanceof net.minecraft.client.g.EntityPlayerSP) {
+         if (((net.minecraft.client.g.EntityPlayerSP)var3).b.a[((net.minecraft.client.g.EntityPlayerSP)var3).b.c] != null
+            && ((net.minecraft.client.g.EntityPlayerSP)var3).b.a[((net.minecraft.client.g.EntityPlayerSP)var3).b.c].a() instanceof C_bm) {
             var14++;
          }
 
-         if (((net.minecraft.client.g.C_a)var3).b.charmSlot[0] != null && ((net.minecraft.client.g.C_a)var3).b.charmSlot[0].a() == Item.bracelet) {
+         if (((net.minecraft.client.g.EntityPlayerSP)var3).b.charmSlot[0] != null && ((net.minecraft.client.g.EntityPlayerSP)var3).b.charmSlot[0].a() == Item.bracelet) {
             var13 += 2.0F;
          }
       }
@@ -639,7 +639,7 @@ public final class C_e {
          var2.b.v = new net.minecraft.a.d.C_c(var2.f);
       }
 
-      net.minecraft.client.g.C_a var52 = this.b.f;
+      net.minecraft.client.g.EntityPlayerSP var52 = this.b.f;
       net.minecraft.a.a.World var53 = this.b.d;
       C_b var54 = this.b.e;
       net.minecraft.client.f.C_d var22 = this.b.g;
@@ -870,7 +870,7 @@ public final class C_e {
    }
 
    private float getFOV(float var1, boolean var2) {
-      net.minecraft.client.g.C_a var3 = this.b.f;
+      net.minecraft.client.g.EntityPlayerSP var3 = this.b.f;
       float var4 = 70.0F;
       if (var2) {
          var4 = this.b.w.fov;
@@ -908,7 +908,7 @@ public final class C_e {
 
    private void f(float var1) {
       net.minecraft.a.a.World var2 = this.b.d;
-      net.minecraft.client.g.C_a var3 = this.b.f;
+      net.minecraft.client.g.EntityPlayerSP var3 = this.b.f;
       float var4 = 0.25F;
       var4 = 1.0F - (float)Math.pow((double)var4, 0.25);
       net.minecraft.a.d.C_a var5;
@@ -996,7 +996,7 @@ public final class C_e {
 
    private void d() {
       net.minecraft.a.a.World var1 = this.b.d;
-      net.minecraft.client.g.C_a var2 = this.b.f;
+      net.minecraft.client.g.EntityPlayerSP var2 = this.b.f;
       float var3 = this.r;
       float var4 = this.q;
       float var5 = this.p;

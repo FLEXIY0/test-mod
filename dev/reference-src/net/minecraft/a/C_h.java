@@ -19,7 +19,7 @@ extends C_c {
     private int burnTime = 0;
     private int itemBurnTime = 0;
 
-    public C_h(net.minecraft.a.c.e.C_b c_b, C_b c_b2) {
+    public C_h(net.minecraft.a.c.e.InventoryPlayer c_b, C_b c_b2) {
         int n;
         this.furnace = c_b2;
         this.addSlot(new C_g(c_b2, 0, 48, 22));

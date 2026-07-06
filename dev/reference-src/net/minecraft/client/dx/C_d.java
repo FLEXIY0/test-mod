@@ -239,7 +239,7 @@ extends C_a {
     }
 
     @Override
-    public net.minecraft.client.g.C_a createPlayer(World c_g) {
+    public net.minecraft.client.g.EntityPlayerSP createPlayer(World c_g) {
         return new net.minecraft.client.g.C_d(this.a, c_g, this.a.h, this.netClientHandler);
     }
 

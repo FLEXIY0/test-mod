@@ -185,6 +185,16 @@ public final class CraftingManager {
       System.out.println(this.b.size() + " recipes");
    }
 
+   /** Public shaped-recipe entry point for ModRegistry (delegates to the obf a()). */
+   public void addShapedRecipe(ItemStack result, Object... pattern) {
+      this.a(result, pattern);
+   }
+
+   /** Public shapeless-recipe entry point for ModRegistry. */
+   public void addShapelessRecipePublic(ItemStack result, Object... ingredients) {
+      this.addShapelessRecipe(result, ingredients);
+   }
+
    final void a(ItemStack var1, Object... var2) {
       String var3 = "";
       int var4 = 0;

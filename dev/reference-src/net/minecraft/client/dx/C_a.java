@@ -135,7 +135,7 @@ public class C_a {
     }
 
     public EntityPlayer createPlayer(World c_g) {
-        return new net.minecraft.client.g.C_a(this.a, c_g, this.a.h);
+        return new net.minecraft.client.g.EntityPlayerSP(this.a, c_g, this.a.h);
     }
 
     public void interactWithEntity(EntityPlayer entityPlayer, net.minecraft.a.c.Entity c_b) {

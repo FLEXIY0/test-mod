@@ -6,7 +6,7 @@ package net.minecraft.client;
 import net.minecraft.a.a.World;
 import net.minecraft.a.c.Entity;
 import net.minecraft.client.d;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 
 public final class LevelIO
 extends net.minecraft.a.a.C_a {
@@ -19,7 +19,7 @@ extends net.minecraft.a.a.C_a {
 
     @Override
     protected final Entity a(World c_g, String string) {
-        return string.equals("LocalPlayer") ? new C_a(this.a, c_g, this.a.h) : super.a(c_g, string);
+        return string.equals("LocalPlayer") ? new EntityPlayerSP(this.a, c_g, this.a.h) : super.a(c_g, string);
     }
 }
 

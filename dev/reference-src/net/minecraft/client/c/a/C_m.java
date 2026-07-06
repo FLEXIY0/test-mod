@@ -11,7 +11,7 @@ package net.minecraft.client.c.a;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.e.C_b;
+import net.minecraft.a.c.e.InventoryPlayer;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.C_c;
 import net.minecraft.client.a.RenderEngine;
@@ -59,7 +59,7 @@ extends C_j {
         Object object;
         if (c_g != null) {
             if (c_g.d == creativeInventory) {
-                C_b c_b = this.b.f.b;
+                InventoryPlayer c_b = this.b.f.b;
                 ItemStack itemStack = c_b.getItemStack();
                 object = c_g.getStack();
                 if (itemStack != null && object != null && itemStack.c == ((ItemStack)object).c && itemStack.d == ((ItemStack)object).d) {
@@ -98,7 +98,7 @@ extends C_j {
                 }
             }
         } else {
-            C_b c_b = this.b.f.b;
+            InventoryPlayer c_b = this.b.f.b;
             if (c_b.getItemStack() != null && !this.keepItem) {
                 if (n2 == 0) {
                     this.b.f.a(c_b.getItemStack());
@@ -118,10 +118,10 @@ extends C_j {
         if (this.b.isMultiplayerWorld()) {
             object = this.b.f.b;
             if (this.b.getSendQueue() != null && c_g != null && c_g.a <= 8) {
-                if (((C_b)object).a(c_g.a) != null) {
-                    this.b.getSendQueue().addToSendQueue(new Packet202CreativeInventory(c_g.a, ((C_b)object).a(c_g.a)));
-                } else if (((C_b)object).getItemStack() != null) {
-                    this.b.getSendQueue().addToSendQueue(new Packet202CreativeInventory(c_g.a, ((C_b)object).getItemStack()));
+                if (((InventoryPlayer)object).a(c_g.a) != null) {
+                    this.b.getSendQueue().addToSendQueue(new Packet202CreativeInventory(c_g.a, ((InventoryPlayer)object).a(c_g.a)));
+                } else if (((InventoryPlayer)object).getItemStack() != null) {
+                    this.b.getSendQueue().addToSendQueue(new Packet202CreativeInventory(c_g.a, ((InventoryPlayer)object).getItemStack()));
                     this.b.getSendQueue().addToSendQueue(new Packet202CreativeInventory(c_g.a, null));
                 }
             }
@@ -311,7 +311,7 @@ extends C_j {
             this.container = c_g;
         }
         if (guiButton.b == 5) {
-            C_b c_b;
+            InventoryPlayer c_b;
             this.keepItemOnClick = true;
             if (this.b.getSendQueue() != null && this.b.isMultiplayerWorld() && (c_b = this.b.f.b).getItemStack() != null) {
                 this.b.getSendQueue().addToSendQueue(new Packet202CreativeInventory(-3, c_b.getItemStack()));

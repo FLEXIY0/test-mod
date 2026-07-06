@@ -8,7 +8,7 @@ import java.util.List;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.b.a.C_k;
-import net.minecraft.a.c.e.C_b;
+import net.minecraft.a.c.e.InventoryPlayer;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.a.C_g;
 import net.minecraft.client.c.a.C_y;
@@ -65,7 +65,7 @@ public abstract class C_c {
     public ItemStack clickSlot(int n, int n2, boolean bl, EntityPlayer entityPlayer) {
         ItemStack itemStack = null;
         if (n2 == 0 || n2 == 1) {
-            C_b c_b = entityPlayer.b;
+            InventoryPlayer c_b = entityPlayer.b;
             if ((c_b.charmSlot[0] == null || c_b.charmSlot[0].a() != Item.quiver) && n >= 10 && n < 13 && this.isMainInventory) {
                 if (n2 == 0) {
                     entityPlayer.a(c_b.getItemStack());
@@ -176,7 +176,7 @@ public abstract class C_c {
     }
 
     public void onCraftGuiClosed(EntityPlayer entityPlayer) {
-        C_b c_b = entityPlayer.b;
+        InventoryPlayer c_b = entityPlayer.b;
         if (c_b.getItemStack() != null) {
             entityPlayer.a(c_b.getItemStack());
             c_b.setItemStack(null);
@@ -200,7 +200,7 @@ public abstract class C_c {
     public void determineSmeltTime(int n, int n2) {
     }
 
-    public short updateTransaction(C_b c_b) {
+    public short updateTransaction(InventoryPlayer c_b) {
         this.transactionID = (short)(this.transactionID + 1);
         return this.transactionID;
     }
@@ -274,7 +274,7 @@ public abstract class C_c {
     public ItemStack updateWindow(int n, int n2, boolean bl, EntityPlayer entityPlayer) {
         ItemStack itemStack = null;
         if (n2 == 0 || n2 == 1) {
-            C_b c_b = entityPlayer.b;
+            InventoryPlayer c_b = entityPlayer.b;
             if (n == -999) {
                 if (c_b.getItemStack() != null && n == -999) {
                     if (n2 == 0) {

@@ -589,7 +589,7 @@ public class Block {
         if (!entityPlayer.canHarvestBlock(this, (byte)n)) {
             return 1.0f / this.aL / 100.0f;
         }
-        net.minecraft.a.c.e.C_b c_b = entityPlayer.b;
+        net.minecraft.a.c.e.InventoryPlayer c_b = entityPlayer.b;
         float f = 1.0f;
         if (c_b.a[c_b.c] != null) {
             f = 1.0f * c_b.a[c_b.c].a().getStrVsBlock(this, n);

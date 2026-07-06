@@ -10,7 +10,7 @@ import net.minecraft.a.c.EntityLiving;
 import net.minecraft.a.c.a.C_b;
 import net.minecraft.a.c.a.C_c;
 import net.minecraft.a.c.a.C_d;
-import net.minecraft.a.c.a.C_f;
+import net.minecraft.a.c.a.EntityZombie;
 import net.minecraft.a.c.a.C_g;
 import net.minecraft.a.c.a.C_h;
 import net.minecraft.a.c.a.C_i;
@@ -98,7 +98,7 @@ extends Item {
                         break;
                     }
                     case 4: {
-                        c_e = new C_f(c_g, (float)n + 0.5f, (float)n2 + f, (float)n3 + 0.5f);
+                        c_e = new EntityZombie(c_g, (float)n + 0.5f, (float)n2 + f, (float)n3 + 0.5f);
                         break;
                     }
                     case 5: {

@@ -125,7 +125,9 @@ extends EntityLiving {
         }
         this.ab = 0;
         this.isSneaking = 0;
-        this.b = (InventoryPlayer)0.0f;
+        // decompiler artifact: EntityPlayer.b (inventory) shadows Entity.b (float,
+        // fall distance); the bytecode targets the float — reach it via super.
+        super.b = 0.0f;
     }
 
     @Override
@@ -149,7 +151,7 @@ extends EntityLiving {
             c_b.a[n].updateAnimations(this.d, this, n, c_b.c == n);
         }
         this.Q = this.R;
-        if (this.b >= 50.0f && this.isInCloud()) {
+        if (super.b >= 50.0f && this.isInCloud()) { // super.b = Entity fall distance
             this.triggerAchievement(AchievementList.cloud);
         }
         if (this.k != 0.0f || this.m != 0.0f) {
@@ -194,7 +196,7 @@ extends EntityLiving {
             if (this.isJumping) {
                 this.l *= 0.9f;
             }
-            this.b /= 2.0f;
+            super.b /= 2.0f; // halve fall distance (Entity.b), not the inventory
         }
         if ((itemStack = c_b.charmSlot[0]) != null) {
             this.deflectProjectile = itemStack.c == Item.shield.ap;
@@ -461,7 +463,7 @@ extends EntityLiving {
         this.difficulty = nBTTagCompound.c("Difficulty");
         this.isSneaking = nBTTagCompound.c("Sneaking");
         this.isFlying = nBTTagCompound.k("Flying");
-        this.R = (float)nBTTagCompound.k("IsInWater");
+        super.R = nBTTagCompound.k("IsInWater"); // Entity.R (boolean), shadowed by float R
         this.cheats = nBTTagCompound.k("Cheats");
         this.nightVision = nBTTagCompound.k("NightVision");
         this.nightVisionTimer = nBTTagCompound.d("NightVisionTime");
@@ -478,7 +480,7 @@ extends EntityLiving {
         nBTTagCompound.a("Difficulty", (short)this.difficulty);
         nBTTagCompound.a("Sneaking", (short)this.isSneaking);
         nBTTagCompound.a("Flying", this.isFlying);
-        nBTTagCompound.a("IsInWater", (boolean)this.R);
+        nBTTagCompound.a("IsInWater", super.R); // Entity.R (boolean)
         nBTTagCompound.a("Cheats", this.cheats);
         nBTTagCompound.a("NightVision", this.nightVision);
         nBTTagCompound.a("NightVisionTime", this.nightVisionTimer);
@@ -758,6 +760,7 @@ extends EntityLiving {
 
     public void attackTargetEntityWithCurrentItem(net.minecraft.a.c.Entity c_b, float f) {
         int n = this.b.getDamageVsEntity(c_b);
+        net.minecraft.platform.Hooks.fireAttack(this, c_b, n); // platform attack event
         if (n > 0) {
             if (this.getCurrentEquippedItem() != null && (this.getCurrentEquippedItem().a() == Item.n || this.getCurrentEquippedItem().a() == Item.spearWood || this.getCurrentEquippedItem().a() == Item.battleAxeWood) && this.G.nextInt(3) == 0) {
                 n *= 2;

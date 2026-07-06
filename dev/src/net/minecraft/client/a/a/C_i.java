@@ -84,7 +84,7 @@ public final class C_i {
         this.e.put(net.minecraft.a.c.b.C_g.class, new C_j(new net.minecraft.client.b.C_t(), 0.25f));
         this.e.put(net.minecraft.a.c.a.C_d.class, new C_c());
         this.e.put(net.minecraft.a.c.a.C_c.class, new C_ad(new net.minecraft.client.b.C_m(), 0.5f));
-        this.e.put(net.minecraft.a.c.a.C_f.class, new C_ai(new net.minecraft.client.b.C_g(), 0.5f));
+        this.e.put(net.minecraft.a.c.a.EntityZombie.class, new C_ai(new net.minecraft.client.b.C_g(), 0.5f));
         // Pigman: arms-down humanoid model (C_h) instead of the zombie's raised-arm
         // model (C_g); texture still comes from the entity's own V (/mob/pigzombie.png).
         this.e.put(net.minecraft.a.c.a.EntityPigZombie.class, new C_j(new net.minecraft.client.b.C_h(), 0.5f));

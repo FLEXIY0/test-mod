@@ -20,7 +20,10 @@
 | `net.minecraft.a.b.Item` | Item + реестр (`Item.b[1024]`) | `ap`=id, `as`=иконка |
 | `net.minecraft.a.b.ItemStack` | ItemStack | `a`=count, `c`=itemID, `d`=meta |
 | `net.minecraft.a.b.a.CraftingManager` (`C_f`) | крафт | `a(result, "###", ..., '#', ingr)`=shaped |
-| `net.minecraft.a.c.e.EntityPlayer` | игрок (не компилируется — 43 файла) | `S`=hp, `addHealth`, `J`=огонь, `k/l/m`=motion, `nightVision`, `b`=инвентарь |
+| `net.minecraft.a.c.e.EntityPlayer` | игрок (**разблокирован** — компилируется из dev/src) | `S`=hp, `addHealth`, `J`=огонь, `k/l/m`=motion, `nightVision`, `b`=инвентарь (`InventoryPlayer`) |
+| `net.minecraft.a.c.e.InventoryPlayer` (`C_b`) | инвентарь игрока | `a[36]`=слоты, `c`=выбранный, `d()`=в руке, `getDamageVsEntity` |
+| `net.minecraft.a.c.a.EntityZombie` (`C_f`) | зомби | база для `EntityPigZombie` |
+| `net.minecraft.client.g.EntityPlayerSP` (`C_a`) | локальный игрок клиента | `d.f` — его экземпляр |
 | `net.minecraft.a.c.Entity` (`C_b`) | базовая сущность | `spawnEntityInWorld` принимает её |
 | `net.minecraft.a.c.EntityLiving` (`C_e`) | живая сущность | `addHealth`, `S`=hp |
 | `net.minecraft.a.c.EntityList` (`C_f`) | реестр сущностей | `addMapping(class,"Name",id)` |
@@ -53,11 +56,38 @@
 Hooks.onTick(new Hooks.TickListener() {
     public void onTick(EntityPlayer player) { /* каждый тик */ }
 });
+Hooks.onAttack(new Hooks.AttackListener() {          // удар игрока по сущности
+    public void onAttack(EntityPlayer p, Entity target, int damage) { ... }
+});
+Hooks.onBlockBreak(new Hooks.BlockBreakListener() {  // слом блока в выживании
+    public void onBlockBreak(World w, int x, int y, int z, int blockId) { ... }
+});
 ```
 
-Движок дёргает `Hooks.fireTick(player)` из `d.java` раз в тик; первый тик лениво
-поднимает `Platform.init()`. Так подключены зелья (`PotionManager`). Новые
-per-tick фичи добавляют строку в `Platform.init()` и **не трогают** `d.java`.
+Точки вызова в движке: `Hooks.fireTick` — из `d.java` (раз в тик, первый тик
+лениво поднимает `Platform.init()`); `fireAttack` — из
+`EntityPlayer.attackTargetEntityWithCurrentItem` (класс разблокирован);
+`fireBlockBreak` — из контроллера выживания (`dx/C_b.sendBlockRemoved`). Так
+подключены зелья (`PotionManager`). Новые фичи добавляют строку в
+`Platform.init()` и **не трогают** движок.
+
+## Реестры — `ModRegistry`
+
+```java
+ModRegistry.registerTileEntity(TileEntityCauldron.class, "Cauldron");
+ModRegistry.registerEntity(EntityPigZombie.class, "PigZombie", 94);
+ModRegistry.addShapedRecipe(new ItemStack(Block.cauldron), "I I", "I I", "III", 'I', Item.k);
+ModRegistry.addShapelessRecipe(new ItemStack(Item.z, 4), Block.m);
+```
+
+## Бета-методы прямо на World
+
+`World` перекомпилируется из dev/src и несёт читаемые алиасы 1:1 с бетой —
+портируемый код компилируется без правок: `getBlockId`, `setBlock`,
+`setBlockWithNotify`, `getBlockMetadata`, `setBlockMetadata` (нативный),
+`setBlockAndMetadataWithNotify` (нативный), `getBlockTileEntity`,
+`setBlockTileEntity`, `removeBlockTileEntity`, `spawnEntityInWorld` (нативный),
+`markBlockNeedsUpdate` (нативный).
 
 ## Фасад мира — `WorldApi`
 
@@ -74,8 +104,9 @@ TileEntity te = WorldApi.getTileEntity(world, x, y, z);
 Headless-набор — `dev/test/run.sh` (VerifyAll + сюиты). Новую фичу покрывай
 тестом рядом (реестр/логика), GUI/геймплей — проверка в игре.
 
-## Дальше по арке «движок → платформа»
-- Фасад-методы прямо на `World`/`Block` (1:1 с бетой) — потребует перекомпиляции
-  крупных классов (риск).
-- Разблокировать `EntityPlayer`/`RenderEngine` байткод-патчем (`tools/russian-lang`).
-- Реестры блоков/предметов/сущностей с чистой регистрацией.
+## Статус арки «движок → платформа»
+Сделано: ремап ядровых классов (3 батча), шина событий (tick/attack/block-break),
+`WorldApi` + бета-методы прямо на `World`, `ModRegistry`, разблокирован
+`EntityPlayer` (5 правок артефактов декомпилятора — теперь обычный dev/src-файл).
+Осталось при желании: разблокировать `RenderEngine` тем же способом, добавить
+события (`onItemUse`, `onEntitySpawn`), ремапнуть остальные `C_*`.

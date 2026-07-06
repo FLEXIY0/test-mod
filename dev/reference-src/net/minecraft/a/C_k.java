@@ -8,7 +8,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.ItemStack;
 import net.minecraft.a.b.a.CraftingManager;
-import net.minecraft.a.c.e.C_b;
+import net.minecraft.a.c.e.InventoryPlayer;
 import net.minecraft.a.c.e.EntityPlayer;
 import net.minecraft.client.c.a.C_a;
 import net.minecraft.client.c.a.C_d;
@@ -23,7 +23,7 @@ extends C_c {
     private int posY;
     private int posZ;
 
-    public C_k(C_b c_b, World c_g, int n, int n2, int n3) {
+    public C_k(InventoryPlayer c_b, World c_g, int n, int n2, int n3) {
         int n4;
         int n5;
         this.worldObj = c_g;

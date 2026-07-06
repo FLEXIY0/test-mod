@@ -11,7 +11,7 @@ import net.minecraft.a.a.World;
 import net.minecraft.a.c.Entity;
 import net.minecraft.client.C_l;
 import net.minecraft.client.d;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 import net.minecraft.client.statistics.StatBase;
 import net.minecraft.network.NetClientHandler;
 import net.minecraft.network.packet.Packet101CloseWindow;
@@ -28,7 +28,7 @@ import net.minecraft.network.packet.Packet9Respawn;
 import org.lwjgl.input.Keyboard;
 
 public class C_d
-extends C_a {
+extends EntityPlayerSP {
     public NetClientHandler sendQueue;
     private int ticksExistedOnServer = 0;
     private boolean isPlayerDead = false;

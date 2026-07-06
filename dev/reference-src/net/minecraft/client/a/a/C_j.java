@@ -10,7 +10,7 @@ import net.minecraft.a.c.Entity;
 import net.minecraft.a.c.EntityLiving;
 import net.minecraft.client.a.a.C_f;
 import net.minecraft.client.b.C_l;
-import net.minecraft.client.g.C_a;
+import net.minecraft.client.g.EntityPlayerSP;
 import org.lwjgl.opengl.GL11;
 import util.MathHelper;
 
@@ -59,7 +59,7 @@ extends C_f {
             if (f9 > 1.0f) {
                 f9 = 1.0f;
             }
-            if (c_e instanceof C_a) {
+            if (c_e instanceof EntityPlayerSP) {
                 if (c_e.N != null && c_e.skinId.isEmpty()) {
                     this.a(c_e.N, c_e.q());
                 } else {
@@ -122,8 +122,8 @@ extends C_f {
                     f11 = (float)(n >> 8 & 0xFF) / 255.0f;
                     float f13 = (float)(n & 0xFF) / 255.0f;
                     f5 = (float)(n >>> 24) / 255.0f;
-                    if (c_e instanceof C_a) {
-                        C_a c_a = (C_a)c_e;
+                    if (c_e instanceof EntityPlayerSP) {
+                        EntityPlayerSP c_a = (EntityPlayerSP)c_e;
                         if (c_a.nightVision) {
                             GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)f5);
                         } else {

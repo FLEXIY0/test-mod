@@ -15,7 +15,7 @@ import java.util.Random;
 import net.minecraft.a.a.b.Block;
 import net.minecraft.a.b.Item;
 import net.minecraft.a.b.ItemStack;
-import net.minecraft.a.c.e.C_b;
+import net.minecraft.a.c.e.InventoryPlayer;
 import net.minecraft.client.C_c;
 import net.minecraft.client.C_k;
 import net.minecraft.client.GameSettings;
@@ -94,7 +94,7 @@ extends Gui {
             }
             GL11.glBindTexture((int)3553, (int)this.d.m.a("/gui/gui.png"));
             GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-            C_b c_b = this.d.f.b;
+            InventoryPlayer c_b = this.d.f.b;
             this.h = -90.0f;
             this.b(n2 / 2 - 91, n3 - 24, 0, 0, 182, 22);
             this.b(n2 / 2 - 91 - 1 + c_b.c * 20, n3 - 24 - 1, 182, 0, 24, 24);

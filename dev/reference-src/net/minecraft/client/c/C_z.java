@@ -11,7 +11,7 @@ import net.minecraft.a.c.a.C_a;
 import net.minecraft.a.c.a.C_b;
 import net.minecraft.a.c.a.C_c;
 import net.minecraft.a.c.a.C_d;
-import net.minecraft.a.c.a.C_f;
+import net.minecraft.a.c.a.EntityZombie;
 import net.minecraft.a.c.a.C_g;
 import net.minecraft.a.c.a.C_h;
 import net.minecraft.a.c.a.C_j;
@@ -144,7 +144,7 @@ public class C_z {
                         break;
                     }
                     case "zombie": {
-                        d2.d.spawnEntityInWorld(new C_f(d2.d, f, f2, f3));
+                        d2.d.spawnEntityInWorld(new EntityZombie(d2.d, f, f2, f3));
                         d2.t.addChatMessage("The zombies ate your brains! Spawned a \u00a7e" + stringArray[1]);
                         break;
                     }
